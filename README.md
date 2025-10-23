@@ -5,7 +5,7 @@ component registry allows you to distribute your custom components, hooks, pages
 other files to any React project.
 
 > [!IMPORTANT]  
-> This template uses Tailwind v4. For Tailwind v3, see [registry-template-v3](https://github.com/shadcn-ui/registry-template-v3).
+> This template uses Tailwind v4.
 
 ## Getting Started
 
