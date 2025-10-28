@@ -32,3 +32,17 @@ export const Number: Story = {
     type: "number",
   },
 };
+
+export const Readonly: Story = {
+  args: {
+    placeholder: "Input Readonly ...",
+    readOnly: true,
+  },
+};
+
+export const Disabled: Story = {
+  args: {
+    placeholder: "Input Disabled ...",
+    disabled: true,
+  },
+};

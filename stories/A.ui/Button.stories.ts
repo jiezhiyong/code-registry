@@ -50,3 +50,31 @@ export const Destructive: Story = {
     children: "Button",
   },
 };
+
+export const Secondary: Story = {
+  args: {
+    variant: "secondary",
+    children: "Button",
+  },
+};
+
+export const Outline: Story = {
+  args: {
+    variant: "outline",
+    children: "Button",
+  },
+};
+
+export const Ghost: Story = {
+  args: {
+    variant: "ghost",
+    children: "Button",
+  },
+};
+
+export const Link: Story = {
+  args: {
+    variant: "link",
+    children: "Button",
+  },
+};

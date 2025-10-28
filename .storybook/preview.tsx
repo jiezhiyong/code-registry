@@ -7,6 +7,7 @@ import {
   Description,
   Primary,
   Controls,
+  Stories,
 } from "@storybook/addon-docs/blocks";
 import "../app/globals.css";
 import { BlockCopyCli } from "./BlockCopyCli";
@@ -41,6 +42,7 @@ const preview: Preview = {
           <Primary />
           <BlockCopyCli />
           <Controls />
+          <Stories includePrimary={false} />
         </>
       ),
     },

@@ -18,7 +18,7 @@ export const BlockCopyCli = ({ of }: { of?: any }) => {
   return (
     <>
       <strong>Install with CLI</strong>
-      <Source code={commandStr} language="bash" dark={false} />
+      <Source code={commandStr} language="bash" dark={true} />
     </>
   );
 };
