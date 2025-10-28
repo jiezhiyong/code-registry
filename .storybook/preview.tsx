@@ -1,6 +1,15 @@
+import { themes } from "storybook/theming";
 import type { Preview } from "@storybook/nextjs-vite";
-import "../app/globals.css";
 import { withThemeByClassName } from "@storybook/addon-themes";
+import {
+  Title,
+  Subtitle,
+  Description,
+  Primary,
+  Controls,
+} from "@storybook/addon-docs/blocks";
+import "../app/globals.css";
+import { BlockCopyCli } from "./BlockCopyCli";
 
 export const decorators = [
   withThemeByClassName({
@@ -20,6 +29,20 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/i,
       },
+    },
+
+    docs: {
+      theme: themes.light,
+      page: () => (
+        <>
+          <Title />
+          <Subtitle />
+          <Description />
+          <Primary />
+          <BlockCopyCli />
+          <Controls />
+        </>
+      ),
     },
 
     a11y: {
