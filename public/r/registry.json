@@ -4,15 +4,132 @@
   "homepage": "https://acme.com",
   "items": [
     {
-      "name": "hello-world",
-      "type": "registry:component",
-      "title": "Hello World",
-      "description": "A simple hello world component",
-      "registryDependencies": ["button"],
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "按钮组件，支持多种变体和尺寸",
+      "dependencies": [
+        "@radix-ui/react-slot",
+        "class-variance-authority"
+      ],
       "files": [
         {
-          "path": "registry/new-york/blocks/hello-world/hello-world.tsx",
+          "path": "registry/new-york/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "输入框组件",
+      "files": [
+        {
+          "path": "registry/new-york/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "卡片组件",
+      "files": [
+        {
+          "path": "registry/new-york/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "标签组件",
+      "files": [
+        {
+          "path": "registry/new-york/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "文本域组件",
+      "files": [
+        {
+          "path": "registry/new-york/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "example-complex",
+      "type": "registry:block",
+      "title": "Example Complex",
+      "description": "复杂的 Pokemon 展示组件，包含数据获取和多个子组件",
+      "registryDependencies": [
+        "card"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/blocks/example-complex/page.tsx",
+          "type": "registry:page",
+          "target": "app/demo-pokemon/index.tsx"
+        },
+        {
+          "path": "registry/new-york/blocks/example-complex/page.css",
+          "type": "registry:page",
+          "target": "app/demo-pokemon/index.css"
+        },
+        {
+          "path": "registry/new-york/blocks/example-complex/components/pokemon-card.tsx",
           "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/blocks/example-complex/components/pokemon-image.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/blocks/example-complex/hooks/use-pokemon.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "registry/new-york/blocks/example-complex/lib/pokemon.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "example-header",
+      "type": "registry:component",
+      "title": "Example Header",
+      "description": "头部导航组件，支持用户登录状态切换",
+      "registryDependencies": [
+        "button"
+      ],
+      "files": [
+        {
+          "path": "registry/new-york/blocks/example-header/page.tsx",
+          "type": "registry:page",
+          "target": "app/demo-header/index.tsx"
+        },
+        {
+          "path": "registry/new-york/blocks/example-header/page.css",
+          "type": "registry:page",
+          "target": "app/demo-header/index.css"
+        },
+        {
+          "path": "registry/new-york/blocks/example-header/components/Header/index.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/new-york/blocks/example-header/components/Header/index.css",
+          "type": "registry:style"
         }
       ]
     },
@@ -21,57 +138,19 @@
       "type": "registry:component",
       "title": "Example Form",
       "description": "A contact form with Zod validation.",
-      "dependencies": ["zod"],
-      "registryDependencies": ["button", "input", "label", "textarea", "card"],
+      "dependencies": [
+        "zod"
+      ],
+      "registryDependencies": [
+        "button",
+        "input",
+        "label",
+        "textarea",
+        "card"
+      ],
       "files": [
         {
           "path": "registry/new-york/blocks/example-form/example-form.tsx",
-          "type": "registry:component"
-        }
-      ]
-    },
-    {
-      "name": "complex-component",
-      "type": "registry:component",
-      "title": "Complex Component",
-      "description": "A complex component showing hooks, libs and components.",
-      "registryDependencies": ["card"],
-      "files": [
-        {
-          "path": "registry/new-york/blocks/complex-component/page.tsx",
-          "type": "registry:page",
-          "target": "app/pokemon/page.tsx"
-        },
-        {
-          "path": "registry/new-york/blocks/complex-component/components/pokemon-card.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/blocks/complex-component/components/pokemon-image.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/blocks/complex-component/lib/pokemon.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "registry/new-york/blocks/complex-component/hooks/use-pokemon.ts",
-          "type": "registry:hook"
-        }
-      ]
-    },
-    {
-      "name": "example-with-css",
-      "type": "registry:component",
-      "title": "Example with CSS",
-      "description": "A login form with a CSS file.",
-      "files": [
-        {
-          "path": "registry/new-york/blocks/example-with-css/example-card.tsx",
-          "type": "registry:component"
-        },
-        {
-          "path": "registry/new-york/blocks/example-with-css/example-card.css",
           "type": "registry:component"
         }
       ]

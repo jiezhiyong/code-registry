@@ -19,6 +19,7 @@
   },
   "iconLibrary": "lucide",
   "registries": {
+    "@tcsk-local": "http://localhost:6006/r/{name}.json",
     "@tcsk": "https://file.40017.cn/tcsk/r/H5/{name}.json"
   }
 }

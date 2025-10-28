@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Header } from "@/registry/new-york/blocks/example-header/Header";
-import "./index.css";
+import { Header } from "@/registry/new-york/blocks/example-header/components/Header";
+import "./page.css";
 
 type User = {
   name: string;

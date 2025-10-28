@@ -61,9 +61,6 @@ importers:
       '@storybook/addon-docs':
         specifier: ^9.1.15
         version: 9.1.15(@types/react@19.1.2)(storybook@9.1.15(@testing-library/dom@10.4.1)(msw@2.11.6(@types/node@20.19.23)(typescript@5.9.3))(vite@7.1.12(@types/node@20.19.23)(jiti@2.6.1)(lightningcss@1.30.2)))
-      '@storybook/addon-onboarding':
-        specifier: ^9.1.15
-        version: 9.1.15(storybook@9.1.15(@testing-library/dom@10.4.1)(msw@2.11.6(@types/node@20.19.23)(typescript@5.9.3))(vite@7.1.12(@types/node@20.19.23)(jiti@2.6.1)(lightningcss@1.30.2)))
       '@storybook/addon-themes':
         specifier: ^9.1.15
         version: 9.1.15(storybook@9.1.15(@testing-library/dom@10.4.1)(msw@2.11.6(@types/node@20.19.23)(typescript@5.9.3))(vite@7.1.12(@types/node@20.19.23)(jiti@2.6.1)(lightningcss@1.30.2)))
@@ -1041,11 +1038,6 @@ packages:
 
   '@storybook/addon-docs@9.1.15':
     resolution: {integrity: sha512-thbBQKzN0ycSEQjtIeXJT4i6+4kWoNIWYo4x2GQ3jtqHsT8T4FZW1n/xK1ysZbB4eCwG2hOn44BRTu8p4S7UoQ==}
-    peerDependencies:
-      storybook: ^9.1.15
-
-  '@storybook/addon-onboarding@9.1.15':
-    resolution: {integrity: sha512-iOC7VIm1gjyMsie2wZDNRzn6tj5jNI/9yOAXd7MvnFeCKhQE+p+N15DIHfgctYYbHri+8fUeKIC5d9jtxBq8Zg==}
     peerDependencies:
       storybook: ^9.1.15
 
@@ -4734,10 +4726,6 @@ snapshots:
       ts-dedent: 2.2.0
     transitivePeerDependencies:
       - '@types/react'
-
-  '@storybook/addon-onboarding@9.1.15(storybook@9.1.15(@testing-library/dom@10.4.1)(msw@2.11.6(@types/node@20.19.23)(typescript@5.9.3))(vite@7.1.12(@types/node@20.19.23)(jiti@2.6.1)(lightningcss@1.30.2)))':
-    dependencies:
-      storybook: 9.1.15(@testing-library/dom@10.4.1)(msw@2.11.6(@types/node@20.19.23)(typescript@5.9.3))(vite@7.1.12(@types/node@20.19.23)(jiti@2.6.1)(lightningcss@1.30.2))
 
   '@storybook/addon-themes@9.1.15(storybook@9.1.15(@testing-library/dom@10.4.1)(msw@2.11.6(@types/node@20.19.23)(typescript@5.9.3))(vite@7.1.12(@types/node@20.19.23)(jiti@2.6.1)(lightningcss@1.30.2)))':
     dependencies:

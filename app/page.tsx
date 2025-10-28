@@ -1,13 +1,15 @@
 import * as React from "react";
 import { OpenInV0Button } from "@/components/open-in-v0-button";
-import { ExampleForm } from "@/registry/new-york/blocks/example-form";
-import PokemonPage from "@/registry/new-york/blocks/example-complex";
+import { ExampleForm } from "@/registry/new-york/blocks/example-form/example-form";
+import PokemonPage from "@/registry/new-york/blocks/example-complex/page";
 
 export default function Home() {
   return (
     <div className="max-w-3xl mx-auto flex flex-col min-h-svh px-4 py-8 gap-8">
       <header className="flex flex-col gap-1">
-        <h1 className="text-3xl font-bold tracking-tight">Custom Registry</h1>
+        <h1 className="text-3xl font-bold tracking-tight">
+          Custom Registry With Shadcn CLI
+        </h1>
         <p className="text-muted-foreground">
           A custom registry for distributing code using shadcn.
         </p>

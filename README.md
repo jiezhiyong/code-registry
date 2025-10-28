@@ -1,4 +1,4 @@
-# registry-template
+# Registry-Template
 
 You can use the `shadcn` CLI to run your own component registry. Running your own
 component registry allows you to distribute your custom components, hooks, pages, and
@@ -17,6 +17,20 @@ This is a template for creating a custom registry using Next.js.
 - The template also includes a route handler for serving registry items.
 - Every registry item are compatible with the `shadcn` CLI.
 - We have also added v0 integration using the `Open in v0` api.
+
+## Usage
+
+```sh
+pnpm dlx shadcn@latest search @tcsk
+pnpm dlx shadcn@latest add @tcsk/button
+```
+
+## Usage local
+
+```sh
+pnpm dlx shadcn@latest search @tcsk-local
+pnpm dlx shadcn@latest add @tcsk-local/button
+```
 
 ## Documentation
 

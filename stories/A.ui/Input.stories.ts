@@ -13,8 +13,22 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const Text: Story = {
   args: {
-    placeholder: "Input ...",
+    placeholder: "Input Text ...",
+  },
+};
+
+export const Password: Story = {
+  args: {
+    placeholder: "Input Password ...",
+    type: "password",
+  },
+};
+
+export const Number: Story = {
+  args: {
+    placeholder: "Input Number ...",
+    type: "number",
   },
 };

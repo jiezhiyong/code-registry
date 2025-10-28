@@ -1,5 +1,5 @@
 import { Button } from "@/registry/new-york/ui/button";
-import "./header.css";
+import "./index.css";
 
 type User = {
   name: string;

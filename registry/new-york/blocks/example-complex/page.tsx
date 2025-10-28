@@ -1,7 +1,9 @@
+"use client";
+
 import { PokemonCard } from "@/registry/new-york/blocks/example-complex/components/pokemon-card";
-import "./styles/index.css";
+import "./page.css";
 import { useEffect, useState } from "react";
-import { getPokemonList } from "./lib/pokemon";
+import { getPokemonList } from "@/registry/new-york/blocks/example-complex/lib/pokemon";
 
 export default function ExampleComplex() {
   const [pokemonNames, setPokemonNames] = useState<string[]>([]);

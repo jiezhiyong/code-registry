@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import ExampleComplex from "@/registry/new-york/blocks/example-complex";
+import ExampleComplex from "@/registry/new-york/blocks/example-complex/page";
 
 const meta = {
   title: "block/Complex",
