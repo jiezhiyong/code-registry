@@ -20,6 +20,34 @@ const config: StorybookConfig = {
   core: {
     disableTelemetry: true, // 👈 Disables telemetry
   },
+  viteFinal: async (config) => {
+    config.build = {
+      ...config.build,
+      chunkSizeWarningLimit: 2000,
+      rollupOptions: {
+        ...config.build?.rollupOptions,
+        onwarn: (warning, warn) => {
+          // 忽略 "use client" 指令相关的警告
+          if (warning.code === "MODULE_LEVEL_DIRECTIVE") {
+            return;
+          }
+          // 忽略 sourcemap 相关警告
+          if (
+            warning.message.includes("sourcemap") &&
+            warning.message.includes("original location")
+          ) {
+            return;
+          }
+          // 忽略 chunk size 警告
+          if (warning.message.includes("Some chunks are larger")) {
+            return;
+          }
+          warn(warning);
+        },
+      },
+    };
+    return config;
+  },
 };
 
 export default config;
