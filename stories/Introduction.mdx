@@ -1,4 +1,5 @@
 import { Meta } from "@storybook/addon-docs/blocks";
+import { Source } from "@storybook/addon-docs/blocks";
 
 export const RightArrow = () => <svg
   viewBox="0 0 14 14"
@@ -21,6 +22,49 @@ export const RightArrow = () => <svg
 <div className="sb-container">
   <div className='sb-section-title'>
     # 配置项目
+
+    首先，您需要配置您的项目，以便可以通过 `shadcn CLI` 添加组件。你可以使用 `pnpm dlx shadcn@latest init` 命令来快速初始化一个 `NextJS + Shadcn UI + Tailwind CSS` 项目。
+  </div>
+  <Source language="json" dark={true} code={
+    `
+    {
+      "$schema": "https://ui.shadcn.com/schema.json",
+      "style": "new-york",  
+      "rsc": true,
+      "tsx": true,
+      "tailwind": {
+        "config": "",
+        "css": "app/globals.css",
+        "baseColor": "neutral",
+        "cssVariables": true,
+        "prefix": ""
+      },
+      "aliases": {
+        "components": "@/components",
+        "utils": "@/lib/utils",
+        "ui": "@/components/ui",
+        "lib": "@/lib",
+        "hooks": "@/hooks"
+      },
+      "iconLibrary": "lucide",
+      "registries": {
+        "@tcsk": "https://file.40017.cn/tcsk/r/H5/{name}.json"
+      }
+    }`
+  } />
+
+  <p>然后，你可以使用 `shadcn CLI` 的 `search` 命令来搜索组件，`add` 命令来添加组件。</p>
+  <Source language="bash" dark={true} code={
+    `
+    pnpm dlx shadcn@latest search @tcsk
+    pnpm dlx shadcn@latest add @tcsk/button
+    `
+  } />
+</div>
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    # Storybook 使用指南
 
     由于 Storybook 与您的应用程序分开工作，因此您需要针对您的特定技术栈和设置对其进行配置。下面，探索使用流行框架和工具配置 Storybook 的指南。如果您遇到困难，请了解如何向我们的社区寻求帮助。
   </div>
@@ -160,8 +204,8 @@ export const RightArrow = () => <svg
 </div>
 <div className='sb-addon'>
   <div className='sb-addon-text'>
-    <h4>插件</h4>
-    <p className="sb-section-item-paragraph">将您的工具与 Storybook 集成以连接工作流程。</p>
+    <h4 className="text-black!">插件</h4>
+    <p className="sb-section-item-paragraph text-black!">将您的工具与 Storybook 集成以连接工作流程。</p>
     <a
         href="https://storybook.js.org/addons/?ref=configure"
         target="_blank"

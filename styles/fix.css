@@ -1,0 +1,30 @@
+/* 解决 storybook Controls 在小屏幕下溢出问题 */
+.css-14m39zm {
+  max-width: 100%;
+  overflow-x: scroll;
+  margin-bottom: 30px !important;
+  scrollbar-width: always;
+  padding-right: 1px;
+}
+
+/* 减少 Controls 下 table 的 margin-bottom */
+.css-14m39zm table {
+  margin-bottom: 10px !important;
+}
+
+/** 减少 sbdocs-wrapper 的 padding */
+.sbdocs-wrapper {
+  padding: 2rem 20px 0 20px !important;
+}
+
+/* 修复标题样式过长导致页面出现横向滚动的问题 */
+.sbdocs-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 优化代码块中的 token 样式 */
+.language-bash .token {
+  color: #37d5d3 !important;
+}

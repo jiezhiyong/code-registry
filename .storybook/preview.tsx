@@ -9,18 +9,10 @@ import {
   Controls,
   Stories,
 } from "@storybook/addon-docs/blocks";
-import "../app/globals.css";
 import { BlockCopyCli } from "./BlockCopyCli";
-
-export const decorators = [
-  withThemeByClassName({
-    themes: {
-      light: "light",
-      dark: "dark",
-    },
-    defaultTheme: "light",
-  }),
-];
+import "../styles/globals.css";
+import "../styles/fix.css";
+import { defaultThemeIsDark } from "./manager";
 
 const preview: Preview = {
   parameters: {
@@ -33,18 +25,20 @@ const preview: Preview = {
     },
 
     docs: {
-      theme: themes.light,
-      page: () => (
-        <>
-          <Title />
-          <Subtitle />
-          <Description />
-          <Primary />
-          <BlockCopyCli />
-          <Controls />
-          <Stories includePrimary={false} />
-        </>
-      ),
+      theme: defaultThemeIsDark ? themes.dark : themes.normal,
+      page: () => {
+        return (
+          <>
+            <Title />
+            <Subtitle />
+            <Description />
+            <Primary />
+            <BlockCopyCli />
+            <Controls />
+            <Stories includePrimary={false} />
+          </>
+        );
+      },
     },
 
     a11y: {
@@ -54,6 +48,15 @@ const preview: Preview = {
       test: "todo",
     },
   },
+  decorators: [
+    withThemeByClassName({
+      defaultTheme: defaultThemeIsDark ? "dark" : "light",
+      themes: {
+        light: "light",
+        dark: "dark",
+      },
+    }),
+  ],
 };
 
 export default preview;
