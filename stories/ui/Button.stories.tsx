@@ -2,6 +2,7 @@ import { Button } from "@/registry/new-york/ui/button";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { fn } from "storybook/test";
 import { buttonOptions } from "@/registry/new-york/ui/button";
+import { SearchIcon } from "lucide-react";
 
 // cva variants
 const variantOptions = Object.keys(buttonOptions.variant);
@@ -40,7 +41,6 @@ export const Primary: Story = {
   args: {
     variant: "default",
     children: "Button",
-    size: "default",
   },
 };
 
@@ -76,5 +76,33 @@ export const Link: Story = {
   args: {
     variant: "link",
     children: "Button",
+  },
+};
+
+export const AsChild: Story = {
+  args: {
+    children: <a href="Button">AsChild: true</a>,
+    asChild: true,
+  },
+};
+
+export const Small: Story = {
+  args: {
+    size: "sm",
+    children: "Small Button",
+  },
+};
+
+export const Large: Story = {
+  args: {
+    size: "lg",
+    children: "Large Button",
+  },
+};
+
+export const Icon: Story = {
+  args: {
+    size: "icon",
+    children: <SearchIcon />,
   },
 };

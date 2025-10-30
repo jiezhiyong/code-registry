@@ -12,11 +12,6 @@
   margin-bottom: 10px !important;
 }
 
-/** 减少 sbdocs-wrapper 的 padding */
-.sbdocs-wrapper {
-  padding: 2rem 20px 0 20px !important;
-}
-
 /* 修复标题样式过长导致页面出现横向滚动的问题 */
 .sbdocs-title {
   overflow: hidden;

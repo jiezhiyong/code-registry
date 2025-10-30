@@ -23,7 +23,7 @@ const config: StorybookConfig = {
   viteFinal: async (config) => {
     config.build = {
       ...config.build,
-      chunkSizeWarningLimit: 2000,
+      chunkSizeWarningLimit: 3000,
       rollupOptions: {
         ...config.build?.rollupOptions,
         onwarn: (warning, warn) => {
