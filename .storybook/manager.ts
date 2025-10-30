@@ -12,10 +12,30 @@ addons.setConfig({
   theme: defaultThemeIsDark ? themes.dark : themes.light,
 });
 
+/**
+ * 应用主题
+ * 另外1000ms内，每100ms检查一次，强制修改类名来应用主题，以确保主题切换后页面样式刷新
+ */
+let interval: NodeJS.Timeout;
+function applyTheme(theme: "dark" | "light") {
+  clearInterval(interval);
+
+  document.documentElement.classList.value = theme;
+  interval = setInterval(() => {
+    if (!document.documentElement.classList.contains(theme)) {
+      document.documentElement.classList.value = theme;
+    }
+  }, 100);
+
+  setTimeout(() => {
+    clearInterval(interval);
+  }, 6000); // 约5s左右主题插件会重置主题，这里确保6s内保持手动修改的主题
+}
+
 window.addEventListener("DOMContentLoaded", () => {
   /**
    * 监听主题切换按钮点击并刷新页面
-   * 以解决主题切换后页面样式不刷新的问题
+   * 以同步侧边栏、工具栏主题样式
    */
   setTimeout(() => {
     const document = window.top?.document;
@@ -31,7 +51,7 @@ window.addEventListener("DOMContentLoaded", () => {
   }, 300);
 
   /**
-   * 监听在Docs下切换故事背景色按钮点击
+   * 监听在 `Docs` 下切换故事背景色按钮点击
    * 为故事切换 `dark` 类名
    */
   const search = window.location.search;
@@ -43,29 +63,23 @@ window.addEventListener("DOMContentLoaded", () => {
     search.includes("backgrounds.value%3Alight");
 
   if (storyBgIsDark) {
-    document.body.classList.add("dark");
-    setTimeout(() => {
-      document.documentElement.classList.value = "dark";
-    }, 1000);
+    applyTheme("dark");
   } else if (storyBgIsLight) {
-    document.body.classList.remove("dark");
-    setTimeout(() => {
-      document.documentElement.classList.value = "light";
-    }, 1000);
+    applyTheme("light");
   }
 
   /**
-   * 监听在Story下切换故事背景色按钮点击
+   * 监听在 `Story` 下切换故事背景色按钮点击
    * 为故事切换 `dark` 类名
    */
   window.top?.addEventListener("click", (e) => {
     const target = e.target as HTMLElement;
     if (target.closest("#list-item-dark")) {
-      document.body.classList.add("dark");
-      document.documentElement.classList.value = "dark";
+      applyTheme("dark");
     } else if (target.closest("#list-item-light")) {
-      document.body.classList.remove("dark");
-      document.documentElement.classList.value = "light";
+      applyTheme("light");
+    } else if (target.closest("#list-item-reset")) {
+      applyTheme(defaultThemeIsDark ? "dark" : "light");
     }
   });
 });

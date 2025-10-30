@@ -26,8 +26,7 @@ export const RightArrow = () => <svg
     首先，您需要配置您的项目，以便可以通过 `shadcn CLI` 添加组件。你可以使用 `pnpm dlx shadcn@latest init` 命令来快速初始化一个 `NextJS + Shadcn UI + Tailwind CSS` 项目。
   </div>
   <Source language="json" dark={true} code={
-    `
-    {
+    `{
       "$schema": "https://ui.shadcn.com/schema.json",
       "style": "new-york",  
       "rsc": true,
@@ -58,6 +57,32 @@ export const RightArrow = () => <svg
     `
     pnpm dlx shadcn@latest search @tcsk
     pnpm dlx shadcn@latest add @tcsk/button
+    `
+  } />
+</div>
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    # MCP 服务器
+
+    为注册表启用 MCP 支持，这样你就可以在 `LLM` 中使用提示词来使用组件了。
+  </div>
+  <Source language="json" dark={true} code={
+    `{
+      "mcpServers": {
+        "shadcn": {
+          "command": "npx",
+          "args": ["shadcn@latest", "mcp"]
+        },
+      }
+    }`
+  } />
+
+  <p>然后，你可以在 `LLM` 中使用提示词来使用组件</p>
+  <Source language="bash" dark={true} code={
+    `
+    Show me the components in the tcsk registry
+    Create a landing page using items from the tcsk registry
     `
   } />
 </div>
