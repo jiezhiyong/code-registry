@@ -29,6 +29,7 @@ export const Number: Story = {
   },
 };
 
+// 会导致自动化部署报错
 // export const NumberThrowError: Story = {
 //   tags: ["!dev", "!test"],
 //   args: {
