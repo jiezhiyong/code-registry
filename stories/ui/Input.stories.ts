@@ -29,14 +29,14 @@ export const Number: Story = {
   },
 };
 
-export const NumberThrowError: Story = {
-  tags: ["!dev", "!test"],
-  args: {
-    placeholder: "Input Number Throw Error ...",
-    type: "number",
-    defaultValue: "abcxyz",
-  },
-};
+// export const NumberThrowError: Story = {
+//   tags: ["!dev", "!test"],
+//   args: {
+//     placeholder: "Input Number Throw Error ...",
+//     type: "number",
+//     defaultValue: "abcxyz",
+//   },
+// };
 
 export const Readonly: Story = {
   args: {
