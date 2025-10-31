@@ -20,6 +20,6 @@
   "iconLibrary": "lucide",
   "registries": {
     "@tcsk-local": "http://localhost:6006/r/{name}.json",
-    "@tcsk": "https://file.40017.cn/tcsk/r/H5/{name}.json"
+    "@tcsk": "https://main--68fb36a8575355ea03c9dd6a.chromatic.com/r/{name}.json"
   }
 }
