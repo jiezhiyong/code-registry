@@ -7,6 +7,7 @@ import { Page } from "@/registry/new-york/blocks/example-header/page";
 const meta = {
   title: "block/Header",
   component: Page,
+  tags: ["!autodocs", "block"],
   parameters: {
     layout: "fullscreen",
   },

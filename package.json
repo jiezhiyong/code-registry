@@ -6,7 +6,9 @@
   "scripts": {
     "storybook": "EDITOR=windsurf storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "build-storybook-docs": "storybook build --docs",
     "build-registry": "shadcn build",
+    "docs-storybook": "storybook dev --docs",
     "test-storybook": "npx vitest --coverage",
     "chromatic": "npx chromatic",
     "lint": "eslint .",

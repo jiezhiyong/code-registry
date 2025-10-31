@@ -35,3 +35,6 @@ pnpm dlx shadcn@latest add @tcsk-local/button
 ## Documentation
 
 Visit the [shadcn documentation](https://ui.shadcn.com/docs/registry) to view the full documentation.
+
+v0
+test mcp

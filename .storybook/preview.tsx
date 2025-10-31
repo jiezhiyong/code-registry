@@ -15,6 +15,7 @@ import "../styles/fix.css";
 import { defaultThemeIsDark } from "./manager";
 
 const preview: Preview = {
+  tags: ["autodocs"],
   parameters: {
     layout: "centered",
     controls: {
@@ -26,6 +27,7 @@ const preview: Preview = {
 
     docs: {
       theme: defaultThemeIsDark ? themes.dark : themes.normal,
+      codePanel: true,
       page: () => {
         return (
           <>
@@ -62,6 +64,17 @@ const preview: Preview = {
         dark: "dark",
       },
     }),
+    (Story, { parameters }) => {
+      const { layout } = parameters;
+      // if layout is not fullscreen, add some padding
+      if (layout !== "fullscreen")
+        return (
+          <div className="p-2">
+            <Story />
+          </div>
+        );
+      return <Story />;
+    },
   ],
 };
 

@@ -5,6 +5,7 @@ import { ExampleForm } from "@/registry/new-york/blocks/example-form/example-for
 const meta = {
   title: "block/Form",
   component: ExampleForm,
+  tags: ["!autodocs", "block"],
 } satisfies Meta<typeof ExampleForm>;
 
 export default meta;

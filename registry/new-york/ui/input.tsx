@@ -4,6 +4,14 @@ import { cn } from "@/lib/utils";
 
 /** 输入框 */
 function Input({ className, type, ...props }: React.ComponentProps<"input">) {
+  if (
+    type === "number" &&
+    props.defaultValue &&
+    isNaN(Number(props.defaultValue))
+  ) {
+    throw new Error("Number Input's defaultValue is not a number.");
+  }
+
   return (
     <input
       type={type}

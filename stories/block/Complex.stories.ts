@@ -5,6 +5,7 @@ import ExampleComplex from "@/registry/new-york/blocks/example-complex/page";
 const meta = {
   title: "block/Complex",
   component: ExampleComplex,
+  tags: ["!autodocs", "block"],
 } satisfies Meta<typeof ExampleComplex>;
 
 export default meta;

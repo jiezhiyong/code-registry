@@ -4,10 +4,6 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 const meta = {
   title: "component/Input",
   component: Input,
-  parameters: {
-    layout: "centered",
-  },
-  tags: ["autodocs"],
 } satisfies Meta<typeof Input>;
 
 export default meta;
@@ -30,6 +26,15 @@ export const Number: Story = {
   args: {
     placeholder: "Input Number ...",
     type: "number",
+  },
+};
+
+export const NumberThrowError: Story = {
+  tags: ["!dev", "!test"],
+  args: {
+    placeholder: "Input Number Throw Error ...",
+    type: "number",
+    defaultValue: "abcxyz",
   },
 };
 
