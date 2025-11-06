@@ -1,17 +1,17 @@
-import { themes } from "storybook/theming";
-import type { Preview } from "@storybook/nextjs-vite";
-import { withThemeByClassName } from "@storybook/addon-themes";
 import {
-  Title,
-  Subtitle,
+  Controls,
   Description,
   Primary,
-  Controls,
   Stories,
+  Subtitle,
+  Title,
 } from "@storybook/addon-docs/blocks";
-import { BlockCopyCli } from "./BlockCopyCli";
+import { withThemeByClassName } from "@storybook/addon-themes";
+import type { Preview } from "@storybook/nextjs-vite";
+import { themes } from "storybook/theming";
 import "../styles/globals.css";
-import "../styles/fix.css";
+import { BlockCopyCli } from "./BlockCopyCli";
+import "./fix.css";
 import { defaultThemeIsDark } from "./manager";
 
 const preview: Preview = {

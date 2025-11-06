@@ -14,7 +14,7 @@
       ],
       "files": [
         {
-          "path": "registry/new-york/ui/button.tsx",
+          "path": "registry/ui/button.tsx",
           "type": "registry:ui"
         }
       ]
@@ -26,7 +26,7 @@
       "description": "输入框组件",
       "files": [
         {
-          "path": "registry/new-york/ui/input.tsx",
+          "path": "registry/ui/input.tsx",
           "type": "registry:ui"
         }
       ]
@@ -38,7 +38,7 @@
       "description": "卡片组件",
       "files": [
         {
-          "path": "registry/new-york/ui/card.tsx",
+          "path": "registry/ui/card.tsx",
           "type": "registry:ui"
         }
       ]
@@ -50,7 +50,7 @@
       "description": "标签组件",
       "files": [
         {
-          "path": "registry/new-york/ui/label.tsx",
+          "path": "registry/ui/label.tsx",
           "type": "registry:ui"
         }
       ]
@@ -62,7 +62,7 @@
       "description": "文本域组件",
       "files": [
         {
-          "path": "registry/new-york/ui/textarea.tsx",
+          "path": "registry/ui/textarea.tsx",
           "type": "registry:ui"
         }
       ]
@@ -77,29 +77,29 @@
       ],
       "files": [
         {
-          "path": "registry/new-york/blocks/example-complex/page.tsx",
+          "path": "registry/blocks/example-complex/page.tsx",
           "type": "registry:page",
           "target": "app/demo-pokemon/index.tsx"
         },
         {
-          "path": "registry/new-york/blocks/example-complex/page.css",
+          "path": "registry/blocks/example-complex/page.css",
           "type": "registry:page",
           "target": "app/demo-pokemon/index.css"
         },
         {
-          "path": "registry/new-york/blocks/example-complex/components/pokemon-card.tsx",
+          "path": "registry/blocks/example-complex/components/pokemon-card.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/new-york/blocks/example-complex/components/pokemon-image.tsx",
+          "path": "registry/blocks/example-complex/components/pokemon-image.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/new-york/blocks/example-complex/hooks/use-pokemon.ts",
+          "path": "registry/blocks/example-complex/hooks/use-pokemon.ts",
           "type": "registry:hook"
         },
         {
-          "path": "registry/new-york/blocks/example-complex/lib/pokemon.ts",
+          "path": "registry/blocks/example-complex/lib/pokemon.ts",
           "type": "registry:lib"
         }
       ]
@@ -114,21 +114,21 @@
       ],
       "files": [
         {
-          "path": "registry/new-york/blocks/example-header/page.tsx",
+          "path": "registry/blocks/example-header/page.tsx",
           "type": "registry:page",
           "target": "app/demo-header/index.tsx"
         },
         {
-          "path": "registry/new-york/blocks/example-header/page.css",
+          "path": "registry/blocks/example-header/page.css",
           "type": "registry:page",
           "target": "app/demo-header/index.css"
         },
         {
-          "path": "registry/new-york/blocks/example-header/components/Header/index.tsx",
+          "path": "registry/blocks/example-header/components/Header/index.tsx",
           "type": "registry:component"
         },
         {
-          "path": "registry/new-york/blocks/example-header/components/Header/index.css",
+          "path": "registry/blocks/example-header/components/Header/index.css",
           "type": "registry:style"
         }
       ]
@@ -150,7 +150,7 @@
       ],
       "files": [
         {
-          "path": "registry/new-york/blocks/example-form/example-form.tsx",
+          "path": "registry/blocks/example-form/example-form.tsx",
           "type": "registry:component"
         }
       ]

@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "tw-animate-css";
+@plugin './hero.ts';
 
 @custom-variant dark (&:is(.dark *));
 

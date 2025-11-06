@@ -1,8 +1,7 @@
-import { Button } from "@/registry/new-york/ui/button";
+import { Button, buttonOptions } from "@/registry/ui/button";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { fn } from "storybook/test";
-import { buttonOptions } from "@/registry/new-york/ui/button";
 import { SearchIcon } from "lucide-react";
+import { fn } from "storybook/test";
 
 // cva variants
 const variantOptions = Object.keys(buttonOptions.variant);

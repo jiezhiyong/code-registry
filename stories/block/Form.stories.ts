@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import { ExampleForm } from "@/registry/new-york/blocks/example-form/example-form";
+import { ExampleForm } from "@/registry/blocks/example-form/example-form";
 
 const meta = {
   title: "block/Form",

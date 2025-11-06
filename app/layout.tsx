@@ -1,9 +1,22 @@
-import type { Metadata } from "next";
+import { Navbar } from "@/components/Navbar";
+import { Providers } from "@/components/Provider";
+import { Link } from "@heroui/link";
+import type { Metadata, Viewport } from "next";
 import "../styles/globals.css";
 
 export const metadata: Metadata = {
   title: "Shadcn code registry",
   description: "use the`shadcn` CLI to run your own code registry",
+  icons: {
+    icon: "/favicon.ico",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
 };
 
 export default function RootLayout({
@@ -12,8 +25,29 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className="antialiased">{children}</body>
+    <html suppressHydrationWarning lang="en">
+      <head />
+      <body className="min-h-screen text-foreground bg-background font-sans antialiased">
+        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
+          <div className="relative flex flex-col h-screen">
+            <Navbar />
+            <main className="container mx-auto max-w-7xl pt-16 px-6 grow">
+              {children}
+            </main>
+            <footer className="w-full flex items-center justify-center py-3">
+              <Link
+                isExternal
+                className="flex items-center gap-1 text-current"
+                href="https://heroui.com?utm_source=next-app-template"
+                title="heroui.com homepage"
+              >
+                <span className="text-default-600">Powered by</span>
+                <p className="text-primary">HeroUI</p>
+              </Link>
+            </footer>
+          </div>
+        </Providers>
+      </body>
     </html>
   );
 }
