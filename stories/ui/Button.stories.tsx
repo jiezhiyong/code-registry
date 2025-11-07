@@ -1,105 +1,152 @@
-import { Button, buttonOptions } from "@/registry/ui/button";
-import type { Meta, StoryObj } from "@storybook/nextjs-vite";
-import { SearchIcon } from "lucide-react";
-import { fn } from "storybook/test";
+import type {Meta} from "@storybook/react";
+import type {ButtonProps} from "../src";
 
-// cva variants
-const variantOptions = Object.keys(buttonOptions.variant);
-const sizeOptions = Object.keys(buttonOptions.size);
+import React from "react";
+import {button} from "@heroui/theme";
+import {Camera, HeadphonesIcon, Notification} from "@heroui/shared-icons";
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
-const meta = {
-  title: "component/Button",
+import {Button} from "../src";
+
+export default {
+  title: "Components/Button",
   component: Button,
-  parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-    layout: "centered",
-  },
-  // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
     variant: {
-      control: "select",
-      options: variantOptions,
+      control: {
+        type: "select",
+      },
+      options: ["solid", "bordered", "light", "flat", "faded", "shadow", "ghost"],
+    },
+    color: {
+      control: {
+        type: "select",
+      },
+      options: ["default", "primary", "secondary", "success", "warning", "danger"],
     },
     size: {
-      control: "select",
-      options: sizeOptions,
+      control: {
+        type: "select",
+      },
+      options: ["sm", "md", "lg"],
+    },
+    spinnerPlacement: {
+      control: {
+        type: "select",
+      },
+      options: ["start", "end"],
+    },
+    fullWidth: {
+      control: {
+        type: "boolean",
+      },
+    },
+    radius: {
+      control: {
+        type: "select",
+      },
+      options: ["none", "sm", "md", "lg", "full"],
+    },
+    isDisabled: {
+      control: {
+        type: "boolean",
+      },
+    },
+    isLoading: {
+      control: {
+        type: "boolean",
+      },
+    },
+    disableAnimation: {
+      control: {
+        type: "boolean",
+      },
     },
   },
-  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
-  args: { onClick: fn() },
-} satisfies Meta<typeof Button>;
+} as Meta<typeof Button>;
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+const defaultProps = {
+  children: "Button",
+  spinnerPlacement: "start",
+  ...button.defaultVariants,
+};
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary: Story = {
+const StateTemplate = (args: ButtonProps) => {
+  const [isOpen, setIsOpen] = React.useState(false);
+
+  const handlePress = (e: any) => {
+    // eslint-disable-next-line no-console
+    console.log("Pressed", e);
+    setIsOpen((prev) => !prev);
+  };
+
+  return (
+    <Button
+      {...args}
+      aria-label={isOpen ? "Close" : "Open"}
+      aria-pressed={isOpen}
+      onPress={handlePress}
+    >
+      {isOpen ? "Close" : "Open"}
+    </Button>
+  );
+};
+
+export const Default = {
   args: {
-    variant: "default",
-    children: "Button",
+    ...defaultProps,
   },
 };
 
-export const Destructive: Story = {
+export const WithState = {
+  render: StateTemplate,
+
   args: {
-    variant: "destructive",
-    children: "Button",
+    ...defaultProps,
   },
 };
 
-export const Secondary: Story = {
+export const IsDisabled = {
   args: {
-    variant: "secondary",
-    children: "Button",
+    ...defaultProps,
+    isDisabled: true,
   },
 };
 
-export const Outline: Story = {
+export const DisableRipple = {
   args: {
-    variant: "outline",
-    children: "Button",
+    ...defaultProps,
+    disableRipple: true,
   },
 };
 
-export const Ghost: Story = {
+export const WithIcons = {
   args: {
-    variant: "ghost",
-    children: "Button",
+    ...defaultProps,
+    startContent: <Notification className="fill-current" />,
+    endContent: <Camera className="fill-current" />,
   },
 };
 
-export const Link: Story = {
+export const IconButton = {
   args: {
-    variant: "link",
-    children: "Button",
+    ...defaultProps,
+    isIconOnly: true,
+    children: <HeadphonesIcon className="w-5 h-5" />,
   },
 };
 
-export const AsChild: Story = {
+export const IsLoading = {
   args: {
-    children: <a href="Button">AsChild: true</a>,
-    asChild: true,
+    ...defaultProps,
+    color: "primary",
+    isLoading: true,
   },
 };
 
-export const Small: Story = {
+export const CustomWithClassNames = {
   args: {
-    size: "sm",
-    children: "Small Button",
-  },
-};
-
-export const Large: Story = {
-  args: {
-    size: "lg",
-    children: "Large Button",
-  },
-};
-
-export const Icon: Story = {
-  args: {
-    size: "icon",
-    children: <SearchIcon />,
+    ...defaultProps,
+    radius: "full",
+    className: "bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg",
   },
 };

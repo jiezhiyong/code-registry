@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { Providers } from "@/components/Provider";
-import { Link } from "@heroui/link";
+import { Link } from "@/registry/ui backup/link";
 import type { Metadata, Viewport } from "next";
 import "../styles/globals.css";
 
@@ -31,9 +31,7 @@ export default function RootLayout({
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
           <div className="relative flex flex-col h-screen">
             <Navbar />
-            <main className="container mx-auto max-w-7xl pt-16 px-6 grow">
-              {children}
-            </main>
+            <main className="container mx-auto max-w-7xl pt-16 px-6 grow">{children}</main>
             <footer className="w-full flex items-center justify-center py-3">
               <Link
                 isExternal

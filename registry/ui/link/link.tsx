@@ -1,8 +1,10 @@
-import type { UseLinkProps } from "./use-link";
+import type {UseLinkProps} from "./use-link";
 
-import { forwardRef } from "@/lib/forwardRef";
-import { LinkIcon } from "lucide-react";
-import { useLink } from "./use-link";
+import {forwardRef} from "@heroui/system";
+import {LinkIcon} from "@heroui/shared-icons";
+import {linkAnchorClasses} from "@heroui/theme";
+
+import {useLink} from "./use-link";
 
 export interface LinkProps extends UseLinkProps {}
 
@@ -11,7 +13,7 @@ const Link = forwardRef<"a", LinkProps>((props, ref) => {
     Component,
     children,
     showAnchorIcon,
-    anchorIcon = <LinkIcon />,
+    anchorIcon = <LinkIcon className={linkAnchorClasses} />,
     getLinkProps,
   } = useLink({
     ref,

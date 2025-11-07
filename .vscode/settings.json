@@ -2,5 +2,10 @@
   "files.associations": {
     "*.css": "tailwindcss"
   },
-  "editor.formatOnSave": true
+  "prettier.printWidth": 120,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "always"
+  }
 }

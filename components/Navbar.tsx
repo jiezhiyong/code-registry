@@ -1,4 +1,7 @@
-import { Link } from "@heroui/link";
+"use client";
+
+import { Link } from "@/registry/ui backup/link";
+import { link as linkStyles } from "@/registry/ui backup/link/theme";
 import {
   Navbar as HeroUINavbar,
   NavbarBrand,
@@ -7,8 +10,7 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
-} from "@heroui/navbar";
-import { link as linkStyles } from "@heroui/theme";
+} from "@/registry/ui backup/navbar";
 import clsx from "clsx";
 import NextLink from "next/link";
 
@@ -44,10 +46,7 @@ export const Navbar = () => {
         </ul>
       </NavbarContent>
 
-      <NavbarContent
-        className="hidden sm:flex basis-1/5 sm:basis-full"
-        justify="end"
-      >
+      <NavbarContent className="hidden sm:flex basis-1/5 sm:basis-full" justify="end">
         <NavbarItem className="hidden sm:flex gap-2">
           <ThemeSwitch />
         </NavbarItem>
@@ -63,13 +62,7 @@ export const Navbar = () => {
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
-                color={
-                  index === 2
-                    ? "primary"
-                    : index === siteConfig.navMenuItems.length - 1
-                    ? "danger"
-                    : "foreground"
-                }
+                color={index === 2 ? "primary" : index === siteConfig.navMenuItems.length - 1 ? "danger" : "foreground"}
                 href="#"
                 size="lg"
               >

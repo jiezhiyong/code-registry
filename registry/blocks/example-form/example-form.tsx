@@ -1,14 +1,7 @@
 "use client";
 
-import { Button } from "@/registry/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/registry/ui/card";
+import { Button } from "@/registry/ui backup/button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/registry/ui/card";
 import { Input } from "@/registry/ui/input";
 import { Label } from "@/registry/ui/label";
 import { Textarea } from "@/registry/ui/textarea";
@@ -50,9 +43,7 @@ export function ExampleForm() {
         setState({
           ...state,
           errors: Object.fromEntries(
-            Object.entries(result.error.flatten().fieldErrors).map(
-              ([key, value]) => [key, value?.[0] ?? ""]
-            )
+            Object.entries(result.error.flatten().fieldErrors).map(([key, value]) => [key, value?.[0] ?? ""])
           ) as Record<keyof typeof state.errors, string>,
         });
         setPending(false);
@@ -69,19 +60,11 @@ export function ExampleForm() {
       <Card>
         <CardHeader>
           <CardTitle>How can we help?</CardTitle>
-          <CardDescription>
-            Need help with your project? We&apos;re here to assist you.
-          </CardDescription>
+          <CardDescription>Need help with your project? We&apos;re here to assist you.</CardDescription>
         </CardHeader>
         <CardContent className="flex flex-col gap-6">
-          <div
-            className="group/field grid gap-2"
-            data-invalid={!!state.errors?.name}
-          >
-            <Label
-              htmlFor="name"
-              className="group-data-[invalid=true]/field:text-destructive"
-            >
+          <div className="group/field grid gap-2" data-invalid={!!state.errors?.name}>
+            <Label htmlFor="name" className="group-data-[invalid=true]/field:text-destructive">
               Name <span aria-hidden="true">*</span>
             </Label>
             <Input
@@ -100,14 +83,8 @@ export function ExampleForm() {
               </p>
             )}
           </div>
-          <div
-            className="group/field grid gap-2"
-            data-invalid={!!state.errors?.email}
-          >
-            <Label
-              htmlFor="email"
-              className="group-data-[invalid=true]/field:text-destructive"
-            >
+          <div className="group/field grid gap-2" data-invalid={!!state.errors?.email}>
+            <Label htmlFor="email" className="group-data-[invalid=true]/field:text-destructive">
               Email <span aria-hidden="true">*</span>
             </Label>
             <Input
@@ -126,14 +103,8 @@ export function ExampleForm() {
               </p>
             )}
           </div>
-          <div
-            className="group/field grid gap-2"
-            data-invalid={!!state.errors?.message}
-          >
-            <Label
-              htmlFor="message"
-              className="group-data-[invalid=true]/field:text-destructive"
-            >
+          <div className="group/field grid gap-2" data-invalid={!!state.errors?.message}>
+            <Label htmlFor="message" className="group-data-[invalid=true]/field:text-destructive">
               Message <span aria-hidden="true">*</span>
             </Label>
             <Textarea

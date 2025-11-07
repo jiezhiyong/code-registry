@@ -1,6 +1,6 @@
-import type { ContextType } from "./use-button-group";
+import type {ContextType} from "./use-button-group";
 
-import { createContext } from "@/lib/context";
+import {createContext} from "@heroui/react-utils";
 
 export const [ButtonGroupProvider, useButtonGroupContext] = createContext<ContextType>({
   name: "ButtonGroupContext",
