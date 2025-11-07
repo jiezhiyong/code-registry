@@ -1,10 +1,10 @@
-import type {UserEvent} from "@testing-library/user-event";
+import type { UserEvent } from "@testing-library/user-event";
 
-import * as React from "react";
-import {render} from "@testing-library/react";
+import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import * as React from "react";
 
-import {Card} from "../src";
+import { Card } from "@/registry/ui";
 
 describe("Card", () => {
   let user: UserEvent;
@@ -34,7 +34,7 @@ describe("Card", () => {
 
   it("should be clicked when is pressable", async () => {
     const onPress = jest.fn();
-    const {getByRole} = render(<Card disableRipple isPressable onPress={onPress} />);
+    const { getByRole } = render(<Card disableRipple isPressable onPress={onPress} />);
 
     const button = getByRole("button");
 
@@ -45,7 +45,7 @@ describe("Card", () => {
 
   it("should trigger onPress function", async () => {
     const onPress = jest.fn();
-    const {getByRole} = render(<Card disableRipple isPressable onPress={onPress} />);
+    const { getByRole } = render(<Card disableRipple isPressable onPress={onPress} />);
 
     const button = getByRole("button");
 
@@ -58,14 +58,14 @@ describe("Card", () => {
     const wrapper = render(
       <Card>
         <Card />
-      </Card>,
+      </Card>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
   });
 
   it("should have a button role when is pressable", () => {
-    const {container} = render(<Card disableRipple isPressable />);
+    const { container } = render(<Card disableRipple isPressable />);
 
     expect(container.firstChild).toHaveAttribute("role", "button");
   });

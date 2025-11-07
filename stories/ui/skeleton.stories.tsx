@@ -1,12 +1,12 @@
-import type { Meta } from "@storybook/react";
-import type { SkeletonProps } from "../src";
+import type { SkeletonProps } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
-import { skeleton } from "@/lib/theme";
+import { skeleton } from "@/registry/ui";
 import { Button } from "@/registry/ui/button";
-import { Card } from "@heroui/card";
+import { Card } from "@/registry/ui/card";
 import React from "react";
 
-import { Skeleton } from "../src";
+import { Skeleton } from "@/registry/ui";
 
 export default {
   title: "Components/Skeleton",

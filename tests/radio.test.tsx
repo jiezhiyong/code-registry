@@ -1,12 +1,12 @@
-import type {UserEvent} from "@testing-library/user-event";
-import type {RadioGroupProps} from "../src";
+import type { RadioGroupProps } from "@/registry/ui";
+import type { UserEvent } from "@testing-library/user-event";
 
-import * as React from "react";
-import {act, render} from "@testing-library/react";
+import { Form } from "@/registry/ui/form";
+import { act, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {Form} from "@heroui/form";
+import * as React from "react";
 
-import {RadioGroup, Radio} from "../src";
+import { Radio, RadioGroup } from "@/registry/ui";
 
 describe("Radio", () => {
   let user: UserEvent;
@@ -19,7 +19,7 @@ describe("Radio", () => {
     const wrapper = render(
       <RadioGroup label="Options">
         <Radio value="1">Option 1</Radio>
-      </RadioGroup>,
+      </RadioGroup>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -31,7 +31,7 @@ describe("Radio", () => {
     render(
       <RadioGroup ref={ref} label="Options">
         <Radio value="1">Option 1</Radio>
-      </RadioGroup>,
+      </RadioGroup>
     );
     expect(ref.current).not.toBeNull();
   });
@@ -44,18 +44,18 @@ describe("Radio", () => {
         <Radio ref={ref} value="1">
           Option 1
         </Radio>
-      </RadioGroup>,
+      </RadioGroup>
     );
     expect(ref.current).not.toBeNull();
   });
 
   it("should work correctly with initial value", () => {
-    let {container} = render(
+    let { container } = render(
       <RadioGroup label="Options" value="1">
         <Radio data-testid="radio-test-1" value="1">
           Option 1
         </Radio>
-      </RadioGroup>,
+      </RadioGroup>
     );
 
     expect(container.querySelector("[data-testid=radio-test-1] input")).toBeChecked();
@@ -66,20 +66,20 @@ describe("Radio", () => {
         <Radio data-testid="radio-test-2" value="2">
           Option 1
         </Radio>
-      </RadioGroup>,
+      </RadioGroup>
     );
 
     expect(wrapper.container.querySelector("[data-testid=radio-test-2] input")).toBeChecked();
   });
 
   it("should change value after click", async () => {
-    const {container} = render(
+    const { container } = render(
       <RadioGroup defaultValue="1" label="Options">
         <Radio value="1">Option 1</Radio>
         <Radio className="radio-test-2" value="2">
           Option 1
         </Radio>
-      </RadioGroup>,
+      </RadioGroup>
     );
 
     let radio2 = container.querySelector(".radio-test-2 input") as HTMLInputElement;
@@ -89,13 +89,13 @@ describe("Radio", () => {
   });
 
   it("should ignore events when disabled", async () => {
-    const {container} = render(
+    const { container } = render(
       <RadioGroup label="Options">
         <Radio isDisabled className="radio-test-1" value="1">
           Option 1
         </Radio>
         <Radio value="2">Option 2</Radio>
-      </RadioGroup>,
+      </RadioGroup>
     );
 
     let radio1 = container.querySelector(".radio-test-1 input") as HTMLInputElement;
@@ -107,13 +107,13 @@ describe("Radio", () => {
   it('should work correctly with "onValueChange" prop', async () => {
     const onValueChange = jest.fn();
 
-    const {container} = render(
+    const { container } = render(
       <RadioGroup defaultValue="1" label="Options" onValueChange={onValueChange}>
         <Radio value="1">Option 1</Radio>
         <Radio className="radio-test-2" value="2">
           Option 2
         </Radio>
-      </RadioGroup>,
+      </RadioGroup>
     );
 
     let radio2 = container.querySelector(".radio-test-2 input") as HTMLInputElement;
@@ -127,13 +127,13 @@ describe("Radio", () => {
   it('should work correctly with "onFocus" prop', () => {
     const onFocus = jest.fn();
 
-    const {container} = render(
+    const { container } = render(
       <RadioGroup defaultValue="1" label="Options" onFocus={onFocus}>
         <Radio value="1">Option 1</Radio>
         <Radio className="radio-test-2" value="2">
           Option 2
         </Radio>
-      </RadioGroup>,
+      </RadioGroup>
     );
 
     let radio2 = container.querySelector(".radio-test-2 input") as HTMLInputElement;
@@ -146,11 +146,11 @@ describe("Radio", () => {
   });
 
   it("should have required attribute when isRequired with native validationBehavior", () => {
-    const {getByRole, getAllByRole} = render(
+    const { getByRole, getAllByRole } = render(
       <RadioGroup isRequired label="Options" validationBehavior="native">
         <Radio value="1">Option 1</Radio>
         <Radio value="2">Option 2</Radio>
-      </RadioGroup>,
+      </RadioGroup>
     );
 
     const group = getByRole("radiogroup");
@@ -163,11 +163,11 @@ describe("Radio", () => {
   });
 
   it("should not have required attribute when isRequired with aria validationBehavior", () => {
-    const {getByRole, getAllByRole} = render(
+    const { getByRole, getAllByRole } = render(
       <RadioGroup isRequired label="Options" validationBehavior="aria">
         <Radio value="1">Option 1</Radio>
         <Radio value="2">Option 2</Radio>
-      </RadioGroup>,
+      </RadioGroup>
     );
 
     const group = getByRole("radiogroup");
@@ -182,7 +182,7 @@ describe("Radio", () => {
   it("should work correctly with controlled value", async () => {
     const onValueChange = jest.fn();
 
-    const Component = ({onValueChange}: Omit<RadioGroupProps, "value">) => {
+    const Component = ({ onValueChange }: Omit<RadioGroupProps, "value">) => {
       const [value, setValue] = React.useState("1");
 
       return (
@@ -202,7 +202,7 @@ describe("Radio", () => {
       );
     };
 
-    const {container} = render(<Component onValueChange={onValueChange} />);
+    const { container } = render(<Component onValueChange={onValueChange} />);
 
     let radio2 = container.querySelector(".radio-test-2 input") as HTMLInputElement;
 
@@ -213,10 +213,10 @@ describe("Radio", () => {
   });
 
   it("should support help text description", () => {
-    const {getByRole} = render(
+    const { getByRole } = render(
       <RadioGroup description="Help text" label="Options">
         <Radio value="1">Option 1</Radio>
-      </RadioGroup>,
+      </RadioGroup>
     );
 
     const group = getByRole("radiogroup");
@@ -230,7 +230,7 @@ describe("Radio", () => {
   });
 
   it("should support help text description for the individual radios", () => {
-    const {getByLabelText} = render(
+    const { getByLabelText } = render(
       <RadioGroup description="Help text" label="Options">
         <Radio description="Help text for option 1" value="1">
           Option 1
@@ -238,7 +238,7 @@ describe("Radio", () => {
         <Radio description="Help text for option 2" value="2">
           Option 2
         </Radio>
-      </RadioGroup>,
+      </RadioGroup>
     );
 
     const option1 = getByLabelText("Option 1");
@@ -271,14 +271,14 @@ describe("validation", () => {
   });
   describe("validationBehavior=native", () => {
     it("supports isRequired", async () => {
-      const {getAllByRole, getByRole, getByTestId} = render(
+      const { getAllByRole, getByRole, getByTestId } = render(
         <form data-testid="form">
           <RadioGroup isRequired aria-label="favorite pet" validationBehavior="native">
             <Radio value="dogs">Dogs</Radio>
             <Radio value="cats">Cats</Radio>
             <Radio value="dragons">Dragons</Radio>
           </RadioGroup>
-        </form>,
+        </form>
       );
 
       const group = getByRole("radiogroup");
@@ -298,9 +298,9 @@ describe("validation", () => {
       });
 
       expect(group).toHaveAttribute("aria-describedby");
-      expect(
-        document.getElementById(group.getAttribute("aria-describedby") as string),
-      ).toHaveTextContent("Constraints not satisfied");
+      expect(document.getElementById(group.getAttribute("aria-describedby") as string)).toHaveTextContent(
+        "Constraints not satisfied"
+      );
       expect(document.activeElement).toBe(radios[0]);
 
       await user.click(radios[0]);
@@ -333,7 +333,7 @@ describe("validation", () => {
         );
       }
 
-      const {getAllByRole, getByRole} = render(<Test />);
+      const { getAllByRole, getByRole } = render(<Test />);
 
       const group = getByRole("radiogroup");
 
@@ -343,7 +343,7 @@ describe("validation", () => {
 
       expect(group).toHaveAttribute("aria-describedby");
       expect(document.getElementById(group.getAttribute("aria-describedby")!)).toHaveTextContent(
-        "You must choose a pet.",
+        "You must choose a pet."
       );
 
       const radios = getAllByRole("radio") as HTMLInputElement[];
@@ -362,7 +362,7 @@ describe("validation", () => {
 
   describe("validationBehavior=aria", () => {
     it("supports validate function", async () => {
-      const {getAllByRole, getByRole} = render(
+      const { getAllByRole, getByRole } = render(
         <RadioGroup
           aria-label="favorite pet"
           defaultValue="dragons"
@@ -372,16 +372,14 @@ describe("validation", () => {
           <Radio value="dogs">Dogs</Radio>
           <Radio value="cats">Cats</Radio>
           <Radio value="dragons">Dragons</Radio>
-        </RadioGroup>,
+        </RadioGroup>
       );
 
       const group = getByRole("radiogroup");
 
       expect(group).toHaveAttribute("aria-describedby");
       expect(group).toHaveAttribute("aria-invalid", "true");
-      expect(
-        document.getElementById(group.getAttribute("aria-describedby") as string),
-      ).toHaveTextContent("Too scary");
+      expect(document.getElementById(group.getAttribute("aria-describedby") as string)).toHaveTextContent("Too scary");
 
       const radios = getAllByRole("radio") as HTMLInputElement[];
 
@@ -395,14 +393,14 @@ describe("validation", () => {
     });
 
     it("supports server validation", async () => {
-      const {getAllByRole, getByRole} = render(
-        <Form validationBehavior="aria" validationErrors={{pet: "You must choose a pet"}}>
+      const { getAllByRole, getByRole } = render(
+        <Form validationBehavior="aria" validationErrors={{ pet: "You must choose a pet" }}>
           <RadioGroup aria-label="favorite pet" name="pet">
             <Radio value="dogs">Dogs</Radio>
             <Radio value="cats">Cats</Radio>
             <Radio value="dragons">Dragons</Radio>
           </RadioGroup>
-        </Form>,
+        </Form>
       );
 
       const group = getByRole("radiogroup");
@@ -410,7 +408,7 @@ describe("validation", () => {
       expect(group).toHaveAttribute("aria-describedby");
       expect(group).toHaveAttribute("aria-invalid", "true");
       expect(document.getElementById(group.getAttribute("aria-describedby")!)).toHaveTextContent(
-        "You must choose a pet",
+        "You must choose a pet"
       );
 
       const radios = getAllByRole("radio");

@@ -1,9 +1,9 @@
 import { Button } from "@/registry/ui/button";
-import { shouldIgnoreReactWarning, spy } from "@heroui/test-utils";
+import { shouldIgnoreReactWarning, spy } from "@/utils/test";
 import { act, fireEvent, render } from "@testing-library/react";
 import * as React from "react";
 
-import { Tooltip } from "../src";
+import { Tooltip } from "@/registry/ui";
 
 describe("Tooltip", () => {
   afterEach(() => {

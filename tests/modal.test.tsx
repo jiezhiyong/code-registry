@@ -1,15 +1,15 @@
+import { shouldIgnoreReactWarning, spy } from "@/utils/test";
 import "@testing-library/jest-dom";
-import * as React from "react";
-import {render, fireEvent} from "@testing-library/react";
-import {shouldIgnoreReactWarning, spy} from "@heroui/test-utils";
+import { fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import * as React from "react";
 
-import {Modal, ModalContent, ModalBody, ModalHeader, ModalFooter, useDraggable} from "../src";
+import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDraggable } from "@/registry/ui";
 
-const ModalDraggable = ({canOverflow = false, isDisabled = false}) => {
+const ModalDraggable = ({ canOverflow = false, isDisabled = false }) => {
   const targetRef = React.useRef(null);
 
-  const {moveProps} = useDraggable({targetRef, canOverflow, isDisabled});
+  const { moveProps } = useDraggable({ targetRef, canOverflow, isDisabled });
 
   return (
     <Modal ref={targetRef} isOpen>
@@ -35,7 +35,7 @@ describe("Modal", () => {
           <ModalBody>Modal body</ModalBody>
           <ModalFooter>Modal footer</ModalFooter>
         </ModalContent>
-      </Modal>,
+      </Modal>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -56,20 +56,20 @@ describe("Modal", () => {
           <ModalBody>Modal body</ModalBody>
           <ModalFooter>Modal footer</ModalFooter>
         </ModalContent>
-      </Modal>,
+      </Modal>
     );
     expect(ref.current).not.toBeNull();
   });
 
   test("should have the proper 'aria' attributes", () => {
-    const {getByRole, getByText} = render(
+    const { getByRole, getByText } = render(
       <Modal isOpen>
         <ModalContent>
           <ModalHeader>Modal header</ModalHeader>
           <ModalBody>Modal body</ModalBody>
           <ModalFooter>Modal footer</ModalFooter>
         </ModalContent>
-      </Modal>,
+      </Modal>
     );
 
     const modal = getByRole("dialog");
@@ -89,14 +89,14 @@ describe("Modal", () => {
   test("should fire 'onOpenChange' callback when close button is clicked", async () => {
     const onClose = jest.fn();
 
-    const {getByLabelText} = render(
+    const { getByLabelText } = render(
       <Modal isOpen onClose={onClose}>
         <ModalContent>
           <ModalHeader>Modal header</ModalHeader>
           <ModalBody>Modal body</ModalBody>
           <ModalFooter>Modal footer</ModalFooter>
         </ModalContent>
-      </Modal>,
+      </Modal>
     );
 
     const closeButton = getByLabelText("Close");
@@ -118,12 +118,12 @@ describe("Modal", () => {
           <ModalBody>Modal body</ModalBody>
           <ModalFooter>Modal footer</ModalFooter>
         </ModalContent>
-      </Modal>,
+      </Modal>
     );
 
     const modal = wrapper.getByRole("dialog");
 
-    fireEvent.keyDown(modal, {key: "Escape"});
+    fireEvent.keyDown(modal, { key: "Escape" });
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
@@ -137,9 +137,9 @@ describe("Modal", () => {
     const modal = wrapper.getByRole("dialog");
     const modalHeader = wrapper.getByText("Modal header");
 
-    fireEvent.touchStart(modalHeader, {changedTouches: [{pageX: 0, pageY: 0}]});
-    fireEvent.touchMove(modalHeader, {changedTouches: [{pageX: 100, pageY: 50}]});
-    fireEvent.touchEnd(modalHeader, {changedTouches: [{pageX: 100, pageY: 50}]});
+    fireEvent.touchStart(modalHeader, { changedTouches: [{ pageX: 0, pageY: 0 }] });
+    fireEvent.touchMove(modalHeader, { changedTouches: [{ pageX: 100, pageY: 50 }] });
+    fireEvent.touchEnd(modalHeader, { changedTouches: [{ pageX: 100, pageY: 50 }] });
 
     expect(() => wrapper.unmount()).not.toThrow();
     expect(document.documentElement.clientWidth).toBe(1920);
@@ -158,9 +158,9 @@ describe("Modal", () => {
     const modal = wrapper.getByRole("dialog");
     const modalHeader = wrapper.getByText("Modal header");
 
-    fireEvent.touchStart(modalHeader, {changedTouches: [{pageX: 0, pageY: 0}]});
-    fireEvent.touchMove(modalHeader, {changedTouches: [{pageX: 0, pageY: 50}]});
-    fireEvent.touchEnd(modalHeader, {changedTouches: [{pageX: 0, pageY: 50}]});
+    fireEvent.touchStart(modalHeader, { changedTouches: [{ pageX: 0, pageY: 0 }] });
+    fireEvent.touchMove(modalHeader, { changedTouches: [{ pageX: 0, pageY: 50 }] });
+    fireEvent.touchEnd(modalHeader, { changedTouches: [{ pageX: 0, pageY: 50 }] });
 
     expect(document.documentElement.clientWidth).toBe(375);
     expect(document.documentElement.clientHeight).toBe(667);
@@ -175,9 +175,9 @@ describe("Modal", () => {
     const modal = wrapper.getByRole("dialog");
     const modalHeader = wrapper.getByText("Modal header");
 
-    fireEvent.touchStart(modalHeader, {changedTouches: [{pageX: 100, pageY: 50}]});
-    fireEvent.touchMove(modalHeader, {changedTouches: [{pageX: 10000, pageY: 5000}]});
-    fireEvent.touchEnd(modalHeader, {changedTouches: [{pageX: 10000, pageY: 5000}]});
+    fireEvent.touchStart(modalHeader, { changedTouches: [{ pageX: 100, pageY: 50 }] });
+    fireEvent.touchMove(modalHeader, { changedTouches: [{ pageX: 10000, pageY: 5000 }] });
+    fireEvent.touchEnd(modalHeader, { changedTouches: [{ pageX: 10000, pageY: 5000 }] });
 
     expect(modal.style.transform).toBe("translate(1920px, 1080px)");
   });
@@ -190,9 +190,9 @@ describe("Modal", () => {
     const modal = wrapper.getByRole("dialog");
     const modalHeader = wrapper.getByText("Modal header");
 
-    fireEvent.touchStart(modalHeader, {changedTouches: [{pageX: 100, pageY: 50}]});
-    fireEvent.touchMove(modalHeader, {changedTouches: [{pageX: 200, pageY: 100}]});
-    fireEvent.touchEnd(modalHeader, {changedTouches: [{pageX: 200, pageY: 100}]});
+    fireEvent.touchStart(modalHeader, { changedTouches: [{ pageX: 100, pageY: 50 }] });
+    fireEvent.touchMove(modalHeader, { changedTouches: [{ pageX: 200, pageY: 100 }] });
+    fireEvent.touchEnd(modalHeader, { changedTouches: [{ pageX: 200, pageY: 100 }] });
 
     expect(modal.style.transform).toBe("");
   });
@@ -207,9 +207,9 @@ describe("Modal", () => {
     const modal = wrapper.getByRole("dialog");
     const modalHeader = wrapper.getByText("Modal header");
 
-    fireEvent.touchStart(modalHeader, {changedTouches: [{pageX: 0, pageY: 0}]});
-    fireEvent.touchMove(modalHeader, {changedTouches: [{pageX: 2000, pageY: 1500}]});
-    fireEvent.touchEnd(modalHeader, {changedTouches: [{pageX: 2000, pageY: 1500}]});
+    fireEvent.touchStart(modalHeader, { changedTouches: [{ pageX: 0, pageY: 0 }] });
+    fireEvent.touchMove(modalHeader, { changedTouches: [{ pageX: 2000, pageY: 1500 }] });
+    fireEvent.touchEnd(modalHeader, { changedTouches: [{ pageX: 2000, pageY: 1500 }] });
 
     expect(document.documentElement.clientWidth).toBe(1920);
     expect(document.documentElement.clientHeight).toBe(1080);

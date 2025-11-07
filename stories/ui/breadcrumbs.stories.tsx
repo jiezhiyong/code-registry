@@ -1,23 +1,15 @@
-import type { Meta } from "@storybook/react";
-import type { BreadcrumbsProps } from "../src";
+import type { BreadcrumbsProps } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
 import { clsx } from "@/lib/base";
-import {
-  CheckIcon,
-  ChevronDownIcon,
-  HeadphonesIcon,
-  InfoIcon,
-  MailFilledIcon,
-  PetBoldIcon,
-  ShoppingCartBoldIcon,
-} from "@/lib/icons";
-import { breadcrumbItem } from "@/lib/theme";
+import { breadcrumbItem } from "@/registry/ui";
 import { Button } from "@/registry/ui/button";
-import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@heroui/dropdown";
-import { Tooltip } from "@heroui/tooltip";
+import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@/registry/ui/dropdown";
+import { Tooltip } from "@/registry/ui/tooltip";
+import { PetBoldIcon, ShoppingCartBoldIcon } from "@/utils/icons";
 import React from "react";
 
-import { BreadcrumbItem, Breadcrumbs } from "../src";
+import { BreadcrumbItem, Breadcrumbs } from "@/registry/ui";
 
 export default {
   title: "Components/Breadcrumbs",

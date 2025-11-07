@@ -1,19 +1,19 @@
-import type {UserEvent} from "@testing-library/user-event";
+import type { UserEvent } from "@testing-library/user-event";
 
-import * as React from "react";
-import {render} from "@testing-library/react";
+import { shouldIgnoreReactWarning, spy } from "@/utils/test";
+import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {spy, shouldIgnoreReactWarning} from "@heroui/test-utils";
+import * as React from "react";
 
 import {
   Navbar,
   NavbarBrand,
-  NavbarItem,
   NavbarContent,
-  NavbarMenuToggle,
+  NavbarItem,
   NavbarMenu,
   NavbarMenuItem,
-} from "../src";
+  NavbarMenuToggle,
+} from "@/registry/ui";
 
 window.scrollTo = jest.fn();
 
@@ -45,7 +45,7 @@ describe("Navbar", () => {
     const wrapper = render(
       <Navbar>
         <NavbarBrand data-testid="navbar-test">ACME</NavbarBrand>
-      </Navbar>,
+      </Navbar>
     );
 
     expect(wrapper.getByTestId("navbar-test")).toBeInTheDocument();
@@ -61,7 +61,7 @@ describe("Navbar", () => {
           <NavbarItem>Activity</NavbarItem>
           <NavbarItem>Settings</NavbarItem>
         </NavbarContent>
-      </Navbar>,
+      </Navbar>
     );
 
     const navbarContent = wrapper.getByTestId("navbar-content-test");
@@ -87,7 +87,7 @@ describe("Navbar", () => {
             <NavbarMenuItem key={`${item}-${index}`}>{item}</NavbarMenuItem>
           ))}
         </NavbarMenu>
-      </Navbar>,
+      </Navbar>
     );
 
     const toggle = wrapper.getByTestId("navbar-toggle-test");
@@ -119,7 +119,7 @@ describe("Navbar", () => {
             <NavbarMenuItem key={`${item}-${index}`}>{item}</NavbarMenuItem>
           ))}
         </NavbarMenu>
-      </Navbar>,
+      </Navbar>
     );
 
     const toggle = wrapper.getByTestId("navbar-toggle-test");
@@ -143,7 +143,7 @@ describe("Navbar", () => {
           <NavbarItem>Activity</NavbarItem>
           <NavbarItem>Settings</NavbarItem>
         </NavbarContent>
-      </Navbar>,
+      </Navbar>
     );
 
     const toggle = wrapper.getByTestId("navbar-toggle-test");
@@ -164,7 +164,7 @@ describe("Navbar", () => {
           <NavbarItem>Activity</NavbarItem>
           <NavbarItem>Settings</NavbarItem>
         </NavbarContent>
-      </Navbar>,
+      </Navbar>
     );
 
     const toggle = wrapper.getByTestId("navbar-toggle-test");

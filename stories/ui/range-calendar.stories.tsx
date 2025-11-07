@@ -1,9 +1,9 @@
-import type { Meta } from "@storybook/react";
-import type { DateValue, RangeCalendarProps, RangeValue } from "../src";
+import type { DateValue, RangeCalendarProps, RangeValue } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
-import { calendar, cn } from "@/lib/theme";
+import { calendar, cn } from "@/registry/ui";
 import { Button, ButtonGroup } from "@/registry/ui/button";
-import { Radio, RadioGroup } from "@heroui/radio";
+import { Radio, RadioGroup } from "@/registry/ui/radio";
 import {
   CalendarDate,
   endOfMonth,
@@ -17,7 +17,7 @@ import {
 import { I18nProvider, useLocale } from "@react-aria/i18n";
 import React from "react";
 
-import { RangeCalendar } from "../src";
+import { RangeCalendar } from "@/registry/ui";
 
 export default {
   title: "Components/RangeCalendar",

@@ -1,8 +1,8 @@
-import type { Meta } from "@storybook/react";
+import type { Meta } from "@storybook/nextjs-vite";
 
-import { snippet } from "@/lib/theme";
+import { snippet } from "@/registry/ui";
 
-import { Snippet } from "../src";
+import { Snippet } from "@/registry/ui";
 
 export default {
   title: "Components/Snippet",
@@ -73,7 +73,7 @@ export default {
 } as Meta<typeof Snippet>;
 
 const defaultProps = {
-  children: "npm install @heroui/react",
+  children: "npm install @/registry/ui/react",
   symbol: "$",
   disableCopy: false,
   disableTooltip: false,
@@ -91,6 +91,6 @@ export const Default = {
 export const MultiLine = {
   args: {
     ...defaultProps,
-    children: ["npm install @heroui/react", "yarn add @heroui/react", "pnpm add @heroui/react"],
+    children: ["npm install @/registry/ui/react", "yarn add @/registry/ui/react", "pnpm add @/registry/ui/react"],
   },
 };

@@ -1,8 +1,8 @@
+import { mocks } from "@/utils/test";
+import { act, render } from "@testing-library/react";
 import * as React from "react";
-import {render, act} from "@testing-library/react";
-import {mocks} from "@heroui/test-utils";
 
-import {Avatar} from "../src";
+import { Avatar } from "@/registry/ui";
 
 describe("Avatar", () => {
   it("should render correctly", () => {
@@ -20,28 +20,26 @@ describe("Avatar", () => {
 
   it("should populate imgRef", () => {
     const imgRef = React.createRef<HTMLImageElement>();
-    const wrapper = render(
-      <Avatar imgRef={imgRef} src="https://i.pravatar.cc/300?u=a042581f4e29026705d" />,
-    );
+    const wrapper = render(<Avatar imgRef={imgRef} src="https://i.pravatar.cc/300?u=a042581f4e29026705d" />);
 
     expect(imgRef.current).not.toBeNull();
     expect(() => wrapper.unmount()).not.toThrow();
   });
 
   it("should render initials", () => {
-    const {container} = render(<Avatar name="Junior" />);
+    const { container } = render(<Avatar name="Junior" />);
 
     expect(container.querySelector("span")).toHaveTextContent("J");
   });
 
   it('should work with custom "getInitials" function', () => {
-    const {container} = render(<Avatar getInitials={(name) => name.charAt(0)} name="Junior" />);
+    const { container } = render(<Avatar getInitials={(name) => name.charAt(0)} name="Junior" />);
 
     expect(container.querySelector("span")).toHaveTextContent("J");
   });
 
   it('should be focusable if "isFocusable" is true', () => {
-    const {container} = render(<Avatar isFocusable name="Junior" />);
+    const { container } = render(<Avatar isFocusable name="Junior" />);
     const avatar = container.querySelector("span");
 
     expect(avatar).toHaveAttribute("tabIndex", "0");
@@ -62,9 +60,7 @@ describe("Avatar - fallback + loading strategy", () => {
     const mock = mocks.image();
 
     mock.simulate("loaded");
-    const wrapper = render(
-      <Avatar name="Junior" src="https://avatars.githubusercontent.com/u/30373425" />,
-    );
+    const wrapper = render(<Avatar name="Junior" src="https://avatars.githubusercontent.com/u/30373425" />);
 
     act(() => {
       jest.runAllTimers();
@@ -94,13 +90,13 @@ describe("Avatar - fallback + loading strategy", () => {
   });
 
   test("should render a name avatar if no src", () => {
-    const {container} = render(<Avatar name="Junior" />);
+    const { container } = render(<Avatar name="Junior" />);
 
     expect(container.querySelector("span")).toHaveTextContent("J");
   });
 
   test("should render a default avatar if no name or src", () => {
-    const {container} = render(<Avatar />);
+    const { container } = render(<Avatar />);
 
     expect(container.querySelector("svg")).toBeInTheDocument();
   });
@@ -112,7 +108,7 @@ describe("Avatar - fallback + loading strategy", () => {
 
     const src = "https://avatars.githubusercontent.com/u/30373425";
     const name = "Junior Garcia";
-    const {container} = render(<Avatar showFallback name={name} src={src} />);
+    const { container } = render(<Avatar showFallback name={name} src={src} />);
 
     act(() => {
       jest.runAllTimers();
@@ -127,7 +123,7 @@ describe("Avatar - fallback + loading strategy", () => {
     mock.simulate("error");
 
     const src = "https://avatars.githubusercontent.com/u/30373425";
-    const {container} = render(<Avatar showFallback src={src} />);
+    const { container } = render(<Avatar showFallback src={src} />);
 
     act(() => {
       jest.runAllTimers();
@@ -143,7 +139,7 @@ describe("Avatar - fallback + loading strategy", () => {
 
     const src = "https://avatars.githubusercontent.com/u/30373425";
     const name = "Junior Garcia";
-    const {container} = render(<Avatar name={name} showFallback={false} src={src} />);
+    const { container } = render(<Avatar name={name} showFallback={false} src={src} />);
 
     act(() => {
       jest.runAllTimers();
@@ -160,7 +156,7 @@ describe("Avatar - fallback + loading strategy", () => {
 
     const src = "https://avatars.githubusercontent.com/u/30373425";
     const name = "Junior Garcia";
-    const {container} = render(<Avatar name={name} src={src} />);
+    const { container } = render(<Avatar name={name} src={src} />);
 
     act(() => {
       jest.runAllTimers();

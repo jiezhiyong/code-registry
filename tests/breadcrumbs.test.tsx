@@ -1,7 +1,7 @@
+import { render } from "@testing-library/react";
 import * as React from "react";
-import {render} from "@testing-library/react";
 
-import {Breadcrumbs, BreadcrumbItem} from "../src";
+import { BreadcrumbItem, Breadcrumbs } from "@/registry/ui";
 
 describe("Breadcrumbs", () => {
   it("should render correctly", () => {
@@ -18,30 +18,30 @@ describe("Breadcrumbs", () => {
   });
 
   it("should support aria-label", () => {
-    const {container} = render(<Breadcrumbs aria-label="Routes" />);
+    const { container } = render(<Breadcrumbs aria-label="Routes" />);
 
     expect(container.querySelector("nav")).toHaveAttribute("aria-label", "Routes");
   });
 
   it("should support multiple items", () => {
-    const {container} = render(
+    const { container } = render(
       <Breadcrumbs>
         <BreadcrumbItem href="#1">Item 1</BreadcrumbItem>
         <BreadcrumbItem href="#2">Item 2</BreadcrumbItem>
         <BreadcrumbItem href="#3">Item 3</BreadcrumbItem>
-      </Breadcrumbs>,
+      </Breadcrumbs>
     );
 
     expect(container.querySelectorAll("span")).toHaveLength(3);
   });
 
   it("should support multiple links items", () => {
-    const {container} = render(
+    const { container } = render(
       <Breadcrumbs>
         <BreadcrumbItem href="#1">Item 1</BreadcrumbItem>
         <BreadcrumbItem href="#2">Item 2</BreadcrumbItem>
         <BreadcrumbItem href="#3">Item 3</BreadcrumbItem>
-      </Breadcrumbs>,
+      </Breadcrumbs>
     );
 
     expect(container.querySelectorAll("a")).toHaveLength(2);
@@ -56,14 +56,14 @@ describe("Breadcrumbs", () => {
   });
 
   it("should support maxItems", () => {
-    const {container, getByText} = render(
+    const { container, getByText } = render(
       <Breadcrumbs itemsAfterCollapse={1} itemsBeforeCollapse={1} maxItems={3}>
         <BreadcrumbItem href="#1">Item 1</BreadcrumbItem>
         <BreadcrumbItem href="#2">Item 2</BreadcrumbItem>
         <BreadcrumbItem href="#3">Item 3</BreadcrumbItem>
         <BreadcrumbItem href="#4">Item 4</BreadcrumbItem>
         <BreadcrumbItem href="#5">Item 5</BreadcrumbItem>
-      </Breadcrumbs>,
+      </Breadcrumbs>
     );
 
     expect(container.querySelectorAll("a")).toHaveLength(2);
@@ -78,12 +78,12 @@ describe("Breadcrumbs", () => {
   });
 
   it("should support custom separator", () => {
-    const {container} = render(
+    const { container } = render(
       <Breadcrumbs separator="/">
         <BreadcrumbItem>Item 1</BreadcrumbItem>
         <BreadcrumbItem>Item 2</BreadcrumbItem>
         <BreadcrumbItem>Item 3</BreadcrumbItem>
-      </Breadcrumbs>,
+      </Breadcrumbs>
     );
 
     expect(container.querySelectorAll("[data-slot='item']")).toHaveLength(3);
@@ -91,12 +91,12 @@ describe("Breadcrumbs", () => {
   });
 
   it("should disable the items before the current one", () => {
-    const {getByText} = render(
+    const { getByText } = render(
       <Breadcrumbs isDisabled>
         <BreadcrumbItem href="#1">Item 1</BreadcrumbItem>
         <BreadcrumbItem href="#2">Item 2</BreadcrumbItem>
         <BreadcrumbItem href="#3">Item 3</BreadcrumbItem>
-      </Breadcrumbs>,
+      </Breadcrumbs>
     );
 
     const item1 = getByText("Item 1");
@@ -108,13 +108,13 @@ describe("Breadcrumbs", () => {
   });
 
   it("should support aria-labelledby", function () {
-    let {getByRole} = render(
+    let { getByRole } = render(
       <>
         <span id="test">Test</span>
         <Breadcrumbs aria-labelledby="test">
           <BreadcrumbItem>Folder 1</BreadcrumbItem>
         </Breadcrumbs>
-      </>,
+      </>
     );
 
     const breadcrumbs = getByRole("navigation");
@@ -123,13 +123,13 @@ describe("Breadcrumbs", () => {
   });
 
   it("should support aria-describedby", function () {
-    let {getByRole} = render(
+    let { getByRole } = render(
       <>
         <span id="test">Test</span>
         <Breadcrumbs aria-describedby="test">
           <BreadcrumbItem>Folder 1</BreadcrumbItem>
         </Breadcrumbs>
-      </>,
+      </>
     );
 
     const breadcrumbs = getByRole("navigation");
@@ -138,7 +138,7 @@ describe("Breadcrumbs", () => {
   });
 
   it("should support startContent & endContent", () => {
-    const {getByText} = render(
+    const { getByText } = render(
       <Breadcrumbs>
         <BreadcrumbItem
           endContent={<span data-testid="end-content">End</span>}
@@ -146,7 +146,7 @@ describe("Breadcrumbs", () => {
         >
           Item 1
         </BreadcrumbItem>
-      </Breadcrumbs>,
+      </Breadcrumbs>
     );
 
     const startContent = getByText("Start");

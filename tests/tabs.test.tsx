@@ -1,14 +1,14 @@
+import type { TabsProps } from "@/registry/ui";
 import type { UserEvent } from "@testing-library/user-event";
-import type { TabsProps } from "../src";
 
 import { Button } from "@/registry/ui/button";
-import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@heroui/modal";
-import { focus, shouldIgnoreReactWarning, spy } from "@heroui/test-utils";
+import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@/registry/ui/modal";
+import { focus, shouldIgnoreReactWarning, spy } from "@/utils/test";
 import { act, fireEvent, render, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import * as React from "react";
 
-import { Tab, Tabs } from "../src";
+import { Tab, Tabs } from "@/registry/ui";
 
 type Item = {
   id: string;

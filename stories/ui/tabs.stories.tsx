@@ -1,6 +1,10 @@
-import type { Meta } from "@storybook/react";
-import type { TabsProps } from "../src";
+import type { TabsProps } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
+import { button, link, tabs } from "@/registry/ui";
+import { Button } from "@/registry/ui/button";
+import { Card, CardBody } from "@/registry/ui/card";
+import { Input } from "@/registry/ui/input";
 import {
   AlignBottomBoldIcon,
   AlignHorizontallyBoldIcon,
@@ -8,15 +12,11 @@ import {
   AlignRightBoldIcon,
   AlignTopBoldIcon,
   AlignVerticallyBoldIcon,
-} from "@/lib/icons";
-import { button, link, tabs } from "@/lib/theme";
-import { Button } from "@/registry/ui/button";
-import { Card, CardBody } from "@heroui/card";
-import { Input } from "@heroui/input";
+} from "@/utils/icons";
 import React from "react";
 import Lorem from "react-lorem-component";
 
-import { Tab, Tabs } from "../src";
+import { Tab, Tabs } from "@/registry/ui";
 
 export default {
   title: "Components/Tabs",

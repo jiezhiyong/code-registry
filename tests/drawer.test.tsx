@@ -1,10 +1,10 @@
+import { shouldIgnoreReactWarning, spy } from "@/utils/test";
 import "@testing-library/jest-dom";
-import * as React from "react";
-import {render, fireEvent} from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {spy, shouldIgnoreReactWarning} from "@heroui/test-utils";
+import * as React from "react";
 
-import {Drawer, DrawerContent, DrawerHeader, DrawerBody, DrawerFooter} from "../src";
+import { Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader } from "@/registry/ui";
 
 describe("Drawer", () => {
   afterEach(() => {
@@ -19,7 +19,7 @@ describe("Drawer", () => {
           <DrawerBody>Drawer body</DrawerBody>
           <DrawerFooter>Drawer footer</DrawerFooter>
         </DrawerContent>
-      </Drawer>,
+      </Drawer>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -41,20 +41,20 @@ describe("Drawer", () => {
           <DrawerBody>Drawer body</DrawerBody>
           <DrawerFooter>Drawer footer</DrawerFooter>
         </DrawerContent>
-      </Drawer>,
+      </Drawer>
     );
     expect(ref.current).not.toBeNull();
   });
 
   it("should have the proper 'aria' attributes", () => {
-    const {getByRole, getByText} = render(
+    const { getByRole, getByText } = render(
       <Drawer isOpen>
         <DrawerContent>
           <DrawerHeader>Drawer header</DrawerHeader>
           <DrawerBody>Drawer body</DrawerBody>
           <DrawerFooter>Drawer footer</DrawerFooter>
         </DrawerContent>
-      </Drawer>,
+      </Drawer>
     );
 
     const drawer = getByRole("dialog");
@@ -74,14 +74,14 @@ describe("Drawer", () => {
   test("should fire 'onOpenChange' callback when close button is clicked", async () => {
     const onClose = jest.fn();
 
-    const {getByLabelText} = render(
+    const { getByLabelText } = render(
       <Drawer isOpen onClose={onClose}>
         <DrawerContent>
           <DrawerHeader>Drawer header</DrawerHeader>
           <DrawerBody>Drawer body</DrawerBody>
           <DrawerFooter>Drawer footer</DrawerFooter>
         </DrawerContent>
-      </Drawer>,
+      </Drawer>
     );
 
     const closeButton = getByLabelText("Close");
@@ -102,12 +102,12 @@ describe("Drawer", () => {
           <DrawerBody>Drawer body</DrawerBody>
           <DrawerFooter>Drawer footer</DrawerFooter>
         </DrawerContent>
-      </Drawer>,
+      </Drawer>
     );
 
     const drawer = wrapper.getByRole("dialog");
 
-    fireEvent.keyDown(drawer, {key: "Escape"});
+    fireEvent.keyDown(drawer, { key: "Escape" });
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 });

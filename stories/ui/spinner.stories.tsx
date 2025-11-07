@@ -1,9 +1,9 @@
-import type { Meta } from "@storybook/react";
-import type { SpinnerProps } from "../src";
+import type { SpinnerProps } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
-import { spinner } from "@/lib/theme";
+import { spinner } from "@/registry/ui";
 
-import { Spinner } from "../src";
+import { Spinner } from "@/registry/ui";
 
 export default {
   title: "Components/Spinner",

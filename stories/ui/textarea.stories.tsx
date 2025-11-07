@@ -1,13 +1,13 @@
+import type { TextAreaProps } from "@/registry/ui";
 import type { ValidationResult } from "@react-types/shared";
-import type { Meta } from "@storybook/react";
-import type { TextAreaProps } from "../src";
+import type { Meta } from "@storybook/nextjs-vite";
 
 import { PlusFilledIcon, SendFilledIcon } from "@/lib/icons";
-import { button, input } from "@/lib/theme";
-import { Form } from "@heroui/form";
+import { button, input } from "@/registry/ui";
+import { Form } from "@/registry/ui/form";
 import React from "react";
 
-import { Textarea } from "../src";
+import { Textarea } from "@/registry/ui";
 
 export default {
   title: "Components/Textarea",

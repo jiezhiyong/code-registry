@@ -1,9 +1,9 @@
-import type { Meta } from "@storybook/react";
-import type { ButtonGroupProps } from "../src";
+import type { ButtonGroupProps } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
-import { button, buttonGroup } from "@/lib/theme";
+import { button, buttonGroup } from "@/registry/ui";
 
-import { Button, ButtonGroup } from "../src";
+import { Button, ButtonGroup } from "@/registry/ui";
 
 export default {
   title: "Components/ButtonGroup",

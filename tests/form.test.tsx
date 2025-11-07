@@ -1,7 +1,7 @@
+import { render } from "@testing-library/react";
 import * as React from "react";
-import {render} from "@testing-library/react";
 
-import {Form} from "../src";
+import { Form } from "@/registry/ui";
 
 describe("Form", () => {
   it("should render correctly", () => {

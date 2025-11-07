@@ -1,9 +1,9 @@
-import type { Meta } from "@storybook/react";
+import type { Meta } from "@storybook/nextjs-vite";
 
 import { Activity, Camera } from "@/lib/icons";
-import { avatar } from "@/lib/theme";
+import { avatar } from "@/registry/ui";
 
-import { Avatar } from "../src";
+import { Avatar } from "@/registry/ui";
 
 export default {
   title: "Components/Avatar",

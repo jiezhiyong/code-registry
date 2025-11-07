@@ -1,13 +1,13 @@
 import type { ValidationResult } from "@react-types/shared";
-import type { Meta } from "@storybook/react";
+import type { Meta } from "@storybook/nextjs-vite";
 
-import { button, inputOtp } from "@/lib/theme";
+import { button, inputOtp } from "@/registry/ui";
 import { Button } from "@/registry/ui/button";
-import { Form } from "@heroui/form";
+import { Form } from "@/registry/ui/form";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
 
-import { InputOtp } from "../src";
+import { InputOtp } from "@/registry/ui";
 
 export default {
   title: "Components/InputOtp",

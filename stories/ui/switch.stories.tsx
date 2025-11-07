@@ -1,14 +1,14 @@
-import type { Meta } from "@storybook/react";
-import type { SwitchProps, SwitchThumbIconProps } from "../src";
+import type { SwitchProps, SwitchThumbIconProps } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
 import { clsx } from "@/lib/base";
 import { MoonFilledIcon, SunFilledIcon } from "@/lib/icons";
-import { button, toggle } from "@/lib/theme";
+import { button, toggle } from "@/registry/ui";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import React from "react";
 import { useForm } from "react-hook-form";
 
-import { Switch, useSwitch } from "../src";
+import { Switch, useSwitch } from "@/registry/ui";
 
 export default {
   title: "Components/Switch",

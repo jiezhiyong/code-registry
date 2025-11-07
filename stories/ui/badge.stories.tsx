@@ -1,13 +1,13 @@
-import type { Meta } from "@storybook/react";
-import type { BadgeProps } from "../src";
+import type { BadgeProps } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
 import { CartIcon, CheckIcon, Notification } from "@/lib/icons";
-import { badge } from "@/lib/theme";
-import { Avatar } from "@heroui/avatar";
-import { Switch } from "@heroui/switch";
+import { badge } from "@/registry/ui";
+import { Avatar } from "@/registry/ui/avatar";
+import { Switch } from "@/registry/ui/switch";
 import React from "react";
 
-import { Badge } from "../src";
+import { Badge } from "@/registry/ui";
 
 export default {
   title: "Components/Badge",

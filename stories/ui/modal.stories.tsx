@@ -1,19 +1,19 @@
 /* eslint-disable jsx-a11y/no-autofocus */
-import type { Meta } from "@storybook/react";
-import type { ModalProps } from "../src";
+import type { ModalProps } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
 import { LockFilledIcon, MailFilledIcon } from "@/lib/icons";
-import { modal } from "@/lib/theme";
+import { modal } from "@/registry/ui";
+import { Autocomplete, AutocompleteItem } from "@/registry/ui/autocomplete";
 import { Button } from "@/registry/ui/button";
-import { Autocomplete, AutocompleteItem } from "@heroui/autocomplete";
-import { Checkbox } from "@heroui/checkbox";
-import { Input } from "@heroui/input";
-import { Link } from "@heroui/link";
-import { Switch } from "@heroui/switch";
+import { Checkbox } from "@/registry/ui/checkbox";
+import { Input } from "@/registry/ui/input";
+import { Link } from "@/registry/ui/link";
+import { Switch } from "@/registry/ui/switch";
 import React from "react";
 import Lorem from "react-lorem-component";
 
-import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure, useDraggable } from "../src";
+import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure, useDraggable } from "@/registry/ui";
 
 export default {
   title: "Components/Modal",

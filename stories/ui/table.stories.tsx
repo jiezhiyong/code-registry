@@ -1,22 +1,22 @@
-import type { ChipProps } from "@heroui/chip";
-import type { Meta } from "@storybook/react";
-import type { TableProps } from "../src";
+import type { TableProps } from "@/registry/ui";
+import type { ChipProps } from "@/registry/ui/chip";
+import type { Meta } from "@storybook/nextjs-vite";
 
 import { useInfiniteScroll } from "@/lib/hooks/use-infinite-scroll";
 import { DeleteIcon, EditIcon, EyeIcon, SortIcon } from "@/lib/icons";
-import { table } from "@/lib/theme";
+import { table } from "@/registry/ui";
 import { Button } from "@/registry/ui/button";
-import { Chip } from "@heroui/chip";
-import { Pagination } from "@heroui/pagination";
-import { Spinner } from "@heroui/spinner";
-import { Tooltip } from "@heroui/tooltip";
-import { User } from "@heroui/user";
+import { Chip } from "@/registry/ui/chip";
+import { Pagination } from "@/registry/ui/pagination";
+import { Spinner } from "@/registry/ui/spinner";
+import { Tooltip } from "@/registry/ui/tooltip";
+import { User } from "@/registry/ui/user";
 import { useAsyncList } from "@react-stately/data";
 import React, { useMemo } from "react";
 import useSWR from "swr";
 
+import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, getKeyValue } from "@/registry/ui";
 import { Switch } from "../../switch/src";
-import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, getKeyValue } from "../src";
 
 export default {
   title: "Components/Table",

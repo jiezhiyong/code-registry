@@ -1,8 +1,8 @@
-import type { Meta } from "@storybook/react";
+import type { Meta } from "@storybook/nextjs-vite";
 
-import { code } from "@/lib/theme";
+import { code } from "@/registry/ui";
 
-import { Code } from "../src";
+import { Code } from "@/registry/ui";
 
 export default {
   title: "Components/Code",
@@ -30,7 +30,7 @@ export default {
 } as Meta<typeof Code>;
 
 const defaultProps = {
-  children: "npm install @heroui/react",
+  children: "npm install @/registry/ui/react",
   ...code.defaultVariants,
 };
 

@@ -1,11 +1,11 @@
-import type { Meta } from "@storybook/react";
-import type { FormProps } from "../src";
+import type { FormProps } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
 import { useState } from "react";
-// import {Input} from "@heroui/input";
+// import {Input} from "@/registry/ui/input";
 import { Button } from "@/registry/ui/button";
 
-import { Form } from "../src";
+import { Form } from "@/registry/ui";
 
 export default {
   title: "Components/Form",

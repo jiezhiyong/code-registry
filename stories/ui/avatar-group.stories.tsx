@@ -1,24 +1,22 @@
-import type {Meta} from "@storybook/react";
-import type {AvatarGroupProps} from "../src";
+import type { AvatarGroupProps } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
-import React from "react";
-
-import {Avatar, AvatarGroup} from "../src";
+import { Avatar, AvatarGroup } from "@/registry/ui";
 
 export default {
   title: "Components/AvatarGroup",
   component: AvatarGroup,
   argTypes: {
     color: {
-      control: {type: "select"},
+      control: { type: "select" },
       options: ["default", "primary", "secondary", "success", "warning", "danger"],
     },
     radius: {
-      control: {type: "select"},
+      control: { type: "select" },
       options: ["none", "sm", "md", "lg", "full"],
     },
     size: {
-      control: {type: "select"},
+      control: { type: "select" },
       options: ["sm", "md", "lg"],
     },
     spacing: {
@@ -46,37 +44,37 @@ const Template = (args: AvatarGroupProps) => (
 const CustomSlotsTemplate = (args: AvatarGroupProps) => (
   <AvatarGroup {...args}>
     <Avatar
-      classNames={{base: "border-2 border-yellow-400"}}
+      classNames={{ base: "border-2 border-yellow-400" }}
       radius="sm"
       size="sm"
       src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
     />
     <Avatar
-      classNames={{base: "border-2 border-yellow-500"}}
+      classNames={{ base: "border-2 border-yellow-500" }}
       radius="sm"
       size="sm"
       src="https://i.pravatar.cc/150?u=a04258a2462d826712d"
     />
     <Avatar
-      classNames={{base: "border-2 border-yellow-600"}}
+      classNames={{ base: "border-2 border-yellow-600" }}
       radius="sm"
       size="sm"
       src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
     />
     <Avatar
-      classNames={{base: "border-2 border-yellow-700"}}
+      classNames={{ base: "border-2 border-yellow-700" }}
       radius="sm"
       size="sm"
       src="https://i.pravatar.cc/150?u=a04258114e29026302d"
     />
     <Avatar
-      classNames={{base: "border-2 border-yellow-500"}}
+      classNames={{ base: "border-2 border-yellow-500" }}
       radius="sm"
       size="sm"
       src="https://i.pravatar.cc/150?u=a04258114e29026702d"
     />
     <Avatar
-      classNames={{base: "border-2 border-yellow-500"}}
+      classNames={{ base: "border-2 border-yellow-500" }}
       radius="sm"
       size="sm"
       src="https://i.pravatar.cc/150?u=a04258114e29026708c"
@@ -143,9 +141,7 @@ export const CustomCount = {
     isBordered: true,
     max: 3,
     total: 10,
-    renderCount: (count: number) => (
-      <p className="text-sm text-black dark:text-white ms-2">+{count}</p>
-    ),
+    renderCount: (count: number) => <p className="text-sm text-black dark:text-white ms-2">+{count}</p>,
   },
 };
 
@@ -153,7 +149,7 @@ export const CustomSlots = {
   render: CustomSlotsTemplate,
 
   args: {
-    classNames: {count: "border-2 border-yellow-400"},
+    classNames: { count: "border-2 border-yellow-400" },
     max: 3,
     radius: "sm",
     size: "sm",

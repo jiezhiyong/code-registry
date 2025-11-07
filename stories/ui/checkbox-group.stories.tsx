@@ -1,12 +1,12 @@
+import type { CheckboxGroupProps } from "@/registry/ui";
 import type { ValidationResult } from "@react-types/shared";
-import type { Meta } from "@storybook/react";
-import type { CheckboxGroupProps } from "../src";
+import type { Meta } from "@storybook/nextjs-vite";
 
-import { button, checkbox } from "@/lib/theme";
-import { Form } from "@heroui/form";
+import { button, checkbox } from "@/registry/ui";
+import { Form } from "@/registry/ui/form";
 import React from "react";
 
-import { Checkbox, CheckboxGroup } from "../src";
+import { Checkbox, CheckboxGroup } from "@/registry/ui";
 
 export default {
   title: "Components/CheckboxGroup",

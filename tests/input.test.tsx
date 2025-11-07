@@ -1,12 +1,12 @@
-import type {UserEvent} from "@testing-library/user-event";
+import type { UserEvent } from "@testing-library/user-event";
 
-import * as React from "react";
-import {render, renderHook, fireEvent, act} from "@testing-library/react";
+import { Form } from "@/registry/ui/form";
+import { act, fireEvent, render, renderHook } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {useForm} from "react-hook-form";
-import {Form} from "@heroui/form";
+import * as React from "react";
+import { useForm } from "react-hook-form";
 
-import {Input} from "../src";
+import { Input } from "@/registry/ui";
 
 describe("Input", () => {
   it("should render correctly", () => {
@@ -23,25 +23,25 @@ describe("Input", () => {
   });
 
   it("should have aria-invalid when invalid", () => {
-    const {container} = render(<Input isInvalid={true} label="test input" />);
+    const { container } = render(<Input isInvalid={true} label="test input" />);
 
     expect(container.querySelector("input")).toHaveAttribute("aria-invalid", "true");
   });
 
   it("should have aria-readonly when isReadOnly", () => {
-    const {container} = render(<Input isReadOnly label="test input" />);
+    const { container } = render(<Input isReadOnly label="test input" />);
 
     expect(container.querySelector("input")).toHaveAttribute("aria-readonly", "true");
   });
 
   it("should have disabled attribute when isDisabled", () => {
-    const {container} = render(<Input isDisabled label="test input" />);
+    const { container } = render(<Input isDisabled label="test input" />);
 
     expect(container.querySelector("input")).toHaveAttribute("disabled");
   });
 
   it("should disable the clear button when isDisabled", () => {
-    const {getByRole} = render(<Input isClearable isDisabled label="test input" />);
+    const { getByRole } = render(<Input isClearable isDisabled label="test input" />);
 
     const clearButton = getByRole("button");
 
@@ -49,7 +49,7 @@ describe("Input", () => {
   });
 
   it("should not allow clear button to be focusable", () => {
-    const {getByRole} = render(<Input isClearable label="test input" />);
+    const { getByRole } = render(<Input isClearable label="test input" />);
 
     const clearButton = getByRole("button");
 
@@ -57,33 +57,33 @@ describe("Input", () => {
   });
 
   it("should have required attribute when isRequired with native validationBehavior", () => {
-    const {container} = render(<Input isRequired label="test input" validationBehavior="native" />);
+    const { container } = render(<Input isRequired label="test input" validationBehavior="native" />);
 
     expect(container.querySelector("input")).toHaveAttribute("required");
     expect(container.querySelector("input")).not.toHaveAttribute("aria-required");
   });
 
   it("should have aria-required attribute when isRequired with aria validationBehavior", () => {
-    const {container} = render(<Input isRequired label="test input" validationBehavior="aria" />);
+    const { container } = render(<Input isRequired label="test input" validationBehavior="aria" />);
 
     expect(container.querySelector("input")).not.toHaveAttribute("required");
     expect(container.querySelector("input")).toHaveAttribute("aria-required", "true");
   });
 
   it("should have aria-describedby when description is provided", () => {
-    const {container} = render(<Input description="help text" label="test input" />);
+    const { container } = render(<Input description="help text" label="test input" />);
 
     expect(container.querySelector("input")).toHaveAttribute("aria-describedby");
   });
 
   it("should have aria-describedby when errorMessage is provided", () => {
-    const {container} = render(<Input isInvalid errorMessage="error text" label="test input" />);
+    const { container } = render(<Input isInvalid errorMessage="error text" label="test input" />);
 
     expect(container.querySelector("input")).toHaveAttribute("aria-describedby");
   });
 
   it("should have the same aria-labelledby as label id", () => {
-    const {container} = render(<Input label="test input" />);
+    const { container } = render(<Input label="test input" />);
 
     const labelId = container.querySelector("label")?.id;
     const labelledBy = container.querySelector("input")?.getAttribute("aria-labelledby");
@@ -92,57 +92,57 @@ describe("Input", () => {
   });
 
   it("should be labelled by placeholder when no label is provided", () => {
-    const {getByRole} = render(<Input placeholder="test input" />);
+    const { getByRole } = render(<Input placeholder="test input" />);
 
-    expect(getByRole("textbox", {name: "test input"})).toBeInTheDocument();
+    expect(getByRole("textbox", { name: "test input" })).toBeInTheDocument();
   });
 
   it("should be labelled by aria-label when no label is provided", () => {
-    const {getByRole} = render(<Input aria-label="test input" />);
+    const { getByRole } = render(<Input aria-label="test input" />);
 
-    expect(getByRole("textbox", {name: "test input"})).toBeInTheDocument();
+    expect(getByRole("textbox", { name: "test input" })).toBeInTheDocument();
   });
 
   it("should be labelled by label when label is provided", () => {
-    const {getByRole} = render(<Input label="test input" />);
+    const { getByRole } = render(<Input label="test input" />);
 
-    expect(getByRole("textbox", {name: "test input"})).toBeInTheDocument();
+    expect(getByRole("textbox", { name: "test input" })).toBeInTheDocument();
   });
 
   it("should be labelled by label and aria-label when both label and aria-label are provided", () => {
-    const {getByRole} = render(<Input aria-label="test input" label="test input" />);
+    const { getByRole } = render(<Input aria-label="test input" label="test input" />);
 
-    expect(getByRole("textbox", {name: "test input test input"})).toBeInTheDocument();
+    expect(getByRole("textbox", { name: "test input test input" })).toBeInTheDocument();
   });
 
   it("should be labelled by label when both label and placeholder are provided", () => {
-    const {getByRole} = render(<Input label="test input" placeholder="test input placeholder" />);
+    const { getByRole } = render(<Input label="test input" placeholder="test input placeholder" />);
 
-    expect(getByRole("textbox", {name: "test input"})).toBeInTheDocument();
+    expect(getByRole("textbox", { name: "test input" })).toBeInTheDocument();
   });
 
   it("should have the correct type attribute", () => {
-    const {container} = render(<Input label="test input" type="email" />);
+    const { container } = render(<Input label="test input" type="email" />);
 
     expect(container.querySelector("input")).toHaveAttribute("type", "email");
 
-    const {container: container2} = render(<Input label="test input" type="number" />);
+    const { container: container2 } = render(<Input label="test input" type="number" />);
 
     expect(container2.querySelector("input")).toHaveAttribute("type", "number");
 
-    const {container: container3} = render(<Input label="test input" type="password" />);
+    const { container: container3 } = render(<Input label="test input" type="password" />);
 
     expect(container3.querySelector("input")).toHaveAttribute("type", "password");
 
-    const {container: container4} = render(<Input label="test input" type="search" />);
+    const { container: container4 } = render(<Input label="test input" type="search" />);
 
     expect(container4.querySelector("input")).toHaveAttribute("type", "search");
 
-    const {container: container5} = render(<Input label="test input" type="tel" />);
+    const { container: container5 } = render(<Input label="test input" type="tel" />);
 
     expect(container5.querySelector("input")).toHaveAttribute("type", "tel");
 
-    const {container: container6} = render(<Input label="test input" type="text" />);
+    const { container: container6 } = render(<Input label="test input" type="text" />);
 
     expect(container6.querySelector("input")).toHaveAttribute("type", "text");
   });
@@ -150,7 +150,7 @@ describe("Input", () => {
   it("should call dom event handlers only once", () => {
     const onFocus = jest.fn();
 
-    const {container} = render(<Input label="test input" onFocus={onFocus} />);
+    const { container } = render(<Input label="test input" onFocus={onFocus} />);
 
     act(() => {
       container.querySelector("input")?.focus();
@@ -163,7 +163,7 @@ describe("Input", () => {
   });
 
   it("should work with keyboard input", async () => {
-    const {getByTestId} = render(<Input data-testid="input" />);
+    const { getByTestId } = render(<Input data-testid="input" />);
 
     const input = getByTestId("input") as HTMLInputElement;
 
@@ -185,7 +185,7 @@ describe("Input", () => {
   });
 
   it("should highlight text with user multi-clicks", async () => {
-    const {getByTestId} = render(<Input data-testid="input" defaultValue="Hello World!" />);
+    const { getByTestId } = render(<Input data-testid="input" defaultValue="Hello World!" />);
 
     const input = getByTestId("input") as HTMLInputElement;
 
@@ -204,7 +204,7 @@ describe("Input", () => {
   });
 
   it("should focus input on click", async () => {
-    const {getByTestId} = render(<Input data-testid="input" />);
+    const { getByTestId } = render(<Input data-testid="input" />);
 
     const input = getByTestId("input") as HTMLInputElement;
     const innerWrapper = document.querySelector("[data-slot='inner-wrapper']") as HTMLDivElement;
@@ -256,14 +256,8 @@ describe("Input", () => {
 
     const ref = React.createRef<HTMLInputElement>();
 
-    const {getByRole} = render(
-      <Input
-        ref={ref}
-        isClearable
-        defaultValue="junior@heroui.com"
-        label="test input"
-        onClear={onClear}
-      />,
+    const { getByRole } = render(
+      <Input ref={ref} isClearable defaultValue="junior@heroui.com" label="test input" onClear={onClear} />
     );
 
     const clearButton = getByRole("button")!;
@@ -284,10 +278,10 @@ describe("Input", () => {
       <>
         <Input data-testid="input-1" type="hidden" />
         <Input data-testid="input-2" />
-      </>,
+      </>
     );
 
-    const {container} = wrapper;
+    const { container } = wrapper;
 
     const inputBaseWrappers = container.querySelectorAll("[data-slot='base']");
 
@@ -311,7 +305,7 @@ describe("Input", () => {
 
     const ref = React.createRef<HTMLInputElement>();
 
-    const {getByRole} = render(
+    const { getByRole } = render(
       <Input
         ref={ref}
         isClearable
@@ -319,7 +313,7 @@ describe("Input", () => {
         defaultValue="readOnly test for clear button"
         label="test input"
         onClear={onClear}
-      />,
+      />
     );
 
     const clearButton = getByRole("button")!;
@@ -337,13 +331,13 @@ describe("Input", () => {
     const onClear = jest.fn();
     const defaultValue = "test value";
 
-    const {getByRole} = render(<Input isClearable defaultValue={defaultValue} onClear={onClear} />);
+    const { getByRole } = render(<Input isClearable defaultValue={defaultValue} onClear={onClear} />);
 
     const input = getByRole("textbox") as HTMLInputElement;
 
     expect(input.value).toBe(defaultValue);
 
-    fireEvent.keyDown(input, {key: "Escape"});
+    fireEvent.keyDown(input, { key: "Escape" });
 
     expect(input.value).toBe("");
 
@@ -353,11 +347,11 @@ describe("Input", () => {
   it("should not clear value when pressing ESC key if input is empty", () => {
     const onClear = jest.fn();
 
-    const {getByRole} = render(<Input isClearable defaultValue="" onClear={onClear} />);
+    const { getByRole } = render(<Input isClearable defaultValue="" onClear={onClear} />);
 
     const input = getByRole("textbox");
 
-    fireEvent.keyDown(input, {key: "Escape"});
+    fireEvent.keyDown(input, { key: "Escape" });
 
     expect(onClear).not.toHaveBeenCalled();
   });
@@ -365,11 +359,11 @@ describe("Input", () => {
   it("should not clear value when pressing ESC key if input is isClearable", () => {
     const defaultValue = "test value";
 
-    const {getByRole} = render(<Input defaultValue={defaultValue} />);
+    const { getByRole } = render(<Input defaultValue={defaultValue} />);
 
     const input = getByRole("textbox") as HTMLInputElement;
 
-    fireEvent.keyDown(input, {key: "Escape"});
+    fireEvent.keyDown(input, { key: "Escape" });
 
     expect(input.value).toBe("test value");
   });
@@ -378,15 +372,13 @@ describe("Input", () => {
     const onClear = jest.fn();
     const defaultValue = "test value";
 
-    const {getByRole} = render(
-      <Input isClearable isReadOnly defaultValue={defaultValue} onClear={onClear} />,
-    );
+    const { getByRole } = render(<Input isClearable isReadOnly defaultValue={defaultValue} onClear={onClear} />);
 
     const input = getByRole("textbox") as HTMLInputElement;
 
     expect(input.value).toBe(defaultValue);
 
-    fireEvent.keyDown(input, {key: "Escape"});
+    fireEvent.keyDown(input, { key: "Escape" });
 
     expect(input.value).toBe(defaultValue);
 
@@ -402,20 +394,20 @@ describe("Input with React Hook Form", () => {
   let onSubmit: () => void;
 
   beforeEach(() => {
-    const {result} = renderHook(() =>
+    const { result } = renderHook(() =>
       useForm({
         defaultValues: {
           withDefaultValue: "wkw",
           withoutDefaultValue: "",
           requiredField: "",
         },
-      }),
+      })
     );
 
     const {
       handleSubmit,
       register,
-      formState: {errors},
+      formState: { errors },
     } = result.current;
 
     onSubmit = jest.fn();
@@ -423,19 +415,11 @@ describe("Input with React Hook Form", () => {
     render(
       <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
         <Input isClearable label="With default value" {...register("withDefaultValue")} />
-        <Input
-          data-testid="input-2"
-          label="Without default value"
-          {...register("withoutDefaultValue")}
-        />
-        <Input
-          data-testid="input-3"
-          label="Required"
-          {...register("requiredField", {required: true})}
-        />
+        <Input data-testid="input-2" label="Without default value" {...register("withoutDefaultValue")} />
+        <Input data-testid="input-3" label="Required" {...register("requiredField", { required: true })} />
         {errors.requiredField && <span className="text-danger">This field is required</span>}
         <button type="submit">Submit</button>
-      </form>,
+      </form>
     );
 
     input1 = document.querySelector("input[name=withDefaultValue]")!;
@@ -459,7 +443,7 @@ describe("Input with React Hook Form", () => {
   });
 
   it("should submit form when required field is not empty", async () => {
-    fireEvent.change(input3, {target: {value: "updated"}});
+    fireEvent.change(input3, { target: { value: "updated" } });
 
     const user = userEvent.setup();
 
@@ -477,10 +461,10 @@ describe("Input with React Hook Form", () => {
 
     describe("validationBehavior=native", () => {
       it("supports isRequired", async () => {
-        const {getByTestId} = render(
+        const { getByTestId } = render(
           <Form data-testid="form" validationBehavior="native">
             <Input isRequired data-testid="input" label="Name" />
-          </Form>,
+          </Form>
         );
 
         const input = getByTestId("input") as HTMLInputElement;
@@ -497,7 +481,7 @@ describe("Input with React Hook Form", () => {
         expect(document.activeElement).toBe(input);
         expect(input).toHaveAttribute("aria-describedby");
         expect(document.getElementById(input.getAttribute("aria-describedby")!)).toHaveTextContent(
-          "Constraints not satisfied",
+          "Constraints not satisfied"
         );
 
         await user.keyboard("hello");
@@ -511,7 +495,7 @@ describe("Input with React Hook Form", () => {
       });
 
       it("supports validate function", async () => {
-        const {getByTestId} = render(
+        const { getByTestId } = render(
           <Form data-testid="form" validationBehavior="native">
             <Input
               data-testid="input"
@@ -519,7 +503,7 @@ describe("Input with React Hook Form", () => {
               label="Name"
               validate={(v) => (v === "Foo" ? "Invalid name" : null)}
             />
-          </Form>,
+          </Form>
         );
 
         const input = getByTestId("input") as HTMLInputElement;
@@ -533,9 +517,7 @@ describe("Input with React Hook Form", () => {
 
         expect(document.activeElement).toBe(input);
         expect(input).toHaveAttribute("aria-describedby");
-        expect(document.getElementById(input.getAttribute("aria-describedby")!)).toHaveTextContent(
-          "Invalid name",
-        );
+        expect(document.getElementById(input.getAttribute("aria-describedby")!)).toHaveTextContent("Invalid name");
 
         await user.keyboard("hello");
 
@@ -558,12 +540,7 @@ describe("Input with React Hook Form", () => {
           };
 
           return (
-            <Form
-              data-testid="form"
-              validationBehavior="native"
-              validationErrors={serverErrors}
-              onSubmit={onSubmit}
-            >
+            <Form data-testid="form" validationBehavior="native" validationErrors={serverErrors} onSubmit={onSubmit}>
               <Input data-testid="input" label="Name" name="name" />
               <button data-testid="submit" type="submit">
                 Submit
@@ -572,7 +549,7 @@ describe("Input with React Hook Form", () => {
           );
         }
 
-        const {getByTestId} = render(<Test />);
+        const { getByTestId } = render(<Test />);
 
         const input = getByTestId("input") as HTMLInputElement;
         const submitButton = getByTestId("submit");
@@ -585,9 +562,7 @@ describe("Input with React Hook Form", () => {
         });
 
         expect(input).toHaveAttribute("aria-describedby");
-        expect(document.getElementById(input.getAttribute("aria-describedby")!)).toHaveTextContent(
-          "Invalid name.",
-        );
+        expect(document.getElementById(input.getAttribute("aria-describedby")!)).toHaveTextContent("Invalid name.");
         expect(input.validity.valid).toBe(false);
 
         // Clicking twice doesn't clear server errors.
@@ -598,9 +573,7 @@ describe("Input with React Hook Form", () => {
 
         expect(document.activeElement).toBe(input);
         expect(input).toHaveAttribute("aria-describedby");
-        expect(document.getElementById(input.getAttribute("aria-describedby")!)).toHaveTextContent(
-          "Invalid name.",
-        );
+        expect(document.getElementById(input.getAttribute("aria-describedby")!)).toHaveTextContent("Invalid name.");
         expect(input.validity.valid).toBe(false);
 
         await user.keyboard("hello");
@@ -613,7 +586,7 @@ describe("Input with React Hook Form", () => {
 
     describe('validationBehavior="aria"', () => {
       it("supports validate function", async () => {
-        const {getByTestId} = render(
+        const { getByTestId } = render(
           <Form data-testid="form" validationBehavior="aria">
             <Input
               data-testid="input"
@@ -621,16 +594,14 @@ describe("Input with React Hook Form", () => {
               label="Name"
               validate={(v) => (v === "Foo" ? "Invalid name" : null)}
             />
-          </Form>,
+          </Form>
         );
 
         const input = getByTestId("input") as HTMLInputElement;
 
         expect(input).toHaveAttribute("aria-describedby");
         expect(input).toHaveAttribute("aria-invalid", "true");
-        expect(document.getElementById(input.getAttribute("aria-describedby")!)).toHaveTextContent(
-          "Invalid name",
-        );
+        expect(document.getElementById(input.getAttribute("aria-describedby")!)).toHaveTextContent("Invalid name");
         expect(input.validity.valid).toBe(true);
 
         await user.tab();
@@ -641,19 +612,17 @@ describe("Input with React Hook Form", () => {
       });
 
       it("supports server validation", async () => {
-        const {getByTestId} = render(
-          <Form validationBehavior="aria" validationErrors={{name: "Invalid name"}}>
+        const { getByTestId } = render(
+          <Form validationBehavior="aria" validationErrors={{ name: "Invalid name" }}>
             <Input data-testid="input" label="Name" name="name" />
-          </Form>,
+          </Form>
         );
 
         const input = getByTestId("input");
 
         expect(input).toHaveAttribute("aria-describedby");
         expect(input).toHaveAttribute("aria-invalid", "true");
-        expect(document.getElementById(input.getAttribute("aria-describedby")!)).toHaveTextContent(
-          "Invalid name",
-        );
+        expect(document.getElementById(input.getAttribute("aria-describedby")!)).toHaveTextContent("Invalid name");
 
         await user.tab();
         await user.keyboard("hello");

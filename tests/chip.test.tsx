@@ -1,9 +1,9 @@
-import * as React from "react";
-import {render} from "@testing-library/react";
-import {Avatar} from "@heroui/avatar";
+import { Avatar } from "@/registry/ui/avatar";
+import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import * as React from "react";
 
-import {Chip} from "../src";
+import { Chip } from "@/registry/ui";
 
 describe("Chip", () => {
   it("should render correctly", () => {
@@ -51,7 +51,7 @@ describe("Chip", () => {
 
   it("should call onClose when close button is clicked", async () => {
     const onClose = jest.fn();
-    const {getByRole} = render(<Chip onClose={onClose} />);
+    const { getByRole } = render(<Chip onClose={onClose} />);
 
     const user = userEvent.setup();
 

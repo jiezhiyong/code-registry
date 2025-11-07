@@ -1,14 +1,11 @@
-import type { RadioProps } from "@heroui/radio";
-import type { DateValue, MappedDateValue } from "@react-types/datepicker";
-import type { RangeValue, ValidationResult } from "@react-types/shared";
-import type { Meta } from "@storybook/react";
-import type { DateRangePickerProps } from "../src";
-
 import { MoonIcon, SunIcon } from "@/lib/icons";
-import { button, cn, dateInput } from "@/lib/theme";
+import { cn } from "@/lib/theme";
+import type { DateRangePickerProps } from "@/registry/ui";
+import { button, dateInput } from "@/registry/ui";
 import { Button, ButtonGroup } from "@/registry/ui/button";
-import { Form } from "@heroui/form";
-import { Radio, RadioGroup } from "@heroui/radio";
+import { Form } from "@/registry/ui/form";
+import type { RadioProps } from "@/registry/ui/radio";
+import { Radio, RadioGroup } from "@/registry/ui/radio";
 import {
   endOfMonth,
   endOfWeek,
@@ -22,9 +19,12 @@ import {
   today,
 } from "@internationalized/date";
 import { I18nProvider, useDateFormatter, useLocale } from "@react-aria/i18n";
+import type { DateValue, MappedDateValue } from "@react-types/datepicker";
+import type { RangeValue, ValidationResult } from "@react-types/shared";
+import type { Meta } from "@storybook/nextjs-vite";
 import React from "react";
 
-import { DateRangePicker } from "../src";
+import { DateRangePicker } from "@/registry/ui";
 
 export default {
   title: "Components/DateRangePicker",

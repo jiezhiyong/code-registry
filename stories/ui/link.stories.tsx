@@ -1,11 +1,10 @@
-import type { VariantProps } from "@/lib/theme";
-import type { Meta } from "@storybook/react";
-import type { LinkProps } from "../src";
+import type { LinkProps, VariantProps } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
-import { link, tv } from "@/lib/theme";
+import { link, tv } from "@/registry/ui";
 import { useState } from "react";
 
-import { Link } from "../src";
+import { Link } from "@/registry/ui";
 
 export default {
   title: "Components/Link",

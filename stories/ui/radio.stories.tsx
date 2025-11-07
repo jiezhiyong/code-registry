@@ -1,14 +1,14 @@
+import type { RadioGroupProps, RadioProps } from "@/registry/ui";
 import type { ValidationResult } from "@react-types/shared";
-import type { Meta } from "@storybook/react";
-import type { RadioGroupProps, RadioProps } from "../src";
+import type { Meta } from "@storybook/nextjs-vite";
 
 import { clsx } from "@/lib/base";
-import { button, radio } from "@/lib/theme";
-import { Form } from "@heroui/form";
+import { button, radio } from "@/registry/ui";
+import { Form } from "@/registry/ui/form";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import React from "react";
 
-import { Radio, RadioGroup, useRadio, useRadioGroupContext } from "../src";
+import { Radio, RadioGroup, useRadio, useRadioGroupContext } from "@/registry/ui";
 
 export default {
   title: "Components/RadioGroup",

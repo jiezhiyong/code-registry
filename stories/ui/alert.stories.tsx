@@ -1,11 +1,12 @@
-import type { Meta } from "@storybook/react";
-import type { AlertProps } from "../src";
+import type { AlertProps } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
-import { alert, cn } from "@/lib/theme";
+import { alert } from "@/registry/ui";
 import { Button } from "@/registry/ui/button";
 import React from "react";
 
-import { Alert } from "../src";
+import { cn } from "@/lib/theme";
+import { Alert } from "@/registry/ui";
 
 export default {
   title: "Components/Alert",

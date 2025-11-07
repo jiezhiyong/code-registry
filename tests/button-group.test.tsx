@@ -1,15 +1,15 @@
-import React from "react";
-import {render} from "@testing-library/react";
+import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import React from "react";
 
-import {ButtonGroup, Button} from "../src";
+import { Button, ButtonGroup } from "@/registry/ui";
 
 describe("ButtonGroup", () => {
   it("should render correctly", () => {
     const wrapper = render(
       <ButtonGroup>
         <Button disableRipple>action</Button>
-      </ButtonGroup>,
+      </ButtonGroup>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -29,7 +29,7 @@ describe("ButtonGroup", () => {
         <Button disableRipple data-testid="button-test" onPress={handler}>
           action
         </Button>
-      </ButtonGroup>,
+      </ButtonGroup>
     );
 
     let button = wrapper.getByTestId("button-test");
@@ -51,7 +51,7 @@ describe("ButtonGroup", () => {
         <Button disableRipple color="warning" variant="bordered">
           button
         </Button>
-      </ButtonGroup>,
+      </ButtonGroup>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();

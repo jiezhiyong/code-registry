@@ -1,10 +1,10 @@
-import type { Meta } from "@storybook/react";
-import type { ProgressProps } from "../src";
+import type { ProgressProps } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
-import { progress } from "@/lib/theme";
+import { progress } from "@/registry/ui";
 import React from "react";
 
-import { Progress } from "../src";
+import { Progress } from "@/registry/ui";
 
 export default {
   title: "Components/Progress",

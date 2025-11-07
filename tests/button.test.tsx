@@ -1,11 +1,11 @@
 import "@testing-library/jest-dom";
-import type {UserEvent} from "@testing-library/user-event";
+import type { UserEvent } from "@testing-library/user-event";
 
-import * as React from "react";
-import {render} from "@testing-library/react";
+import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import * as React from "react";
 
-import {Button} from "../src";
+import { Button } from "@/registry/ui";
 
 describe("Button", () => {
   let user: UserEvent;
@@ -29,7 +29,7 @@ describe("Button", () => {
 
   it("should trigger onPress function", async () => {
     const onPress = jest.fn();
-    const {getByRole} = render(<Button disableRipple onPress={onPress} />);
+    const { getByRole } = render(<Button disableRipple onPress={onPress} />);
 
     const button = getByRole("button");
 
@@ -40,7 +40,7 @@ describe("Button", () => {
 
   it("should trigger onClick function", async () => {
     const onClick = jest.fn();
-    const {getByRole} = render(<Button disableRipple onClick={onClick} />);
+    const { getByRole } = render(<Button disableRipple onClick={onClick} />);
 
     const button = getByRole("button");
 
@@ -51,7 +51,7 @@ describe("Button", () => {
 
   it("should ignore events when disabled", async () => {
     const onPress = jest.fn();
-    const {getByRole} = render(<Button disableRipple isDisabled onPress={onPress} />);
+    const { getByRole } = render(<Button disableRipple isDisabled onPress={onPress} />);
 
     const button = getByRole("button");
 
@@ -64,7 +64,7 @@ describe("Button", () => {
     const wrapper = render(
       <Button disableRipple startContent={<span data-testid="start-icon">Icon</span>}>
         Button
-      </Button>,
+      </Button>
     );
 
     expect(wrapper.getByTestId("start-icon")).toBeInTheDocument();
@@ -74,7 +74,7 @@ describe("Button", () => {
     const wrapper = render(
       <Button disableRipple endContent={<span data-testid="end-icon">Icon</span>}>
         Button
-      </Button>,
+      </Button>
     );
 
     expect(wrapper.getByTestId("end-icon")).toBeInTheDocument();

@@ -1,10 +1,10 @@
-import type {UserEvent} from "@testing-library/user-event";
+import type { UserEvent } from "@testing-library/user-event";
 
-import * as React from "react";
-import {render} from "@testing-library/react";
+import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import * as React from "react";
 
-import {Link} from "../src";
+import { Link } from "@/registry/ui";
 
 describe("Link", () => {
   let user: UserEvent;
@@ -33,10 +33,10 @@ describe("Link", () => {
   });
 
   it('should show a link icon when "showAnchorIcon" is true', () => {
-    const {container} = render(
+    const { container } = render(
       <Link showAnchorIcon href="#">
         Link
-      </Link>,
+      </Link>
     );
 
     expect(container.querySelector("svg")).not.toBeNull();
@@ -44,7 +44,7 @@ describe("Link", () => {
 
   it("should trigger onPress function", async () => {
     const onPress = jest.fn();
-    const {getByRole} = render(<Link onPress={onPress} />);
+    const { getByRole } = render(<Link onPress={onPress} />);
 
     const link = getByRole("link");
 
@@ -55,7 +55,7 @@ describe("Link", () => {
 
   it("should trigger onClick function", async () => {
     const onClick = jest.fn();
-    const {getByRole} = render(<Link onClick={onClick} />);
+    const { getByRole } = render(<Link onClick={onClick} />);
 
     const link = getByRole("link");
 
@@ -65,10 +65,10 @@ describe("Link", () => {
   });
 
   it('should have target="_blank" and rel="noopener noreferrer" when "isExternal" is true', () => {
-    const {container} = render(
+    const { container } = render(
       <Link isExternal href="#">
         Link
-      </Link>,
+      </Link>
     );
 
     expect(container.querySelector("a")?.rel).toBe("noopener noreferrer");
@@ -76,10 +76,10 @@ describe("Link", () => {
   });
 
   it('should have role="link" when "as" is different from "a"', () => {
-    const {container} = render(
+    const { container } = render(
       <Link as="button" href="#">
         Link
-      </Link>,
+      </Link>
     );
 
     expect(container.querySelector("button")?.getAttribute("role")).toBe("link");

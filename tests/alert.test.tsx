@@ -1,7 +1,7 @@
+import { act, render } from "@testing-library/react";
 import * as React from "react";
-import {act, render} from "@testing-library/react";
 
-import {Alert} from "../src";
+import { Alert } from "@/registry/ui";
 
 const title = "Testing Title";
 const description = "Testing Description";
@@ -32,7 +32,7 @@ describe("Alert", () => {
   });
 
   it("should show close button when is Closable", () => {
-    const {getByRole} = render(<Alert isClosable description={description} title={title} />);
+    const { getByRole } = render(<Alert isClosable description={description} title={title} />);
 
     const closeButton = getByRole("button");
 
@@ -42,7 +42,7 @@ describe("Alert", () => {
   it("should show close button when onClose is passed", () => {
     const onClose = jest.fn();
 
-    const {getByRole} = render(<Alert description={description} title={title} onClose={onClose} />);
+    const { getByRole } = render(<Alert description={description} title={title} onClose={onClose} />);
 
     const closeButton = getByRole("button");
 

@@ -1,7 +1,7 @@
+import type { ListboxProps } from "@/registry/ui";
 import type { Selection } from "@react-types/shared";
-import type { Meta } from "@storybook/react";
+import type { Meta } from "@storybook/nextjs-vite";
 import type { Key } from "react";
-import type { ListboxProps } from "../src";
 
 import { clsx } from "@/lib/base";
 import {
@@ -11,14 +11,14 @@ import {
   DeleteDocumentBulkIcon,
   EditDocumentBulkIcon,
 } from "@/lib/icons";
-import { menuItem } from "@/lib/theme";
-import { Avatar } from "@heroui/avatar";
-import { Chip } from "@heroui/chip";
-import { ScrollShadow } from "@heroui/scroll-shadow";
-import { usersData } from "@heroui/stories-utils";
+import { menuItem } from "@/registry/ui";
+import { Avatar } from "@/registry/ui/avatar";
+import { Chip } from "@/registry/ui/chip";
+import { ScrollShadow } from "@/registry/ui/scroll-shadow";
+import { usersData } from "@/utils/storybook";
 import React from "react";
 
-import { Listbox, ListboxItem, ListboxSection } from "../src";
+import { Listbox, ListboxItem, ListboxSection } from "@/registry/ui";
 
 const BugIcon = (props) => (
   <svg height="1em" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -617,7 +617,7 @@ const CustomWithClassNamesTemplate = ({ color, variant, disableAnimation, ...arg
         <div className="flex flex-col gap-1">
           <span>Releases</span>
           <div className="px-2 py-1 rounded-small bg-default-100 group-data-[hover=true]:bg-default-200">
-            <span className="text-tiny text-default-600">@heroui/react@2.0.10</span>
+            <span className="text-tiny text-default-600">@/registry/ui/react@2.0.10</span>
             <div className="flex gap-2 text-tiny">
               <span className="text-default-500">49 minutes ago</span>
               <span className="text-success">Latest</span>

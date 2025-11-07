@@ -1,7 +1,7 @@
+import { act, render } from "@testing-library/react";
 import * as React from "react";
-import {render, act} from "@testing-library/react";
 
-import {Snippet} from "../src";
+import { Snippet } from "@/registry/ui";
 
 describe("Snippet", () => {
   it("should render correctly", () => {
@@ -25,9 +25,7 @@ describe("Snippet", () => {
 
   it("should render multiple <pre> tags when children is an array of string", () => {
     const wrapper = render(
-      <Snippet data-testid="code-test">
-        {["npm install @heroui/react", "npm install @heroui/react"]}
-      </Snippet>,
+      <Snippet data-testid="code-test">{["npm install @heroui/react", "npm install @heroui/react"]}</Snippet>
     );
 
     expect(wrapper.getByTestId("code-test").querySelectorAll("pre")).toHaveLength(2);

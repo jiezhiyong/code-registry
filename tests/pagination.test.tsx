@@ -1,8 +1,8 @@
+import { shouldIgnoreReactWarning, spy } from "@/utils/test";
+import { render } from "@testing-library/react";
 import * as React from "react";
-import {render} from "@testing-library/react";
-import {spy, shouldIgnoreReactWarning} from "@heroui/test-utils";
 
-import {Pagination} from "../src";
+import { Pagination } from "@/registry/ui";
 
 describe("Pagination", () => {
   it("should render correctly", () => {
@@ -61,7 +61,7 @@ describe("Pagination", () => {
   });
 
   it("the pagination cursor should have a aria-hidden attribute", () => {
-    const {container} = render(<Pagination total={10} />);
+    const { container } = render(<Pagination total={10} />);
 
     const cursor = container.querySelector("span[aria-hidden]");
 
@@ -87,15 +87,15 @@ describe("Pagination", () => {
 
       constructor(
         private readonly callback: IntersectionObserverCallback,
-        private readonly options?: IntersectionObserverInit,
+        private readonly options?: IntersectionObserverInit
       ) {
         this.root = (this.options?.root ?? null) as Element | null;
         this.rootMargin = this.options?.rootMargin ?? "";
         this.thresholds = Array.isArray(this.options?.threshold)
           ? this.options.threshold
           : this.options?.threshold != null
-            ? [this.options.threshold]
-            : [0];
+          ? [this.options.threshold]
+          : [0];
         this.disconnect = jest.fn();
         this.observe = jest.fn();
         this.unobserve = jest.fn();
@@ -110,7 +110,7 @@ describe("Pagination", () => {
     // hijack the IntersectionObserver implementation so useIntersectionObserver returns our mock
     window.IntersectionObserver = MockIntersectionObserver;
 
-    const {container, rerender} = render(<Pagination total={10} />);
+    const { container, rerender } = render(<Pagination total={10} />);
 
     const cursor = container.querySelector("span[data-slot='cursor']");
 
@@ -130,7 +130,7 @@ describe("Pagination", () => {
           time: 0,
         },
       ],
-      new MockIntersectionObserver(intersectCallback, intersectOptions),
+      new MockIntersectionObserver(intersectCallback, intersectOptions)
     );
 
     // rerender the component to update cursor state after intersection

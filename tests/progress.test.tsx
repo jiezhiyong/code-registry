@@ -1,7 +1,7 @@
+import { render } from "@testing-library/react";
 import * as React from "react";
-import {render} from "@testing-library/react";
 
-import {Progress} from "../src";
+import { Progress } from "@/registry/ui";
 
 describe("Progress", () => {
   it("should render correctly", () => {
@@ -18,7 +18,7 @@ describe("Progress", () => {
   });
 
   it("should contain progress aria attributes", () => {
-    const {container} = render(<Progress aria-label="progress" />);
+    const { container } = render(<Progress aria-label="progress" />);
     const div = container.querySelector("div");
 
     expect(div).toHaveAttribute("role", "progressbar");
@@ -30,7 +30,7 @@ describe("Progress", () => {
   });
 
   it("should display the correct value", () => {
-    const {container} = render(<Progress aria-label="progress" value={55} />);
+    const { container } = render(<Progress aria-label="progress" value={55} />);
 
     // get the "aria-valuenow" attribute
     const value = container.querySelector("div")?.getAttribute("aria-valuenow");
@@ -39,12 +39,8 @@ describe("Progress", () => {
   });
 
   it("should support label value formatting", () => {
-    const {container} = render(
-      <Progress
-        aria-label="progress"
-        formatOptions={{style: "currency", currency: "ARS"}}
-        value={55}
-      />,
+    const { container } = render(
+      <Progress aria-label="progress" formatOptions={{ style: "currency", currency: "ARS" }} value={55} />
     );
 
     // get the "aria-valuetext" attribute
@@ -54,7 +50,7 @@ describe("Progress", () => {
   });
 
   it("should ignore a value under the minimum", () => {
-    const {container} = render(<Progress aria-label="progress" value={-1} />);
+    const { container } = render(<Progress aria-label="progress" value={-1} />);
 
     // get the "aria-valuenow" attribute
     const value = container.querySelector("div")?.getAttribute("aria-valuenow");
@@ -63,7 +59,7 @@ describe("Progress", () => {
   });
 
   it("should ignore a value over the maximum", () => {
-    const {container} = render(<Progress aria-label="progress" value={101} />);
+    const { container } = render(<Progress aria-label="progress" value={101} />);
 
     // get the "aria-valuenow" attribute
     const value = container.querySelector("div")?.getAttribute("aria-valuenow");
@@ -72,19 +68,19 @@ describe("Progress", () => {
   });
 
   it("should render a label", () => {
-    const {container} = render(<Progress aria-label="progress" label="Loading..." />);
+    const { container } = render(<Progress aria-label="progress" label="Loading..." />);
 
     expect(container.querySelector("span")).not.toBeNull();
   });
 
   it("should render a value label", () => {
-    const {container} = render(<Progress showValueLabel aria-label="progress" value={55} />);
+    const { container } = render(<Progress showValueLabel aria-label="progress" value={55} />);
 
     expect(container.querySelector("span")).not.toBeNull();
   });
 
   it("the aria-valuenow should not be set if isIndeterminate is true", () => {
-    const {container} = render(<Progress isIndeterminate aria-label="progress" />);
+    const { container } = render(<Progress isIndeterminate aria-label="progress" />);
 
     // get the "aria-valuenow" attribute
     const value = container.querySelector("div")?.getAttribute("aria-valuenow");

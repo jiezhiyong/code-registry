@@ -1,14 +1,14 @@
 import "@testing-library/jest-dom";
 
-import type {UserEvent} from "@testing-library/user-event";
+import type { UserEvent } from "@testing-library/user-event";
 
-import * as React from "react";
-import {render, renderHook, screen} from "@testing-library/react";
-import {Controller, useForm} from "react-hook-form";
+import { Form } from "@/registry/ui/form";
+import { render, renderHook, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {Form} from "@heroui/form";
+import * as React from "react";
+import { Controller, useForm } from "react-hook-form";
 
-import {InputOtp} from "../src";
+import { InputOtp } from "@/registry/ui";
 
 // Mock document.elementFromPoint to avoid test environment errors
 beforeAll(() => {
@@ -196,12 +196,12 @@ describe("Validation", () => {
   });
 
   it("supports isRequired when validationBehavior=native", async () => {
-    const {getByTestId} = render(
+    const { getByTestId } = render(
       <Form validationBehavior="native">
         <InputOtp isRequired data-testid="base" length={4} />
         <button data-testid="submit" type="submit" />
         <button data-testid="reset" type="reset" />
-      </Form>,
+      </Form>
     );
 
     const inputOtpBase = getByTestId("base");
@@ -235,36 +235,32 @@ describe("InputOtp with react-hook-form", () => {
   });
 
   it("should integrate with react-hook-form correctly", async () => {
-    const {result} = renderHook(() =>
+    const { result } = renderHook(() =>
       useForm({
         defaultValues: {
           defaultValue: "1234",
           withoutDefaultValue: "",
           requiredField: "",
         },
-      }),
+      })
     );
 
     const {
       handleSubmit,
       register,
-      formState: {errors},
+      formState: { errors },
     } = result.current;
 
     const onSubmit = jest.fn();
 
-    const {container} = render(
+    const { container } = render(
       <form onSubmit={handleSubmit(onSubmit)}>
         <InputOtp data-testid="input-otp-1" length={4} {...register("defaultValue")} />
         <InputOtp data-testid="input-otp-2" length={4} {...register("withoutDefaultValue")} />
-        <InputOtp
-          data-testid="input-otp-3"
-          length={4}
-          {...register("requiredField", {required: true})}
-        />
+        <InputOtp data-testid="input-otp-3" length={4} {...register("requiredField", { required: true })} />
         {errors.requiredField && <span>This field is required</span>}
         <button type="submit">Submit</button>
-      </form>,
+      </form>
     );
 
     const button = container.querySelector("button");
@@ -294,24 +290,24 @@ describe("InputOtp with react-hook-form", () => {
   });
 
   it("should work correctly wiht react-hook-form controller", async () => {
-    const {result} = renderHook(() =>
+    const { result } = renderHook(() =>
       useForm({
         defaultValues: {
           withController: "",
         },
-      }),
+      })
     );
 
-    const {control} = result.current;
+    const { control } = result.current;
 
     render(
       <form>
         <Controller
           control={control}
           name="withController"
-          render={({field}) => <InputOtp length={4} {...field} data-testid="input-otp" />}
+          render={({ field }) => <InputOtp length={4} {...field} data-testid="input-otp" />}
         />
-      </form>,
+      </form>
     );
 
     const inputOtp = screen.getByTestId("input-otp");

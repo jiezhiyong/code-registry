@@ -1,7 +1,7 @@
+import { render } from "@testing-library/react";
 import * as React from "react";
-import {render} from "@testing-library/react";
 
-import {Spinner} from "../src";
+import { Spinner } from "@/registry/ui";
 
 describe("Spinner", () => {
   it("should render correctly", () => {
@@ -18,25 +18,25 @@ describe("Spinner", () => {
   });
 
   it("should render with default aria-label", () => {
-    const {getByLabelText} = render(<Spinner />);
+    const { getByLabelText } = render(<Spinner />);
 
     expect(getByLabelText("Loading")).toBeInTheDocument();
   });
 
   it("should replace the default aria-label when a label is passed", () => {
-    const {getByLabelText} = render(<Spinner label="Custom label" />);
+    const { getByLabelText } = render(<Spinner label="Custom label" />);
 
     expect(getByLabelText("Custom label")).toBeInTheDocument();
   });
 
   it("should replace the default aria-label when a children is passed", () => {
-    const {getByLabelText} = render(<Spinner>Custom label</Spinner>);
+    const { getByLabelText } = render(<Spinner>Custom label</Spinner>);
 
     expect(getByLabelText("Custom label")).toBeInTheDocument();
   });
 
   it("should replace the default aria-label if aria-label is passed", () => {
-    const {getByLabelText} = render(<Spinner aria-label="Custom label" />);
+    const { getByLabelText } = render(<Spinner aria-label="Custom label" />);
 
     expect(getByLabelText("Custom label")).toBeInTheDocument();
   });

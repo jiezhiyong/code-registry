@@ -1,14 +1,14 @@
 import type { UserEvent } from "@testing-library/user-event";
 
+import { Avatar } from "@/registry/ui/avatar";
 import { Button } from "@/registry/ui/button";
-import { Avatar } from "@heroui/avatar";
-import { Image } from "@heroui/image";
-import { keyCodes, shouldIgnoreReactWarning, spy } from "@heroui/test-utils";
-import { User } from "@heroui/user";
+import { Image } from "@/registry/ui/image";
+import { User } from "@/registry/ui/user";
+import { keyCodes, shouldIgnoreReactWarning, spy } from "@/utils/test";
 import { act, fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 
-import { Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger } from "../src";
+import { Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger } from "@/registry/ui";
 
 describe("Dropdown", () => {
   let user: UserEvent;

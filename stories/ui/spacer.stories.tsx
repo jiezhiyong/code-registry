@@ -1,9 +1,9 @@
-import type { Meta } from "@storybook/react";
-import type { SpacerProps } from "../src";
+import type { SpacerProps } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
-import { spacer } from "@/lib/theme";
+import { spacer } from "@/registry/ui";
 
-import { Spacer } from "../src";
+import { Spacer } from "@/registry/ui";
 
 export default {
   title: "Components/Spacer",

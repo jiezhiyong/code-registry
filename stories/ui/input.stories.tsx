@@ -1,16 +1,16 @@
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
+import type { InputProps } from "@/registry/ui";
 import type { ValidationResult } from "@react-types/shared";
-import type { Meta } from "@storybook/react";
-import type { InputProps } from "../src";
+import type { Meta } from "@storybook/nextjs-vite";
 
 import { CloseFilledIcon, EyeFilledIcon, EyeSlashFilledIcon, MailFilledIcon, SearchIcon } from "@/lib/icons";
-import { button, input } from "@/lib/theme";
-import { Form } from "@heroui/form";
+import { button, input } from "@/registry/ui";
+import { Form } from "@/registry/ui/form";
 import React from "react";
 import { useForm } from "react-hook-form";
 
-import { Input, useInput } from "../src";
+import { Input, useInput } from "@/registry/ui";
 
 export default {
   title: "Components/Input",

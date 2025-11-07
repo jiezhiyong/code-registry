@@ -1,15 +1,15 @@
-import type { Meta } from "@storybook/react";
-import type { DropdownMenuProps, DropdownProps } from "../src";
+import type { DropdownMenuProps, DropdownProps } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
 import { clsx } from "@/lib/base";
 import { AddNoteBulkIcon, CopyDocumentBulkIcon, DeleteDocumentBulkIcon, EditDocumentBulkIcon } from "@/lib/icons";
-import { dropdown, popover } from "@/lib/theme";
+import { dropdown, popover } from "@/registry/ui";
+import { Avatar } from "@/registry/ui/avatar";
 import { Button } from "@/registry/ui/button";
-import { Avatar } from "@heroui/avatar";
-import { User } from "@heroui/user";
+import { User } from "@/registry/ui/user";
 import React from "react";
 
-import { Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger } from "../src";
+import { Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger } from "@/registry/ui";
 
 export default {
   title: "Components/Dropdown",

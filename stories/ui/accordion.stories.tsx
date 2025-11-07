@@ -1,6 +1,6 @@
+import type { AccordionItemProps, AccordionProps } from "@/registry/ui";
 import type { Selection } from "@react-types/shared";
-import type { Meta } from "@storybook/react";
-import type { AccordionItemProps, AccordionProps } from "../src";
+import type { Meta } from "@storybook/nextjs-vite";
 
 import {
   AnchorIcon,
@@ -11,13 +11,13 @@ import {
   ShieldSecurityIcon,
   SunIcon,
 } from "@/lib/icons";
-import { accordionItem, button } from "@/lib/theme";
+import { accordionItem, button } from "@/registry/ui";
+import { Avatar } from "@/registry/ui/avatar";
 import { Button } from "@/registry/ui/button";
-import { Avatar } from "@heroui/avatar";
-import { Input, Textarea } from "@heroui/input";
+import { Input, Textarea } from "@/registry/ui/input";
 import React from "react";
 
-import { Accordion, AccordionItem } from "../src";
+import { Accordion, AccordionItem } from "@/registry/ui";
 
 export default {
   title: "Components/Accordion",

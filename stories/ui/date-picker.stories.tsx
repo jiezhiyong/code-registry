@@ -1,15 +1,16 @@
-import type { RadioProps } from "@heroui/radio";
+import type { DatePickerProps } from "@/registry/ui";
+import type { RadioProps } from "@/registry/ui/radio";
 import type { DateValue } from "@internationalized/date";
 import type { MappedDateValue } from "@react-types/datepicker";
 import type { ValidationResult } from "@react-types/shared";
-import type { Meta } from "@storybook/react";
-import type { DatePickerProps } from "../src";
+import type { Meta } from "@storybook/nextjs-vite";
 
 import { MoonIcon, SunIcon } from "@/lib/icons";
-import { button, cn, dateInput } from "@/lib/theme";
+import { cn } from "@/lib/theme";
+import { button, dateInput } from "@/registry/ui";
 import { Button, ButtonGroup } from "@/registry/ui/button";
-import { Form } from "@heroui/form";
-import { Radio, RadioGroup } from "@heroui/radio";
+import { Form } from "@/registry/ui/form";
+import { Radio, RadioGroup } from "@/registry/ui/radio";
 import {
   getLocalTimeZone,
   isWeekend,
@@ -24,7 +25,7 @@ import {
 import { I18nProvider, useDateFormatter, useLocale } from "@react-aria/i18n";
 import React from "react";
 
-import { DatePicker } from "../src";
+import { DatePicker } from "@/registry/ui";
 
 export default {
   title: "Components/DatePicker",

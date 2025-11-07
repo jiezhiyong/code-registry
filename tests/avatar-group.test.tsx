@@ -1,7 +1,7 @@
+import { render } from "@testing-library/react";
 import * as React from "react";
-import {render} from "@testing-library/react";
 
-import {AvatarGroup, Avatar} from "../src";
+import { Avatar, AvatarGroup } from "@/registry/ui";
 
 describe("AvatarGroup", () => {
   it("should render correctly", () => {
@@ -25,7 +25,7 @@ describe("AvatarGroup", () => {
         <Avatar />
         <Avatar />
         <Avatar />
-      </AvatarGroup>,
+      </AvatarGroup>
     );
 
     const countAvatar = wrapper.getByLabelText("+3");
@@ -38,7 +38,7 @@ describe("AvatarGroup", () => {
       <AvatarGroup max={2}>
         <Avatar />
         <Avatar />
-      </AvatarGroup>,
+      </AvatarGroup>
     );
 
     const countAvatar = wrapper.queryByLabelText("+1");
@@ -54,7 +54,7 @@ describe("AvatarGroup", () => {
         <Avatar />
         <Avatar />
         <Avatar />
-      </AvatarGroup>,
+      </AvatarGroup>
     );
 
     const countAvatar = wrapper.getByLabelText("+5");
@@ -70,7 +70,7 @@ describe("AvatarGroup", () => {
         <Avatar />
         <Avatar />
         <Avatar />
-      </AvatarGroup>,
+      </AvatarGroup>
     );
 
     const countAvatar = wrapper.getByText("3");

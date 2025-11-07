@@ -1,14 +1,14 @@
 /* eslint-disable jsx-a11y/no-autofocus */
-import type {TimeValue} from "@react-types/datepicker";
-import type {TimeInputProps} from "../src";
+import type { TimeInputProps } from "@/registry/ui";
+import type { TimeValue } from "@react-types/datepicker";
 
-import * as React from "react";
-import {fireEvent, render} from "@testing-library/react";
-import {Time, ZonedDateTime} from "@internationalized/date";
-import {pointerMap, triggerPress} from "@heroui/test-utils";
+import { pointerMap, triggerPress } from "@/utils/test";
+import { Time, ZonedDateTime } from "@internationalized/date";
+import { fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import * as React from "react";
 
-import {TimeInput as TimeInputBase} from "../src";
+import { TimeInput as TimeInputBase } from "@/registry/ui";
 
 /**
  * Custom date-input to disable animations and avoid issues with react-motion and jest
@@ -23,7 +23,7 @@ describe("TimeInput", () => {
   let user;
 
   beforeAll(() => {
-    user = userEvent.setup({delay: null, pointerMap});
+    user = userEvent.setup({ delay: null, pointerMap });
     jest.useFakeTimers();
   });
 
@@ -42,13 +42,13 @@ describe("TimeInput", () => {
     });
 
     it("should support autoFocus", function () {
-      let {getAllByRole} = render(<TimeInput autoFocus label="Time" />);
+      let { getAllByRole } = render(<TimeInput autoFocus label="Time" />);
 
       expect(document.activeElement).toBe(getAllByRole("spinbutton")[0]);
     });
 
     it("should pass through data attributes", function () {
-      let {getByTestId} = render(<TimeInput data-testid="foo" label="Time" />);
+      let { getByTestId } = render(<TimeInput data-testid="foo" label="Time" />);
 
       const input = getByTestId("foo");
 
@@ -56,7 +56,7 @@ describe("TimeInput", () => {
     });
 
     it("should include a selected value description", function () {
-      let {getByRole, getAllByRole} = render(<TimeInput label="Time" value={new Time(8, 45)} />);
+      let { getByRole, getAllByRole } = render(<TimeInput label="Time" value={new Time(8, 45)} />);
 
       let group = getByRole("group");
 
@@ -74,10 +74,7 @@ describe("TimeInput", () => {
 
       let segments = getAllByRole("spinbutton");
 
-      expect(segments[0]).toHaveAttribute(
-        "aria-describedby",
-        group.getAttribute("aria-describedby"),
-      );
+      expect(segments[0]).toHaveAttribute("aria-describedby", group.getAttribute("aria-describedby"));
 
       for (let segment of segments.slice(1)) {
         expect(segment).not.toHaveAttribute("aria-describedby");
@@ -87,7 +84,7 @@ describe("TimeInput", () => {
 
   describe("Labelling", () => {
     it("should support labeling", function () {
-      let {getAllByRole, getByText} = render(<TimeInput label="Time" />);
+      let { getAllByRole, getByText } = render(<TimeInput label="Time" />);
 
       let label = getByText("Time");
 
@@ -106,7 +103,7 @@ describe("TimeInput", () => {
     });
 
     it("should support labeling with aria-label", function () {
-      let {getByRole} = render(<TimeInput aria-label="Event time" />);
+      let { getByRole } = render(<TimeInput aria-label="Event time" />);
 
       let field = getByRole("group");
 
@@ -115,7 +112,7 @@ describe("TimeInput", () => {
     });
 
     it("should support labeling with aria-labelledby", function () {
-      let {getByRole, getAllByRole} = render(<TimeInput aria-labelledby="foo" />);
+      let { getByRole, getAllByRole } = render(<TimeInput aria-labelledby="foo" />);
 
       let combobox = getByRole("group");
 
@@ -133,7 +130,7 @@ describe("TimeInput", () => {
     });
 
     it("should support help text description", function () {
-      let {getByRole, getAllByRole} = render(<TimeInput description="Help text" label="Time" />);
+      let { getByRole, getAllByRole } = render(<TimeInput description="Help text" label="Time" />);
 
       let group = getByRole("group");
 
@@ -147,10 +144,7 @@ describe("TimeInput", () => {
 
       let segments = getAllByRole("spinbutton");
 
-      expect(segments[0]).toHaveAttribute(
-        "aria-describedby",
-        group.getAttribute("aria-describedby"),
-      );
+      expect(segments[0]).toHaveAttribute("aria-describedby", group.getAttribute("aria-describedby"));
 
       for (let segment of segments.slice(1)) {
         expect(segment).not.toHaveAttribute("aria-describedby");
@@ -158,8 +152,8 @@ describe("TimeInput", () => {
     });
 
     it("should support error message", function () {
-      let {getByRole, getAllByRole} = render(
-        <TimeInput errorMessage="Error message" label="Time" validationState="invalid" />,
+      let { getByRole, getAllByRole } = render(
+        <TimeInput errorMessage="Error message" label="Time" validationState="invalid" />
       );
 
       let group = getByRole("group");
@@ -175,18 +169,13 @@ describe("TimeInput", () => {
         let segments = getAllByRole("spinbutton");
 
         for (let segment of segments) {
-          expect(segment).toHaveAttribute(
-            "aria-describedby",
-            group.getAttribute("aria-describedby"),
-          );
+          expect(segment).toHaveAttribute("aria-describedby", group.getAttribute("aria-describedby"));
         }
       }
     });
 
     it("should support error message (with isInvalid)", function () {
-      const {getAllByRole, getByRole} = render(
-        <TimeInput isInvalid errorMessage="Error message" label="Time" />,
-      );
+      const { getAllByRole, getByRole } = render(<TimeInput isInvalid errorMessage="Error message" label="Time" />);
 
       const group = getByRole("group");
 
@@ -201,10 +190,7 @@ describe("TimeInput", () => {
         const segments = getAllByRole("spinbutton");
 
         for (const segment of segments) {
-          expect(segment).toHaveAttribute(
-            "aria-describedby",
-            group.getAttribute("aria-describedby"),
-          );
+          expect(segment).toHaveAttribute("aria-describedby", group.getAttribute("aria-describedby"));
         }
       }
     });
@@ -226,13 +212,8 @@ describe("TimeInput", () => {
     });
 
     it("should focus field and switching segments via tab does not change focus", async function () {
-      let {getAllByRole} = render(
-        <TimeInput
-          label="Time"
-          onBlur={onBlurSpy}
-          onFocus={onFocusSpy}
-          onFocusChange={onFocusChangeSpy}
-        />,
+      let { getAllByRole } = render(
+        <TimeInput label="Time" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />
       );
       let segments = getAllByRole("spinbutton");
 
@@ -253,13 +234,8 @@ describe("TimeInput", () => {
     });
 
     it("should call blur when focus leaves", async function () {
-      let {getAllByRole} = render(
-        <TimeInput
-          label="Time"
-          onBlur={onBlurSpy}
-          onFocus={onFocusSpy}
-          onFocusChange={onFocusChangeSpy}
-        />,
+      let { getAllByRole } = render(
+        <TimeInput label="Time" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />
       );
       let segments = getAllByRole("spinbutton");
 
@@ -280,9 +256,7 @@ describe("TimeInput", () => {
     });
 
     it("should trigger right arrow key event for segment navigation", async function () {
-      let {getAllByRole} = render(
-        <TimeInput label="Time" onKeyDown={onKeyDownSpy} onKeyUp={onKeyUpSpy} />,
-      );
+      let { getAllByRole } = render(<TimeInput label="Time" onKeyDown={onKeyDownSpy} onKeyUp={onKeyUpSpy} />);
       let segments = getAllByRole("spinbutton");
 
       expect(onKeyDownSpy).not.toHaveBeenCalled();
@@ -294,8 +268,8 @@ describe("TimeInput", () => {
       expect(onKeyUpSpy).toHaveBeenCalledTimes(1);
 
       if (document.activeElement) {
-        fireEvent.keyDown(document.activeElement, {key: "ArrowRight"});
-        fireEvent.keyUp(document.activeElement, {key: "ArrowRight"});
+        fireEvent.keyDown(document.activeElement, { key: "ArrowRight" });
+        fireEvent.keyUp(document.activeElement, { key: "ArrowRight" });
       }
       expect(segments[1]).toHaveFocus();
       expect(onKeyDownSpy).toHaveBeenCalledTimes(1);
@@ -305,7 +279,7 @@ describe("TimeInput", () => {
 
   describe("Forms", () => {
     it("supports form values", () => {
-      let {rerender} = render(<TimeInput label="Time" name="time" value={new Time(8, 30)} />);
+      let { rerender } = render(<TimeInput label="Time" name="time" value={new Time(8, 30)} />);
       let input = document.querySelector("input[name=time]");
 
       expect(input).toHaveValue("08:30:00");
@@ -318,7 +292,7 @@ describe("TimeInput", () => {
           label="Time"
           name="time"
           value={new ZonedDateTime(2020, 2, 3, "America/Los_Angeles", -28800000, 12, 24, 45)}
-        />,
+        />
       );
 
       expect(input).toHaveValue("12:24:45");
@@ -336,7 +310,7 @@ describe("TimeInput", () => {
         );
       }
 
-      let {getByTestId, getByRole, getAllByRole} = render(<Test />);
+      let { getByTestId, getByRole, getAllByRole } = render(<Test />);
       let group = getByRole("group");
       let input = document.querySelector("input[name=time]");
       let segments = getAllByRole("spinbutton");
@@ -354,8 +328,8 @@ describe("TimeInput", () => {
 
       expect(input).toHaveValue("08:30:00");
       expect(input).toHaveAttribute("name", "time");
-      fireEvent.keyDown(segments[0], {key: "ArrowUp"});
-      fireEvent.keyUp(segments[0], {key: "ArrowUp"});
+      fireEvent.keyDown(segments[0], { key: "ArrowUp" });
+      fireEvent.keyUp(segments[0], { key: "ArrowUp" });
       expect(getDescription()).toBe("Selected Time: 9:30 AM");
       expect(input).toHaveValue("09:30:00");
 
@@ -370,27 +344,20 @@ describe("TimeInput", () => {
 
   describe(`Validation (validationBehavior="aria")`, () => {
     it("should display errorMessage when timeValue is less than the minimum (controlled)", () => {
-      render(
-        <TimeInput
-          label="Time"
-          minValue={new Time(9)}
-          validationBehavior="aria"
-          value={new Time(8)}
-        />,
-      );
+      render(<TimeInput label="Time" minValue={new Time(9)} validationBehavior="aria" value={new Time(8)} />);
 
       expect(document.querySelector("[data-slot=error-message]")).toBeVisible();
     });
 
     it("should display errorMessage when timeValue is less than the minimum (uncontrolled)", async () => {
-      const {getAllByRole} = render(
+      const { getAllByRole } = render(
         <TimeInput
           defaultValue={new Time(9)}
           label="Time"
           minValue={new Time(9)}
           name="time"
           validationBehavior="aria"
-        />,
+        />
       );
 
       const input = document.querySelector("input[name=time]");
@@ -407,27 +374,20 @@ describe("TimeInput", () => {
     });
 
     it("should display errorMessage when timeValue is greater than the maximum (controlled)", () => {
-      render(
-        <TimeInput
-          label="Time"
-          maxValue={new Time(17)}
-          validationBehavior="aria"
-          value={new Time(18)}
-        />,
-      );
+      render(<TimeInput label="Time" maxValue={new Time(17)} validationBehavior="aria" value={new Time(18)} />);
 
       expect(document.querySelector("[data-slot=error-message]")).toBeVisible();
     });
 
     it("should display errorMessage when timeValue is greater than the maximum (uncontrolled)", async () => {
-      const {getAllByRole} = render(
+      const { getAllByRole } = render(
         <TimeInput
           defaultValue={new Time(17)}
           label="Time"
           maxValue={new Time(17)}
           name="time"
           validationBehavior="aria"
-        />,
+        />
       );
 
       const input = document.querySelector("input[name=time]");

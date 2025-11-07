@@ -1,13 +1,13 @@
-import type { Meta } from "@storybook/react";
-import type { CardProps } from "../src";
+import type { CardProps } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
-import { card } from "@/lib/theme";
+import { card } from "@/registry/ui";
 import { Button } from "@/registry/ui/button";
-import { Code } from "@heroui/code";
-import { Image } from "@heroui/image";
-import { Link } from "@heroui/link";
+import { Code } from "@/registry/ui/code";
+import { Image } from "@/registry/ui/image";
+import { Link } from "@/registry/ui/link";
 
-import { Card, CardBody, CardFooter, CardHeader } from "../src";
+import { Card, CardBody, CardFooter, CardHeader } from "@/registry/ui";
 
 export default {
   title: "Components/Card",

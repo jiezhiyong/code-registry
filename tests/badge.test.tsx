@@ -1,8 +1,8 @@
+import { Avatar } from "@/registry/ui/avatar";
+import { render } from "@testing-library/react";
 import * as React from "react";
-import {render} from "@testing-library/react";
-import {Avatar} from "@heroui/avatar";
 
-import {Badge} from "../src";
+import { Badge } from "@/registry/ui";
 
 const content = <Avatar src="https://i.pravatar.cc/300?u=a042581f4e29026709d" />;
 
@@ -24,7 +24,7 @@ describe("Badge", () => {
     const wrapper = render(
       <Badge content={<span data-testid="badge-content" />}>
         <span data-testid="badge-children">new</span>
-      </Badge>,
+      </Badge>
     );
 
     expect(wrapper.getByTestId("badge-content")).toBeTruthy();
@@ -35,7 +35,7 @@ describe("Badge", () => {
     const wrapper = render(
       <Badge isInvisible content={<span data-testid="badge-content" />} data-testid="badge-root">
         <span data-testid="badge-children">new</span>
-      </Badge>,
+      </Badge>
     );
 
     expect(wrapper.getByTestId("badge-root")).toHaveAttribute("data-invisible", "true");

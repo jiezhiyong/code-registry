@@ -1,20 +1,20 @@
 /* eslint-disable jsx-a11y/no-autofocus */
-import type { Meta } from "@storybook/react";
-import type { DrawerProps } from "../src";
+import type { DrawerProps } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
 import { useDisclosure } from "@/lib/hooks/use-disclosure";
 import { LockFilledIcon, MailFilledIcon } from "@/lib/icons";
-import { drawer } from "@/lib/theme";
+import { drawer } from "@/registry/ui";
+import { Avatar, AvatarGroup } from "@/registry/ui/avatar";
 import { Button } from "@/registry/ui/button";
-import { Avatar, AvatarGroup } from "@heroui/avatar";
-import { Checkbox } from "@heroui/checkbox";
-import { Image } from "@heroui/image";
-import { Input } from "@heroui/input";
-import { Link } from "@heroui/link";
-import { Tooltip } from "@heroui/tooltip";
+import { Checkbox } from "@/registry/ui/checkbox";
+import { Image } from "@/registry/ui/image";
+import { Input } from "@/registry/ui/input";
+import { Link } from "@/registry/ui/link";
+import { Tooltip } from "@/registry/ui/tooltip";
 import React from "react";
 
-import { Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader } from "../src";
+import { Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader } from "@/registry/ui";
 
 export default {
   title: "Components/Drawer",

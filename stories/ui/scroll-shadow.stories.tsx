@@ -1,11 +1,11 @@
-import type { Meta } from "@storybook/react";
-import type { ScrollShadowOrientation, ScrollShadowProps, ScrollShadowVisibility } from "../src";
+import type { ScrollShadowOrientation, ScrollShadowProps, ScrollShadowVisibility } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
-import { button, scrollShadow } from "@/lib/theme";
+import { button, scrollShadow } from "@/registry/ui";
 import React from "react";
 import Lorem from "react-lorem-component";
 
-import { ScrollShadow } from "../src";
+import { ScrollShadow } from "@/registry/ui";
 
 export default {
   title: "Components/ScrollShadow",

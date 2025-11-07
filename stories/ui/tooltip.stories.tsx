@@ -1,11 +1,11 @@
-import type { Meta } from "@storybook/react";
-import type { TooltipProps } from "../src";
+import type { TooltipProps } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
-import { popover } from "@/lib/theme";
+import { popover } from "@/registry/ui";
 import { Button } from "@/registry/ui/button";
 import React from "react";
 
-import { Tooltip } from "../src";
+import { Tooltip } from "@/registry/ui";
 
 export default {
   title: "Components/Tooltip",

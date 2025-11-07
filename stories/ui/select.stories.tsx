@@ -1,21 +1,22 @@
-import type { Animal, Pokemon, User } from "@heroui/stories-utils";
+import type { SelectedItems, SelectProps } from "@/registry/ui";
+import type { Animal, Pokemon, User } from "@/utils/storybook";
 import type { Selection, ValidationResult } from "@react-types/shared";
-import type { Meta } from "@storybook/react";
+import type { Meta } from "@storybook/nextjs-vite";
 import type { ChangeEvent } from "react";
-import type { SelectedItems, SelectProps } from "../src";
 
 import { useInfiniteScroll } from "@/lib/hooks/use-infinite-scroll";
-import { PetBoldIcon, SelectorIcon } from "@/lib/icons";
-import { button, select } from "@/lib/theme";
+import { SelectorIcon } from "@/lib/icons";
+import { button, select } from "@/registry/ui";
+import { Avatar } from "@/registry/ui/avatar";
 import { Button } from "@/registry/ui/button";
-import { Avatar } from "@heroui/avatar";
-import { Chip } from "@heroui/chip";
-import { Form } from "@heroui/form";
-import { animalsData, usePokemonList, usersData } from "@heroui/stories-utils";
+import { Chip } from "@/registry/ui/chip";
+import { Form } from "@/registry/ui/form";
+import { PetBoldIcon } from "@/utils/icons";
+import { animalsData, usePokemonList, usersData } from "@/utils/storybook";
 import React from "react";
 import { useForm } from "react-hook-form";
 
-import { Select, SelectItem, SelectSection } from "../src";
+import { Select, SelectItem, SelectSection } from "@/registry/ui";
 
 export default {
   title: "Components/Select",

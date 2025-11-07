@@ -1,17 +1,25 @@
-import type { Meta } from "@storybook/react";
-import type { NavbarProps } from "../src";
+import type { NavbarProps } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
 import { Activity, ChevronDown, Flash, Lock, Scale, SearchIcon, Server, TagUser } from "@/lib/icons";
-import { navbar } from "@/lib/theme";
+import { navbar } from "@/registry/ui";
+import { Avatar } from "@/registry/ui/avatar";
 import { Button } from "@/registry/ui/button";
-import { Avatar } from "@heroui/avatar";
-import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@heroui/dropdown";
-import { Input } from "@heroui/input";
-import { Link } from "@heroui/link";
+import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@/registry/ui/dropdown";
+import { Input } from "@/registry/ui/input";
+import { Link } from "@/registry/ui/link";
 import React from "react";
 import Lorem from "react-lorem-component";
 
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem, NavbarMenuToggle } from "../src";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  NavbarMenu,
+  NavbarMenuItem,
+  NavbarMenuToggle,
+} from "@/registry/ui";
 
 export default {
   title: "Components/Navbar",

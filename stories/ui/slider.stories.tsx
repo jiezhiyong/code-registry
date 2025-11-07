@@ -1,12 +1,13 @@
-import type { Meta } from "@storybook/react";
-import type { SliderProps, SliderValue } from "../src";
-
-import { InfoIcon, VolumeHighBoldIcon, VolumeLowBoldIcon } from "@/lib/icons";
-import { cn, slider } from "@/lib/theme";
-import { Tooltip } from "@heroui/tooltip";
+import { InfoIcon } from "@/lib/icons";
+import { cn } from "@/lib/theme";
+import type { SliderProps, SliderValue } from "@/registry/ui";
+import { slider } from "@/registry/ui";
+import { Tooltip } from "@/registry/ui/tooltip";
+import { VolumeHighBoldIcon, VolumeLowBoldIcon } from "@/utils/icons";
+import type { Meta } from "@storybook/nextjs-vite";
 import React from "react";
 
-import { Slider } from "../src";
+import { Slider } from "@/registry/ui";
 
 export default {
   title: "Components/Slider",

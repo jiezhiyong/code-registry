@@ -1,10 +1,10 @@
-import type { Meta } from "@storybook/react";
-import type { ImageProps } from "../src";
+import type { ImageProps } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
-import { image } from "@/lib/theme";
+import { image } from "@/registry/ui";
 import React from "react";
 
-import { Image } from "../src";
+import { Image } from "@/registry/ui";
 
 export default {
   title: "Components/Image",

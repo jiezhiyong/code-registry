@@ -1,15 +1,15 @@
-import type { Meta } from "@storybook/react";
-import type { ToastProps } from "../src";
-
 import { AvatarIcon, CloseIcon } from "@/lib/icons";
-import { cn, toast } from "@/lib/theme";
+import { cn } from "@/lib/theme";
+import type { ToastProps } from "@/registry/ui";
+import { toast } from "@/registry/ui";
 import { Button } from "@/registry/ui/button";
-import { Drawer, DrawerContent } from "@heroui/drawer";
-import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from "@heroui/modal";
-import { Spinner } from "@heroui/spinner";
+import { Drawer, DrawerContent } from "@/registry/ui/drawer";
+import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from "@/registry/ui/modal";
+import { Spinner } from "@/registry/ui/spinner";
+import type { Meta } from "@storybook/nextjs-vite";
 import { useEffect, useState } from "react";
 
-import { Toast, ToastProvider, addToast, closeAll, closeToast } from "../src";
+import { Toast, ToastProvider, addToast, closeAll, closeToast } from "@/registry/ui";
 
 export default {
   title: "Components/Toast",

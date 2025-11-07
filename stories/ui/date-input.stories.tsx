@@ -1,10 +1,10 @@
+import type { DateInputProps } from "@/registry/ui";
 import type { DateValue } from "@internationalized/date";
 import type { ValidationResult } from "@react-types/shared";
-import type { Meta } from "@storybook/react";
-import type { DateInputProps } from "../src";
+import type { Meta } from "@storybook/nextjs-vite";
 
-import { CalendarBoldIcon } from "@/lib/icons";
-import { button, dateInput } from "@/lib/theme";
+import { button, dateInput } from "@/registry/ui";
+import { CalendarBoldIcon } from "@/utils/icons";
 import {
   CalendarDate,
   getLocalTimeZone,
@@ -17,7 +17,7 @@ import {
 import { I18nProvider, useDateFormatter } from "@react-aria/i18n";
 import React from "react";
 
-import { DateInput } from "../src";
+import { DateInput } from "@/registry/ui";
 
 export default {
   title: "Components/DateInput",

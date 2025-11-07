@@ -1,16 +1,16 @@
+import type { AutocompleteProps } from "@/registry/ui";
 import "@testing-library/jest-dom";
-import type {UserEvent} from "@testing-library/user-event";
-import type {AutocompleteProps} from "../src";
+import type { UserEvent } from "@testing-library/user-event";
 
-import * as React from "react";
-import {within, render, renderHook, act} from "@testing-library/react";
+import { Form } from "@/registry/ui/form";
+import { shouldIgnoreReactWarning, spy } from "@/utils/test";
+import { act, render, renderHook, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {spy, shouldIgnoreReactWarning} from "@heroui/test-utils";
-import {useForm} from "react-hook-form";
-import {Form} from "@heroui/form";
+import * as React from "react";
+import { useForm } from "react-hook-form";
 
-import {Autocomplete, AutocompleteItem, AutocompleteSection} from "../src";
-import {Modal, ModalContent, ModalBody, ModalHeader, ModalFooter} from "../../modal/src";
+import { Autocomplete, AutocompleteItem, AutocompleteSection } from "@/registry/ui";
+import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@/registry/ui/modal";
 
 type Item = {
   label: string;
@@ -18,19 +18,19 @@ type Item = {
 };
 
 const itemsData: Item[] = [
-  {label: "Cat", value: "cat"},
-  {label: "Dog", value: "dog"},
-  {label: "Elephant", value: "elephant"},
-  {label: "Lion", value: "lion"},
-  {label: "Tiger", value: "tiger"},
-  {label: "Giraffe", value: "giraffe"},
-  {label: "Dolphin", value: "dolphin"},
-  {label: "Penguin", value: "penguin"},
-  {label: "Zebra", value: "zebra"},
-  {label: "Shark", value: "shark"},
-  {label: "Whale", value: "whale"},
-  {label: "Otter", value: "otter"},
-  {label: "Crocodile", value: "crocodile"},
+  { label: "Cat", value: "cat" },
+  { label: "Dog", value: "dog" },
+  { label: "Elephant", value: "elephant" },
+  { label: "Lion", value: "lion" },
+  { label: "Tiger", value: "tiger" },
+  { label: "Giraffe", value: "giraffe" },
+  { label: "Dolphin", value: "dolphin" },
+  { label: "Penguin", value: "penguin" },
+  { label: "Zebra", value: "zebra" },
+  { label: "Shark", value: "shark" },
+  { label: "Whale", value: "whale" },
+  { label: "Otter", value: "otter" },
+  { label: "Crocodile", value: "crocodile" },
 ];
 
 const itemsSectionData = [
@@ -38,18 +38,18 @@ const itemsSectionData = [
     key: "mammals",
     title: "Mammals",
     children: [
-      {key: "lion", label: "Lion", value: "lion"},
-      {key: "tiger", label: "Tiger", value: "tiger"},
-      {key: "elephant", label: "Elephant", value: "elephant"},
+      { key: "lion", label: "Lion", value: "lion" },
+      { key: "tiger", label: "Tiger", value: "tiger" },
+      { key: "elephant", label: "Elephant", value: "elephant" },
     ],
   },
   {
     key: "birds",
     title: "Birds",
     children: [
-      {key: "penguin", label: "Penguin", value: "penguin"},
-      {key: "ostrich", label: "Ostrich", value: "ostrich"},
-      {key: "peacock", label: "Peacock", value: "peacock"},
+      { key: "penguin", label: "Penguin", value: "penguin" },
+      { key: "ostrich", label: "Ostrich", value: "ostrich" },
+      { key: "peacock", label: "Peacock", value: "peacock" },
     ],
   },
 ];
@@ -102,7 +102,7 @@ describe("Autocomplete", () => {
         <AutocompleteItem key="penguin">Penguin</AutocompleteItem>
         <AutocompleteItem key="zebra">Zebra</AutocompleteItem>
         <AutocompleteItem key="shark">Shark</AutocompleteItem>
-      </Autocomplete>,
+      </Autocomplete>
     );
 
     expect(ref.current).not.toBeNull();
@@ -112,7 +112,7 @@ describe("Autocomplete", () => {
     const wrapper = render(
       <Autocomplete aria-label="Favorite Animal" items={itemsData} label="Favorite Animal">
         {(item) => <AutocompleteItem key={item.value}>{item.label}</AutocompleteItem>}
-      </Autocomplete>,
+      </Autocomplete>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -128,7 +128,7 @@ describe("Autocomplete", () => {
           <AutocompleteItem key="zebra">Zebra</AutocompleteItem>
           <AutocompleteItem key="shark">Shark</AutocompleteItem>
         </AutocompleteSection>
-      </Autocomplete>,
+      </Autocomplete>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -138,16 +138,12 @@ describe("Autocomplete", () => {
     const wrapper = render(
       <Autocomplete aria-label="Favorite Animal" items={itemsSectionData} label="Favorite Animal">
         {(section) => (
-          <AutocompleteSection<Item>
-            aria-label={section.title}
-            items={section.children}
-            title={section.title}
-          >
+          <AutocompleteSection<Item> aria-label={section.title} items={section.children} title={section.title}>
             {/* @ts-ignore TODO: fix section children types*/}
             {(item: Item) => <AutocompleteItem key={item.value}>{item.label}</AutocompleteItem>}
           </AutocompleteSection>
         )}
-      </Autocomplete>,
+      </Autocomplete>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -159,7 +155,7 @@ describe("Autocomplete", () => {
         <AutocompleteItem key="penguin">Penguin</AutocompleteItem>
         <AutocompleteItem key="zebra">Zebra</AutocompleteItem>
         <AutocompleteItem key="shark">Shark</AutocompleteItem>
-      </Autocomplete>,
+      </Autocomplete>
     );
 
     const autocomplete = wrapper.getByTestId("autocomplete");
@@ -178,16 +174,11 @@ describe("Autocomplete", () => {
     const onClear = jest.fn();
 
     const wrapper = render(
-      <Autocomplete
-        aria-label="Favorite Animal"
-        data-testid="autocomplete"
-        label="Favorite Animal"
-        onClear={onClear}
-      >
+      <Autocomplete aria-label="Favorite Animal" data-testid="autocomplete" label="Favorite Animal" onClear={onClear}>
         <AutocompleteItem key="penguin">Penguin</AutocompleteItem>
         <AutocompleteItem key="zebra">Zebra</AutocompleteItem>
         <AutocompleteItem key="shark">Shark</AutocompleteItem>
-      </Autocomplete>,
+      </Autocomplete>
     );
 
     const autocomplete = wrapper.getByTestId("autocomplete");
@@ -203,11 +194,9 @@ describe("Autocomplete", () => {
     // select the target item
     await user.click(options[0]);
 
-    const {container} = wrapper;
+    const { container } = wrapper;
 
-    const clearButton = container.querySelector(
-      "[data-slot='inner-wrapper'] button:nth-of-type(1)",
-    )!;
+    const clearButton = container.querySelector("[data-slot='inner-wrapper'] button:nth-of-type(1)")!;
 
     expect(clearButton).not.toBeNull();
 
@@ -230,7 +219,7 @@ describe("Autocomplete", () => {
         <AutocompleteItem key="penguin">Penguin</AutocompleteItem>
         <AutocompleteItem key="zebra">Zebra</AutocompleteItem>
         <AutocompleteItem key="shark">Shark</AutocompleteItem>
-      </Autocomplete>,
+      </Autocomplete>
     );
 
     const autocomplete = wrapper.getByTestId("autocomplete");
@@ -243,11 +232,9 @@ describe("Autocomplete", () => {
 
     await user.keyboard("pe");
 
-    const {container} = wrapper;
+    const { container } = wrapper;
 
-    const clearButton = container.querySelector(
-      "[data-slot='inner-wrapper'] button:nth-of-type(1)",
-    )!;
+    const clearButton = container.querySelector("[data-slot='inner-wrapper'] button:nth-of-type(1)")!;
 
     expect(clearButton).not.toBeNull();
 
@@ -267,7 +254,7 @@ describe("Autocomplete", () => {
         <AutocompleteItem key="penguin">Penguin</AutocompleteItem>
         <AutocompleteItem key="zebra">Zebra</AutocompleteItem>
         <AutocompleteItem key="shark">Shark</AutocompleteItem>
-      </Autocomplete>,
+      </Autocomplete>
     );
 
     const autocomplete = wrapper.getByTestId("autocomplete");
@@ -283,11 +270,9 @@ describe("Autocomplete", () => {
     // select the target item
     await user.click(options[0]);
 
-    const {container} = wrapper;
+    const { container } = wrapper;
 
-    const clearButton = container.querySelector(
-      "[data-slot='inner-wrapper'] button:nth-of-type(1)",
-    )!;
+    const clearButton = container.querySelector("[data-slot='inner-wrapper'] button:nth-of-type(1)")!;
 
     expect(clearButton).not.toBeNull();
 
@@ -302,7 +287,7 @@ describe("Autocomplete", () => {
     const wrapper = render(
       <ControlledAutocomplete data-testid="autocomplete" items={itemsData}>
         {(item) => <AutocompleteItem key={item.value}>{item.value}</AutocompleteItem>}
-      </ControlledAutocomplete>,
+      </ControlledAutocomplete>
     );
 
     const autocomplete = wrapper.getByTestId("autocomplete");
@@ -318,11 +303,9 @@ describe("Autocomplete", () => {
     // select the target item
     await user.click(options[0]);
 
-    const {container} = wrapper;
+    const { container } = wrapper;
 
-    const clearButton = container.querySelector(
-      "[data-slot='inner-wrapper'] button:nth-of-type(1)",
-    )!;
+    const clearButton = container.querySelector("[data-slot='inner-wrapper'] button:nth-of-type(1)")!;
 
     expect(clearButton).not.toBeNull();
 
@@ -340,7 +323,7 @@ describe("Autocomplete", () => {
     const wrapper = render(
       <ControlledAutocomplete data-testid="autocomplete" items={itemsData}>
         {(item) => <AutocompleteItem key={item.value}>{item.value}</AutocompleteItem>}
-      </ControlledAutocomplete>,
+      </ControlledAutocomplete>
     );
 
     const autocomplete = wrapper.getByTestId("autocomplete");
@@ -356,11 +339,9 @@ describe("Autocomplete", () => {
     // select the target item
     await user.click(options[0]);
 
-    const {container} = wrapper;
+    const { container } = wrapper;
 
-    const clearButton = container.querySelector(
-      "[data-slot='inner-wrapper'] button:nth-of-type(1)",
-    )!;
+    const clearButton = container.querySelector("[data-slot='inner-wrapper'] button:nth-of-type(1)")!;
 
     expect(clearButton).not.toBeNull();
 
@@ -377,14 +358,12 @@ describe("Autocomplete", () => {
         <AutocompleteItem key="penguin">Penguin</AutocompleteItem>
         <AutocompleteItem key="zebra">Zebra</AutocompleteItem>
         <AutocompleteItem key="shark">Shark</AutocompleteItem>
-      </Autocomplete>,
+      </Autocomplete>
     );
 
-    const {container} = wrapper;
+    const { container } = wrapper;
 
-    const selectorButton = container.querySelector(
-      "[data-slot='inner-wrapper'] button:nth-of-type(2)",
-    )!;
+    const selectorButton = container.querySelector("[data-slot='inner-wrapper'] button:nth-of-type(2)")!;
 
     expect(selectorButton).not.toBeNull();
 
@@ -415,14 +394,12 @@ describe("Autocomplete", () => {
         <AutocompleteItem key="penguin">Penguin</AutocompleteItem>
         <AutocompleteItem key="zebra">Zebra</AutocompleteItem>
         <AutocompleteItem key="shark">Shark</AutocompleteItem>
-      </Autocomplete>,
+      </Autocomplete>
     );
 
-    const {container} = wrapper;
+    const { container } = wrapper;
 
-    const selectorButton = container.querySelector(
-      "[data-slot='inner-wrapper'] button:nth-of-type(2)",
-    )!;
+    const selectorButton = container.querySelector("[data-slot='inner-wrapper'] button:nth-of-type(2)")!;
 
     expect(selectorButton).not.toBeNull();
 
@@ -450,11 +427,7 @@ describe("Autocomplete", () => {
         <ModalContent>
           <ModalHeader>Modal header</ModalHeader>
           <ModalBody>
-            <Autocomplete
-              aria-label="Favorite Animal"
-              data-testid="autocomplete"
-              label="Favorite Animal"
-            >
+            <Autocomplete aria-label="Favorite Animal" data-testid="autocomplete" label="Favorite Animal">
               <AutocompleteItem key="penguin">Penguin</AutocompleteItem>
               <AutocompleteItem key="zebra">Zebra</AutocompleteItem>
               <AutocompleteItem key="shark">Shark</AutocompleteItem>
@@ -462,13 +435,11 @@ describe("Autocomplete", () => {
           </ModalBody>
           <ModalFooter>Modal footer</ModalFooter>
         </ModalContent>
-      </Modal>,
+      </Modal>
     );
     const modal = wrapper.getByRole("dialog");
 
-    const selectorButton = modal.querySelector(
-      "[data-slot='inner-wrapper'] button:nth-of-type(2)",
-    )!;
+    const selectorButton = modal.querySelector("[data-slot='inner-wrapper'] button:nth-of-type(2)")!;
 
     expect(selectorButton).not.toBeNull();
 
@@ -493,7 +464,7 @@ describe("Autocomplete", () => {
         <AutocompleteItem key="penguin">Penguin</AutocompleteItem>
         <AutocompleteItem key="zebra">Zebra</AutocompleteItem>
         <AutocompleteItem key="shark">Shark</AutocompleteItem>
-      </Autocomplete>,
+      </Autocomplete>
     );
 
     const autocomplete = wrapper.getByTestId("autocomplete");
@@ -521,28 +492,20 @@ describe("Autocomplete", () => {
   it("should close listbox by clicking another autocomplete", async () => {
     const wrapper = render(
       <>
-        <Autocomplete
-          aria-label="Favorite Animal"
-          data-testid="autocomplete"
-          label="Favorite Animal"
-        >
+        <Autocomplete aria-label="Favorite Animal" data-testid="autocomplete" label="Favorite Animal">
           <AutocompleteItem key="penguin">Penguin</AutocompleteItem>
           <AutocompleteItem key="zebra">Zebra</AutocompleteItem>
           <AutocompleteItem key="shark">Shark</AutocompleteItem>
         </Autocomplete>
-        <Autocomplete
-          aria-label="Favorite Animal"
-          data-testid="autocomplete2"
-          label="Favorite Animal"
-        >
+        <Autocomplete aria-label="Favorite Animal" data-testid="autocomplete2" label="Favorite Animal">
           <AutocompleteItem key="penguin">Penguin</AutocompleteItem>
           <AutocompleteItem key="zebra">Zebra</AutocompleteItem>
           <AutocompleteItem key="shark">Shark</AutocompleteItem>
         </Autocomplete>
-      </>,
+      </>
     );
 
-    const {container} = wrapper;
+    const { container } = wrapper;
 
     const autocomplete = wrapper.getByTestId("autocomplete");
 
@@ -593,7 +556,7 @@ describe("Autocomplete", () => {
         label="Favorite Animal"
       >
         {(item) => <AutocompleteItem key={item.value}>{item.value}</AutocompleteItem>}
-      </Autocomplete>,
+      </Autocomplete>
     );
 
     const autocomplete = wrapper.getByTestId("autocomplete");
@@ -617,7 +580,7 @@ describe("Autocomplete", () => {
     const wrapper = render(
       <ControlledAutocomplete data-testid="autocomplete" items={itemsData}>
         {(item) => <AutocompleteItem key={item.value}>{item.value}</AutocompleteItem>}
-      </ControlledAutocomplete>,
+      </ControlledAutocomplete>
     );
 
     const autocomplete = wrapper.getByTestId("autocomplete");
@@ -646,10 +609,10 @@ describe("Autocomplete", () => {
 
     describe("validationBehavior=native", () => {
       it("supports isRequired", async () => {
-        const {getByTestId, getByRole, findByRole} = render(
+        const { getByTestId, getByRole, findByRole } = render(
           <Form data-testid="form" validationBehavior="native">
             <AutocompleteExample isRequired />
-          </Form>,
+          </Form>
         );
 
         const input = getByRole("combobox") as HTMLInputElement;
@@ -665,7 +628,7 @@ describe("Autocomplete", () => {
 
         expect(input).toHaveAttribute("aria-describedby");
         expect(document.getElementById(input.getAttribute("aria-describedby")!)).toHaveTextContent(
-          "Constraints not satisfied",
+          "Constraints not satisfied"
         );
 
         await user.click(input);
@@ -698,7 +661,7 @@ describe("Autocomplete", () => {
           );
         }
 
-        const {getByTestId, getByRole} = render(<Test />);
+        const { getByTestId, getByRole } = render(<Test />);
 
         const input = getByTestId("input") as HTMLInputElement;
 
@@ -707,12 +670,10 @@ describe("Autocomplete", () => {
         await user.click(getByTestId("submit"));
 
         expect(input).toHaveAttribute("aria-describedby");
-        expect(document.getElementById(input.getAttribute("aria-describedby")!)).toHaveTextContent(
-          "Invalid value.",
-        );
+        expect(document.getElementById(input.getAttribute("aria-describedby")!)).toHaveTextContent("Invalid value.");
         expect(input.validity.valid).toBe(false);
 
-        await user.tab({shift: true});
+        await user.tab({ shift: true });
         await user.keyboard("[ArrowRight]Ze");
 
         act(() => {
@@ -741,7 +702,7 @@ describe("Autocomplete", () => {
           e.preventDefault();
         });
 
-        const {getByTestId, findByRole} = render(
+        const { getByTestId, findByRole } = render(
           <Form validationBehavior="native" onSubmit={onSubmit}>
             <AutocompleteExample
               data-testid="combobox"
@@ -756,7 +717,7 @@ describe("Autocomplete", () => {
             <button data-testid="submit" type="submit">
               Submit
             </button>
-          </Form>,
+          </Form>
         );
 
         const combobox = getByTestId("combobox") as HTMLInputElement;
@@ -770,9 +731,9 @@ describe("Autocomplete", () => {
 
         expect(onSubmit).toHaveBeenCalledTimes(0);
         expect(combobox).toHaveAttribute("aria-describedby");
-        expect(
-          document.getElementById(combobox.getAttribute("aria-describedby")!),
-        ).toHaveTextContent("Please select an animal");
+        expect(document.getElementById(combobox.getAttribute("aria-describedby")!)).toHaveTextContent(
+          "Please select an animal"
+        );
 
         await user.click(combobox);
         await user.keyboard("pe");
@@ -791,23 +752,21 @@ describe("Autocomplete", () => {
 
     describe("validationBehavior=aria", () => {
       it("supports validate function", async () => {
-        let {getByRole, findByRole} = render(
+        let { getByRole, findByRole } = render(
           <form data-testid="form">
             <AutocompleteExample
               defaultSelectedKey="penguin"
               validate={(v) => (v.selectedKey === "penguin" ? "Invalid value" : null)}
               validationBehavior="aria"
             />
-          </form>,
+          </form>
         );
 
         const input = getByRole("combobox") as HTMLInputElement;
 
         expect(input).toHaveAttribute("aria-describedby");
         expect(input).toHaveAttribute("aria-invalid", "true");
-        expect(document.getElementById(input.getAttribute("aria-describedby")!)).toHaveTextContent(
-          "Invalid value",
-        );
+        expect(document.getElementById(input.getAttribute("aria-describedby")!)).toHaveTextContent("Invalid value");
         expect(input.validity.valid).toBe(true);
 
         await user.tab();
@@ -816,7 +775,7 @@ describe("Autocomplete", () => {
         await user.keyboard("{ArrowDown}");
 
         const listbox = await findByRole("listbox");
-        const item = within(listbox).getByRole("option", {name: "Zebra"});
+        const item = within(listbox).getByRole("option", { name: "Zebra" });
 
         await user.click(item);
 
@@ -825,19 +784,17 @@ describe("Autocomplete", () => {
       });
 
       it("supports server validation", async () => {
-        const {getByTestId, getByRole} = render(
-          <Form validationBehavior="aria" validationErrors={{value: "Invalid value"}}>
+        const { getByTestId, getByRole } = render(
+          <Form validationBehavior="aria" validationErrors={{ value: "Invalid value" }}>
             <AutocompleteExample data-testid="input" name="value" />
-          </Form>,
+          </Form>
         );
 
         const input = getByTestId("input");
 
         expect(input).toHaveAttribute("aria-describedby");
         expect(input).toHaveAttribute("aria-invalid", "true");
-        expect(document.getElementById(input.getAttribute("aria-describedby")!)).toHaveTextContent(
-          "Invalid value",
-        );
+        expect(document.getElementById(input.getAttribute("aria-describedby")!)).toHaveTextContent("Invalid value");
 
         await user.tab();
         await user.keyboard("[ArrowRight]Ze");
@@ -871,20 +828,20 @@ describe("Autocomplete with React Hook Form", () => {
   let onSubmit: () => void;
 
   beforeEach(() => {
-    const {result} = renderHook(() =>
+    const { result } = renderHook(() =>
       useForm({
         defaultValues: {
           withDefaultValue: "cat",
           withoutDefaultValue: "",
           requiredField: "",
         },
-      }),
+      })
     );
 
     const {
       handleSubmit,
       register,
-      formState: {errors},
+      formState: { errors },
     } = result.current;
 
     onSubmit = jest.fn();
@@ -911,7 +868,7 @@ describe("Autocomplete with React Hook Form", () => {
         </Autocomplete>
         <Autocomplete
           data-testid="autocomplete-3"
-          {...register("requiredField", {required: true})}
+          {...register("requiredField", { required: true })}
           aria-label="Favorite Animal"
           items={itemsData}
           label="Favorite Animal"
@@ -922,7 +879,7 @@ describe("Autocomplete with React Hook Form", () => {
         <button data-testid="submit-button" type="submit">
           Submit
         </button>
-      </form>,
+      </form>
     );
 
     autocomplete1 = wrapper.getByTestId("autocomplete-1");
@@ -984,7 +941,7 @@ describe("focusedKey management with selected key", () => {
         </AutocompleteItem>
         <AutocompleteItem key="zebra">Zebra</AutocompleteItem>
         <AutocompleteItem key="shark">Shark</AutocompleteItem>
-      </Autocomplete>,
+      </Autocomplete>
     );
 
     const autocomplete = wrapper.getByTestId("autocomplete");
@@ -1006,7 +963,7 @@ describe("focusedKey management with selected key", () => {
         <AutocompleteItem key="penguin">Penguin</AutocompleteItem>
         <AutocompleteItem key="zebra">Zebra</AutocompleteItem>
         <AutocompleteItem key="shark">Shark</AutocompleteItem>
-      </Autocomplete>,
+      </Autocomplete>
     );
 
     const autocomplete = wrapper.getByTestId("autocomplete");
@@ -1036,7 +993,7 @@ describe("focusedKey management with selected key", () => {
         <AutocompleteItem key="penguin">Penguin</AutocompleteItem>
         <AutocompleteItem key="zebra">Zebra</AutocompleteItem>
         <AutocompleteItem key="shark">Shark</AutocompleteItem>
-      </Autocomplete>,
+      </Autocomplete>
     );
 
     const autocomplete = wrapper.getByTestId("autocomplete");
@@ -1051,17 +1008,17 @@ describe("focusedKey management with selected key", () => {
   });
 
   it("should set focusedKey to the default item's key when using react-hook-form defaultValues", async () => {
-    const {result} = renderHook(() =>
+    const { result } = renderHook(() =>
       useForm({
         defaultValues: {
           withDefaultValue: "zebra",
           withoutDefaultValue: "",
           requiredField: "",
         },
-      }),
+      })
     );
 
-    const {register} = result.current;
+    const { register } = result.current;
 
     const wrapper = render(
       <form>
@@ -1075,7 +1032,7 @@ describe("focusedKey management with selected key", () => {
           <AutocompleteItem key="zebra">Zebra</AutocompleteItem>
           <AutocompleteItem key="shark">Shark</AutocompleteItem>
         </Autocomplete>
-      </form>,
+      </form>
     );
 
     const autocomplete = wrapper.getByTestId("autocomplete");

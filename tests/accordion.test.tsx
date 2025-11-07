@@ -1,13 +1,13 @@
 import "@testing-library/jest-dom";
 import type { UserEvent } from "@testing-library/user-event";
 
-import { Input } from "@heroui/input";
-import { focus, shouldIgnoreReactWarning, spy } from "@heroui/test-utils";
+import { Input } from "@/registry/ui/input";
+import { focus, shouldIgnoreReactWarning, spy } from "@/utils/test";
 import { act, render, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import * as React from "react";
 
-import { Accordion, AccordionItem } from "../src";
+import { Accordion, AccordionItem } from "@/registry/ui";
 
 describe("Accordion", () => {
   let user: UserEvent;

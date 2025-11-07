@@ -1,11 +1,11 @@
-import type {UserEvent} from "@testing-library/user-event";
+import type { UserEvent } from "@testing-library/user-event";
 
-import * as React from "react";
-import {act, render} from "@testing-library/react";
-import {Form} from "@heroui/form";
+import { Form } from "@/registry/ui/form";
+import { act, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import * as React from "react";
 
-import {CheckboxGroup, Checkbox} from "../src";
+import { Checkbox, CheckboxGroup } from "@/registry/ui";
 
 describe("Checkbox.Group", () => {
   let user: UserEvent;
@@ -19,7 +19,7 @@ describe("Checkbox.Group", () => {
       <CheckboxGroup defaultValue={[]} label="Select cities">
         <Checkbox value="sydney">Sydney</Checkbox>
         <Checkbox value="buenos-aires">Buenos Aires</Checkbox>
-      </CheckboxGroup>,
+      </CheckboxGroup>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -32,14 +32,14 @@ describe("Checkbox.Group", () => {
       <CheckboxGroup ref={ref} defaultValue={[]} label="Select cities">
         <Checkbox value="sydney">Sydney</Checkbox>
         <Checkbox value="buenos-aires">Buenos Aires</Checkbox>
-      </CheckboxGroup>,
+      </CheckboxGroup>
     );
 
     expect(ref.current).not.toBeNull();
   });
 
   it("should work correctly with initial value", () => {
-    const {container} = render(
+    const { container } = render(
       <CheckboxGroup defaultValue={["sydney"]} label="Select cities">
         <Checkbox data-testid="first-checkbox" value="sydney">
           Sydney
@@ -47,7 +47,7 @@ describe("Checkbox.Group", () => {
         <Checkbox data-testid="second-checkbox" value="buenos-aires">
           Buenos Aires
         </Checkbox>
-      </CheckboxGroup>,
+      </CheckboxGroup>
     );
 
     // check if the first checkbox is checked
@@ -71,7 +71,7 @@ describe("Checkbox.Group", () => {
         <Checkbox data-testid="second-checkbox" value="buenos-aires">
           Buenos Aires
         </Checkbox>
-      </CheckboxGroup>,
+      </CheckboxGroup>
     );
 
     const secondCheckbox = wrapper.getByTestId("second-checkbox");
@@ -82,7 +82,7 @@ describe("Checkbox.Group", () => {
   });
 
   it("should ignore events when disabled", () => {
-    const {container} = render(
+    const { container } = render(
       <CheckboxGroup isDisabled defaultValue={["sydney"]} label="Select cities">
         <Checkbox data-testid="first-checkbox" value="sydney">
           Sydney
@@ -90,7 +90,7 @@ describe("Checkbox.Group", () => {
         <Checkbox data-testid="second-checkbox" value="buenos-aires">
           Buenos Aires
         </Checkbox>
-      </CheckboxGroup>,
+      </CheckboxGroup>
     );
 
     const firstCheckbox = container.querySelector("[data-testid=first-checkbox] input");
@@ -127,7 +127,7 @@ describe("Checkbox.Group", () => {
         <Checkbox data-testid="second-checkbox" value="buenos-aires">
           Buenos Aires
         </Checkbox>
-      </CheckboxGroup>,
+      </CheckboxGroup>
     );
 
     const secondCheckbox = wrapper.getByTestId("second-checkbox");
@@ -141,14 +141,14 @@ describe("Checkbox.Group", () => {
   describe("validation", () => {
     describe("validationBehavior=native", () => {
       it("supports group level isRequired", async () => {
-        let {getAllByRole, getByRole, getByTestId} = render(
+        let { getAllByRole, getByRole, getByTestId } = render(
           <form data-testid="form">
             <CheckboxGroup isRequired label="Agree to the following" validationBehavior="native">
               <Checkbox value="terms">Terms and conditions</Checkbox>
               <Checkbox value="cookies">Cookies</Checkbox>
               <Checkbox value="privacy">Privacy policy</Checkbox>
             </CheckboxGroup>
-          </form>,
+          </form>
         );
 
         let group = getByRole("group");
@@ -169,7 +169,7 @@ describe("Checkbox.Group", () => {
 
         expect(group).toHaveAttribute("aria-describedby");
         expect(document.getElementById(group.getAttribute("aria-describedby")!)).toHaveTextContent(
-          "Constraints not satisfied",
+          "Constraints not satisfied"
         );
 
         await user.click(checkboxes[0]);
@@ -183,7 +183,7 @@ describe("Checkbox.Group", () => {
       });
 
       it("supports checkbox level isRequired", async () => {
-        let {getAllByRole, getByRole, getByTestId} = render(
+        let { getAllByRole, getByRole, getByTestId } = render(
           <form data-testid="form">
             <CheckboxGroup label="Agree to the following" validationBehavior="native">
               <Checkbox isRequired value="terms">
@@ -194,7 +194,7 @@ describe("Checkbox.Group", () => {
               </Checkbox>
               <Checkbox value="privacy">Privacy policy</Checkbox>
             </CheckboxGroup>
-          </form>,
+          </form>
         );
 
         let group = getByRole("group");
@@ -218,7 +218,7 @@ describe("Checkbox.Group", () => {
 
         expect(group).toHaveAttribute("aria-describedby");
         expect(document.getElementById(group.getAttribute("aria-describedby")!)).toHaveTextContent(
-          "Constraints not satisfied",
+          "Constraints not satisfied"
         );
         expect(document.activeElement).toBe(checkboxes[0]);
 
@@ -230,7 +230,7 @@ describe("Checkbox.Group", () => {
       });
 
       it("supports group level validate function", async () => {
-        let {getAllByRole, getByRole, getByTestId} = render(
+        let { getAllByRole, getByRole, getByTestId } = render(
           <form data-testid="form">
             <CheckboxGroup
               label="Agree to the following"
@@ -241,7 +241,7 @@ describe("Checkbox.Group", () => {
               <Checkbox value="cookies">Cookies</Checkbox>
               <Checkbox value="privacy">Privacy policy</Checkbox>
             </CheckboxGroup>
-          </form>,
+          </form>
         );
 
         let group = getByRole("group");
@@ -262,7 +262,7 @@ describe("Checkbox.Group", () => {
 
         expect(group).toHaveAttribute("aria-describedby");
         expect(document.getElementById(group.getAttribute("aria-describedby")!)).toHaveTextContent(
-          "You must accept all terms",
+          "You must accept all terms"
         );
         expect(document.activeElement).toBe(checkboxes[0]);
 
@@ -307,7 +307,7 @@ describe("Checkbox.Group", () => {
           );
         }
 
-        const {getAllByRole, getByRole} = render(<Test />);
+        const { getAllByRole, getByRole } = render(<Test />);
 
         const group = getByRole("group");
 
@@ -319,7 +319,7 @@ describe("Checkbox.Group", () => {
 
         expect(group).toHaveAttribute("aria-describedby");
         expect(document.getElementById(group.getAttribute("aria-describedby")!)).toHaveTextContent(
-          "You must accept the terms.",
+          "You must accept the terms."
         );
 
         const checkboxes = getAllByRole("checkbox") as HTMLInputElement[];
@@ -338,7 +338,7 @@ describe("Checkbox.Group", () => {
 
     describe("validationBehavior=aria", () => {
       it("supports group level validate function", async () => {
-        let {getAllByRole, getByRole} = render(
+        let { getAllByRole, getByRole } = render(
           <CheckboxGroup
             label="Agree to the following"
             validate={(v) => (v.length < 3 ? "You must accept all terms" : null)}
@@ -347,14 +347,14 @@ describe("Checkbox.Group", () => {
             <Checkbox value="terms">Terms and conditions</Checkbox>
             <Checkbox value="cookies">Cookies</Checkbox>
             <Checkbox value="privacy">Privacy policy</Checkbox>
-          </CheckboxGroup>,
+          </CheckboxGroup>
         );
 
         let group = getByRole("group");
 
         expect(group).toHaveAttribute("aria-describedby");
         expect(document.getElementById(group.getAttribute("aria-describedby")!)).toHaveTextContent(
-          "You must accept all terms",
+          "You must accept all terms"
         );
 
         let checkboxes = getAllByRole("checkbox") as HTMLInputElement[];
@@ -375,21 +375,21 @@ describe("Checkbox.Group", () => {
       });
 
       it("supports server validation", async () => {
-        const {getAllByRole, getByRole} = render(
-          <Form validationBehavior="aria" validationErrors={{terms: "You must accept the terms"}}>
+        const { getAllByRole, getByRole } = render(
+          <Form validationBehavior="aria" validationErrors={{ terms: "You must accept the terms" }}>
             <CheckboxGroup label="Agree to the following" name="terms">
               <Checkbox value="terms">Terms and conditions</Checkbox>
               <Checkbox value="cookies">Cookies</Checkbox>
               <Checkbox value="privacy">Privacy policy</Checkbox>
             </CheckboxGroup>
-          </Form>,
+          </Form>
         );
 
         const group = getByRole("group");
 
         expect(group).toHaveAttribute("aria-describedby");
         expect(document.getElementById(group.getAttribute("aria-describedby")!)).toHaveTextContent(
-          "You must accept the terms",
+          "You must accept the terms"
         );
 
         const checkboxes = getAllByRole("checkbox");

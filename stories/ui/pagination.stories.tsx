@@ -1,12 +1,12 @@
-import type { Meta } from "@storybook/react";
-import type { PaginationItemRenderProps } from "../src";
-
 import { ChevronIcon } from "@/lib/icons";
-import { button, cn, pagination } from "@/lib/theme";
+import { cn } from "@/lib/theme";
+import type { PaginationItemRenderProps } from "@/registry/ui";
+import { button, pagination } from "@/registry/ui";
 import { useLocale } from "@react-aria/i18n";
+import type { Meta } from "@storybook/nextjs-vite";
 import React from "react";
 
-import { Pagination, PaginationItemType, usePagination } from "../src";
+import { Pagination, PaginationItemType, usePagination } from "@/registry/ui";
 
 export default {
   title: "Components/Pagination",

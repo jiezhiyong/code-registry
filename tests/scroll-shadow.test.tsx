@@ -1,7 +1,7 @@
+import { render } from "@testing-library/react";
 import * as React from "react";
-import {render} from "@testing-library/react";
 
-import {ScrollShadow} from "../src";
+import { ScrollShadow } from "@/registry/ui";
 
 describe("ScrollShadow", () => {
   it("should render correctly", () => {
@@ -18,7 +18,7 @@ describe("ScrollShadow", () => {
   });
 
   it("should support controlled visibility state", () => {
-    const {getByTestId} = render(<ScrollShadow data-testid="scroll-shadow" visibility="top" />);
+    const { getByTestId } = render(<ScrollShadow data-testid="scroll-shadow" visibility="top" />);
 
     // should have the data-top-scroll attribute in true
     expect(getByTestId("scroll-shadow")).toHaveAttribute("data-top-scroll", "true");

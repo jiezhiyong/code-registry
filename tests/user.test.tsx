@@ -1,9 +1,9 @@
+import { Link } from "@/registry/ui/link";
+import { render } from "@testing-library/react";
 import * as React from "react";
-import {render} from "@testing-library/react";
-import {Link} from "@heroui/link";
 
-import {User} from "../src";
-import {AvatarIcon} from "../../avatar/src";
+import { User } from "@/registry/ui";
+import { AvatarIcon } from "@/registry/ui/avatar";
 
 describe("User", () => {
   it("should render correctly", () => {
@@ -20,7 +20,7 @@ describe("User", () => {
   });
 
   it("should have the passed name", () => {
-    const {container} = render(<User name="Test" />);
+    const { container } = render(<User name="Test" />);
     const spans = container.querySelectorAll("span");
 
     expect(spans).toHaveLength(4);
@@ -29,9 +29,7 @@ describe("User", () => {
   });
 
   it("should have the passed description", () => {
-    const wrapper = render(
-      <User description={<p data-testid="test-desc">Test Desc</p>} name="Test Name" />,
-    );
+    const wrapper = render(<User description={<p data-testid="test-desc">Test Desc</p>} name="Test Name" />);
 
     expect(wrapper.getByTestId("test-desc")).toHaveTextContent("Test Desc");
   });
@@ -39,12 +37,9 @@ describe("User", () => {
   it("should support image and text", () => {
     const wrapper = render(
       <div>
-        <User avatarProps={{name: "User"}} name="User" />
-        <User
-          avatarProps={{src: "https://avatars.githubusercontent.com/u/30373425?v=4"}}
-          name="User test"
-        />
-      </div>,
+        <User avatarProps={{ name: "User" }} name="User" />
+        <User avatarProps={{ src: "https://avatars.githubusercontent.com/u/30373425?v=4" }} name="User test" />
+      </div>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -55,7 +50,7 @@ describe("User", () => {
       <div>
         <User description="This is a description" name="User" />
         <User name="User">This is a description</User>
-      </div>,
+      </div>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -70,34 +65,34 @@ describe("User", () => {
           </Link>
         }
         name="User"
-      />,
+      />
     );
 
     expect(wrapper.getByTestId("test-user-link")).toBeInTheDocument();
   });
 
   it("should render avatar icon", () => {
-    const {container} = render(
+    const { container } = render(
       <User
         avatarProps={{
           icon: <AvatarIcon />,
         }}
         name="test"
-      />,
+      />
     );
 
     expect(container.querySelector("svg")).toBeInTheDocument();
   });
 
   it("should display initials in avatar if name is specified", () => {
-    const {getByRole} = render(
+    const { getByRole } = render(
       <User
         avatarProps={{
           icon: <AvatarIcon />,
           name: "Marcus Wong",
         }}
         name="test"
-      />,
+      />
     );
 
     expect(getByRole("img")).toHaveTextContent("MW");

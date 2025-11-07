@@ -1,10 +1,10 @@
-import type {UserEvent} from "@testing-library/user-event";
+import type { UserEvent } from "@testing-library/user-event";
 
-import * as React from "react";
-import {render} from "@testing-library/react";
+import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import * as React from "react";
 
-import {Menu, MenuItem, MenuSection} from "../src";
+import { Menu, MenuItem, MenuSection } from "@/registry/ui";
 
 describe("Menu", () => {
   let user: UserEvent;
@@ -22,7 +22,7 @@ describe("Menu", () => {
         <MenuItem key="delete" color="danger">
           Delete file
         </MenuItem>
-      </Menu>,
+      </Menu>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -39,7 +39,7 @@ describe("Menu", () => {
         <MenuItem key="delete" color="danger">
           Delete file
         </MenuItem>
-      </Menu>,
+      </Menu>
     );
     expect(ref.current).not.toBeNull();
   });
@@ -53,7 +53,7 @@ describe("Menu", () => {
         <MenuItem key="delete" color="danger">
           Delete file
         </MenuItem>
-      </Menu>,
+      </Menu>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -61,16 +61,16 @@ describe("Menu", () => {
 
   it("should render correctly (dynamic)", () => {
     const menuItems = [
-      {key: "new", name: "New File"},
-      {key: "copy", name: "Copy Link"},
-      {key: "edit", name: "Edit File"},
-      {key: "delete", name: "Delete File"},
+      { key: "new", name: "New File" },
+      { key: "copy", name: "Copy Link" },
+      { key: "edit", name: "Edit File" },
+      { key: "delete", name: "Delete File" },
     ];
 
     const wrapper = render(
       <Menu aria-label="Actions" items={menuItems}>
         {(item: any) => <MenuItem key={item.key}>{item.name}</MenuItem>}
-      </Menu>,
+      </Menu>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -89,7 +89,7 @@ describe("Menu", () => {
             Delete file
           </MenuItem>
         </MenuSection>
-      </Menu>,
+      </Menu>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -101,15 +101,15 @@ describe("Menu", () => {
         key: "actions",
         title: "Actions",
         children: [
-          {key: "new", name: "New File"},
-          {key: "copy", name: "Copy Link"},
-          {key: "edit", name: "Edit File"},
+          { key: "new", name: "New File" },
+          { key: "copy", name: "Copy Link" },
+          { key: "edit", name: "Edit File" },
         ],
       },
       {
         key: "danger",
         title: "Danger Zone",
-        children: [{key: "delete", name: "Delete File"}],
+        children: [{ key: "delete", name: "Delete File" }],
       },
     ];
 
@@ -121,7 +121,7 @@ describe("Menu", () => {
             {(item: any) => <MenuItem key={item.key}>{item.name}</MenuItem>}
           </MenuSection>
         )}
-      </Menu>,
+      </Menu>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -131,19 +131,14 @@ describe("Menu", () => {
     let onSelectionChange = jest.fn();
 
     const wrapper = render(
-      <Menu
-        disallowEmptySelection
-        aria-label="Actions"
-        selectionMode="single"
-        onSelectionChange={onSelectionChange}
-      >
+      <Menu disallowEmptySelection aria-label="Actions" selectionMode="single" onSelectionChange={onSelectionChange}>
         <MenuItem key="new">New file</MenuItem>
         <MenuItem key="copy">Copy link</MenuItem>
         <MenuItem key="edit">Edit file</MenuItem>
         <MenuItem key="delete" color="danger">
           Delete file
         </MenuItem>
-      </Menu>,
+      </Menu>
     );
 
     let menu = wrapper.getByRole("menu");
@@ -162,19 +157,14 @@ describe("Menu", () => {
     let onSelectionChange = jest.fn();
 
     const wrapper = render(
-      <Menu
-        disallowEmptySelection
-        aria-label="Actions"
-        selectionMode="multiple"
-        onSelectionChange={onSelectionChange}
-      >
+      <Menu disallowEmptySelection aria-label="Actions" selectionMode="multiple" onSelectionChange={onSelectionChange}>
         <MenuItem key="new">New file</MenuItem>
         <MenuItem key="copy">Copy link</MenuItem>
         <MenuItem key="edit">Edit file</MenuItem>
         <MenuItem key="delete" color="danger">
           Delete file
         </MenuItem>
-      </Menu>,
+      </Menu>
     );
 
     let menu = wrapper.getByRole("menu");
@@ -198,7 +188,7 @@ describe("Menu", () => {
         <MenuItem key="delete" color="danger">
           Delete file
         </MenuItem>
-      </Menu>,
+      </Menu>
     );
 
     let menuItems = wrapper.getAllByRole("menuitemradio");
@@ -226,7 +216,7 @@ describe("Menu", () => {
         <MenuItem key="delete" color="danger">
           Delete file
         </MenuItem>
-      </Menu>,
+      </Menu>
     );
 
     let menuItems = wrapper.getAllByRole("menuitemcheckbox");
@@ -260,7 +250,7 @@ describe("Menu", () => {
         <MenuItem key="delete" color="danger">
           Delete file
         </MenuItem>
-      </Menu>,
+      </Menu>
     );
 
     let menuItems = wrapper.getAllByRole("menuitem");
@@ -288,7 +278,7 @@ describe("Menu", () => {
         <MenuItem key="delete" color="danger">
           Delete file
         </MenuItem>
-      </Menu>,
+      </Menu>
     );
 
     let menuItems = wrapper.getAllByRole("menuitem");
@@ -310,7 +300,7 @@ describe("Menu", () => {
         <MenuItem key="delete" color="danger">
           Delete file
         </MenuItem>
-      </Menu>,
+      </Menu>
     );
 
     let menuItems = wrapper.getAllByRole("menuitem");
@@ -334,7 +324,7 @@ describe("Menu", () => {
         <MenuItem key="delete" color="danger">
           Delete file
         </MenuItem>
-      </Menu>,
+      </Menu>
     );
 
     let menuItems = wrapper.getAllByRole("menuitem");
@@ -349,10 +339,10 @@ describe("Menu", () => {
   it("should menuItem classNames work", () => {
     const wrapper = render(
       <Menu>
-        <MenuItem key="new" classNames={{title: "test"}}>
+        <MenuItem key="new" classNames={{ title: "test" }}>
           New file
         </MenuItem>
-      </Menu>,
+      </Menu>
     );
     const menuItem = wrapper.getByText("New file");
 
@@ -361,11 +351,11 @@ describe("Menu", () => {
 
   it("should menuItem classNames override menu itemClasses", () => {
     const wrapper = render(
-      <Menu itemClasses={{title: "test"}}>
-        <MenuItem key="new" classNames={{title: "test2"}}>
+      <Menu itemClasses={{ title: "test" }}>
+        <MenuItem key="new" classNames={{ title: "test2" }}>
           New file
         </MenuItem>
-      </Menu>,
+      </Menu>
     );
     const menuItem = wrapper.getByText("New file");
 
@@ -373,12 +363,12 @@ describe("Menu", () => {
   });
   it("should merge menu item classNames with itemClasses", () => {
     const wrapper = render(
-      <Menu itemClasses={{title: "test"}}>
-        <MenuItem key="new" classNames={{title: "test2"}}>
+      <Menu itemClasses={{ title: "test" }}>
+        <MenuItem key="new" classNames={{ title: "test2" }}>
           New file
         </MenuItem>
         <MenuItem key="delete">Delete file</MenuItem>
-      </Menu>,
+      </Menu>
     );
 
     const menuItemWithBoth = wrapper.getByText("New file");
@@ -397,7 +387,7 @@ describe("Menu", () => {
     const wrapper = render(
       <Menu>
         <MenuItem key="new">New file</MenuItem>
-      </Menu>,
+      </Menu>
     );
 
     const menuItem = wrapper.getByText("New file");
@@ -411,7 +401,7 @@ describe("Menu", () => {
         <MenuItem key="new">
           <div>New file</div>
         </MenuItem>
-      </Menu>,
+      </Menu>
     );
 
     const menuItem = wrapper.getByText("New file").parentElement;

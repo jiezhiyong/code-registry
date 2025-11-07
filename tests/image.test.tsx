@@ -1,7 +1,7 @@
+import { act, render } from "@testing-library/react";
 import * as React from "react";
-import {render, act} from "@testing-library/react";
 
-import {Image} from "../src";
+import { Image } from "@/registry/ui";
 
 const src = "https://via.placeholder.com/300x450";
 const fallbackSrc = "https://via.placeholder.com/300x450";
@@ -81,7 +81,7 @@ describe("Image", () => {
         <Image height={"40px"} src={src} />
         <Image height={50} src={src} width={50} />
         <Image height={"60px"} src={src} width={50} />
-      </>,
+      </>
     );
 
     const images = wrapper.getAllByRole("img");

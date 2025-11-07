@@ -1,14 +1,14 @@
+import type { TimeInputProps, TimeInputValue as TimeValue } from "@/registry/ui";
 import type { ValidationResult } from "@react-types/shared";
-import type { Meta } from "@storybook/react";
-import type { TimeInputProps, TimeInputValue as TimeValue } from "../src";
+import type { Meta } from "@storybook/nextjs-vite";
 
 import { ClockCircleLinearIcon } from "@/lib/icons";
-import { button, dateInput } from "@/lib/theme";
+import { button, dateInput } from "@/registry/ui";
 import { parseAbsoluteToLocal, parseZonedDateTime, Time, ZonedDateTime } from "@internationalized/date";
 import { useDateFormatter } from "@react-aria/i18n";
 import React from "react";
 
-import { TimeInput } from "../src";
+import { TimeInput } from "@/registry/ui";
 
 export default {
   title: "Components/TimeInput",

@@ -1,14 +1,14 @@
 /* eslint-disable jsx-a11y/no-autofocus */
-import type {DateInputProps} from "../src";
-import type {DateValue} from "@internationalized/date";
+import type { DateInputProps } from "@/registry/ui";
+import type { DateValue } from "@internationalized/date";
 
-import * as React from "react";
-import {fireEvent, render} from "@testing-library/react";
-import {CalendarDate, CalendarDateTime, ZonedDateTime} from "@internationalized/date";
-import {pointerMap, triggerPress} from "@heroui/test-utils";
+import { pointerMap, triggerPress } from "@/utils/test";
+import { CalendarDate, CalendarDateTime, ZonedDateTime } from "@internationalized/date";
+import { fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import * as React from "react";
 
-import {DateInput as DateInputBase} from "../src";
+import { DateInput as DateInputBase } from "@/registry/ui";
 
 /**
  * Custom date-input to disable animations and avoid issues with react-motion and jest
@@ -23,7 +23,7 @@ describe("DateInput", () => {
   let user;
 
   beforeAll(() => {
-    user = userEvent.setup({delay: null, pointerMap});
+    user = userEvent.setup({ delay: null, pointerMap });
     jest.useFakeTimers();
   });
 
@@ -42,13 +42,13 @@ describe("DateInput", () => {
     });
 
     it("should support autoFocus", function () {
-      let {getAllByRole} = render(<DateInput autoFocus label="Date" />);
+      let { getAllByRole } = render(<DateInput autoFocus label="Date" />);
 
       expect(document.activeElement).toBe(getAllByRole("spinbutton")[0]);
     });
 
     it("should pass through data attributes", function () {
-      let {getByTestId} = render(<DateInput data-testid="foo" label="Date" />);
+      let { getByTestId } = render(<DateInput data-testid="foo" label="Date" />);
 
       const input = getByTestId("foo");
 
@@ -61,14 +61,11 @@ describe("DateInput", () => {
           aria-label="Enter date between jan 1 and jan 8, 1980"
           errorMessage="Date unavailable."
           isDateUnavailable={(date) => {
-            return (
-              date.compare(new CalendarDate(1980, 1, 1)) >= 0 &&
-              date.compare(new CalendarDate(1980, 1, 8)) <= 0
-            );
+            return date.compare(new CalendarDate(1980, 1, 1)) >= 0 && date.compare(new CalendarDate(1980, 1, 8)) <= 0;
           }}
           name="date"
           validationBehavior="aria"
-        />,
+        />
       );
 
       await user.tab();
@@ -80,7 +77,7 @@ describe("DateInput", () => {
 
   describe("Labelling", () => {
     it("should support labeling", function () {
-      let {getAllByRole, getByText} = render(<DateInput label="Date" />);
+      let { getAllByRole, getByText } = render(<DateInput label="Date" />);
 
       let label = getByText("Date");
 
@@ -99,7 +96,7 @@ describe("DateInput", () => {
     });
 
     it("should support labeling with aria-label", function () {
-      let {getByRole} = render(<DateInput aria-label="Birth date" />);
+      let { getByRole } = render(<DateInput aria-label="Birth date" />);
 
       let field = getByRole("group");
 
@@ -108,7 +105,7 @@ describe("DateInput", () => {
     });
 
     it("should support labeling with aria-labelledby", function () {
-      let {getByRole, getAllByRole} = render(<DateInput aria-labelledby="foo" />);
+      let { getByRole, getAllByRole } = render(<DateInput aria-labelledby="foo" />);
 
       let combobox = getByRole("group");
 
@@ -126,7 +123,7 @@ describe("DateInput", () => {
     });
 
     it("should support help text description", function () {
-      let {getByRole, getAllByRole} = render(<DateInput description="Help text" label="Date" />);
+      let { getByRole, getAllByRole } = render(<DateInput description="Help text" label="Date" />);
 
       let group = getByRole("group");
 
@@ -140,10 +137,7 @@ describe("DateInput", () => {
 
       let segments = getAllByRole("spinbutton");
 
-      expect(segments[0]).toHaveAttribute(
-        "aria-describedby",
-        group.getAttribute("aria-describedby"),
-      );
+      expect(segments[0]).toHaveAttribute("aria-describedby", group.getAttribute("aria-describedby"));
 
       for (let segment of segments.slice(1)) {
         expect(segment).not.toHaveAttribute("aria-describedby");
@@ -151,8 +145,8 @@ describe("DateInput", () => {
     });
 
     it("should support error message", function () {
-      let {getByRole, getAllByRole} = render(
-        <DateInput errorMessage="Error message" label="Date" validationState="invalid" />,
+      let { getByRole, getAllByRole } = render(
+        <DateInput errorMessage="Error message" label="Date" validationState="invalid" />
       );
 
       let group = getByRole("group");
@@ -168,10 +162,7 @@ describe("DateInput", () => {
         let segments = getAllByRole("spinbutton");
 
         for (let segment of segments) {
-          expect(segment).toHaveAttribute(
-            "aria-describedby",
-            group.getAttribute("aria-describedby"),
-          );
+          expect(segment).toHaveAttribute("aria-describedby", group.getAttribute("aria-describedby"));
         }
       }
     });
@@ -193,13 +184,8 @@ describe("DateInput", () => {
     });
 
     it("should focus field and switching segments via tab does not change focus", async function () {
-      let {getAllByRole} = render(
-        <DateInput
-          label="Date"
-          onBlur={onBlurSpy}
-          onFocus={onFocusSpy}
-          onFocusChange={onFocusChangeSpy}
-        />,
+      let { getAllByRole } = render(
+        <DateInput label="Date" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />
       );
       let segments = getAllByRole("spinbutton");
 
@@ -220,13 +206,8 @@ describe("DateInput", () => {
     });
 
     it("should call blur when focus leaves", async function () {
-      let {getAllByRole} = render(
-        <DateInput
-          label="Date"
-          onBlur={onBlurSpy}
-          onFocus={onFocusSpy}
-          onFocusChange={onFocusChangeSpy}
-        />,
+      let { getAllByRole } = render(
+        <DateInput label="Date" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />
       );
       let segments = getAllByRole("spinbutton");
 
@@ -247,9 +228,7 @@ describe("DateInput", () => {
     });
 
     it("should trigger right arrow key event for segment navigation", async function () {
-      let {getAllByRole} = render(
-        <DateInput label="Date" onKeyDown={onKeyDownSpy} onKeyUp={onKeyUpSpy} />,
-      );
+      let { getAllByRole } = render(<DateInput label="Date" onKeyDown={onKeyDownSpy} onKeyUp={onKeyUpSpy} />);
       let segments = getAllByRole("spinbutton");
 
       expect(onKeyDownSpy).not.toHaveBeenCalled();
@@ -262,8 +241,8 @@ describe("DateInput", () => {
       expect(onKeyUpSpy).toHaveBeenCalledTimes(1);
 
       if (document.activeElement) {
-        fireEvent.keyDown(document.activeElement, {key: "ArrowRight"});
-        fireEvent.keyUp(document.activeElement, {key: "ArrowRight"});
+        fireEvent.keyDown(document.activeElement, { key: "ArrowRight" });
+        fireEvent.keyUp(document.activeElement, { key: "ArrowRight" });
       }
       expect(segments[1]).toHaveFocus();
       expect(onKeyDownSpy).toHaveBeenCalledTimes(1);
@@ -273,16 +252,12 @@ describe("DateInput", () => {
 
   describe("Forms", () => {
     it("supports form values", () => {
-      let {rerender} = render(
-        <DateInput label="Date" name="date" value={new CalendarDate(2020, 2, 3)} />,
-      );
+      let { rerender } = render(<DateInput label="Date" name="date" value={new CalendarDate(2020, 2, 3)} />);
       let input = document.querySelector("input[name=date]");
 
       expect(input).toHaveValue("2020-02-03");
 
-      rerender(
-        <DateInput label="Date" name="date" value={new CalendarDateTime(2020, 2, 3, 8, 30)} />,
-      );
+      rerender(<DateInput label="Date" name="date" value={new CalendarDateTime(2020, 2, 3, 8, 30)} />);
       expect(input).toHaveValue("2020-02-03T08:30:00");
 
       rerender(
@@ -290,7 +265,7 @@ describe("DateInput", () => {
           label="Date"
           name="date"
           value={new ZonedDateTime(2020, 2, 3, "America/Los_Angeles", -28800000, 12, 24, 45)}
-        />,
+        />
       );
       expect(input).toHaveValue("2020-02-03T12:24:45-08:00[America/Los_Angeles]");
     });
@@ -307,7 +282,7 @@ describe("DateInput", () => {
         );
       }
 
-      let {getByTestId, getByRole, getAllByRole} = render(<Test />);
+      let { getByTestId, getByRole, getAllByRole } = render(<Test />);
       let group = getByRole("group");
       let input = document.querySelector("input[name=date]");
       let segments = getAllByRole("spinbutton");
@@ -325,8 +300,8 @@ describe("DateInput", () => {
 
       expect(input).toHaveValue("2020-02-03");
       expect(input).toHaveAttribute("name", "date");
-      fireEvent.keyDown(segments[0], {key: "ArrowUp"});
-      fireEvent.keyUp(segments[0], {key: "ArrowUp"});
+      fireEvent.keyDown(segments[0], { key: "ArrowUp" });
+      fireEvent.keyUp(segments[0], { key: "ArrowUp" });
       expect(getDescription()).toBe("Selected Date: March 03, 2020");
       expect(input).toHaveValue("2020-03-03");
 

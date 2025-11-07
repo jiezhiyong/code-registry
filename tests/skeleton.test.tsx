@@ -1,7 +1,7 @@
+import { render } from "@testing-library/react";
 import * as React from "react";
-import {render} from "@testing-library/react";
 
-import {Skeleton} from "../src";
+import { Skeleton } from "@/registry/ui";
 
 describe("Skeleton", () => {
   it("should render correctly", () => {

@@ -1,8 +1,8 @@
+import { shouldIgnoreReactWarning, spy } from "@/utils/test";
+import { render } from "@testing-library/react";
 import * as React from "react";
-import {render} from "@testing-library/react";
-import {spy, shouldIgnoreReactWarning} from "@heroui/test-utils";
 
-import {Kbd} from "../src";
+import { Kbd } from "@/registry/ui";
 
 describe("Kbd", () => {
   it("should render correctly", () => {

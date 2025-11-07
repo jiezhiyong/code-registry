@@ -1,10 +1,10 @@
-import type {UserEvent} from "@testing-library/user-event";
+import type { UserEvent } from "@testing-library/user-event";
 
-import * as React from "react";
-import {render} from "@testing-library/react";
+import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import * as React from "react";
 
-import {Listbox, ListboxItem, ListboxSection} from "../src";
+import { Listbox, ListboxItem, ListboxSection } from "@/registry/ui";
 
 describe("Listbox", () => {
   let user: UserEvent;
@@ -22,7 +22,7 @@ describe("Listbox", () => {
         <ListboxItem key="delete" color="danger">
           Delete file
         </ListboxItem>
-      </Listbox>,
+      </Listbox>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -39,7 +39,7 @@ describe("Listbox", () => {
         <ListboxItem key="delete" color="danger">
           Delete file
         </ListboxItem>
-      </Listbox>,
+      </Listbox>
     );
     expect(ref.current).not.toBeNull();
   });
@@ -53,7 +53,7 @@ describe("Listbox", () => {
         <ListboxItem key="delete" color="danger">
           Delete file
         </ListboxItem>
-      </Listbox>,
+      </Listbox>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -61,16 +61,16 @@ describe("Listbox", () => {
 
   it("should render correctly (dynamic)", () => {
     const listboxItems = [
-      {key: "new", name: "New File"},
-      {key: "copy", name: "Copy Link"},
-      {key: "edit", name: "Edit File"},
-      {key: "delete", name: "Delete File"},
+      { key: "new", name: "New File" },
+      { key: "copy", name: "Copy Link" },
+      { key: "edit", name: "Edit File" },
+      { key: "delete", name: "Delete File" },
     ];
 
     const wrapper = render(
       <Listbox aria-label="Actions" items={listboxItems}>
         {(item: any) => <ListboxItem key={item.key}>{item.name}</ListboxItem>}
-      </Listbox>,
+      </Listbox>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -89,7 +89,7 @@ describe("Listbox", () => {
             Delete file
           </ListboxItem>
         </ListboxSection>
-      </Listbox>,
+      </Listbox>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -101,15 +101,15 @@ describe("Listbox", () => {
         key: "actions",
         title: "Actions",
         children: [
-          {key: "new", name: "New File"},
-          {key: "copy", name: "Copy Link"},
-          {key: "edit", name: "Edit File"},
+          { key: "new", name: "New File" },
+          { key: "copy", name: "Copy Link" },
+          { key: "edit", name: "Edit File" },
         ],
       },
       {
         key: "danger",
         title: "Danger Zone",
-        children: [{key: "delete", name: "Delete File"}],
+        children: [{ key: "delete", name: "Delete File" }],
       },
     ];
 
@@ -120,7 +120,7 @@ describe("Listbox", () => {
             {(item) => <ListboxItem key={item.key}>{item.name}</ListboxItem>}
           </ListboxSection>
         )}
-      </Listbox>,
+      </Listbox>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -130,19 +130,14 @@ describe("Listbox", () => {
     let onSelectionChange = jest.fn();
 
     const wrapper = render(
-      <Listbox
-        disallowEmptySelection
-        aria-label="Actions"
-        selectionMode="single"
-        onSelectionChange={onSelectionChange}
-      >
+      <Listbox disallowEmptySelection aria-label="Actions" selectionMode="single" onSelectionChange={onSelectionChange}>
         <ListboxItem key="new">New file</ListboxItem>
         <ListboxItem key="copy">Copy link</ListboxItem>
         <ListboxItem key="edit">Edit file</ListboxItem>
         <ListboxItem key="delete" color="danger">
           Delete file
         </ListboxItem>
-      </Listbox>,
+      </Listbox>
     );
 
     let listbox = wrapper.getByRole("listbox");
@@ -173,7 +168,7 @@ describe("Listbox", () => {
         <ListboxItem key="delete" color="danger">
           Delete file
         </ListboxItem>
-      </Listbox>,
+      </Listbox>
     );
 
     let listbox = wrapper.getByRole("listbox");
@@ -197,7 +192,7 @@ describe("Listbox", () => {
         <ListboxItem key="delete" color="danger">
           Delete file
         </ListboxItem>
-      </Listbox>,
+      </Listbox>
     );
 
     let listboxItems = wrapper.getAllByRole("option");
@@ -225,7 +220,7 @@ describe("Listbox", () => {
         <ListboxItem key="delete" color="danger">
           Delete file
         </ListboxItem>
-      </Listbox>,
+      </Listbox>
     );
 
     let listboxItems = wrapper.getAllByRole("option");
@@ -259,7 +254,7 @@ describe("Listbox", () => {
         <ListboxItem key="delete" color="danger">
           Delete file
         </ListboxItem>
-      </Listbox>,
+      </Listbox>
     );
 
     let listboxItems = wrapper.getAllByRole("option");
@@ -280,7 +275,7 @@ describe("Listbox", () => {
     const wrapper = render(
       <Listbox>
         <ListboxItem key="new">New file</ListboxItem>
-      </Listbox>,
+      </Listbox>
     );
 
     const menuItem = wrapper.getByText("New file");
@@ -294,7 +289,7 @@ describe("Listbox", () => {
         <ListboxItem key="new">
           <div>New file</div>
         </ListboxItem>
-      </Listbox>,
+      </Listbox>
     );
 
     const menuItem = wrapper.getByText("New file").parentElement;
@@ -309,7 +304,7 @@ describe("Listbox", () => {
     const onPressUp = jest.fn();
     const onPressChange = jest.fn();
 
-    const {getAllByRole} = render(
+    const { getAllByRole } = render(
       <Listbox aria-label="Actions">
         <ListboxItem
           key="new"
@@ -326,7 +321,7 @@ describe("Listbox", () => {
         <ListboxItem key="delete" color="danger">
           Delete file
         </ListboxItem>
-      </Listbox>,
+      </Listbox>
     );
 
     let listboxItems = getAllByRole("option");

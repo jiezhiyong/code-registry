@@ -1,8 +1,8 @@
-import * as React from "react";
-import {render} from "@testing-library/react";
+import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import * as React from "react";
 
-import {Textarea} from "../src";
+import { Textarea } from "@/registry/ui";
 
 describe("Textarea", () => {
   it("should clear the value and onClear is triggered", async () => {
@@ -10,14 +10,8 @@ describe("Textarea", () => {
 
     const ref = React.createRef<HTMLTextAreaElement>();
 
-    const {getByRole} = render(
-      <Textarea
-        ref={ref}
-        isClearable
-        defaultValue="junior@heroui.com"
-        label="test textarea"
-        onClear={onClear}
-      />,
+    const { getByRole } = render(
+      <Textarea ref={ref} isClearable defaultValue="junior@heroui.com" label="test textarea" onClear={onClear} />
     );
 
     const clearButton = getByRole("button");
@@ -38,7 +32,7 @@ describe("Textarea", () => {
 
     const ref = React.createRef<HTMLTextAreaElement>();
 
-    const {getByRole} = render(
+    const { getByRole } = render(
       <Textarea
         ref={ref}
         isClearable
@@ -46,7 +40,7 @@ describe("Textarea", () => {
         defaultValue="readOnly test for clear button"
         label="test textarea"
         onClear={onClear}
-      />,
+      />
     );
 
     const clearButton = getByRole("button")!;
@@ -65,13 +59,8 @@ describe("Textarea", () => {
 
     const ref = React.createRef<HTMLTextAreaElement>();
 
-    const {getByRole} = render(
-      <Textarea
-        ref={ref}
-        defaultValue="junior@heroui.com"
-        label="test textarea"
-        onClear={onClear}
-      />,
+    const { getByRole } = render(
+      <Textarea ref={ref} defaultValue="junior@heroui.com" label="test textarea" onClear={onClear} />
     );
 
     const clearButton = getByRole("button");

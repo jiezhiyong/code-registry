@@ -1,15 +1,16 @@
-import type { Meta } from "@storybook/react";
-import type { CalendarProps, DateValue } from "../src";
+import type { CalendarProps, DateValue } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
 import { HeroUIProvider } from "@/lib/system";
-import { calendar, cn } from "@/lib/theme";
+import { cn } from "@/lib/theme";
+import { calendar } from "@/registry/ui";
 import { Button, ButtonGroup } from "@/registry/ui/button";
-import { Radio, RadioGroup } from "@heroui/radio";
+import { Radio, RadioGroup } from "@/registry/ui/radio";
 import { getLocalTimeZone, isWeekend, parseDate, startOfMonth, startOfWeek, today } from "@internationalized/date";
 import { I18nProvider, useLocale } from "@react-aria/i18n";
 import React from "react";
 
-import { Calendar } from "../src";
+import { Calendar } from "@/registry/ui";
 
 export default {
   title: "Components/Calendar",

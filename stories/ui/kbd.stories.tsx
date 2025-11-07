@@ -1,8 +1,8 @@
-import type { Meta } from "@storybook/react";
+import type { Meta } from "@storybook/nextjs-vite";
 
-import { kbd } from "@/lib/theme";
+import { kbd } from "@/registry/ui";
 
-import { Kbd } from "../src";
+import { Kbd } from "@/registry/ui";
 
 export default {
   title: "Components/Kbd",

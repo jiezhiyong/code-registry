@@ -1,14 +1,14 @@
+import type { CheckboxIconProps, CheckboxProps } from "@/registry/ui";
 import type { ValidationErrors } from "@react-types/shared";
-import type { Meta } from "@storybook/react";
-import type { CheckboxIconProps, CheckboxProps } from "../src";
+import type { Meta } from "@storybook/nextjs-vite";
 
 import { CloseIcon } from "@/lib/icons";
-import { button, checkbox } from "@/lib/theme";
-import { Form } from "@heroui/form";
+import { button, checkbox } from "@/registry/ui";
+import { Form } from "@/registry/ui/form";
 import React from "react";
 import { useForm } from "react-hook-form";
 
-import { Checkbox } from "../src";
+import { Checkbox } from "@/registry/ui";
 
 export default {
   title: "Components/Checkbox",

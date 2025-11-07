@@ -1,16 +1,16 @@
-import type {SelectProps} from "../src";
-import type {UserEvent} from "@testing-library/user-event";
+import type { SelectProps } from "@/registry/ui";
+import type { UserEvent } from "@testing-library/user-event";
 
+import { Form } from "@/registry/ui/form";
+import { shouldIgnoreReactWarning, spy } from "@/utils/test";
 import "@testing-library/jest-dom";
-import * as React from "react";
-import {render, renderHook, waitFor, act} from "@testing-library/react";
+import { act, render, renderHook, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {spy, shouldIgnoreReactWarning} from "@heroui/test-utils";
-import {useForm} from "react-hook-form";
-import {Form} from "@heroui/form";
+import * as React from "react";
+import { useForm } from "react-hook-form";
 
-import {Select, SelectItem, SelectSection} from "../src";
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter} from "../../modal/src";
+import { Select, SelectItem, SelectSection } from "@/registry/ui";
+import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@/registry/ui/modal";
 
 type Item = {
   label: string;
@@ -18,19 +18,19 @@ type Item = {
 };
 
 const itemsData: Item[] = [
-  {label: "Cat", id: "cat"},
-  {label: "Dog", id: "dog"},
-  {label: "Elephant", id: "elephant"},
-  {label: "Lion", id: "lion"},
-  {label: "Tiger", id: "tiger"},
-  {label: "Giraffe", id: "giraffe"},
-  {label: "Dolphin", id: "dolphin"},
-  {label: "Penguin", id: "penguin"},
-  {label: "Zebra", id: "zebra"},
-  {label: "Shark", id: "shark"},
-  {label: "Whale", id: "whale"},
-  {label: "Otter", id: "otter"},
-  {label: "Crocodile", id: "crocodile"},
+  { label: "Cat", id: "cat" },
+  { label: "Dog", id: "dog" },
+  { label: "Elephant", id: "elephant" },
+  { label: "Lion", id: "lion" },
+  { label: "Tiger", id: "tiger" },
+  { label: "Giraffe", id: "giraffe" },
+  { label: "Dolphin", id: "dolphin" },
+  { label: "Penguin", id: "penguin" },
+  { label: "Zebra", id: "zebra" },
+  { label: "Shark", id: "shark" },
+  { label: "Whale", id: "whale" },
+  { label: "Otter", id: "otter" },
+  { label: "Crocodile", id: "crocodile" },
 ];
 
 const itemsSectionData = [
@@ -38,18 +38,18 @@ const itemsSectionData = [
     key: "mammals",
     title: "Mammals",
     children: [
-      {key: "lion", label: "Lion", value: "lion"},
-      {key: "tiger", label: "Tiger", value: "tiger"},
-      {key: "elephant", label: "Elephant", value: "elephant"},
+      { key: "lion", label: "Lion", value: "lion" },
+      { key: "tiger", label: "Tiger", value: "tiger" },
+      { key: "elephant", label: "Elephant", value: "elephant" },
     ],
   },
   {
     key: "birds",
     title: "Birds",
     children: [
-      {key: "penguin", label: "Penguin", value: "penguin"},
-      {key: "ostrich", label: "Ostrich", value: "ostrich"},
-      {key: "peacock", label: "Peacock", value: "peacock"},
+      { key: "penguin", label: "Penguin", value: "penguin" },
+      { key: "ostrich", label: "Ostrich", value: "ostrich" },
+      { key: "peacock", label: "Peacock", value: "peacock" },
     ],
   },
 ];
@@ -71,7 +71,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>,
+      </Select>
     );
 
     if (shouldIgnoreReactWarning(spy)) {
@@ -90,21 +90,16 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>,
+      </Select>
     );
     expect(ref.current).not.toBeNull();
   });
 
   it("should render correctly (dynamic)", () => {
     const wrapper = render(
-      <Select
-        disableAnimation
-        aria-label="Favorite Animal"
-        items={itemsData}
-        label="Favorite Animal"
-      >
+      <Select disableAnimation aria-label="Favorite Animal" items={itemsData} label="Favorite Animal">
         {(item) => <SelectItem key={item.id}>{item.label}</SelectItem>}
-      </Select>,
+      </Select>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -120,7 +115,7 @@ describe("Select", () => {
           <SelectItem key="zebra">Zebra</SelectItem>
           <SelectItem key="shark">Shark</SelectItem>
         </SelectSection>
-      </Select>,
+      </Select>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -128,12 +123,7 @@ describe("Select", () => {
 
   it("should render correctly with section (dynamic)", () => {
     const wrapper = render(
-      <Select
-        disableAnimation
-        aria-label="Favorite Animal"
-        items={itemsSectionData}
-        label="Favorite Animal"
-      >
+      <Select disableAnimation aria-label="Favorite Animal" items={itemsSectionData} label="Favorite Animal">
         {(section) => (
           <SelectSection<(typeof itemsSectionData)[0]["children"][0]>
             aria-label={section.title}
@@ -144,7 +134,7 @@ describe("Select", () => {
             {(item: Item) => <SelectItem key={item.value}>{item.label}</SelectItem>}
           </SelectSection>
         )}
-      </Select>,
+      </Select>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -166,7 +156,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>,
+      </Select>
     );
 
     let listbox = wrapper.getByRole("listbox");
@@ -198,7 +188,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>,
+      </Select>
     );
 
     let listbox = wrapper.getByRole("listbox");
@@ -222,7 +212,7 @@ describe("Select", () => {
       placeholder?: SelectProps["placeholder"];
       renderValue?: SelectProps["renderValue"];
     }) => {
-      const {placeholder, renderValue} = props;
+      const { placeholder, renderValue } = props;
 
       return (
         <Select
@@ -264,10 +254,7 @@ describe("Select", () => {
     expect(wrapper.queryByText("Select an favorite animal")).toBe(null);
 
     wrapper.rerender(
-      <SelectWrapper
-        placeholder="Select an favorite animal"
-        renderValue={(item) => `next ${item[0].textValue}`}
-      />,
+      <SelectWrapper placeholder="Select an favorite animal" renderValue={(item) => `next ${item[0].textValue}`} />
     );
 
     expect(wrapper.getByText("next Penguin")).toBeInTheDocument();
@@ -285,7 +272,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>,
+      </Select>
     );
 
     const select = wrapper.getByTestId("close-when-clicking-outside-test");
@@ -322,7 +309,7 @@ describe("Select", () => {
           </ModalBody>
           <ModalFooter>Modal footer</ModalFooter>
         </ModalContent>
-      </Modal>,
+      </Modal>
     );
 
     const select = wrapper.getByTestId("close-when-clicking-outside-test");
@@ -356,22 +343,22 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>,
+      </Select>
     );
     const select = wrapper.getByTestId("test-select");
 
     await user.click(document.body);
     await user.tab();
-    await user.type(select, "z", {skipClick: true});
+    await user.type(select, "z", { skipClick: true });
 
     expect(onSelectionChange).toHaveBeenCalledTimes(0);
   });
 
   it("should pre-select items based on defaultSelectedKeys (numeric keys)", () => {
     const items = [
-      {key: 1, value: "Penguin"},
-      {key: 2, value: "Zebra"},
-      {key: 3, value: "Shark"},
+      { key: 1, value: "Penguin" },
+      { key: 2, value: "Zebra" },
+      { key: 3, value: "Shark" },
     ];
 
     const wrapper = render(
@@ -384,10 +371,10 @@ describe("Select", () => {
         selectionMode="multiple"
       >
         {(item) => <SelectItem>{item.value}</SelectItem>}
-      </Select>,
+      </Select>
     );
 
-    const selectedOptions = wrapper.getAllByRole("option", {selected: true});
+    const selectedOptions = wrapper.getAllByRole("option", { selected: true });
 
     expect(selectedOptions.length).toBe(2);
     expect(selectedOptions.map((opt) => opt.textContent)).toEqual(["Penguin", "Zebra"]);
@@ -395,9 +382,9 @@ describe("Select", () => {
 
   it("should pre-select items based on defaultSelectedKeys (numeric ids)", () => {
     const items = [
-      {id: 1, value: "Penguin"},
-      {id: 2, value: "Zebra"},
-      {id: 3, value: "Shark"},
+      { id: 1, value: "Penguin" },
+      { id: 2, value: "Zebra" },
+      { id: 3, value: "Shark" },
     ];
 
     const wrapper = render(
@@ -410,10 +397,10 @@ describe("Select", () => {
         selectionMode="multiple"
       >
         {(item) => <SelectItem>{item.value}</SelectItem>}
-      </Select>,
+      </Select>
     );
 
-    const selectedOptions = wrapper.getAllByRole("option", {selected: true});
+    const selectedOptions = wrapper.getAllByRole("option", { selected: true });
 
     expect(selectedOptions.length).toBe(2);
     expect(selectedOptions.map((opt) => opt.textContent)).toEqual(["Penguin", "Zebra"]);
@@ -421,22 +408,16 @@ describe("Select", () => {
 
   it("onSelectionChange should be called with a Set of item ids upon selection", async () => {
     const itemsWithId = [
-      {id: 1, value: "penguin"},
-      {id: 2, value: "zebra"},
-      {id: 3, value: "shark"},
+      { id: 1, value: "penguin" },
+      { id: 2, value: "zebra" },
+      { id: 3, value: "shark" },
     ];
 
     const onSelectionChangeId = jest.fn();
     const wrapperWithId = render(
-      <Select
-        disableAnimation
-        isOpen
-        items={itemsWithId}
-        label="Test with ID"
-        onSelectionChange={onSelectionChangeId}
-      >
+      <Select disableAnimation isOpen items={itemsWithId} label="Test with ID" onSelectionChange={onSelectionChangeId}>
         {(item) => <SelectItem>{item.value}</SelectItem>}
-      </Select>,
+      </Select>
     );
 
     const listbox = wrapperWithId.getByRole("listbox");
@@ -444,14 +425,14 @@ describe("Select", () => {
     expect(listbox).toBeInTheDocument();
 
     // Select item and check the correct ID is passed to the callback
-    await user.click(wrapperWithId.getByRole("option", {name: itemsWithId[0].value}));
+    await user.click(wrapperWithId.getByRole("option", { name: itemsWithId[0].value }));
 
     expect(onSelectionChangeId).toHaveBeenCalled();
     let selectionArg = onSelectionChangeId.mock.calls[0][0];
 
     expect([...selectionArg]).toEqual([itemsWithId[0].id]);
 
-    await user.click(wrapperWithId.getByRole("option", {name: itemsWithId[1].value}));
+    await user.click(wrapperWithId.getByRole("option", { name: itemsWithId[1].value }));
 
     expect(onSelectionChangeId).toHaveBeenCalledTimes(2);
     selectionArg = onSelectionChangeId.mock.calls[1][0];
@@ -460,9 +441,9 @@ describe("Select", () => {
 
   it("onSelectionChange should be called with a Set of item keys upon selection", async () => {
     const itemsWithKey = [
-      {key: 1, value: "penguin"},
-      {key: 2, value: "zebra"},
-      {key: 3, value: "shark"},
+      { key: 1, value: "penguin" },
+      { key: 2, value: "zebra" },
+      { key: 3, value: "shark" },
     ];
 
     const onSelectionChangeKey = jest.fn();
@@ -475,7 +456,7 @@ describe("Select", () => {
         onSelectionChange={onSelectionChangeKey}
       >
         {(item) => <SelectItem>{item.value}</SelectItem>}
-      </Select>,
+      </Select>
     );
 
     const listbox = wrapperWithKey.getByRole("listbox");
@@ -483,14 +464,14 @@ describe("Select", () => {
     expect(listbox).toBeInTheDocument();
 
     // Select item and check the correct key is passed to the callback
-    await user.click(wrapperWithKey.getByRole("option", {name: itemsWithKey[0].value}));
+    await user.click(wrapperWithKey.getByRole("option", { name: itemsWithKey[0].value }));
 
     expect(onSelectionChangeKey).toHaveBeenCalled();
     let selectionArg = onSelectionChangeKey.mock.calls[0][0];
 
     expect([...selectionArg]).toEqual([itemsWithKey[0].key]);
 
-    await user.click(wrapperWithKey.getByRole("option", {name: itemsWithKey[1].value}));
+    await user.click(wrapperWithKey.getByRole("option", { name: itemsWithKey[1].value }));
 
     expect(onSelectionChangeKey).toHaveBeenCalledTimes(2);
     selectionArg = onSelectionChangeKey.mock.calls[1][0];
@@ -510,7 +491,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>,
+      </Select>
     );
     const select = wrapper.getByTestId("test-select");
     const displayedText = select?.textContent?.trim();
@@ -521,27 +502,17 @@ describe("Select", () => {
   it("should close listbox by clicking another select", async () => {
     const wrapper = render(
       <>
-        <Select
-          disableAnimation
-          aria-label="Favorite Animal"
-          data-testid="select"
-          label="Favorite Animal"
-        >
+        <Select disableAnimation aria-label="Favorite Animal" data-testid="select" label="Favorite Animal">
           <SelectItem key="penguin">Penguin</SelectItem>
           <SelectItem key="zebra">Zebra</SelectItem>
           <SelectItem key="shark">Shark</SelectItem>
         </Select>
-        <Select
-          disableAnimation
-          aria-label="Favorite Animal"
-          data-testid="select2"
-          label="Favorite Animal"
-        >
+        <Select disableAnimation aria-label="Favorite Animal" data-testid="select2" label="Favorite Animal">
           <SelectItem key="penguin">Penguin</SelectItem>
           <SelectItem key="zebra">Zebra</SelectItem>
           <SelectItem key="shark">Shark</SelectItem>
         </Select>
-      </>,
+      </>
     );
 
     const select = wrapper.getByTestId("select");
@@ -583,7 +554,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>,
+      </Select>
     );
 
     const select = wrapper.getByTestId("test-select");
@@ -606,7 +577,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>,
+      </Select>
     );
 
     const select = wrapper.getByTestId("test-select");
@@ -629,26 +600,20 @@ describe("Select", () => {
           console.log(JSON.stringify(Object.fromEntries(formData)));
         }}
       >
-        <Select
-          disableAnimation
-          data-testid="select"
-          defaultSelectedKeys={["foo"]}
-          label="test select"
-          name="select"
-        >
+        <Select disableAnimation data-testid="select" defaultSelectedKeys={["foo"]} label="test select" name="select">
           <SelectItem key="foo">foo</SelectItem>
           <SelectItem key="bar">bar</SelectItem>
         </Select>
         <button data-testid="submit-button" type="submit">
           Submit
         </button>
-      </form>,
+      </form>
     );
 
     const submitButton = wrapper.getByTestId("submit-button");
 
     await user.click(submitButton);
-    expect(logSpy).toHaveBeenCalledWith(JSON.stringify({select: "foo"}));
+    expect(logSpy).toHaveBeenCalledWith(JSON.stringify({ select: "foo" }));
 
     const select = wrapper.getByTestId("select");
 
@@ -666,21 +631,16 @@ describe("Select", () => {
     await user.click(listboxItems[0]);
     await user.click(submitButton);
 
-    expect(logSpy).toHaveBeenCalledWith(JSON.stringify({select: ""}));
+    expect(logSpy).toHaveBeenCalledWith(JSON.stringify({ select: "" }));
   });
 
   it("should close listbox by clicking selector button again", async () => {
     const wrapper = render(
-      <Select
-        disableAnimation
-        aria-label="Favorite Animal"
-        data-testid="select"
-        label="Favorite Animal"
-      >
+      <Select disableAnimation aria-label="Favorite Animal" data-testid="select" label="Favorite Animal">
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>,
+      </Select>
     );
 
     const select = await wrapper.findByTestId("select");
@@ -721,7 +681,7 @@ describe("Select", () => {
         {options.map((o) => (
           <SelectItem key={o}>{o}</SelectItem>
         ))}
-      </Select>,
+      </Select>
     );
 
     let listbox = wrapper.getByRole("listbox");
@@ -758,7 +718,7 @@ describe("Select", () => {
         {options.map((o) => (
           <SelectItem key={o}>{o}</SelectItem>
         ))}
-      </Select>,
+      </Select>
     );
 
     let listbox = wrapper.getByRole("listbox");
@@ -790,7 +750,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>,
+      </Select>
     );
 
     const base = document.querySelector("[data-slot=base]");
@@ -814,7 +774,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>,
+      </Select>
     );
 
     const trigger = document.querySelector("[data-slot=trigger]");
@@ -847,7 +807,7 @@ describe("Select", () => {
       );
     }
 
-    const {getByTestId} = render(<Test />);
+    const { getByTestId } = render(<Test />);
     const select = getByTestId("select");
 
     expect(select).not.toHaveAttribute("aria-describedby");
@@ -855,9 +815,7 @@ describe("Select", () => {
     await user.click(getByTestId("button"));
 
     expect(select).toHaveAttribute("aria-describedby");
-    expect(document.getElementById(select.getAttribute("aria-describedby")!)).toHaveTextContent(
-      "Invalid value",
-    );
+    expect(document.getElementById(select.getAttribute("aria-describedby")!)).toHaveTextContent("Invalid value");
   });
 
   it("should not open dropdown when hideEmptyContent is true", async () => {
@@ -870,7 +828,7 @@ describe("Select", () => {
         label="Favorite Animal"
       >
         {[]}
-      </Select>,
+      </Select>
     );
 
     const select = wrapper.getByTestId("hide-empty-content-true-test");
@@ -894,7 +852,7 @@ describe("Select", () => {
         label="Favorite Animal"
       >
         {[]}
-      </Select>,
+      </Select>
     );
 
     const select = wrapper.getByTestId("hide-empty-content-false-test");
@@ -930,7 +888,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>,
+      </Select>
     );
 
     let listboxItems = wrapper.getAllByRole("option");
@@ -959,7 +917,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>,
+      </Select>
     );
 
     const select = wrapper.getByTestId("select");
@@ -985,7 +943,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>,
+      </Select>
     );
 
     const select = wrapper.getByTestId("select");
@@ -1015,7 +973,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>,
+      </Select>
     );
 
     const select = wrapper.getByTestId("select");
@@ -1042,7 +1000,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>,
+      </Select>
     );
 
     let listboxItems = wrapper.getAllByRole("option");
@@ -1073,7 +1031,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>,
+      </Select>
     );
 
     const select = wrapper.getByTestId("select");
@@ -1107,22 +1065,16 @@ describe("Select virtualization tests", () => {
   it("should work with onChange (< virtualization threshold items)", async () => {
     const onChange = jest.fn();
 
-    let options = Array.from({length: 10}, (_, i) => `option ${i}`);
+    let options = Array.from({ length: 10 }, (_, i) => `option ${i}`);
 
     const wrapper = render(
-      <div style={{height: "200px", overflow: "auto"}}>
-        <Select
-          disableAnimation
-          isOpen
-          aria-label="Favorite Animal"
-          label="Favorite Animal"
-          onChange={onChange}
-        >
+      <div style={{ height: "200px", overflow: "auto" }}>
+        <Select disableAnimation isOpen aria-label="Favorite Animal" label="Favorite Animal" onChange={onChange}>
           {options.map((o) => (
             <SelectItem key={o}>{o}</SelectItem>
           ))}
         </Select>
-      </div>,
+      </div>
     );
 
     const listbox = wrapper.getByRole("listbox");
@@ -1140,22 +1092,16 @@ describe("Select virtualization tests", () => {
   it("should work with onChange (at virtualization threshold items)", async () => {
     const onChange = jest.fn();
 
-    let options = Array.from({length: 50}, (_, i) => `option ${i}`);
+    let options = Array.from({ length: 50 }, (_, i) => `option ${i}`);
 
     const wrapper = render(
-      <div style={{height: "200px", overflow: "auto"}}>
-        <Select
-          disableAnimation
-          isOpen
-          aria-label="Favorite Animal"
-          label="Favorite Animal"
-          onChange={onChange}
-        >
+      <div style={{ height: "200px", overflow: "auto" }}>
+        <Select disableAnimation isOpen aria-label="Favorite Animal" label="Favorite Animal" onChange={onChange}>
           {options.map((o) => (
             <SelectItem key={o}>{o}</SelectItem>
           ))}
         </Select>
-      </div>,
+      </div>
     );
 
     const listbox = wrapper.getByRole("listbox");
@@ -1173,11 +1119,11 @@ describe("Select virtualization tests", () => {
   it("should work with onChange (> virtualization threshold items)", async () => {
     const onChange = jest.fn();
 
-    let options = Array.from({length: 100}, (_, i) => `option ${i}`);
+    let options = Array.from({ length: 100 }, (_, i) => `option ${i}`);
 
     /* Mock dimensions */
-    Object.defineProperty(HTMLElement.prototype, "offsetHeight", {configurable: true, value: 200});
-    Object.defineProperty(HTMLElement.prototype, "scrollHeight", {configurable: true, value: 2000});
+    Object.defineProperty(HTMLElement.prototype, "offsetHeight", { configurable: true, value: 200 });
+    Object.defineProperty(HTMLElement.prototype, "scrollHeight", { configurable: true, value: 2000 });
     Object.defineProperty(HTMLElement.prototype, "getBoundingClientRect", {
       configurable: true,
       value: () => ({
@@ -1191,7 +1137,7 @@ describe("Select virtualization tests", () => {
     });
 
     const wrapper = render(
-      <div style={{height: "200px", overflow: "auto"}}>
+      <div style={{ height: "200px", overflow: "auto" }}>
         <Select
           disableAnimation
           isOpen
@@ -1206,7 +1152,7 @@ describe("Select virtualization tests", () => {
             <SelectItem key={o}>{o}</SelectItem>
           ))}
         </Select>
-      </div>,
+      </div>
     );
 
     const listbox = wrapper.getByRole("listbox");
@@ -1217,7 +1163,7 @@ describe("Select virtualization tests", () => {
     const scrollableContainer = wrapper.container.querySelector("div");
 
     act(() => {
-      scrollableContainer?.scrollTo({top: 60});
+      scrollableContainer?.scrollTo({ top: 60 });
     });
 
     await waitFor(() => {
@@ -1237,14 +1183,14 @@ describe("Select virtualization tests", () => {
   it("should work with onChange (large number of items)", async () => {
     const onChange = jest.fn();
 
-    let options = Array.from({length: 300}, (_, i) => `option ${i}`);
+    let options = Array.from({ length: 300 }, (_, i) => `option ${i}`);
 
     /* Mock dimensions */
-    Object.defineProperty(HTMLElement.prototype, "offsetHeight", {configurable: true, value: 200});
-    Object.defineProperty(HTMLElement.prototype, "scrollHeight", {configurable: true, value: 6000});
+    Object.defineProperty(HTMLElement.prototype, "offsetHeight", { configurable: true, value: 200 });
+    Object.defineProperty(HTMLElement.prototype, "scrollHeight", { configurable: true, value: 6000 });
 
     const wrapper = render(
-      <div style={{height: "200px", overflow: "auto"}}>
+      <div style={{ height: "200px", overflow: "auto" }}>
         <Select
           disableAnimation
           isOpen
@@ -1259,7 +1205,7 @@ describe("Select virtualization tests", () => {
             <SelectItem key={o}>{o}</SelectItem>
           ))}
         </Select>
-      </div>,
+      </div>
     );
 
     const listbox = wrapper.getByRole("listbox");
@@ -1270,7 +1216,7 @@ describe("Select virtualization tests", () => {
     const scrollableContainer = wrapper.container.querySelector("div");
 
     act(() => {
-      scrollableContainer?.scrollTo({top: 1200});
+      scrollableContainer?.scrollTo({ top: 1200 });
     });
 
     await waitFor(() => {
@@ -1297,19 +1243,19 @@ describe("Select with React Hook Form", () => {
   let onSubmit: () => void;
 
   beforeEach(() => {
-    const {result} = renderHook(() =>
+    const { result } = renderHook(() =>
       useForm({
         defaultValues: {
           withDefaultValue: "cat",
           withoutDefaultValue: "",
           requiredField: "",
         },
-      }),
+      })
     );
 
     const {
       register,
-      formState: {errors},
+      formState: { errors },
       handleSubmit,
     } = result.current;
 
@@ -1341,7 +1287,7 @@ describe("Select with React Hook Form", () => {
           disableAnimation
           data-testid="select-3"
           items={itemsData}
-          {...register("requiredField", {required: true})}
+          {...register("requiredField", { required: true })}
           aria-label="select-3"
         >
           {(item) => <SelectItem key={item.id}>{item.label}</SelectItem>}
@@ -1351,7 +1297,7 @@ describe("Select with React Hook Form", () => {
         <button data-testid="submit-button" type="submit">
           Submit
         </button>
-      </form>,
+      </form>
     );
 
     select1 = wrapper.getByTestId("select-1");
@@ -1404,7 +1350,7 @@ describe("validation", () => {
     it("supports validate function", async () => {
       const onSubmit = jest.fn((e) => e.preventDefault());
 
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <Form data-testid="form" validationBehavior="aria" onSubmit={onSubmit}>
           <Select
             aria-label="Favorite Animal"
@@ -1420,7 +1366,7 @@ describe("validation", () => {
           <button data-testid="submit-button" type="submit">
             Submit
           </button>
-        </Form>,
+        </Form>
       );
 
       const trigger = getByTestId("trigger") as HTMLButtonElement;
@@ -1432,9 +1378,7 @@ describe("validation", () => {
       // aria validation validates on initial render
       expect(trigger).toHaveAttribute("aria-describedby");
       expect(select).toHaveAttribute("aria-invalid", "true");
-      expect(document.getElementById(trigger.getAttribute("aria-describedby")!)).toHaveTextContent(
-        "Invalid value",
-      );
+      expect(document.getElementById(trigger.getAttribute("aria-describedby")!)).toHaveTextContent("Invalid value");
 
       await user.click(trigger);
 
@@ -1451,7 +1395,7 @@ describe("validation", () => {
 
     it("supports server validation", async () => {
       function FormRender() {
-        const [serverErrors, setServerErrors] = React.useState({animal: "initial error"});
+        const [serverErrors, setServerErrors] = React.useState({ animal: "initial error" });
 
         const onSubmit = (e) => {
           e.preventDefault();
@@ -1462,18 +1406,8 @@ describe("validation", () => {
         };
 
         return (
-          <Form
-            data-testid="form"
-            validationBehavior="aria"
-            validationErrors={serverErrors}
-            onSubmit={onSubmit}
-          >
-            <Select
-              aria-label="Favorite Animal"
-              data-testid="trigger"
-              label="Favorite Animal"
-              name="animal"
-            >
+          <Form data-testid="form" validationBehavior="aria" validationErrors={serverErrors} onSubmit={onSubmit}>
+            <Select aria-label="Favorite Animal" data-testid="trigger" label="Favorite Animal" name="animal">
               <SelectItem key="penguin">Penguin</SelectItem>
               <SelectItem key="zebra">Zebra</SelectItem>
               <SelectItem key="shark">Shark</SelectItem>
@@ -1485,7 +1419,7 @@ describe("validation", () => {
         );
       }
 
-      const {getByTestId} = render(<FormRender />);
+      const { getByTestId } = render(<FormRender />);
 
       const trigger = getByTestId("trigger") as HTMLButtonElement;
       const select = document.querySelector("select");
@@ -1495,9 +1429,7 @@ describe("validation", () => {
       expect(select?.validity.valid).toBe(true);
       expect(trigger).toHaveAttribute("aria-describedby");
       expect(select).toHaveAttribute("aria-invalid", "true");
-      expect(document.getElementById(trigger.getAttribute("aria-describedby")!)).toHaveTextContent(
-        "initial error",
-      );
+      expect(document.getElementById(trigger.getAttribute("aria-describedby")!)).toHaveTextContent("initial error");
 
       await user.click(trigger);
 
@@ -1514,9 +1446,7 @@ describe("validation", () => {
       expect(select?.validity.valid).toBe(true);
       expect(trigger).toHaveAttribute("aria-describedby");
       expect(select).toHaveAttribute("aria-invalid");
-      expect(document.getElementById(trigger.getAttribute("aria-describedby")!)).toHaveTextContent(
-        "new error",
-      );
+      expect(document.getElementById(trigger.getAttribute("aria-describedby")!)).toHaveTextContent("new error");
     });
   });
 
@@ -1548,7 +1478,7 @@ describe("validation", () => {
         );
       }
 
-      const {getByTestId} = render(<FormRender />);
+      const { getByTestId } = render(<FormRender />);
 
       const trigger = getByTestId("trigger") as HTMLButtonElement;
       const select = document.querySelector("select");
@@ -1581,7 +1511,7 @@ describe("validation", () => {
     it("supports validate function", async () => {
       const onSubmit = jest.fn((e) => e.preventDefault());
 
-      const {getByTestId} = render(
+      const { getByTestId } = render(
         <Form data-testid="form" validationBehavior="native" onSubmit={onSubmit}>
           <Select
             disableAnimation
@@ -1598,7 +1528,7 @@ describe("validation", () => {
           <button data-testid="submit-button" type="submit">
             Submit
           </button>
-        </Form>,
+        </Form>
       );
 
       const trigger = getByTestId("trigger") as HTMLButtonElement;
@@ -1617,9 +1547,7 @@ describe("validation", () => {
       expect(select?.validity.customError).toBe(true);
       expect(trigger).toHaveAttribute("aria-describedby");
       expect(select).toHaveAttribute("aria-invalid", "true");
-      expect(document.getElementById(trigger.getAttribute("aria-describedby")!)).toHaveTextContent(
-        "Invalid value",
-      );
+      expect(document.getElementById(trigger.getAttribute("aria-describedby")!)).toHaveTextContent("Invalid value");
 
       await user.click(trigger);
 
@@ -1636,7 +1564,7 @@ describe("validation", () => {
 
     it("supports server validation", async () => {
       function FormRender() {
-        const [serverErrors, setServerErrors] = React.useState({animal: "initial error"});
+        const [serverErrors, setServerErrors] = React.useState({ animal: "initial error" });
 
         const onSubmit = (e) => {
           e.preventDefault();
@@ -1647,18 +1575,8 @@ describe("validation", () => {
         };
 
         return (
-          <Form
-            data-testid="form"
-            validationBehavior="native"
-            validationErrors={serverErrors}
-            onSubmit={onSubmit}
-          >
-            <Select
-              aria-label="Favorite Animal"
-              data-testid="trigger"
-              label="Favorite Animal"
-              name="animal"
-            >
+          <Form data-testid="form" validationBehavior="native" validationErrors={serverErrors} onSubmit={onSubmit}>
+            <Select aria-label="Favorite Animal" data-testid="trigger" label="Favorite Animal" name="animal">
               <SelectItem key="penguin">Penguin</SelectItem>
               <SelectItem key="zebra">Zebra</SelectItem>
               <SelectItem key="shark">Shark</SelectItem>
@@ -1670,7 +1588,7 @@ describe("validation", () => {
         );
       }
 
-      const {getByTestId} = render(<FormRender />);
+      const { getByTestId } = render(<FormRender />);
 
       const trigger = getByTestId("trigger") as HTMLButtonElement;
       const select = document.querySelector("select");
@@ -1680,9 +1598,7 @@ describe("validation", () => {
       expect(select?.validity.customError).toBe(true);
       expect(trigger).toHaveAttribute("aria-describedby");
       expect(select).toHaveAttribute("aria-invalid", "true");
-      expect(document.getElementById(trigger.getAttribute("aria-describedby")!)).toHaveTextContent(
-        "initial error",
-      );
+      expect(document.getElementById(trigger.getAttribute("aria-describedby")!)).toHaveTextContent("initial error");
 
       await user.click(trigger);
 
@@ -1700,9 +1616,7 @@ describe("validation", () => {
       expect(select?.validity.customError).toBe(true);
       expect(trigger).toHaveAttribute("aria-describedby");
       expect(select).toHaveAttribute("aria-invalid");
-      expect(document.getElementById(trigger.getAttribute("aria-describedby")!)).toHaveTextContent(
-        "new error",
-      );
+      expect(document.getElementById(trigger.getAttribute("aria-describedby")!)).toHaveTextContent("new error");
     });
   });
 });

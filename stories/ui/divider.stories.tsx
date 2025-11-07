@@ -1,9 +1,9 @@
-import type { Meta } from "@storybook/react";
-import type { DividerProps } from "../src";
+import type { DividerProps } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
 
-import { divider } from "@/lib/theme";
+import { divider } from "@/registry/ui";
 
-import { Divider } from "../src";
+import { Divider } from "@/registry/ui";
 
 export default {
   title: "Components/Divider",

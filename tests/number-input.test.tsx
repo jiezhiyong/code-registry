@@ -1,13 +1,13 @@
 import type { UserEvent } from "@testing-library/user-event";
 
 import { HeroUIProvider } from "@/lib/system";
-import { Form } from "@heroui/form";
+import { Form } from "@/registry/ui/form";
 import { act, fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import * as React from "react";
 import { useForm } from "react-hook-form";
 
-import { NumberInput } from "../src";
+import { NumberInput } from "@/registry/ui";
 
 describe("NumberInput", () => {
   let user: UserEvent;

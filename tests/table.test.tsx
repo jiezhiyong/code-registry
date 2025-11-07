@@ -1,21 +1,21 @@
-import type {UserEvent} from "@testing-library/user-event";
+import type { UserEvent } from "@testing-library/user-event";
 
-import * as React from "react";
-import {act, render, fireEvent} from "@testing-library/react";
+import { act, fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import * as React from "react";
 
-import {Table, TableHeader, TableCell, TableColumn, TableBody, TableRow} from "../src";
-import {keyCodes} from "../../../utilities/test-utils/src";
+import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@/registry/ui";
+import { keyCodes } from "@/registry/ui/../utilities/test-utils";
 
 const columns = [
-  {name: "Foo", key: "foo"},
-  {name: "Bar", key: "bar"},
-  {name: "Baz", key: "baz"},
+  { name: "Foo", key: "foo" },
+  { name: "Bar", key: "bar" },
+  { name: "Baz", key: "baz" },
 ];
 
 let items = [
-  {test: "Test 1", foo: "Foo 1", bar: "Bar 1", yay: "Yay 1", baz: "Baz 1"},
-  {test: "Test 2", foo: "Foo 2", bar: "Bar 2", yay: "Yay 2", baz: "Baz 2"},
+  { test: "Test 1", foo: "Foo 1", bar: "Bar 1", yay: "Yay 1", baz: "Baz 1" },
+  { test: "Test 2", foo: "Foo 2", bar: "Bar 2", yay: "Yay 2", baz: "Baz 2" },
 ];
 
 describe("Table", () => {
@@ -40,7 +40,7 @@ describe("Table", () => {
             <TableCell>6/7/2020</TableCell>
           </TableRow>
         </TableBody>
-      </Table>,
+      </Table>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -63,7 +63,7 @@ describe("Table", () => {
             <TableCell>6/7/2020</TableCell>
           </TableRow>
         </TableBody>
-      </Table>,
+      </Table>
     );
     expect(ref.current).not.toBeNull();
   });
@@ -83,7 +83,7 @@ describe("Table", () => {
             <TableCell>Baz 1</TableCell>
           </TableRow>
         </TableBody>
-      </Table>,
+      </Table>
     );
 
     const table = wrapper.getByRole("grid");
@@ -124,7 +124,7 @@ describe("Table", () => {
             <TableCell>Baz 2</TableCell>
           </TableRow>
         </TableBody>
-      </Table>,
+      </Table>
     );
 
     const row1 = wrapper.getAllByRole("row")[1];
@@ -136,16 +136,14 @@ describe("Table", () => {
     expect(row1).toHaveFocus();
 
     // triggering the arrow down on row1 should not shift the focus to row2
-    fireEvent.keyDown(row1, {key: "ArrowDown", keyCode: keyCodes.ArrowDown});
+    fireEvent.keyDown(row1, { key: "ArrowDown", keyCode: keyCodes.ArrowDown });
     expect(row1).toHaveFocus();
   });
 
   it("should render dynamic table", () => {
     const wrapper = render(
       <Table aria-label="Dynamic Table">
-        <TableHeader columns={columns}>
-          {(column) => <TableColumn>{column.name}</TableColumn>}
-        </TableHeader>
+        <TableHeader columns={columns}>{(column) => <TableColumn>{column.name}</TableColumn>}</TableHeader>
         <TableBody items={items}>
           {(item) => (
             <TableRow key={item.test}>
@@ -155,7 +153,7 @@ describe("Table", () => {
             </TableRow>
           )}
         </TableBody>
-      </Table>,
+      </Table>
     );
 
     const table = wrapper.getByRole("grid");
@@ -198,7 +196,7 @@ describe("Table", () => {
             <TableCell>Baz 2</TableCell>
           </TableRow>
         </TableBody>
-      </Table>,
+      </Table>
     );
 
     const table = wrapper.getByRole("grid");
@@ -216,11 +214,7 @@ describe("Table", () => {
     const onRowAction = jest.fn();
 
     const wrapper = render(
-      <Table
-        aria-label="Multiple Selection Table"
-        selectionMode="multiple"
-        onRowAction={onRowAction}
-      >
+      <Table aria-label="Multiple Selection Table" selectionMode="multiple" onRowAction={onRowAction}>
         <TableHeader>
           <TableColumn>Foo</TableColumn>
           <TableColumn>Bar</TableColumn>
@@ -238,7 +232,7 @@ describe("Table", () => {
             <TableCell>Baz 2</TableCell>
           </TableRow>
         </TableBody>
-      </Table>,
+      </Table>
     );
 
     const table = wrapper.getByRole("grid");
@@ -272,7 +266,7 @@ describe("Table", () => {
             <TableCell>Baz 1</TableCell>
           </TableRow>
         </TableBody>
-      </Table>,
+      </Table>
     );
 
     const column = wrapper.getByTestId("test-sort-column");

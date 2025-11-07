@@ -1,22 +1,23 @@
-import type { Animal, Pokemon, User } from "@heroui/stories-utils";
+import type { AutocompleteProps } from "@/registry/ui";
+import type { Animal, Pokemon, User } from "@/utils/storybook";
 import type { ValidationResult } from "@react-types/shared";
-import type { Meta } from "@storybook/react";
+import type { Meta } from "@storybook/nextjs-vite";
 import type { Key } from "react";
-import type { AutocompleteProps } from "../src";
 
 import { useInfiniteScroll } from "@/lib/hooks/use-infinite-scroll";
-import { PetBoldIcon, SearchLinearIcon, SelectorIcon } from "@/lib/icons";
-import { autocomplete, button, input } from "@/lib/theme";
+import { SelectorIcon } from "@/lib/icons";
+import { autocomplete, button, input } from "@/registry/ui";
+import { Avatar } from "@/registry/ui/avatar";
 import { Button } from "@/registry/ui/button";
-import { Avatar } from "@heroui/avatar";
-import { Form } from "@heroui/form";
-import { animalsData, usePokemonList, usersData } from "@heroui/stories-utils";
+import { Form } from "@/registry/ui/form";
+import { PetBoldIcon, SearchLinearIcon } from "@/utils/icons";
+import { animalsData, usePokemonList, usersData } from "@/utils/storybook";
 import { useFilter } from "@react-aria/i18n";
 import { useAsyncList } from "@react-stately/data";
 import React from "react";
 import { useForm } from "react-hook-form";
 
-import { Autocomplete, AutocompleteItem, AutocompleteSection } from "../src";
+import { Autocomplete, AutocompleteItem, AutocompleteSection } from "@/registry/ui";
 
 export default {
   title: "Components/Autocomplete",

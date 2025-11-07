@@ -1,12 +1,12 @@
-import type {UserEvent} from "@testing-library/user-event";
-import type {CheckboxProps} from "../src";
+import type { CheckboxProps } from "@/registry/ui";
+import type { UserEvent } from "@testing-library/user-event";
 
-import * as React from "react";
-import {render, renderHook, act} from "@testing-library/react";
+import { act, render, renderHook } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {useForm} from "react-hook-form";
+import * as React from "react";
+import { useForm } from "react-hook-form";
 
-import {Checkbox} from "../src";
+import { Checkbox } from "@/registry/ui";
 
 describe("Checkbox", () => {
   let user: UserEvent;
@@ -29,7 +29,7 @@ describe("Checkbox", () => {
   });
 
   it("should work correctly with initial value", () => {
-    let {container} = render(<Checkbox isSelected>Option</Checkbox>);
+    let { container } = render(<Checkbox isSelected>Option</Checkbox>);
 
     expect(container.querySelector("input")?.checked).toBe(true);
 
@@ -50,7 +50,7 @@ describe("Checkbox", () => {
   });
 
   it("should ignore events when disabled", async () => {
-    const {container} = render(<Checkbox isDisabled>Option</Checkbox>);
+    const { container } = render(<Checkbox isDisabled>Option</Checkbox>);
 
     await user.click(container.querySelector("label")!);
 
@@ -58,7 +58,7 @@ describe("Checkbox", () => {
   });
 
   it("should work correctly with indeterminate value", () => {
-    const {container} = render(<Checkbox isIndeterminate>Option</Checkbox>);
+    const { container } = render(<Checkbox isIndeterminate>Option</Checkbox>);
 
     expect(container.querySelector("input")?.indeterminate).toBe(true);
   });
@@ -68,7 +68,7 @@ describe("Checkbox", () => {
     const wrapper = render(
       <Checkbox data-testid="checkbox-test" onChange={onChange}>
         Option
-      </Checkbox>,
+      </Checkbox>
     );
 
     await user.click(wrapper.getByTestId("checkbox-test"));
@@ -81,7 +81,7 @@ describe("Checkbox", () => {
     const wrapper = render(
       <Checkbox data-testid="checkbox-test" onFocus={onFocus}>
         Option
-      </Checkbox>,
+      </Checkbox>
     );
 
     const input = wrapper.container.querySelector("input")!;
@@ -94,10 +94,10 @@ describe("Checkbox", () => {
   });
 
   it("should have required attribute when isRequired with native validationBehavior", () => {
-    const {container} = render(
+    const { container } = render(
       <Checkbox isRequired validationBehavior="native">
         Option
-      </Checkbox>,
+      </Checkbox>
     );
 
     expect(container.querySelector("input")).toHaveAttribute("required");
@@ -105,10 +105,10 @@ describe("Checkbox", () => {
   });
 
   it("should have aria-required attribute when isRequired with aria validationBehavior", () => {
-    const {container} = render(
+    const { container } = render(
       <Checkbox isRequired validationBehavior="aria">
         Option
-      </Checkbox>,
+      </Checkbox>
     );
 
     expect(container.querySelector("input")).not.toHaveAttribute("required");
@@ -138,7 +138,7 @@ describe("Checkbox", () => {
     const wrapper = render(
       <Component data-testid="checkbox-test" onChange={onChange}>
         Option
-      </Component>,
+      </Component>
     );
 
     await user.click(wrapper.getByTestId("checkbox-test"));
@@ -149,12 +149,12 @@ describe("Checkbox", () => {
   describe("validation", () => {
     describe("validationBehavior=native", () => {
       it("supports isRequired", async () => {
-        const {getByRole, getByTestId} = render(
+        const { getByRole, getByTestId } = render(
           <form data-testid="form">
             <Checkbox isRequired validationBehavior="native">
               Terms and conditions
             </Checkbox>
-          </form>,
+          </form>
         );
 
         const checkbox = getByRole("checkbox") as HTMLInputElement;
@@ -174,14 +174,14 @@ describe("Checkbox", () => {
 
     describe("validationBehavior=aria", () => {
       it("supports validate function", async () => {
-        const {getByRole} = render(
+        const { getByRole } = render(
           <Checkbox
             validate={(v) => (!v ? "You must accept the terms." : null)}
             validationBehavior="aria"
             value="terms"
           >
             Terms and conditions
-          </Checkbox>,
+          </Checkbox>
         );
 
         const checkbox = getByRole("checkbox") as HTMLInputElement;
@@ -203,20 +203,20 @@ describe("Checkbox with React Hook Form", () => {
   let onSubmit: () => void;
 
   beforeEach(() => {
-    const {result} = renderHook(() =>
+    const { result } = renderHook(() =>
       useForm({
         defaultValues: {
           withDefaultValue: true,
           withoutDefaultValue: false,
           requiredField: false,
         },
-      }),
+      })
     );
 
     const {
       handleSubmit,
       register,
-      formState: {errors},
+      formState: { errors },
     } = result.current;
 
     onSubmit = jest.fn();
@@ -225,10 +225,10 @@ describe("Checkbox with React Hook Form", () => {
       <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
         <Checkbox {...register("withDefaultValue")} />
         <Checkbox {...register("withoutDefaultValue")} />
-        <Checkbox {...register("requiredField", {required: true})} />
+        <Checkbox {...register("requiredField", { required: true })} />
         {errors.requiredField && <span className="text-danger">This field is required</span>}
         <button type="submit">Submit</button>
-      </form>,
+      </form>
     );
 
     checkbox1 = document.querySelector("input[name=withDefaultValue]")!;
