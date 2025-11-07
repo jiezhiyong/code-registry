@@ -1,8 +1,8 @@
 import type { HTMLHeroUIProps } from "@/lib/system";
-import type { ButtonProps } from "@heroui/button";
+import type { ButtonProps } from "@/registry/ui/button";
 import type { CalendarDate } from "@internationalized/date";
 
-import { Button } from "@heroui/button";
+import { Button } from "@/registry/ui/button";
 import { useDateFormatter } from "@react-aria/i18n";
 import { m } from "framer-motion";
 import { useCallback } from "react";

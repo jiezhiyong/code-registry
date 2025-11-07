@@ -1,19 +1,20 @@
+import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses, ToastSlots, ToastVariantProps } from "@/lib/theme";
-import type { ReactRef } from "@heroui/react-utils";
+import type { SlotsToClasses } from "@/lib/theme";
 import type { AriaToastProps } from "@react-aria/toast";
 import type { QueuedToast, ToastState } from "@react-stately/toast";
 import type { MotionProps } from "framer-motion";
 import type { DOMAttributes, ReactNode } from "react";
+import type { ToastSlots, ToastVariantProps } from "./theme";
 
+import { clsx, dataAttr, isEmpty, mergeProps, objectToDeps } from "@/lib/base";
+import { useIsMobile } from "@/lib/hooks/use-is-mobile";
+import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { toast as toastTheme } from "@/lib/theme";
-import { useDOMRef } from "@heroui/react-utils";
-import { clsx, dataAttr, isEmpty, mergeProps, objectToDeps } from "@heroui/shared-utils";
-import { useIsMobile } from "@heroui/use-is-mobile";
 import { useHover } from "@react-aria/interactions";
 import { useToast as useToastAria } from "@react-aria/toast";
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { toast as toastTheme } from "./theme";
 
 export type ToastPlacement =
   | "bottom-right"

@@ -1,7 +1,7 @@
 import type { UseTableProps } from "./use-table";
 
 import { forwardRef } from "@/lib/system";
-import { Spacer } from "@heroui/spacer";
+import { Spacer } from "@/registry/ui/spacer";
 import { useCallback } from "react";
 
 import TableBody from "./table-body";

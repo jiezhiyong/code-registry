@@ -1,10 +1,10 @@
-import React, {Children, cloneElement, useMemo} from "react";
-import {pickChildren} from "@heroui/react-utils";
-import {useAriaButton} from "@heroui/use-aria-button";
-import {Button} from "@heroui/button";
-import {mergeProps} from "@heroui/shared-utils";
+import { mergeProps } from "@/lib/base";
+import { useAriaButton } from "@/lib/hooks/use-aria-button";
+import { pickChildren } from "@/lib/react";
+import { Button } from "@/registry/ui/button";
+import React, { Children, cloneElement, useMemo } from "react";
 
-import {usePopoverContext} from "./popover-context";
+import { usePopoverContext } from "./popover-context";
 
 export interface PopoverTriggerProps {
   children?: React.ReactNode;
@@ -17,9 +17,9 @@ export interface PopoverTriggerProps {
  * such as `button` or `a`.
  */
 const PopoverTrigger = (props: PopoverTriggerProps) => {
-  const {triggerRef, getTriggerProps} = usePopoverContext();
+  const { triggerRef, getTriggerProps } = usePopoverContext();
 
-  const {children, ...otherProps} = props;
+  const { children, ...otherProps } = props;
 
   // force a single child
   const child = useMemo<any>(() => {
@@ -34,14 +34,14 @@ const PopoverTrigger = (props: PopoverTriggerProps) => {
   // https://github.com/facebook/react/pull/28348
   const childRef = child.props.ref ?? child.ref;
 
-  const {onPress, isDisabled, ...restProps} = useMemo(() => {
+  const { onPress, isDisabled, ...restProps } = useMemo(() => {
     return getTriggerProps(mergeProps(otherProps, child.props), childRef);
   }, [getTriggerProps, child.props, otherProps, childRef]);
 
   // validates if contains a HeroUI Button as a child
   const [, triggerChildren] = pickChildren(children, Button);
 
-  const {buttonProps} = useAriaButton({onPress, isDisabled}, triggerRef);
+  const { buttonProps } = useAriaButton({ onPress, isDisabled }, triggerRef);
 
   const hasHeroUIButton = useMemo<boolean>(() => {
     return triggerChildren?.[0] !== undefined;
@@ -53,10 +53,7 @@ const PopoverTrigger = (props: PopoverTriggerProps) => {
     delete restProps["preventFocusOnPress"];
   }
 
-  return cloneElement(
-    child,
-    mergeProps(restProps, hasHeroUIButton ? {onPress, isDisabled} : buttonProps),
-  );
+  return cloneElement(child, mergeProps(restProps, hasHeroUIButton ? { onPress, isDisabled } : buttonProps));
 };
 
 PopoverTrigger.displayName = "HeroUI.PopoverTrigger";

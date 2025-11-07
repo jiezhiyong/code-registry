@@ -1,12 +1,14 @@
+import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { BadgeSlots, BadgeVariantProps, SlotsToClasses } from "@/lib/theme";
-import type { ReactRef } from "@heroui/react-utils";
+import type { SlotsToClasses } from "@/lib/theme";
 import type { ReactNode } from "react";
+import type { BadgeSlots, BadgeVariantProps } from "./theme";
+;
 
+import { clsx, objectToDeps } from "@/lib/base";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { badge } from "@/lib/theme";
-import { clsx, objectToDeps } from "@heroui/shared-utils";
 import { useMemo } from "react";
+import { badge } from "./theme";
 
 interface Props extends HTMLHeroUIProps<"span", "content"> {
   /**

@@ -1,21 +1,23 @@
+import type { ReactRef } from "@/lib/react";
 import type { DOMAttributes, HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SliderSlots, SliderVariantProps, SlotsToClasses } from "@/lib/theme";
-import type { ReactRef } from "@heroui/react-utils";
-import type { TooltipProps } from "@heroui/tooltip";
+import type { SlotsToClasses } from "@/lib/theme";
+import type { TooltipProps } from "@/registry/ui/tooltip";
 import type { AriaSliderProps } from "@react-aria/slider";
 import type { ValueBase } from "@react-types/shared";
 import type { ReactNode } from "react";
 import type { SliderThumbProps } from "./slider-thumb";
+import type { SliderSlots, SliderVariantProps } from "./theme";
+;
 
+import { clsx, mergeProps, objectToDeps, warn } from "@/lib/base";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { slider } from "@/lib/theme";
-import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
-import { clsx, mergeProps, objectToDeps, warn } from "@heroui/shared-utils";
 import { useLocale, useNumberFormatter } from "@react-aria/i18n";
 import { useHover } from "@react-aria/interactions";
 import { useSlider as useAriaSlider } from "@react-aria/slider";
 import { useSliderState } from "@react-stately/slider";
 import { useCallback, useMemo, useRef } from "react";
+import { slider } from "./theme";
 
 export type SliderValue = number | number[];
 export type SliderStepMark = {

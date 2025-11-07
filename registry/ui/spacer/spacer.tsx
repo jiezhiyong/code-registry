@@ -1,13 +1,13 @@
-import type {UseSpacerProps} from "./use-spacer";
+import type { UseSpacerProps } from "./use-spacer";
 
-import {forwardRef} from "@heroui/system-rsc";
+import { forwardRef } from "@/lib/system-rsc";
 
-import {useSpacer} from "./use-spacer";
+import { useSpacer } from "./use-spacer";
 
 export interface SpacerProps extends UseSpacerProps {}
 
 const Spacer = forwardRef<"span", SpacerProps>((props, ref) => {
-  const {Component, getSpacerProps} = useSpacer({...props});
+  const { Component, getSpacerProps } = useSpacer({ ...props });
 
   return <Component ref={ref} {...getSpacerProps()} />;
 });

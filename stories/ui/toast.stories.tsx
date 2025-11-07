@@ -3,7 +3,7 @@ import type { ToastProps } from "../src";
 
 import { AvatarIcon, CloseIcon } from "@/lib/icons";
 import { cn, toast } from "@/lib/theme";
-import { Button } from "@heroui/button";
+import { Button } from "@/registry/ui/button";
 import { Drawer, DrawerContent } from "@heroui/drawer";
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from "@heroui/modal";
 import { Spinner } from "@heroui/spinner";

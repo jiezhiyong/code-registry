@@ -1,6 +1,6 @@
-import type {UseNavbarReturn} from "./use-navbar";
+import type { UseNavbarReturn } from "./use-navbar";
 
-import {createContext} from "@heroui/react-utils";
+import { createContext } from "@/lib/react";
 
 export const [NavbarProvider, useNavbarContext] = createContext<UseNavbarReturn>({
   name: "NavbarContext",

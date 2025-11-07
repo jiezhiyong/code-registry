@@ -2,7 +2,7 @@ import type { Meta } from "@storybook/react";
 import type { DateValue, RangeCalendarProps, RangeValue } from "../src";
 
 import { calendar, cn } from "@/lib/theme";
-import { Button, ButtonGroup } from "@heroui/button";
+import { Button, ButtonGroup } from "@/registry/ui/button";
 import { Radio, RadioGroup } from "@heroui/radio";
 import {
   CalendarDate,

@@ -1,17 +1,19 @@
+import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { NavbarSlots, NavbarVariantProps, SlotsToClasses } from "@/lib/theme";
-import type { ReactRef } from "@heroui/react-utils";
+import type { SlotsToClasses } from "@/lib/theme";
 import type { HTMLMotionProps } from "framer-motion";
+import type { NavbarSlots, NavbarVariantProps } from "./theme";
+;
 
+import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
+import { useResizeObserver } from "@/lib/hooks/use-resize";
+import { useScrollPosition } from "@/lib/hooks/use-scroll-position";
+import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { navbar } from "@/lib/theme";
-import { useDOMRef } from "@heroui/react-utils";
-import { clsx, dataAttr, mergeProps, objectToDeps } from "@heroui/shared-utils";
-import { useResizeObserver } from "@heroui/use-resize";
-import { useScrollPosition } from "@heroui/use-scroll-position";
 import { usePreventScroll } from "@react-aria/overlays";
 import { useControlledState } from "@react-stately/utils";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { navbar } from "./theme";
 
 interface Props extends HTMLHeroUIProps<"nav"> {
   /**

@@ -2,14 +2,14 @@ import type { ChipProps } from "@heroui/chip";
 import type { Meta } from "@storybook/react";
 import type { TableProps } from "../src";
 
+import { useInfiniteScroll } from "@/lib/hooks/use-infinite-scroll";
 import { DeleteIcon, EditIcon, EyeIcon, SortIcon } from "@/lib/icons";
 import { table } from "@/lib/theme";
-import { Button } from "@heroui/button";
+import { Button } from "@/registry/ui/button";
 import { Chip } from "@heroui/chip";
 import { Pagination } from "@heroui/pagination";
 import { Spinner } from "@heroui/spinner";
 import { Tooltip } from "@heroui/tooltip";
-import { useInfiniteScroll } from "@heroui/use-infinite-scroll";
 import { User } from "@heroui/user";
 import { useAsyncList } from "@react-stately/data";
 import React, { useMemo } from "react";

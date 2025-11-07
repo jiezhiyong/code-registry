@@ -4,13 +4,13 @@ import type { Meta } from "@storybook/react";
 import type { Key } from "react";
 import type { AutocompleteProps } from "../src";
 
+import { useInfiniteScroll } from "@/lib/hooks/use-infinite-scroll";
 import { PetBoldIcon, SearchLinearIcon, SelectorIcon } from "@/lib/icons";
 import { autocomplete, button, input } from "@/lib/theme";
+import { Button } from "@/registry/ui/button";
 import { Avatar } from "@heroui/avatar";
-import { Button } from "@heroui/button";
 import { Form } from "@heroui/form";
 import { animalsData, usePokemonList, usersData } from "@heroui/stories-utils";
-import { useInfiniteScroll } from "@heroui/use-infinite-scroll";
 import { useFilter } from "@react-aria/i18n";
 import { useAsyncList } from "@react-stately/data";
 import React from "react";

@@ -12,8 +12,8 @@ import {
   SunIcon,
 } from "@/lib/icons";
 import { accordionItem, button } from "@/lib/theme";
+import { Button } from "@/registry/ui/button";
 import { Avatar } from "@heroui/avatar";
-import { Button } from "@heroui/button";
 import { Input, Textarea } from "@heroui/input";
 import React from "react";
 

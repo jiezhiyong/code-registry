@@ -1,14 +1,15 @@
-import type { SlotsToClasses, ToastRegionSlots, ToastRegionVariantProps } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme";
 import type { AriaToastRegionProps } from "@react-aria/toast";
 import type { QueuedToast, ToastState } from "@react-stately/toast";
+import type { ToastRegionSlots, ToastRegionVariantProps } from "./theme";
 import type { ToastPlacement, ToastProps } from "./use-toast";
 
-import { toastRegion } from "@/lib/theme";
-import { clsx, mergeProps } from "@heroui/shared-utils";
+import { clsx, mergeProps } from "@/lib/base";
 import { useHover } from "@react-aria/interactions";
 import { useToastRegion } from "@react-aria/toast";
 import { AnimatePresence } from "framer-motion";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { toastRegion } from "./theme";
 
 import Toast from "./toast";
 import { isToastClosing } from "./toast-provider";

@@ -1,15 +1,17 @@
+import type { ReactRef } from "@/lib/react";
 import type { DOMAttributes, DOMElement, HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { AvatarSlots, AvatarVariantProps, SlotsToClasses } from "@/lib/theme";
-import type { ReactRef } from "@heroui/react-utils";
+import type { SlotsToClasses } from "@/lib/theme";
+import type { AvatarSlots, AvatarVariantProps } from "./theme";
+;
 
+import { clsx, dataAttr, mergeProps, safeInitials } from "@/lib/base";
+import { useImage } from "@/lib/hooks/use-image";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { useProviderContext } from "@/lib/system";
-import { avatar } from "@/lib/theme";
-import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
-import { clsx, dataAttr, mergeProps, safeInitials } from "@heroui/shared-utils";
-import { useImage } from "@heroui/use-image";
 import { useFocusRing } from "@react-aria/focus";
 import { useHover } from "@react-aria/interactions";
 import { useCallback, useMemo } from "react";
+import { avatar } from "./theme";
 
 import { useAvatarGroupContext } from "./avatar-group-context";
 

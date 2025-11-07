@@ -1,15 +1,14 @@
-import type {UserEvent} from "@testing-library/user-event";
-import type {TabsProps} from "../src";
+import type { UserEvent } from "@testing-library/user-event";
+import type { TabsProps } from "../src";
 
-import * as React from "react";
-import {act, render, fireEvent, within, waitFor} from "@testing-library/react";
+import { Button } from "@/registry/ui/button";
+import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader } from "@heroui/modal";
+import { focus, shouldIgnoreReactWarning, spy } from "@heroui/test-utils";
+import { act, fireEvent, render, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {focus} from "@heroui/test-utils";
-import {spy, shouldIgnoreReactWarning} from "@heroui/test-utils";
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter} from "@heroui/modal";
-import {Button} from "@heroui/button";
+import * as React from "react";
 
-import {Tabs, Tab} from "../src";
+import { Tab, Tabs } from "../src";
 
 type Item = {
   id: string;
@@ -73,7 +72,7 @@ describe("Tabs", () => {
         <Tab key="item3" title="Item 3">
           <div>Content 3</div>
         </Tab>
-      </Tabs>,
+      </Tabs>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -91,7 +90,7 @@ describe("Tabs", () => {
             <div>{item.content}</div>
           </Tab>
         )}
-      </Tabs>,
+      </Tabs>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -105,7 +104,7 @@ describe("Tabs", () => {
             <div>{item.content}</div>
           </Tab>
         ))}
-      </Tabs>,
+      </Tabs>
     );
     const tablist = wrapper.getByRole("tablist");
 
@@ -145,7 +144,7 @@ describe("Tabs", () => {
         <Tab key="item3" title="Item 3">
           <div>Content 3</div>
         </Tab>
-      </Tabs>,
+      </Tabs>
     );
     expect(ref.current).not.toBeNull();
   });
@@ -162,12 +161,12 @@ describe("Tabs", () => {
         <Tab key="item3" title="Item 3">
           <div>Content 3</div>
         </Tab>
-      </Tabs>,
+      </Tabs>
     );
 
-    const tab1 = wrapper.getByRole("tab", {name: "Item 1"});
-    const tab2 = wrapper.getByRole("tab", {name: "Item 2"});
-    const tab3 = wrapper.getByRole("tab", {name: "Item 3"});
+    const tab1 = wrapper.getByRole("tab", { name: "Item 1" });
+    const tab2 = wrapper.getByRole("tab", { name: "Item 2" });
+    const tab3 = wrapper.getByRole("tab", { name: "Item 3" });
 
     expect(tab1).toHaveAttribute("aria-selected", "true");
     expect(tab2).toHaveAttribute("aria-selected", "false");
@@ -205,7 +204,7 @@ describe("Tabs", () => {
         <Tab key="item3" data-testid="item3" title="Item 3">
           <div>Content 3</div>
         </Tab>
-      </Tabs>,
+      </Tabs>
     );
 
     const tab1 = wrapper.getByTestId("item1");
@@ -246,7 +245,7 @@ describe("Tabs", () => {
         <Tab key="item3" title="Item 3">
           <div>Content 3</div>
         </Tab>
-      </Tabs>,
+      </Tabs>
     );
 
     const tab2 = wrapper.getByTestId("item2");
@@ -266,7 +265,7 @@ describe("Tabs", () => {
         <Tab key="item3" title="Item 3">
           <div>Content 3</div>
         </Tab>
-      </Tabs>,
+      </Tabs>
     );
 
     const tab2 = wrapper.getByTestId("item2");
@@ -314,7 +313,7 @@ describe("Tabs", () => {
         <Tab key="item3" title="Item 3">
           <div>Content 3</div>
         </Tab>
-      </Tabs>,
+      </Tabs>
     );
 
     const tabWrapper = wrapper.getByTestId("tabWrapper").parentNode;
@@ -334,7 +333,7 @@ describe("Tabs", () => {
         <Tab key="item3" title="Item 3">
           <div>Content 3</div>
         </Tab>
-      </Tabs>,
+      </Tabs>
     );
 
     expect(tabWrapper).toHaveAttribute("data-placement", "top");
@@ -342,7 +341,7 @@ describe("Tabs", () => {
   });
 
   test("should destory inactive tab panels", () => {
-    const {container} = render(
+    const { container } = render(
       <Tabs aria-label="Tabs test (destroyInactiveTabPanel=true)">
         <Tab key="tab1" data-testid="item1" title="Tab 1">
           <input className="border-2" data-testid="input" id="firstTab" />
@@ -350,7 +349,7 @@ describe("Tabs", () => {
         <Tab key="tab2" data-testid="item2" title="Tab 2">
           <p id="secondTab">second tab content</p>
         </Tab>
-      </Tabs>,
+      </Tabs>
     );
 
     expect(container.querySelectorAll("[data-slot='panel']")).toHaveLength(1);
@@ -365,10 +364,10 @@ describe("Tabs", () => {
         <Tab key="tab2" data-testid="item2" title="Tab 2">
           <p id="secondTab">second tab content</p>
         </Tab>
-      </Tabs>,
+      </Tabs>
     );
 
-    const {container} = wrapper;
+    const { container } = wrapper;
 
     expect(container.querySelectorAll("[data-slot='panel']")).toHaveLength(2);
 
@@ -376,7 +375,7 @@ describe("Tabs", () => {
     const tab2 = wrapper.getByTestId("item2");
     const input = wrapper.getByTestId("input");
 
-    fireEvent.change(input, {target: {value: "23"}});
+    fireEvent.change(input, { target: { value: "23" } });
 
     expect(input).toHaveValue("23");
 
@@ -401,7 +400,7 @@ describe("Tabs", () => {
         <Tab key="item1" tabRef={ref} title="Item 1">
           <div>Content 1</div>
         </Tab>
-      </Tabs>,
+      </Tabs>
     );
     expect(ref.current).not.toBeNull();
   });
@@ -417,7 +416,7 @@ describe("Tabs", () => {
         <Tab key="item2" data-testid="item2" title="Item 2" onClick={item2Click}>
           <div>Content 2</div>
         </Tab>
-      </Tabs>,
+      </Tabs>
     );
     const tab1 = wrapper.getByTestId("item1");
     const tab2 = wrapper.getByTestId("item2");
@@ -478,7 +477,7 @@ describe("Tabs", () => {
       );
     };
 
-    const {getByTestId, getByRole, queryByRole} = render(<TestComponent />);
+    const { getByTestId, getByRole, queryByRole } = render(<TestComponent />);
 
     const openButton = getByTestId("open-modal-btn");
 
@@ -514,7 +513,7 @@ describe("Tabs", () => {
       () => {
         expect(queryByRole("dialog")).not.toBeInTheDocument();
       },
-      {timeout: 1000},
+      { timeout: 1000 }
     );
 
     await act(async () => {

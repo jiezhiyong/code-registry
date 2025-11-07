@@ -2,7 +2,7 @@ import type { HTMLHeroUIProps } from "@/lib/system";
 import type { CalendarDate } from "@internationalized/date";
 import type { PressEvent } from "@react-types/shared";
 
-import { debounce } from "@heroui/shared-utils";
+import { debounce } from "@/lib/base";
 import { useDateFormatter } from "@react-aria/i18n";
 import { useCallback, useEffect, useRef } from "react";
 import scrollIntoView from "scroll-into-view-if-needed";

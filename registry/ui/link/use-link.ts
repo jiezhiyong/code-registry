@@ -1,16 +1,16 @@
+import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { LinkVariantProps } from "@/lib/theme";
-import type { ReactRef } from "@heroui/react-utils";
 import type { AriaLinkProps } from "@react-types/link";
 import type { MouseEventHandler } from "react";
+import type { LinkVariantProps } from "./theme";
 
+import { dataAttr, mergeProps, objectToDeps } from "@/lib/base";
+import { useAriaLink } from "@/lib/hooks/use-aria-link";
+import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { link } from "@/lib/theme";
-import { useDOMRef } from "@heroui/react-utils";
-import { dataAttr, mergeProps, objectToDeps } from "@heroui/shared-utils";
-import { useAriaLink } from "@heroui/use-aria-link";
 import { useFocusRing } from "@react-aria/focus";
 import { useCallback, useMemo } from "react";
+import { link } from "./theme";
 
 interface Props extends HTMLHeroUIProps<"a">, LinkVariantProps {
   /**

@@ -2,7 +2,7 @@ import type { HTMLHeroUIProps } from "@/lib/system";
 import type { CalendarDate } from "@internationalized/date";
 import type { CalendarPropsBase } from "@react-types/calendar";
 
-import { dataAttr, getInertValue } from "@heroui/shared-utils";
+import { dataAttr, getInertValue } from "@/lib/base";
 import { endOfMonth, getWeeksInMonth } from "@internationalized/date";
 import { useCalendarGrid } from "@react-aria/calendar";
 import { useLocale } from "@react-aria/i18n";

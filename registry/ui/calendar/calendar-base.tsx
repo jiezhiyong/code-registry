@@ -1,11 +1,11 @@
 import type { As, HTMLHeroUIProps } from "@/lib/system";
-import type { ButtonProps } from "@heroui/button";
+import type { ButtonProps } from "@/registry/ui/button";
 import type { AriaButtonProps } from "@react-types/button";
 import type { HTMLAttributes, ReactNode, RefObject } from "react";
 
+import { chain, mergeProps } from "@/lib/base";
 import { ResizablePanel } from "@/lib/framer";
-import { Button } from "@heroui/button";
-import { chain, mergeProps } from "@heroui/shared-utils";
+import { Button } from "@/registry/ui/button";
 import { useLocale } from "@react-aria/i18n";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { AnimatePresence, LazyMotion, MotionConfig } from "framer-motion";
@@ -19,7 +19,7 @@ import { transition } from "./calendar-transitions";
 import { ChevronLeftIcon } from "./chevron-left";
 import { ChevronRightIcon } from "./chevron-right";
 
-const domAnimation = () => import(""@/lib/dom-animation").then((res) => res.default);
+const domAnimation = () => import("@/lib/dom-animation").then((res) => res.default);
 
 export interface CalendarBaseProps extends HTMLHeroUIProps<"div"> {
   Component?: As;

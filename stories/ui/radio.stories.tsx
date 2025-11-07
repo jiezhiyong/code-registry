@@ -2,9 +2,9 @@ import type { ValidationResult } from "@react-types/shared";
 import type { Meta } from "@storybook/react";
 import type { RadioGroupProps, RadioProps } from "../src";
 
+import { clsx } from "@/lib/base";
 import { button, radio } from "@/lib/theme";
 import { Form } from "@heroui/form";
-import { clsx } from "@heroui/shared-utils";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import React from "react";
 

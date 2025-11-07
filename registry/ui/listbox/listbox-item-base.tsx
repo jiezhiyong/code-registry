@@ -1,10 +1,10 @@
 import type { ItemProps } from "@/lib/aria";
-import type { ListboxItemSlots, ListboxItemVariantProps, SlotsToClasses } from "@/lib/theme";
+import { BaseItem } from "@/lib/aria";
+import type { SlotsToClasses } from "@/lib/theme";
 import type { AriaOptionProps } from "@react-aria/listbox";
 import type { FocusableProps, PressEvents } from "@react-types/shared";
-import type { ReactNode } from "react";
-
-import { BaseItem } from "@/lib/aria";
+import type { JSX, ReactNode } from "react";
+import type { ListboxItemSlots, ListboxItemVariantProps } from "./theme";
 
 export type ListboxItemSelectedIconProps = {
   /**

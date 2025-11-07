@@ -1,18 +1,18 @@
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses, ToggleSlots, ToggleVariantProps } from "@/lib/theme";
 import type { AriaSwitchProps } from "@react-aria/switch";
 import type { ReactNode, Ref } from "react";
+import type { SlotsToClasses, ToggleSlots, ToggleVariantProps } from "./theme";
 
+import { chain, clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
+import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
+import { mergeRefs } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { toggle } from "@/lib/theme";
-import { mergeRefs } from "@heroui/react-utils";
-import { chain, clsx, dataAttr, mergeProps, objectToDeps } from "@heroui/shared-utils";
-import { useSafeLayoutEffect } from "@heroui/use-safe-layout-effect";
 import { useFocusRing } from "@react-aria/focus";
 import { useHover } from "@react-aria/interactions";
 import { useSwitch as useReactAriaSwitch } from "@react-aria/switch";
 import { useToggleState } from "@react-stately/toggle";
 import { useCallback, useId, useMemo, useRef } from "react";
+import { toggle } from "./theme";
 
 export type SwitchThumbIconProps = {
   width: string;

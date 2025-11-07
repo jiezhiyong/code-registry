@@ -1,10 +1,10 @@
 import type { Node } from "@react-types/shared";
-import type { TabItemProps as BaseTabItemProps } from "./base/tab-item-base";
+import type { TabItemProps as BaseTabItemProps } from "./tab-item-base";
 import type { ValuesType } from "./use-tabs";
 
+import { chain, clsx, dataAttr, mergeProps } from "@/lib/base";
+import { filterDOMProps, mergeRefs, useDOMRef } from "@/lib/react";
 import { forwardRef } from "@/lib/system";
-import { filterDOMProps, mergeRefs, useDOMRef } from "@heroui/react-utils";
-import { chain, clsx, dataAttr, mergeProps } from "@heroui/shared-utils";
 import { useFocusRing } from "@react-aria/focus";
 import { useHover } from "@react-aria/interactions";
 import { useTab } from "@react-aria/tabs";

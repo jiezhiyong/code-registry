@@ -4,9 +4,9 @@ import type { OverlayTriggerState } from "@react-stately/overlays";
 import type { RefObject } from "react";
 
 import { ariaHideOutside, keepVisible, toReactAriaPlacement } from "@/lib/aria";
-import { mergeProps } from "@heroui/shared-utils";
-import { useAriaOverlay } from "@heroui/use-aria-overlay";
-import { useSafeLayoutEffect } from "@heroui/use-safe-layout-effect";
+import { mergeProps } from "@/lib/base";
+import { useAriaOverlay } from "@/lib/hooks/use-aria-overlay";
+import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
 import { useOverlayPosition } from "@react-aria/overlays";
 import { useEffect } from "react";
 

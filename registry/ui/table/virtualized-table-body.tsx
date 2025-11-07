@@ -2,9 +2,9 @@ import type { HTMLHeroUIProps } from "@/lib/system";
 import type { Virtualizer } from "@tanstack/react-virtual";
 import type { ValuesType } from "./use-table";
 
+import { clsx, dataAttr, mergeProps } from "@/lib/base";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { forwardRef } from "@/lib/system";
-import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
-import { clsx, dataAttr, mergeProps } from "@heroui/shared-utils";
 import { useTableRowGroup } from "@react-aria/table";
 
 import TableCell from "./table-cell";

@@ -1,14 +1,14 @@
 import "@testing-library/jest-dom";
-import type {UserEvent} from "@testing-library/user-event";
+import type { UserEvent } from "@testing-library/user-event";
 
-import * as React from "react";
-import {render, fireEvent, act} from "@testing-library/react";
+import { Button } from "@/registry/ui/button";
+import { shouldIgnoreReactWarning, spy } from "@heroui/test-utils";
+import { act, fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {Button} from "@heroui/button";
-import {spy, shouldIgnoreReactWarning} from "@heroui/test-utils";
+import * as React from "react";
 
-import {Popover, PopoverContent, PopoverTrigger} from "../src";
-import {Select, SelectItem} from "../../select/src";
+import { Select, SelectItem } from "../../select/src";
+import { Popover, PopoverContent, PopoverTrigger } from "../src";
 
 describe("Popover", () => {
   let user: UserEvent;
@@ -30,7 +30,7 @@ describe("Popover", () => {
         <PopoverContent>
           <p>This is the content of the popover.</p>
         </PopoverContent>
-      </Popover>,
+      </Popover>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -45,7 +45,7 @@ describe("Popover", () => {
         <PopoverContent>
           <p>This is the content of the popover.</p>
         </PopoverContent>
-      </Popover>,
+      </Popover>
     );
     const trigger = wrapper.getByTestId("trigger-test");
 
@@ -68,7 +68,7 @@ describe("Popover", () => {
         <PopoverContent>
           <p>This is the content of the popover.</p>
         </PopoverContent>
-      </Popover>,
+      </Popover>
     );
     expect(ref.current).not.toBeNull();
   });
@@ -84,12 +84,12 @@ describe("Popover", () => {
         <PopoverContent data-testid="content-test">
           <p>This is the content of the popover.</p>
         </PopoverContent>
-      </Popover>,
+      </Popover>
     );
 
     const content = wrapper.getByTestId("content-test");
 
-    fireEvent.keyDown(content, {key: "Escape"});
+    fireEvent.keyDown(content, { key: "Escape" });
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
@@ -104,12 +104,12 @@ describe("Popover", () => {
         <PopoverContent data-testid="content-test">
           <p>This is the content of the popover.</p>
         </PopoverContent>
-      </Popover>,
+      </Popover>
     );
 
     const content = wrapper.getByTestId("content-test");
 
-    fireEvent.keyDown(content, {key: "Escape"});
+    fireEvent.keyDown(content, { key: "Escape" });
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
@@ -124,14 +124,14 @@ describe("Popover", () => {
         <PopoverContent data-testid="content-test">
           <p>This is the content of the popover.</p>
         </PopoverContent>
-      </Popover>,
+      </Popover>
     );
 
     const content = wrapper.getByTestId("content-test");
 
     expect(content).toHaveFocus();
 
-    fireEvent.keyDown(content, {key: "Escape"});
+    fireEvent.keyDown(content, { key: "Escape" });
 
     expect(onClose).toHaveBeenCalledTimes(1);
   });
@@ -149,7 +149,7 @@ describe("Popover", () => {
         <PopoverContent>
           <p>This is the content of the popover.</p>
         </PopoverContent>
-      </Popover>,
+      </Popover>
     );
 
     const trigger = wrapper.getByTestId("trigger-test");
@@ -183,7 +183,7 @@ describe("Popover", () => {
             <p>This is the content of the popover.</p>
           </PopoverContent>
         </Popover>
-      </>,
+      </>
     );
 
     const popover = wrapper.getByTestId("popover");
@@ -224,7 +224,7 @@ describe("Popover", () => {
         <PopoverContent>
           <p>This is the content of the popover.</p>
         </PopoverContent>
-      </Popover>,
+      </Popover>
     );
 
     const trigger = wrapper.getByTestId("trigger-test");
@@ -232,7 +232,7 @@ describe("Popover", () => {
     // open popover
     await user.click(trigger);
 
-    const {getByRole} = wrapper;
+    const { getByRole } = wrapper;
 
     let dialog = getByRole("dialog");
 
@@ -249,16 +249,16 @@ describe("Popover", () => {
         <PopoverContent>
           <p>This is the content of the popover.</p>
         </PopoverContent>
-      </Popover>,
+      </Popover>
     );
 
     const trigger = wrapper.getByTestId("popover-trigger");
 
     await act(async () => {
       // open popover
-      await user.pointer({target: trigger, keys: "[MouseLeft>]"});
+      await user.pointer({ target: trigger, keys: "[MouseLeft>]" });
       // close popover
-      await user.pointer({target: trigger, keys: "[/MouseLeft]"});
+      await user.pointer({ target: trigger, keys: "[/MouseLeft]" });
       // assert that the focus is restored back to trigger
       expect(trigger).toHaveFocus();
     });
@@ -277,7 +277,7 @@ describe("Popover", () => {
             <SelectItem key="brazil">Brazil</SelectItem>
           </Select>
         </PopoverContent>
-      </Popover>,
+      </Popover>
     );
 
     const popover = wrapper.getByTestId("popover");
@@ -318,7 +318,7 @@ describe("Popover", () => {
             <SelectItem key="brazil">Brazil</SelectItem>
           </Select>
         </PopoverContent>
-      </Popover>,
+      </Popover>
     );
 
     const popover = wrapper.getByTestId("popover");
@@ -350,7 +350,7 @@ it("should close popover on scroll when shouldCloseOnScroll is false", async () 
           <SelectItem key="brazil">Brazil</SelectItem>
         </Select>
       </PopoverContent>
-    </Popover>,
+    </Popover>
   );
 
   const popover = wrapper.getByTestId("popover");

@@ -1,12 +1,16 @@
-import type { ButtonProps } from "@heroui/button";
+import type { ButtonProps } from "@/registry/ui/button";
 import type { UseAlertProps } from "./use-alert";
 
-import { CloseIcon, DangerIcon, InfoCircleIcon, SuccessIcon, WarningIcon } from "@/lib/icons";
+import { isEmpty } from "@/lib/base";
 import { forwardRef } from "@/lib/system";
-import { Button } from "@heroui/button";
-import { isEmpty } from "@heroui/shared-utils";
+import { Button } from "@/registry/ui/button";
 import { cloneElement, isValidElement } from "react";
 
+import { CloseIcon } from "@/lib/icons/close";
+import { DangerIcon } from "@/lib/icons/danger";
+import { InfoCircleIcon } from "@/lib/icons/info-circle";
+import { SuccessIcon } from "@/lib/icons/success";
+import { WarningIcon } from "@/lib/icons/warning";
 import { useAlert } from "./use-alert";
 
 const iconMap = {

@@ -3,15 +3,15 @@ import type { AriaDialogProps } from "@react-aria/dialog";
 import type { HTMLMotionProps } from "framer-motion";
 import type { KeyboardEvent, ReactNode } from "react";
 
+import { chain, mergeProps } from "@/lib/base";
 import { TRANSITION_VARIANTS } from "@/lib/framer";
-import { CloseIcon } from "@/lib/icons";
-import { chain, mergeProps } from "@heroui/shared-utils";
-import { useViewportSize } from "@heroui/use-viewport-size";
+import { useViewportSize } from "@/lib/hooks/use-viewport-size";
 import { useDialog } from "@react-aria/dialog";
 import { DismissButton } from "@react-aria/overlays";
 import { LazyMotion, m } from "framer-motion";
 import { cloneElement, isValidElement, useCallback, useMemo } from "react";
 
+import { CloseIcon } from "@/lib/icons/close";
 import { useModalContext } from "./modal-context";
 import { scaleInOut } from "./modal-transition";
 
@@ -21,7 +21,7 @@ export interface ModalContentProps extends AriaDialogProps, HTMLHeroUIProps<"div
   children: ReactNode | ((onClose: () => void) => ReactNode);
 }
 
-const domAnimation = () => import(""@/lib/dom-animation").then((res) => res.default);
+const domAnimation = () => import("@/lib/dom-animation").then((res) => res.default);
 
 const ModalContent = (props: ModalContentProps) => {
   const { as, children, role = "dialog", ...otherProps } = props;

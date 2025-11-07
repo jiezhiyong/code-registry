@@ -1,20 +1,20 @@
+import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { AccordionGroupVariantProps } from "@/lib/theme";
-import type { DividerProps } from "@heroui/divider";
-import type { ReactRef } from "@heroui/react-utils";
+import type { DividerProps } from "@/registry/ui/divider";
 import type { TreeState } from "@react-stately/tree";
 import type { AriaAccordionProps } from "@react-types/accordion";
 import type { MultipleSelection, SelectionBehavior } from "@react-types/shared";
 import type { Key } from "react";
 import type { AccordionItemProps } from "./accordion-item";
+import type { AccordionGroupVariantProps } from "./theme";
 
+import { mergeProps } from "@/lib/base";
+import { useReactAriaAccordion } from "@/lib/hooks/use-aria-accordion";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { useProviderContext } from "@/lib/system";
-import { accordion } from "@/lib/theme";
-import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
-import { mergeProps } from "@heroui/shared-utils";
-import { useReactAriaAccordion } from "@heroui/use-aria-accordion";
 import { useTreeState } from "@react-stately/tree";
 import React, { useCallback, useMemo, useState } from "react";
+import { accordion } from "./theme";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**

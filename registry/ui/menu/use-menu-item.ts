@@ -1,18 +1,18 @@
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { MenuItemVariantProps } from "@/lib/theme";
 import type { TreeState } from "@react-stately/tree";
 import type { Node, PressEvent } from "@react-types/shared";
 import type { MenuItemBaseProps } from "./menu-item-base";
+import type { MenuItemVariantProps } from "./theme";
 
+import { clsx, dataAttr, mergeProps, objectToDeps, removeEvents } from "@/lib/base";
+import { useIsMobile } from "@/lib/hooks/use-is-mobile";
+import { filterDOMProps } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { menuItem } from "@/lib/theme";
-import { filterDOMProps } from "@heroui/react-utils";
-import { clsx, dataAttr, mergeProps, objectToDeps, removeEvents } from "@heroui/shared-utils";
-import { useIsMobile } from "@heroui/use-is-mobile";
 import { useFocusRing } from "@react-aria/focus";
 import { isFocusVisible as AriaIsFocusVisible, useHover } from "@react-aria/interactions";
 import { useMenuItem as useAriaMenuItem } from "@react-aria/menu";
 import { useCallback, useMemo, useRef } from "react";
+import { menuItem } from "./theme";
 
 interface Props<T extends object> extends MenuItemBaseProps<T> {
   item: Node<T>;

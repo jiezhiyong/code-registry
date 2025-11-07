@@ -1,8 +1,8 @@
 import type { HTMLHeroUIProps } from "@/lib/system";
 import type { ValuesType } from "./use-table";
 
-import { useDOMRef } from "@heroui/react-utils";
-import { clsx, mergeProps } from "@heroui/shared-utils";
+import { clsx, mergeProps } from "@/lib/base";
+import { useDOMRef } from "@/lib/react";
 import { useTableRowGroup } from "@react-aria/table";
 import { forwardRef } from "react";
 

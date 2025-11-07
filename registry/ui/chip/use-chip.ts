@@ -1,16 +1,18 @@
+import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { ChipSlots, ChipVariantProps, SlotsToClasses } from "@/lib/theme";
-import type { ReactRef } from "@heroui/react-utils";
+import type { SlotsToClasses } from "@/lib/theme";
 import type { PressEvent } from "@react-types/shared";
 import type { ReactNode } from "react";
+import type { ChipSlots, ChipVariantProps } from "./theme";
+;
 
+import { clsx, mergeProps, objectToDeps } from "@/lib/base";
+import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants } from "@/lib/system";
-import { chip } from "@/lib/theme";
-import { useDOMRef } from "@heroui/react-utils";
-import { clsx, mergeProps, objectToDeps } from "@heroui/shared-utils";
 import { useFocusRing } from "@react-aria/focus";
 import { usePress } from "@react-aria/interactions";
 import { cloneElement, isValidElement, useMemo } from "react";
+import { chip } from "./theme";
 
 export interface UseChipProps extends HTMLHeroUIProps, ChipVariantProps {
   /**

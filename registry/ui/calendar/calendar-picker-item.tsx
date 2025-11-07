@@ -1,9 +1,9 @@
+import type { AriaButtonProps } from "@/lib/hooks/use-aria-button";
 import type { HTMLHeroUIProps } from "@/lib/system";
-import type { AriaButtonProps } from "@heroui/use-aria-button";
 
-import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
-import { dataAttr, mergeProps } from "@heroui/shared-utils";
-import { useAriaButton } from "@heroui/use-aria-button";
+import { dataAttr, mergeProps } from "@/lib/base";
+import { useAriaButton } from "@/lib/hooks/use-aria-button";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { useFocusRing } from "@react-aria/focus";
 import { useHover } from "@react-aria/interactions";
 import { forwardRef } from "react";

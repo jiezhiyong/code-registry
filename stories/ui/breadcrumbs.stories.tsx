@@ -1,6 +1,7 @@
 import type { Meta } from "@storybook/react";
 import type { BreadcrumbsProps } from "../src";
 
+import { clsx } from "@/lib/base";
 import {
   CheckIcon,
   ChevronDownIcon,
@@ -11,9 +12,8 @@ import {
   ShoppingCartBoldIcon,
 } from "@/lib/icons";
 import { breadcrumbItem } from "@/lib/theme";
-import { Button } from "@heroui/button";
+import { Button } from "@/registry/ui/button";
 import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@heroui/dropdown";
-import { clsx } from "@heroui/shared-utils";
 import { Tooltip } from "@heroui/tooltip";
 import React from "react";
 

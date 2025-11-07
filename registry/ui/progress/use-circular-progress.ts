@@ -1,19 +1,21 @@
+import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type {
+  SlotsToClasses,
+} from "@/lib/theme";
+import type { AriaProgressBarProps } from "@react-types/progress";
 import type {
   CircularProgressSlots,
   CircularProgressVariantProps,
-  SlotsToClasses,
-} from "@/lib/theme";
-import type { ReactRef } from "@heroui/react-utils";
-import type { AriaProgressBarProps } from "@react-types/progress";
+} from "./theme";
 
+import { clampPercentage, clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
+import { useIsMounted } from "@/lib/hooks/use-is-mounted";
+import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { circularProgress } from "@/lib/theme";
-import { useDOMRef } from "@heroui/react-utils";
-import { clampPercentage, clsx, dataAttr, mergeProps, objectToDeps } from "@heroui/shared-utils";
-import { useIsMounted } from "@heroui/use-is-mounted";
 import { useProgressBar as useAriaProgress } from "@react-aria/progress";
 import { useCallback, useMemo } from "react";
+import { circularProgress } from "./theme";
 
 export interface Props extends HTMLHeroUIProps<"div"> {
   /**

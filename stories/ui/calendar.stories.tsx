@@ -3,7 +3,7 @@ import type { CalendarProps, DateValue } from "../src";
 
 import { HeroUIProvider } from "@/lib/system";
 import { calendar, cn } from "@/lib/theme";
-import { Button, ButtonGroup } from "@heroui/button";
+import { Button, ButtonGroup } from "@/registry/ui/button";
 import { Radio, RadioGroup } from "@heroui/radio";
 import { getLocalTimeZone, isWeekend, parseDate, startOfMonth, startOfWeek, today } from "@internationalized/date";
 import { I18nProvider, useLocale } from "@react-aria/i18n";

@@ -3,10 +3,10 @@ import type { GridNode } from "@react-types/grid";
 import type { ReactElement, ReactNode } from "react";
 import type { ValuesType } from "./use-table";
 
-import { ChevronDownIcon } from "@/lib/icons";
+import { clsx, dataAttr, mergeProps } from "@/lib/base";
+import { ChevronDownIcon } from "@/lib/icons/chevron-down";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { forwardRef } from "@/lib/system";
-import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
-import { clsx, dataAttr, mergeProps } from "@heroui/shared-utils";
 import { useFocusRing } from "@react-aria/focus";
 import { useHover } from "@react-aria/interactions";
 import { useTableColumnHeader } from "@react-aria/table";

@@ -7,9 +7,9 @@ import type { FormProps as SharedFormProps } from "@react-types/form";
 import type { ForwardedRef } from "react";
 import type { ContextValue, DOMProps } from "./utils";
 
-import { form } from "@/lib/theme";
 import { FormValidationContext } from "@react-stately/form";
 import { createContext, forwardRef, useMemo } from "react";
+import { form } from "./theme";
 
 import { useContextProps } from "./utils";
 

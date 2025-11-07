@@ -1,6 +1,6 @@
-import type {UseModalReturn} from "./use-modal";
+import type { UseModalReturn } from "./use-modal";
 
-import {createContext} from "@heroui/react-utils";
+import { createContext } from "@/lib/react";
 
 export const [ModalProvider, useModalContext] = createContext<UseModalReturn>({
   name: "ModalContext",

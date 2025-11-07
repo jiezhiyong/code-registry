@@ -1,13 +1,14 @@
 import type { ReactNode } from "react";
 import type { UseSnippetProps } from "./use-snippet";
 
-import { CheckLinearIcon, CopyLinearIcon } from "@/lib/icons";
+import { objectToDeps } from "@/lib/base";
 import { forwardRef } from "@/lib/system";
-import { Button } from "@heroui/button";
-import { objectToDeps } from "@heroui/shared-utils";
-import { Tooltip } from "@heroui/tooltip";
+import { Button } from "@/registry/ui/button";
+import { Tooltip } from "@/registry/ui/tooltip";
 import { cloneElement, useCallback, useMemo } from "react";
 
+import { CheckLinearIcon } from "@/lib/icons/check-linear";
+import { CopyLinearIcon } from "@/lib/icons/copy-linear";
 import { useSnippet } from "./use-snippet";
 
 export interface SnippetProps extends UseSnippetProps {}

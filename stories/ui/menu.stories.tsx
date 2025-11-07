@@ -1,9 +1,9 @@
 import type { Meta } from "@storybook/react";
 import type { MenuProps } from "../src";
 
+import { clsx } from "@/lib/base";
 import { AddNoteBulkIcon, CopyDocumentBulkIcon, DeleteDocumentBulkIcon, EditDocumentBulkIcon } from "@/lib/icons";
 import { menuItem } from "@/lib/theme";
-import { clsx } from "@heroui/shared-utils";
 import React from "react";
 
 import { Menu, MenuItem, MenuSection } from "../src";

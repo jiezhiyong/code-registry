@@ -1,19 +1,21 @@
+import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { CheckboxGroupSlots, SlotsToClasses } from "@/lib/theme";
-import type { ReactRef } from "@heroui/react-utils";
+import type { SlotsToClasses } from "@/lib/theme";
 import type { CheckboxGroupState } from "@react-stately/checkbox";
 import type { AriaCheckboxGroupProps } from "@react-types/checkbox";
 import type { Orientation } from "@react-types/shared";
 import type { CheckboxProps } from "./index";
+import type { CheckboxGroupSlots } from "./theme";
+;
 
+import { chain, clsx, mergeProps, safeAriaLabel } from "@/lib/base";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { useProviderContext } from "@/lib/system";
-import { checkboxGroup } from "@/lib/theme";
-import { FormContext, useSlottedContext } from "@heroui/form";
-import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
-import { chain, clsx, mergeProps, safeAriaLabel } from "@heroui/shared-utils";
+import { FormContext, useSlottedContext } from "@/registry/ui/form";
 import { useCheckboxGroup as useReactAriaCheckboxGroup } from "@react-aria/checkbox";
 import { useCheckboxGroupState } from "@react-stately/checkbox";
 import { useCallback, useMemo } from "react";
+import { checkboxGroup } from "./theme";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**

@@ -1,8 +1,8 @@
+import type { PressEvent } from "@react-types/shared";
 import type React from "react";
-import type {PressEvent} from "@react-types/shared";
 
-import {getUniqueID} from "@heroui/shared-utils";
-import {useCallback, useState} from "react";
+import { getUniqueID } from "@/lib/base";
+import { useCallback, useState } from "react";
 
 export type RippleType = {
   key: React.Key;
@@ -11,7 +11,7 @@ export type RippleType = {
   size: number;
 };
 
-export interface UseRippleProps {}
+export interface UseRippleProps { }
 
 export function useRipple(props: UseRippleProps = {}) {
   const [ripples, setRipples] = useState<RippleType[]>([]);
@@ -36,7 +36,7 @@ export function useRipple(props: UseRippleProps = {}) {
     setRipples((prevState) => prevState.filter((ripple) => ripple.key !== key));
   }, []);
 
-  return {ripples, onClear, onPress, ...props};
+  return { ripples, onClear, onPress, ...props };
 }
 
 export type UseRippleReturn = ReturnType<typeof useRipple>;

@@ -1,9 +1,9 @@
+import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps } from "@/lib/system";
-import type { ReactRef } from "@heroui/react-utils";
 
+import { clsx } from "@/lib/base";
+import { useDOMRef } from "@/lib/react";
 import { forwardRef } from "@/lib/system";
-import { useDOMRef } from "@heroui/react-utils";
-import { clsx } from "@heroui/shared-utils";
 import { useEffect } from "react";
 
 import { useModalContext } from "./modal-context";

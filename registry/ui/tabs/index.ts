@@ -1,12 +1,13 @@
 import Tabs from "./tabs";
 
 // export types
-export type {TabsProps} from "./tabs";
-export type {TabItemProps} from "./base/tab-item-base";
+export type { TabItemProps } from "./tab-item-base";
+export type { TabsProps } from "./tabs";
 
 // export hooks
-export {useTabs} from "./use-tabs";
+export { useTabs } from "./use-tabs";
 
 // export components
-export {Tabs};
-export {default as Tab} from "./base/tab-item-base";
+export { default as Tab } from "./tab-item-base";
+export { Tabs };
+

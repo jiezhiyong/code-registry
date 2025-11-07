@@ -1,14 +1,16 @@
+import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { ImageSlots, ImageVariantProps, SlotsToClasses } from "@/lib/theme";
-import type { ReactRef } from "@heroui/react-utils";
+import type { SlotsToClasses } from "@/lib/theme";
 import type { ImgHTMLAttributes } from "react";
+import type { ImageSlots, ImageVariantProps } from "./theme";
+;
 
+import { clsx, dataAttr, objectToDeps } from "@/lib/base";
+import { useImage as useImageBase } from "@/lib/hooks/use-image";
+import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { image } from "@/lib/theme";
-import { useDOMRef } from "@heroui/react-utils";
-import { clsx, dataAttr, objectToDeps } from "@heroui/shared-utils";
-import { useImage as useImageBase } from "@heroui/use-image";
 import { useCallback, useMemo } from "react";
+import { image } from "./theme";
 type NativeImageProps = ImgHTMLAttributes<HTMLImageElement>;
 
 interface Props extends HTMLHeroUIProps<"img"> {

@@ -1,21 +1,23 @@
+import type { AriaButtonProps } from "@/lib/hooks/use-aria-button";
+import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { CardReturnType, CardSlots, CardVariantProps, SlotsToClasses } from "@/lib/theme";
-import type { ReactRef } from "@heroui/react-utils";
-import type { RippleProps } from "@heroui/ripple";
-import type { AriaButtonProps } from "@heroui/use-aria-button";
+import type { SlotsToClasses } from "@/lib/theme";
+import type { RippleProps } from "@/registry/ui/ripple";
 import type { PressEvent } from "@react-aria/interactions";
 import type { FocusableProps, PressEvents } from "@react-types/shared";
 import type { MouseEventHandler, ReactNode } from "react";
+import type { CardReturnType, CardSlots, CardVariantProps } from "./theme";
+;
 
+import { chain, clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
+import { useAriaButton } from "@/lib/hooks/use-aria-button";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { card } from "@/lib/theme";
-import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
-import { useRipple } from "@heroui/ripple";
-import { chain, clsx, dataAttr, mergeProps, objectToDeps } from "@heroui/shared-utils";
-import { useAriaButton } from "@heroui/use-aria-button";
+import { useRipple } from "@/registry/ui/ripple";
 import { useFocusRing } from "@react-aria/focus";
 import { useHover } from "@react-aria/interactions";
 import { useCallback, useMemo } from "react";
+import { card } from "./theme";
 
 export interface Props extends Omit<HTMLHeroUIProps<"div">, "onClick"> {
   /**

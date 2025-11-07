@@ -3,8 +3,8 @@ import type { NavbarProps } from "../src";
 
 import { Activity, ChevronDown, Flash, Lock, Scale, SearchIcon, Server, TagUser } from "@/lib/icons";
 import { navbar } from "@/lib/theme";
+import { Button } from "@/registry/ui/button";
 import { Avatar } from "@heroui/avatar";
-import { Button } from "@heroui/button";
 import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@heroui/dropdown";
 import { Input } from "@heroui/input";
 import { Link } from "@heroui/link";

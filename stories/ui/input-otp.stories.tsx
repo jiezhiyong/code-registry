@@ -2,7 +2,7 @@ import type { ValidationResult } from "@react-types/shared";
 import type { Meta } from "@storybook/react";
 
 import { button, inputOtp } from "@/lib/theme";
-import { Button } from "@heroui/button";
+import { Button } from "@/registry/ui/button";
 import { Form } from "@heroui/form";
 import React from "react";
 import { Controller, useForm } from "react-hook-form";

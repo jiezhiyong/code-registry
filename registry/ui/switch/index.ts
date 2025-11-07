@@ -1,11 +1,11 @@
-import Switch from "./src/switch";
+import Switch from "./switch";
 
 // export types
-export type { SwitchProps } from "./src/switch";
-export type { SwitchThumbIconProps } from "./src/use-switch";
+export type { SwitchProps } from "./switch";
+export type { SwitchThumbIconProps } from "./use-switch";
 
 // export hooks
-export { useSwitch } from "./src/use-switch";
+export { useSwitch } from "./use-switch";
 
 // export component
 export { Switch };

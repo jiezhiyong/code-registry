@@ -2,9 +2,9 @@
  * Based on @react-aria/separator but with some changes to support RSC.
  */
 
-import type {AriaLabelingProps, DOMAttributes, DOMProps, Orientation} from "@react-types/shared";
+import type { AriaLabelingProps, DOMAttributes, DOMProps, Orientation } from "@react-types/shared";
 
-import {filterDOMProps} from "@heroui/react-rsc-utils";
+import { filterDOMProps } from "@/lib/react-rsc";
 
 export interface SeparatorProps extends DOMProps, AriaLabelingProps {
   /**
@@ -49,5 +49,5 @@ export function useSeparator(props: SeparatorProps): SeparatorAria {
     };
   }
 
-  return {separatorProps: domProps};
+  return { separatorProps: domProps };
 }

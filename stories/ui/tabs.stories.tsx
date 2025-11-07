@@ -10,7 +10,7 @@ import {
   AlignVerticallyBoldIcon,
 } from "@/lib/icons";
 import { button, link, tabs } from "@/lib/theme";
-import { Button } from "@heroui/button";
+import { Button } from "@/registry/ui/button";
 import { Card, CardBody } from "@heroui/card";
 import { Input } from "@heroui/input";
 import React from "react";

@@ -1,13 +1,10 @@
 import type { NodeWithProps } from "@/lib/aria";
+import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { AccordionItemVariantProps } from "@/lib/theme";
-import type { ReactRef } from "@heroui/react-utils";
 import type { TreeState } from "@react-stately/tree";
 import type { AccordionItemBaseProps } from "./accordion-item-base";
+import type { AccordionItemVariantProps } from "./theme";
 
-import { useProviderContext } from "@/lib/system";
-import { accordionItem } from "@/lib/theme";
-import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
 import {
   callAllHandlers,
   chain,
@@ -15,11 +12,14 @@ import {
   dataAttr,
   mergeProps,
   objectToDeps,
-} from "@heroui/shared-utils";
-import { useReactAriaAccordionItem } from "@heroui/use-aria-accordion";
+} from "@/lib/base";
+import { useReactAriaAccordionItem } from "@/lib/hooks/use-aria-accordion";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { useProviderContext } from "@/lib/system";
 import { useFocusRing } from "@react-aria/focus";
 import { useHover, usePress } from "@react-aria/interactions";
 import { useCallback, useMemo } from "react";
+import { accordionItem } from "./theme";
 
 export interface Props<T extends object> extends HTMLHeroUIProps<"div"> {
   /**

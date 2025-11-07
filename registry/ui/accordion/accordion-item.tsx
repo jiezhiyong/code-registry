@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import type { UseAccordionItemProps } from "./use-accordion-item";
 
 import { TRANSITION_VARIANTS } from "@/lib/framer";
-import { ChevronIcon } from "@/lib/icons";
+import { ChevronIcon } from "@/lib/icons/chevron";
 import { forwardRef } from "@/lib/system";
 import { AnimatePresence, LazyMotion, m, useWillChange } from "framer-motion";
 import { useMemo } from "react";

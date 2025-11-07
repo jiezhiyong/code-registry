@@ -1,9 +1,9 @@
 import type { Meta } from "@storybook/react";
 import type { SwitchProps, SwitchThumbIconProps } from "../src";
 
+import { clsx } from "@/lib/base";
 import { MoonFilledIcon, SunFilledIcon } from "@/lib/icons";
 import { button, toggle } from "@/lib/theme";
-import { clsx } from "@heroui/shared-utils";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import React from "react";
 import { useForm } from "react-hook-form";

@@ -3,7 +3,7 @@ import type { HTMLMotionProps } from "framer-motion";
 import type { FC } from "react";
 import type { RippleType } from "./use-ripple";
 
-import { clamp } from "@heroui/shared-utils";
+import { clamp } from "@/lib/base";
 import { AnimatePresence, LazyMotion, m } from "framer-motion";
 
 export interface RippleProps extends HTMLHeroUIProps<"span"> {
@@ -14,7 +14,7 @@ export interface RippleProps extends HTMLHeroUIProps<"span"> {
   onClear: (key: React.Key) => void;
 }
 
-const domAnimation = () => import(""@/lib/dom-animation").then((res) => res.default);
+const domAnimation = () => import("@/lib/dom-animation").then((res) => res.default);
 
 const Ripple: FC<RippleProps> = (props) => {
   const { ripples = [], motionProps, color = "currentColor", style, onClear } = props;

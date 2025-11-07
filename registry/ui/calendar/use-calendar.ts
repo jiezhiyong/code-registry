@@ -1,17 +1,17 @@
-import type {DateValue, AriaCalendarProps} from "@react-types/calendar";
-import type {ButtonProps} from "@heroui/button";
-import type {CalendarState} from "@react-stately/calendar";
-import type {ContextType, UseCalendarBaseProps} from "./use-calendar-base";
-import type {CalendarBaseProps} from "./calendar-base";
+import type { ButtonProps } from "@/registry/ui/button";
+import type { CalendarState } from "@react-stately/calendar";
+import type { AriaCalendarProps, DateValue } from "@react-types/calendar";
+import type { CalendarBaseProps } from "./calendar-base";
+import type { ContextType, UseCalendarBaseProps } from "./use-calendar-base";
 
-import {useMemo, useRef} from "react";
-import {filterDOMProps} from "@heroui/react-utils";
-import {useCalendar as useAriaCalendar} from "@react-aria/calendar";
-import {useCalendarState} from "@react-stately/calendar";
-import {createCalendar} from "@internationalized/date";
-import {clsx, chain, mergeProps} from "@heroui/shared-utils";
+import { chain, clsx, mergeProps } from "@/lib/base";
+import { filterDOMProps } from "@/lib/react";
+import { createCalendar } from "@internationalized/date";
+import { useCalendar as useAriaCalendar } from "@react-aria/calendar";
+import { useCalendarState } from "@react-stately/calendar";
+import { useMemo, useRef } from "react";
 
-import {useCalendarBase} from "./use-calendar-base";
+import { useCalendarBase } from "./use-calendar-base";
 
 export type UseCalendarProps<T extends DateValue> = UseCalendarBaseProps & AriaCalendarProps<T>;
 
@@ -64,13 +64,13 @@ export function useCalendar<T extends DateValue>({
         : (createCalendarProp as typeof createCalendar),
   });
 
-  const {title, calendarProps, prevButtonProps, nextButtonProps, errorMessageProps} =
+  const { title, calendarProps, prevButtonProps, nextButtonProps, errorMessageProps } =
     useAriaCalendar(originalProps, state);
 
   const baseStyles = clsx(classNames?.base, className);
 
   const buttonPickerProps: ButtonProps = {
-    ...mergeProps(buttonPickerPropsProp, {isDisabled: originalProps.isDisabled}),
+    ...mergeProps(buttonPickerPropsProp, { isDisabled: originalProps.isDisabled }),
     onPress: chain(buttonPickerPropsProp?.onPress, () => setIsHeaderExpanded(!isHeaderExpanded)),
   };
 
@@ -88,7 +88,7 @@ export function useCalendar<T extends DateValue>({
       prevButtonProps: getPrevButtonProps(prevButtonProps),
       nextButtonProps: getNextButtonProps(nextButtonProps),
       errorMessageProps: getErrorMessageProps(errorMessageProps),
-      className: slots.base({class: baseStyles}),
+      className: slots.base({ class: baseStyles }),
       errorMessage,
       ...filterDOMProps(otherProps, {
         enabled: shouldFilterDOMProps,

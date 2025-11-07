@@ -1,14 +1,14 @@
-import type {VirtualItem} from "@tanstack/react-virtual";
-import type {Node} from "@react-types/shared";
-import type {ScrollShadowProps} from "@heroui/scroll-shadow";
-import type {VirtualizationProps} from "./listbox";
-import type {UseListboxReturn} from "./use-listbox";
+import type { ScrollShadowProps } from "@/registry/ui/scroll-shadow";
+import type { Node } from "@react-types/shared";
+import type { VirtualItem } from "@tanstack/react-virtual";
+import type { VirtualizationProps } from "./listbox";
+import type { UseListboxReturn } from "./use-listbox";
 
-import {useMemo, useRef, useState} from "react";
-import {useVirtualizer} from "@tanstack/react-virtual";
-import {isEmpty, mergeProps} from "@heroui/shared-utils";
-import {useScrollShadow} from "@heroui/scroll-shadow";
-import {filterDOMProps} from "@heroui/react-utils";
+import { isEmpty, mergeProps } from "@/lib/base";
+import { filterDOMProps } from "@/lib/react";
+import { useScrollShadow } from "@/registry/ui/scroll-shadow";
+import { useVirtualizer } from "@tanstack/react-virtual";
+import { useMemo, useRef, useState } from "react";
 
 import ListboxItem from "./listbox-item";
 import ListboxSection from "./listbox-section";
@@ -79,24 +79,21 @@ const VirtualizedListbox = (props: Props) => {
     scrollShadowProps,
   } = props;
 
-  const {virtualization} = props;
+  const { virtualization } = props;
 
-  if (
-    !virtualization ||
-    (!isEmpty(virtualization) && !virtualization.maxListboxHeight && !virtualization.itemHeight)
-  ) {
+  if (!virtualization || (!isEmpty(virtualization) && !virtualization.maxListboxHeight && !virtualization.itemHeight)) {
     throw new Error(
-      "You are using a virtualized listbox. VirtualizedListbox requires 'virtualization' props with 'maxListboxHeight' and 'itemHeight' properties. This error might have originated from autocomplete components that use VirtualizedListbox. Please provide these props to use the virtualized listbox.",
+      "You are using a virtualized listbox. VirtualizedListbox requires 'virtualization' props with 'maxListboxHeight' and 'itemHeight' properties. This error might have originated from autocomplete components that use VirtualizedListbox. Please provide these props to use the virtualized listbox."
     );
   }
-  const {maxListboxHeight, itemHeight} = virtualization;
+  const { maxListboxHeight, itemHeight } = virtualization;
 
   const listHeight = Math.min(maxListboxHeight, itemHeight * state.collection.size);
 
   const parentRef = useRef<HTMLDivElement>(null);
   const itemSizes = useMemo(
     () => getItemSizesForCollection([...state.collection], itemHeight),
-    [state.collection, itemHeight],
+    [state.collection, itemHeight]
   );
 
   const rowVirtualizer = useVirtualizer({
@@ -111,7 +108,7 @@ const VirtualizedListbox = (props: Props) => {
 
   // Here we need the base props for scroll shadow,
   // contains the className (scrollbar-hide and scrollshadow config based on the user inputs on select props)
-  const {getBaseProps: getBasePropsScrollShadow} = useScrollShadow({...scrollShadowProps});
+  const { getBaseProps: getBasePropsScrollShadow } = useScrollShadow({ ...scrollShadowProps });
 
   const renderRow = (virtualItem: VirtualItem) => {
     const item = [...state.collection][virtualItem.index];
@@ -145,7 +142,7 @@ const VirtualizedListbox = (props: Props) => {
           key={item.key}
           {...itemProps}
           itemClasses={itemClasses}
-          style={{...virtualizerStyle, ...itemProps.style}}
+          style={{ ...virtualizerStyle, ...itemProps.style }}
         />
       );
     }
@@ -156,7 +153,7 @@ const VirtualizedListbox = (props: Props) => {
         {...itemProps}
         classNames={mergeProps(itemClasses, item.props?.classNames)}
         shouldHighlightOnFocus={shouldHighlightOnFocus}
-        style={{...virtualizerStyle, ...itemProps.style}}
+        style={{ ...virtualizerStyle, ...itemProps.style }}
       />
     );
 

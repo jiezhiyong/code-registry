@@ -1,11 +1,11 @@
 import type { Meta } from "@storybook/react";
 import type { DropdownMenuProps, DropdownProps } from "../src";
 
+import { clsx } from "@/lib/base";
 import { AddNoteBulkIcon, CopyDocumentBulkIcon, DeleteDocumentBulkIcon, EditDocumentBulkIcon } from "@/lib/icons";
 import { dropdown, popover } from "@/lib/theme";
+import { Button } from "@/registry/ui/button";
 import { Avatar } from "@heroui/avatar";
-import { Button } from "@heroui/button";
-import { clsx } from "@heroui/shared-utils";
 import { User } from "@heroui/user";
 import React from "react";
 

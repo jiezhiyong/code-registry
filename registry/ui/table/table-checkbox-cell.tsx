@@ -3,10 +3,10 @@ import type { GridNode } from "@react-types/grid";
 import type { Key } from "react";
 import type { ValuesType } from "./use-table";
 
+import { clsx, dataAttr, mergeProps } from "@/lib/base";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { forwardRef } from "@/lib/system";
-import { Checkbox } from "@heroui/checkbox";
-import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
-import { clsx, dataAttr, mergeProps } from "@heroui/shared-utils";
+import { Checkbox } from "@/registry/ui/checkbox";
 import { useFocusRing } from "@react-aria/focus";
 import { useTableCell, useTableSelectionCheckbox } from "@react-aria/table";
 import { VisuallyHidden } from "@react-aria/visually-hidden";

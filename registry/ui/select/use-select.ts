@@ -1,27 +1,29 @@
+import type { MultiSelectProps, MultiSelectState } from "@/lib/hooks/use-aria-multiselect";
+import type { ReactRef } from "@/lib/react";
 import type { DOMAttributes, HTMLHeroUIProps, PropGetter, SharedSelection } from "@/lib/system";
-import type { SelectSlots, SelectVariantProps, SlotsToClasses } from "@/lib/theme";
-import type { ListboxProps } from "@heroui/listbox";
-import type { PopoverProps } from "@heroui/popover";
-import type { ReactRef } from "@heroui/react-utils";
-import type { ScrollShadowProps } from "@heroui/scroll-shadow";
-import type { SpinnerProps } from "@heroui/spinner";
-import type { MultiSelectProps, MultiSelectState } from "@heroui/use-aria-multiselect";
+import type { SlotsToClasses } from "@/lib/theme";
+import type { ListboxProps } from "@/registry/ui/listbox";
+import type { PopoverProps } from "@/registry/ui/popover";
+import type { ScrollShadowProps } from "@/registry/ui/scroll-shadow";
+import type { SpinnerProps } from "@/registry/ui/spinner";
 import type { CollectionChildren, ValidationError } from "@react-types/shared";
 import type { Key, ReactNode } from "react";
 import type { HiddenSelectProps } from "./hidden-select";
+import type { SelectSlots, SelectVariantProps } from "./theme";
+;
 
+import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
+import { useAriaButton } from "@/lib/hooks/use-aria-button";
+import { useMultiSelect, useMultiSelectState } from "@/lib/hooks/use-aria-multiselect";
+import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useLabelPlacement, useProviderContext } from "@/lib/system";
-import { select } from "@/lib/theme";
-import { FormContext, useSlottedContext } from "@heroui/form";
-import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
-import { clsx, dataAttr, mergeProps, objectToDeps } from "@heroui/shared-utils";
-import { useAriaButton } from "@heroui/use-aria-button";
-import { useMultiSelect, useMultiSelectState } from "@heroui/use-aria-multiselect";
-import { useSafeLayoutEffect } from "@heroui/use-safe-layout-effect";
+import { FormContext, useSlottedContext } from "@/registry/ui/form";
 import { useFocusRing } from "@react-aria/focus";
 import { useHover, usePress } from "@react-aria/interactions";
 import { usePreventScroll } from "@react-aria/overlays";
 import { useCallback, useEffect, useMemo, useRef } from "react";
+import { select } from "./theme";
 
 export type SelectedItemProps<T = object> = {
   /** A unique key for the item. */

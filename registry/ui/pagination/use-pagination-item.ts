@@ -1,10 +1,10 @@
+import type { PaginationItemValue } from "@/lib/hooks/use-pagination";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { PaginationItemValue } from "@heroui/use-pagination";
 import type { LinkDOMProps, PressEvent } from "@react-types/shared";
 import type { Ref } from "react";
 
-import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
-import { chain, clsx, dataAttr, mergeProps } from "@heroui/shared-utils";
+import { chain, clsx, dataAttr, mergeProps } from "@/lib/base";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { useFocusRing } from "@react-aria/focus";
 import { useHover, usePress } from "@react-aria/interactions";
 import { handleLinkClick, useRouter } from "@react-aria/utils";

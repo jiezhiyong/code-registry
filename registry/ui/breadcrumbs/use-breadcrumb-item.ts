@@ -1,16 +1,18 @@
+import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { BreadcrumbItemSlots, BreadcrumbItemVariantProps, SlotsToClasses } from "@/lib/theme";
-import type { ReactRef } from "@heroui/react-utils";
+import type { SlotsToClasses } from "@/lib/theme";
 import type { BreadcrumbItemProps as AriaBreadcrumbItemProps } from "@react-types/breadcrumbs";
 import type { ReactNode } from "react";
+import type { BreadcrumbItemSlots, BreadcrumbItemVariantProps } from "./theme";
+;
 
+import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { mapPropsVariants } from "@/lib/system";
-import { breadcrumbItem } from "@/lib/theme";
-import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
-import { clsx, dataAttr, mergeProps, objectToDeps } from "@heroui/shared-utils";
 import { useBreadcrumbItem as useAriaBreadcrumbItem } from "@react-aria/breadcrumbs";
 import { useFocusRing } from "@react-aria/focus";
 import { useMemo } from "react";
+import { breadcrumbItem } from "./theme";
 
 interface Props
   extends Omit<HTMLHeroUIProps<"li">, keyof AriaBreadcrumbItemProps>,

@@ -1,11 +1,11 @@
 import type { UseInputProps } from "./use-input";
 
-import { CloseFilledIcon } from "@/lib/icons";
+import { dataAttr, mergeProps } from "@/lib/base";
 import { forwardRef } from "@/lib/system";
-import { dataAttr, mergeProps } from "@heroui/shared-utils";
 import { useMemo, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 
+import { CloseFilledIcon } from "@/lib/icons/close-filled";
 import { useInput } from "./use-input";
 
 type NativeTextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;

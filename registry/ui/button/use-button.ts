@@ -1,21 +1,21 @@
+import type { AriaButtonProps } from "@/lib/hooks/use-aria-button";
+import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { ButtonVariantProps } from "@/lib/theme";
-import type { ReactRef } from "@heroui/react-utils";
-import type { RippleProps } from "@heroui/ripple";
-import type { SpinnerProps } from "@heroui/spinner";
-import type { AriaButtonProps } from "@heroui/use-aria-button";
+import type { RippleProps } from "@/registry/ui/ripple";
+import type { SpinnerProps } from "@/registry/ui/spinner";
 import type { PressEvent } from "@react-aria/interactions";
 import type { MouseEventHandler, ReactNode } from "react";
+import type { ButtonVariantProps } from "./theme";
 
+import { chain, dataAttr, mergeProps } from "@/lib/base";
+import { useAriaButton } from "@/lib/hooks/use-aria-button";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { useProviderContext } from "@/lib/system";
-import { button } from "@/lib/theme";
-import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
-import { useRipple } from "@heroui/ripple";
-import { chain, dataAttr, mergeProps } from "@heroui/shared-utils";
-import { useAriaButton } from "@heroui/use-aria-button";
+import { useRipple } from "@/registry/ui/ripple";
 import { useFocusRing } from "@react-aria/focus";
 import { useHover } from "@react-aria/interactions";
 import { cloneElement, isValidElement, useCallback, useMemo } from "react";
+import { button } from "./theme";
 
 import { useButtonGroupContext } from "./button-group-context";
 

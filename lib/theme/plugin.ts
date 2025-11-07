@@ -7,7 +7,7 @@ import type { ConfigTheme, ConfigThemes, DefaultThemeType, HeroUIPluginConfig } 
 
 import Color from "color";
 // @ts-ignore
-import { kebabCase, mapKeys, omit } from "@heroui/shared-utils";
+import { kebabCase, mapKeys, omit } from "@/lib/base";
 import deepMerge from "deepmerge";
 import plugin from "tailwindcss/plugin.js";
 

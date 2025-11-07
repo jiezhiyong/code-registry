@@ -1,10 +1,10 @@
 import type { ItemProps } from "@/lib/aria";
-import type { MenuItemSlots, MenuItemVariantProps, SlotsToClasses } from "@/lib/theme";
+import { BaseItem } from "@/lib/aria";
+import type { SlotsToClasses } from "@/lib/theme";
 import type { AriaMenuItemProps } from "@react-aria/menu";
 import type { FocusableProps, PressEvents } from "@react-types/shared";
-import type { MouseEventHandler, ReactNode } from "react";
-
-import { BaseItem } from "@/lib/aria";
+import type { JSX, MouseEventHandler, ReactNode } from "react";
+import type { MenuItemSlots, MenuItemVariantProps } from "./theme";
 
 export type MenuItemSelectedIconProps = {
   /**

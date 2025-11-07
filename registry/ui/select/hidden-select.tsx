@@ -2,16 +2,16 @@
  * Based on @react-aria/select with some modifications to support required attribute and
  * custom input/select props.
  */
-import type {FocusableElement} from "@react-types/shared";
-import type {ReactNode, RefObject} from "react";
-import type {MultiSelectProps, MultiSelectState} from "@heroui/use-aria-multiselect";
+import type { MultiSelectProps, MultiSelectState } from "@/lib/hooks/use-aria-multiselect";
+import type { FocusableElement } from "@react-types/shared";
+import type { ReactNode, RefObject } from "react";
 
+import { useFormReset } from "@/lib/hooks/use-form-reset";
+import { useFormValidation } from "@react-aria/form";
+import { useVisuallyHidden } from "@react-aria/visually-hidden";
 import React from "react";
-import {useFormReset} from "@heroui/use-form-reset";
-import {useVisuallyHidden} from "@react-aria/visually-hidden";
-import {useFormValidation} from "@react-aria/form";
 
-import {selectData} from "./use-select";
+import { selectData } from "./use-select";
 export interface AriaHiddenSelectProps {
   /**
    * Describes the type of autocomplete functionality the input should provide if any. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefautocomplete).
@@ -27,10 +27,7 @@ export interface AriaHiddenSelectProps {
   isRequired?: boolean;
 }
 
-type NativeHTMLSelectProps = Omit<
-  React.SelectHTMLAttributes<HTMLSelectElement>,
-  keyof AriaHiddenSelectProps
->;
+type NativeHTMLSelectProps = Omit<React.SelectHTMLAttributes<HTMLSelectElement>, keyof AriaHiddenSelectProps>;
 
 type CombinedAriaSelectProps = NativeHTMLSelectProps & AriaHiddenSelectProps;
 
@@ -60,20 +57,13 @@ export interface AriaHiddenSelectOptions<T> extends CombinedAriaSelectProps {
 export function useHiddenSelect<T>(
   props: AriaHiddenSelectOptions<T>,
   state: MultiSelectState<T>,
-  triggerRef: RefObject<FocusableElement>,
+  triggerRef: RefObject<FocusableElement>
 ) {
   let data = selectData.get(state) || {};
 
-  let {
-    autoComplete,
-    name = data.name,
-    isDisabled = data.isDisabled,
-    selectionMode,
-    onChange,
-    form,
-  } = props;
-  let {validationBehavior, isRequired, isInvalid} = data;
-  let {visuallyHiddenProps} = useVisuallyHidden();
+  let { autoComplete, name = data.name, isDisabled = data.isDisabled, selectionMode, onChange, form } = props;
+  let { validationBehavior, isRequired, isInvalid } = data;
+  let { visuallyHiddenProps } = useVisuallyHidden();
 
   useFormReset(props.selectRef!, state.selectedKeys, state.setSelectedKeys);
   useFormValidation(
@@ -82,7 +72,7 @@ export function useHiddenSelect<T>(
       focus: () => triggerRef.current?.focus(),
     },
     state,
-    props.selectRef,
+    props.selectRef
   );
 
   return {
@@ -92,7 +82,7 @@ export function useHiddenSelect<T>(
       ["data-a11y-ignore"]: "aria-hidden-focus",
     },
     inputProps: {
-      style: {display: "none"},
+      style: { display: "none" },
     },
     selectProps: {
       form,
@@ -104,9 +94,7 @@ export function useHiddenSelect<T>(
       name,
       tabIndex: -1,
       value:
-        selectionMode === "multiple"
-          ? [...state.selectedKeys].map((k) => String(k))
-          : ([...state.selectedKeys][0] ?? ""),
+        selectionMode === "multiple" ? [...state.selectedKeys].map((k) => String(k)) : [...state.selectedKeys][0] ?? "",
       multiple: selectionMode === "multiple",
       onChange: (e: React.ChangeEvent<HTMLSelectElement>) => {
         state.setSelectedKeys(e.target.value);
@@ -121,9 +109,9 @@ export function useHiddenSelect<T>(
  * form autofill, mobile form navigation, and native form submission.
  */
 export function HiddenSelect<T>(props: HiddenSelectProps<T>) {
-  let {state, triggerRef, selectRef, label, name, isDisabled, form} = props;
+  let { state, triggerRef, selectRef, label, name, isDisabled, form } = props;
 
-  let {containerProps, selectProps} = useHiddenSelect({...props, selectRef}, state, triggerRef);
+  let { containerProps, selectProps } = useHiddenSelect({ ...props, selectRef }, state, triggerRef);
 
   // If used in a <form>, use a hidden input so the value can be submitted to a server.
   // If the collection isn't too big, use a hidden <select> element for this so that browser

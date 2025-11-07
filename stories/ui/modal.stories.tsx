@@ -4,8 +4,8 @@ import type { ModalProps } from "../src";
 
 import { LockFilledIcon, MailFilledIcon } from "@/lib/icons";
 import { modal } from "@/lib/theme";
+import { Button } from "@/registry/ui/button";
 import { Autocomplete, AutocompleteItem } from "@heroui/autocomplete";
-import { Button } from "@heroui/button";
 import { Checkbox } from "@heroui/checkbox";
 import { Input } from "@heroui/input";
 import { Link } from "@heroui/link";

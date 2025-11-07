@@ -3,12 +3,12 @@ import type { Node } from "@react-types/shared";
 import type { ListboxItemProps } from "./listbox-item";
 import type { ListboxSectionBaseProps } from "./listbox-section-base";
 
+import { clsx, mergeProps } from "@/lib/base";
 import { forwardRef } from "@/lib/system";
-import { listboxSection } from "@/lib/theme";
-import { Divider } from "@heroui/divider";
-import { clsx, mergeProps } from "@heroui/shared-utils";
+import { Divider } from "@/registry/ui/divider";
 import { useListBoxSection } from "@react-aria/listbox";
 import { useMemo } from "react";
+import { listboxSection } from "./theme";
 
 import ListboxItem from "./listbox-item";
 

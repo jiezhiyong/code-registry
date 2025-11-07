@@ -1,9 +1,9 @@
 import type { UseNumberInputProps } from "./use-number-input";
 
-import { CloseFilledIcon } from "@/lib/icons";
 import { forwardRef } from "@/lib/system";
 import { useMemo } from "react";
 
+import { CloseFilledIcon } from "@/lib/icons/close-filled";
 import NumberInputStepper from "./number-input-stepper";
 import { useNumberInput } from "./use-number-input";
 

@@ -1,9 +1,9 @@
+import { Button } from "@/registry/ui/button";
+import { shouldIgnoreReactWarning, spy } from "@heroui/test-utils";
+import { act, fireEvent, render } from "@testing-library/react";
 import * as React from "react";
-import {render, fireEvent, act} from "@testing-library/react";
-import {Button} from "@heroui/button";
-import {spy, shouldIgnoreReactWarning} from "@heroui/test-utils";
 
-import {Tooltip} from "../src";
+import { Tooltip } from "../src";
 
 describe("Tooltip", () => {
   afterEach(() => {
@@ -22,7 +22,7 @@ describe("Tooltip", () => {
     const wrapper = render(
       <Tooltip content="tooltip">
         <Button>Trigger</Button>
-      </Tooltip>,
+      </Tooltip>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -38,7 +38,7 @@ describe("Tooltip", () => {
     render(
       <Tooltip ref={ref} defaultOpen content="tooltip">
         <Button>Trigger</Button>
-      </Tooltip>,
+      </Tooltip>
     );
 
     expect(ref.current).not.toBeNull();
@@ -50,13 +50,13 @@ describe("Tooltip", () => {
     const wrapper = render(
       <Tooltip defaultOpen content={<p data-testid="content-test">tooltip</p>} onClose={onClose}>
         <Button>Trigger</Button>
-      </Tooltip>,
+      </Tooltip>
     );
 
     const content = wrapper.getByTestId("content-test");
 
     await act(async () => {
-      await fireEvent.keyDown(content, {key: "Escape"});
+      await fireEvent.keyDown(content, { key: "Escape" });
       expect(onClose).toHaveBeenCalledTimes(1);
     });
   });
@@ -65,19 +65,14 @@ describe("Tooltip", () => {
     const onClose = jest.fn();
 
     const wrapper = render(
-      <Tooltip
-        defaultOpen
-        content={<p data-testid="content-test">tooltip</p>}
-        isDismissable={false}
-        onClose={onClose}
-      >
+      <Tooltip defaultOpen content={<p data-testid="content-test">tooltip</p>} isDismissable={false} onClose={onClose}>
         <Button>Trigger</Button>
-      </Tooltip>,
+      </Tooltip>
     );
 
     const content = wrapper.getByTestId("content-test");
 
-    fireEvent.keyDown(content, {key: "Escape"});
+    fireEvent.keyDown(content, { key: "Escape" });
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 });

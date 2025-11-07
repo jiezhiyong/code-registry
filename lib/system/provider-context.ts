@@ -1,6 +1,6 @@
 import type { Calendar, CalendarIdentifier, DateValue, SpinnerVariants } from "./types";
 
-import { createContext } from "@heroui/react-utils";
+import { createContext } from "@/lib/react";
 
 export type ProviderContextProps = {
   /**

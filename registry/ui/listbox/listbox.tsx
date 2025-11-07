@@ -1,8 +1,8 @@
 import type { ForwardedRef, ReactElement } from "react";
 import type { UseListboxProps, UseListboxReturn } from "./use-listbox";
 
+import { mergeProps } from "@/lib/base";
 import { forwardRef } from "@/lib/system";
-import { mergeProps } from "@heroui/shared-utils";
 
 import ListboxItem from "./listbox-item";
 import ListboxSection from "./listbox-section";

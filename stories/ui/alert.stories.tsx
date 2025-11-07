@@ -2,7 +2,7 @@ import type { Meta } from "@storybook/react";
 import type { AlertProps } from "../src";
 
 import { alert, cn } from "@/lib/theme";
-import { Button } from "@heroui/button";
+import { Button } from "@/registry/ui/button";
 import React from "react";
 
 import { Alert } from "../src";

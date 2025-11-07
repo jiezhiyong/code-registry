@@ -1,18 +1,18 @@
+import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { MenuProps } from "@heroui/menu";
-import type { PopoverProps } from "@heroui/popover";
-import type { ReactRef } from "@heroui/react-utils";
+import type { MenuProps } from "@/registry/ui/menu";
+import type { PopoverProps } from "@/registry/ui/popover";
 import type { MenuTriggerType } from "@react-types/menu";
 import type { CollectionElement } from "@react-types/shared";
 import type { Ref } from "react";
 
+import { clsx, mergeProps } from "@/lib/base";
+import { mergeRefs } from "@/lib/react";
 import { useProviderContext } from "@/lib/system";
-import { dropdown } from "@/lib/theme";
-import { mergeRefs } from "@heroui/react-utils";
-import { clsx, mergeProps } from "@heroui/shared-utils";
 import { useMenuTrigger } from "@react-aria/menu";
 import { useMenuTriggerState } from "@react-stately/menu";
 import { useMemo, useRef } from "react";
+import { dropdown } from "./theme";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**

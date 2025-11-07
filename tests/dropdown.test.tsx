@@ -1,15 +1,14 @@
-import type {UserEvent} from "@testing-library/user-event";
+import type { UserEvent } from "@testing-library/user-event";
 
-import * as React from "react";
-import {act, render, fireEvent} from "@testing-library/react";
-import {Button} from "@heroui/button";
+import { Button } from "@/registry/ui/button";
+import { Avatar } from "@heroui/avatar";
+import { Image } from "@heroui/image";
+import { keyCodes, shouldIgnoreReactWarning, spy } from "@heroui/test-utils";
+import { User } from "@heroui/user";
+import { act, fireEvent, render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {keyCodes, shouldIgnoreReactWarning, spy} from "@heroui/test-utils";
-import {User} from "@heroui/user";
-import {Image} from "@heroui/image";
-import {Avatar} from "@heroui/avatar";
 
-import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, DropdownSection} from "../src";
+import { Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger } from "../src";
 
 describe("Dropdown", () => {
   let user: UserEvent;
@@ -35,7 +34,7 @@ describe("Dropdown", () => {
             Delete file
           </DropdownItem>
         </DropdownMenu>
-      </Dropdown>,
+      </Dropdown>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -43,10 +42,10 @@ describe("Dropdown", () => {
 
   it("should render correctly (dynamic)", () => {
     const menuItems = [
-      {key: "new", name: "New File"},
-      {key: "copy", name: "Copy Link"},
-      {key: "edit", name: "Edit File"},
-      {key: "delete", name: "Delete File"},
+      { key: "new", name: "New File" },
+      { key: "copy", name: "Copy Link" },
+      { key: "edit", name: "Edit File" },
+      { key: "delete", name: "Delete File" },
     ];
 
     const wrapper = render(
@@ -57,7 +56,7 @@ describe("Dropdown", () => {
         <DropdownMenu aria-label="Actions" items={menuItems}>
           {(item: any) => <DropdownItem key={item.key}>{item.name}</DropdownItem>}
         </DropdownMenu>
-      </Dropdown>,
+      </Dropdown>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -81,7 +80,7 @@ describe("Dropdown", () => {
             </DropdownItem>
           </DropdownSection>
         </DropdownMenu>
-      </Dropdown>,
+      </Dropdown>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -92,14 +91,14 @@ describe("Dropdown", () => {
       {
         title: "Actions",
         children: [
-          {key: "new", name: "New File"},
-          {key: "copy", name: "Copy Link"},
-          {key: "edit", name: "Edit File"},
+          { key: "new", name: "New File" },
+          { key: "copy", name: "Copy Link" },
+          { key: "edit", name: "Edit File" },
         ],
       },
       {
         title: "Danger Zone",
-        children: [{key: "delete", name: "Delete File"}],
+        children: [{ key: "delete", name: "Delete File" }],
       },
     ];
 
@@ -110,17 +109,13 @@ describe("Dropdown", () => {
         </DropdownTrigger>
         <DropdownMenu aria-label="Actions" items={menuItems}>
           {(section: any) => (
-            <DropdownSection
-              aria-label={section.title}
-              items={section.children}
-              title={section.title}
-            >
+            <DropdownSection aria-label={section.title} items={section.children} title={section.title}>
               {/* @ts-ignore */}
               {(item: any) => <DropdownItem key={item.key}>{item.name}</DropdownItem>}
             </DropdownSection>
           )}
         </DropdownMenu>
-      </Dropdown>,
+      </Dropdown>
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -140,7 +135,7 @@ describe("Dropdown", () => {
             Delete file
           </DropdownItem>
         </DropdownMenu>
-      </Dropdown>,
+      </Dropdown>
     );
 
     let triggerButton = wrapper.getByTestId("trigger-test");
@@ -184,7 +179,7 @@ describe("Dropdown", () => {
             Delete file
           </DropdownItem>
         </DropdownMenu>
-      </Dropdown>,
+      </Dropdown>
     );
 
     let triggerButton = wrapper.getByTestId("trigger-test");
@@ -238,7 +233,7 @@ describe("Dropdown", () => {
             Delete file
           </DropdownItem>
         </DropdownMenu>
-      </Dropdown>,
+      </Dropdown>
     );
 
     let triggerButton = wrapper.getByTestId("trigger-test");
@@ -284,7 +279,7 @@ describe("Dropdown", () => {
             Delete file
           </DropdownItem>
         </DropdownMenu>
-      </Dropdown>,
+      </Dropdown>
     );
 
     let menuItems = wrapper.getAllByRole("menuitemradio");
@@ -317,7 +312,7 @@ describe("Dropdown", () => {
             Delete file
           </DropdownItem>
         </DropdownMenu>
-      </Dropdown>,
+      </Dropdown>
     );
 
     let menuItems = wrapper.getAllByRole("menuitemcheckbox");
@@ -356,7 +351,7 @@ describe("Dropdown", () => {
             Delete file
           </DropdownItem>
         </DropdownMenu>
-      </Dropdown>,
+      </Dropdown>
     );
 
     let menuItems = wrapper.getAllByRole("menuitem");
@@ -389,7 +384,7 @@ describe("Dropdown", () => {
             Delete file
           </DropdownItem>
         </DropdownMenu>
-      </Dropdown>,
+      </Dropdown>
     );
 
     let triggerButton = wrapper.getByTestId("trigger-test");
@@ -419,7 +414,7 @@ describe("Dropdown", () => {
             Delete file
           </DropdownItem>
         </DropdownMenu>
-      </Dropdown>,
+      </Dropdown>
     );
 
     let triggerButton = wrapper.getByTestId("trigger-test");
@@ -455,7 +450,7 @@ describe("Dropdown", () => {
             Delete file
           </DropdownItem>
         </DropdownMenu>
-      </Dropdown>,
+      </Dropdown>
     );
 
     let menuItems = wrapper.getAllByRole("menuitemradio");
@@ -492,7 +487,7 @@ describe("Dropdown", () => {
           <div>Trigger</div>
         </DropdownTrigger>
         {renderDropdownMenu()}
-      </Dropdown>,
+      </Dropdown>
     );
 
     expect(spy).toHaveBeenCalledTimes(0);
@@ -506,7 +501,7 @@ describe("Dropdown", () => {
           <User as="button" description="@tonyreichert" name="Tony Reichert" />
         </DropdownTrigger>
         {renderDropdownMenu()}
-      </Dropdown>,
+      </Dropdown>
     );
 
     expect(spy).toHaveBeenCalledTimes(0);
@@ -520,7 +515,7 @@ describe("Dropdown", () => {
           <Avatar isDisabled name="Marcus" />
         </DropdownTrigger>
         {renderDropdownMenu()}
-      </Dropdown>,
+      </Dropdown>
     );
 
     expect(spy).toHaveBeenCalledTimes(0);
@@ -531,14 +526,10 @@ describe("Dropdown", () => {
     render(
       <Dropdown isDisabled>
         <DropdownTrigger>
-          <Image
-            alt="HeroUI hero Image"
-            src="https://heroui.com/images/hero-card-complete.jpeg"
-            width={300}
-          />
+          <Image alt="HeroUI hero Image" src="https://heroui.com/images/hero-card-complete.jpeg" width={300} />
         </DropdownTrigger>
         {renderDropdownMenu()}
-      </Dropdown>,
+      </Dropdown>
     );
 
     expect(spy).toHaveBeenCalledTimes(0);
@@ -575,7 +566,7 @@ describe("Dropdown", () => {
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
-      </>,
+      </>
     );
 
     const dropdown = wrapper.getByTestId("dropdown");
@@ -615,7 +606,7 @@ describe("Dropdown", () => {
               Delete file
             </DropdownItem>
           </DropdownMenu>
-        </Dropdown>,
+        </Dropdown>
       );
 
       let triggerButton = wrapper.getByTestId("trigger-test");
@@ -626,7 +617,7 @@ describe("Dropdown", () => {
 
       expect(triggerButton).toHaveFocus();
 
-      fireEvent.keyDown(triggerButton, {key: "Enter", charCode: keyCodes.Enter});
+      fireEvent.keyDown(triggerButton, { key: "Enter", charCode: keyCodes.Enter });
 
       let menu = wrapper.queryByRole("menu");
 
@@ -653,7 +644,7 @@ describe("Dropdown", () => {
               Delete file
             </DropdownItem>
           </DropdownMenu>
-        </Dropdown>,
+        </Dropdown>
       );
 
       let triggerButton = wrapper.getByTestId("trigger-test");
@@ -664,7 +655,7 @@ describe("Dropdown", () => {
 
       expect(triggerButton).toHaveFocus();
 
-      fireEvent.keyDown(triggerButton, {key: " ", charCode: keyCodes[" "]});
+      fireEvent.keyDown(triggerButton, { key: " ", charCode: keyCodes[" "] });
 
       let menu = wrapper.queryByRole("menu");
 
@@ -701,7 +692,7 @@ describe("Dropdown", () => {
               Delete file
             </DropdownItem>
           </DropdownMenu>
-        </Dropdown>,
+        </Dropdown>
       );
 
       let triggerButton = wrapper.getByTestId("trigger-test");
@@ -712,7 +703,7 @@ describe("Dropdown", () => {
 
       expect(triggerButton).toHaveFocus();
 
-      fireEvent.keyDown(triggerButton, {key: "Enter", charCode: keyCodes.Enter});
+      fireEvent.keyDown(triggerButton, { key: "Enter", charCode: keyCodes.Enter });
 
       let menu = wrapper.queryByRole("menu");
 
@@ -757,7 +748,7 @@ describe("Dropdown", () => {
               Delete file
             </DropdownItem>
           </DropdownMenu>
-        </Dropdown>,
+        </Dropdown>
       );
 
       let triggerButton = wrapper.getByTestId("trigger-test");
@@ -768,7 +759,7 @@ describe("Dropdown", () => {
 
       expect(triggerButton).toHaveFocus();
 
-      fireEvent.keyDown(triggerButton, {key: "Enter", charCode: keyCodes.Enter});
+      fireEvent.keyDown(triggerButton, { key: "Enter", charCode: keyCodes.Enter });
 
       let menu = wrapper.queryByRole("menu");
 
@@ -802,7 +793,7 @@ describe("Dropdown", () => {
             </DropdownItem>
             <DropdownItem key="copy">Copy link</DropdownItem>
           </DropdownMenu>
-        </Dropdown>,
+        </Dropdown>
       );
 
       let triggerButton = wrapper.getByTestId("trigger-test");
@@ -852,7 +843,7 @@ describe("Dropdown", () => {
               </DropdownItem>
             )}
           </DropdownMenu>
-        </Dropdown>,
+        </Dropdown>
       );
 
       let triggerButton = wrapper.getByTestId("trigger-test");

@@ -1,14 +1,14 @@
 import ScrollShadow from "./scroll-shadow";
 
 // export types
-export type {ScrollShadowProps} from "./scroll-shadow";
 export type {
-  ScrollOverflowVisibility as ScrollShadowVisibility,
-  ScrollOverflowOrientation as ScrollShadowOrientation,
-} from "@heroui/use-data-scroll-overflow";
+  ScrollOverflowOrientation as ScrollShadowOrientation, ScrollOverflowVisibility as ScrollShadowVisibility
+} from "@/lib/hooks/use-data-scroll-overflow";
+export type { ScrollShadowProps } from "./scroll-shadow";
 
 // export hooks
-export {useScrollShadow} from "./use-scroll-shadow";
+export { useScrollShadow } from "./use-scroll-shadow";
 
 // export component
-export {ScrollShadow};
+export { ScrollShadow };
+

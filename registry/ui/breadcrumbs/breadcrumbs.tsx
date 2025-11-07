@@ -1,10 +1,10 @@
 import type { UseBreadcrumbsProps } from "./use-breadcrumbs";
 
-import { ChevronRightIcon, EllipsisIcon } from "@/lib/icons";
+import { chain, warn } from "@/lib/base";
 import { forwardRef } from "@/lib/system";
-import { chain, warn } from "@heroui/shared-utils";
 import { cloneElement, isValidElement, useMemo } from "react";
 
+import { ChevronRightIcon } from "@/lib/icons/chevron-right";
 import { useBreadcrumbs } from "./use-breadcrumbs";
 
 export interface BreadcrumbsProps extends UseBreadcrumbsProps {}

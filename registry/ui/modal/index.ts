@@ -1,24 +1,25 @@
 import Modal from "./modal";
-import ModalContent from "./modal-content";
-import ModalHeader from "./modal-header";
 import ModalBody from "./modal-body";
+import ModalContent from "./modal-content";
 import ModalFooter from "./modal-footer";
+import ModalHeader from "./modal-header";
 
 // export types
-export type {ModalProps} from "./modal";
-export type {ModalContentProps} from "./modal-content";
-export type {ModalHeaderProps} from "./modal-header";
-export type {ModalBodyProps} from "./modal-body";
-export type {ModalFooterProps} from "./modal-footer";
-export type {UseDisclosureProps} from "@heroui/use-disclosure";
+export type { UseDisclosureProps } from "@/lib/hooks/use-disclosure";
+export type { ModalProps } from "./modal";
+export type { ModalBodyProps } from "./modal-body";
+export type { ModalContentProps } from "./modal-content";
+export type { ModalFooterProps } from "./modal-footer";
+export type { ModalHeaderProps } from "./modal-header";
 
 // export hooks
-export {useModal} from "./use-modal";
-export {useDisclosure} from "@heroui/use-disclosure";
-export {useDraggable} from "@heroui/use-draggable";
+export { useDisclosure } from "@/lib/hooks/use-disclosure";
+export { useDraggable } from "@/lib/hooks/use-draggable";
+export { useModal } from "./use-modal";
 
 // export context
-export {ModalProvider, useModalContext} from "./modal-context";
+export { ModalProvider, useModalContext } from "./modal-context";
 
 // export components
-export {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter};
+export { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader };
+

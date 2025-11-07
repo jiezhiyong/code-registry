@@ -1,25 +1,21 @@
-import type {UseKbdProps} from "./use-kbd";
+import type { UseKbdProps } from "./use-kbd";
 
-import {useMemo} from "react";
-import {forwardRef} from "@heroui/system-rsc";
+import { forwardRef } from "@/lib/system-rsc";
+import { useMemo } from "react";
 
-import {useKbd} from "./use-kbd";
-import {kbdKeysLabelMap, kbdKeysMap} from "./utils";
+import { useKbd } from "./use-kbd";
+import { kbdKeysLabelMap, kbdKeysMap } from "./utils";
 
 export interface KbdProps extends UseKbdProps {}
 
 const Kbd = forwardRef<"kbd", KbdProps>((props, ref) => {
-  const {Component, children, slots, classNames, keysToRender, getKbdProps} = useKbd({
+  const { Component, children, slots, classNames, keysToRender, getKbdProps } = useKbd({
     ...props,
   });
 
   const keysContent = useMemo(() => {
     return keysToRender.map((key) => (
-      <abbr
-        key={key}
-        className={slots.abbr({class: classNames?.abbr})}
-        title={kbdKeysLabelMap[key]}
-      >
+      <abbr key={key} className={slots.abbr({ class: classNames?.abbr })} title={kbdKeysLabelMap[key]}>
         {kbdKeysMap[key]}
       </abbr>
     ));
@@ -28,7 +24,7 @@ const Kbd = forwardRef<"kbd", KbdProps>((props, ref) => {
   return (
     <Component ref={ref} {...getKbdProps()}>
       {keysContent}
-      {children && <span className={slots.content({class: classNames?.content})}>{children}</span>}
+      {children && <span className={slots.content({ class: classNames?.content })}>{children}</span>}
     </Component>
   );
 });

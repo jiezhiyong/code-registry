@@ -4,14 +4,14 @@ import type { Meta } from "@storybook/react";
 import type { ChangeEvent } from "react";
 import type { SelectedItems, SelectProps } from "../src";
 
+import { useInfiniteScroll } from "@/lib/hooks/use-infinite-scroll";
 import { PetBoldIcon, SelectorIcon } from "@/lib/icons";
 import { button, select } from "@/lib/theme";
+import { Button } from "@/registry/ui/button";
 import { Avatar } from "@heroui/avatar";
-import { Button } from "@heroui/button";
 import { Chip } from "@heroui/chip";
 import { Form } from "@heroui/form";
 import { animalsData, usePokemonList, usersData } from "@heroui/stories-utils";
-import { useInfiniteScroll } from "@heroui/use-infinite-scroll";
 import React from "react";
 import { useForm } from "react-hook-form";
 

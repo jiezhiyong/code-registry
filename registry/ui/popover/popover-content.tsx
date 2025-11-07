@@ -16,7 +16,7 @@ export interface PopoverContentProps extends AriaDialogProps, Omit<HTMLHeroUIPro
   children?: ReactNode | ((titleProps: DOMAttributes<HTMLElement>) => ReactNode);
 }
 
-const domAnimation = () => import(""@/lib/dom-animation").then((res) => res.default);
+const domAnimation = () => import("@/lib/dom-animation").then((res) => res.default);
 
 const PopoverContent = (props: PopoverContentProps) => {
   const { as, children, className, ...otherProps } = props;

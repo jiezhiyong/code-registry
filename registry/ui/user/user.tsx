@@ -1,7 +1,7 @@
 import type { UseUserProps } from "./use-user";
 
 import { forwardRef } from "@/lib/system";
-import { Avatar } from "@heroui/avatar";
+import { Avatar } from "@/registry/ui/avatar";
 
 import { useUser } from "./use-user";
 

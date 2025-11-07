@@ -2,7 +2,7 @@ import type { Meta } from "@storybook/react";
 import type { SkeletonProps } from "../src";
 
 import { skeleton } from "@/lib/theme";
-import { Button } from "@heroui/button";
+import { Button } from "@/registry/ui/button";
 import { Card } from "@heroui/card";
 import React from "react";
 

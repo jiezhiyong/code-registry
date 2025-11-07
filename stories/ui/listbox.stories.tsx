@@ -3,6 +3,7 @@ import type { Meta } from "@storybook/react";
 import type { Key } from "react";
 import type { ListboxProps } from "../src";
 
+import { clsx } from "@/lib/base";
 import {
   AddNoteBulkIcon,
   ChevronRightIcon,
@@ -14,7 +15,6 @@ import { menuItem } from "@/lib/theme";
 import { Avatar } from "@heroui/avatar";
 import { Chip } from "@heroui/chip";
 import { ScrollShadow } from "@heroui/scroll-shadow";
-import { clsx } from "@heroui/shared-utils";
 import { usersData } from "@heroui/stories-utils";
 import React from "react";
 

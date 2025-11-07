@@ -1,6 +1,6 @@
-import type {UsePopoverReturn} from "./use-popover";
+import type { UsePopoverReturn } from "./use-popover";
 
-import {createContext} from "@heroui/react-utils";
+import { createContext } from "@/lib/react";
 
 export const [PopoverProvider, usePopoverContext] = createContext<UsePopoverReturn>({
   name: "PopoverContext",

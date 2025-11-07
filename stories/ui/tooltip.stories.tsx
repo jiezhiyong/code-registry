@@ -2,7 +2,7 @@ import type { Meta } from "@storybook/react";
 import type { TooltipProps } from "../src";
 
 import { popover } from "@/lib/theme";
-import { Button } from "@heroui/button";
+import { Button } from "@/registry/ui/button";
 import React from "react";
 
 import { Tooltip } from "../src";

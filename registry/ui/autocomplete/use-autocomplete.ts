@@ -1,26 +1,28 @@
+import type { ReactRef } from "@/lib/react";
 import type { DOMAttributes, HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { AutocompleteSlots, AutocompleteVariantProps, SlotsToClasses } from "@/lib/theme";
-import type { ButtonProps } from "@heroui/button";
-import type { InputProps } from "@heroui/input";
-import type { ListboxProps } from "@heroui/listbox";
-import type { PopoverProps } from "@heroui/popover";
-import type { ReactRef } from "@heroui/react-utils";
-import type { ScrollShadowProps } from "@heroui/scroll-shadow";
+import type { SlotsToClasses } from "@/lib/theme";
+import type { ButtonProps } from "@/registry/ui/button";
+import type { InputProps } from "@/registry/ui/input";
+import type { ListboxProps } from "@/registry/ui/listbox";
+import type { PopoverProps } from "@/registry/ui/popover";
+import type { ScrollShadowProps } from "@/registry/ui/scroll-shadow";
 import type { FilterFn } from "@react-stately/combobox";
 import type { ComboBoxProps } from "@react-types/combobox";
 import type { AsyncLoadable, PressEvent } from "@react-types/shared";
 import type { ReactNode } from "react";
+import type { AutocompleteSlots, AutocompleteVariantProps } from "./theme";
+;
 
+import { chain, clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
+import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
+import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { autocomplete } from "@/lib/theme";
-import { FormContext, useSlottedContext } from "@heroui/form";
-import { useDOMRef } from "@heroui/react-utils";
-import { chain, clsx, dataAttr, mergeProps, objectToDeps } from "@heroui/shared-utils";
-import { useSafeLayoutEffect } from "@heroui/use-safe-layout-effect";
+import { FormContext, useSlottedContext } from "@/registry/ui/form";
 import { useComboBox } from "@react-aria/combobox";
 import { useFilter } from "@react-aria/i18n";
 import { useComboBoxState } from "@react-stately/combobox";
 import { useEffect, useMemo, useRef } from "react";
+import { autocomplete } from "./theme";
 
 interface Props<T> extends Omit<HTMLHeroUIProps<"input">, keyof ComboBoxProps<T>> {
   /**

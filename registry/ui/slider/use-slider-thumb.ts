@@ -1,14 +1,14 @@
+import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SliderVariantProps } from "@/lib/theme";
-import type { ReactRef } from "@heroui/react-utils";
-import type { TooltipProps } from "@heroui/tooltip";
+import type { TooltipProps } from "@/registry/ui/tooltip";
 import type { AriaSliderThumbProps } from "@react-aria/slider";
 import type { SliderState } from "@react-stately/slider";
 import type { RefObject } from "react";
+import type { SliderVariantProps } from "./theme";
 import type { SliderValue, UseSliderProps } from "./use-slider";
 
-import { useDOMRef } from "@heroui/react-utils";
-import { dataAttr, mergeProps } from "@heroui/shared-utils";
+import { dataAttr, mergeProps } from "@/lib/base";
+import { useDOMRef } from "@/lib/react";
 import { useFocusRing } from "@react-aria/focus";
 import { useNumberFormatter } from "@react-aria/i18n";
 import { useHover, usePress } from "@react-aria/interactions";

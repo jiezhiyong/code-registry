@@ -1,7 +1,7 @@
 import type { UseSliderProps } from "./use-slider";
 
+import { renderFn } from "@/lib/react";
 import { forwardRef } from "@/lib/system";
-import { renderFn } from "@heroui/react-utils";
 
 import Thumb from "./slider-thumb";
 import { useSlider } from "./use-slider";

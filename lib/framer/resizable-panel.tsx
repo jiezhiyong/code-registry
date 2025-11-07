@@ -1,7 +1,7 @@
 import type { HTMLHeroUIProps } from "@/lib/system";
 import type { Ref } from "react";
 
-import { useMeasure } from "@heroui/use-measure";
+import { useMeasure } from "@/lib/hooks/use-measure";
 import { domAnimation, LazyMotion, m } from "framer-motion";
 import { forwardRef } from "react";
 

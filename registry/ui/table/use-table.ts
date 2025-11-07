@@ -1,21 +1,22 @@
+import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses, TableReturnType, TableSlots, TableVariantProps } from "@/lib/theme";
-import type { CheckboxProps } from "@heroui/checkbox";
-import type { ReactRef } from "@heroui/react-utils";
+import type { SlotsToClasses } from "@/lib/theme";
+import type { CheckboxProps } from "@/registry/ui/checkbox";
 import type { AriaTableProps } from "@react-aria/table";
 import type { TableState, TableStateProps } from "@react-stately/table";
 import type { Layout } from "@react-stately/virtualizer";
 import type { DisabledBehavior, Node, SelectionBehavior } from "@react-types/shared";
 import type { TableCollection } from "@react-types/table";
 import type { Key, ReactNode } from "react";
+import type { TableReturnType, TableSlots, TableVariantProps } from "./theme";
 
+import { clsx, mergeProps, objectToDeps } from "@/lib/base";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { table } from "@/lib/theme";
-import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
-import { clsx, mergeProps, objectToDeps } from "@heroui/shared-utils";
 import { useTable as useReactAriaTable } from "@react-aria/table";
 import { useTableState } from "@react-stately/table";
 import { useCallback, useMemo } from "react";
+import { table } from "./theme";
 
 type TableContentPlacement = "inside" | "outside";
 

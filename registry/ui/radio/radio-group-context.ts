@@ -1,6 +1,6 @@
-import type {ContextType} from "./use-radio-group";
+import type { ContextType } from "./use-radio-group";
 
-import {createContext} from "@heroui/react-utils";
+import { createContext } from "@/lib/react";
 
 export const [RadioGroupProvider, useRadioGroupContext] = createContext<ContextType>({
   name: "RadioGroupContext",

@@ -1,8 +1,8 @@
 import type { UseButtonProps } from "./use-button";
 
 import { forwardRef } from "@/lib/system";
-import { Ripple } from "@heroui/ripple";
-import { Spinner } from "@heroui/spinner";
+import { Ripple } from "@/registry/ui/ripple";
+import { Spinner } from "@/registry/ui/spinner";
 
 import { useButton } from "./use-button";
 

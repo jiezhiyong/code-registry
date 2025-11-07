@@ -1,9 +1,9 @@
 import type { UseLinkProps } from "./use-link";
 
-import { LinkIcon } from "@/lib/icons";
 import { forwardRef } from "@/lib/system";
-import { linkAnchorClasses } from "@/lib/theme";
+import { linkAnchorClasses } from "./theme";
 
+import { LinkIcon } from "@/lib/icons/link";
 import { useLink } from "./use-link";
 
 export interface LinkProps extends UseLinkProps {}

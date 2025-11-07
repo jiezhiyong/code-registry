@@ -1,14 +1,14 @@
+import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses, UserSlots } from "@/lib/theme";
-import type { AvatarProps } from "@heroui/avatar";
-import type { ReactRef } from "@heroui/react-utils";
+import type { AvatarProps } from "@/registry/ui/avatar";
 import type { ReactNode } from "react";
+import type { SlotsToClasses, UserSlots } from "./theme";
 
-import { user } from "@/lib/theme";
-import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
-import { clsx, dataAttr, mergeProps } from "@heroui/shared-utils";
+import { clsx, dataAttr, mergeProps } from "@/lib/base";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { useFocusRing } from "@react-aria/focus";
 import { useCallback, useMemo } from "react";
+import { user } from "./theme";
 interface Props {
   /**
    * Ref to the DOM node.

@@ -1,4 +1,4 @@
-import type { IconSvgProps } from "@/lib/icons";
+import { IconSvgProps } from "@/lib/icons/types";
 
 export const ChevronDownIcon = (props: IconSvgProps) => (
   <svg

@@ -1,26 +1,22 @@
-import type {MenuItemProps, MenuSectionProps} from "@heroui/menu";
+import type { MenuItemProps, MenuSectionProps } from "@/registry/ui/menu";
 
-import {MenuItem, MenuSection} from "@heroui/menu";
+import { MenuItem, MenuSection } from "@/registry/ui/menu";
 
 import Dropdown from "./dropdown";
-import DropdownTrigger from "./dropdown-trigger";
 import DropdownMenu from "./dropdown-menu";
+import DropdownTrigger from "./dropdown-trigger";
 
 // export types
-export type {DropdownProps} from "./dropdown";
-export type {DropdownTriggerProps} from "./dropdown-trigger";
-export type {DropdownMenuProps} from "./dropdown-menu";
-export type {MenuItemProps as DropdownItemProps};
-export type {MenuSectionProps as DropdownSectionProps};
+export type { DropdownProps } from "./dropdown";
+export type { DropdownMenuProps } from "./dropdown-menu";
+export type { DropdownTriggerProps } from "./dropdown-trigger";
+export type { MenuItemProps as DropdownItemProps, MenuSectionProps as DropdownSectionProps };
 
 // export hooks
-export {useDropdown} from "./use-dropdown";
+export { useDropdown } from "./use-dropdown";
 
 // export components
 export {
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  MenuItem as DropdownItem,
-  MenuSection as DropdownSection,
+  Dropdown, MenuItem as DropdownItem, DropdownMenu, MenuSection as DropdownSection, DropdownTrigger
 };
+

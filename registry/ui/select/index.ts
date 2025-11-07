@@ -1,19 +1,18 @@
-import type {ListboxItemProps, ListboxSectionProps} from "@heroui/listbox";
+import type { ListboxItemProps, ListboxSectionProps } from "@/registry/ui/listbox";
 
-import {ListboxItem, ListboxSection} from "@heroui/listbox";
+import { ListboxItem, ListboxSection } from "@/registry/ui/listbox";
 
+import { HiddenSelect } from "./hidden-select";
 import Select from "./select";
-import {HiddenSelect} from "./hidden-select";
 
 // export types
-export type {SelectProps} from "./select";
-export type {ListboxItemProps as SelectItemProps};
-export type {ListboxSectionProps as SelectSectionProps};
-export type {SelectedItemProps, SelectedItems} from "./use-select";
-export type {UseSelectProps} from "./use-select";
+export type { SelectProps } from "./select";
+export type { SelectedItemProps, SelectedItems, UseSelectProps } from "./use-select";
+export type { ListboxItemProps as SelectItemProps, ListboxSectionProps as SelectSectionProps };
 
 // export hooks
-export {useSelect} from "./use-select";
+export { useSelect } from "./use-select";
 
 // export component
-export {Select, HiddenSelect, ListboxItem as SelectItem, ListboxSection as SelectSection};
+export { HiddenSelect, Select, ListboxItem as SelectItem, ListboxSection as SelectSection };
+

@@ -2,12 +2,11 @@
  * This file is copied from https://github.dev/adobe/react-spectrum/blob/2d4521098a3b4999f2e98b4d52d22483ee3451c8/packages/react-aria-components/src/utils.ts
  * We copied this internally to avoid installing the complete react-aria-components package.
  */
-import type {CSSProperties, ForwardedRef, ReactNode, MutableRefObject} from "react";
-import type {Context} from "react";
-import type {RefObject, DOMProps as SharedDOMProps} from "@react-types/shared";
+import type { RefObject, DOMProps as SharedDOMProps } from "@react-types/shared";
+import type { Context, CSSProperties, ForwardedRef, MutableRefObject, ReactNode } from "react";
 
-import {useContext, useMemo, useRef, useCallback} from "react";
-import {mergeProps, mergeRefs} from "@heroui/shared-utils";
+import { mergeProps, mergeRefs } from "@/lib/base";
+import { useCallback, useContext, useMemo, useRef } from "react";
 
 export const DEFAULT_SLOT = Symbol("default");
 
@@ -15,7 +14,7 @@ interface SlottedValue<T> {
   slots?: Record<string | symbol, T>;
 }
 
-export type WithRef<T, E> = T & {ref?: ForwardedRef<E>};
+export type WithRef<T, E> = T & { ref?: ForwardedRef<E>; };
 export type SlottedContextValue<T> = SlottedValue<T> | T | null | undefined;
 export type ContextValue<T, E> = SlottedContextValue<WithRef<T, E>>;
 
@@ -136,7 +135,7 @@ export function useContextProps<T, U extends SlotProps, E extends Element>(
 ): [T, RefObject<E | null>] {
   let ctx = useSlottedContext(context, props.slot) || {};
   // @ts-ignore - TS says "Type 'unique symbol' cannot be used as an index type." but not sure why.
-  let {ref: contextRef, ...contextProps} = ctx;
+  let { ref: contextRef, ...contextProps } = ctx;
   let mergedRef = useObjectRef(useMemo(() => mergeRefs(ref, contextRef), [ref, contextRef]));
   let mergedProps = mergeProps(contextProps, props) as unknown as T;
 
@@ -149,17 +148,17 @@ export function useContextProps<T, U extends SlotProps, E extends Element>(
           typeof contextProps.style === "function"
             ? contextProps.style(renderProps)
             : contextProps.style;
-        let defaultStyle = {...renderProps.defaultStyle, ...contextStyle};
+        let defaultStyle = { ...renderProps.defaultStyle, ...contextStyle };
         let style =
           typeof props.style === "function"
-            ? props.style({...renderProps, defaultStyle})
+            ? props.style({ ...renderProps, defaultStyle })
             : props.style;
 
-        return {...defaultStyle, ...style};
+        return { ...defaultStyle, ...style };
       };
     } else {
       // @ts-ignore
-      mergedProps.style = {...contextProps.style, ...props.style};
+      mergedProps.style = { ...contextProps.style, ...props.style };
     }
   }
 

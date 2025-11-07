@@ -11,9 +11,9 @@ import type { HTMLMotionProps } from "framer-motion";
 import type { UsePopoverProps, UsePopoverReturn } from "./use-popover";
 
 import { getTransformOrigins } from "@/lib/aria";
+import { mergeProps } from "@/lib/base";
 import { TRANSITION_VARIANTS } from "@/lib/framer";
 import { forwardRef } from "@/lib/system";
-import { mergeProps } from "@heroui/shared-utils";
 import { useDialog } from "@react-aria/dialog";
 import { DismissButton, Overlay } from "@react-aria/overlays";
 import { LazyMotion, m } from "framer-motion";
@@ -21,7 +21,7 @@ import * as React from "react";
 
 import { usePopover } from "./use-popover";
 
-const domAnimation = () => import(""@/lib/dom-animation").then((res) => res.default);
+const domAnimation = () => import("@/lib/dom-animation").then((res) => res.default);
 
 export interface FreeSoloPopoverProps extends Omit<UsePopoverProps, "children"> {
   children: React.ReactNode | ((titleProps: React.DOMAttributes<HTMLElement>) => React.ReactNode);

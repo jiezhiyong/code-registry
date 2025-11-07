@@ -1,6 +1,6 @@
-import {PopoverTrigger} from "@heroui/popover";
+import { PopoverTrigger } from "@/registry/ui/popover";
 
-import {useDropdownContext} from "./dropdown-context";
+import { useDropdownContext } from "./dropdown-context";
 
 export interface DropdownTriggerProps {
   children?: React.ReactNode;
@@ -13,9 +13,9 @@ export interface DropdownTriggerProps {
  * such as `button` or `a`.
  */
 const DropdownTrigger = (props: DropdownTriggerProps) => {
-  const {getMenuTriggerProps} = useDropdownContext();
+  const { getMenuTriggerProps } = useDropdownContext();
 
-  const {children, ...otherProps} = props;
+  const { children, ...otherProps } = props;
 
   return <PopoverTrigger {...getMenuTriggerProps(otherProps)}>{children}</PopoverTrigger>;
 };

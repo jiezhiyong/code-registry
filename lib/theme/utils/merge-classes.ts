@@ -1,6 +1,6 @@
 import type { SlotsToClasses } from "./types";
 
-import { clsx } from "@heroui/shared-utils";
+import { clsx } from "@/lib/base";
 
 /**
  * Merges two sets of class names for each slot in a component.

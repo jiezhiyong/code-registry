@@ -1,8 +1,8 @@
 import type { HTMLHeroUIProps } from "@/lib/system";
 
+import { clsx, dataAttr } from "@/lib/base";
+import { useDOMRef } from "@/lib/react";
 import { forwardRef } from "@/lib/system";
-import { useDOMRef } from "@heroui/react-utils";
-import { clsx, dataAttr } from "@heroui/shared-utils";
 
 import { useNavbarContext } from "./navbar-context";
 

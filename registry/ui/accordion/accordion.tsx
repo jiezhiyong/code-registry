@@ -2,7 +2,7 @@ import type { Key } from "react";
 import type { UseAccordionProps } from "./use-accordion";
 
 import { forwardRef } from "@/lib/system";
-import { Divider } from "@heroui/divider";
+import { Divider } from "@/registry/ui/divider";
 import { LayoutGroup } from "framer-motion";
 import { Fragment, useCallback, useMemo } from "react";
 

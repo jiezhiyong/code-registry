@@ -1,17 +1,18 @@
+import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses, SnippetSlots, SnippetVariantProps } from "@/lib/theme";
-import type { ButtonProps } from "@heroui/button";
-import type { ReactRef } from "@heroui/react-utils";
-import type { TooltipProps } from "@heroui/tooltip";
+import type { SlotsToClasses } from "@/lib/theme";
+import type { ButtonProps } from "@/registry/ui/button";
+import type { TooltipProps } from "@/registry/ui/tooltip";
 import type { ReactElement } from "react";
+import type { SnippetSlots, SnippetVariantProps } from "./theme";
 
+import { clsx, dataAttr, objectToDeps } from "@/lib/base";
+import { useClipboard } from "@/lib/hooks/use-clipboard";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { snippet } from "@/lib/theme";
-import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
-import { clsx, dataAttr, objectToDeps } from "@heroui/shared-utils";
-import { useClipboard } from "@heroui/use-clipboard";
 import { useFocusRing } from "@react-aria/focus";
 import { useCallback, useMemo, useRef } from "react";
+import { snippet } from "./theme";
 
 export interface UseSnippetProps extends Omit<HTMLHeroUIProps, "onCopy">, SnippetVariantProps {
   /**

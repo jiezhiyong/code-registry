@@ -2,15 +2,15 @@ import type { DateValue } from "@internationalized/date";
 import type { ForwardedRef, ReactElement } from "react";
 import type { UseDateRangePickerProps } from "./use-date-range-picker";
 
-import { CalendarBoldIcon } from "@/lib/icons";
 import { forwardRef } from "@/lib/system";
-import { Button } from "@heroui/button";
-import { RangeCalendar } from "@heroui/calendar";
-import { DateInputGroup, TimeInput } from "@heroui/date-input";
-import { FreeSoloPopover } from "@heroui/popover";
+import { Button } from "@/registry/ui/button";
+import { RangeCalendar } from "@/registry/ui/calendar";
+import { DateInputGroup, TimeInput } from "@/registry/ui/date-input";
+import { FreeSoloPopover } from "@/registry/ui/popover";
 import { AnimatePresence } from "framer-motion";
 import { cloneElement, isValidElement, useMemo } from "react";
 
+import { CalendarBoldIcon } from "@/lib/icons/calendar-bold";
 import DateRangePickerField from "./date-range-picker-field";
 import { useDateRangePicker } from "./use-date-range-picker";
 

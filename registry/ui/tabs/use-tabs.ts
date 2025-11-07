@@ -1,19 +1,20 @@
 import type { CollectionProps } from "@/lib/aria";
+import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses, TabsReturnType, TabsSlots, TabsVariantProps } from "@/lib/theme";
-import type { ReactRef } from "@heroui/react-utils";
+import type { SlotsToClasses } from "@/lib/theme";
 import type { AriaTabListProps } from "@react-aria/tabs";
 import type { TabListState, TabListStateOptions } from "@react-stately/tabs";
 import type { CollectionChildren } from "@react-types/shared";
 import type { RefObject } from "react";
+import type { TabsReturnType, TabsSlots, TabsVariantProps } from "./theme";
 
+import { clsx, mergeProps, objectToDeps } from "@/lib/base";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { tabs } from "@/lib/theme";
-import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
-import { clsx, mergeProps, objectToDeps } from "@heroui/shared-utils";
 import { useTabList } from "@react-aria/tabs";
 import { useTabListState } from "@react-stately/tabs";
 import { useCallback, useMemo } from "react";
+import { tabs } from "./theme";
 
 export interface Props extends Omit<HTMLHeroUIProps, "children"> {
   /**

@@ -1,14 +1,18 @@
-import type { ButtonProps } from "@heroui/button";
+import type { ButtonProps } from "@/registry/ui/button";
 import type { ReactElement } from "react";
 import type { UseToastProps } from "./use-toast";
 
-import { CloseIcon, DangerIcon, InfoFilledIcon, SuccessIcon, WarningIcon } from "@/lib/icons";
 import { forwardRef } from "@/lib/system";
-import { Button } from "@heroui/button";
-import { Spinner } from "@heroui/spinner";
+import { Button } from "@/registry/ui/button";
+import { Spinner } from "@/registry/ui/spinner";
 import { m } from "framer-motion";
 import { cloneElement, isValidElement } from "react";
 
+import { CloseIcon } from "@/lib/icons/close";
+import { DangerIcon } from "@/lib/icons/danger";
+import { InfoFilledIcon } from "@/lib/icons/info-filled";
+import { SuccessIcon } from "@/lib/icons/success";
+import { WarningIcon } from "@/lib/icons/warning";
 import { useToast } from "./use-toast";
 
 export interface ToastProps extends UseToastProps {}

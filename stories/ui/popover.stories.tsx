@@ -4,7 +4,7 @@ import type { Meta } from "@storybook/react";
 import type { PopoverProps } from "../src";
 
 import { popover } from "@/lib/theme";
-import { Button } from "@heroui/button";
+import { Button } from "@/registry/ui/button";
 import { Card, CardFooter, CardHeader } from "@heroui/card";
 import { Input } from "@heroui/input";
 import React from "react";

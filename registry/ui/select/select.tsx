@@ -1,16 +1,17 @@
 import type { ForwardedRef, ReactElement } from "react";
 import type { UseSelectProps } from "./use-select";
 
-import { ChevronDownIcon, CloseFilledIcon } from "@/lib/icons";
 import { forwardRef } from "@/lib/system";
-import { Listbox } from "@heroui/listbox";
-import { FreeSoloPopover } from "@heroui/popover";
-import { ScrollShadow } from "@heroui/scroll-shadow";
-import { Spinner } from "@heroui/spinner";
+import { Listbox } from "@/registry/ui/listbox";
+import { FreeSoloPopover } from "@/registry/ui/popover";
+import { ScrollShadow } from "@/registry/ui/scroll-shadow";
+import { Spinner } from "@/registry/ui/spinner";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { AnimatePresence } from "framer-motion";
 import { cloneElement, useMemo } from "react";
 
+import { ChevronDownIcon } from "@/lib/icons/chevron-down";
+import { CloseFilledIcon } from "@/lib/icons/close-filled";
 import { HiddenSelect } from "./hidden-select";
 import { useSelect } from "./use-select";
 

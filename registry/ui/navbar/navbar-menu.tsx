@@ -1,9 +1,9 @@
 import type { HTMLHeroUIProps } from "@/lib/system";
 import type { HTMLMotionProps } from "framer-motion";
 
+import { clsx, dataAttr, mergeProps } from "@/lib/base";
+import { useDOMRef } from "@/lib/react";
 import { forwardRef } from "@/lib/system";
-import { useDOMRef } from "@heroui/react-utils";
-import { clsx, dataAttr, mergeProps } from "@heroui/shared-utils";
 import { Overlay } from "@react-aria/overlays";
 import { AnimatePresence, LazyMotion, m } from "framer-motion";
 import React from "react";
@@ -24,7 +24,7 @@ export interface NavbarMenuProps extends HTMLHeroUIProps<"ul"> {
   motionProps?: Omit<HTMLMotionProps<"ul">, "ref">;
 }
 
-const domAnimation = () => import(""@/lib/dom-animation").then((res) => res.default);
+const domAnimation = () => import("@/lib/dom-animation").then((res) => res.default);
 
 const NavbarMenu = forwardRef<"ul", NavbarMenuProps>((props, ref) => {
   const { className, children, portalContainer, motionProps, style, ...otherProps } = props;

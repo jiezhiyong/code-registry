@@ -1,21 +1,23 @@
-import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { PaginationSlots, PaginationVariantProps, SlotsToClasses } from "@/lib/theme";
-import type { Timer } from "@heroui/shared-utils";
+import type { Timer } from "@/lib/base";
 import type {
   PaginationItemValue,
   UsePaginationProps as UseBasePaginationProps,
-} from "@heroui/use-pagination";
+} from "@/lib/hooks/use-pagination";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { SlotsToClasses } from "@/lib/theme";
 import type { PressEvent } from "@react-types/shared";
 import type { Key, ReactNode, Ref } from "react";
+import type { PaginationSlots, PaginationVariantProps } from "./theme";
+;
 
+import { clsx, dataAttr, objectToDeps } from "@/lib/base";
+import { useIntersectionObserver } from "@/lib/hooks/use-intersection-observer";
+import { PaginationItemType, usePagination as useBasePagination } from "@/lib/hooks/use-pagination";
+import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { pagination } from "@/lib/theme";
-import { useDOMRef } from "@heroui/react-utils";
-import { clsx, dataAttr, objectToDeps } from "@heroui/shared-utils";
-import { useIntersectionObserver } from "@heroui/use-intersection-observer";
-import { PaginationItemType, usePagination as useBasePagination } from "@heroui/use-pagination";
 import { useEffect, useMemo, useRef } from "react";
 import scrollIntoView from "scroll-into-view-if-needed";
+import { pagination } from "./theme";
 
 export type PaginationItemRenderProps = {
   /**

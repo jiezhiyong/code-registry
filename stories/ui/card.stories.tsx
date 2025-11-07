@@ -2,7 +2,7 @@ import type { Meta } from "@storybook/react";
 import type { CardProps } from "../src";
 
 import { card } from "@/lib/theme";
-import { Button } from "@heroui/button";
+import { Button } from "@/registry/ui/button";
 import { Code } from "@heroui/code";
 import { Image } from "@heroui/image";
 import { Link } from "@heroui/link";

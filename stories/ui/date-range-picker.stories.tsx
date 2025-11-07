@@ -6,7 +6,7 @@ import type { DateRangePickerProps } from "../src";
 
 import { MoonIcon, SunIcon } from "@/lib/icons";
 import { button, cn, dateInput } from "@/lib/theme";
-import { Button, ButtonGroup } from "@heroui/button";
+import { Button, ButtonGroup } from "@/registry/ui/button";
 import { Form } from "@heroui/form";
 import { Radio, RadioGroup } from "@heroui/radio";
 import {
