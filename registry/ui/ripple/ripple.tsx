@@ -1,10 +1,10 @@
-import type {RippleType} from "./use-ripple";
-import type {FC} from "react";
-import type {HTMLMotionProps} from "framer-motion";
-import type {HTMLHeroUIProps} from "@heroui/system";
+import type { HTMLHeroUIProps } from "@/lib/system";
+import type { HTMLMotionProps } from "framer-motion";
+import type { FC } from "react";
+import type { RippleType } from "./use-ripple";
 
-import {AnimatePresence, m, LazyMotion} from "framer-motion";
-import {clamp} from "@heroui/shared-utils";
+import { clamp } from "@heroui/shared-utils";
+import { AnimatePresence, LazyMotion, m } from "framer-motion";
 
 export interface RippleProps extends HTMLHeroUIProps<"span"> {
   ripples: RippleType[];
@@ -14,10 +14,10 @@ export interface RippleProps extends HTMLHeroUIProps<"span"> {
   onClear: (key: React.Key) => void;
 }
 
-const domAnimation = () => import("@heroui/dom-animation").then((res) => res.default);
+const domAnimation = () => import(""@/lib/dom-animation").then((res) => res.default);
 
 const Ripple: FC<RippleProps> = (props) => {
-  const {ripples = [], motionProps, color = "currentColor", style, onClear} = props;
+  const { ripples = [], motionProps, color = "currentColor", style, onClear } = props;
 
   return (
     <>
@@ -28,10 +28,10 @@ const Ripple: FC<RippleProps> = (props) => {
           <LazyMotion key={ripple.key} features={domAnimation}>
             <AnimatePresence mode="popLayout">
               <m.span
-                animate={{transform: "scale(2)", opacity: 0}}
+                animate={{ transform: "scale(2)", opacity: 0 }}
                 className="heroui-ripple"
-                exit={{opacity: 0}}
-                initial={{transform: "scale(0)", opacity: 0.35}}
+                exit={{ opacity: 0 }}
+                initial={{ transform: "scale(0)", opacity: 0.35 }}
                 style={{
                   position: "absolute",
                   backgroundColor: color,
@@ -47,7 +47,7 @@ const Ripple: FC<RippleProps> = (props) => {
                   height: `${ripple.size}px`,
                   ...style,
                 }}
-                transition={{duration}}
+                transition={{ duration }}
                 onAnimationComplete={() => {
                   onClear(ripple.key);
                 }}

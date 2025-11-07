@@ -1,12 +1,12 @@
-import type {ReactNode} from "react";
-import type {UseModalProps} from "./use-modal";
+import type { ReactNode } from "react";
+import type { UseModalProps } from "./use-modal";
 
-import {AnimatePresence} from "framer-motion";
-import {Overlay} from "@react-aria/overlays";
-import {forwardRef} from "@heroui/system";
+import { forwardRef } from "@/lib/system";
+import { Overlay } from "@react-aria/overlays";
+import { AnimatePresence } from "framer-motion";
 
-import {useModal} from "./use-modal";
-import {ModalProvider} from "./modal-context";
+import { ModalProvider } from "./modal-context";
+import { useModal } from "./use-modal";
 
 export interface ModalProps extends UseModalProps {
   /**
@@ -16,8 +16,8 @@ export interface ModalProps extends UseModalProps {
 }
 
 const Modal = forwardRef<"div", ModalProps>((props, ref) => {
-  const {children, ...otherProps} = props;
-  const context = useModal({...otherProps, ref});
+  const { children, ...otherProps } = props;
+  const context = useModal({ ...otherProps, ref });
 
   const overlay = <Overlay portalContainer={context.portalContainer}>{children}</Overlay>;
 

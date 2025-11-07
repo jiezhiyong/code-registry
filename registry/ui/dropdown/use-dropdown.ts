@@ -1,18 +1,18 @@
-import type {PopoverProps} from "@heroui/popover";
-import type {MenuTriggerType} from "@react-types/menu";
-import type {Ref} from "react";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {ReactRef} from "@heroui/react-utils";
-import type {MenuProps} from "@heroui/menu";
-import type {CollectionElement} from "@react-types/shared";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { MenuProps } from "@heroui/menu";
+import type { PopoverProps } from "@heroui/popover";
+import type { ReactRef } from "@heroui/react-utils";
+import type { MenuTriggerType } from "@react-types/menu";
+import type { CollectionElement } from "@react-types/shared";
+import type { Ref } from "react";
 
-import {useProviderContext} from "@heroui/system";
-import {useMenuTriggerState} from "@react-stately/menu";
-import {useMenuTrigger} from "@react-aria/menu";
-import {dropdown} from "@heroui/theme";
-import {clsx, mergeProps} from "@heroui/shared-utils";
-import {mergeRefs} from "@heroui/react-utils";
-import {useMemo, useRef} from "react";
+import { useProviderContext } from "@/lib/system";
+import { dropdown } from "@/lib/theme";
+import { mergeRefs } from "@heroui/react-utils";
+import { clsx, mergeProps } from "@heroui/shared-utils";
+import { useMenuTrigger } from "@react-aria/menu";
+import { useMenuTriggerState } from "@react-stately/menu";
+import { useMemo, useRef } from "react";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**
@@ -53,7 +53,7 @@ const getMenuItem = <T extends object>(props: Partial<MenuProps<T>> | undefined,
         if (item && item.key === key) {
           return item;
         }
-      }) || {}) as {props: MenuProps};
+      }) || {}) as { props: MenuProps; };
 
       return item;
     }
@@ -117,8 +117,8 @@ export function useDropdown(props: UseDropdownProps): UseDropdownReturn {
     },
   });
 
-  const {menuTriggerProps, menuProps} = useMenuTrigger<object>(
-    {type, trigger, isDisabled},
+  const { menuTriggerProps, menuProps } = useMenuTrigger<object>(
+    { type, trigger, isDisabled },
     state,
     menuTriggerRef,
   );
@@ -163,9 +163,9 @@ export function useDropdown(props: UseDropdownProps): UseDropdownReturn {
   const getMenuTriggerProps: PropGetter = (originalProps = {}) => {
     // These props are not needed for the menu trigger since it is handled by the popover trigger.
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const {onPress, onPressStart, ...otherMenuTriggerProps} = menuTriggerProps;
+    const { onPress, onPressStart, ...otherMenuTriggerProps } = menuTriggerProps;
 
-    return mergeProps(otherMenuTriggerProps, {isDisabled}, originalProps);
+    return mergeProps(otherMenuTriggerProps, { isDisabled }, originalProps);
   };
 
   const getMenuProps = <T extends object>(

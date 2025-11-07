@@ -1,19 +1,19 @@
-import type {ValidationResult} from "@react-types/shared";
-import type {Meta} from "@storybook/react";
-import type {RadioProps, RadioGroupProps} from "../src";
+import type { ValidationResult } from "@react-types/shared";
+import type { Meta } from "@storybook/react";
+import type { RadioGroupProps, RadioProps } from "../src";
 
+import { button, radio } from "@/lib/theme";
+import { Form } from "@heroui/form";
+import { clsx } from "@heroui/shared-utils";
+import { VisuallyHidden } from "@react-aria/visually-hidden";
 import React from "react";
-import {VisuallyHidden} from "@react-aria/visually-hidden";
-import {radio, button} from "@heroui/theme";
-import {clsx} from "@heroui/shared-utils";
-import {Form} from "@heroui/form";
 
-import {RadioGroup, Radio, useRadio, useRadioGroupContext} from "../src";
+import { Radio, RadioGroup, useRadio, useRadioGroupContext } from "../src";
 
 export default {
   title: "Components/RadioGroup",
   component: RadioGroup,
-  onChange: {action: "changed"},
+  onChange: { action: "changed" },
   argTypes: {
     color: {
       control: {
@@ -97,7 +97,7 @@ const Template = (args: RadioGroupProps) => {
       <RadioGroup {...args} name="sample">
         {items}
       </RadioGroup>
-      <button className={button({color: "primary"})} type="submit">
+      <button className={button({ color: "primary" })} type="submit">
         Submit
       </button>
     </form>
@@ -165,7 +165,7 @@ const InvalidTemplate = (args: RadioGroupProps) => {
       >
         {items}
       </RadioGroup>
-      <button className={button({color: "primary"})} type="submit">
+      <button className={button({ color: "primary" })} type="submit">
         Submit
       </button>
     </form>
@@ -184,12 +184,7 @@ const ControlledTemplate = (args: RadioGroupProps) => {
 
   return (
     <div className="flex flex-col gap-2">
-      <RadioGroup
-        label="Select city"
-        value={selectedItem}
-        onValueChange={setSelectedItem}
-        {...args}
-      >
+      <RadioGroup label="Select city" value={selectedItem} onValueChange={setSelectedItem} {...args}>
         <Radio value="buenos-aires">Buenos Aires</Radio>
         <Radio value="sydney">Sydney</Radio>
         <Radio value="london">London</Radio>
@@ -212,17 +207,13 @@ const ServerValidationTemplate = (args: RadioGroupProps) => {
   delete args.isInvalid;
 
   return (
-    <Form
-      className="flex flex-col items-start gap-2"
-      validationErrors={serverErrors}
-      onSubmit={onSubmit}
-    >
+    <Form className="flex flex-col items-start gap-2" validationErrors={serverErrors} onSubmit={onSubmit}>
       <RadioGroup {...args} label="Choose one option" name="option">
         <Radio value="option1">Option 1</Radio>
         <Radio value="option2">Option 2</Radio>
         <Radio value="option3">Option 3</Radio>
       </RadioGroup>
-      <button className={button({color: "primary"})} type="submit">
+      <button className={button({ color: "primary" })} type="submit">
         Submit
       </button>
     </Form>
@@ -358,9 +349,9 @@ export const Controlled = {
 };
 
 const CustomRadio = (props: RadioProps) => {
-  const {children, ...otherProps} = props;
+  const { children, ...otherProps } = props;
 
-  const {groupState} = useRadioGroupContext();
+  const { groupState } = useRadioGroupContext();
 
   const isSelected = groupState.selectedValue === otherProps.value;
 
@@ -372,7 +363,7 @@ const CustomRadio = (props: RadioProps) => {
           "inline-flex bg-content1 hover:bg-content2 items-center justify-between flex-row-reverse max-w-[300px] cursor-pointer rounded-lg gap-4 p-4 border-2 border-transparent",
           {
             "border-primary": isSelected,
-          },
+          }
         ),
       }}
     >
@@ -418,7 +409,7 @@ const RadioCard = (props: RadioProps) => {
         "group inline-flex items-center justify-between hover:bg-content2 flex-row-reverse max-w-[300px] cursor-pointer border-2 border-default rounded-lg gap-4 p-4",
         {
           "border-primary": isSelected,
-        },
+        }
       )}
     >
       <VisuallyHidden>
@@ -429,9 +420,7 @@ const RadioCard = (props: RadioProps) => {
       </span>
       <div {...getLabelWrapperProps()}>
         {children && <span {...getLabelProps()}>{children}</span>}
-        {description && (
-          <span className={clsx("text-sm text-foreground opacity-70")}>{description}</span>
-        )}
+        {description && <span className={clsx("text-sm text-foreground opacity-70")}>{description}</span>}
       </div>
     </Component>
   );

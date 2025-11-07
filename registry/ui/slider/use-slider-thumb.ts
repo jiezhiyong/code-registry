@@ -1,19 +1,19 @@
-import type {SliderVariantProps} from "@heroui/theme";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {ReactRef} from "@heroui/react-utils";
-import type {RefObject} from "react";
-import type {AriaSliderThumbProps} from "@react-aria/slider";
-import type {SliderState} from "@react-stately/slider";
-import type {TooltipProps} from "@heroui/tooltip";
-import type {SliderValue, UseSliderProps} from "./use-slider";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { SliderVariantProps } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { TooltipProps } from "@heroui/tooltip";
+import type { AriaSliderThumbProps } from "@react-aria/slider";
+import type { SliderState } from "@react-stately/slider";
+import type { RefObject } from "react";
+import type { SliderValue, UseSliderProps } from "./use-slider";
 
-import {useSliderThumb as useAriaSliderThumb} from "@react-aria/slider";
-import {useDOMRef} from "@heroui/react-utils";
-import {useRef} from "react";
-import {useHover, usePress} from "@react-aria/interactions";
-import {useFocusRing} from "@react-aria/focus";
-import {dataAttr, mergeProps} from "@heroui/shared-utils";
-import {useNumberFormatter} from "@react-aria/i18n";
+import { useDOMRef } from "@heroui/react-utils";
+import { dataAttr, mergeProps } from "@heroui/shared-utils";
+import { useFocusRing } from "@react-aria/focus";
+import { useNumberFormatter } from "@react-aria/i18n";
+import { useHover, usePress } from "@react-aria/interactions";
+import { useSliderThumb as useAriaSliderThumb } from "@react-aria/slider";
+import { useRef } from "react";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**
@@ -85,7 +85,7 @@ export function useSliderThumb(props: UseSliderThumbProps) {
 
   const numberFormatter = useNumberFormatter(formatOptions);
 
-  const {thumbProps, inputProps, isDragging, isFocused} = useAriaSliderThumb(
+  const { thumbProps, inputProps, isDragging, isFocused } = useAriaSliderThumb(
     {
       index,
       trackRef,
@@ -96,11 +96,11 @@ export function useSliderThumb(props: UseSliderThumbProps) {
     state,
   );
 
-  const {hoverProps, isHovered} = useHover({
+  const { hoverProps, isHovered } = useHover({
     isDisabled: state.isDisabled,
   });
-  const {focusProps, isFocusVisible} = useFocusRing();
-  const {pressProps, isPressed} = usePress({
+  const { focusProps, isFocusVisible } = useFocusRing();
+  const { pressProps, isPressed } = usePress({
     isDisabled: state.isDisabled,
   });
 

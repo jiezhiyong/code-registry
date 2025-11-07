@@ -1,32 +1,32 @@
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type {
   InputOtpReturnType,
   InputOtpSlots,
   InputOtpVariantProps,
   SlotsToClasses,
-} from "@heroui/theme";
-import type {ReactRef} from "@heroui/react-utils";
-import type {AriaTextFieldProps} from "@react-types/textfield";
-import type {OTPInputProps} from "input-otp";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
+} from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { AriaTextFieldProps } from "@react-types/textfield";
+import type { OTPInputProps } from "input-otp";
 
-import {mapPropsVariants, useProviderContext} from "@heroui/system";
-import {inputOtp} from "@heroui/theme";
-import {filterDOMProps, useDOMRef} from "@heroui/react-utils";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { inputOtp } from "@/lib/theme";
+import { FormContext, useSlottedContext } from "@heroui/form";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
 import {
+  chain,
   clsx,
   dataAttr,
-  objectToDeps,
   isPatternNumeric,
-  chain,
   mergeProps,
+  objectToDeps,
 } from "@heroui/shared-utils";
-import {useFormReset} from "@heroui/use-form-reset";
-import {useCallback, useMemo} from "react";
-import {useControlledState} from "@react-stately/utils";
-import {useFormValidationState} from "@react-stately/form";
-import {useFormValidation} from "@react-aria/form";
-import {useFocusRing} from "@react-aria/focus";
-import {FormContext, useSlottedContext} from "@heroui/form";
+import { useFormReset } from "@heroui/use-form-reset";
+import { useFocusRing } from "@react-aria/focus";
+import { useFormValidation } from "@react-aria/form";
+import { useFormValidationState } from "@react-stately/form";
+import { useControlledState } from "@react-stately/utils";
+import { useCallback, useMemo } from "react";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**
@@ -97,7 +97,7 @@ export type UseInputOtpProps = Props &
 
 export function useInputOtp(originalProps: UseInputOtpProps) {
   const globalContext = useProviderContext();
-  const {validationBehavior: formValidationBehavior} = useSlottedContext(FormContext) || {};
+  const { validationBehavior: formValidationBehavior } = useSlottedContext(FormContext) || {};
 
   const [props, variantProps] = mapPropsVariants(originalProps, inputOtp.variantKeys);
 
@@ -110,7 +110,7 @@ export function useInputOtp(originalProps: UseInputOtpProps) {
     length = 4,
     autoFocus,
     "aria-label": ariaLabel = "One-time password input",
-    onValueChange = () => {},
+    onValueChange = () => { },
     allowedKeys = "^[0-9]*$",
     validationBehavior = formValidationBehavior ?? globalContext?.validationBehavior ?? "native",
     type,
@@ -118,7 +118,7 @@ export function useInputOtp(originalProps: UseInputOtpProps) {
     maxLength,
     minLength,
     textAlign = "center",
-    onComplete = () => {},
+    onComplete = () => { },
     pushPasswordManagerStrategy,
     pasteTransformer,
     containerClassName,
@@ -133,7 +133,7 @@ export function useInputOtp(originalProps: UseInputOtpProps) {
   const inputRef = useDOMRef<HTMLInputElement>(ref);
   const baseDomRef = useDOMRef<HTMLDivElement>(baseRef);
 
-  const {isFocusVisible, isFocused, focusProps} = useFocusRing({
+  const { isFocusVisible, isFocused, focusProps } = useFocusRing({
     autoFocus,
     isTextInput: true,
   });
@@ -163,7 +163,7 @@ export function useInputOtp(originalProps: UseInputOtpProps) {
   });
 
   useFormReset(inputRef, value, setValue);
-  useFormValidation({...props, validationBehavior}, validationState, inputRef);
+  useFormValidation({ ...props, validationBehavior }, validationState, inputRef);
 
   const {
     isInvalid: isAriaInvalid,
@@ -175,7 +175,7 @@ export function useInputOtp(originalProps: UseInputOtpProps) {
   const isInvalid = originalProps.isInvalid || isAriaInvalid;
   const errorMessage =
     typeof props.errorMessage === "function"
-      ? props.errorMessage({isInvalid, validationErrors, validationDetails})
+      ? props.errorMessage({ isInvalid, validationErrors, validationDetails })
       : props.errorMessage || validationErrors?.join(" ");
 
   const description = props.description;
@@ -252,7 +252,7 @@ export function useInputOtp(originalProps: UseInputOtpProps) {
         pasteTransformer,
         noScriptCSSFallback,
         inputMode: inputMode ?? (isPatternNumeric(allowedKeys) ? "numeric" : "text"),
-        containerClassName: slots.wrapper?.({class: clsx(classNames?.wrapper, containerClassName)}),
+        containerClassName: slots.wrapper?.({ class: clsx(classNames?.wrapper, containerClassName) }),
         ...props,
       };
 

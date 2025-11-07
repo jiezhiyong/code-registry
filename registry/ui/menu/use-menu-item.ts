@@ -1,13 +1,13 @@
-import type { HTMLHeroUIProps, PropGetter } from "@heroui/system";
-import type { MenuItemVariantProps } from "@heroui/theme";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { MenuItemVariantProps } from "@/lib/theme";
 import type { TreeState } from "@react-stately/tree";
 import type { Node, PressEvent } from "@react-types/shared";
 import type { MenuItemBaseProps } from "./menu-item-base";
 
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { menuItem } from "@/lib/theme";
 import { filterDOMProps } from "@heroui/react-utils";
 import { clsx, dataAttr, mergeProps, objectToDeps, removeEvents } from "@heroui/shared-utils";
-import { mapPropsVariants, useProviderContext } from "@heroui/system";
-import { menuItem } from "@heroui/theme";
 import { useIsMobile } from "@heroui/use-is-mobile";
 import { useFocusRing } from "@react-aria/focus";
 import { isFocusVisible as AriaIsFocusVisible, useHover } from "@react-aria/interactions";

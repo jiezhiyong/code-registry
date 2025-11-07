@@ -1,24 +1,16 @@
-import type {UseSliderThumbProps} from "./use-slider-thumb";
+import type { UseSliderThumbProps } from "./use-slider-thumb";
 
-import {forwardRef} from "@heroui/system";
-import {Tooltip} from "@heroui/tooltip";
-import {renderFn} from "@heroui/react-utils";
-import {VisuallyHidden} from "@react-aria/visually-hidden";
+import { forwardRef } from "@/lib/system";
+import { renderFn } from "@heroui/react-utils";
+import { Tooltip } from "@heroui/tooltip";
+import { VisuallyHidden } from "@react-aria/visually-hidden";
 
-import {useSliderThumb} from "./use-slider-thumb";
+import { useSliderThumb } from "./use-slider-thumb";
 
 export interface SliderThumbProps extends UseSliderThumbProps {}
 
 const SliderThumb = forwardRef<"div", SliderThumbProps>((props, ref) => {
-  const {
-    Component,
-    index,
-    renderThumb,
-    showTooltip,
-    getTooltipProps,
-    getThumbProps,
-    getInputProps,
-  } = useSliderThumb({
+  const { Component, index, renderThumb, showTooltip, getTooltipProps, getThumbProps, getInputProps } = useSliderThumb({
     ...props,
     ref,
   });

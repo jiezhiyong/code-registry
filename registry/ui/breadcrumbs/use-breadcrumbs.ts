@@ -1,17 +1,16 @@
-import type {BreadcrumbsVariantProps, SlotsToClasses, BreadcrumbsSlots} from "@heroui/theme";
-import type {AriaBreadcrumbsProps} from "@react-types/breadcrumbs";
-import type {ReactNode, Key, ReactElement} from "react";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {ReactRef} from "@heroui/react-utils";
-import type {BreadcrumbItemProps} from "./breadcrumb-item";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { BreadcrumbsSlots, BreadcrumbsVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { AriaBreadcrumbsProps } from "@react-types/breadcrumbs";
+import type { Key, ReactElement, ReactNode } from "react";
+import type { BreadcrumbItemProps } from "./breadcrumb-item";
 
-import {Children} from "react";
-import {mapPropsVariants, useProviderContext} from "@heroui/system";
-import {breadcrumbs} from "@heroui/theme";
-import {filterDOMProps, pickChildren, useDOMRef} from "@heroui/react-utils";
-import {useBreadcrumbs as useAriaBreadcrumbs} from "@react-aria/breadcrumbs";
-import {useMemo} from "react";
-import {clsx, dataAttr, objectToDeps, mergeProps} from "@heroui/shared-utils";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { breadcrumbs } from "@/lib/theme";
+import { filterDOMProps, pickChildren, useDOMRef } from "@heroui/react-utils";
+import { clsx, dataAttr, mergeProps, objectToDeps } from "@heroui/shared-utils";
+import { useBreadcrumbs as useAriaBreadcrumbs } from "@react-aria/breadcrumbs";
+import { Children, useMemo } from "react";
 
 import BreadcrumbItem from "./breadcrumb-item";
 
@@ -136,7 +135,7 @@ export function useBreadcrumbs(originalProps: UseBreadcrumbsProps) {
   const Component = as || "nav";
   const shouldFilterDOMProps = typeof Component === "string";
 
-  const {navProps} = useAriaBreadcrumbs(originalProps);
+  const { navProps } = useAriaBreadcrumbs(originalProps);
 
   const [, children] = pickChildren<ReactElement>(childrenProp as ReactElement, BreadcrumbItem);
 
@@ -166,7 +165,7 @@ export function useBreadcrumbs(originalProps: UseBreadcrumbsProps) {
   const getBaseProps: PropGetter = () => ({
     ref: domRef,
     "data-slot": "base",
-    className: slots.base({class: baseStyles}),
+    className: slots.base({ class: baseStyles }),
     ...mergeProps(
       navProps,
       filterDOMProps(otherProps, {
@@ -177,18 +176,18 @@ export function useBreadcrumbs(originalProps: UseBreadcrumbsProps) {
 
   const getListProps = () => ({
     "data-slot": "list",
-    className: slots.list({class: classNames?.list}),
+    className: slots.list({ class: classNames?.list }),
   });
 
   const getEllipsisProps = () => ({
     "data-slot": "ellipsis",
-    className: slots.ellipsis({class: classNames?.ellipsis}),
+    className: slots.ellipsis({ class: classNames?.ellipsis }),
   });
 
   const getSeparatorProps = () => ({
     "data-slot": "separator",
     "aria-hidden": dataAttr(true),
-    className: slots.separator({class: classNames?.separator}),
+    className: slots.separator({ class: classNames?.separator }),
   });
 
   return {

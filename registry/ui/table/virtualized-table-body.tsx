@@ -1,16 +1,15 @@
-import type {HTMLHeroUIProps} from "@heroui/system";
-import type {Virtualizer} from "@tanstack/react-virtual";
-import type {ValuesType} from "./use-table";
+import type { HTMLHeroUIProps } from "@/lib/system";
+import type { Virtualizer } from "@tanstack/react-virtual";
+import type { ValuesType } from "./use-table";
 
-import {forwardRef} from "@heroui/system";
-import {useDOMRef} from "@heroui/react-utils";
-import {clsx, dataAttr, mergeProps} from "@heroui/shared-utils";
-import {useTableRowGroup} from "@react-aria/table";
-import {filterDOMProps} from "@heroui/react-utils";
+import { forwardRef } from "@/lib/system";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
+import { clsx, dataAttr, mergeProps } from "@heroui/shared-utils";
+import { useTableRowGroup } from "@react-aria/table";
 
-import TableRow from "./table-row";
 import TableCell from "./table-cell";
 import TableCheckboxCell from "./table-checkbox-cell";
+import TableRow from "./table-row";
 
 // @internal
 export interface VirtualizedTableBodyProps extends HTMLHeroUIProps<"tbody"> {
@@ -48,15 +47,13 @@ const VirtualizedTableBody = forwardRef<"tbody", VirtualizedTableBodyProps>((pro
 
   const domRef = useDOMRef(ref);
 
-  const {rowGroupProps} = useTableRowGroup();
+  const { rowGroupProps } = useTableRowGroup();
 
   const tbodyStyles = clsx(classNames?.tbody, className);
   const bodyProps = collection?.body.props;
 
   const isLoading =
-    bodyProps?.isLoading ||
-    bodyProps?.loadingState === "loading" ||
-    bodyProps?.loadingState === "loadingMore";
+    bodyProps?.isLoading || bodyProps?.loadingState === "loading" || bodyProps?.loadingState === "loadingMore";
 
   const items = [...collection.body.childNodes];
 
@@ -69,7 +66,7 @@ const VirtualizedTableBody = forwardRef<"tbody", VirtualizedTableBodyProps>((pro
     emptyContent = (
       <tr role="row">
         <td
-          className={slots?.emptyWrapper({class: classNames?.emptyWrapper})}
+          className={slots?.emptyWrapper({ class: classNames?.emptyWrapper })}
           colSpan={collection.columnCount}
           role="gridcell"
         >
@@ -83,14 +80,14 @@ const VirtualizedTableBody = forwardRef<"tbody", VirtualizedTableBodyProps>((pro
     loadingContent = (
       <tr role="row">
         <td
-          className={slots?.loadingWrapper({class: classNames?.loadingWrapper})}
+          className={slots?.loadingWrapper({ class: classNames?.loadingWrapper })}
           colSpan={collection.columnCount}
           role="gridcell"
         >
           {bodyProps.loadingContent}
         </td>
         {!emptyContent && collection.size === 0 ? (
-          <td className={slots?.emptyWrapper({class: classNames?.emptyWrapper})} />
+          <td className={slots?.emptyWrapper({ class: classNames?.emptyWrapper })} />
         ) : null}
       </tr>
     );
@@ -104,9 +101,9 @@ const VirtualizedTableBody = forwardRef<"tbody", VirtualizedTableBodyProps>((pro
         filterDOMProps(bodyProps, {
           enabled: shouldFilterDOMProps,
         }),
-        otherProps,
+        otherProps
       )}
-      className={slots.tbody?.({class: tbodyStyles})}
+      className={slots.tbody?.({ class: tbodyStyles })}
       data-empty={dataAttr(collection.size === 0)}
       data-loading={dataAttr(isLoading)}
     >
@@ -153,7 +150,7 @@ const VirtualizedTableBody = forwardRef<"tbody", VirtualizedTableBodyProps>((pro
                   slots={slots}
                   state={state}
                 />
-              ),
+              )
             )}
           </TableRow>
         );

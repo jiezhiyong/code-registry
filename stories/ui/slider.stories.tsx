@@ -1,30 +1,29 @@
-import type {Meta} from "@storybook/react";
-import type {SliderProps, SliderValue} from "../src";
+import type { Meta } from "@storybook/react";
+import type { SliderProps, SliderValue } from "../src";
 
+import { InfoIcon, VolumeHighBoldIcon, VolumeLowBoldIcon } from "@/lib/icons";
+import { cn, slider } from "@/lib/theme";
+import { Tooltip } from "@heroui/tooltip";
 import React from "react";
-import {slider} from "@heroui/theme";
-import {InfoIcon, VolumeHighBoldIcon, VolumeLowBoldIcon} from "@heroui/shared-icons";
-import {Tooltip} from "@heroui/tooltip";
-import {cn} from "@heroui/theme";
 
-import {Slider} from "../src";
+import { Slider } from "../src";
 
 export default {
   title: "Components/Slider",
   component: Slider,
   argTypes: {
     label: {
-      control: {type: "text"},
+      control: { type: "text" },
     },
     fillOffset: {
-      control: {type: "number"},
+      control: { type: "number" },
     },
     color: {
-      control: {type: "select"},
+      control: { type: "select" },
       options: ["foreground", "primary", "secondary", "success", "warning", "danger"],
     },
     size: {
-      control: {type: "select"},
+      control: { type: "select" },
       options: ["sm", "md", "lg"],
     },
     isDisabled: {
@@ -43,7 +42,7 @@ export default {
       },
     },
     radius: {
-      control: {type: "select"},
+      control: { type: "select" },
       options: ["none", "sm", "md", "lg", "full"],
     },
     orientation: {
@@ -127,10 +126,7 @@ const CustomStylesTemplate = (args: SliderProps) => (
               // arrow color
               "before:bg-gradient-to-r before:from-secondary-400 before:to-primary-500",
             ],
-            content: [
-              "py-2 shadow-xl",
-              "text-white bg-gradient-to-r from-secondary-400 to-primary-500",
-            ],
+            content: ["py-2 shadow-xl", "text-white bg-gradient-to-r from-secondary-400 to-primary-500"],
           },
         }}
       />
@@ -156,7 +152,7 @@ const CustomValueTemplate = (args: SliderProps) => {
           label: "text-medium",
         }}
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        renderValue={({children, ...props}) => (
+        renderValue={({ children, ...props }) => (
           <output {...props}>
             <Tooltip
               className="text-tiny text-default-500 rounded-md"
@@ -207,9 +203,7 @@ const ControlledRangeTemplate = (args: SliderProps) => {
   return (
     <div className="flex flex-col gap-2  max-w-md items-start justify-center">
       <Slider value={value} onChange={setValue} {...args} />
-      <p className="text-default-500 text-small">
-        Current volume: {Array.isArray(value) && value.join(" – ")}
-      </p>
+      <p className="text-default-500 text-small">Current volume: {Array.isArray(value) && value.join(" – ")}</p>
     </div>
   );
 };
@@ -237,7 +231,7 @@ export const Range = {
   args: {
     ...defaultProps,
     label: "Select a range",
-    formatOptions: {style: "currency", currency: "USD"},
+    formatOptions: { style: "currency", currency: "USD" },
     defaultValue: [20, 80],
   },
 };
@@ -259,7 +253,7 @@ export const WithMarks = {
   args: {
     ...defaultProps,
     label: "Select a value",
-    formatOptions: {style: "percent"},
+    formatOptions: { style: "percent" },
     maxValue: 1,
     minValue: 0,
     step: 0.1,
@@ -287,7 +281,7 @@ export const WithTooltip = {
     ...defaultProps,
     label: "Select a value",
     showTooltip: true,
-    formatOptions: {style: "percent"},
+    formatOptions: { style: "percent" },
     maxValue: 1,
     minValue: 0,
     step: 0.1,
@@ -451,12 +445,12 @@ export const CustomRenderRangeThumb = {
     maxValue: 1000,
     step: 10,
     defaultValue: [100, 300],
-    formatOptions: {style: "currency", currency: "USD"},
+    formatOptions: { style: "currency", currency: "USD" },
     classNames: {
       base: "gap-3",
       filler: ["bg-gradient-to-r from-pink-300 to-cyan-300"],
     },
-    renderThumb: ({index, ...props}) => (
+    renderThumb: ({ index, ...props }) => (
       <div
         {...props}
         className="group top-1/2 bg-background p-1 border-small border-default-200 dark:border-default-400 shadow-medium rounded-full cursor-grab data-[dragging=true]:cursor-grabbing "
@@ -464,7 +458,7 @@ export const CustomRenderRangeThumb = {
         <span
           className={cn(
             "transition-transform bg-gradient-to-br shadow-small rounded-full w-5 h-5 block group-data-[dragging=true]:scale-80",
-            index === 0 ? "from-pink-200 to-pink-500" : "from-cyan-100 to-cyan-500",
+            index === 0 ? "from-pink-200 to-pink-500" : "from-cyan-100 to-cyan-500"
           )}
         />
       </div>
@@ -481,12 +475,12 @@ export const CustomRenderLabel = {
     maxValue: 1000,
     step: 10,
     defaultValue: [100, 300],
-    formatOptions: {style: "currency", currency: "USD"},
+    formatOptions: { style: "currency", currency: "USD" },
     classNames: {
       base: "gap-3",
       filler: ["bg-gradient-to-r from-pink-300 to-cyan-300"],
     },
-    renderLabel: ({children, ...props}) => (
+    renderLabel: ({ children, ...props }) => (
       <label {...props} className="text-medium flex gap-2 items-center">
         {children}
         <Tooltip
@@ -500,7 +494,7 @@ export const CustomRenderLabel = {
         </Tooltip>
       </label>
     ),
-    renderThumb: ({index, ...props}) => (
+    renderThumb: ({ index, ...props }) => (
       <div
         {...props}
         className="group top-1/2 bg-background p-1 border-small border-default-200 dark:border-default-400 shadow-medium rounded-full cursor-grab data-[dragging=true]:cursor-grabbing "
@@ -508,7 +502,7 @@ export const CustomRenderLabel = {
         <span
           className={cn(
             "transition-transform bg-gradient-to-br shadow-small rounded-full w-5 h-5 block group-data-[dragging=true]:scale-80",
-            index === 0 ? "from-pink-200 to-pink-500" : "from-cyan-100 to-cyan-500",
+            index === 0 ? "from-pink-200 to-pink-500" : "from-cyan-100 to-cyan-500"
           )}
         />
       </div>
@@ -532,7 +526,7 @@ export const WithMarksVerticalOrientation = {
     ...defaultProps,
     label: "Current value",
     orientation: "vertical",
-    formatOptions: {style: "percent"},
+    formatOptions: { style: "percent" },
     maxValue: 1,
     minValue: 0,
     step: 0.1,
@@ -592,7 +586,7 @@ export const ControlledRange = {
   args: {
     ...defaultProps,
     label: "Select a budget",
-    formatOptions: {style: "currency", currency: "USD"},
+    formatOptions: { style: "currency", currency: "USD" },
   },
 };
 
@@ -609,7 +603,7 @@ export const CustomStyles = {
     defaultValue: [100, 300],
     disableThumbScale: true,
     showTooltip: true,
-    formatOptions: {style: "currency", currency: "USD"},
-    tooltipValueFormatOptions: {style: "currency", currency: "USD", maximumFractionDigits: 0},
+    formatOptions: { style: "currency", currency: "USD" },
+    tooltipValueFormatOptions: { style: "currency", currency: "USD", maximumFractionDigits: 0 },
   },
 };

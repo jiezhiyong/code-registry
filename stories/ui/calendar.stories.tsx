@@ -1,23 +1,15 @@
-import type {Meta} from "@storybook/react";
-import type {CalendarProps, DateValue} from "../src";
+import type { Meta } from "@storybook/react";
+import type { CalendarProps, DateValue } from "../src";
 
+import { HeroUIProvider } from "@/lib/system";
+import { calendar, cn } from "@/lib/theme";
+import { Button, ButtonGroup } from "@heroui/button";
+import { Radio, RadioGroup } from "@heroui/radio";
+import { getLocalTimeZone, isWeekend, parseDate, startOfMonth, startOfWeek, today } from "@internationalized/date";
+import { I18nProvider, useLocale } from "@react-aria/i18n";
 import React from "react";
-import {calendar} from "@heroui/theme";
-import {
-  today,
-  parseDate,
-  getLocalTimeZone,
-  isWeekend,
-  startOfWeek,
-  startOfMonth,
-} from "@internationalized/date";
-import {I18nProvider, useLocale} from "@react-aria/i18n";
-import {Button, ButtonGroup} from "@heroui/button";
-import {Radio, RadioGroup} from "@heroui/radio";
-import {cn} from "@heroui/theme";
-import {HeroUIProvider} from "@heroui/system";
 
-import {Calendar} from "../src";
+import { Calendar } from "../src";
 
 export default {
   title: "Components/Calendar",
@@ -27,7 +19,7 @@ export default {
   },
   argTypes: {
     visibleMonths: {
-      control: {type: "number", min: 1, max: 3},
+      control: { type: "number", min: 1, max: 3 },
     },
     color: {
       control: {
@@ -67,21 +59,11 @@ const ControlledTemplate = (args: CalendarProps) => {
     <div className="flex flex-wrap gap-4">
       <div className="flex flex-col items-center gap-4">
         <p className="text-small text-default-600">Date (uncontrolled)</p>
-        <Calendar
-          aria-label="Date (uncontrolled)"
-          defaultValue={parseDate("2024-03-07")}
-          {...args}
-        />
+        <Calendar aria-label="Date (uncontrolled)" defaultValue={parseDate("2024-03-07")} {...args} />
       </div>
       <div className="flex flex-col items-center gap-4">
         <p className="text-small text-default-600">Date (controlled)</p>
-        <Calendar
-          aria-label="Date (controlled)"
-          value={value}
-          onChange={setValue}
-          {...args}
-          color="secondary"
-        />
+        <Calendar aria-label="Date (controlled)" value={value} onChange={setValue} {...args} color="secondary" />
       </div>
     </div>
   );
@@ -91,18 +73,16 @@ const UnavailableDatesTemplate = (args: CalendarProps) => {
   let now = today(getLocalTimeZone());
 
   let disabledRanges = [
-    [now, now.add({days: 5})],
-    [now.add({days: 14}), now.add({days: 16})],
-    [now.add({days: 23}), now.add({days: 24})],
+    [now, now.add({ days: 5 })],
+    [now.add({ days: 14 }), now.add({ days: 16 })],
+    [now.add({ days: 23 }), now.add({ days: 24 })],
   ];
 
-  let {locale} = useLocale();
+  let { locale } = useLocale();
 
   let isDateUnavailable = (date) =>
     isWeekend(date, locale) ||
-    disabledRanges.some(
-      (interval) => date.compare(interval[0]) >= 0 && date.compare(interval[1]) <= 0,
-    );
+    disabledRanges.some((interval) => date.compare(interval[0]) >= 0 && date.compare(interval[1]) <= 0);
 
   return (
     <Calendar
@@ -120,18 +100,8 @@ const ControlledFocusedValueTemplate = (args: CalendarProps) => {
 
   return (
     <div className="flex flex-col gap-4">
-      <Calendar
-        focusedValue={focusedDate}
-        value={defaultDate}
-        onFocusChange={setFocusedDate}
-        {...args}
-      />
-      <Button
-        className="max-w-fit"
-        color="primary"
-        variant="flat"
-        onPress={() => setFocusedDate(defaultDate)}
-      >
+      <Calendar focusedValue={focusedDate} value={defaultDate} onFocusChange={setFocusedDate} {...args} />
+      <Button className="max-w-fit" color="primary" variant="flat" onPress={() => setFocusedDate(defaultDate)}>
         Reset focused date
       </Button>
     </div>
@@ -140,7 +110,7 @@ const ControlledFocusedValueTemplate = (args: CalendarProps) => {
 
 const InvalidDateTemplate = (args: CalendarProps) => {
   let [date, setDate] = React.useState<DateValue>(today(getLocalTimeZone()));
-  let {locale} = useLocale();
+  let { locale } = useLocale();
   let isInvalid = isWeekend(date, locale);
 
   return (
@@ -168,14 +138,14 @@ const InternationalCalendarsTemplate = (args: CalendarProps) => {
 const PresetsTemplate = (args: CalendarProps) => {
   let defaultDate = today(getLocalTimeZone());
   let [value, setValue] = React.useState<DateValue | null>(defaultDate);
-  let {locale} = useLocale();
+  let { locale } = useLocale();
 
   let now = today(getLocalTimeZone());
-  let nextWeek = startOfWeek(now.add({weeks: 1}), locale);
-  let nextMonth = startOfMonth(now.add({months: 1}));
+  let nextWeek = startOfWeek(now.add({ weeks: 1 }), locale);
+  let nextMonth = startOfMonth(now.add({ months: 1 }));
 
   const CustomRadio = (props) => {
-    const {children, ...otherProps} = props;
+    const { children, ...otherProps } = props;
 
     return (
       <Radio
@@ -184,7 +154,7 @@ const PresetsTemplate = (args: CalendarProps) => {
           base: cn(
             "flex-none m-0 h-8 bg-content1 hover:bg-content2 items-center justify-between",
             "cursor-pointer rounded-full border-2 border-default-200/60",
-            "data-[selected=true]:border-primary",
+            "data-[selected=true]:border-primary"
           ),
           label: "text-tiny text-default-500",
           labelWrapper: "px-1 m-0",

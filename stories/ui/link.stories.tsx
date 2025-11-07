@@ -1,12 +1,11 @@
-import type {VariantProps} from "@heroui/theme";
-import type {Meta} from "@storybook/react";
-import type {LinkProps} from "../src";
+import type { VariantProps } from "@/lib/theme";
+import type { Meta } from "@storybook/react";
+import type { LinkProps } from "../src";
 
-import React, {useState} from "react";
-import {tv} from "@heroui/theme";
-import {link} from "@heroui/theme";
+import { link, tv } from "@/lib/theme";
+import { useState } from "react";
 
-import {Link} from "../src";
+import { Link } from "../src";
 
 export default {
   title: "Components/Link",
@@ -151,9 +150,9 @@ type MyLinkVariantProps = VariantProps<typeof customLink>;
 type MyLinkProps = MyLinkVariantProps & Omit<LinkProps, "color">;
 
 const MyLink = (props: MyLinkProps) => {
-  const {isLink, color, ...otherProps} = props;
+  const { isLink, color, ...otherProps } = props;
 
-  return <Link className={customLink({color, isLink})} isExternal={!!isLink} {...otherProps} />;
+  return <Link className={customLink({ color, isLink })} isExternal={!!isLink} {...otherProps} />;
 };
 
 export const CustomVariant = () => {

@@ -4,10 +4,10 @@ import type { Key } from "react";
 import type { MenuItemProps } from "./menu-item";
 import type { MenuSectionBaseProps } from "./menu-section-base";
 
+import { forwardRef } from "@/lib/system";
+import { menuSection } from "@/lib/theme";
 import { Divider } from "@heroui/divider";
 import { clsx, mergeProps } from "@heroui/shared-utils";
-import { forwardRef } from "@heroui/system";
-import { menuSection } from "@heroui/theme";
 import { useMenuSection } from "@react-aria/menu";
 import { useMemo } from "react";
 

@@ -1,10 +1,10 @@
-import type {Meta} from "@storybook/react";
-import type {DateValue} from "@internationalized/date";
-import type {ValidationResult} from "@react-types/shared";
-import type {DateInputProps} from "../src";
+import type { DateValue } from "@internationalized/date";
+import type { ValidationResult } from "@react-types/shared";
+import type { Meta } from "@storybook/react";
+import type { DateInputProps } from "../src";
 
-import React from "react";
-import {dateInput, button} from "@heroui/theme";
+import { CalendarBoldIcon } from "@/lib/icons";
+import { button, dateInput } from "@/lib/theme";
 import {
   CalendarDate,
   getLocalTimeZone,
@@ -14,10 +14,10 @@ import {
   parseZonedDateTime,
   today,
 } from "@internationalized/date";
-import {CalendarBoldIcon} from "@heroui/shared-icons";
-import {useDateFormatter, I18nProvider} from "@react-aria/i18n";
+import { I18nProvider, useDateFormatter } from "@react-aria/i18n";
+import React from "react";
 
-import {DateInput} from "../src";
+import { DateInput } from "../src";
 
 export default {
   title: "Components/DateInput",
@@ -72,9 +72,7 @@ const defaultProps = {
   ...dateInput.defaultVariants,
 };
 
-const Template = (args: DateInputProps) => (
-  <DateInput {...args} placeholderValue={new CalendarDate(1995, 11, 6)} />
-);
+const Template = (args: DateInputProps) => <DateInput {...args} placeholderValue={new CalendarDate(1995, 11, 6)} />;
 
 const FormTemplate = (args: DateInputProps) => (
   <form
@@ -85,7 +83,7 @@ const FormTemplate = (args: DateInputProps) => (
     }}
   >
     <DateInput {...args} name="date" />
-    <button className={button({className: "max-w-fit"})} type="submit">
+    <button className={button({ className: "max-w-fit" })} type="submit">
       Submit
     </button>
   </form>
@@ -102,7 +100,7 @@ const LabelPlacementTemplate = (args: DateInputProps) => (
 const ControlledTemplate = (args: DateInputProps) => {
   const [value, setValue] = React.useState<DateValue | null>(parseDate("2024-04-04"));
 
-  let formatter = useDateFormatter({dateStyle: "full"});
+  let formatter = useDateFormatter({ dateStyle: "full" });
 
   return (
     <div className="w-full flex flex-row gap-2">
@@ -124,44 +122,25 @@ const TimeZonesTemplate = (args: DateInputProps) => (
       defaultValue={parseZonedDateTime("2022-11-07T00:45[America/Los_Angeles]")}
       labelPlacement="outside"
     />
-    <DateInput
-      {...args}
-      defaultValue={parseAbsoluteToLocal("2021-11-07T07:45:00Z")}
-      labelPlacement="outside"
-    />
+    <DateInput {...args} defaultValue={parseAbsoluteToLocal("2021-11-07T07:45:00Z")} labelPlacement="outside" />
   </div>
 );
 
 const GranularityTemplate = (args: DateInputProps) => {
-  let [date, setDate] = React.useState<DateValue | null>(
-    parseAbsoluteToLocal("2021-04-07T18:45:22Z"),
-  );
+  let [date, setDate] = React.useState<DateValue | null>(parseAbsoluteToLocal("2021-04-07T18:45:22Z"));
 
   return (
     <div className="w-full max-w-xl flex flex-col items-start gap-4">
-      <DateInput
-        {...args}
-        granularity="second"
-        label="Date and time"
-        value={date}
-        onChange={setDate}
-      />
+      <DateInput {...args} granularity="second" label="Date and time" value={date} onChange={setDate} />
       <DateInput {...args} granularity="day" label="Date" value={date} onChange={setDate} />
       <DateInput {...args} granularity="second" label="Event date" />
-      <DateInput
-        {...args}
-        granularity="second"
-        label="Event date"
-        placeholderValue={now("America/New_York")}
-      />
+      <DateInput {...args} granularity="second" label="Event date" placeholderValue={now("America/New_York")} />
     </div>
   );
 };
 
 const InternationalCalendarsTemplate = (args: DateInputProps) => {
-  let [date, setDate] = React.useState<DateValue | null>(
-    parseAbsoluteToLocal("2021-04-07T18:45:22Z"),
-  );
+  let [date, setDate] = React.useState<DateValue | null>(parseAbsoluteToLocal("2021-04-07T18:45:22Z"));
 
   return (
     <div className="flex flex-col gap-4">
@@ -238,9 +217,7 @@ export const StartContent = {
   args: {
     ...defaultProps,
     labelPlacement: "outside",
-    startContent: (
-      <CalendarBoldIcon className="text-2xl text-default-400 pointer-events-none shrink-0" />
-    ),
+    startContent: <CalendarBoldIcon className="text-2xl text-default-400 pointer-events-none shrink-0" />,
   },
 };
 
@@ -250,9 +227,7 @@ export const EndContent = {
   args: {
     ...defaultProps,
     labelPlacement: "outside",
-    endContent: (
-      <CalendarBoldIcon className="text-2xl text-default-400 pointer-events-none shrink-0" />
-    ),
+    endContent: <CalendarBoldIcon className="text-2xl text-default-400 pointer-events-none shrink-0" />,
   },
 };
 
@@ -343,7 +318,7 @@ export const MaxDateValue = {
   args: {
     ...defaultProps,
     maxValue: today(getLocalTimeZone()),
-    defaultValue: today(getLocalTimeZone()).add({days: 1}),
+    defaultValue: today(getLocalTimeZone()).add({ days: 1 }),
   },
 };
 
@@ -388,10 +363,7 @@ export const UnavailableDates = {
     ...defaultProps,
     label: "Appointment date (Unavailable: Jan 1 - Jan 8, 2024)",
     isDateUnavailable: (date) => {
-      return (
-        date.compare(new CalendarDate(2024, 1, 1)) >= 0 &&
-        date.compare(new CalendarDate(2024, 1, 8)) <= 0
-      );
+      return date.compare(new CalendarDate(2024, 1, 1)) >= 0 && date.compare(new CalendarDate(2024, 1, 8)) <= 0;
     },
   },
 };

@@ -1,11 +1,12 @@
 import Tooltip from "./tooltip";
 
 // export types
-export type {TooltipProps} from "./tooltip";
-export type {OverlayPlacement as TooltipPlacement} from "@heroui/aria-utils";
+export type { OverlayPlacement as TooltipPlacement } from "@/lib/aria";
+export type { TooltipProps } from "./tooltip";
 
 // export hooks
-export {useTooltip} from "./use-tooltip";
+export { useTooltip } from "./use-tooltip";
 
 // export component
-export {Tooltip};
+export { Tooltip };
+

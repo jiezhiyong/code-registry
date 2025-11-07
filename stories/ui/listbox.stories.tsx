@@ -1,24 +1,24 @@
-import type {Selection} from "@react-types/shared";
-import type {Key} from "react";
-import type {Meta} from "@storybook/react";
-import type {ListboxProps} from "../src";
+import type { Selection } from "@react-types/shared";
+import type { Meta } from "@storybook/react";
+import type { Key } from "react";
+import type { ListboxProps } from "../src";
 
-import React from "react";
-import {menuItem} from "@heroui/theme";
 import {
   AddNoteBulkIcon,
-  CopyDocumentBulkIcon,
-  EditDocumentBulkIcon,
-  DeleteDocumentBulkIcon,
   ChevronRightIcon,
-} from "@heroui/shared-icons";
-import {usersData} from "@heroui/stories-utils";
-import {Avatar} from "@heroui/avatar";
-import {Chip} from "@heroui/chip";
-import {clsx} from "@heroui/shared-utils";
-import {ScrollShadow} from "@heroui/scroll-shadow";
+  CopyDocumentBulkIcon,
+  DeleteDocumentBulkIcon,
+  EditDocumentBulkIcon,
+} from "@/lib/icons";
+import { menuItem } from "@/lib/theme";
+import { Avatar } from "@heroui/avatar";
+import { Chip } from "@heroui/chip";
+import { ScrollShadow } from "@heroui/scroll-shadow";
+import { clsx } from "@heroui/shared-utils";
+import { usersData } from "@heroui/stories-utils";
+import React from "react";
 
-import {Listbox, ListboxItem, ListboxSection} from "../src";
+import { Listbox, ListboxItem, ListboxSection } from "../src";
 
 const BugIcon = (props) => (
   <svg height="1em" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg" {...props}>
@@ -140,8 +140,7 @@ export default {
 
 const defaultProps = {
   ...menuItem.defaultVariants,
-  className:
-    "w-full max-w-[260px] border-small px-1 py-2 rounded-small border-default-200 dark:border-default-100",
+  className: "w-full max-w-[260px] border-small px-1 py-2 rounded-small border-default-200 dark:border-default-100",
 };
 
 type Item = {
@@ -168,14 +167,8 @@ const items = [
   },
 ];
 
-const Template = ({color, variant, ...args}: ListboxProps) => (
-  <Listbox
-    aria-label="Actions"
-    color={color}
-    variant={variant}
-    onAction={(key: Key) => alert(key)}
-    {...args}
-  >
+const Template = ({ color, variant, ...args }: ListboxProps) => (
+  <Listbox aria-label="Actions" color={color} variant={variant} onAction={(key: Key) => alert(key)} {...args}>
     <ListboxItem key="new" onPress={() => alert("[onPress] New file")}>
       New file
     </ListboxItem>
@@ -187,7 +180,7 @@ const Template = ({color, variant, ...args}: ListboxProps) => (
   </Listbox>
 );
 
-const DynamicTemplate = ({color, variant, ...args}: ListboxProps<Item>) => (
+const DynamicTemplate = ({ color, variant, ...args }: ListboxProps<Item>) => (
   <Listbox
     aria-label="Dynamic Actions"
     color={color}
@@ -208,7 +201,7 @@ const DynamicTemplate = ({color, variant, ...args}: ListboxProps<Item>) => (
   </Listbox>
 );
 
-const DisabledKeysTemplate = ({color, variant, ...args}: ListboxProps) => (
+const DisabledKeysTemplate = ({ color, variant, ...args }: ListboxProps) => (
   <Listbox
     aria-label="Actions"
     color={color}
@@ -226,7 +219,7 @@ const DisabledKeysTemplate = ({color, variant, ...args}: ListboxProps) => (
   </Listbox>
 );
 
-const SingleSelectionTemplate = ({color, variant, ...args}: ListboxProps) => {
+const SingleSelectionTemplate = ({ color, variant, ...args }: ListboxProps) => {
   const [selected, setSelected] = React.useState<string | Set<React.Key>>(new Set(["text"]));
 
   return (
@@ -249,7 +242,7 @@ const SingleSelectionTemplate = ({color, variant, ...args}: ListboxProps) => {
   );
 };
 
-const MultipleSelectionTemplate = ({color, variant, ...args}: ListboxProps) => {
+const MultipleSelectionTemplate = ({ color, variant, ...args }: ListboxProps) => {
   const [selected, setSelected] = React.useState<string | Set<React.Key>>(new Set(["text"]));
 
   return (
@@ -272,7 +265,7 @@ const MultipleSelectionTemplate = ({color, variant, ...args}: ListboxProps) => {
   );
 };
 
-const WithStartContentTemplate = ({color, variant, disableAnimation, ...args}: ListboxProps) => {
+const WithStartContentTemplate = ({ color, variant, disableAnimation, ...args }: ListboxProps) => {
   const iconClasses = "text-2xl text-secondary pointer-events-none shrink-0";
 
   return (
@@ -305,7 +298,7 @@ const WithStartContentTemplate = ({color, variant, disableAnimation, ...args}: L
   );
 };
 
-const WithEndContentTemplate = ({color, variant, disableAnimation, ...args}) => {
+const WithEndContentTemplate = ({ color, variant, disableAnimation, ...args }) => {
   const iconClasses = "text-2xl text-default-500 pointer-events-none shrink-0";
 
   return (
@@ -338,7 +331,7 @@ const WithEndContentTemplate = ({color, variant, disableAnimation, ...args}) => 
   );
 };
 
-const WithTopContentTemplate = ({color, ...args}) => {
+const WithTopContentTemplate = ({ color, ...args }) => {
   const [values, setValues] = React.useState<Selection>(new Set(["1", "3", "5"]));
 
   const arrayValues = Array.from(values);
@@ -349,11 +342,7 @@ const WithTopContentTemplate = ({color, ...args}) => {
     }
 
     return (
-      <ScrollShadow
-        hideScrollBar
-        className="w-full bg-background flex py-0.5 px-2 gap-1 "
-        orientation="horizontal"
-      >
+      <ScrollShadow hideScrollBar className="w-full bg-background flex py-0.5 px-2 gap-1 " orientation="horizontal">
         {arrayValues.map((value) => (
           <Chip key={value}>{usersData.find((user) => `${user.id}` === `${value}`)?.name}</Chip>
         ))}
@@ -392,7 +381,7 @@ const WithTopContentTemplate = ({color, ...args}) => {
   );
 };
 
-const WithBottomContentTemplate = ({color, ...args}) => {
+const WithBottomContentTemplate = ({ color, ...args }) => {
   const [values, setValues] = React.useState<Selection>(new Set(["1", "3", "5"]));
 
   const arrayValues = Array.from(values);
@@ -403,11 +392,7 @@ const WithBottomContentTemplate = ({color, ...args}) => {
     }
 
     return (
-      <ScrollShadow
-        hideScrollBar
-        className="w-full flex py-0.5 px-2 gap-1 "
-        orientation="horizontal"
-      >
+      <ScrollShadow hideScrollBar className="w-full flex py-0.5 px-2 gap-1 " orientation="horizontal">
         {arrayValues.map((value) => (
           <Chip key={value}>{usersData.find((user) => `${user.id}` === `${value}`)?.name}</Chip>
         ))}
@@ -446,7 +431,7 @@ const WithBottomContentTemplate = ({color, ...args}) => {
   );
 };
 
-const WithDescriptionTemplate = ({color, variant, disableAnimation, ...args}) => {
+const WithDescriptionTemplate = ({ color, variant, disableAnimation, ...args }) => {
   const iconClasses = "text-2xl text-secondary pointer-events-none shrink-0";
 
   return (
@@ -458,11 +443,7 @@ const WithDescriptionTemplate = ({color, variant, disableAnimation, ...args}) =>
       onAction={(key: Key) => alert(key)}
       {...args}
     >
-      <ListboxItem
-        key="new"
-        description="Create a new file"
-        startContent={<AddNoteBulkIcon className={iconClasses} />}
-      >
+      <ListboxItem key="new" description="Create a new file" startContent={<AddNoteBulkIcon className={iconClasses} />}>
         New file
       </ListboxItem>
       <ListboxItem
@@ -492,7 +473,7 @@ const WithDescriptionTemplate = ({color, variant, disableAnimation, ...args}) =>
   );
 };
 
-const WithSectionsTemplate = ({color, variant, disableAnimation, ...args}) => {
+const WithSectionsTemplate = ({ color, variant, disableAnimation, ...args }) => {
   const iconClasses = "text-2xl text-secondary pointer-events-none shrink-0";
 
   return (
@@ -542,14 +523,12 @@ const WithSectionsTemplate = ({color, variant, disableAnimation, ...args}) => {
   );
 };
 
-const CustomWithClassNamesTemplate = ({color, variant, disableAnimation, ...args}) => {
-  const IconWrapper = ({children, className}) => (
-    <div className={clsx(className, "flex items-center rounded-small justify-center w-7 h-7")}>
-      {children}
-    </div>
+const CustomWithClassNamesTemplate = ({ color, variant, disableAnimation, ...args }) => {
+  const IconWrapper = ({ children, className }) => (
+    <div className={clsx(className, "flex items-center rounded-small justify-center w-7 h-7")}>{children}</div>
   );
 
-  const ItemCounter = ({number}) => (
+  const ItemCounter = ({ number }) => (
     <div className="flex items-center gap-1 text-default-400">
       <span className="text-small">{number}</span>
       <ChevronRightIcon className="text-xl" />
@@ -720,7 +699,7 @@ function generateLargeDataset(n: number): LargeDatasetSchema[] {
   return dataset;
 }
 
-const LargeDatasetTemplate = (args: ListboxProps & {numItems: number}) => {
+const LargeDatasetTemplate = (args: ListboxProps & { numItems: number }) => {
   const largeDataset = generateLargeDataset(args.numItems);
 
   return (

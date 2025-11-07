@@ -1,20 +1,19 @@
-import type {SlotsToClasses, ToastSlots, ToastVariantProps} from "@heroui/theme";
-import type {DOMAttributes} from "react";
-import type {ReactRef} from "@heroui/react-utils";
-import type {ReactNode} from "react";
-import type {AriaToastProps} from "@react-aria/toast";
-import type {QueuedToast, ToastState} from "@react-stately/toast";
-import type {MotionProps} from "framer-motion";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { SlotsToClasses, ToastSlots, ToastVariantProps } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { AriaToastProps } from "@react-aria/toast";
+import type { QueuedToast, ToastState } from "@react-stately/toast";
+import type { MotionProps } from "framer-motion";
+import type { DOMAttributes, ReactNode } from "react";
 
-import {mapPropsVariants, useProviderContext} from "@heroui/system";
-import {toast as toastTheme} from "@heroui/theme";
-import {useDOMRef} from "@heroui/react-utils";
-import {clsx, dataAttr, isEmpty, objectToDeps, mergeProps} from "@heroui/shared-utils";
-import {useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState} from "react";
-import {useToast as useToastAria} from "@react-aria/toast";
-import {useHover} from "@react-aria/interactions";
-import {useIsMobile} from "@heroui/use-is-mobile";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { toast as toastTheme } from "@/lib/theme";
+import { useDOMRef } from "@heroui/react-utils";
+import { clsx, dataAttr, isEmpty, mergeProps, objectToDeps } from "@heroui/shared-utils";
+import { useIsMobile } from "@heroui/use-is-mobile";
+import { useHover } from "@react-aria/interactions";
+import { useToast as useToastAria } from "@react-aria/toast";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 
 export type ToastPlacement =
   | "bottom-right"
@@ -173,7 +172,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
     ...otherProps
   } = props;
 
-  const {isHovered: isToastHovered, hoverProps} = useHover({
+  const { isHovered: isToastHovered, hoverProps } = useHover({
     isDisabled: false,
   });
 
@@ -260,9 +259,8 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
       progressRef.current = Math.min((elapsed / timeout) * 100, 100);
 
       if (progressBarRef.current) {
-        progressBarRef.current.style.width = `${
-          shouldShowTimeoutProgress ? progressRef.current : 0
-        }%`;
+        progressBarRef.current.style.width = `${shouldShowTimeoutProgress ? progressRef.current : 0
+          }%`;
       }
 
       if (progressRef.current < 100) {
@@ -293,7 +291,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
 
   const domRef = useDOMRef(ref);
   const baseStyles = clsx(className, classNames?.base);
-  const {toastProps, contentProps, titleProps, descriptionProps} = useToastAria(
+  const { toastProps, contentProps, titleProps, descriptionProps } = useToastAria(
     props,
     state,
     domRef,
@@ -354,9 +352,9 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
 
   const multiplier = placement.includes("top") ? 1 : -1;
   const toastVariants = {
-    hidden: {opacity: 0, y: -INITIAL_POSITION * multiplier},
-    visible: {opacity: 1, y: 0},
-    exit: {opacity: 0, y: -INITIAL_POSITION * multiplier},
+    hidden: { opacity: 0, y: -INITIAL_POSITION * multiplier },
+    visible: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -INITIAL_POSITION * multiplier },
   };
 
   const [drag, setDrag] = useState(false);
@@ -379,7 +377,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
   };
 
   const getDragElasticConstraints = (placement: string) => {
-    const elasticConstraint = {top: 0, bottom: 0, right: 0, left: 0};
+    const elasticConstraint = { top: 0, bottom: 0, right: 0, left: 0 };
 
     if (placement === "bottom-center") {
       elasticConstraint.bottom = 1;
@@ -428,7 +426,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
 
       return {
         ref: domRef,
-        className: slots.base({class: clsx(baseStyles, classNames?.base)}),
+        className: slots.base({ class: clsx(baseStyles, classNames?.base) }),
         "data-has-title": dataAttr(!isEmpty(title)),
         "data-has-description": dataAttr(!isEmpty(description)),
         "data-placement": placement,
@@ -439,13 +437,13 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
         onTransitionEnd: disableAnimation
           ? undefined
           : () => {
-              if (!isToastExiting) return;
-              state.close(toast.key);
-              if (!hasCalledOnCloseRef.current) {
-                hasCalledOnCloseRef.current = true;
-                onClose?.();
-              }
-            },
+            if (!isToastExiting) return;
+            state.close(toast.key);
+            if (!hasCalledOnCloseRef.current) {
+              hasCalledOnCloseRef.current = true;
+              onClose?.();
+            }
+          },
         style: {
           opacity: opacityValue,
           ...pseudoElementStyles,
@@ -470,7 +468,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
 
   const getWrapperProps: PropGetter = useCallback(
     (props = {}) => ({
-      className: slots.wrapper({class: classNames?.wrapper}),
+      className: slots.wrapper({ class: classNames?.wrapper }),
       ...props,
     }),
     [],
@@ -479,7 +477,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
   const getIconProps: PropGetter = useCallback(
     (props = {}) => ({
       "aria-label": "descriptionIcon",
-      className: slots.icon({class: classNames?.icon}),
+      className: slots.icon({ class: classNames?.icon }),
       ...props,
     }),
     [],
@@ -487,7 +485,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
 
   const getLoadingComponentProps: PropGetter = useCallback(
     (props = {}) => ({
-      className: slots.loadingComponent({class: classNames?.loadingComponent}),
+      className: slots.loadingComponent({ class: classNames?.loadingComponent }),
       "aria-label": "loadingIcon",
       color: "current",
       ...props,
@@ -497,7 +495,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
 
   const getSpinnerComponentProps: PropGetter = useCallback(
     (props = {}) => ({
-      classNames: {wrapper: slots.loadingComponent({class: classNames?.loadingComponent})},
+      classNames: { wrapper: slots.loadingComponent({ class: classNames?.loadingComponent }) },
       "aria-label": "loadingIcon",
       color: "current",
       ...props,
@@ -507,7 +505,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
 
   const getContentProps: PropGetter = useCallback(
     (props = {}) => ({
-      className: slots.content({class: classNames?.content}),
+      className: slots.content({ class: classNames?.content }),
       ...mergeProps(props, otherProps, contentProps),
     }),
     [contentProps],
@@ -515,7 +513,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
 
   const getTitleProps: PropGetter = useCallback(
     (props = {}) => ({
-      className: slots.title({class: classNames?.title}),
+      className: slots.title({ class: classNames?.title }),
       ...mergeProps(props, otherProps, titleProps),
     }),
     [titleProps],
@@ -523,7 +521,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
 
   const getDescriptionProps: PropGetter = useCallback(
     (props = {}) => ({
-      className: slots.description({class: classNames?.description}),
+      className: slots.description({ class: classNames?.description }),
       ...mergeProps(props, otherProps, descriptionProps),
     }),
     [descriptionProps],
@@ -531,7 +529,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
 
   const getCloseButtonProps: PropGetter = useCallback(
     (props = {}) => ({
-      className: slots.closeButton({class: classNames?.closeButton}),
+      className: slots.closeButton({ class: classNames?.closeButton }),
       "aria-label": "closeButton",
       "data-hidden": dataAttr(hideCloseButton),
       ...mergeProps(props, {
@@ -550,7 +548,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
 
   const getCloseIconProps: PropGetter = useCallback(
     (props = {}) => ({
-      className: slots.closeIcon({class: classNames?.closeIcon}),
+      className: slots.closeIcon({ class: classNames?.closeIcon }),
       "aria-label": "closeIcon",
       ...props,
     }),
@@ -571,7 +569,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
         : Math.min(2, maxVisibleToasts - 1);
       const isCloseToEnd = total - index - 1 <= comparingValue;
       const dragDirection = placement === "bottom-center" || placement === "top-center" ? "y" : "x";
-      const dragConstraints = {left: 0, right: 0, top: 0, bottom: 0};
+      const dragConstraints = { left: 0, right: 0, top: 0, bottom: 0 };
       const dragElastic = getDragElasticConstraints(placement);
 
       const animateProps = (() => {
@@ -609,14 +607,14 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
         dragConstraints,
         exit: {
           opacity: 0,
-          transition: {duration: 0.3},
+          transition: { duration: 0.3 },
         },
-        initial: {opacity: 0, scale: 1, y: -40 * multiplier},
-        transition: {duration: 0.3, ease: "easeOut"},
+        initial: { opacity: 0, scale: 1, y: -40 * multiplier },
+        transition: { duration: 0.3, ease: "easeOut" },
         variants: toastVariants,
         dragElastic,
         onDragEnd: (_, info) => {
-          const {x: offsetX, y: offsetY} = info.offset;
+          const { x: offsetX, y: offsetY } = info.offset;
 
           setDrag(false);
 
@@ -650,7 +648,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
         "data-drag": dataAttr(drag),
         "data-placement": placement,
         "data-drag-value": dragValue,
-        className: slots.motionDiv({class: classNames?.motionDiv}),
+        className: slots.motionDiv({ class: classNames?.motionDiv }),
         ...props,
         ...motionProps,
       };

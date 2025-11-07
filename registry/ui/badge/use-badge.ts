@@ -1,12 +1,12 @@
-import type {BadgeSlots, BadgeVariantProps, SlotsToClasses} from "@heroui/theme";
-import type {ReactNode} from "react";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {ReactRef} from "@heroui/react-utils";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { BadgeSlots, BadgeVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { ReactNode } from "react";
 
-import {badge} from "@heroui/theme";
-import {mapPropsVariants, useProviderContext} from "@heroui/system";
-import {clsx, objectToDeps} from "@heroui/shared-utils";
-import {useMemo} from "react";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { badge } from "@/lib/theme";
+import { clsx, objectToDeps } from "@heroui/shared-utils";
+import { useMemo } from "react";
 
 interface Props extends HTMLHeroUIProps<"span", "content"> {
   /**
@@ -51,7 +51,7 @@ export function useBadge(originalProps: UseBadgeProps) {
 
   const [props, variantProps] = mapPropsVariants(originalProps, badge.variantKeys);
 
-  const {as, children, className, content, classNames, ...otherProps} = props;
+  const { as, children, className, content, classNames, ...otherProps } = props;
 
   const Component = as || "span";
 
@@ -79,7 +79,7 @@ export function useBadge(originalProps: UseBadgeProps) {
 
   const getBadgeProps: PropGetter = () => {
     return {
-      className: slots.badge({class: baseStyles}),
+      className: slots.badge({ class: baseStyles }),
       "data-invisible": originalProps.isInvisible,
       ...otherProps,
     };

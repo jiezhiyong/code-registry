@@ -1,15 +1,14 @@
-import type {Meta} from "@storybook/react";
-import type {ValidationErrors} from "@react-types/shared";
-import type {CheckboxIconProps, CheckboxProps} from "../src";
+import type { ValidationErrors } from "@react-types/shared";
+import type { Meta } from "@storybook/react";
+import type { CheckboxIconProps, CheckboxProps } from "../src";
 
+import { CloseIcon } from "@/lib/icons";
+import { button, checkbox } from "@/lib/theme";
+import { Form } from "@heroui/form";
 import React from "react";
-import {checkbox} from "@heroui/theme";
-import {CloseIcon} from "@heroui/shared-icons";
-import {button} from "@heroui/theme";
-import {useForm} from "react-hook-form";
-import {Form} from "@heroui/form";
+import { useForm } from "react-hook-form";
 
-import {Checkbox} from "../src";
+import { Checkbox } from "../src";
 
 export default {
   title: "Components/Checkbox",
@@ -94,7 +93,7 @@ const FormTemplate = (args: CheckboxProps) => {
       <Checkbox name="check" value="checked" {...args}>
         Check
       </Checkbox>
-      <button className={button({color: "primary"})} type="submit">
+      <button className={button({ color: "primary" })} type="submit">
         Submit
       </button>
     </form>
@@ -137,7 +136,7 @@ const GroupTemplate = (args: CheckboxProps) => {
 const WithReactHookFormTemplate = (args: CheckboxProps) => {
   const {
     register,
-    formState: {errors},
+    formState: { errors },
     handleSubmit,
   } = useForm();
 
@@ -149,9 +148,9 @@ const WithReactHookFormTemplate = (args: CheckboxProps) => {
 
   return (
     <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
-      <Checkbox {...args} {...register("example", {required: true})} />
+      <Checkbox {...args} {...register("example", { required: true })} />
       {errors.example && <span className="text-danger">This field is required</span>}
-      <button className={button({class: "w-fit"})} type="submit">
+      <button className={button({ class: "w-fit" })} type="submit">
         Submit
       </button>
     </form>
@@ -159,9 +158,7 @@ const WithReactHookFormTemplate = (args: CheckboxProps) => {
 };
 
 const WithFormTemplate = (args: CheckboxProps) => {
-  const [submitted, setSubmitted] = React.useState<{[key: string]: FormDataEntryValue} | null>(
-    null,
-  );
+  const [submitted, setSubmitted] = React.useState<{ [key: string]: FormDataEntryValue } | null>(null);
   const [errors, setErrors] = React.useState<ValidationErrors | undefined>(undefined);
 
   const onSubmit = (e) => {
@@ -171,7 +168,7 @@ const WithFormTemplate = (args: CheckboxProps) => {
     const terms = data.terms;
 
     if (terms !== "true") {
-      setErrors({terms: "You must agree to the terms and conditions"});
+      setErrors({ terms: "You must agree to the terms and conditions" });
 
       return;
     }
@@ -198,7 +195,7 @@ const WithFormTemplate = (args: CheckboxProps) => {
         I agree to the terms and conditions
       </Checkbox>
       {errors?.terms && <span className="text-danger text-small">{errors.terms}</span>}
-      <button className={button({class: "w-fit"})} type="submit">
+      <button className={button({ class: "w-fit" })} type="submit">
         Submit
       </button>
       {submitted && (

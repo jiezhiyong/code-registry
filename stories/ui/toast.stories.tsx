@@ -1,45 +1,38 @@
-import type {Meta} from "@storybook/react";
-import type {ToastProps} from "../src";
+import type { Meta } from "@storybook/react";
+import type { ToastProps } from "../src";
 
-import {useEffect, useState} from "react";
-import {cn, toast} from "@heroui/theme";
-import {Button} from "@heroui/button";
-import {
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  useDisclosure,
-} from "@heroui/modal";
-import {Drawer, DrawerContent} from "@heroui/drawer";
-import {Spinner} from "@heroui/spinner";
-import {AvatarIcon, CloseIcon} from "@heroui/shared-icons";
+import { AvatarIcon, CloseIcon } from "@/lib/icons";
+import { cn, toast } from "@/lib/theme";
+import { Button } from "@heroui/button";
+import { Drawer, DrawerContent } from "@heroui/drawer";
+import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from "@heroui/modal";
+import { Spinner } from "@heroui/spinner";
+import { useEffect, useState } from "react";
 
-import {Toast, ToastProvider, addToast, closeToast, closeAll} from "../src";
+import { Toast, ToastProvider, addToast, closeAll, closeToast } from "../src";
 
 export default {
   title: "Components/Toast",
   component: Toast,
   argTypes: {
     variant: {
-      control: {type: "select"},
+      control: { type: "select" },
       options: ["flat", "bordered", "solid"],
     },
     severity: {
-      control: {type: "select"},
+      control: { type: "select" },
       options: ["default", "primary", "secondary", "success", "warning", "danger"],
     },
     color: {
-      control: {type: "select"},
+      control: { type: "select" },
       options: ["default", "foreground", "primary", "secondary", "success", "warning", "danger"],
     },
     radius: {
-      control: {type: "select"},
+      control: { type: "select" },
       options: ["none", "sm", "md", "lg", "full"],
     },
     size: {
-      control: {type: "select"},
+      control: { type: "select" },
       options: ["sm", "md", "lg"],
     },
     hideIcon: {
@@ -48,22 +41,15 @@ export default {
       },
     },
     shadow: {
-      control: {type: "select"},
+      control: { type: "select" },
       options: ["sm", "md", "lg"],
     },
     placement: {
-      control: {type: "select"},
-      options: [
-        "bottom-right",
-        "bottom-left",
-        "bottom-center",
-        "top-right",
-        "top-left",
-        "top-center",
-      ],
+      control: { type: "select" },
+      options: ["bottom-right", "bottom-left", "bottom-center", "top-right", "top-left", "top-center"],
     },
     maxVisibleToasts: {
-      control: {type: "number"},
+      control: { type: "number" },
     },
     hideCloseButton: {
       control: {
@@ -184,11 +170,7 @@ const PlacementTemplate = (args: ToastProps) => {
 const DisableAnimationTemplate = (args: ToastProps) => {
   return (
     <>
-      <ToastProvider
-        disableAnimation={true}
-        maxVisibleToasts={args.maxVisibleToasts}
-        placement={args.placement}
-      />
+      <ToastProvider disableAnimation={true} maxVisibleToasts={args.maxVisibleToasts} placement={args.placement} />
       <div>
         <Button
           onPress={() => {
@@ -231,12 +213,12 @@ const PromiseToastTemplate = (args: ToastProps) => {
 };
 
 const WithToastFromOverlayTemplate = (args) => {
-  const {isOpen, onOpen, onOpenChange, onClose} = useDisclosure();
+  const { isOpen, onOpen, onOpenChange, onClose } = useDisclosure();
   const {
     isOpen: isDrawerOpen,
     onOpen: onDrawerOpen,
     onOpenChange: onDrawerOpenChange,
-  } = useDisclosure({defaultOpen: args.defaultOpen});
+  } = useDisclosure({ defaultOpen: args.defaultOpen });
 
   return (
     <>

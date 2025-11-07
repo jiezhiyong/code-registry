@@ -1,12 +1,12 @@
-import type {TimeValue} from "@react-types/datepicker";
-import type {ForwardedRef, ReactElement} from "react";
-import type {UseTimeInputProps} from "./use-time-input";
+import type { TimeValue } from "@react-types/datepicker";
+import type { ForwardedRef, ReactElement } from "react";
+import type { UseTimeInputProps } from "./use-time-input";
 
-import {forwardRef} from "@heroui/system";
+import { forwardRef } from "@/lib/system";
 
-import {useTimeInput} from "./use-time-input";
-import {DateInputField} from "./date-input-field";
-import {DateInputGroup} from "./date-input-group";
+import { DateInputField } from "./date-input-field";
+import { DateInputGroup } from "./date-input-group";
+import { useTimeInput } from "./use-time-input";
 
 export interface Props<T extends TimeValue> extends UseTimeInputProps<T> {}
 
@@ -14,13 +14,12 @@ export type TimeInputProps<T extends TimeValue = TimeValue> = Props<T>;
 
 const TimeInput = forwardRef(function TimeInput<T extends TimeValue>(
   props: TimeInputProps<T>,
-  ref: ForwardedRef<HTMLDivElement>,
+  ref: ForwardedRef<HTMLDivElement>
 ) {
-  const {state, slots, classNames, getBaseGroupProps, getInputProps, getFieldProps} =
-    useTimeInput<T>({
-      ...props,
-      ref,
-    });
+  const { state, slots, classNames, getBaseGroupProps, getInputProps, getFieldProps } = useTimeInput<T>({
+    ...props,
+    ref,
+  });
 
   return (
     <DateInputGroup {...getBaseGroupProps()}>

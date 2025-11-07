@@ -1,14 +1,14 @@
-import type {TabItemProps as BaseTabItemProps} from "./base/tab-item-base";
-import type {Node} from "@react-types/shared";
-import type {ValuesType} from "./use-tabs";
+import type { Node } from "@react-types/shared";
+import type { TabItemProps as BaseTabItemProps } from "./base/tab-item-base";
+import type { ValuesType } from "./use-tabs";
 
-import {forwardRef} from "@heroui/system";
-import {useDOMRef, filterDOMProps, mergeRefs} from "@heroui/react-utils";
-import {clsx, dataAttr, chain, mergeProps} from "@heroui/shared-utils";
+import { forwardRef } from "@/lib/system";
+import { filterDOMProps, mergeRefs, useDOMRef } from "@heroui/react-utils";
+import { chain, clsx, dataAttr, mergeProps } from "@heroui/shared-utils";
+import { useFocusRing } from "@react-aria/focus";
+import { useHover } from "@react-aria/interactions";
+import { useTab } from "@react-aria/tabs";
 import scrollIntoView from "scroll-into-view-if-needed";
-import {useFocusRing} from "@react-aria/focus";
-import {useTab} from "@react-aria/tabs";
-import {useHover} from "@react-aria/interactions";
 
 export interface TabItemProps<T extends object = object> extends BaseTabItemProps<T> {
   item: Node<T>;
@@ -37,7 +37,7 @@ const Tab = forwardRef<"button", TabItemProps>((props, ref) => {
     ...otherProps
   } = props;
 
-  const {key} = item;
+  const { key } = item;
 
   const domRef = useDOMRef(ref);
 
@@ -49,7 +49,7 @@ const Tab = forwardRef<"button", TabItemProps>((props, ref) => {
     isSelected,
     isDisabled: isDisabledItem,
     isPressed,
-  } = useTab({key, isDisabled: isDisabledProp, shouldSelectOnPressUp}, state, domRef);
+  } = useTab({ key, isDisabled: isDisabledProp, shouldSelectOnPressUp }, state, domRef);
 
   if (props.children == null) {
     delete tabProps["aria-controls"];
@@ -57,8 +57,8 @@ const Tab = forwardRef<"button", TabItemProps>((props, ref) => {
 
   const isDisabled = isDisabledProp || isDisabledItem;
 
-  const {focusProps, isFocused, isFocusVisible} = useFocusRing();
-  const {hoverProps, isHovered} = useHover({
+  const { focusProps, isFocused, isFocusVisible } = useFocusRing();
+  const { hoverProps, isHovered } = useHover({
     isDisabled,
   });
 
@@ -103,9 +103,9 @@ const Tab = forwardRef<"button", TabItemProps>((props, ref) => {
           // omit it to avoid executing onClick it twice.
           omitEventNames: new Set(["onClick"]),
         }),
-        {onClick: chain(handleClick, tabProps.onClick)},
+        { onClick: chain(handleClick, tabProps.onClick) }
       )}
-      className={slots.tab?.({class: tabStyles})}
+      className={slots.tab?.({ class: tabStyles })}
       title={otherProps?.titleValue}
       type={Component === "button" ? "button" : undefined}
     >

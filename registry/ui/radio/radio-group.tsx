@@ -1,9 +1,9 @@
-import type {UseRadioGroupProps} from "./use-radio-group";
+import type { UseRadioGroupProps } from "./use-radio-group";
 
-import {forwardRef} from "@heroui/system";
+import { forwardRef } from "@/lib/system";
 
-import {RadioGroupProvider} from "./radio-group-context";
-import {useRadioGroup} from "./use-radio-group";
+import { RadioGroupProvider } from "./radio-group-context";
+import { useRadioGroup } from "./use-radio-group";
 
 export interface RadioGroupProps extends Omit<UseRadioGroupProps, "defaultChecked"> {}
 
@@ -21,7 +21,7 @@ const RadioGroup = forwardRef<"div", RadioGroupProps>((props, ref) => {
     getWrapperProps,
     getDescriptionProps,
     getErrorMessageProps,
-  } = useRadioGroup({...props, ref});
+  } = useRadioGroup({ ...props, ref });
 
   return (
     <Component {...getGroupProps()}>

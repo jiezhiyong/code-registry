@@ -1,13 +1,13 @@
-import type {AriaTabPanelProps} from "@react-aria/tabs";
-import type {Key} from "@react-types/shared";
-import type {HTMLHeroUIProps} from "@heroui/system";
-import type {ValuesType} from "./use-tabs";
+import type { HTMLHeroUIProps } from "@/lib/system";
+import type { AriaTabPanelProps } from "@react-aria/tabs";
+import type { Key } from "@react-types/shared";
+import type { ValuesType } from "./use-tabs";
 
-import {forwardRef} from "@heroui/system";
-import {useDOMRef} from "@heroui/react-utils";
-import {clsx, getInertValue, mergeProps} from "@heroui/shared-utils";
-import {useTabPanel} from "@react-aria/tabs";
-import {useFocusRing} from "@react-aria/focus";
+import { forwardRef } from "@/lib/system";
+import { useDOMRef } from "@heroui/react-utils";
+import { clsx, getInertValue, mergeProps } from "@heroui/shared-utils";
+import { useFocusRing } from "@react-aria/focus";
+import { useTabPanel } from "@react-aria/tabs";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**
@@ -39,16 +39,15 @@ export type TabPanelProps = Props & AriaTabPanelProps;
  * @internal
  */
 const TabPanel = forwardRef<"div", TabPanelProps>((props, ref) => {
-  const {as, tabKey, destroyInactiveTabPanel, state, className, slots, classNames, ...otherProps} =
-    props;
+  const { as, tabKey, destroyInactiveTabPanel, state, className, slots, classNames, ...otherProps } = props;
 
   const Component = as || "div";
 
   const domRef = useDOMRef(ref);
 
-  const {tabPanelProps} = useTabPanel({...props, id: String(tabKey)}, state, domRef);
+  const { tabPanelProps } = useTabPanel({ ...props, id: String(tabKey) }, state, domRef);
 
-  const {focusProps, isFocused, isFocusVisible} = useFocusRing();
+  const { focusProps, isFocused, isFocusVisible } = useFocusRing();
 
   const selectedItem = state.selectedItem;
 
@@ -72,7 +71,7 @@ const TabPanel = forwardRef<"div", TabPanelProps>((props, ref) => {
       // @ts-ignore
       inert={getInertValue(!isSelected)}
       {...(isSelected && mergeProps(tabPanelProps, focusProps, otherProps))}
-      className={slots.panel?.({class: tabPanelStyles})}
+      className={slots.panel?.({ class: tabPanelStyles })}
       data-slot="panel"
     >
       {content}

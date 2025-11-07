@@ -1,10 +1,10 @@
-import type {HTMLHeroUIProps} from "@heroui/system";
+import type { HTMLHeroUIProps } from "@/lib/system";
 
-import {forwardRef} from "@heroui/system";
-import {useDOMRef} from "@heroui/react-utils";
-import {clsx, dataAttr} from "@heroui/shared-utils";
+import { forwardRef } from "@/lib/system";
+import { useDOMRef } from "@heroui/react-utils";
+import { clsx, dataAttr } from "@heroui/shared-utils";
 
-import {useNavbarContext} from "./navbar-context";
+import { useNavbarContext } from "./navbar-context";
 
 export interface NavbarMenuItemProps extends HTMLHeroUIProps<"li"> {
   /**
@@ -16,18 +16,18 @@ export interface NavbarMenuItemProps extends HTMLHeroUIProps<"li"> {
 }
 
 const NavbarMenuItem = forwardRef<"li", NavbarMenuItemProps>((props, ref) => {
-  const {className, children, isActive, ...otherProps} = props;
+  const { className, children, isActive, ...otherProps } = props;
 
   const domRef = useDOMRef(ref);
 
-  const {slots, isMenuOpen, classNames} = useNavbarContext();
+  const { slots, isMenuOpen, classNames } = useNavbarContext();
 
   const styles = clsx(classNames?.menuItem, className);
 
   return (
     <li
       ref={domRef}
-      className={slots.menuItem?.({class: styles})}
+      className={slots.menuItem?.({ class: styles })}
       data-active={dataAttr(isActive)}
       data-open={dataAttr(isMenuOpen)}
       {...otherProps}

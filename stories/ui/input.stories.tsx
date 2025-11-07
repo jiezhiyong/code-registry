@@ -1,23 +1,16 @@
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import type {ValidationResult} from "@react-types/shared";
-import type {Meta} from "@storybook/react";
-import type {InputProps} from "../src";
+import type { ValidationResult } from "@react-types/shared";
+import type { Meta } from "@storybook/react";
+import type { InputProps } from "../src";
 
+import { CloseFilledIcon, EyeFilledIcon, EyeSlashFilledIcon, MailFilledIcon, SearchIcon } from "@/lib/icons";
+import { button, input } from "@/lib/theme";
+import { Form } from "@heroui/form";
 import React from "react";
-import {input} from "@heroui/theme";
-import {
-  MailFilledIcon,
-  EyeFilledIcon,
-  EyeSlashFilledIcon,
-  SearchIcon,
-  CloseFilledIcon,
-} from "@heroui/shared-icons";
-import {button} from "@heroui/theme";
-import {useForm} from "react-hook-form";
-import {Form} from "@heroui/form";
+import { useForm } from "react-hook-form";
 
-import {Input, useInput} from "../src";
+import { Input, useInput } from "../src";
 
 export default {
   title: "Components/Input",
@@ -101,7 +94,7 @@ const FormTemplate = (args) => (
     }}
   >
     <Input {...args} name="example" />
-    <button className={button({color: "primary"})} type="submit">
+    <button className={button({ color: "primary" })} type="submit">
       Submit
     </button>
   </form>
@@ -187,24 +180,9 @@ const LabelPlacementTemplate = (args) => (
       <h3>With placeholder</h3>
       <div className="w-full flex flex-row items-end gap-4">
         <Input {...args} description="inside" placeholder="Enter your email" />
-        <Input
-          {...args}
-          description="outside"
-          labelPlacement="outside"
-          placeholder="Enter your email"
-        />
-        <Input
-          {...args}
-          description="outside-left"
-          labelPlacement="outside-left"
-          placeholder="Enter your email"
-        />
-        <Input
-          {...args}
-          description="outside-top"
-          labelPlacement="outside-top"
-          placeholder="Enter your email"
-        />
+        <Input {...args} description="outside" labelPlacement="outside" placeholder="Enter your email" />
+        <Input {...args} description="outside-left" labelPlacement="outside-left" placeholder="Enter your email" />
+        <Input {...args} description="outside-top" labelPlacement="outside-top" placeholder="Enter your email" />
       </div>
     </div>
   </div>
@@ -215,9 +193,7 @@ const StartContentTemplate = (args) => (
     <Input
       {...args}
       // placeholder="you@example.com"
-      startContent={
-        <MailFilledIcon className="text-2xl text-default-400 pointer-events-none shrink-0" />
-      }
+      startContent={<MailFilledIcon className="text-2xl text-default-400 pointer-events-none shrink-0" />}
     />
     <Input
       {...args}
@@ -248,9 +224,7 @@ const EndContentTemplate = (args) => (
   <div className="w-full max-w-xl flex flex-row items-end gap-4">
     <Input
       {...args}
-      endContent={
-        <MailFilledIcon className="text-2xl text-default-400 pointer-events-none shrink-0" />
-      }
+      endContent={<MailFilledIcon className="text-2xl text-default-400 pointer-events-none shrink-0" />}
       placeholder="you@example.com"
     />
     <Input
@@ -288,9 +262,7 @@ const StartAndEndContentTemplate = (args) => (
         </div>
       }
       placeholder="heroui"
-      startContent={
-        <MailFilledIcon className="text-xl text-default-400 pointer-events-none shrink-0" />
-      }
+      startContent={<MailFilledIcon className="text-xl text-default-400 pointer-events-none shrink-0" />}
     />
     <Input
       {...args}
@@ -493,7 +465,7 @@ const CustomWithHooksTemplate = (args: InputProps) => {
 const WithReactHookFormTemplate = (args: InputProps) => {
   const {
     register,
-    formState: {errors},
+    formState: { errors },
     handleSubmit,
   } = useForm({
     defaultValues: {
@@ -513,9 +485,9 @@ const WithReactHookFormTemplate = (args: InputProps) => {
     <form className="flex flex-col gap-4" onSubmit={handleSubmit(onSubmit)}>
       <Input isClearable label="With default value" {...register("withDefaultValue")} />
       <Input {...args} label="Without default value" {...register("withoutDefaultValue")} />
-      <Input {...args} label="Required" {...register("requiredField", {required: true})} />
+      <Input {...args} label="Required" {...register("requiredField", { required: true })} />
       {errors.requiredField && <span className="text-danger">This field is required</span>}
-      <button className={button({class: "w-fit"})} type="submit">
+      <button className={button({ class: "w-fit" })} type="submit">
         Submit
       </button>
     </form>
@@ -532,13 +504,9 @@ const ServerValidationTemplate = (args: InputProps) => {
   };
 
   return (
-    <Form
-      className="flex flex-col items-start gap-2"
-      validationErrors={serverErrors}
-      onSubmit={onSubmit}
-    >
+    <Form className="flex flex-col items-start gap-2" validationErrors={serverErrors} onSubmit={onSubmit}>
       <Input {...args} label="Username" name="username" />
-      <button className={button({color: "primary"})} type="submit">
+      <button className={button({ color: "primary" })} type="submit">
         Submit
       </button>
     </Form>

@@ -1,10 +1,9 @@
-import type {Meta} from "@storybook/react";
+import type { Meta } from "@storybook/react";
 
-import React from "react";
-import {Activity, Camera} from "@heroui/shared-icons";
-import {avatar} from "@heroui/theme";
+import { Activity, Camera } from "@/lib/icons";
+import { avatar } from "@/lib/theme";
 
-import {Avatar} from "../src";
+import { Avatar } from "../src";
 
 export default {
   title: "Components/Avatar",
@@ -152,9 +151,7 @@ export const CustomFallback = {
     ...defaultProps,
     src: "https://images.unsplash.com/broken",
     showFallback: true,
-    fallback: (
-      <Camera className="animate-pulse w-6 h-6 text-default-500" fill="currentColor" size={20} />
-    ),
+    fallback: <Camera className="animate-pulse w-6 h-6 text-default-500" fill="currentColor" size={20} />,
   },
 };
 

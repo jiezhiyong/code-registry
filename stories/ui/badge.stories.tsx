@@ -1,14 +1,13 @@
-import type {Meta} from "@storybook/react";
-import type {BadgeProps} from "../src";
+import type { Meta } from "@storybook/react";
+import type { BadgeProps } from "../src";
 
+import { CartIcon, CheckIcon, Notification } from "@/lib/icons";
+import { badge } from "@/lib/theme";
+import { Avatar } from "@heroui/avatar";
+import { Switch } from "@heroui/switch";
 import React from "react";
-import {badge} from "@heroui/theme";
-import {Avatar} from "@heroui/avatar";
-import {CheckIcon} from "@heroui/shared-icons";
-import {Switch} from "@heroui/switch";
-import {Notification, CartIcon} from "@heroui/shared-icons";
 
-import {Badge} from "../src";
+import { Badge } from "../src";
 
 export default {
   title: "Components/Badge",

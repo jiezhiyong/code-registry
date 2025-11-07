@@ -1,22 +1,22 @@
-import type {Meta} from "@storybook/react";
-import type {TabsProps} from "../src";
+import type { Meta } from "@storybook/react";
+import type { TabsProps } from "../src";
 
-import React from "react";
-import {button, link, tabs} from "@heroui/theme";
-import Lorem from "react-lorem-component";
-import {Input} from "@heroui/input";
-import {Button} from "@heroui/button";
-import {Card, CardBody} from "@heroui/card";
 import {
-  AlignVerticallyBoldIcon,
-  AlignHorizontallyBoldIcon,
   AlignBottomBoldIcon,
+  AlignHorizontallyBoldIcon,
   AlignLeftBoldIcon,
   AlignRightBoldIcon,
   AlignTopBoldIcon,
-} from "@heroui/shared-icons";
+  AlignVerticallyBoldIcon,
+} from "@/lib/icons";
+import { button, link, tabs } from "@/lib/theme";
+import { Button } from "@heroui/button";
+import { Card, CardBody } from "@heroui/card";
+import { Input } from "@heroui/input";
+import React from "react";
+import Lorem from "react-lorem-component";
 
-import {Tabs, Tab} from "../src";
+import { Tab, Tabs } from "../src";
 
 export default {
   title: "Components/Tabs",
@@ -95,11 +95,7 @@ const WithIconsTemplate = (args: TabsProps) => (
     <Tab key="align-vertically" title={<AlignVerticallyBoldIcon />} titleValue="Align vertically" />
     <Tab key="align-right" title={<AlignRightBoldIcon />} titleValue="Align right" />
     <Tab key="align-top" title={<AlignTopBoldIcon />} titleValue="Align top" />
-    <Tab
-      key="align-horizontally"
-      title={<AlignHorizontallyBoldIcon />}
-      titleValue="Align horizontally"
-    />
+    <Tab key="align-horizontally" title={<AlignHorizontallyBoldIcon />} titleValue="Align horizontally" />
     <Tab key="align-bottom" title={<AlignBottomBoldIcon />} titleValue="Align bottom" />
   </Tabs>
 );
@@ -109,12 +105,7 @@ const ControlledTemplate = (args: TabsProps) => {
 
   return (
     <div className="flex flex-col gap-2">
-      <Tabs
-        aria-label="Tabs example"
-        {...args}
-        selectedKey={selected}
-        onSelectionChange={setSelected}
-      >
+      <Tabs aria-label="Tabs example" {...args} selectedKey={selected} onSelectionChange={setSelected}>
         <Tab key="world" title="World">
           <Lorem count={1} sentenceUpperBound={20} />
         </Tab>
@@ -135,16 +126,10 @@ const ControlledTemplate = (args: TabsProps) => {
       <p className="text-default-500">Selected: {selected}</p>
 
       <div className="flex gap-2 justify-start">
-        <button
-          className={button({color: "secondary", variant: "flat"})}
-          onClick={() => setSelected("arts")}
-        >
+        <button className={button({ color: "secondary", variant: "flat" })} onClick={() => setSelected("arts")}>
           Select &quot;Arts&quot;
         </button>
-        <button
-          className={button({color: "secondary", variant: "flat"})}
-          onClick={() => setSelected("science")}
-        >
+        <button className={button({ color: "secondary", variant: "flat" })} onClick={() => setSelected("science")}>
           Select &quot;Science&quot;
         </button>
       </div>
@@ -209,24 +194,14 @@ const WithFormTemplate = (args: TabsProps) => {
     <div className="flex flex-col justify-center items-center w-full h-screen">
       <Card className="w-[340px] h-[400px]">
         <CardBody>
-          <Tabs
-            aria-label="Tabs form"
-            {...args}
-            selectedKey={selected}
-            onSelectionChange={setSelected}
-          >
+          <Tabs aria-label="Tabs form" {...args} selectedKey={selected} onSelectionChange={setSelected}>
             <Tab key="login" title="Login">
               <form className="flex flex-col gap-4">
                 <Input isRequired label="Email" placeholder="Enter your email" type="email" />
-                <Input
-                  isRequired
-                  label="Password"
-                  placeholder="Enter your password"
-                  type="password"
-                />
+                <Input isRequired label="Password" placeholder="Enter your password" type="password" />
                 <p className="text-center text-sm">
                   Need to create an account?&nbsp;
-                  <button className={link({size: "sm"})} onClick={() => setSelected("sign-up")}>
+                  <button className={link({ size: "sm" })} onClick={() => setSelected("sign-up")}>
                     Sign up
                   </button>
                 </p>
@@ -241,15 +216,10 @@ const WithFormTemplate = (args: TabsProps) => {
               <form className="flex flex-col gap-4 h-[300px]">
                 <Input isRequired label="Name" placeholder="Enter your name" type="password" />
                 <Input isRequired label="Email" placeholder="Enter your email" type="email" />
-                <Input
-                  isRequired
-                  label="Password"
-                  placeholder="Enter your password"
-                  type="password"
-                />
+                <Input isRequired label="Password" placeholder="Enter your password" type="password" />
                 <p className="text-center text-sm">
                   Already have an account?&nbsp;
-                  <button className={link({size: "sm"})} onClick={() => setSelected("login")}>
+                  <button className={link({ size: "sm" })} onClick={() => setSelected("login")}>
                     Login
                   </button>
                 </p>

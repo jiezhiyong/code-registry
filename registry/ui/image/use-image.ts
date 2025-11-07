@@ -1,15 +1,14 @@
-import type {ImageVariantProps, SlotsToClasses, ImageSlots} from "@heroui/theme";
-import type {ImgHTMLAttributes} from "react";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {ReactRef} from "@heroui/react-utils";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { ImageSlots, ImageVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { ImgHTMLAttributes } from "react";
 
-import {useCallback} from "react";
-import {mapPropsVariants, useProviderContext} from "@heroui/system";
-import {image} from "@heroui/theme";
-import {useDOMRef} from "@heroui/react-utils";
-import {clsx, dataAttr, objectToDeps} from "@heroui/shared-utils";
-import {useImage as useImageBase} from "@heroui/use-image";
-import {useMemo} from "react";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { image } from "@/lib/theme";
+import { useDOMRef } from "@heroui/react-utils";
+import { clsx, dataAttr, objectToDeps } from "@heroui/shared-utils";
+import { useImage as useImageBase } from "@heroui/use-image";
+import { useCallback, useMemo } from "react";
 type NativeImageProps = ImgHTMLAttributes<HTMLImageElement>;
 
 interface Props extends HTMLHeroUIProps<"img"> {
@@ -119,7 +118,7 @@ export function useImage(originalProps: UseImageProps) {
 
   const domRef = useDOMRef(ref);
 
-  const {w, h} = useMemo(() => {
+  const { w, h } = useMemo(() => {
     return {
       w: props.width
         ? typeof props.width === "number"
@@ -156,7 +155,7 @@ export function useImage(originalProps: UseImageProps) {
       src,
       ref: domRef,
       "data-loaded": dataAttr(isImgLoaded),
-      className: slots.img({class: imgStyles}),
+      className: slots.img({ class: imgStyles }),
       loading,
       srcSet,
       sizes,
@@ -165,7 +164,7 @@ export function useImage(originalProps: UseImageProps) {
       style: {
         // img has `height: auto` by default
         // passing the custom height here to override if it is specified
-        ...(otherProps?.height && {height: h}),
+        ...(otherProps?.height && { height: h }),
         ...props.style,
         ...otherProps.style,
       },
@@ -175,12 +174,12 @@ export function useImage(originalProps: UseImageProps) {
   const getWrapperProps = useCallback<PropGetter>(() => {
     const fallbackStyle = showFallback
       ? {
-          backgroundImage: `url(${fallbackSrc})`,
-        }
+        backgroundImage: `url(${fallbackSrc})`,
+      }
       : {};
 
     return {
-      className: slots.wrapper({class: classNames?.wrapper}),
+      className: slots.wrapper({ class: classNames?.wrapper }),
       style: {
         ...fallbackStyle,
         maxWidth: w,
@@ -192,7 +191,7 @@ export function useImage(originalProps: UseImageProps) {
     return {
       src,
       "aria-hidden": dataAttr(true),
-      className: slots.blurredImg({class: classNames?.blurredImg}),
+      className: slots.blurredImg({ class: classNames?.blurredImg }),
     };
   }, [slots, src, classNames?.blurredImg]);
 

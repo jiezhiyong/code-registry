@@ -1,19 +1,19 @@
-import type {AriaRadioGroupProps} from "@react-types/radio";
-import type {Orientation} from "@react-types/shared";
-import type {ReactRef} from "@heroui/react-utils";
-import type {RadioGroupSlots, SlotsToClasses} from "@heroui/theme";
-import type {RadioGroupState} from "@react-stately/radio";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {RadioProps} from "./index";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { RadioGroupSlots, SlotsToClasses } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { RadioGroupState } from "@react-stately/radio";
+import type { AriaRadioGroupProps } from "@react-types/radio";
+import type { Orientation } from "@react-types/shared";
+import type { RadioProps } from "./index";
 
-import {radioGroup} from "@heroui/theme";
-import {useCallback, useMemo} from "react";
-import {useRadioGroupState} from "@react-stately/radio";
-import {useRadioGroup as useReactAriaRadioGroup} from "@react-aria/radio";
-import {useProviderContext} from "@heroui/system";
-import {filterDOMProps, useDOMRef} from "@heroui/react-utils";
-import {clsx, safeAriaLabel, mergeProps} from "@heroui/shared-utils";
-import {FormContext, useSlottedContext} from "@heroui/form";
+import { useProviderContext } from "@/lib/system";
+import { radioGroup } from "@/lib/theme";
+import { FormContext, useSlottedContext } from "@heroui/form";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
+import { clsx, mergeProps, safeAriaLabel } from "@heroui/shared-utils";
+import { useRadioGroup as useReactAriaRadioGroup } from "@react-aria/radio";
+import { useRadioGroupState } from "@react-stately/radio";
+import { useCallback, useMemo } from "react";
 
 interface Props extends Omit<HTMLHeroUIProps<"div">, "onChange"> {
   /**
@@ -64,7 +64,7 @@ export type ContextType = {
 
 export function useRadioGroup(props: UseRadioGroupProps) {
   const globalContext = useProviderContext();
-  const {validationBehavior: formValidationBehavior} = useSlottedContext(FormContext) || {};
+  const { validationBehavior: formValidationBehavior } = useSlottedContext(FormContext) || {};
 
   const {
     as,
@@ -167,7 +167,7 @@ export function useRadioGroup(props: UseRadioGroupProps) {
   );
 
   const slots = useMemo(
-    () => radioGroup({isRequired, isInvalid, disableAnimation}),
+    () => radioGroup({ isRequired, isInvalid, disableAnimation }),
     [isInvalid, isRequired, disableAnimation],
   );
 
@@ -176,7 +176,7 @@ export function useRadioGroup(props: UseRadioGroupProps) {
   const getGroupProps: PropGetter = useCallback(() => {
     return {
       ref: domRef,
-      className: slots.base({class: baseStyles}),
+      className: slots.base({ class: baseStyles }),
       ...mergeProps(
         groupProps,
         filterDOMProps(otherProps, {
@@ -188,14 +188,14 @@ export function useRadioGroup(props: UseRadioGroupProps) {
 
   const getLabelProps: PropGetter = useCallback(() => {
     return {
-      className: slots.label({class: classNames?.label}),
+      className: slots.label({ class: classNames?.label }),
       ...labelProps,
     };
   }, [slots, classNames?.label, labelProps, classNames?.label]);
 
   const getWrapperProps: PropGetter = useCallback(() => {
     return {
-      className: slots.wrapper({class: classNames?.wrapper}),
+      className: slots.wrapper({ class: classNames?.wrapper }),
       role: "presentation",
       "data-orientation": orientation,
     };
@@ -206,7 +206,7 @@ export function useRadioGroup(props: UseRadioGroupProps) {
       return {
         ...props,
         ...descriptionProps,
-        className: slots.description({class: clsx(classNames?.description, props?.className)}),
+        className: slots.description({ class: clsx(classNames?.description, props?.className) }),
       };
     },
     [slots, classNames?.description, descriptionProps, slots.description],
@@ -217,7 +217,7 @@ export function useRadioGroup(props: UseRadioGroupProps) {
       return {
         ...props,
         ...errorMessageProps,
-        className: slots.errorMessage({class: clsx(classNames?.errorMessage, props?.className)}),
+        className: slots.errorMessage({ class: clsx(classNames?.errorMessage, props?.className) }),
       };
     },
     [slots, classNames?.errorMessage, errorMessageProps],
@@ -232,7 +232,7 @@ export function useRadioGroup(props: UseRadioGroupProps) {
     isInvalid,
     errorMessage:
       typeof errorMessage === "function"
-        ? errorMessage({isInvalid, validationErrors, validationDetails})
+        ? errorMessage({ isInvalid, validationErrors, validationDetails })
         : errorMessage || validationErrors?.join(" "),
     getGroupProps,
     getLabelProps,

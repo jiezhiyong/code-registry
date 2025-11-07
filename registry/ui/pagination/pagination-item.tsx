@@ -1,13 +1,13 @@
-import type {UsePaginationItemProps} from "./use-pagination-item";
+import type { UsePaginationItemProps } from "./use-pagination-item";
 
-import {forwardRef} from "@heroui/system";
+import { forwardRef } from "@/lib/system";
 
-import {usePaginationItem} from "./use-pagination-item";
+import { usePaginationItem } from "./use-pagination-item";
 
 export interface PaginationItemProps extends UsePaginationItemProps {}
 
 const PaginationItem = forwardRef<"li", PaginationItemProps>((props, ref) => {
-  const {Component, children, getItemProps} = usePaginationItem({...props, ref});
+  const { Component, children, getItemProps } = usePaginationItem({ ...props, ref });
 
   return <Component {...getItemProps()}>{children}</Component>;
 });

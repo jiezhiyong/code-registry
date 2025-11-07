@@ -1,10 +1,10 @@
-import type {ListboxItemVariantProps, ListboxItemSlots, SlotsToClasses} from "@heroui/theme";
-import type {AriaOptionProps} from "@react-aria/listbox";
-import type {FocusableProps, PressEvents} from "@react-types/shared";
-import type {ItemProps} from "@heroui/aria-utils";
-import type {ReactNode} from "react";
+import type { ItemProps } from "@/lib/aria";
+import type { ListboxItemSlots, ListboxItemVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { AriaOptionProps } from "@react-aria/listbox";
+import type { FocusableProps, PressEvents } from "@react-types/shared";
+import type { ReactNode } from "react";
 
-import {BaseItem} from "@heroui/aria-utils";
+import { BaseItem } from "@/lib/aria";
 
 export type ListboxItemSelectedIconProps = {
   /**
@@ -103,8 +103,6 @@ export type ListboxItemBaseProps<T extends object = {}> = Omit<Props<T>, "onClic
     onClick?: (e: React.MouseEvent<HTMLLIElement | HTMLAnchorElement>) => void;
   };
 
-const ListboxItemBase = BaseItem as <T extends object>(
-  props: Omit<ListboxItemBaseProps<T>, "value">,
-) => JSX.Element;
+const ListboxItemBase = BaseItem as <T extends object>(props: Omit<ListboxItemBaseProps<T>, "value">) => JSX.Element;
 
 export default ListboxItemBase;

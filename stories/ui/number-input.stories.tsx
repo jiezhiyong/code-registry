@@ -1,13 +1,12 @@
-import type {ValidationResult} from "@react-types/shared";
-import type {Meta} from "@storybook/react";
-import type {NumberInputProps} from "../src";
+import type { ValidationResult } from "@react-types/shared";
+import type { Meta } from "@storybook/react";
+import type { NumberInputProps } from "../src";
 
+import { button, numberInput } from "@/lib/theme";
+import { Form } from "@heroui/form";
 import React from "react";
-import {button} from "@heroui/theme";
-import {Form} from "@heroui/form";
-import {numberInput} from "@heroui/theme";
 
-import {NumberInput} from "../src";
+import { NumberInput } from "../src";
 
 export default {
   title: "Components/NumberInput",
@@ -84,7 +83,7 @@ const FormTemplate = (args) => (
     }}
   >
     <NumberInput {...args} name="example" />
-    <button className={button({color: "primary"})} type="submit">
+    <button className={button({ color: "primary" })} type="submit">
       Submit
     </button>
   </form>
@@ -115,18 +114,8 @@ const LabelPlacementTemplate = (args) => (
       <h3>With placeholder</h3>
       <div className="w-full max-w-3xl flex flex-row items-end gap-4">
         <NumberInput {...args} description="inside" placeholder="Enter a number" />
-        <NumberInput
-          {...args}
-          description="outside"
-          labelPlacement="outside"
-          placeholder="Enter a number"
-        />
-        <NumberInput
-          {...args}
-          description="outside-left"
-          labelPlacement="outside-left"
-          placeholder="Enter a number"
-        />
+        <NumberInput {...args} description="outside" labelPlacement="outside" placeholder="Enter a number" />
+        <NumberInput {...args} description="outside-left" labelPlacement="outside-left" placeholder="Enter a number" />
       </div>
     </div>
   </div>
@@ -179,13 +168,9 @@ const ServerValidationTemplate = (args: NumberInputProps) => {
   };
 
   return (
-    <Form
-      className="flex flex-col items-start gap-2"
-      validationErrors={serverErrors}
-      onSubmit={onSubmit}
-    >
+    <Form className="flex flex-col items-start gap-2" validationErrors={serverErrors} onSubmit={onSubmit}>
       <NumberInput {...args} />
-      <button className={button({color: "primary"})} type="submit">
+      <button className={button({ color: "primary" })} type="submit">
         Submit
       </button>
     </Form>

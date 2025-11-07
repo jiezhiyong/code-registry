@@ -1,18 +1,18 @@
-import type {HTMLHeroUIProps} from "@heroui/system";
+import type { HTMLHeroUIProps } from "@/lib/system";
 
-import {useEffect} from "react";
-import {forwardRef} from "@heroui/system";
-import {useDOMRef} from "@heroui/react-utils";
-import {clsx} from "@heroui/shared-utils";
+import { forwardRef } from "@/lib/system";
+import { useDOMRef } from "@heroui/react-utils";
+import { clsx } from "@heroui/shared-utils";
+import { useEffect } from "react";
 
-import {useModalContext} from "./modal-context";
+import { useModalContext } from "./modal-context";
 
 export interface ModalBodyProps extends HTMLHeroUIProps<"div"> {}
 
 const ModalBody = forwardRef<"div", ModalBodyProps>((props, ref) => {
-  const {as, children, className, ...otherProps} = props;
+  const { as, children, className, ...otherProps } = props;
 
-  const {slots, classNames, bodyId, setBodyMounted} = useModalContext();
+  const { slots, classNames, bodyId, setBodyMounted } = useModalContext();
 
   const domRef = useDOMRef(ref);
 
@@ -31,7 +31,7 @@ const ModalBody = forwardRef<"div", ModalBodyProps>((props, ref) => {
   return (
     <Component
       ref={domRef}
-      className={slots.body({class: clsx(classNames?.body, className)})}
+      className={slots.body({ class: clsx(classNames?.body, className) })}
       id={bodyId}
       {...otherProps}
     >

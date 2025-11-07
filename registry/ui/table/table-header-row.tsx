@@ -1,11 +1,11 @@
-import type {GridNode} from "@react-types/grid";
-import type {HTMLHeroUIProps} from "@heroui/system";
-import type {ValuesType} from "./use-table";
+import type { HTMLHeroUIProps } from "@/lib/system";
+import type { GridNode } from "@react-types/grid";
+import type { ValuesType } from "./use-table";
 
-import {forwardRef} from "@heroui/system";
-import {useDOMRef, filterDOMProps} from "@heroui/react-utils";
-import {clsx, mergeProps} from "@heroui/shared-utils";
-import {useTableHeaderRow} from "@react-aria/table";
+import { forwardRef } from "@/lib/system";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
+import { clsx, mergeProps } from "@heroui/shared-utils";
+import { useTableHeaderRow } from "@react-aria/table";
 
 // @internal
 export interface TableHeaderRowProps<T = object> extends HTMLHeroUIProps<"tr"> {
@@ -19,13 +19,13 @@ export interface TableHeaderRowProps<T = object> extends HTMLHeroUIProps<"tr"> {
 }
 
 const TableHeaderRow = forwardRef<"tr", TableHeaderRowProps>((props, ref) => {
-  const {as, className, children, node, slots, classNames, state, ...otherProps} = props;
+  const { as, className, children, node, slots, classNames, state, ...otherProps } = props;
 
   const Component = as || "tr";
   const shouldFilterDOMProps = typeof Component === "string";
   const domRef = useDOMRef(ref);
 
-  const {rowProps} = useTableHeaderRow({node}, state, domRef);
+  const { rowProps } = useTableHeaderRow({ node }, state, domRef);
 
   const trStyles = clsx(classNames?.tr, className, node.props?.className);
 
@@ -37,9 +37,9 @@ const TableHeaderRow = forwardRef<"tr", TableHeaderRowProps>((props, ref) => {
         filterDOMProps(node.props, {
           enabled: shouldFilterDOMProps,
         }),
-        otherProps,
+        otherProps
       )}
-      className={slots.tr?.({class: trStyles})}
+      className={slots.tr?.({ class: trStyles })}
     >
       {children}
     </Component>

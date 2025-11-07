@@ -1,12 +1,12 @@
-import type {ModalProps} from "@heroui/modal";
-import type {ReactRef} from "@heroui/react-utils";
-import type {PropGetter} from "@heroui/system";
+import type { PropGetter } from "@/lib/system";
+import type { ModalProps } from "@heroui/modal";
+import type { ReactRef } from "@heroui/react-utils";
 
-import {drawer} from "@heroui/theme";
-import {useDOMRef} from "@heroui/react-utils";
-import {useCallback, useMemo} from "react";
-import {TRANSITION_EASINGS} from "@heroui/framer-utils";
-import {clsx, isEmpty} from "@heroui/shared-utils";
+import { TRANSITION_EASINGS } from "@/lib/framer";
+import { drawer } from "@/lib/theme";
+import { useDOMRef } from "@heroui/react-utils";
+import { clsx, isEmpty } from "@heroui/shared-utils";
+import { useCallback, useMemo } from "react";
 
 interface Props extends Omit<ModalProps, "placement" | "scrollBehavior" | "children"> {
   /**
@@ -83,7 +83,7 @@ export function useDrawer(originalProps: UseDrawerProps) {
     return {
       classNames: {
         ...classNames,
-        base: slots.base({class: baseStyles}),
+        base: slots.base({ class: baseStyles }),
       },
       motionProps,
       scrollBehavior,
@@ -92,7 +92,7 @@ export function useDrawer(originalProps: UseDrawerProps) {
     };
   }, [baseStyles, classNames, motionProps, scrollBehavior, size, otherProps]);
 
-  return {domRef, getModalProps};
+  return { domRef, getModalProps };
 }
 
 export type UseDrawerReturn = ReturnType<typeof useDrawer>;

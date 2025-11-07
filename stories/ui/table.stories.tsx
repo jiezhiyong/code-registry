@@ -1,22 +1,22 @@
-import type {Meta} from "@storybook/react";
-import type {ChipProps} from "@heroui/chip";
-import type {TableProps} from "../src";
+import type { ChipProps } from "@heroui/chip";
+import type { Meta } from "@storybook/react";
+import type { TableProps } from "../src";
 
-import React, {useMemo} from "react";
-import {table} from "@heroui/theme";
-import {User} from "@heroui/user";
-import {Chip} from "@heroui/chip";
-import {Button} from "@heroui/button";
-import {Spinner} from "@heroui/spinner";
-import {Pagination} from "@heroui/pagination";
-import {Tooltip} from "@heroui/tooltip";
-import {EditIcon, DeleteIcon, EyeIcon, SortIcon} from "@heroui/shared-icons";
-import {useInfiniteScroll} from "@heroui/use-infinite-scroll";
-import {useAsyncList} from "@react-stately/data";
+import { DeleteIcon, EditIcon, EyeIcon, SortIcon } from "@/lib/icons";
+import { table } from "@/lib/theme";
+import { Button } from "@heroui/button";
+import { Chip } from "@heroui/chip";
+import { Pagination } from "@heroui/pagination";
+import { Spinner } from "@heroui/spinner";
+import { Tooltip } from "@heroui/tooltip";
+import { useInfiniteScroll } from "@heroui/use-infinite-scroll";
+import { User } from "@heroui/user";
+import { useAsyncList } from "@react-stately/data";
+import React, { useMemo } from "react";
 import useSWR from "swr";
 
-import {Table, TableHeader, TableColumn, TableBody, TableCell, TableRow, getKeyValue} from "../src";
-import {Switch} from "../../switch/src";
+import { Switch } from "../../switch/src";
+import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, getKeyValue } from "../src";
 
 export default {
   title: "Components/Table",
@@ -115,7 +115,7 @@ type SWCharacter = {
 };
 
 const generateRows = (rowCount: number) => {
-  return Array.from({length: rowCount}, (_, index) => ({
+  return Array.from({ length: rowCount }, (_, index) => ({
     key: index.toString(),
     name: `Item ${index + 1}`,
     value: `Value ${index + 1}`,
@@ -212,9 +212,7 @@ const DynamicTemplate = (args: TableProps) => (
     </TableHeader>
     <TableBody items={rows}>
       {(item) => (
-        <TableRow key={item.key}>
-          {(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}
-        </TableRow>
+        <TableRow key={item.key}>{(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}</TableRow>
       )}
     </TableBody>
   </Table>
@@ -222,10 +220,10 @@ const DynamicTemplate = (args: TableProps) => (
 
 const CustomCellTemplate = (args: TableProps) => {
   const columns = [
-    {name: "NAME", uid: "name"},
-    {name: "ROLE", uid: "role"},
-    {name: "STATUS", uid: "status"},
-    {name: "ACTIONS", uid: "actions"},
+    { name: "NAME", uid: "name" },
+    { name: "ROLE", uid: "role" },
+    { name: "STATUS", uid: "status" },
+    { name: "ACTIONS", uid: "actions" },
   ];
   const users = [
     {
@@ -294,11 +292,7 @@ const CustomCellTemplate = (args: TableProps) => {
     switch (columnKey) {
       case "name":
         return (
-          <User
-            avatarProps={{radius: "lg", src: user.avatar}}
-            description={user.email}
-            name={cellValue}
-          >
+          <User avatarProps={{ radius: "lg", src: user.avatar }} description={user.email} name={cellValue}>
             {user.email}
           </User>
         );
@@ -351,9 +345,7 @@ const CustomCellTemplate = (args: TableProps) => {
       </TableHeader>
       <TableBody items={users}>
         {(item) => (
-          <TableRow key={item.id}>
-            {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
-          </TableRow>
+          <TableRow key={item.id}>{(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}</TableRow>
         )}
       </TableBody>
     </Table>
@@ -362,10 +354,10 @@ const CustomCellTemplate = (args: TableProps) => {
 
 const CustomCellWithClassnamesTemplate = (args: TableProps) => {
   const columns = [
-    {name: "NAME", uid: "name"},
-    {name: "ROLE", uid: "role"},
-    {name: "STATUS", uid: "status"},
-    {name: "ACTIONS", uid: "actions"},
+    { name: "NAME", uid: "name" },
+    { name: "ROLE", uid: "role" },
+    { name: "STATUS", uid: "status" },
+    { name: "ACTIONS", uid: "actions" },
   ];
   const users = [
     {
@@ -435,7 +427,7 @@ const CustomCellWithClassnamesTemplate = (args: TableProps) => {
       case "name":
         return (
           <User
-            avatarProps={{radius: "lg", src: user.avatar}}
+            avatarProps={{ radius: "lg", src: user.avatar }}
             classNames={{
               description: "text-default-400",
             }}
@@ -454,12 +446,7 @@ const CustomCellWithClassnamesTemplate = (args: TableProps) => {
         );
       case "status":
         return (
-          <Chip
-            className="capitalize font-semibold"
-            color={statusColorMap[user.status]}
-            size="sm"
-            variant="flat"
-          >
+          <Chip className="capitalize font-semibold" color={statusColorMap[user.status]} size="sm" variant="flat">
             {cellValue}
           </Chip>
         );
@@ -499,9 +486,7 @@ const CustomCellWithClassnamesTemplate = (args: TableProps) => {
       </TableHeader>
       <TableBody items={users}>
         {(item) => (
-          <TableRow key={item.id}>
-            {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
-          </TableRow>
+          <TableRow key={item.id}>{(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}</TableRow>
         )}
       </TableBody>
     </Table>
@@ -510,7 +495,7 @@ const CustomCellWithClassnamesTemplate = (args: TableProps) => {
 
 const SortableTemplate = (args: TableProps) => {
   let list = useAsyncList<SWCharacter>({
-    async load({signal}) {
+    async load({ signal }) {
       let res = await fetch(`https://swapi.py4e.com/api/people/?search`, {
         signal,
       });
@@ -520,7 +505,7 @@ const SortableTemplate = (args: TableProps) => {
         items: json.results,
       };
     },
-    async sort({items, sortDescriptor}) {
+    async sort({ items, sortDescriptor }) {
       return {
         items: items.sort((a, b) => {
           let first = a[sortDescriptor.column!];
@@ -560,9 +545,7 @@ const SortableTemplate = (args: TableProps) => {
       </TableHeader>
       <TableBody items={list.items}>
         {(item) => (
-          <TableRow key={item.name}>
-            {(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}
-          </TableRow>
+          <TableRow key={item.name}>{(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}</TableRow>
         )}
       </TableBody>
     </Table>
@@ -573,14 +556,14 @@ const LoadMoreTemplate = (args: TableProps) => {
   const [page, setPage] = React.useState(1);
 
   let list = useAsyncList<SWCharacter>({
-    async load({signal, cursor}) {
+    async load({ signal, cursor }) {
       if (cursor) {
         setPage((prev) => prev + 1);
       }
 
       // If no cursor is available, then we're loading the first page.
       // Otherwise, the cursor is the next URL to load, as returned from the previous page.
-      const res = await fetch(cursor || "https://swapi.py4e.com/api/people/?search=", {signal});
+      const res = await fetch(cursor || "https://swapi.py4e.com/api/people/?search=", { signal });
       let json = await res.json();
 
       return {
@@ -615,9 +598,7 @@ const LoadMoreTemplate = (args: TableProps) => {
       </TableHeader>
       <TableBody items={list.items}>
         {(item) => (
-          <TableRow key={item.name}>
-            {(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}
-          </TableRow>
+          <TableRow key={item.name}>{(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}</TableRow>
         )}
       </TableBody>
     </Table>
@@ -793,9 +774,7 @@ const PaginatedTemplate = (args: TableProps) => {
       </TableHeader>
       <TableBody items={items}>
         {(item) => (
-          <TableRow key={item.name}>
-            {(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}
-          </TableRow>
+          <TableRow key={item.name}>{(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}</TableRow>
         )}
       </TableBody>
     </Table>
@@ -807,7 +786,7 @@ const fetcher = (...args: Parameters<typeof fetch>) => fetch(...args).then((res)
 const AsyncPaginatedTemplate = (args: TableProps) => {
   const [page, setPage] = React.useState(1);
 
-  const {data, isLoading} = useSWR<{
+  const { data, isLoading } = useSWR<{
     count: number;
     results: SWCharacter[];
   }>(`https://swapi.py4e.com/api/people?page=${page}`, fetcher, {
@@ -848,15 +827,9 @@ const AsyncPaginatedTemplate = (args: TableProps) => {
         <TableColumn key="mass">Mass</TableColumn>
         <TableColumn key="birth_year">Birth year</TableColumn>
       </TableHeader>
-      <TableBody
-        items={data?.results ?? []}
-        loadingContent={<Spinner />}
-        loadingState={loadingState}
-      >
+      <TableBody items={data?.results ?? []} loadingContent={<Spinner />} loadingState={loadingState}>
         {(item) => (
-          <TableRow key={item?.name}>
-            {(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}
-          </TableRow>
+          <TableRow key={item?.name}>{(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}</TableRow>
         )}
       </TableBody>
     </Table>
@@ -867,10 +840,10 @@ const InfinitePaginationTemplate = (args: TableProps) => {
   const [hasMore, setHasMore] = React.useState(false);
 
   let list = useAsyncList<SWCharacter>({
-    async load({signal, cursor}) {
+    async load({ signal, cursor }) {
       // If no cursor is available, then we're loading the first page.
       // Otherwise, the cursor is the next URL to load, as returned from the previous page.
-      const res = await fetch(cursor || "https://swapi.py4e.com/api/people/?search=", {signal});
+      const res = await fetch(cursor || "https://swapi.py4e.com/api/people/?search=", { signal });
       let json = await res.json();
 
       setHasMore(json.next !== null);
@@ -882,7 +855,7 @@ const InfinitePaginationTemplate = (args: TableProps) => {
     },
   });
 
-  const [loaderRef, scrollerRef] = useInfiniteScroll({hasMore, onLoadMore: list.loadMore});
+  const [loaderRef, scrollerRef] = useInfiniteScroll({ hasMore, onLoadMore: list.loadMore });
 
   return (
     <Table
@@ -905,21 +878,19 @@ const InfinitePaginationTemplate = (args: TableProps) => {
       </TableHeader>
       <TableBody items={list.items}>
         {(item) => (
-          <TableRow key={item.name}>
-            {(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}
-          </TableRow>
+          <TableRow key={item.name}>{(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}</TableRow>
         )}
       </TableBody>
     </Table>
   );
 };
 
-const VirtualizedTemplate = (args: TableProps & {rowCount: number}) => {
-  const {rowCount, ...rest} = args;
+const VirtualizedTemplate = (args: TableProps & { rowCount: number }) => {
+  const { rowCount, ...rest } = args;
   const rows = generateRows(rowCount);
   const columns = [
-    {key: "name", label: "Name"},
-    {key: "value", label: "Value"},
+    { key: "name", label: "Name" },
+    { key: "value", label: "Value" },
   ];
 
   return (
@@ -935,11 +906,7 @@ const VirtualizedTemplate = (args: TableProps & {rowCount: number}) => {
           {(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
         </TableHeader>
         <TableBody items={rows}>
-          {(item) => (
-            <TableRow key={item.key}>
-              {(columnKey) => <TableCell>{item[columnKey]}</TableCell>}
-            </TableRow>
-          )}
+          {(item) => <TableRow key={item.key}>{(columnKey) => <TableCell>{item[columnKey]}</TableCell>}</TableRow>}
         </TableBody>
       </Table>
     </div>
@@ -1123,14 +1090,7 @@ export const CustomWithClassNames = {
     classNames: {
       base: ["max-w-3xl", "bg-gradient-to-br", "from-purple-500", "to-indigo-900/90", "shadow-xl"],
       th: ["bg-transparent", "text-default-700", "border-b", "border-default"],
-      td: [
-        "py-4",
-        "text-sm",
-        "text-default-700",
-        "border-b",
-        "border-default",
-        "group-data-[last=true]:border-b-0",
-      ],
+      td: ["py-4", "text-sm", "text-default-700", "border-b", "border-default", "group-data-[last=true]:border-b-0"],
     },
   },
 };

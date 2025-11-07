@@ -1,15 +1,15 @@
-import type {ButtonProps} from "@heroui/button";
-import type {AlertSlots, AlertVariantProps, SlotsToClasses} from "@heroui/theme";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {ReactRef} from "@heroui/react-utils";
-import type {ReactNode} from "react";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { AlertSlots, AlertVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { ButtonProps } from "@heroui/button";
+import type { ReactRef } from "@heroui/react-utils";
+import type { ReactNode } from "react";
 
-import {mapPropsVariants} from "@heroui/system";
-import {filterDOMProps, useDOMRef} from "@heroui/react-utils";
-import {useCallback, useMemo} from "react";
-import {alert} from "@heroui/theme";
-import {useControlledState} from "@react-stately/utils";
-import {clsx, dataAttr, isEmpty, objectToDeps, mergeProps} from "@heroui/shared-utils";
+import { mapPropsVariants } from "@/lib/system";
+import { alert } from "@/lib/theme";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
+import { clsx, dataAttr, isEmpty, mergeProps, objectToDeps } from "@heroui/shared-utils";
+import { useControlledState } from "@react-stately/utils";
+import { useCallback, useMemo } from "react";
 
 interface Props extends HTMLHeroUIProps<"div", "title"> {
   /**
@@ -129,7 +129,7 @@ export function useAlert(originalProps: UseAlertProps) {
   const baseStyles = clsx(classNames?.base, className);
 
   const slots = useMemo(
-    () => alert({hasContent: !isEmpty(description) || !isEmpty(children), ...variantProps}),
+    () => alert({ hasContent: !isEmpty(description) || !isEmpty(children), ...variantProps }),
     [description, objectToDeps(variantProps)],
   );
 
@@ -145,46 +145,46 @@ export function useAlert(originalProps: UseAlertProps) {
         }),
         filterDOMProps(props),
       ),
-      className: slots.base({class: baseStyles}),
+      className: slots.base({ class: baseStyles }),
     };
   }, [slots, baseStyles]);
 
   const getMainWrapperProps = useCallback<PropGetter>(() => {
     return {
-      className: slots.mainWrapper({class: classNames?.mainWrapper}),
+      className: slots.mainWrapper({ class: classNames?.mainWrapper }),
     };
   }, [slots, classNames?.mainWrapper]);
 
   const getDescriptionProps = useCallback<PropGetter>(() => {
     return {
-      className: slots.description({class: classNames?.description}),
+      className: slots.description({ class: classNames?.description }),
     };
   }, [slots, classNames?.description]);
 
   const getTitleProps = useCallback<PropGetter>(() => {
     return {
-      className: slots.title({class: classNames?.title}),
+      className: slots.title({ class: classNames?.title }),
     };
   }, [slots, classNames?.title]);
 
   const getCloseButtonProps = useCallback<PropGetter>(
     () => ({
       ...closeButtonProps,
-      className: slots.closeButton({class: classNames?.closeButton}),
+      className: slots.closeButton({ class: classNames?.closeButton }),
     }),
     [slots, classNames?.closeButton],
   );
 
   const getAlertIconProps = useCallback<PropGetter>(
     () => ({
-      className: slots.alertIcon({class: classNames?.alertIcon}),
+      className: slots.alertIcon({ class: classNames?.alertIcon }),
     }),
     [slots, classNames?.alertIcon],
   );
 
   const getIconWrapperProps = useCallback<PropGetter>(
     () => ({
-      className: slots.iconWrapper({class: classNames?.iconWrapper}),
+      className: slots.iconWrapper({ class: classNames?.iconWrapper }),
     }),
     [slots, classNames?.iconWrapper],
   );

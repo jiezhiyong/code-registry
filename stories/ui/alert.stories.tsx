@@ -1,11 +1,11 @@
-import type {Meta} from "@storybook/react";
-import type {AlertProps} from "../src";
+import type { Meta } from "@storybook/react";
+import type { AlertProps } from "../src";
 
+import { alert, cn } from "@/lib/theme";
+import { Button } from "@heroui/button";
 import React from "react";
-import {alert, cn} from "@heroui/theme";
-import {Button} from "@heroui/button";
 
-import {Alert} from "../src";
+import { Alert } from "../src";
 
 export default {
   title: "Components/Alert",
@@ -123,10 +123,7 @@ const WithEndContentTemplate = (args) => {
 };
 
 const CustomAlert = React.forwardRef<HTMLDivElement, AlertProps>(
-  (
-    {title, children, variant = "faded", color = "secondary", className, classNames, ...props},
-    ref,
-  ) => {
+  ({ title, children, variant = "faded", color = "secondary", className, classNames, ...props }, ref) => {
     const colorClass = React.useMemo(() => {
       switch (color) {
         case "default":
@@ -161,7 +158,7 @@ const CustomAlert = React.forwardRef<HTMLDivElement, AlertProps>(
               colorClass,
             ],
             classNames?.base,
-            className,
+            className
           ),
           mainWrapper: cn("pt-1", classNames?.mainWrapper),
           iconWrapper: cn("dark:bg-transparent", classNames?.iconWrapper),
@@ -174,7 +171,7 @@ const CustomAlert = React.forwardRef<HTMLDivElement, AlertProps>(
         <div className="flex items-center gap-1 mt-3">{children}</div>
       </Alert>
     );
-  },
+  }
 );
 
 CustomAlert.displayName = "CustomAlert";
@@ -185,12 +182,7 @@ const CustomStylesTemplate = (args) => {
   return (
     <div className="flex flex-col w-full gap-y-6">
       {colors.map((color) => (
-        <CustomAlert
-          {...args}
-          key={color}
-          color={color}
-          title="The documents you requested are ready to be viewed"
-        >
+        <CustomAlert {...args} key={color} color={color} title="The documents you requested are ready to be viewed">
           <div className="flex items-center gap-1">
             <Button
               className="bg-background text-default-700 font-medium border-1 shadow-small"
@@ -199,11 +191,7 @@ const CustomStylesTemplate = (args) => {
             >
               View documents
             </Button>
-            <Button
-              className="text-default-500 font-medium underline underline-offset-4"
-              size="sm"
-              variant="light"
-            >
+            <Button className="text-default-500 font-medium underline underline-offset-4" size="sm" variant="light">
               Maybe later
             </Button>
           </div>

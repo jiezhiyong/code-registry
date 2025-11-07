@@ -1,19 +1,18 @@
-import type {UseTableProps} from "./use-table";
+import type { UseTableProps } from "./use-table";
 
-import {useCallback, useLayoutEffect, useRef, useState} from "react";
-import {Spacer} from "@heroui/spacer";
-import {forwardRef} from "@heroui/system";
-import {useVirtualizer} from "@tanstack/react-virtual";
+import { forwardRef } from "@/lib/system";
+import { Spacer } from "@heroui/spacer";
+import { useVirtualizer } from "@tanstack/react-virtual";
+import { useCallback, useLayoutEffect, useRef, useState } from "react";
 
-import {useTable} from "./use-table";
-import TableRowGroup from "./table-row-group";
-import TableHeaderRow from "./table-header-row";
 import TableColumnHeader from "./table-column-header";
+import TableHeaderRow from "./table-header-row";
+import TableRowGroup from "./table-row-group";
 import TableSelectAllCheckbox from "./table-select-all-checkbox";
+import { useTable } from "./use-table";
 import VirtualizedTableBody from "./virtualized-table-body";
 
-export interface TableProps<T = object>
-  extends Omit<UseTableProps<T>, "isSelectable" | "isMultiSelectable"> {
+export interface TableProps<T = object> extends Omit<UseTableProps<T>, "isSelectable" | "isMultiSelectable"> {
   isVirtualized?: boolean;
   rowHeight?: number;
   maxTableHeight?: number;
@@ -37,22 +36,22 @@ const VirtualizedTable = forwardRef<"table", TableProps>((props, ref) => {
     ref,
   });
 
-  const {rowHeight = 40, maxTableHeight = 600} = props;
+  const { rowHeight = 40, maxTableHeight = 600 } = props;
 
   const Wrapper = useCallback(
-    ({children}: {children: JSX.Element}) => {
+    ({ children }: { children: JSX.Element }) => {
       return (
         <BaseComponent
           {...getWrapperProps()}
           ref={parentRef}
           /* Display must be block to maintain the scroll "progress" */
-          style={{height: maxTableHeight, display: "block"}}
+          style={{ height: maxTableHeight, display: "block" }}
         >
           {children}
         </BaseComponent>
       );
     },
-    [getWrapperProps, maxTableHeight],
+    [getWrapperProps, maxTableHeight]
   );
 
   const items = [...collection.body.childNodes];
@@ -124,7 +123,7 @@ const VirtualizedTable = forwardRef<"table", TableProps>((props, ref) => {
                         slots={values.slots}
                         state={values.state}
                       />
-                    ),
+                    )
                   )}
                 </TableHeaderRow>
               ))}

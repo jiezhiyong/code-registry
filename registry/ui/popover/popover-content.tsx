@@ -1,27 +1,25 @@
-import type {AriaDialogProps} from "@react-aria/dialog";
-import type {HTMLMotionProps} from "framer-motion";
-import type {DOMAttributes, ReactNode} from "react";
-import type {HTMLHeroUIProps} from "@heroui/system";
+import type { HTMLHeroUIProps } from "@/lib/system";
+import type { AriaDialogProps } from "@react-aria/dialog";
+import type { HTMLMotionProps } from "framer-motion";
+import type { DOMAttributes, ReactNode } from "react";
 
-import {useMemo, useRef} from "react";
-import {DismissButton} from "@react-aria/overlays";
-import {TRANSITION_VARIANTS} from "@heroui/framer-utils";
-import {m, LazyMotion} from "framer-motion";
-import {getTransformOrigins} from "@heroui/aria-utils";
-import {useDialog} from "@react-aria/dialog";
+import { getTransformOrigins } from "@/lib/aria";
+import { TRANSITION_VARIANTS } from "@/lib/framer";
+import { useDialog } from "@react-aria/dialog";
+import { DismissButton } from "@react-aria/overlays";
+import { LazyMotion, m } from "framer-motion";
+import { useMemo, useRef } from "react";
 
-import {usePopoverContext} from "./popover-context";
+import { usePopoverContext } from "./popover-context";
 
-export interface PopoverContentProps
-  extends AriaDialogProps,
-    Omit<HTMLHeroUIProps, "children" | "role"> {
+export interface PopoverContentProps extends AriaDialogProps, Omit<HTMLHeroUIProps, "children" | "role"> {
   children?: ReactNode | ((titleProps: DOMAttributes<HTMLElement>) => ReactNode);
 }
 
-const domAnimation = () => import("@heroui/dom-animation").then((res) => res.default);
+const domAnimation = () => import(""@/lib/dom-animation").then((res) => res.default);
 
 const PopoverContent = (props: PopoverContentProps) => {
-  const {as, children, className, ...otherProps} = props;
+  const { as, children, className, ...otherProps } = props;
 
   const {
     Component: OverlayComponent,
@@ -38,7 +36,7 @@ const PopoverContent = (props: PopoverContentProps) => {
   } = usePopoverContext();
 
   const dialogRef = useRef(null);
-  const {dialogProps: ariaDialogProps, titleProps} = useDialog({}, dialogRef);
+  const { dialogProps: ariaDialogProps, titleProps } = useDialog({}, dialogRef);
   const dialogProps = getDialogProps({
     ref: dialogRef,
     ...ariaDialogProps,
@@ -52,7 +50,7 @@ const PopoverContent = (props: PopoverContentProps) => {
       {!isNonModal && <DismissButton onDismiss={onClose} />}
       {
         <Component {...dialogProps}>
-          <div {...getContentProps({className})}>
+          <div {...getContentProps({ className })}>
             {typeof children === "function" ? children(titleProps) : children}
           </div>
         </Component>
@@ -83,9 +81,7 @@ const PopoverContent = (props: PopoverContentProps) => {
     );
   }, [backdrop, disableAnimation, getBackdropProps]);
 
-  const style = placement
-    ? getTransformOrigins(placement === "center" ? "top" : placement)
-    : undefined;
+  const style = placement ? getTransformOrigins(placement === "center" ? "top" : placement) : undefined;
   const contents = (
     <>
       {disableAnimation ? (

@@ -1,4 +1,4 @@
-import type { HTMLHeroUIProps } from "@heroui/system";
+import type { HTMLHeroUIProps } from "@/lib/system";
 import type { Ref } from "react";
 
 import { useMeasure } from "@heroui/use-measure";

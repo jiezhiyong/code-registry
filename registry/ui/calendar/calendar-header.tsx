@@ -1,15 +1,15 @@
-import type {ButtonProps} from "@heroui/button";
-import type {CalendarDate} from "@internationalized/date";
-import type {HTMLHeroUIProps} from "@heroui/system";
+import type { HTMLHeroUIProps } from "@/lib/system";
+import type { ButtonProps } from "@heroui/button";
+import type { CalendarDate } from "@internationalized/date";
 
-import {useDateFormatter} from "@react-aria/i18n";
-import {m} from "framer-motion";
-import {Button} from "@heroui/button";
-import {useCallback} from "react";
+import { Button } from "@heroui/button";
+import { useDateFormatter } from "@react-aria/i18n";
+import { m } from "framer-motion";
+import { useCallback } from "react";
 
-import {slideVariants} from "./calendar-transitions";
-import {ChevronDownIcon} from "./chevron-down";
-import {useCalendarContext} from "./calendar-context";
+import { useCalendarContext } from "./calendar-context";
+import { slideVariants } from "./calendar-transitions";
+import { ChevronDownIcon } from "./chevron-down";
 
 export interface CalendarHeaderProps extends HTMLHeroUIProps<"header"> {
   direction: number;
@@ -19,7 +19,7 @@ export interface CalendarHeaderProps extends HTMLHeroUIProps<"header"> {
 }
 
 export function CalendarHeader(props: CalendarHeaderProps) {
-  const {direction, date, currentMonth, buttonPickerProps} = props;
+  const { direction, date, currentMonth, buttonPickerProps } = props;
 
   const {
     state,
@@ -34,10 +34,7 @@ export function CalendarHeader(props: CalendarHeaderProps) {
 
   const monthAndYearDateFormatter = useDateFormatter({
     month: "long",
-    era:
-      currentMonth.calendar.identifier === "gregory" && currentMonth.era === "BC"
-        ? "short"
-        : undefined,
+    era: currentMonth.calendar.identifier === "gregory" && currentMonth.era === "BC" ? "short" : undefined,
     calendar: currentMonth.calendar.identifier,
     timeZone: state.timeZone,
     year: "numeric",
@@ -54,7 +51,7 @@ export function CalendarHeader(props: CalendarHeaderProps) {
         <span
           key={currentMonth.month}
           aria-hidden={true}
-          className={slots?.title({class: classNames?.title})}
+          className={slots?.title({ class: classNames?.title })}
           data-slot="title"
         >
           {monthDateContent}
@@ -64,7 +61,7 @@ export function CalendarHeader(props: CalendarHeaderProps) {
           key={currentMonth.month}
           animate="center"
           aria-hidden={true}
-          className={slots?.title({class: classNames?.title})}
+          className={slots?.title({ class: classNames?.title })}
           custom={direction}
           data-slot="title"
           exit="exit"
@@ -79,7 +76,7 @@ export function CalendarHeader(props: CalendarHeaderProps) {
 
   const headerProps = {
     ref: headerRef,
-    className: slots?.header({class: classNames?.header}),
+    className: slots?.header({ class: classNames?.header }),
     "data-slot": "header",
   };
 
@@ -93,7 +90,7 @@ export function CalendarHeader(props: CalendarHeaderProps) {
         setIsHeaderExpanded?.(false);
       }
     },
-    [setIsHeaderExpanded],
+    [setIsHeaderExpanded]
   );
 
   return showMonthAndYearPickers ? (

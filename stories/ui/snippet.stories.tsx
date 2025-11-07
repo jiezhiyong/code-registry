@@ -1,9 +1,8 @@
-import type {Meta} from "@storybook/react";
+import type { Meta } from "@storybook/react";
 
-import React from "react";
-import {snippet} from "@heroui/theme";
+import { snippet } from "@/lib/theme";
 
-import {Snippet} from "../src";
+import { Snippet } from "../src";
 
 export default {
   title: "Components/Snippet",

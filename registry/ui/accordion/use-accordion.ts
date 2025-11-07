@@ -1,22 +1,20 @@
-import type {SelectionBehavior, MultipleSelection} from "@react-types/shared";
-import type {AriaAccordionProps} from "@react-types/accordion";
-import type {AccordionGroupVariantProps} from "@heroui/theme";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {ReactRef} from "@heroui/react-utils";
-import type {Key} from "react";
-import type {TreeState} from "@react-stately/tree";
-import type {DividerProps} from "@heroui/divider";
-import type {AccordionItemProps} from "./accordion-item";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { AccordionGroupVariantProps } from "@/lib/theme";
+import type { DividerProps } from "@heroui/divider";
+import type { ReactRef } from "@heroui/react-utils";
+import type { TreeState } from "@react-stately/tree";
+import type { AriaAccordionProps } from "@react-types/accordion";
+import type { MultipleSelection, SelectionBehavior } from "@react-types/shared";
+import type { Key } from "react";
+import type { AccordionItemProps } from "./accordion-item";
 
-import {useProviderContext} from "@heroui/system";
-import {filterDOMProps} from "@heroui/react-utils";
-import React, {useCallback} from "react";
-import {useTreeState} from "@react-stately/tree";
-import {mergeProps} from "@heroui/shared-utils";
-import {accordion} from "@heroui/theme";
-import {useDOMRef} from "@heroui/react-utils";
-import {useMemo, useState} from "react";
-import {useReactAriaAccordion} from "@heroui/use-aria-accordion";
+import { useProviderContext } from "@/lib/system";
+import { accordion } from "@/lib/theme";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
+import { mergeProps } from "@heroui/shared-utils";
+import { useReactAriaAccordion } from "@heroui/use-aria-accordion";
+import { useTreeState } from "@react-stately/tree";
+import React, { useCallback, useMemo, useState } from "react";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**
@@ -177,7 +175,7 @@ export function useAccordion<T extends object>(props: UseAccordionProps<T>) {
     setFocusedKey(key);
   };
 
-  const {accordionProps} = useReactAriaAccordion(
+  const { accordionProps } = useReactAriaAccordion(
     {
       ...commonProps,
       ...expandableProps,

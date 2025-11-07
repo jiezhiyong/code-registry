@@ -1,17 +1,17 @@
-import type {SlotsToClasses, ToastRegionSlots, ToastRegionVariantProps} from "@heroui/theme";
-import type {AriaToastRegionProps} from "@react-aria/toast";
-import type {QueuedToast, ToastState} from "@react-stately/toast";
-import type {ToastProps, ToastPlacement} from "./use-toast";
+import type { SlotsToClasses, ToastRegionSlots, ToastRegionVariantProps } from "@/lib/theme";
+import type { AriaToastRegionProps } from "@react-aria/toast";
+import type { QueuedToast, ToastState } from "@react-stately/toast";
+import type { ToastPlacement, ToastProps } from "./use-toast";
 
-import {useCallback, useEffect, useMemo, useRef, useState} from "react";
-import {useToastRegion} from "@react-aria/toast";
-import {useHover} from "@react-aria/interactions";
-import {toastRegion} from "@heroui/theme";
-import {clsx, mergeProps} from "@heroui/shared-utils";
-import {AnimatePresence} from "framer-motion";
+import { toastRegion } from "@/lib/theme";
+import { clsx, mergeProps } from "@heroui/shared-utils";
+import { useHover } from "@react-aria/interactions";
+import { useToastRegion } from "@react-aria/toast";
+import { AnimatePresence } from "framer-motion";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import Toast from "./toast";
-import {isToastClosing} from "./toast-provider";
+import { isToastClosing } from "./toast-provider";
 
 export interface RegionProps {
   className?: string;
@@ -38,8 +38,8 @@ export function ToastRegion<T extends ToastProps>({
   ...props
 }: ToastRegionProps<T>) {
   const ref = useRef(null);
-  const {regionProps} = useToastRegion(props, toastQueue, ref);
-  const {hoverProps, isHovered} = useHover({
+  const { regionProps } = useToastRegion(props, toastQueue, ref);
+  const { hoverProps, isHovered } = useHover({
     isDisabled: false,
   });
 
@@ -50,7 +50,7 @@ export function ToastRegion<T extends ToastProps>({
       toastRegion({
         disableAnimation,
       }),
-    [disableAnimation],
+    [disableAnimation]
   );
 
   const baseStyles = clsx(classNames?.base, className);
@@ -79,7 +79,7 @@ export function ToastRegion<T extends ToastProps>({
     <div
       {...mergeProps(regionProps, hoverProps)}
       ref={ref}
-      className={slots.base({class: baseStyles})}
+      className={slots.base({ class: baseStyles })}
       data-placement={placement}
       onTouchStart={handleTouchStart}
     >
@@ -89,11 +89,7 @@ export function ToastRegion<T extends ToastProps>({
             return null;
           }
 
-          if (
-            disableAnimation ||
-            total - index <= 4 ||
-            (isHovered && total - index <= maxVisibleToasts + 1)
-          ) {
+          if (disableAnimation || total - index <= 4 || (isHovered && total - index <= maxVisibleToasts + 1)) {
             const isClosing = isToastClosing(toast.key);
 
             return (
@@ -101,7 +97,7 @@ export function ToastRegion<T extends ToastProps>({
                 key={toast.key}
                 state={toastQueue}
                 toast={toast}
-                {...mergeProps(toastProps, toast.content, {isClosing})}
+                {...mergeProps(toastProps, toast.content, { isClosing })}
                 disableAnimation={disableAnimation}
                 heights={heights}
                 index={index}

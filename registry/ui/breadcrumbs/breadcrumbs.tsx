@@ -1,11 +1,11 @@
-import type {UseBreadcrumbsProps} from "./use-breadcrumbs";
+import type { UseBreadcrumbsProps } from "./use-breadcrumbs";
 
-import {cloneElement, isValidElement, useMemo} from "react";
-import {forwardRef} from "@heroui/system";
-import {ChevronRightIcon, EllipsisIcon} from "@heroui/shared-icons";
-import {chain, warn} from "@heroui/shared-utils";
+import { ChevronRightIcon, EllipsisIcon } from "@/lib/icons";
+import { forwardRef } from "@/lib/system";
+import { chain, warn } from "@heroui/shared-utils";
+import { cloneElement, isValidElement, useMemo } from "react";
 
-import {useBreadcrumbs} from "./use-breadcrumbs";
+import { useBreadcrumbs } from "./use-breadcrumbs";
 
 export interface BreadcrumbsProps extends UseBreadcrumbsProps {}
 
@@ -57,7 +57,7 @@ const Breadcrumbs = forwardRef<"div", BreadcrumbsProps>((props, ref) => {
     if (itemsBeforeCollapse + itemsAfterCollapse >= childCount) {
       warn(
         `You have provided an invalid combination of props to the Breadcrumbs. itemsAfterCollapse={${itemsAfterCollapse}} + itemsBeforeCollapse={${itemsBeforeCollapse}} >= itemsCount={${childCount}}`,
-        "Breadcrumbs",
+        "Breadcrumbs"
       );
 
       return items;
@@ -91,18 +91,10 @@ const Breadcrumbs = forwardRef<"div", BreadcrumbsProps>((props, ref) => {
 
     return [
       ...items.slice(0, itemsBeforeCollapse),
-      isValidElement(ellipsisItem) && cloneElement(ellipsisItem, {key: "ellipsis-item"}),
+      isValidElement(ellipsisItem) && cloneElement(ellipsisItem, { key: "ellipsis-item" }),
       ...items.slice(items.length - itemsAfterCollapse, items.length),
     ];
-  }, [
-    children,
-    childCount,
-    separator,
-    itemProps,
-    itemsBeforeCollapse,
-    itemsAfterCollapse,
-    isDisabled,
-  ]);
+  }, [children, childCount, separator, itemProps, itemsBeforeCollapse, itemsAfterCollapse, isDisabled]);
 
   return (
     <Component {...getBaseProps()}>

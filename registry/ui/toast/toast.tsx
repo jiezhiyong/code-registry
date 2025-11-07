@@ -1,21 +1,15 @@
-import type {ReactElement} from "react";
-import type {ButtonProps} from "@heroui/button";
-import type {UseToastProps} from "./use-toast";
+import type { ButtonProps } from "@heroui/button";
+import type { ReactElement } from "react";
+import type { UseToastProps } from "./use-toast";
 
-import {forwardRef} from "@heroui/system";
-import {Button} from "@heroui/button";
-import {
-  CloseIcon,
-  DangerIcon,
-  InfoFilledIcon,
-  SuccessIcon,
-  WarningIcon,
-} from "@heroui/shared-icons";
-import {m} from "framer-motion";
-import {cloneElement, isValidElement} from "react";
-import {Spinner} from "@heroui/spinner";
+import { CloseIcon, DangerIcon, InfoFilledIcon, SuccessIcon, WarningIcon } from "@/lib/icons";
+import { forwardRef } from "@/lib/system";
+import { Button } from "@heroui/button";
+import { Spinner } from "@heroui/spinner";
+import { m } from "framer-motion";
+import { cloneElement, isValidElement } from "react";
 
-import {useToast} from "./use-toast";
+import { useToast } from "./use-toast";
 
 export interface ToastProps extends UseToastProps {}
 
@@ -73,9 +67,7 @@ const Toast = forwardRef<"div", ToastProps>((props, ref) => {
       ? cloneElement(loadingComponent, getLoadingComponentProps())
       : null;
 
-  const loadingIconComponent = isLoading
-    ? customLoadingComponent || <Spinner {...getSpinnerComponentProps()} />
-    : null;
+  const loadingIconComponent = isLoading ? customLoadingComponent || <Spinner {...getSpinnerComponentProps()} /> : null;
 
   const customCloseIcon =
     typeof closeIcon === "function"
@@ -85,20 +77,15 @@ const Toast = forwardRef<"div", ToastProps>((props, ref) => {
   const toastContent = (
     <Component ref={domRef} {...getToastProps()}>
       <div {...getContentProps()}>
-        {hideIcon && !isLoading
-          ? null
-          : loadingIconComponent || customIcon || <IconComponent {...getIconProps()} />}
+        {hideIcon && !isLoading ? null : loadingIconComponent || customIcon || <IconComponent {...getIconProps()} />}
         <div {...getWrapperProps()}>
           <div {...getTitleProps()}>{props.toast.content.title}</div>
           <div {...getDescriptionProps()}>{props.toast.content.description}</div>
         </div>
       </div>
       {isProgressBarVisible && (
-        <div className={slots.progressTrack({class: classNames?.progressTrack})}>
-          <div
-            ref={progressBarRef}
-            className={slots.progressIndicator({class: classNames?.progressIndicator})}
-          />
+        <div className={slots.progressTrack({ class: classNames?.progressTrack })}>
+          <div ref={progressBarRef} className={slots.progressIndicator({ class: classNames?.progressIndicator })} />
         </div>
       )}
       <Button isIconOnly {...(getCloseButtonProps() as ButtonProps)}>
@@ -108,9 +95,7 @@ const Toast = forwardRef<"div", ToastProps>((props, ref) => {
     </Component>
   );
 
-  return (
-    <>{disableAnimation ? toastContent : <m.div {...getMotionDivProps()}>{toastContent}</m.div>}</>
-  );
+  return <>{disableAnimation ? toastContent : <m.div {...getMotionDivProps()}>{toastContent}</m.div>}</>;
 });
 
 Toast.displayName = "HeroUI.Toast";

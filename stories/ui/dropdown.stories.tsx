@@ -1,20 +1,15 @@
-import type {Meta} from "@storybook/react";
-import type {DropdownProps, DropdownMenuProps} from "../src";
+import type { Meta } from "@storybook/react";
+import type { DropdownMenuProps, DropdownProps } from "../src";
 
+import { AddNoteBulkIcon, CopyDocumentBulkIcon, DeleteDocumentBulkIcon, EditDocumentBulkIcon } from "@/lib/icons";
+import { dropdown, popover } from "@/lib/theme";
+import { Avatar } from "@heroui/avatar";
+import { Button } from "@heroui/button";
+import { clsx } from "@heroui/shared-utils";
+import { User } from "@heroui/user";
 import React from "react";
-import {dropdown, popover} from "@heroui/theme";
-import {Button} from "@heroui/button";
-import {Avatar} from "@heroui/avatar";
-import {User} from "@heroui/user";
-import {
-  AddNoteBulkIcon,
-  CopyDocumentBulkIcon,
-  EditDocumentBulkIcon,
-  DeleteDocumentBulkIcon,
-} from "@heroui/shared-icons";
-import {clsx} from "@heroui/shared-utils";
 
-import {Dropdown, DropdownSection, DropdownTrigger, DropdownMenu, DropdownItem} from "../src";
+import { Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger } from "../src";
 
 export default {
   title: "Components/Dropdown",
@@ -141,7 +136,7 @@ const Template = ({
   variant,
   label = "Trigger",
   ...args
-}: DropdownProps & DropdownMenuProps & {label: string}) => (
+}: DropdownProps & DropdownMenuProps & { label: string }) => (
   <Dropdown {...args}>
     <DropdownTrigger>
       <Button>{label}</Button>
@@ -159,11 +154,7 @@ const Template = ({
   </Dropdown>
 );
 
-const ItemCloseOnSelectTemplate = ({
-  color,
-  variant,
-  ...args
-}: DropdownProps & DropdownMenuProps) => (
+const ItemCloseOnSelectTemplate = ({ color, variant, ...args }: DropdownProps & DropdownMenuProps) => (
   <>
     <Dropdown {...args}>
       <DropdownTrigger>
@@ -194,18 +185,12 @@ const ItemCloseOnSelectTemplate = ({
   </>
 );
 
-const DynamicTemplate = ({color, variant, ...args}: DropdownProps & DropdownMenuProps) => (
+const DynamicTemplate = ({ color, variant, ...args }: DropdownProps & DropdownMenuProps) => (
   <Dropdown {...args}>
     <DropdownTrigger>
       <Button>Trigger</Button>
     </DropdownTrigger>
-    <DropdownMenu
-      aria-label="Actions"
-      color={color}
-      items={items}
-      variant={variant}
-      onAction={alert}
-    >
+    <DropdownMenu aria-label="Actions" color={color} items={items} variant={variant} onAction={alert}>
       {(item) => (
         <DropdownItem
           key={item.key}
@@ -219,7 +204,7 @@ const DynamicTemplate = ({color, variant, ...args}: DropdownProps & DropdownMenu
   </Dropdown>
 );
 
-const DividerTemplate = ({color, variant, ...args}: DropdownProps & DropdownMenuProps) => (
+const DividerTemplate = ({ color, variant, ...args }: DropdownProps & DropdownMenuProps) => (
   <Dropdown {...args}>
     <DropdownTrigger>
       <Button>Trigger</Button>
@@ -237,7 +222,7 @@ const DividerTemplate = ({color, variant, ...args}: DropdownProps & DropdownMenu
   </Dropdown>
 );
 
-const DisabledKeysTemplate = ({color, variant, ...args}: DropdownProps & DropdownMenuProps) => (
+const DisabledKeysTemplate = ({ color, variant, ...args }: DropdownProps & DropdownMenuProps) => (
   <Dropdown {...args}>
     <DropdownTrigger>
       <Button>Trigger</Button>
@@ -259,7 +244,7 @@ const DisabledKeysTemplate = ({color, variant, ...args}: DropdownProps & Dropdow
   </Dropdown>
 );
 
-const SingleSelectionTemplate = ({color, variant, ...args}: DropdownProps & DropdownMenuProps) => {
+const SingleSelectionTemplate = ({ color, variant, ...args }: DropdownProps & DropdownMenuProps) => {
   const [selected, setSelected] = React.useState<string | Set<React.Key>>(new Set(["text"]));
 
   const selectedValue = React.useMemo(
@@ -267,7 +252,7 @@ const SingleSelectionTemplate = ({color, variant, ...args}: DropdownProps & Drop
       Array.from(selected)
         .map((key) => key.toString().replace("_", " "))
         .join(", "),
-    [selected],
+    [selected]
   );
 
   return (
@@ -294,11 +279,7 @@ const SingleSelectionTemplate = ({color, variant, ...args}: DropdownProps & Drop
   );
 };
 
-const MultipleSelectionTemplate = ({
-  color,
-  variant,
-  ...args
-}: DropdownProps & DropdownMenuProps) => {
+const MultipleSelectionTemplate = ({ color, variant, ...args }: DropdownProps & DropdownMenuProps) => {
   const [selected, setSelected] = React.useState<string | Set<React.Key>>(new Set(["text"]));
 
   const selectedValue = React.useMemo(
@@ -306,7 +287,7 @@ const MultipleSelectionTemplate = ({
       Array.from(selected)
         .map((key) => key.toString().replace("_", " "))
         .join(", "),
-    [selected],
+    [selected]
   );
 
   return (
@@ -334,7 +315,7 @@ const MultipleSelectionTemplate = ({
   );
 };
 
-const WithShortcutTemplate = ({color, variant, ...args}) => (
+const WithShortcutTemplate = ({ color, variant, ...args }) => (
   <Dropdown {...args}>
     <DropdownTrigger>
       <Button>Trigger</Button>
@@ -356,12 +337,7 @@ const WithShortcutTemplate = ({color, variant, ...args}) => (
   </Dropdown>
 );
 
-const WithStartContentTemplate = ({
-  color,
-  variant,
-  disableAnimation,
-  ...args
-}: DropdownProps & DropdownMenuProps) => {
+const WithStartContentTemplate = ({ color, variant, disableAnimation, ...args }: DropdownProps & DropdownMenuProps) => {
   const iconClasses = "text-2xl text-secondary pointer-events-none shrink-0";
 
   return (
@@ -372,25 +348,13 @@ const WithStartContentTemplate = ({
         </Button>
       </DropdownTrigger>
       <DropdownMenu aria-label="Actions" color={color} variant={variant} onAction={alert}>
-        <DropdownItem
-          key="new"
-          shortcut="⌘N"
-          startContent={<AddNoteBulkIcon className={iconClasses} />}
-        >
+        <DropdownItem key="new" shortcut="⌘N" startContent={<AddNoteBulkIcon className={iconClasses} />}>
           New file
         </DropdownItem>
-        <DropdownItem
-          key="copy"
-          shortcut="⌘C"
-          startContent={<CopyDocumentBulkIcon className={iconClasses} />}
-        >
+        <DropdownItem key="copy" shortcut="⌘C" startContent={<CopyDocumentBulkIcon className={iconClasses} />}>
           Copy link
         </DropdownItem>
-        <DropdownItem
-          key="edit"
-          shortcut="⌘⇧E"
-          startContent={<EditDocumentBulkIcon className={iconClasses} />}
-        >
+        <DropdownItem key="edit" shortcut="⌘⇧E" startContent={<EditDocumentBulkIcon className={iconClasses} />}>
           Edit file
         </DropdownItem>
         <DropdownItem
@@ -407,7 +371,7 @@ const WithStartContentTemplate = ({
   );
 };
 
-const WithEndContentTemplate = ({color, variant, disableAnimation, ...args}) => {
+const WithEndContentTemplate = ({ color, variant, disableAnimation, ...args }) => {
   const iconClasses = "text-2xl text-default-500 pointer-events-none shrink-0";
 
   return (
@@ -440,7 +404,7 @@ const WithEndContentTemplate = ({color, variant, disableAnimation, ...args}) => 
   );
 };
 
-const WithDescriptionTemplate = ({color, variant, disableAnimation, ...args}) => {
+const WithDescriptionTemplate = ({ color, variant, disableAnimation, ...args }) => {
   const iconClasses = "text-2xl text-secondary pointer-events-none shrink-0";
 
   return (
@@ -490,7 +454,7 @@ const WithDescriptionTemplate = ({color, variant, disableAnimation, ...args}) =>
   );
 };
 
-const WithSectionsTemplate = ({color, variant, disableAnimation, ...args}) => {
+const WithSectionsTemplate = ({ color, variant, disableAnimation, ...args }) => {
   const iconClasses = "text-2xl text-secondary pointer-events-none shrink-0";
 
   return (
@@ -500,13 +464,7 @@ const WithSectionsTemplate = ({color, variant, disableAnimation, ...args}) => {
           Trigger
         </Button>
       </DropdownTrigger>
-      <DropdownMenu
-        aria-label="Actions"
-        closeOnSelect={false}
-        color={color}
-        variant={variant}
-        onAction={alert}
-      >
+      <DropdownMenu aria-label="Actions" closeOnSelect={false} color={color} variant={variant} onAction={alert}>
         <DropdownSection title="Actions">
           <DropdownItem
             key="new"
@@ -550,7 +508,7 @@ const WithSectionsTemplate = ({color, variant, disableAnimation, ...args}) => {
   );
 };
 
-const CustomTriggerTemplate = ({variant, ...args}) => {
+const CustomTriggerTemplate = ({ variant, ...args }) => {
   return (
     <div className="flex items-center gap-10">
       <Dropdown {...args} placement="bottom-end">
@@ -615,7 +573,7 @@ const CustomTriggerTemplate = ({variant, ...args}) => {
   );
 };
 
-const CustomHTMLTrigger = ({variant, ...args}) => {
+const CustomHTMLTrigger = ({ variant, ...args }) => {
   return (
     <Dropdown {...args}>
       <DropdownTrigger>

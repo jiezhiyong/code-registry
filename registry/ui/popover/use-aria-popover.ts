@@ -1,14 +1,14 @@
-import type {RefObject} from "react";
-import type {AriaPopoverProps, PopoverAria, AriaOverlayProps} from "@react-aria/overlays";
-import type {OverlayPlacement} from "@heroui/aria-utils";
-import type {OverlayTriggerState} from "@react-stately/overlays";
+import type { OverlayPlacement } from "@/lib/aria";
+import type { AriaOverlayProps, AriaPopoverProps, PopoverAria } from "@react-aria/overlays";
+import type { OverlayTriggerState } from "@react-stately/overlays";
+import type { RefObject } from "react";
 
-import {ariaHideOutside, keepVisible, toReactAriaPlacement} from "@heroui/aria-utils";
-import {useOverlayPosition} from "@react-aria/overlays";
-import {useEffect} from "react";
-import {mergeProps} from "@heroui/shared-utils";
-import {useSafeLayoutEffect} from "@heroui/use-safe-layout-effect";
-import {useAriaOverlay} from "@heroui/use-aria-overlay";
+import { ariaHideOutside, keepVisible, toReactAriaPlacement } from "@/lib/aria";
+import { mergeProps } from "@heroui/shared-utils";
+import { useAriaOverlay } from "@heroui/use-aria-overlay";
+import { useSafeLayoutEffect } from "@heroui/use-safe-layout-effect";
+import { useOverlayPosition } from "@react-aria/overlays";
+import { useEffect } from "react";
 
 export interface Props {
   /**
@@ -44,7 +44,7 @@ export interface Props {
   /**
    * The origin of the target in the overlay's coordinate system. Useful for animations.
    */
-  triggerAnchorPoint?: {x: number; y: number} | null;
+  triggerAnchorPoint?: { x: number; y: number; } | null;
 }
 
 export type ReactAriaPopoverProps = Props &
@@ -85,7 +85,7 @@ export function useReactAriaPopover(
 
   const isSubmenu = otherProps["trigger"] === "SubmenuTrigger";
 
-  const {overlayProps, underlayProps} = useAriaOverlay(
+  const { overlayProps, underlayProps } = useAriaOverlay(
     {
       isOpen: state.isOpen,
       onClose: state.close,
@@ -117,7 +117,7 @@ export function useReactAriaPopover(
     containerPadding,
     placement: toReactAriaPlacement(placementProp),
     offset: showArrow ? offset + 3 : offset,
-    onClose: isNonModal && !isSubmenu && shouldCloseOnScroll ? state.close : () => {},
+    onClose: isNonModal && !isSubmenu && shouldCloseOnScroll ? state.close : () => { },
   });
 
   useSafeLayoutEffect(() => {

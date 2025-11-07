@@ -1,14 +1,14 @@
-import type {GridNode} from "@react-types/grid";
-import type {HTMLHeroUIProps} from "@heroui/system";
-import type {ValuesType} from "./use-table";
+import type { HTMLHeroUIProps } from "@/lib/system";
+import type { GridNode } from "@react-types/grid";
+import type { ValuesType } from "./use-table";
 
-import {forwardRef} from "@heroui/system";
-import {useDOMRef, filterDOMProps} from "@heroui/react-utils";
-import {clsx, dataAttr, mergeProps} from "@heroui/shared-utils";
-import {useTableColumnHeader, useTableSelectAllCheckbox} from "@react-aria/table";
-import {useFocusRing} from "@react-aria/focus";
-import {Checkbox} from "@heroui/checkbox";
-import {VisuallyHidden} from "@react-aria/visually-hidden";
+import { forwardRef } from "@/lib/system";
+import { Checkbox } from "@heroui/checkbox";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
+import { clsx, dataAttr, mergeProps } from "@heroui/shared-utils";
+import { useFocusRing } from "@react-aria/focus";
+import { useTableColumnHeader, useTableSelectAllCheckbox } from "@react-aria/table";
+import { VisuallyHidden } from "@react-aria/visually-hidden";
 
 export interface TableSelectAllCheckboxProps<T = object> extends HTMLHeroUIProps<"th"> {
   /**
@@ -44,16 +44,16 @@ const TableSelectAllCheckbox = forwardRef<"th", TableSelectAllCheckboxProps>((pr
 
   const domRef = useDOMRef(ref);
 
-  const {columnHeaderProps} = useTableColumnHeader({node}, state, domRef);
-  const {isFocusVisible, focusProps} = useFocusRing();
+  const { columnHeaderProps } = useTableColumnHeader({ node }, state, domRef);
+  const { isFocusVisible, focusProps } = useFocusRing();
 
-  const {checkboxProps} = useTableSelectAllCheckbox(state);
+  const { checkboxProps } = useTableSelectAllCheckbox(state);
 
   const thStyles = clsx(classNames?.th, className, node.props?.className);
 
   const isSingleSelectionMode = selectionMode === "single";
 
-  const {onChange, ...otherCheckboxProps} = checkboxProps;
+  const { onChange, ...otherCheckboxProps } = checkboxProps;
 
   return (
     <Component
@@ -67,9 +67,9 @@ const TableSelectAllCheckbox = forwardRef<"th", TableSelectAllCheckboxProps>((pr
         }),
         filterDOMProps(otherProps, {
           enabled: shouldFilterDOMProps,
-        }),
+        })
       )}
-      className={slots.th?.({class: thStyles})}
+      className={slots.th?.({ class: thStyles })}
     >
       {isSingleSelectionMode ? (
         <VisuallyHidden>{checkboxProps["aria-label"]}</VisuallyHidden>

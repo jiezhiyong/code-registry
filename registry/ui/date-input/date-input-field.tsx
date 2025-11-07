@@ -1,12 +1,12 @@
-import type {InputHTMLAttributes} from "react";
-import type {GroupDOMAttributes} from "@react-types/shared";
-import type {DateInputReturnType, DateInputSlots, SlotsToClasses} from "@heroui/theme";
-import type {DateFieldState} from "@react-stately/datepicker";
-import type {HTMLHeroUIProps} from "@heroui/system";
+import type { HTMLHeroUIProps } from "@/lib/system";
+import type { DateInputReturnType, DateInputSlots, SlotsToClasses } from "@/lib/theme";
+import type { DateFieldState } from "@react-stately/datepicker";
+import type { GroupDOMAttributes } from "@react-types/shared";
+import type { InputHTMLAttributes } from "react";
 
-import {forwardRef} from "react";
+import { forwardRef } from "react";
 
-import {DateInputSegment} from "./date-input-segment";
+import { DateInputSegment } from "./date-input-segment";
 
 type HeroUIBaseProps = Omit<HTMLHeroUIProps<"div">, keyof GroupDOMAttributes | "onChange">;
 
@@ -22,20 +22,14 @@ export interface DateInputFieldProps extends HeroUIBaseProps, GroupDOMAttributes
 }
 
 export const DateInputField = forwardRef<"div", DateInputFieldProps>((props, ref) => {
-  const {as, state, slots, inputProps, classNames, ...otherProps} = props;
+  const { as, state, slots, inputProps, classNames, ...otherProps } = props;
 
   const Component = as || "div";
 
   return (
     <Component {...otherProps} ref={ref}>
       {state.segments.map((segment, i) => (
-        <DateInputSegment
-          key={i}
-          classNames={classNames}
-          segment={segment}
-          slots={slots}
-          state={state}
-        />
+        <DateInputSegment key={i} classNames={classNames} segment={segment} slots={slots} state={state} />
       ))}
       <input {...inputProps} />
     </Component>

@@ -1,12 +1,14 @@
-import type {MappedDateValue} from "@react-types/datepicker";
-import type {Meta} from "@storybook/react";
-import type {RangeValue, ValidationResult} from "@react-types/shared";
-import type {DateValue} from "@react-types/datepicker";
-import type {RadioProps} from "@heroui/radio";
-import type {DateRangePickerProps} from "../src";
+import type { RadioProps } from "@heroui/radio";
+import type { DateValue, MappedDateValue } from "@react-types/datepicker";
+import type { RangeValue, ValidationResult } from "@react-types/shared";
+import type { Meta } from "@storybook/react";
+import type { DateRangePickerProps } from "../src";
 
-import React from "react";
-import {dateInput, button} from "@heroui/theme";
+import { MoonIcon, SunIcon } from "@/lib/icons";
+import { button, cn, dateInput } from "@/lib/theme";
+import { Button, ButtonGroup } from "@heroui/button";
+import { Form } from "@heroui/form";
+import { Radio, RadioGroup } from "@heroui/radio";
 import {
   endOfMonth,
   endOfWeek,
@@ -19,14 +21,10 @@ import {
   startOfWeek,
   today,
 } from "@internationalized/date";
-import {I18nProvider, useDateFormatter, useLocale} from "@react-aria/i18n";
-import {Button, ButtonGroup} from "@heroui/button";
-import {Radio, RadioGroup} from "@heroui/radio";
-import {cn} from "@heroui/theme";
-import {Form} from "@heroui/form";
-import {MoonIcon, SunIcon} from "@heroui/shared-icons";
+import { I18nProvider, useDateFormatter, useLocale } from "@react-aria/i18n";
+import React from "react";
 
-import {DateRangePicker} from "../src";
+import { DateRangePicker } from "../src";
 
 export default {
   title: "Components/DateRangePicker",
@@ -105,7 +103,7 @@ const FormTemplate = (args: DateRangePickerProps) => (
     }}
   >
     <DateRangePicker {...args} endName="end-date" startName="start-date" />
-    <button className={button({className: "max-w-fit"})} type="submit">
+    <button className={button({ className: "max-w-fit" })} type="submit">
       Submit
     </button>
   </form>
@@ -125,24 +123,16 @@ const ControlledTemplate = (args: DateRangePickerProps) => {
     end: parseDate("2024-04-08"),
   });
 
-  let formatter = useDateFormatter({dateStyle: "long"});
+  let formatter = useDateFormatter({ dateStyle: "long" });
 
   return (
     <div className="flex flex-row gap-2">
       <div className="w-full flex flex-col gap-y-2">
-        <DateRangePicker
-          {...args}
-          label="Date range (controlled)"
-          value={value}
-          onChange={setValue}
-        />
+        <DateRangePicker {...args} label="Date range (controlled)" value={value} onChange={setValue} />
         <p className="text-default-500 text-sm">
           Selected date:{" "}
           {value
-            ? formatter.formatRange(
-                value.start.toDate(getLocalTimeZone()),
-                value.end.toDate(getLocalTimeZone()),
-              )
+            ? formatter.formatRange(value.start.toDate(getLocalTimeZone()), value.end.toDate(getLocalTimeZone()))
             : "--"}
         </p>
       </div>
@@ -198,14 +188,7 @@ const GranularityTemplate = (args: DateRangePickerProps) => {
         value={date}
         onChange={setDate}
       />
-      <DateRangePicker
-        {...args}
-        fullWidth
-        granularity="day"
-        label="Date range"
-        value={date}
-        onChange={setDate}
-      />
+      <DateRangePicker {...args} fullWidth granularity="day" label="Date range" value={date} onChange={setDate} />
     </div>
   );
 };
@@ -229,24 +212,21 @@ const UnavailableDatesTemplate = (args: DateRangePickerProps) => {
   let now = today(getLocalTimeZone());
 
   let disabledRanges = [
-    [now, now.add({days: 5})],
-    [now.add({days: 14}), now.add({days: 16})],
-    [now.add({days: 23}), now.add({days: 24})],
+    [now, now.add({ days: 5 })],
+    [now.add({ days: 14 }), now.add({ days: 16 })],
+    [now.add({ days: 23 }), now.add({ days: 24 })],
   ];
 
   return (
     <DateRangePicker
       aria-label="Appointment date"
       isDateUnavailable={(date) =>
-        disabledRanges.some(
-          (interval) => date.compare(interval[0]) >= 0 && date.compare(interval[1]) <= 0,
-        )
+        disabledRanges.some((interval) => date.compare(interval[0]) >= 0 && date.compare(interval[1]) <= 0)
       }
       minValue={today(getLocalTimeZone())}
       validate={(value) =>
         disabledRanges.some(
-          (interval) =>
-            value && value.end.compare(interval[0]) >= 0 && value.start.compare(interval[1]) <= 0,
+          (interval) => value && value.end.compare(interval[0]) >= 0 && value.start.compare(interval[1]) <= 0
         )
           ? "Selected date range may not include unavailable dates."
           : null
@@ -257,7 +237,7 @@ const UnavailableDatesTemplate = (args: DateRangePickerProps) => {
 };
 
 const NonContiguousRangesTemplate = (args: DateRangePickerProps) => {
-  let {locale} = useLocale();
+  let { locale } = useLocale();
 
   return (
     <DateRangePicker
@@ -274,26 +254,26 @@ const NonContiguousRangesTemplate = (args: DateRangePickerProps) => {
 const PresetsTemplate = (args: DateRangePickerProps) => {
   let defaultDate = {
     start: today(getLocalTimeZone()),
-    end: today(getLocalTimeZone()).add({days: 7}),
+    end: today(getLocalTimeZone()).add({ days: 7 }),
   };
 
   const [value, setValue] = React.useState<RangeValue<DateValue> | null>(defaultDate);
 
-  let {locale} = useLocale();
-  let formatter = useDateFormatter({dateStyle: "full"});
+  let { locale } = useLocale();
+  let formatter = useDateFormatter({ dateStyle: "full" });
 
   let now = today(getLocalTimeZone());
   let nextWeek = {
-    start: startOfWeek(now.add({weeks: 1}), locale),
-    end: endOfWeek(now.add({weeks: 1}), locale),
+    start: startOfWeek(now.add({ weeks: 1 }), locale),
+    end: endOfWeek(now.add({ weeks: 1 }), locale),
   };
   let nextMonth = {
-    start: startOfMonth(now.add({months: 1})),
-    end: endOfMonth(now.add({months: 1})),
+    start: startOfMonth(now.add({ months: 1 })),
+    end: endOfMonth(now.add({ months: 1 })),
   };
 
   const CustomRadio = (props: RadioProps) => {
-    const {children, ...otherProps} = props;
+    const { children, ...otherProps } = props;
 
     return (
       <Radio
@@ -302,7 +282,7 @@ const PresetsTemplate = (args: DateRangePickerProps) => {
           base: cn(
             "flex-none m-0 h-8 bg-content1 hover:bg-content2 items-center justify-between",
             "cursor-pointer rounded-full border-2 border-default-200/60",
-            "data-[selected=true]:border-primary",
+            "data-[selected=true]:border-primary"
           ),
           label: "text-tiny text-default-500",
           labelWrapper: "px-1 m-0",
@@ -348,7 +328,7 @@ const PresetsTemplate = (args: DateRangePickerProps) => {
               onPress={() =>
                 setValue({
                   start: now,
-                  end: now.add({days: 7}),
+                  end: now.add({ days: 7 }),
                 })
               }
             >
@@ -360,7 +340,7 @@ const PresetsTemplate = (args: DateRangePickerProps) => {
         }
         calendarProps={{
           focusedValue: value?.start,
-          onFocusChange: (val) => setValue({...value, start: val}),
+          onFocusChange: (val) => setValue({ ...value, start: val }),
           nextButtonProps: {
             variant: "bordered",
           },
@@ -376,10 +356,7 @@ const PresetsTemplate = (args: DateRangePickerProps) => {
       <p className="text-default-500 text-sm">
         Selected date:{" "}
         {value
-          ? formatter.formatRange(
-              value.start.toDate(getLocalTimeZone()),
-              value.end.toDate(getLocalTimeZone()),
-            )
+          ? formatter.formatRange(value.start.toDate(getLocalTimeZone()), value.end.toDate(getLocalTimeZone()))
           : "--"}
       </p>
     </div>
@@ -397,13 +374,9 @@ const ServerValidationTemplate = (args: DateRangePickerProps) => {
   };
 
   return (
-    <Form
-      className="flex flex-col items-start gap-2"
-      validationErrors={serverErrors}
-      onSubmit={onSubmit}
-    >
+    <Form className="flex flex-col items-start gap-2" validationErrors={serverErrors} onSubmit={onSubmit}>
       <DateRangePicker {...args} endName="endDate" label="Date range" startName="startDate" />
-      <button className={button({color: "primary"})} type="submit">
+      <button className={button({ color: "primary" })} type="submit">
         Submit
       </button>
     </Form>
@@ -427,18 +400,8 @@ const StartAndEndContentTemplate = (args: DateRangePickerProps) => {
 
 const selectorButtonPlacementTemplate = (args: DateRangePickerProps) => (
   <div className="w-full max-w-xl flex flex-col items-start gap-4">
-    <DateRangePicker
-      {...args}
-      label="start inside"
-      labelPlacement="inside"
-      selectorButtonPlacement="start"
-    />
-    <DateRangePicker
-      {...args}
-      label="start outside"
-      labelPlacement="outside"
-      selectorButtonPlacement="start"
-    />
+    <DateRangePicker {...args} label="start inside" labelPlacement="inside" selectorButtonPlacement="start" />
+    <DateRangePicker {...args} label="start outside" labelPlacement="outside" selectorButtonPlacement="start" />
     <DateRangePicker
       {...args}
       label="start outside-left"
@@ -453,24 +416,9 @@ const selectorButtonPlacementTemplate = (args: DateRangePickerProps) => (
       startContent={<MoonIcon />}
     />
 
-    <DateRangePicker
-      {...args}
-      label="end inside"
-      labelPlacement="inside"
-      selectorButtonPlacement="end"
-    />
-    <DateRangePicker
-      {...args}
-      label="end outside"
-      labelPlacement="outside"
-      selectorButtonPlacement="end"
-    />
-    <DateRangePicker
-      {...args}
-      label="end outside-left"
-      labelPlacement="outside-left"
-      selectorButtonPlacement="end"
-    />
+    <DateRangePicker {...args} label="end inside" labelPlacement="inside" selectorButtonPlacement="end" />
+    <DateRangePicker {...args} label="end outside" labelPlacement="outside" selectorButtonPlacement="end" />
+    <DateRangePicker {...args} label="end outside-left" labelPlacement="outside-left" selectorButtonPlacement="end" />
     <DateRangePicker
       {...args}
       endContent={<MoonIcon />}
@@ -591,13 +539,7 @@ export const SelectorIcon = {
     ...defaultProps,
     selectorIcon: (
       <svg height="1em" viewBox="0 0 24 24" width="1em">
-        <g
-          fill="none"
-          stroke="currentColor"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-        >
+        <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2">
           <path d="M8 2v4m8-4v4" />
           <rect height="18" rx="2" width="18" x="3" y="4" />
           <path d="M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01" />
@@ -681,7 +623,7 @@ export const MinDateValue = {
     ...defaultProps,
     minValue: today(getLocalTimeZone()),
     defaultValue: {
-      start: today(getLocalTimeZone()).subtract({days: 1}),
+      start: today(getLocalTimeZone()).subtract({ days: 1 }),
       end: parseDate("2024-04-08"),
     },
   },
@@ -695,7 +637,7 @@ export const MaxDateValue = {
     maxValue: today(getLocalTimeZone()),
     defaultValue: {
       start: parseDate("2024-04-01"),
-      end: today(getLocalTimeZone()).add({days: 1}),
+      end: today(getLocalTimeZone()).add({ days: 1 }),
     },
   },
 };
@@ -740,7 +682,7 @@ export const WithValidation = {
       if (!value || !value.start || !value.end) {
         return "Please enter a valid date range";
       }
-      const {start, end} = value;
+      const { start, end } = value;
 
       if (start.year < 2024 || end.year < 2024) {
         return "Both start and end dates must be in the year 2024 or later";

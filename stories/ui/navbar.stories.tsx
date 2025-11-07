@@ -1,34 +1,17 @@
-import type {Meta} from "@storybook/react";
-import type {NavbarProps} from "../src";
+import type { Meta } from "@storybook/react";
+import type { NavbarProps } from "../src";
 
+import { Activity, ChevronDown, Flash, Lock, Scale, SearchIcon, Server, TagUser } from "@/lib/icons";
+import { navbar } from "@/lib/theme";
+import { Avatar } from "@heroui/avatar";
+import { Button } from "@heroui/button";
+import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@heroui/dropdown";
+import { Input } from "@heroui/input";
+import { Link } from "@heroui/link";
 import React from "react";
-import {navbar} from "@heroui/theme";
-import {Link} from "@heroui/link";
-import {Button} from "@heroui/button";
-import {Avatar} from "@heroui/avatar";
-import {Input} from "@heroui/input";
 import Lorem from "react-lorem-component";
-import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem} from "@heroui/dropdown";
-import {
-  ChevronDown,
-  Lock,
-  Activity,
-  Flash,
-  Server,
-  TagUser,
-  Scale,
-  SearchIcon,
-} from "@heroui/shared-icons";
 
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  NavbarMenu,
-  NavbarMenuItem,
-  NavbarMenuToggle,
-} from "../src";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenu, NavbarMenuItem, NavbarMenuToggle } from "../src";
 
 export default {
   title: "Components/Navbar",
@@ -81,7 +64,7 @@ const AcmeLogo = () => (
   </svg>
 );
 
-const App = React.forwardRef(({children}: any, ref: any) => {
+const App = React.forwardRef(({ children }: any, ref: any) => {
   return (
     <div
       ref={ref}
@@ -173,10 +156,7 @@ const WithMenuTemplate = (args: NavbarProps) => {
     <App ref={parentRef}>
       <Navbar parentRef={parentRef} position="sticky" onMenuOpenChange={setIsMenuOpen} {...args}>
         <NavbarContent>
-          <NavbarMenuToggle
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-            className="sm:hidden"
-          />
+          <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="sm:hidden" />
           <NavbarBrand>
             <AcmeLogo />
             <p className="font-bold hidden sm:block text-inherit">ACME</p>
@@ -221,9 +201,7 @@ const WithMenuTemplate = (args: NavbarProps) => {
           {menuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
-                color={
-                  index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
-                }
+                color={index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"}
                 href="#"
                 size="lg"
               >
@@ -299,11 +277,7 @@ const WithDropdownTemplate = (args: NavbarProps) => {
               >
                 +99% Uptime
               </DropdownItem>
-              <DropdownItem
-                key="supreme_support"
-                description="Support team ready to respond"
-                startContent={icons.user}
-              >
+              <DropdownItem key="supreme_support" description="Support team ready to respond" startContent={icons.user}>
                 +Supreme Support
               </DropdownItem>
             </DropdownMenu>
@@ -366,9 +340,7 @@ const WithAvatarUserTemplate = (args: NavbarProps) => {
           {menuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
-                color={
-                  index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
-                }
+                color={index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"}
                 href="#"
                 size="lg"
               >
@@ -464,9 +436,7 @@ const WithSearchInputTemplate = (args: NavbarProps) => {
           {menuItems.map((item, index) => (
             <NavbarMenuItem key={`${item}-${index}`}>
               <Link
-                color={
-                  index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
-                }
+                color={index === 2 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"}
                 href="#"
                 size="lg"
               >

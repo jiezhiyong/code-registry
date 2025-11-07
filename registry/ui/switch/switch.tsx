@@ -1,10 +1,10 @@
-import type {ReactElement} from "react";
-import type {UseSwitchProps} from "./use-switch";
+import type { ReactElement } from "react";
+import type { UseSwitchProps } from "./use-switch";
 
-import {cloneElement} from "react";
-import {forwardRef} from "@heroui/system";
+import { forwardRef } from "@/lib/system";
+import { cloneElement } from "react";
 
-import {useSwitch} from "./use-switch";
+import { useSwitch } from "./use-switch";
 
 export interface SwitchProps extends UseSwitchProps {}
 
@@ -23,17 +23,15 @@ const Switch = forwardRef<"input", SwitchProps>((props, ref) => {
     getLabelProps,
     getStartContentProps,
     getEndContentProps,
-  } = useSwitch({...props, ref});
+  } = useSwitch({ ...props, ref });
 
   const clonedThumbIcon =
     typeof thumbIcon === "function"
-      ? thumbIcon(getThumbIconProps({includeStateProps: true}))
+      ? thumbIcon(getThumbIconProps({ includeStateProps: true }))
       : thumbIcon && cloneElement(thumbIcon as ReactElement, getThumbIconProps());
 
-  const clonedStartContent =
-    startContent && cloneElement(startContent as ReactElement, getStartContentProps());
-  const clonedEndContent =
-    endContent && cloneElement(endContent as ReactElement, getEndContentProps());
+  const clonedStartContent = startContent && cloneElement(startContent as ReactElement, getStartContentProps());
+  const clonedEndContent = endContent && cloneElement(endContent as ReactElement, getEndContentProps());
 
   return (
     <Component {...getBaseProps()}>

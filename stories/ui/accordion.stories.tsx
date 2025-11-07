@@ -1,23 +1,23 @@
-import type {Selection} from "@react-types/shared";
-import type {Meta} from "@storybook/react";
-import type {AccordionProps, AccordionItemProps} from "../src";
+import type { Selection } from "@react-types/shared";
+import type { Meta } from "@storybook/react";
+import type { AccordionItemProps, AccordionProps } from "../src";
 
-import React from "react";
-import {accordionItem, button} from "@heroui/theme";
 import {
   AnchorIcon,
-  MoonIcon,
-  SunIcon,
   InfoIcon,
-  ShieldSecurityIcon,
-  MonitorMobileIcon,
   InvalidCardIcon,
-} from "@heroui/shared-icons";
-import {Avatar} from "@heroui/avatar";
-import {Input, Textarea} from "@heroui/input";
-import {Button} from "@heroui/button";
+  MonitorMobileIcon,
+  MoonIcon,
+  ShieldSecurityIcon,
+  SunIcon,
+} from "@/lib/icons";
+import { accordionItem, button } from "@/lib/theme";
+import { Avatar } from "@heroui/avatar";
+import { Button } from "@heroui/button";
+import { Input, Textarea } from "@heroui/input";
+import React from "react";
 
-import {Accordion, AccordionItem} from "../src";
+import { Accordion, AccordionItem } from "../src";
 
 export default {
   title: "Components/Accordion",
@@ -99,12 +99,7 @@ const TemplateWithStartContent = (args: AccordionProps) => (
       key="1"
       aria-label="Chung Miller"
       startContent={
-        <Avatar
-          isBordered
-          color="primary"
-          radius="lg"
-          src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
-        />
+        <Avatar isBordered color="primary" radius="lg" src="https://i.pravatar.cc/150?u=a042581f4e29026024d" />
       }
       subtitle="4 unread messages"
       title="Chung Miller"
@@ -115,12 +110,7 @@ const TemplateWithStartContent = (args: AccordionProps) => (
       key="2"
       aria-label="Janelle Lenard"
       startContent={
-        <Avatar
-          isBordered
-          color="success"
-          radius="lg"
-          src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-        />
+        <Avatar isBordered color="success" radius="lg" src="https://i.pravatar.cc/150?u=a042581f4e29026704d" />
       }
       subtitle="3 incompleted steps"
       title="Janelle Lenard"
@@ -131,12 +121,7 @@ const TemplateWithStartContent = (args: AccordionProps) => (
       key="3"
       aria-label="Zoey Lang"
       startContent={
-        <Avatar
-          isBordered
-          color="warning"
-          radius="lg"
-          src="https://i.pravatar.cc/150?u=a04258114e29026702d"
-        />
+        <Avatar isBordered color="warning" radius="lg" src="https://i.pravatar.cc/150?u=a04258114e29026702d" />
       }
       subtitle={
         <p className="flex">
@@ -282,12 +267,7 @@ const CustomWithClassNamesTemplate = (args: AccordionProps) => {
   };
 
   return (
-    <Accordion
-      {...args}
-      className="p-2 flex flex-col gap-1 w-full max-w-[300px]"
-      showDivider={false}
-      variant="shadow"
-    >
+    <Accordion {...args} className="p-2 flex flex-col gap-1 w-full max-w-[300px]" showDivider={false} variant="shadow">
       <AccordionItem
         key="1"
         aria-label="Connected devices"
@@ -315,7 +295,7 @@ const CustomWithClassNamesTemplate = (args: AccordionProps) => {
       <AccordionItem
         key="3"
         aria-label="Pending tasks"
-        classNames={{...itemClasses, subtitle: "text-warning"}}
+        classNames={{ ...itemClasses, subtitle: "text-warning" }}
         startContent={<InfoIcon className="text-warning" />}
         subtitle="Complete your profile"
         title="Pending tasks"
@@ -325,7 +305,7 @@ const CustomWithClassNamesTemplate = (args: AccordionProps) => {
       <AccordionItem
         key="4"
         aria-label="Card expired"
-        classNames={{...itemClasses, subtitle: "text-danger"}}
+        classNames={{ ...itemClasses, subtitle: "text-danger" }}
         startContent={<InvalidCardIcon className="text-danger" />}
         subtitle="Please, update now"
         title={
@@ -357,7 +337,7 @@ const WithFormTemplate = (args: AccordionProps) => {
       <Input isRequired label="Password" placeholder="Enter your password" type="password" />
       <Textarea label="Message" placeholder="Enter your message" />
       <div className="flex gap-2 justify-end">
-        <button className={button({color: "primary"})}>Login</button>
+        <button className={button({ color: "primary" })}>Login</button>
       </div>
     </form>
   );

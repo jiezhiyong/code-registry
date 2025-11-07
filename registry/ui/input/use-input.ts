@@ -1,28 +1,28 @@
-import type {InputVariantProps, SlotsToClasses, InputSlots} from "@heroui/theme";
-import type {AriaTextFieldOptions} from "@react-aria/textfield";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {AriaTextFieldProps} from "@react-types/textfield";
-import type {Ref} from "react";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { InputSlots, InputVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { AriaTextFieldOptions } from "@react-aria/textfield";
+import type { AriaTextFieldProps } from "@react-types/textfield";
+import type { Ref } from "react";
 
-import {mapPropsVariants, useProviderContext, useInputLabelPlacement} from "@heroui/system";
-import {useSafeLayoutEffect} from "@heroui/use-safe-layout-effect";
-import {useFocusRing} from "@react-aria/focus";
-import {input} from "@heroui/theme";
-import {useDOMRef, filterDOMProps} from "@heroui/react-utils";
-import {useFocusWithin, useHover, usePress} from "@react-aria/interactions";
+import { mapPropsVariants, useInputLabelPlacement, useProviderContext } from "@/lib/system";
+import { input } from "@/lib/theme";
+import { FormContext, useSlottedContext } from "@heroui/form";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
 import {
+  chain,
   clsx,
   dataAttr,
   isEmpty,
+  mergeProps,
   objectToDeps,
   safeAriaLabel,
-  chain,
-  mergeProps,
 } from "@heroui/shared-utils";
-import {useControlledState} from "@react-stately/utils";
-import {useMemo, useCallback, useState} from "react";
-import {useTextField} from "@react-aria/textfield";
-import {FormContext, useSlottedContext} from "@heroui/form";
+import { useSafeLayoutEffect } from "@heroui/use-safe-layout-effect";
+import { useFocusRing } from "@react-aria/focus";
+import { useFocusWithin, useHover, usePress } from "@react-aria/interactions";
+import { useTextField } from "@react-aria/textfield";
+import { useControlledState } from "@react-stately/utils";
+import { useCallback, useMemo, useState } from "react";
 
 export interface Props<T extends HTMLInputElement | HTMLTextAreaElement = HTMLInputElement>
   extends Omit<HTMLHeroUIProps<"input">, keyof InputVariantProps> {
@@ -97,7 +97,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
   originalProps: UseInputProps<T>,
 ) {
   const globalContext = useProviderContext();
-  const {validationBehavior: formValidationBehavior} = useSlottedContext(FormContext) || {};
+  const { validationBehavior: formValidationBehavior } = useSlottedContext(FormContext) || {};
 
   const [props, variantProps] = mapPropsVariants(originalProps, input.variantKeys);
 
@@ -119,7 +119,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
     validationState,
     validationBehavior = formValidationBehavior ?? globalContext?.validationBehavior ?? "native",
     innerWrapperRef: innerWrapperRefProp,
-    onValueChange = () => {},
+    onValueChange = () => { },
     ...otherProps
   } = props;
 
@@ -210,24 +210,24 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
     delete inputProps.onChange;
   }
 
-  const {isFocusVisible, isFocused, focusProps} = useFocusRing({
+  const { isFocusVisible, isFocused, focusProps } = useFocusRing({
     autoFocus,
     isTextInput: true,
   });
 
-  const {isHovered, hoverProps} = useHover({isDisabled: !!originalProps?.isDisabled});
+  const { isHovered, hoverProps } = useHover({ isDisabled: !!originalProps?.isDisabled });
 
-  const {isHovered: isLabelHovered, hoverProps: labelHoverProps} = useHover({
+  const { isHovered: isLabelHovered, hoverProps: labelHoverProps } = useHover({
     isDisabled: !!originalProps?.isDisabled,
   });
 
-  const {focusProps: clearFocusProps, isFocusVisible: isClearButtonFocusVisible} = useFocusRing();
+  const { focusProps: clearFocusProps, isFocusVisible: isClearButtonFocusVisible } = useFocusRing();
 
-  const {focusWithinProps} = useFocusWithin({
+  const { focusWithinProps } = useFocusWithin({
     onFocusWithinChange: setFocusWithin,
   });
 
-  const {pressProps: clearPressProps} = usePress({
+  const { pressProps: clearPressProps } = usePress({
     isDisabled: !!originalProps?.isDisabled || !!originalProps?.isReadOnly,
     onPress: handleClear,
   });
@@ -241,7 +241,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
 
   const errorMessage =
     typeof props.errorMessage === "function"
-      ? props.errorMessage({isInvalid, validationErrors, validationDetails})
+      ? props.errorMessage({ isInvalid, validationErrors, validationDetails })
       : props.errorMessage || validationErrors?.join(" ");
   const isClearable = !!onClear || originalProps.isClearable;
   const hasElements = !!label || !!description || !!errorMessage;
@@ -261,15 +261,15 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
   const shouldLabelBeInside = labelPlacement === "inside";
   const isPlaceholderShown = domRef.current
     ? (!domRef.current.value || domRef.current.value === "" || !inputValue || inputValue === "") &&
-      hasPlaceholder
+    hasPlaceholder
     : false;
 
   const hasStartContent = !!startContent;
   const isLabelOutside = shouldLabelBeOutside
     ? isOutsideLeft ||
-      isOutsideTop ||
-      hasPlaceholder ||
-      (labelPlacement === "outside" && hasStartContent)
+    isOutsideTop ||
+    hasPlaceholder ||
+    (labelPlacement === "outside" && hasStartContent)
     : false;
   const isLabelOutsideAsPlaceholder =
     labelPlacement === "outside" && !hasPlaceholder && !hasStartContent;
@@ -297,17 +297,17 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
     (props = {}) => {
       return {
         ref: baseDomRef,
-        className: slots.base({class: baseStyles}),
+        className: slots.base({ class: baseStyles }),
         "data-slot": "base",
         "data-filled": dataAttr(
           isFilled || hasPlaceholder || hasStartContent || isPlaceholderShown || isFileTypeInput,
         ),
         "data-filled-within": dataAttr(
           isFilledWithin ||
-            hasPlaceholder ||
-            hasStartContent ||
-            isPlaceholderShown ||
-            isFileTypeInput,
+          hasPlaceholder ||
+          hasStartContent ||
+          isPlaceholderShown ||
+          isFileTypeInput,
         ),
         "data-focus-within": dataAttr(isFocusWithin),
         "data-focus-visible": dataAttr(isFocusVisible),
@@ -355,7 +355,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
     (props = {}) => {
       return {
         "data-slot": "label",
-        className: slots.label({class: classNames?.label}),
+        className: slots.label({ class: classNames?.label }),
         ...mergeProps(labelProps, labelHoverProps, props),
       };
     },
@@ -513,7 +513,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
         ...props,
         ...descriptionProps,
         "data-slot": "description",
-        className: slots.description({class: clsx(classNames?.description, props?.className)}),
+        className: slots.description({ class: clsx(classNames?.description, props?.className) }),
       };
     },
     [slots, classNames?.description],
@@ -525,7 +525,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
         ...props,
         ...errorMessageProps,
         "data-slot": "error-message",
-        className: slots.errorMessage({class: clsx(classNames?.errorMessage, props?.className)}),
+        className: slots.errorMessage({ class: clsx(classNames?.errorMessage, props?.className) }),
       };
     },
     [slots, errorMessageProps, classNames?.errorMessage],

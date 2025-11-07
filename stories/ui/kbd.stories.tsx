@@ -1,8 +1,8 @@
-import type {Meta} from "@storybook/react";
+import type { Meta } from "@storybook/react";
 
-import {kbd} from "@heroui/theme";
+import { kbd } from "@/lib/theme";
 
-import {Kbd} from "../src";
+import { Kbd } from "../src";
 
 export default {
   title: "Components/Kbd",

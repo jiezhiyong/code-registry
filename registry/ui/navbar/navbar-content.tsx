@@ -1,10 +1,10 @@
-import type {HTMLHeroUIProps} from "@heroui/system";
+import type { HTMLHeroUIProps } from "@/lib/system";
 
-import {forwardRef} from "@heroui/system";
-import {useDOMRef} from "@heroui/react-utils";
-import {clsx} from "@heroui/shared-utils";
+import { forwardRef } from "@/lib/system";
+import { useDOMRef } from "@heroui/react-utils";
+import { clsx } from "@heroui/shared-utils";
 
-import {useNavbarContext} from "./navbar-context";
+import { useNavbarContext } from "./navbar-context";
 
 export interface NavbarContentProps extends HTMLHeroUIProps<"ul"> {
   /**
@@ -19,22 +19,17 @@ export interface NavbarContentProps extends HTMLHeroUIProps<"ul"> {
 }
 
 const NavbarContent = forwardRef<"ul", NavbarContentProps>((props, ref) => {
-  const {as, className, children, justify = "start", ...otherProps} = props;
+  const { as, className, children, justify = "start", ...otherProps } = props;
 
   const Component = as || "ul";
   const domRef = useDOMRef(ref);
 
-  const {slots, classNames} = useNavbarContext();
+  const { slots, classNames } = useNavbarContext();
 
   const styles = clsx(classNames?.content, className);
 
   return (
-    <Component
-      ref={domRef}
-      className={slots.content?.({class: styles})}
-      data-justify={justify}
-      {...otherProps}
-    >
+    <Component ref={domRef} className={slots.content?.({ class: styles })} data-justify={justify} {...otherProps}>
       {children}
     </Component>
   );

@@ -1,10 +1,9 @@
-import type {Meta} from "@storybook/react";
-import type {SpinnerProps} from "../src";
+import type { Meta } from "@storybook/react";
+import type { SpinnerProps } from "../src";
 
-import React from "react";
-import {spinner} from "@heroui/theme";
+import { spinner } from "@/lib/theme";
 
-import {Spinner} from "../src";
+import { Spinner } from "../src";
 
 export default {
   title: "Components/Spinner",

@@ -1,22 +1,21 @@
-import type {ValidationResult} from "@react-types/shared";
-import type {ChangeEvent} from "react";
-import type {Meta} from "@storybook/react";
-import type {Selection} from "@react-types/shared";
-import type {Pokemon, Animal, User} from "@heroui/stories-utils";
-import type {SelectedItems, SelectProps} from "../src";
+import type { Animal, Pokemon, User } from "@heroui/stories-utils";
+import type { Selection, ValidationResult } from "@react-types/shared";
+import type { Meta } from "@storybook/react";
+import type { ChangeEvent } from "react";
+import type { SelectedItems, SelectProps } from "../src";
 
+import { PetBoldIcon, SelectorIcon } from "@/lib/icons";
+import { button, select } from "@/lib/theme";
+import { Avatar } from "@heroui/avatar";
+import { Button } from "@heroui/button";
+import { Chip } from "@heroui/chip";
+import { Form } from "@heroui/form";
+import { animalsData, usePokemonList, usersData } from "@heroui/stories-utils";
+import { useInfiniteScroll } from "@heroui/use-infinite-scroll";
 import React from "react";
-import {useForm} from "react-hook-form";
-import {select, button} from "@heroui/theme";
-import {PetBoldIcon, SelectorIcon} from "@heroui/shared-icons";
-import {Avatar} from "@heroui/avatar";
-import {Chip} from "@heroui/chip";
-import {Button} from "@heroui/button";
-import {useInfiniteScroll} from "@heroui/use-infinite-scroll";
-import {usePokemonList, animalsData, usersData} from "@heroui/stories-utils";
-import {Form} from "@heroui/form";
+import { useForm } from "react-hook-form";
 
-import {Select, SelectItem, SelectSection} from "../src";
+import { Select, SelectItem, SelectSection } from "../src";
 
 export default {
   title: "Components/Select",
@@ -78,34 +77,20 @@ const defaultProps = {
 
 const items = animalsData.map((item) => <SelectItem key={item.value}>{item.label}</SelectItem>);
 
-const Template = ({color, variant, ...args}: SelectProps) => (
+const Template = ({ color, variant, ...args }: SelectProps) => (
   <Select className="max-w-xs" color={color} label="Favorite Animal" variant={variant} {...args}>
     {items}
   </Select>
 );
 
-const DynamicTemplate = ({color, variant, ...args}: SelectProps<Animal>) => (
-  <Select
-    className="max-w-xs"
-    color={color}
-    items={animalsData}
-    label="Favorite Animal"
-    variant={variant}
-    {...args}
-  >
+const DynamicTemplate = ({ color, variant, ...args }: SelectProps<Animal>) => (
+  <Select className="max-w-xs" color={color} items={animalsData} label="Favorite Animal" variant={variant} {...args}>
     {(item) => <SelectItem key={item.value}>{item.label}</SelectItem>}
   </Select>
 );
 
-const DynamicTemplateWithDescriptions = ({color, variant, ...args}: SelectProps<Animal>) => (
-  <Select
-    className="max-w-xs"
-    color={color}
-    items={animalsData}
-    label="Favorite Animal"
-    variant={variant}
-    {...args}
-  >
+const DynamicTemplateWithDescriptions = ({ color, variant, ...args }: SelectProps<Animal>) => (
+  <Select className="max-w-xs" color={color} items={animalsData} label="Favorite Animal" variant={variant} {...args}>
     {(item) => (
       <SelectItem key={item.value} description={item.description}>
         {item.label}
@@ -114,7 +99,7 @@ const DynamicTemplateWithDescriptions = ({color, variant, ...args}: SelectProps<
   </Select>
 );
 
-const ItemStartContentTemplate = ({color, variant, ...args}: SelectProps<Animal>) => (
+const ItemStartContentTemplate = ({ color, variant, ...args }: SelectProps<Animal>) => (
   <Select className="max-w-xs" color={color} label="Select country" variant={variant} {...args}>
     <SelectItem
       key="argentina"
@@ -136,9 +121,7 @@ const ItemStartContentTemplate = ({color, variant, ...args}: SelectProps<Animal>
     </SelectItem>
     <SelectItem
       key="switzerland"
-      startContent={
-        <Avatar alt="Switzerland" className="w-6 h-6" src="https://flagcdn.com/ch.svg" />
-      }
+      startContent={<Avatar alt="Switzerland" className="w-6 h-6" src="https://flagcdn.com/ch.svg" />}
     >
       Switzerland
     </SelectItem>
@@ -148,10 +131,7 @@ const ItemStartContentTemplate = ({color, variant, ...args}: SelectProps<Animal>
     >
       Germany
     </SelectItem>
-    <SelectItem
-      key="spain"
-      startContent={<Avatar alt="Spain" className="w-6 h-6" src="https://flagcdn.com/es.svg" />}
-    >
+    <SelectItem key="spain" startContent={<Avatar alt="Spain" className="w-6 h-6" src="https://flagcdn.com/es.svg" />}>
       Spain
     </SelectItem>
     <SelectItem
@@ -160,10 +140,7 @@ const ItemStartContentTemplate = ({color, variant, ...args}: SelectProps<Animal>
     >
       France
     </SelectItem>
-    <SelectItem
-      key="italy"
-      startContent={<Avatar alt="Italy" className="w-6 h-6" src="https://flagcdn.com/it.svg" />}
-    >
+    <SelectItem key="italy" startContent={<Avatar alt="Italy" className="w-6 h-6" src="https://flagcdn.com/it.svg" />}>
       Italy
     </SelectItem>
     <SelectItem
@@ -175,7 +152,7 @@ const ItemStartContentTemplate = ({color, variant, ...args}: SelectProps<Animal>
   </Select>
 );
 
-const ControlledTemplate = ({color, variant, ...args}: SelectProps<Animal>) => {
+const ControlledTemplate = ({ color, variant, ...args }: SelectProps<Animal>) => {
   const [value, setValue] = React.useState<Selection>(new Set(["cat"]));
 
   const handleSelectionChange = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -201,7 +178,7 @@ const ControlledTemplate = ({color, variant, ...args}: SelectProps<Animal>) => {
   );
 };
 
-const ControlledOpenTemplate = ({color, variant, ...args}: SelectProps<Animal>) => {
+const ControlledOpenTemplate = ({ color, variant, ...args }: SelectProps<Animal>) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
@@ -222,7 +199,7 @@ const ControlledOpenTemplate = ({color, variant, ...args}: SelectProps<Animal>) 
   );
 };
 
-const ControlledMultipleTemplate = ({color, variant, ...args}: SelectProps<Animal>) => {
+const ControlledMultipleTemplate = ({ color, variant, ...args }: SelectProps<Animal>) => {
   const [values, setValues] = React.useState<Selection>(new Set(["cat", "dog"]));
 
   const handleSelectionChange = (items: Selection) => {
@@ -249,7 +226,7 @@ const ControlledMultipleTemplate = ({color, variant, ...args}: SelectProps<Anima
   );
 };
 
-const FormTemplate = ({color, variant, ...args}: SelectProps) => {
+const FormTemplate = ({ color, variant, ...args }: SelectProps) => {
   return (
     <form
       className="w-full max-w-xs items-end flex flex-col gap-4"
@@ -258,16 +235,10 @@ const FormTemplate = ({color, variant, ...args}: SelectProps) => {
         e.preventDefault();
       }}
     >
-      <Select
-        color={color}
-        label="Favorite Animal"
-        name="favorite-animal"
-        variant={variant}
-        {...args}
-      >
+      <Select color={color} label="Favorite Animal" name="favorite-animal" variant={variant} {...args}>
         {items}
       </Select>
-      <button className={button({className: "max-w-fit"})} type="submit">
+      <button className={button({ className: "max-w-fit" })} type="submit">
         Submit
       </button>
     </form>
@@ -275,7 +246,7 @@ const FormTemplate = ({color, variant, ...args}: SelectProps) => {
 };
 
 const ServerValidationTemplate = (args: SelectProps) => {
-  const [submittedData, setSubmittedData] = React.useState<{animal: string} | null>(null);
+  const [submittedData, setSubmittedData] = React.useState<{ animal: string } | null>(null);
   const [serverErrors, setServerErrors] = React.useState({});
 
   const onSubmit = (e) => {
@@ -297,20 +268,16 @@ const ServerValidationTemplate = (args: SelectProps) => {
       });
     } else {
       setServerErrors({});
-      setSubmittedData({animal: value});
+      setSubmittedData({ animal: value });
     }
   };
 
   return (
-    <Form
-      className="w-full flex flex-col items-start gap-2"
-      validationErrors={serverErrors}
-      onSubmit={onSubmit}
-    >
+    <Form className="w-full flex flex-col items-start gap-2" validationErrors={serverErrors} onSubmit={onSubmit}>
       <Select isRequired {...args} className="max-w-xs" label="Favorite Animal" name="animal">
         {items}
       </Select>
-      <button className={button({color: "primary"})} type="submit">
+      <button className={button({ color: "primary" })} type="submit">
         Submit
       </button>
       {submittedData && (
@@ -323,7 +290,7 @@ const ServerValidationTemplate = (args: SelectProps) => {
 };
 
 const ServerValidationTemplateWithMultiple = (args: SelectProps) => {
-  const [submittedData, setSubmittedData] = React.useState<{animals: string[]} | null>(null);
+  const [submittedData, setSubmittedData] = React.useState<{ animals: string[] } | null>(null);
   const [serverErrors, setServerErrors] = React.useState({});
 
   const onSubmit = (e) => {
@@ -337,26 +304,16 @@ const ServerValidationTemplateWithMultiple = (args: SelectProps) => {
       });
     } else {
       setServerErrors({});
-      setSubmittedData({animals: values as string[]});
+      setSubmittedData({ animals: values as string[] });
     }
   };
 
   return (
-    <Form
-      className="w-full flex flex-col items-start gap-2"
-      validationErrors={serverErrors}
-      onSubmit={onSubmit}
-    >
-      <Select
-        {...args}
-        className="max-w-xs"
-        label="Favorite Animals"
-        name="animals"
-        selectionMode="multiple"
-      >
+    <Form className="w-full flex flex-col items-start gap-2" validationErrors={serverErrors} onSubmit={onSubmit}>
+      <Select {...args} className="max-w-xs" label="Favorite Animals" name="animals" selectionMode="multiple">
         {items}
       </Select>
-      <button className={button({color: "primary"})} type="submit">
+      <button className={button({ color: "primary" })} type="submit">
         Submit
       </button>
       {submittedData && (
@@ -368,7 +325,7 @@ const ServerValidationTemplateWithMultiple = (args: SelectProps) => {
   );
 };
 
-const MirrorTemplate = ({color, variant, ...args}: SelectProps) => (
+const MirrorTemplate = ({ color, variant, ...args }: SelectProps) => (
   <div className="w-full max-w-xl flex flex-row gap-4">
     <Select className="max-w-xs" color={color} label="Select an animal" variant={variant} {...args}>
       {items}
@@ -386,7 +343,7 @@ const MirrorTemplate = ({color, variant, ...args}: SelectProps) => (
   </div>
 );
 
-const LabelPlacementTemplate = ({color, variant, ...args}: SelectProps) => (
+const LabelPlacementTemplate = ({ color, variant, ...args }: SelectProps) => (
   <div className="w-full flex flex-col items-center gap-12">
     <div className="w-full max-w-5xl flex flex-col gap-3">
       <h3>Without placeholder</h3>
@@ -394,22 +351,10 @@ const LabelPlacementTemplate = ({color, variant, ...args}: SelectProps) => (
         <Select color={color} label="Select an animal" variant={variant} {...args}>
           {items}
         </Select>
-        <Select
-          color={color}
-          label="Select an animal"
-          variant={variant}
-          {...args}
-          labelPlacement="outside"
-        >
+        <Select color={color} label="Select an animal" variant={variant} {...args} labelPlacement="outside">
           {items}
         </Select>
-        <Select
-          color={color}
-          label="Select an animal"
-          variant={variant}
-          {...args}
-          labelPlacement="outside-left"
-        >
+        <Select color={color} label="Select an animal" variant={variant} {...args} labelPlacement="outside-left">
           {items}
         </Select>
       </div>
@@ -417,13 +362,7 @@ const LabelPlacementTemplate = ({color, variant, ...args}: SelectProps) => (
     <div className="w-full max-w-5xl flex flex-col gap-3">
       <h3>With placeholder</h3>
       <div className="w-full flex flex-row items-end gap-4">
-        <Select
-          color={color}
-          label="Favorite Animal"
-          placeholder="Select an animal"
-          variant={variant}
-          {...args}
-        >
+        <Select color={color} label="Favorite Animal" placeholder="Select an animal" variant={variant} {...args}>
           {items}
         </Select>
         <Select
@@ -488,7 +427,7 @@ const LabelPlacementTemplate = ({color, variant, ...args}: SelectProps) => (
   </div>
 );
 
-const StartContentTemplate = ({color, variant, ...args}: SelectProps) => (
+const StartContentTemplate = ({ color, variant, ...args }: SelectProps) => (
   <Select
     className="max-w-xs"
     color={color}
@@ -502,7 +441,7 @@ const StartContentTemplate = ({color, variant, ...args}: SelectProps) => (
   </Select>
 );
 
-const EndContentTemplate = ({color, variant, ...args}: SelectProps) => (
+const EndContentTemplate = ({ color, variant, ...args }: SelectProps) => (
   <Select
     className="max-w-xs"
     color={color}
@@ -516,16 +455,9 @@ const EndContentTemplate = ({color, variant, ...args}: SelectProps) => (
   </Select>
 );
 
-const EmptyTemplate = ({color, variant, ...args}: SelectProps) => (
+const EmptyTemplate = ({ color, variant, ...args }: SelectProps) => (
   <div className="w-full justify-center flex gap-2">
-    <Select
-      hideEmptyContent
-      className="max-w-xs"
-      color={color}
-      label="Hide empty content"
-      variant={variant}
-      {...args}
-    >
+    <Select hideEmptyContent className="max-w-xs" color={color} label="Hide empty content" variant={variant} {...args}>
       {[]}
     </Select>
     <Select
@@ -541,16 +473,9 @@ const EmptyTemplate = ({color, variant, ...args}: SelectProps) => (
   </div>
 );
 
-const CustomItemsTemplate = ({color, variant, ...args}: SelectProps<User>) => (
+const CustomItemsTemplate = ({ color, variant, ...args }: SelectProps<User>) => (
   <div className="w-full justify-center flex gap-2">
-    <Select
-      className="max-w-xs mt-8"
-      color={color}
-      items={usersData}
-      label="Assigned to"
-      variant={variant}
-      {...args}
-    >
+    <Select className="max-w-xs mt-8" color={color} items={usersData} label="Assigned to" variant={variant} {...args}>
       {(item) => (
         <SelectItem key={item.id} textValue={item.name}>
           <div className="flex gap-2 items-center">
@@ -587,7 +512,7 @@ const CustomItemsTemplate = ({color, variant, ...args}: SelectProps<User>) => (
   </div>
 );
 
-const WithSectionsTemplate = ({color, variant, ...args}: SelectProps<User>) => (
+const WithSectionsTemplate = ({ color, variant, ...args }: SelectProps<User>) => (
   <Select className="max-w-xs" color={color} label="Favorite Animal" variant={variant} {...args}>
     <SelectSection showDivider title="Mammals">
       <SelectItem key="Lion">Lion</SelectItem>
@@ -612,9 +537,8 @@ const WithSectionsTemplate = ({color, variant, ...args}: SelectProps<User>) => (
   </Select>
 );
 
-const WithCustomSectionsStylesTemplate = ({color, variant, ...args}: SelectProps<User>) => {
-  const headingClasses =
-    "flex w-full sticky top-1 z-20 py-1.5 px-2 bg-default-100 shadow-small rounded-small";
+const WithCustomSectionsStylesTemplate = ({ color, variant, ...args }: SelectProps<User>) => {
+  const headingClasses = "flex w-full sticky top-1 z-20 py-1.5 px-2 bg-default-100 shadow-small rounded-small";
 
   return (
     <Select
@@ -661,13 +585,13 @@ const WithCustomSectionsStylesTemplate = ({color, variant, ...args}: SelectProps
   );
 };
 
-const WithAriaLabelTemplate = ({color, variant, ...args}: SelectProps) => (
+const WithAriaLabelTemplate = ({ color, variant, ...args }: SelectProps) => (
   <Select className="max-w-xs" color={color} label="Favorite Animal" variant={variant} {...args}>
     {items}
   </Select>
 );
 
-const CustomStylesTemplate = ({color, variant, ...args}: SelectProps<User>) => {
+const CustomStylesTemplate = ({ color, variant, ...args }: SelectProps<User>) => {
   return (
     <Select
       className="max-w-xs"
@@ -718,9 +642,9 @@ const CustomStylesTemplate = ({color, variant, ...args}: SelectProps<User>) => {
   );
 };
 
-const AsyncLoadingTemplate = ({color, variant, ...args}: SelectProps<Pokemon>) => {
+const AsyncLoadingTemplate = ({ color, variant, ...args }: SelectProps<Pokemon>) => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const {items, hasMore, isLoading, onLoadMore} = usePokemonList({fetchDelay: 1500});
+  const { items, hasMore, isLoading, onLoadMore } = usePokemonList({ fetchDelay: 1500 });
 
   const [, scrollerRef] = useInfiniteScroll({
     hasMore,
@@ -756,7 +680,7 @@ const AsyncLoadingTemplate = ({color, variant, ...args}: SelectProps<Pokemon>) =
 const WithReactHookFormTemplate = (args: SelectProps) => {
   const {
     register,
-    formState: {errors},
+    formState: { errors },
     handleSubmit,
   } = useForm({
     defaultValues: {
@@ -782,12 +706,12 @@ const WithReactHookFormTemplate = (args: SelectProps) => {
         {items}
       </Select>
 
-      <Select data-testid="select-3" {...args} {...register("requiredField", {required: true})}>
+      <Select data-testid="select-3" {...args} {...register("requiredField", { required: true })}>
         {items}
       </Select>
 
       {errors.requiredField && <span className="text-danger">This field is required</span>}
-      <button className={button({class: "w-fit"})} type="submit">
+      <button className={button({ class: "w-fit" })} type="submit">
         Submit
       </button>
     </form>
@@ -799,27 +723,27 @@ const ScrollableContainerTemplate = (args: SelectProps) => {
     {
       target: "Animals",
       items: [
-        {name: "Lion", emoji: "🦁"},
-        {name: "Tiger", emoji: "🐅"},
-        {name: "Elephant", emoji: "🐘"},
-        {name: "Kangaroo", emoji: "🦘"},
-        {name: "Panda", emoji: "🐼"},
-        {name: "Giraffe", emoji: "🦒"},
-        {name: "Zebra", emoji: "🦓"},
-        {name: "Cheetah", emoji: "🐆"},
+        { name: "Lion", emoji: "🦁" },
+        { name: "Tiger", emoji: "🐅" },
+        { name: "Elephant", emoji: "🐘" },
+        { name: "Kangaroo", emoji: "🦘" },
+        { name: "Panda", emoji: "🐼" },
+        { name: "Giraffe", emoji: "🦒" },
+        { name: "Zebra", emoji: "🦓" },
+        { name: "Cheetah", emoji: "🐆" },
       ],
     },
     {
       target: "Birds",
       items: [
-        {name: "Eagle", emoji: "🦅"},
-        {name: "Parrot", emoji: "🦜"},
-        {name: "Penguin", emoji: "🐧"},
-        {name: "Ostrich", emoji: "🦢"},
-        {name: "Peacock", emoji: "🦚"},
-        {name: "Swan", emoji: "🦢"},
-        {name: "Falcon", emoji: "🦅"},
-        {name: "Flamingo", emoji: "🦩"},
+        { name: "Eagle", emoji: "🦅" },
+        { name: "Parrot", emoji: "🦜" },
+        { name: "Penguin", emoji: "🐧" },
+        { name: "Ostrich", emoji: "🦢" },
+        { name: "Peacock", emoji: "🦚" },
+        { name: "Swan", emoji: "🦢" },
+        { name: "Falcon", emoji: "🦅" },
+        { name: "Flamingo", emoji: "🦩" },
       ],
     },
   ];
@@ -840,11 +764,7 @@ const ScrollableContainerTemplate = (args: SelectProps) => {
                 {...args}
               >
                 {categories.map((category, idx, arr) => (
-                  <SelectSection
-                    key={category.target}
-                    showDivider={idx !== arr.length - 1}
-                    title={category.target}
-                  >
+                  <SelectSection key={category.target} showDivider={idx !== arr.length - 1} title={category.target}>
                     {category.items.map((item) => (
                       <SelectItem key={item.name}>{`${item.emoji} ${item.name}`}</SelectItem>
                     ))}
@@ -896,7 +816,7 @@ function generateLargeDataset(n: number): LargeDatasetSchema[] {
   return dataset;
 }
 
-const LargeDatasetTemplate = (args: SelectProps & {numItems: number}) => {
+const LargeDatasetTemplate = (args: SelectProps & { numItems: number }) => {
   const largeDataset = generateLargeDataset(args.numItems);
 
   return (
@@ -979,17 +899,13 @@ const ValidationBehaviorAriaTemplate = (args: SelectProps) => {
     };
 
     return (
-      <Form
-        className="w-full flex flex-col items-start gap-2"
-        validationErrors={serverErrors}
-        onSubmit={onSubmit}
-      >
+      <Form className="w-full flex flex-col items-start gap-2" validationErrors={serverErrors} onSubmit={onSubmit}>
         <Select className="max-w-xs" label="Select Animal" name="animal" validationBehavior="aria">
           <SelectItem key="penguin">Penguin</SelectItem>
           <SelectItem key="zebra">Zebra</SelectItem>
           <SelectItem key="shark">Shark</SelectItem>
         </Select>
-        <button className={button({color: "primary"})} type="submit">
+        <button className={button({ color: "primary" })} type="submit">
           Validate
         </button>
       </Form>
@@ -1405,7 +1321,7 @@ export const Clearable = {
   },
 };
 
-const AVATAR_DECORATIONS: {[key: string]: string[]} = {
+const AVATAR_DECORATIONS: { [key: string]: string[] } = {
   arcane: ["jinx", "atlas-gauntlets", "flame-chompers", "fishbones", "hexcore", "shimmer"],
   anime: ["cat-ears", "heart-bloom", "in-love", "in-tears", "soul-leaving-body", "starry-eyed"],
   "lofi-vibes": ["chromawave", "cozy-cat", "cozy-headphones", "doodling", "rainy-mood"],
@@ -1450,21 +1366,14 @@ const AVATAR_DECORATIONS: {[key: string]: string[]} = {
     "viper4",
     "yoru4",
   ],
-  spongebob: [
-    "flower-clouds",
-    "gary-the-snail",
-    "imagination",
-    "musclebob",
-    "sandy-cheeks",
-    "spongebob",
-  ],
+  spongebob: ["flower-clouds", "gary-the-snail", "imagination", "musclebob", "sandy-cheeks", "spongebob"],
   arcade: ["clyde-invaders", "hot-shot", "joystick", "mallow-jump", "pipedream", "snake"],
   "street-fighter": ["akuma", "cammy", "chun-li", "guile", "juri", "ken", "m.bison", "ryu"],
 };
 
 export const NonVirtualizedVsVirtualizedWithSections = {
   render: () => {
-    const SelectComponent = ({isVirtualized}: {isVirtualized: boolean}) => (
+    const SelectComponent = ({ isVirtualized }: { isVirtualized: boolean }) => (
       <Select
         disallowEmptySelection
         className="max-w-xs"

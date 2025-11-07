@@ -1,20 +1,20 @@
-import type {BreadcrumbItemVariantProps, SlotsToClasses, BreadcrumbItemSlots} from "@heroui/theme";
-import type {ReactNode} from "react";
-import type {BreadcrumbItemProps as AriaBreadcrumbItemProps} from "@react-types/breadcrumbs";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {ReactRef} from "@heroui/react-utils";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { BreadcrumbItemSlots, BreadcrumbItemVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { BreadcrumbItemProps as AriaBreadcrumbItemProps } from "@react-types/breadcrumbs";
+import type { ReactNode } from "react";
 
-import {mapPropsVariants} from "@heroui/system";
-import {useFocusRing} from "@react-aria/focus";
-import {breadcrumbItem} from "@heroui/theme";
-import {filterDOMProps, useDOMRef} from "@heroui/react-utils";
-import {useBreadcrumbItem as useAriaBreadcrumbItem} from "@react-aria/breadcrumbs";
-import {clsx, dataAttr, objectToDeps, mergeProps} from "@heroui/shared-utils";
-import {useMemo} from "react";
+import { mapPropsVariants } from "@/lib/system";
+import { breadcrumbItem } from "@/lib/theme";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
+import { clsx, dataAttr, mergeProps, objectToDeps } from "@heroui/shared-utils";
+import { useBreadcrumbItem as useAriaBreadcrumbItem } from "@react-aria/breadcrumbs";
+import { useFocusRing } from "@react-aria/focus";
+import { useMemo } from "react";
 
 interface Props
   extends Omit<HTMLHeroUIProps<"li">, keyof AriaBreadcrumbItemProps>,
-    AriaBreadcrumbItemProps {
+  AriaBreadcrumbItemProps {
   /**
    * Ref to the DOM node.
    */
@@ -76,11 +76,11 @@ export function useBreadcrumbItem(originalProps: UseBreadcrumbItemProps) {
 
   const domRef = useDOMRef(ref);
 
-  const {itemProps} = useAriaBreadcrumbItem(
-    {...originalProps, isCurrent, elementType: Component},
+  const { itemProps } = useAriaBreadcrumbItem(
+    { ...originalProps, isCurrent, elementType: Component },
     domRef,
   );
-  const {isFocusVisible, isFocused, focusProps} = useFocusRing();
+  const { isFocusVisible, isFocused, focusProps } = useFocusRing();
 
   const slots = useMemo(
     () =>
@@ -99,7 +99,7 @@ export function useBreadcrumbItem(originalProps: UseBreadcrumbItemProps) {
   const getBaseProps = () => ({
     ref: domRef,
     "data-slot": "base",
-    className: slots.base({class: baseStyles}),
+    className: slots.base({ class: baseStyles }),
     ...filterDOMProps(otherProps, {
       enabled: shouldFilterDOMProps,
     }),
@@ -112,14 +112,14 @@ export function useBreadcrumbItem(originalProps: UseBreadcrumbItemProps) {
     "data-focus-visible": dataAttr(isFocusVisible),
     "data-disabled": originalProps?.isDisabled,
     "data-current": originalProps?.isCurrent,
-    className: slots.item({class: classNames?.item}),
+    className: slots.item({ class: classNames?.item }),
     ...mergeProps(itemProps, isDisabled ? {} : focusProps),
   });
 
   const getSeparatorProps = () => ({
     "data-slot": "separator",
     "aria-hidden": dataAttr(true),
-    className: slots.separator({class: classNames?.separator}),
+    className: slots.separator({ class: classNames?.separator }),
   });
 
   return {

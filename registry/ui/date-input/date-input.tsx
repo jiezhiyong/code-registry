@@ -1,12 +1,12 @@
-import type {DateValue} from "@internationalized/date";
-import type {ForwardedRef, ReactElement} from "react";
-import type {UseDateInputProps} from "./use-date-input";
+import type { DateValue } from "@internationalized/date";
+import type { ForwardedRef, ReactElement } from "react";
+import type { UseDateInputProps } from "./use-date-input";
 
-import {forwardRef} from "@heroui/system";
+import { forwardRef } from "@/lib/system";
 
-import {useDateInput} from "./use-date-input";
-import {DateInputGroup} from "./date-input-group";
-import {DateInputField} from "./date-input-field";
+import { DateInputField } from "./date-input-field";
+import { DateInputGroup } from "./date-input-group";
+import { useDateInput } from "./use-date-input";
 
 export interface Props<T extends DateValue> extends UseDateInputProps<T> {}
 
@@ -14,10 +14,12 @@ export type DateInputProps<T extends DateValue = DateValue> = Props<T>;
 
 const DateInput = forwardRef(function DateInput<T extends DateValue>(
   props: DateInputProps<T>,
-  ref: ForwardedRef<HTMLDivElement>,
+  ref: ForwardedRef<HTMLDivElement>
 ) {
-  const {state, slots, classNames, getBaseGroupProps, getInputProps, getFieldProps} =
-    useDateInput<T>({...props, ref});
+  const { state, slots, classNames, getBaseGroupProps, getInputProps, getFieldProps } = useDateInput<T>({
+    ...props,
+    ref,
+  });
 
   return (
     <DateInputGroup {...getBaseGroupProps()}>

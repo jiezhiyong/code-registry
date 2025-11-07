@@ -1,13 +1,12 @@
-import type {Meta} from "@storybook/react";
-import type {PaginationItemRenderProps} from "../src";
+import type { Meta } from "@storybook/react";
+import type { PaginationItemRenderProps } from "../src";
 
+import { ChevronIcon } from "@/lib/icons";
+import { button, cn, pagination } from "@/lib/theme";
+import { useLocale } from "@react-aria/i18n";
 import React from "react";
-import {button, pagination} from "@heroui/theme";
-import {cn} from "@heroui/theme";
-import {ChevronIcon} from "@heroui/shared-icons";
-import {useLocale} from "@react-aria/i18n";
 
-import {Pagination, PaginationItemType, usePagination} from "../src";
+import { Pagination, PaginationItemType, usePagination } from "../src";
 
 export default {
   title: "Components/Pagination",
@@ -115,22 +114,16 @@ export const Controlled = () => {
   return (
     <div className="flex flex-col gap-5">
       <p>Page: {currentPage}</p>
-      <Pagination
-        {...defaultProps}
-        showShadow
-        color="secondary"
-        page={currentPage}
-        onChange={setCurrentPage}
-      />
+      <Pagination {...defaultProps} showShadow color="secondary" page={currentPage} onChange={setCurrentPage} />
       <div className="flex gap-2">
         <button
-          className={button({color: "secondary", size: "sm", variant: "flat"})}
+          className={button({ color: "secondary", size: "sm", variant: "flat" })}
           onClick={() => setCurrentPage((prev) => (prev > 1 ? prev - 1 : prev))}
         >
           Previous
         </button>
         <button
-          className={button({color: "secondary", size: "sm", variant: "flat"})}
+          className={button({ color: "secondary", size: "sm", variant: "flat" })}
           onClick={() => setCurrentPage((prev) => (prev < defaultProps.total ? prev + 1 : prev))}
         >
           Next
@@ -141,23 +134,15 @@ export const Controlled = () => {
 };
 
 export const CustomItems = () => {
-  const {direction} = useLocale();
+  const { direction } = useLocale();
 
   const isRTL = direction === "rtl";
 
-  const renderItem = ({
-    ref,
-    value,
-    isActive,
-    onNext,
-    onPrevious,
-    setPage,
-    className,
-  }: PaginationItemRenderProps) => {
+  const renderItem = ({ ref, value, isActive, onNext, onPrevious, setPage, className }: PaginationItemRenderProps) => {
     if (value === PaginationItemType.NEXT) {
       return (
         <button className={cn(className, "bg-default-200")} onClick={onNext}>
-          <ChevronIcon className={cn({"rotate-180": !isRTL})} />
+          <ChevronIcon className={cn({ "rotate-180": !isRTL })} />
         </button>
       );
     }
@@ -165,7 +150,7 @@ export const CustomItems = () => {
     if (value === PaginationItemType.PREV) {
       return (
         <button className={cn(className, "bg-default-200")} onClick={onPrevious}>
-          <ChevronIcon className={cn({"rotate-180": isRTL})} />
+          <ChevronIcon className={cn({ "rotate-180": isRTL })} />
         </button>
       );
     }
@@ -180,7 +165,7 @@ export const CustomItems = () => {
         className={cn(
           className,
           isActive &&
-            "bg-gradient-to-b shadow-lg from-default-500 to-default-800 dark:from-default-300 dark:to-default-100 text-white font-bold",
+            "bg-gradient-to-b shadow-lg from-default-500 to-default-800 dark:from-default-300 dark:to-default-100 text-white font-bold"
         )}
         onClick={() => setPage(value)}
       >
@@ -216,7 +201,7 @@ export const CustomWithClassNames = {
 };
 
 export const CustomWithHooks = () => {
-  const {activePage, range, setPage, onNext, onPrevious} = usePagination({
+  const { activePage, range, setPage, onNext, onPrevious } = usePagination({
     ...defaultProps,
     total: 6,
     showControls: true,
@@ -224,7 +209,7 @@ export const CustomWithHooks = () => {
     boundaries: 10,
   });
 
-  const {direction} = useLocale();
+  const { direction } = useLocale();
 
   const isRTL = direction === "rtl";
 
@@ -237,7 +222,7 @@ export const CustomWithHooks = () => {
             return (
               <li key={page} aria-label="next page" className="w-4 h-4">
                 <button className="w-full h-full bg-default-200 rounded-full" onClick={onNext}>
-                  <ChevronIcon className={cn({"rotate-180": !isRTL})} />
+                  <ChevronIcon className={cn({ "rotate-180": !isRTL })} />
                 </button>
               </li>
             );
@@ -247,7 +232,7 @@ export const CustomWithHooks = () => {
             return (
               <li key={page} aria-label="previous page" className="w-4 h-4">
                 <button className="w-full h-full bg-default-200 rounded-full" onClick={onPrevious}>
-                  <ChevronIcon className={cn({"rotate-180": isRTL})} />
+                  <ChevronIcon className={cn({ "rotate-180": isRTL })} />
                 </button>
               </li>
             );
@@ -264,10 +249,7 @@ export const CustomWithHooks = () => {
           return (
             <li key={page} aria-label={`page ${page}`} className="w-4 h-4">
               <button
-                className={cn(
-                  "w-full h-full bg-default-300  rounded-full",
-                  activePage === page && "bg-secondary",
-                )}
+                className={cn("w-full h-full bg-default-300  rounded-full", activePage === page && "bg-secondary")}
                 onClick={() => setPage(page)}
               />
             </li>

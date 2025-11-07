@@ -1,15 +1,15 @@
-import type {HTMLHeroUIProps} from "@heroui/system";
-import type {HTMLMotionProps} from "framer-motion";
+import type { HTMLHeroUIProps } from "@/lib/system";
+import type { HTMLMotionProps } from "framer-motion";
 
-import {forwardRef} from "@heroui/system";
-import {useDOMRef} from "@heroui/react-utils";
-import {clsx, dataAttr, mergeProps} from "@heroui/shared-utils";
-import {AnimatePresence, LazyMotion, m} from "framer-motion";
-import {Overlay} from "@react-aria/overlays";
+import { forwardRef } from "@/lib/system";
+import { useDOMRef } from "@heroui/react-utils";
+import { clsx, dataAttr, mergeProps } from "@heroui/shared-utils";
+import { Overlay } from "@react-aria/overlays";
+import { AnimatePresence, LazyMotion, m } from "framer-motion";
 import React from "react";
 
-import {menuVariants} from "./navbar-menu-transitions";
-import {useNavbarContext} from "./navbar-context";
+import { useNavbarContext } from "./navbar-context";
+import { menuVariants } from "./navbar-menu-transitions";
 
 export interface NavbarMenuProps extends HTMLHeroUIProps<"ul"> {
   children?: React.ReactNode;
@@ -24,13 +24,13 @@ export interface NavbarMenuProps extends HTMLHeroUIProps<"ul"> {
   motionProps?: Omit<HTMLMotionProps<"ul">, "ref">;
 }
 
-const domAnimation = () => import("@heroui/dom-animation").then((res) => res.default);
+const domAnimation = () => import(""@/lib/dom-animation").then((res) => res.default);
 
 const NavbarMenu = forwardRef<"ul", NavbarMenuProps>((props, ref) => {
-  const {className, children, portalContainer, motionProps, style, ...otherProps} = props;
+  const { className, children, portalContainer, motionProps, style, ...otherProps } = props;
   const domRef = useDOMRef(ref);
 
-  const {slots, isMenuOpen, height, disableAnimation, classNames} = useNavbarContext();
+  const { slots, isMenuOpen, height, disableAnimation, classNames } = useNavbarContext();
 
   const styles = clsx(classNames?.menu, className);
 
@@ -41,7 +41,7 @@ const NavbarMenu = forwardRef<"ul", NavbarMenuProps>((props, ref) => {
       <Overlay portalContainer={portalContainer}>
         <ul
           ref={domRef}
-          className={slots.menu?.({class: styles})}
+          className={slots.menu?.({ class: styles })}
           data-open={dataAttr(isMenuOpen)}
           style={{
             // @ts-expect-error
@@ -64,7 +64,7 @@ const NavbarMenu = forwardRef<"ul", NavbarMenuProps>((props, ref) => {
               ref={domRef}
               layoutScroll
               animate="enter"
-              className={slots.menu?.({class: styles})}
+              className={slots.menu?.({ class: styles })}
               data-open={dataAttr(isMenuOpen)}
               exit="exit"
               initial="exit"

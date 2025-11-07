@@ -1,10 +1,10 @@
-import type {UseInputProps} from "./use-input";
+import type { UseInputProps } from "./use-input";
 
-import {CloseFilledIcon} from "@heroui/shared-icons";
-import {useMemo} from "react";
-import {forwardRef} from "@heroui/system";
+import { CloseFilledIcon } from "@/lib/icons";
+import { forwardRef } from "@/lib/system";
+import { useMemo } from "react";
 
-import {useInput} from "./use-input";
+import { useInput } from "./use-input";
 
 export interface InputProps extends Omit<UseInputProps, "isMultiline"> {}
 
@@ -33,7 +33,7 @@ const Input = forwardRef<"input", InputProps>((props, ref) => {
     getDescriptionProps,
     getErrorMessageProps,
     getClearButtonProps,
-  } = useInput({...props, ref});
+  } = useInput({ ...props, ref });
 
   const labelContent = label ? <label {...getLabelProps()}>{label}</label> : null;
 

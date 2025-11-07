@@ -1,14 +1,14 @@
-import type {AriaButtonProps} from "@react-types/button";
-import type {ButtonProps} from "@heroui/button";
+import type { ButtonProps } from "@heroui/button";
+import type { AriaButtonProps } from "@react-types/button";
 
-import {Button} from "@heroui/button";
-import {ChevronUpIcon, ChevronDownIcon} from "@heroui/shared-icons";
+import { ChevronDownIcon, ChevronUpIcon } from "@/lib/icons";
+import { Button } from "@heroui/button";
 
 export interface NumberInputStepperProps extends Omit<ButtonProps, keyof AriaButtonProps> {
   direction: "up" | "down";
 }
 
-const NumberInputStepper = ({direction, ...otherProps}: NumberInputStepperProps) => {
+const NumberInputStepper = ({ direction, ...otherProps }: NumberInputStepperProps) => {
   return (
     <Button disableRipple isIconOnly {...otherProps}>
       {direction == "up" ? <ChevronUpIcon /> : <ChevronDownIcon />}

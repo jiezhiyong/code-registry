@@ -3,15 +3,15 @@
  * We copied this internally to avoid installing the complete react-aria-components package.
  */
 
-import type {FormProps as SharedFormProps} from "@react-types/form";
-import type {ForwardedRef} from "react";
-import type {ContextValue, DOMProps} from "./utils";
+import type { FormProps as SharedFormProps } from "@react-types/form";
+import type { ForwardedRef } from "react";
+import type { ContextValue, DOMProps } from "./utils";
 
-import {FormValidationContext} from "@react-stately/form";
-import React, {createContext, forwardRef, useMemo} from "react";
-import {form} from "@heroui/theme";
+import { form } from "@/lib/theme";
+import { FormValidationContext } from "@react-stately/form";
+import { createContext, forwardRef, useMemo } from "react";
 
-import {useContextProps} from "./utils";
+import { useContextProps } from "./utils";
 
 export interface FormProps extends SharedFormProps, DOMProps {
   /**
@@ -31,16 +31,14 @@ export const FormContext = createContext<ContextValue<FormProps, HTMLFormElement
  */
 export const Form = forwardRef(function Form(props: FormProps, ref: ForwardedRef<HTMLFormElement>) {
   [props, ref] = useContextProps(props, ref, FormContext);
-  let {validationErrors, validationBehavior = "native", children, className, ...domProps} = props;
+  let { validationErrors, validationBehavior = "native", children, className, ...domProps } = props;
 
-  const styles = useMemo(() => form({className}), [className]);
+  const styles = useMemo(() => form({ className }), [className]);
 
   return (
     <form noValidate={validationBehavior !== "native"} {...domProps} ref={ref} className={styles}>
-      <FormContext.Provider value={{...props, validationBehavior}}>
-        <FormValidationContext.Provider value={validationErrors ?? {}}>
-          {children}
-        </FormValidationContext.Provider>
+      <FormContext.Provider value={{ ...props, validationBehavior }}>
+        <FormValidationContext.Provider value={validationErrors ?? {}}>{children}</FormValidationContext.Provider>
       </FormContext.Provider>
     </form>
   );

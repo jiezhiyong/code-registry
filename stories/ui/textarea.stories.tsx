@@ -1,14 +1,13 @@
-import type {ValidationResult} from "@react-types/shared";
-import type {Meta} from "@storybook/react";
-import type {TextAreaProps} from "../src";
+import type { ValidationResult } from "@react-types/shared";
+import type { Meta } from "@storybook/react";
+import type { TextAreaProps } from "../src";
 
+import { PlusFilledIcon, SendFilledIcon } from "@/lib/icons";
+import { button, input } from "@/lib/theme";
+import { Form } from "@heroui/form";
 import React from "react";
-import {input} from "@heroui/theme";
-import {SendFilledIcon, PlusFilledIcon} from "@heroui/shared-icons";
-import {button} from "@heroui/theme";
-import {Form} from "@heroui/form";
 
-import {Textarea} from "../src";
+import { Textarea } from "../src";
 
 export default {
   title: "Components/Textarea",
@@ -122,7 +121,7 @@ const FormTemplate = (args: TextAreaProps) => (
       <Textarea name="textarea" {...args} />
     </div>
 
-    <button className={button({color: "primary"})} type="submit">
+    <button className={button({ color: "primary" })} type="submit">
       Submit
     </button>
   </form>
@@ -225,13 +224,9 @@ const ServerValidationTemplate = (args: TextAreaProps) => {
   };
 
   return (
-    <Form
-      className="flex flex-col items-start gap-2"
-      validationErrors={serverErrors}
-      onSubmit={onSubmit}
-    >
+    <Form className="flex flex-col items-start gap-2" validationErrors={serverErrors} onSubmit={onSubmit}>
       <Textarea {...args} label="Comment" name="comment" />
-      <button className={button({color: "primary"})} type="submit">
+      <button className={button({ color: "primary" })} type="submit">
         Submit
       </button>
     </Form>

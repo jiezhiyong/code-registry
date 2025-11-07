@@ -1,28 +1,24 @@
-import type {HTMLHeroUIProps} from "@heroui/system";
+import type { HTMLHeroUIProps } from "@/lib/system";
 
-import {forwardRef} from "@heroui/system";
-import {useDOMRef} from "@heroui/react-utils";
-import {clsx} from "@heroui/shared-utils";
+import { forwardRef } from "@/lib/system";
+import { useDOMRef } from "@heroui/react-utils";
+import { clsx } from "@heroui/shared-utils";
 
-import {useModalContext} from "./modal-context";
+import { useModalContext } from "./modal-context";
 
 export interface ModalFooterProps extends HTMLHeroUIProps<"footer"> {}
 
 const ModalFooter = forwardRef<"footer", ModalFooterProps>((props, ref) => {
-  const {as, children, className, ...otherProps} = props;
+  const { as, children, className, ...otherProps } = props;
 
-  const {slots, classNames} = useModalContext();
+  const { slots, classNames } = useModalContext();
 
   const domRef = useDOMRef(ref);
 
   const Component = as || "footer";
 
   return (
-    <Component
-      ref={domRef}
-      className={slots.footer({class: clsx(classNames?.footer, className)})}
-      {...otherProps}
-    >
+    <Component ref={domRef} className={slots.footer({ class: clsx(classNames?.footer, className) })} {...otherProps}>
       {children}
     </Component>
   );

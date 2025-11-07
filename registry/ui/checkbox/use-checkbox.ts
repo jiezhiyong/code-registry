@@ -1,34 +1,33 @@
-import type {CheckboxVariantProps, CheckboxSlots, SlotsToClasses} from "@heroui/theme";
-import type {AriaCheckboxProps} from "@react-types/checkbox";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {ReactNode, Ref} from "react";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { CheckboxSlots, CheckboxVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { AriaCheckboxProps } from "@react-types/checkbox";
+import type { ReactNode, Ref } from "react";
 
-import {useProviderContext} from "@heroui/system";
-import {useCallback, useId} from "react";
-import {useMemo, useRef} from "react";
-import {useToggleState} from "@react-stately/toggle";
-import {checkbox} from "@heroui/theme";
-import {useCallbackRef} from "@heroui/use-callback-ref";
-import {useHover} from "@react-aria/interactions";
-import {useFocusRing} from "@react-aria/focus";
+import { useProviderContext } from "@/lib/system";
+import { checkbox } from "@/lib/theme";
+import { FormContext, useSlottedContext } from "@heroui/form";
+import { mergeRefs } from "@heroui/react-utils";
 import {
   __DEV__,
-  warn,
+  chain,
   clsx,
   dataAttr,
-  safeAriaLabel,
   mergeProps,
-  chain,
+  safeAriaLabel,
+  warn,
 } from "@heroui/shared-utils";
+import { useCallbackRef } from "@heroui/use-callback-ref";
+import { useSafeLayoutEffect } from "@heroui/use-safe-layout-effect";
 import {
   useCheckbox as useReactAriaCheckbox,
   useCheckboxGroupItem as useReactAriaCheckboxGroupItem,
 } from "@react-aria/checkbox";
-import {useSafeLayoutEffect} from "@heroui/use-safe-layout-effect";
-import {mergeRefs} from "@heroui/react-utils";
-import {FormContext, useSlottedContext} from "@heroui/form";
+import { useFocusRing } from "@react-aria/focus";
+import { useHover } from "@react-aria/interactions";
+import { useToggleState } from "@react-stately/toggle";
+import { useCallback, useId, useMemo, useRef } from "react";
 
-import {useCheckboxGroupContext} from "./checkbox-group-context";
+import { useCheckboxGroupContext } from "./checkbox-group-context";
 
 export type CheckboxIconProps = {
   "data-checked": string;
@@ -84,7 +83,7 @@ export type UseCheckboxProps = Omit<Props, "defaultChecked"> &
 export function useCheckbox(props: UseCheckboxProps = {}) {
   const globalContext = useProviderContext();
   const groupContext = useCheckboxGroupContext();
-  const {validationBehavior: formValidationBehavior} = useSlottedContext(FormContext) || {};
+  const { validationBehavior: formValidationBehavior } = useSlottedContext(FormContext) || {};
   const isInGroup = !!groupContext;
 
   const {
@@ -209,25 +208,25 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
     isPressed,
     isInvalid: isAriaInvalid,
   } = isInGroup
-    ? // eslint-disable-next-line
+      ? // eslint-disable-next-line
       useReactAriaCheckboxGroupItem(
-        {...ariaCheckboxProps, ...validationProps},
+        { ...ariaCheckboxProps, ...validationProps },
         groupContext.groupState,
         inputRef,
       )
-    : // eslint-disable-next-line
-      useReactAriaCheckbox({...ariaCheckboxProps, ...validationProps}, toggleState, inputRef);
+      : // eslint-disable-next-line
+      useReactAriaCheckbox({ ...ariaCheckboxProps, ...validationProps }, toggleState, inputRef);
 
   const isInteractionDisabled = isDisabled || isReadOnly;
   const isInvalid = validationState === "invalid" || isInvalidProp || isAriaInvalid;
 
   const pressed = isInteractionDisabled ? false : isPressed;
 
-  const {hoverProps, isHovered} = useHover({
+  const { hoverProps, isHovered } = useHover({
     isDisabled: inputProps.disabled,
   });
 
-  const {focusProps, isFocused, isFocusVisible} = useFocusRing({
+  const { focusProps, isFocused, isFocusVisible } = useFocusRing({
     autoFocus: inputProps.autoFocus,
   });
 
@@ -275,7 +274,7 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
   const getBaseProps: PropGetter = useCallback(() => {
     return {
       ref: domRef,
-      className: slots.base({class: baseStyles}),
+      className: slots.base({ class: baseStyles }),
       "data-disabled": dataAttr(isDisabled),
       "data-selected": dataAttr(isSelected || isIndeterminate),
       "data-invalid": dataAttr(isInvalid),
@@ -308,7 +307,7 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
       return {
         ...props,
         "aria-hidden": true,
-        className: clsx(slots.wrapper({class: clsx(classNames?.wrapper, props?.className)})),
+        className: clsx(slots.wrapper({ class: clsx(classNames?.wrapper, props?.className) })),
       };
     },
     [slots, classNames?.wrapper],
@@ -318,7 +317,7 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
     return {
       ref: mergeRefs(inputRef, ref),
       ...mergeProps(inputProps, focusProps),
-      className: slots.hiddenInput({class: classNames?.hiddenInput}),
+      className: slots.hiddenInput({ class: classNames?.hiddenInput }),
       onChange: chain(inputProps.onChange, handleCheckboxChange),
     };
   }, [inputProps, focusProps, handleCheckboxChange, classNames?.hiddenInput]);
@@ -326,7 +325,7 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
   const getLabelProps: PropGetter = useCallback(
     () => ({
       id: labelId,
-      className: slots.label({class: classNames?.label}),
+      className: slots.label({ class: classNames?.label }),
     }),
     [slots, classNames?.label, isDisabled, isSelected, isInvalid],
   );
@@ -337,7 +336,7 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
         isSelected,
         isIndeterminate,
         disableAnimation,
-        className: slots.icon({class: classNames?.icon}),
+        className: slots.icon({ class: classNames?.icon }),
       }) as CheckboxIconProps,
     [slots, classNames?.icon, isSelected, isIndeterminate, disableAnimation],
   );

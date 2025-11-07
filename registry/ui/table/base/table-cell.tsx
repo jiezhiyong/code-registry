@@ -1,7 +1,7 @@
-import type {HTMLHeroUIProps} from "@heroui/system";
-import type {CellProps} from "@react-types/table";
+import type { HTMLHeroUIProps } from "@/lib/system";
+import type { CellProps } from "@react-types/table";
 
-import {Cell} from "@react-stately/table";
+import { Cell } from "@react-stately/table";
 
 export type TableCellProps = CellProps & HTMLHeroUIProps<"td">;
 

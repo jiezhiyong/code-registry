@@ -1,27 +1,19 @@
 /* eslint-disable jsx-a11y/no-autofocus */
-import type {Meta} from "@storybook/react";
-import type {ModalProps} from "../src";
+import type { Meta } from "@storybook/react";
+import type { ModalProps } from "../src";
 
+import { LockFilledIcon, MailFilledIcon } from "@/lib/icons";
+import { modal } from "@/lib/theme";
+import { Autocomplete, AutocompleteItem } from "@heroui/autocomplete";
+import { Button } from "@heroui/button";
+import { Checkbox } from "@heroui/checkbox";
+import { Input } from "@heroui/input";
+import { Link } from "@heroui/link";
+import { Switch } from "@heroui/switch";
 import React from "react";
-import {modal} from "@heroui/theme";
-import {Button} from "@heroui/button";
-import {Input} from "@heroui/input";
-import {Checkbox} from "@heroui/checkbox";
-import {Link} from "@heroui/link";
-import {Switch} from "@heroui/switch";
-import {Autocomplete, AutocompleteItem} from "@heroui/autocomplete";
-import {MailFilledIcon, LockFilledIcon} from "@heroui/shared-icons";
 import Lorem from "react-lorem-component";
 
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-  useDisclosure,
-  useDraggable,
-} from "../src";
+import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure, useDraggable } from "../src";
 
 export default {
   title: "Components/Modal",
@@ -94,17 +86,13 @@ const content = (
         <ModalBody>
           <Input
             autoFocus
-            endContent={
-              <MailFilledIcon className="text-2xl text-default-400 pointer-events-none shrink-0" />
-            }
+            endContent={<MailFilledIcon className="text-2xl text-default-400 pointer-events-none shrink-0" />}
             label="Email"
             placeholder="Enter your email"
             variant="bordered"
           />
           <Input
-            endContent={
-              <LockFilledIcon className="text-2xl text-default-400 pointer-events-none shrink-0" />
-            }
+            endContent={<LockFilledIcon className="text-2xl text-default-400 pointer-events-none shrink-0" />}
             label="Password"
             placeholder="Enter your password"
             type="password"
@@ -137,7 +125,7 @@ const content = (
 );
 
 const Template = (args: ModalProps) => {
-  const {isOpen, onOpen, onOpenChange} = useDisclosure({defaultOpen: args.defaultOpen});
+  const { isOpen, onOpen, onOpenChange } = useDisclosure({ defaultOpen: args.defaultOpen });
 
   return (
     <>
@@ -150,7 +138,7 @@ const Template = (args: ModalProps) => {
 };
 
 const InsideScrollTemplate = (args: ModalProps) => {
-  const {isOpen, onOpen, onClose, onOpenChange} = useDisclosure();
+  const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
 
   return (
     <>
@@ -171,7 +159,7 @@ const InsideScrollTemplate = (args: ModalProps) => {
 };
 
 const OutsideScrollTemplate = (args: ModalProps) => {
-  const {isOpen, onOpen, onClose, onOpenChange} = useDisclosure();
+  const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
 
   return (
     <>
@@ -191,7 +179,7 @@ const OutsideScrollTemplate = (args: ModalProps) => {
   );
 };
 const OpenChangeTemplate = (args: ModalProps) => {
-  const {isOpen, onOpen, onClose, onOpenChange} = useDisclosure();
+  const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
 
   return (
     <div className="flex flex-col gap-2">
@@ -212,10 +200,10 @@ const OpenChangeTemplate = (args: ModalProps) => {
   );
 };
 const DraggableTemplate = (args: ModalProps) => {
-  const {isOpen, onOpen, onClose, onOpenChange} = useDisclosure();
+  const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
   const targetRef = React.useRef(null);
 
-  const {moveProps} = useDraggable({targetRef});
+  const { moveProps } = useDraggable({ targetRef });
 
   return (
     <div className="flex flex-col gap-2">
@@ -235,12 +223,12 @@ const DraggableTemplate = (args: ModalProps) => {
   );
 };
 const DraggableOverflowTemplate = (args: ModalProps) => {
-  const {isOpen, onOpen, onClose, onOpenChange} = useDisclosure();
+  const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
   const targetRef = React.useRef(null);
   const [disableDraggable, setDisableDraggable] = React.useState(false);
   const [canOverflow, setCanOverflow] = React.useState(true);
 
-  const {moveProps} = useDraggable({targetRef, isDisabled: disableDraggable, canOverflow});
+  const { moveProps } = useDraggable({ targetRef, isDisabled: disableDraggable, canOverflow });
 
   return (
     <div className="flex flex-col gap-2">
@@ -267,7 +255,7 @@ const DraggableOverflowTemplate = (args: ModalProps) => {
 };
 
 const ModalWithAutocompleteTemplate = (args: ModalProps) => {
-  const {isOpen, onOpen, onOpenChange} = useDisclosure();
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
     <div className="flex flex-col gap-2">

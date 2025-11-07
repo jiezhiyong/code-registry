@@ -1,15 +1,15 @@
 /* eslint-disable jsx-a11y/no-autofocus */
-import type {Meta} from "@storybook/react";
-import type {ButtonVariantProps} from "@heroui/theme";
-import type {PopoverProps} from "../src";
+import type { ButtonVariantProps } from "@/lib/theme";
+import type { Meta } from "@storybook/react";
+import type { PopoverProps } from "../src";
 
+import { popover } from "@/lib/theme";
+import { Button } from "@heroui/button";
+import { Card, CardFooter, CardHeader } from "@heroui/card";
+import { Input } from "@heroui/input";
 import React from "react";
-import {popover} from "@heroui/theme";
-import {Button} from "@heroui/button";
-import {Input} from "@heroui/input";
-import {Card, CardHeader, CardFooter} from "@heroui/card";
 
-import {Popover, PopoverTrigger, PopoverContent} from "../src";
+import { Popover, PopoverContent, PopoverTrigger } from "../src";
 
 export default {
   title: "Components/Popover",
@@ -130,7 +130,7 @@ const content = (
   </PopoverContent>
 );
 
-const Template = ({label = "Open Popover", ...args}: PopoverProps & {label: string}) => {
+const Template = ({ label = "Open Popover", ...args }: PopoverProps & { label: string }) => {
   return (
     <Popover {...args}>
       <PopoverTrigger>
@@ -380,14 +380,7 @@ const BackdropsTemplate = (args: PopoverProps) => {
   return (
     <div className="flex flex-wrap gap-4">
       {backdrops.map((backdrop) => (
-        <Popover
-          key={backdrop}
-          showArrow
-          offset={10}
-          placement="bottom"
-          {...args}
-          backdrop={backdrop}
-        >
+        <Popover key={backdrop} showArrow offset={10} placement="bottom" {...args} backdrop={backdrop}>
           <PopoverTrigger>
             <Button className="capitalize" color="warning" variant="flat">
               {backdrop}

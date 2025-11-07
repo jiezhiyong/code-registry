@@ -1,25 +1,25 @@
-import type {UseNavbarProps} from "./use-navbar";
+import type { UseNavbarProps } from "./use-navbar";
 
-import {forwardRef} from "@heroui/system";
-import {pickChildren} from "@heroui/react-utils";
-import {LazyMotion, m} from "framer-motion";
-import {mergeProps} from "@heroui/shared-utils";
+import { forwardRef } from "@/lib/system";
+import { pickChildren } from "@heroui/react-utils";
+import { mergeProps } from "@heroui/shared-utils";
+import { LazyMotion, m } from "framer-motion";
 
-import {hideOnScrollVariants} from "./navbar-transitions";
-import {useNavbar} from "./use-navbar";
-import {NavbarProvider} from "./navbar-context";
+import { NavbarProvider } from "./navbar-context";
 import NavbarMenu from "./navbar-menu";
+import { hideOnScrollVariants } from "./navbar-transitions";
+import { useNavbar } from "./use-navbar";
 
 export interface NavbarProps extends Omit<UseNavbarProps, "hideOnScroll"> {
   children?: React.ReactNode | React.ReactNode[];
 }
 
-const domAnimation = () => import("@heroui/dom-animation").then((res) => res.default);
+const domAnimation = () => import(""@/lib/dom-animation").then((res) => res.default);
 
 const Navbar = forwardRef<"div", NavbarProps>((props, ref) => {
-  const {children, ...otherProps} = props;
+  const { children, ...otherProps } = props;
 
-  const context = useNavbar({...otherProps, ref});
+  const context = useNavbar({ ...otherProps, ref });
 
   const Component = context.Component;
 

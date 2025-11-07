@@ -1,11 +1,11 @@
-import type {Meta} from "@storybook/react";
-import type {ButtonProps} from "../src";
+import type { Meta } from "@storybook/react";
+import type { ButtonProps } from "../src";
 
+import { Camera, HeadphonesIcon, Notification } from "@/lib/icons";
+import { button } from "@/lib/theme";
 import React from "react";
-import {button} from "@heroui/theme";
-import {Camera, HeadphonesIcon, Notification} from "@heroui/shared-icons";
 
-import {Button} from "../src";
+import { Button } from "../src";
 
 export default {
   title: "Components/Button",
@@ -80,12 +80,7 @@ const StateTemplate = (args: ButtonProps) => {
   };
 
   return (
-    <Button
-      {...args}
-      aria-label={isOpen ? "Close" : "Open"}
-      aria-pressed={isOpen}
-      onPress={handlePress}
-    >
+    <Button {...args} aria-label={isOpen ? "Close" : "Open"} aria-pressed={isOpen} onPress={handlePress}>
       {isOpen ? "Close" : "Open"}
     </Button>
   );

@@ -1,14 +1,14 @@
-import type {SpacerVariantProps} from "@heroui/theme";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system-rsc";
-import type {ReactRef} from "@heroui/react-utils";
-import type {Space} from "./utils";
+import type { SpacerVariantProps } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { HTMLHeroUIProps, PropGetter } from "@heroui/system-rsc";
+import type { Space } from "./utils";
 
-import {mapPropsVariants} from "@heroui/system-rsc";
-import {spacer} from "@heroui/theme";
-import {clsx, dataAttr, objectToDeps} from "@heroui/shared-utils";
-import {useMemo} from "react";
+import { spacer } from "@/lib/theme";
+import { clsx, dataAttr, objectToDeps } from "@heroui/shared-utils";
+import { mapPropsVariants } from "@heroui/system-rsc";
+import { useMemo } from "react";
 
-import {spacing} from "./utils";
+import { spacing } from "./utils";
 
 interface Props extends HTMLHeroUIProps<"span"> {
   /**
@@ -40,7 +40,7 @@ export const getMargin = (value: Space) => {
 export function useSpacer(originalProps: UseSpacerProps) {
   const [props, variantProps] = mapPropsVariants(originalProps, spacer.variantKeys);
 
-  const {as, className, x = 1, y = 1, ...otherProps} = props;
+  const { as, className, x = 1, y = 1, ...otherProps } = props;
 
   const Component = as || "span";
 
@@ -69,7 +69,7 @@ export function useSpacer(originalProps: UseSpacerProps) {
     },
   });
 
-  return {Component, getSpacerProps};
+  return { Component, getSpacerProps };
 }
 
 export type UseSpacerReturn = ReturnType<typeof useSpacer>;

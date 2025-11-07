@@ -1,17 +1,12 @@
-import type {Meta} from "@storybook/react";
-import type {MenuProps} from "../src";
+import type { Meta } from "@storybook/react";
+import type { MenuProps } from "../src";
 
+import { AddNoteBulkIcon, CopyDocumentBulkIcon, DeleteDocumentBulkIcon, EditDocumentBulkIcon } from "@/lib/icons";
+import { menuItem } from "@/lib/theme";
+import { clsx } from "@heroui/shared-utils";
 import React from "react";
-import {menuItem} from "@heroui/theme";
-import {
-  AddNoteBulkIcon,
-  CopyDocumentBulkIcon,
-  EditDocumentBulkIcon,
-  DeleteDocumentBulkIcon,
-} from "@heroui/shared-icons";
-import {clsx} from "@heroui/shared-utils";
 
-import {Menu, MenuItem, MenuSection} from "../src";
+import { Menu, MenuItem, MenuSection } from "../src";
 
 export default {
   title: "Components/Menu",
@@ -45,7 +40,7 @@ const defaultProps = {
   ...menuItem.defaultVariants,
 };
 
-const Template = ({color, variant, ...args}: MenuProps) => (
+const Template = ({ color, variant, ...args }: MenuProps) => (
   <Menu aria-label="Actions" color={color} variant={variant} onAction={alert} {...args}>
     <MenuItem key="new" onPress={() => alert("[onPress] New file")}>
       New file
@@ -58,7 +53,7 @@ const Template = ({color, variant, ...args}: MenuProps) => (
   </Menu>
 );
 
-const DisabledKeysTemplate = ({color, variant, ...args}: MenuProps) => (
+const DisabledKeysTemplate = ({ color, variant, ...args }: MenuProps) => (
   <Menu
     aria-label="Actions"
     color={color}
@@ -76,7 +71,7 @@ const DisabledKeysTemplate = ({color, variant, ...args}: MenuProps) => (
   </Menu>
 );
 
-const SingleSelectionTemplate = ({color, variant, ...args}: MenuProps) => {
+const SingleSelectionTemplate = ({ color, variant, ...args }: MenuProps) => {
   const [selected, setSelected] = React.useState<string | Set<React.Key>>(new Set(["text"]));
 
   return (
@@ -99,7 +94,7 @@ const SingleSelectionTemplate = ({color, variant, ...args}: MenuProps) => {
   );
 };
 
-const MultipleSelectionTemplate = ({color, variant, ...args}: MenuProps) => {
+const MultipleSelectionTemplate = ({ color, variant, ...args }: MenuProps) => {
   const [selected, setSelected] = React.useState<string | Set<React.Key>>(new Set(["text"]));
 
   return (
@@ -123,7 +118,7 @@ const MultipleSelectionTemplate = ({color, variant, ...args}: MenuProps) => {
   );
 };
 
-const WithShortcutTemplate = ({color, variant, ...args}) => (
+const WithShortcutTemplate = ({ color, variant, ...args }) => (
   <Menu aria-label="Actions" color={color} variant={variant} onAction={alert} {...args}>
     <MenuItem key="new" shortcut="⌘N">
       New file
@@ -140,7 +135,7 @@ const WithShortcutTemplate = ({color, variant, ...args}) => (
   </Menu>
 );
 
-const WithStartContentTemplate = ({color, variant, disableAnimation, ...args}: MenuProps) => {
+const WithStartContentTemplate = ({ color, variant, disableAnimation, ...args }: MenuProps) => {
   const iconClasses = "text-2xl text-secondary pointer-events-none shrink-0";
 
   return (
@@ -155,18 +150,10 @@ const WithStartContentTemplate = ({color, variant, disableAnimation, ...args}: M
       <MenuItem key="new" shortcut="⌘N" startContent={<AddNoteBulkIcon className={iconClasses} />}>
         New file
       </MenuItem>
-      <MenuItem
-        key="copy"
-        shortcut="⌘C"
-        startContent={<CopyDocumentBulkIcon className={iconClasses} />}
-      >
+      <MenuItem key="copy" shortcut="⌘C" startContent={<CopyDocumentBulkIcon className={iconClasses} />}>
         Copy link
       </MenuItem>
-      <MenuItem
-        key="edit"
-        shortcut="⌘⇧E"
-        startContent={<EditDocumentBulkIcon className={iconClasses} />}
-      >
+      <MenuItem key="edit" shortcut="⌘⇧E" startContent={<EditDocumentBulkIcon className={iconClasses} />}>
         Edit file
       </MenuItem>
       <MenuItem
@@ -182,7 +169,7 @@ const WithStartContentTemplate = ({color, variant, disableAnimation, ...args}: M
   );
 };
 
-const WithEndContentTemplate = ({color, variant, disableAnimation, ...args}) => {
+const WithEndContentTemplate = ({ color, variant, disableAnimation, ...args }) => {
   const iconClasses = "text-2xl text-default-500 pointer-events-none shrink-0";
 
   return (
@@ -215,7 +202,7 @@ const WithEndContentTemplate = ({color, variant, disableAnimation, ...args}) => 
   );
 };
 
-const WithDescriptionTemplate = ({color, variant, disableAnimation, ...args}) => {
+const WithDescriptionTemplate = ({ color, variant, disableAnimation, ...args }) => {
   const iconClasses = "text-2xl text-secondary pointer-events-none shrink-0";
 
   return (
@@ -265,7 +252,7 @@ const WithDescriptionTemplate = ({color, variant, disableAnimation, ...args}) =>
   );
 };
 
-const WithSectionsTemplate = ({color, variant, disableAnimation, ...args}) => {
+const WithSectionsTemplate = ({ color, variant, disableAnimation, ...args }) => {
   const iconClasses = "text-2xl text-secondary pointer-events-none shrink-0";
 
   return (

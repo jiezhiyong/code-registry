@@ -1,16 +1,16 @@
-import type {AriaLinkProps} from "@react-types/link";
-import type {LinkVariantProps} from "@heroui/theme";
-import type {MouseEventHandler} from "react";
-import type {ReactRef} from "@heroui/react-utils";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { LinkVariantProps } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { AriaLinkProps } from "@react-types/link";
+import type { MouseEventHandler } from "react";
 
-import {link} from "@heroui/theme";
-import {useAriaLink} from "@heroui/use-aria-link";
-import {mapPropsVariants, useProviderContext} from "@heroui/system";
-import {useDOMRef} from "@heroui/react-utils";
-import {useFocusRing} from "@react-aria/focus";
-import {dataAttr, objectToDeps, mergeProps} from "@heroui/shared-utils";
-import {useMemo, useCallback} from "react";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { link } from "@/lib/theme";
+import { useDOMRef } from "@heroui/react-utils";
+import { dataAttr, mergeProps, objectToDeps } from "@heroui/shared-utils";
+import { useAriaLink } from "@heroui/use-aria-link";
+import { useFocusRing } from "@react-aria/focus";
+import { useCallback, useMemo } from "react";
 
 interface Props extends HTMLHeroUIProps<"a">, LinkVariantProps {
   /**
@@ -70,7 +70,7 @@ export function useLink(originalProps: UseLinkProps) {
     originalProps?.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   // use `@heroui/use-aria-link` to suppress onClick deprecation warning
-  const {linkProps} = useAriaLink(
+  const { linkProps } = useAriaLink(
     {
       ...otherProps,
       onPress,
@@ -84,7 +84,7 @@ export function useLink(originalProps: UseLinkProps) {
     domRef,
   );
 
-  const {isFocused, isFocusVisible, focusProps} = useFocusRing({
+  const { isFocused, isFocusVisible, focusProps } = useFocusRing({
     autoFocus,
   });
 
@@ -114,7 +114,7 @@ export function useLink(originalProps: UseLinkProps) {
     };
   }, [styles, isFocused, isFocusVisible, focusProps, linkProps, otherProps]);
 
-  return {Component, children, anchorIcon, showAnchorIcon, getLinkProps};
+  return { Component, children, anchorIcon, showAnchorIcon, getLinkProps };
 }
 
 export type UseLinkReturn = ReturnType<typeof useLink>;

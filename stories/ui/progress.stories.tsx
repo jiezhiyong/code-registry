@@ -1,10 +1,10 @@
-import type {Meta} from "@storybook/react";
-import type {ProgressProps} from "../src";
+import type { Meta } from "@storybook/react";
+import type { ProgressProps } from "../src";
 
+import { progress } from "@/lib/theme";
 import React from "react";
-import {progress} from "@heroui/theme";
 
-import {Progress} from "../src";
+import { Progress } from "../src";
 
 export default {
   title: "Components/Progress",
@@ -101,7 +101,7 @@ export const WithValueFormatting = {
     ...defaultProps,
     label: "Loading...",
     showValueLabel: true,
-    formatOptions: {style: "currency", currency: "ARS"},
+    formatOptions: { style: "currency", currency: "ARS" },
   },
 };
 

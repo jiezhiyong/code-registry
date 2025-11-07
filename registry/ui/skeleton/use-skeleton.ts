@@ -1,12 +1,11 @@
-import type {SkeletonVariantProps, SkeletonSlots, SlotsToClasses} from "@heroui/theme";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {Ref} from "react";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { SkeletonSlots, SkeletonVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { Ref } from "react";
 
-import {mapPropsVariants} from "@heroui/system";
-import {skeleton} from "@heroui/theme";
-import {clsx, dataAttr, objectToDeps} from "@heroui/shared-utils";
-import {useMemo} from "react";
-import {useProviderContext} from "@heroui/system";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { skeleton } from "@/lib/theme";
+import { clsx, dataAttr, objectToDeps } from "@heroui/shared-utils";
+import { useMemo } from "react";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**
@@ -40,7 +39,7 @@ export function useSkeleton(originalProps: UseSkeletonProps) {
 
   const [props, variantProps] = mapPropsVariants(originalProps, skeleton.variantKeys);
 
-  const {as, children, isLoaded = false, className, classNames, ...otherProps} = props;
+  const { as, children, isLoaded = false, className, classNames, ...otherProps } = props;
 
   const Component = as || "div";
 
@@ -61,18 +60,18 @@ export function useSkeleton(originalProps: UseSkeletonProps) {
   const getSkeletonProps: PropGetter = (props = {}) => {
     return {
       "data-loaded": dataAttr(isLoaded),
-      className: slots.base({class: clsx(baseStyles, props?.className)}),
+      className: slots.base({ class: clsx(baseStyles, props?.className) }),
       ...otherProps,
     };
   };
 
   const getContentProps: PropGetter = (props = {}) => {
     return {
-      className: slots.content({class: clsx(classNames?.content, props?.className)}),
+      className: slots.content({ class: clsx(classNames?.content, props?.className) }),
     };
   };
 
-  return {Component, children, slots, classNames, getSkeletonProps, getContentProps};
+  return { Component, children, slots, classNames, getSkeletonProps, getContentProps };
 }
 
 export type UseSkeletonReturn = ReturnType<typeof useSkeleton>;

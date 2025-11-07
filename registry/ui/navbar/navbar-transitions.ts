@@ -1,6 +1,6 @@
-import type {Variants} from "framer-motion";
+import type { Variants } from "framer-motion";
 
-import {TRANSITION_EASINGS} from "@heroui/framer-utils";
+import { TRANSITION_EASINGS } from "@/lib/framer";
 
 export const hideOnScrollVariants: Variants = {
   visible: {

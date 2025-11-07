@@ -1,18 +1,17 @@
-import type {DateValue} from "@internationalized/date";
-import type {ForwardedRef, ReactElement} from "react";
-import type {UseDatePickerProps} from "./use-date-picker";
+import type { DateValue } from "@internationalized/date";
+import type { ForwardedRef, ReactElement } from "react";
+import type { UseDatePickerProps } from "./use-date-picker";
 
-import {useMemo} from "react";
-import {cloneElement, isValidElement} from "react";
-import {forwardRef} from "@heroui/system";
-import {Button} from "@heroui/button";
-import {DateInput, TimeInput} from "@heroui/date-input";
-import {FreeSoloPopover} from "@heroui/popover";
-import {Calendar} from "@heroui/calendar";
-import {AnimatePresence} from "framer-motion";
-import {CalendarBoldIcon} from "@heroui/shared-icons";
+import { CalendarBoldIcon } from "@/lib/icons";
+import { forwardRef } from "@/lib/system";
+import { Button } from "@heroui/button";
+import { Calendar } from "@heroui/calendar";
+import { DateInput, TimeInput } from "@heroui/date-input";
+import { FreeSoloPopover } from "@heroui/popover";
+import { AnimatePresence } from "framer-motion";
+import { cloneElement, isValidElement, useMemo } from "react";
 
-import {useDatePicker} from "./use-date-picker";
+import { useDatePicker } from "./use-date-picker";
 
 export interface Props<T extends DateValue> extends UseDatePickerProps<T> {
   /**
@@ -26,9 +25,9 @@ export type DatePickerProps<T extends DateValue = DateValue> = Props<T>;
 
 const DatePicker = forwardRef(function DatePicker<T extends DateValue>(
   props: DatePickerProps<T>,
-  ref: ForwardedRef<HTMLInputElement>,
+  ref: ForwardedRef<HTMLInputElement>
 ) {
-  const {selectorButtonPlacement = "end", ...otherProps} = props;
+  const { selectorButtonPlacement = "end", ...otherProps } = props;
 
   const {
     state,
@@ -46,7 +45,7 @@ const DatePicker = forwardRef(function DatePicker<T extends DateValue>(
     getCalendarProps,
     CalendarTopContent,
     CalendarBottomContent,
-  } = useDatePicker<T>({...otherProps, ref});
+  } = useDatePicker<T>({ ...otherProps, ref });
 
   const selectorContent = isValidElement(selectorIcon) ? (
     cloneElement(selectorIcon, getSelectorIconProps())
@@ -75,11 +74,7 @@ const DatePicker = forwardRef(function DatePicker<T extends DateValue>(
 
   const popoverContent = state.isOpen ? (
     <FreeSoloPopover {...getPopoverProps()}>
-      <Calendar
-        {...getCalendarProps()}
-        bottomContent={calendarBottomContent}
-        topContent={calendarTopContent}
-      />
+      <Calendar {...getCalendarProps()} bottomContent={calendarBottomContent} topContent={calendarTopContent} />
     </FreeSoloPopover>
   ) : null;
 

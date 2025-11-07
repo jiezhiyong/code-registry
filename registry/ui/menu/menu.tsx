@@ -1,21 +1,18 @@
-import type {ForwardedRef, ReactElement} from "react";
-import type {UseMenuProps} from "./use-menu";
+import type { ForwardedRef, ReactElement } from "react";
+import type { UseMenuProps } from "./use-menu";
 
-import {forwardRef} from "@heroui/system";
-import {mergeClasses} from "@heroui/theme";
+import { forwardRef } from "@/lib/system";
+import { mergeClasses } from "@/lib/theme";
 
-import {useMenu} from "./use-menu";
-import MenuSection from "./menu-section";
 import MenuItem from "./menu-item";
+import MenuSection from "./menu-section";
+import { useMenu } from "./use-menu";
 
 interface Props<T> extends UseMenuProps<T> {}
 
 export type MenuProps<T extends object = object> = Props<T>;
 
-const Menu = forwardRef(function Menu<T extends object>(
-  props: MenuProps<T>,
-  ref: ForwardedRef<HTMLUListElement>,
-) {
+const Menu = forwardRef(function Menu<T extends object>(props: MenuProps<T>, ref: ForwardedRef<HTMLUListElement>) {
   const {
     Component,
     state,
@@ -32,7 +29,7 @@ const Menu = forwardRef(function Menu<T extends object>(
     getBaseProps,
     getListProps,
     getEmptyContentProps,
-  } = useMenu<T>({...props, ref});
+  } = useMenu<T>({ ...props, ref });
 
   const content = (
     <Component {...getListProps()}>

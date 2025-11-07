@@ -1,19 +1,14 @@
-import type {Meta} from "@storybook/react";
-import type {ValidationResult} from "@react-types/shared";
-import type {TimeInputProps, TimeInputValue as TimeValue} from "../src";
+import type { ValidationResult } from "@react-types/shared";
+import type { Meta } from "@storybook/react";
+import type { TimeInputProps, TimeInputValue as TimeValue } from "../src";
 
+import { ClockCircleLinearIcon } from "@/lib/icons";
+import { button, dateInput } from "@/lib/theme";
+import { parseAbsoluteToLocal, parseZonedDateTime, Time, ZonedDateTime } from "@internationalized/date";
+import { useDateFormatter } from "@react-aria/i18n";
 import React from "react";
-import {dateInput, button} from "@heroui/theme";
-import {ClockCircleLinearIcon} from "@heroui/shared-icons";
-import {
-  parseAbsoluteToLocal,
-  parseZonedDateTime,
-  Time,
-  ZonedDateTime,
-} from "@internationalized/date";
-import {useDateFormatter} from "@react-aria/i18n";
 
-import {TimeInput} from "../src";
+import { TimeInput } from "../src";
 
 export default {
   title: "Components/TimeInput",
@@ -79,7 +74,7 @@ const FormTemplate = (args: TimeInputProps) => (
     }}
   >
     <TimeInput {...args} name="time" />
-    <button className={button({className: "max-w-fit"})} type="submit">
+    <button className={button({ className: "max-w-fit" })} type="submit">
       Submit
     </button>
   </form>
@@ -96,7 +91,7 @@ const LabelPlacementTemplate = (args: TimeInputProps) => (
 const ControlledTemplate = (args: TimeInputProps) => {
   let [value, setValue] = React.useState<TimeValue>(parseAbsoluteToLocal("2024-04-08T18:45:22Z"));
 
-  let formatter = useDateFormatter({dateStyle: "short", timeStyle: "long"});
+  let formatter = useDateFormatter({ dateStyle: "short", timeStyle: "long" });
 
   return (
     <div className="w-full flex flex-row gap-2">
@@ -104,9 +99,7 @@ const ControlledTemplate = (args: TimeInputProps) => {
         <TimeInput {...args} label="Time (controlled)" value={value} onChange={setValue} />
         <p className="text-default-500 text-sm">
           {value instanceof ZonedDateTime
-            ? (value?.toDate && formatter.format(value.toDate())) ||
-              (value && value.toString()) ||
-              "--"
+            ? (value?.toDate && formatter.format(value.toDate())) || (value && value.toString()) || "--"
             : ""}
         </p>
       </div>
@@ -123,11 +116,7 @@ const TimeZonesTemplate = (args: TimeInputProps) => (
       defaultValue={parseZonedDateTime("2022-11-07T00:45[America/Los_Angeles]")}
       labelPlacement="outside"
     />
-    <TimeInput
-      {...args}
-      defaultValue={parseAbsoluteToLocal("2021-11-07T07:45:00Z")}
-      labelPlacement="outside"
-    />
+    <TimeInput {...args} defaultValue={parseAbsoluteToLocal("2021-11-07T07:45:00Z")} labelPlacement="outside" />
   </div>
 );
 
@@ -233,9 +222,7 @@ export const StartContent = {
   args: {
     ...defaultProps,
     labelPlacement: "outside",
-    startContent: (
-      <ClockCircleLinearIcon className="text-xl text-default-400 pointer-events-none shrink-0" />
-    ),
+    startContent: <ClockCircleLinearIcon className="text-xl text-default-400 pointer-events-none shrink-0" />,
   },
 };
 
@@ -245,9 +232,7 @@ export const EndContent = {
   args: {
     ...defaultProps,
     labelPlacement: "outside",
-    endContent: (
-      <ClockCircleLinearIcon className="text-xl text-default-400 pointer-events-none shrink-0" />
-    ),
+    endContent: <ClockCircleLinearIcon className="text-xl text-default-400 pointer-events-none shrink-0" />,
   },
 };
 

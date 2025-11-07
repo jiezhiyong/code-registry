@@ -1,12 +1,12 @@
-import type {HTMLHeroUIProps} from "@heroui/system";
-import type {ReactRef} from "@heroui/react-utils";
+import type { HTMLHeroUIProps } from "@/lib/system";
+import type { ReactRef } from "@heroui/react-utils";
 
-import {useEffect} from "react";
-import {forwardRef} from "@heroui/system";
-import {useDOMRef} from "@heroui/react-utils";
-import {clsx} from "@heroui/shared-utils";
+import { forwardRef } from "@/lib/system";
+import { useDOMRef } from "@heroui/react-utils";
+import { clsx } from "@heroui/shared-utils";
+import { useEffect } from "react";
 
-import {useModalContext} from "./modal-context";
+import { useModalContext } from "./modal-context";
 
 export interface ModalHeaderProps extends HTMLHeroUIProps<"header"> {
   /**
@@ -16,9 +16,9 @@ export interface ModalHeaderProps extends HTMLHeroUIProps<"header"> {
 }
 
 const ModalHeader = forwardRef<"header", ModalHeaderProps>((props, ref) => {
-  const {as, children, className, ...otherProps} = props;
+  const { as, children, className, ...otherProps } = props;
 
-  const {slots, classNames, headerId, setHeaderMounted} = useModalContext();
+  const { slots, classNames, headerId, setHeaderMounted } = useModalContext();
 
   const domRef = useDOMRef(ref);
 
@@ -37,7 +37,7 @@ const ModalHeader = forwardRef<"header", ModalHeaderProps>((props, ref) => {
   return (
     <Component
       ref={domRef}
-      className={slots.header({class: clsx(classNames?.header, className)})}
+      className={slots.header({ class: clsx(classNames?.header, className) })}
       id={headerId}
       {...otherProps}
     >

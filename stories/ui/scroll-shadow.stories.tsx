@@ -1,25 +1,25 @@
-import type {Meta} from "@storybook/react";
-import type {ScrollShadowProps, ScrollShadowOrientation, ScrollShadowVisibility} from "../src";
+import type { Meta } from "@storybook/react";
+import type { ScrollShadowOrientation, ScrollShadowProps, ScrollShadowVisibility } from "../src";
 
+import { button, scrollShadow } from "@/lib/theme";
 import React from "react";
-import {scrollShadow, button} from "@heroui/theme";
 import Lorem from "react-lorem-component";
 
-import {ScrollShadow} from "../src";
+import { ScrollShadow } from "../src";
 
 export default {
   title: "Components/ScrollShadow",
   component: ScrollShadow,
   argTypes: {
     orientation: {
-      control: {type: "select"},
+      control: { type: "select" },
       options: ["horizontal", "vertical"],
     },
     offset: {
-      control: {type: "number"},
+      control: { type: "number" },
     },
     visibility: {
-      control: {type: "select"},
+      control: { type: "select" },
       options: ["auto", "top", "bottom", "both", "left", "right"],
     },
     children: {
@@ -46,7 +46,7 @@ const defaultProps = {
 
 const Template = (args: ScrollShadowProps) => <ScrollShadow {...args} />;
 
-const ControlledTemplate = ({children, ...args}: ScrollShadowProps) => {
+const ControlledTemplate = ({ children, ...args }: ScrollShadowProps) => {
   const [visible, setVisible] = React.useState<ScrollShadowVisibility>("top");
   const [orientation, setOrientation] = React.useState<ScrollShadowOrientation>("vertical");
 

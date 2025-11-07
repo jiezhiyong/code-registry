@@ -1,18 +1,15 @@
-import type {UseInputProps} from "./use-input";
+import type { UseInputProps } from "./use-input";
 
-import {dataAttr, mergeProps} from "@heroui/shared-utils";
-import {forwardRef} from "@heroui/system";
-import {useMemo, useState} from "react";
+import { CloseFilledIcon } from "@/lib/icons";
+import { forwardRef } from "@/lib/system";
+import { dataAttr, mergeProps } from "@heroui/shared-utils";
+import { useMemo, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
-import {CloseFilledIcon} from "@heroui/shared-icons";
 
-import {useInput} from "./use-input";
+import { useInput } from "./use-input";
 
 type NativeTextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
-type TextareaAutoSizeStyle = Omit<
-  NonNullable<NativeTextareaProps["style"]>,
-  "maxHeight" | "minHeight"
-> & {
+type TextareaAutoSizeStyle = Omit<NonNullable<NativeTextareaProps["style"]>, "maxHeight" | "minHeight"> & {
   height?: number;
 };
 
@@ -65,7 +62,7 @@ const Textarea = forwardRef<"textarea", TextAreaProps>(
       onHeightChange,
       ...otherProps
     },
-    ref,
+    ref
   ) => {
     const {
       Component,
@@ -88,7 +85,7 @@ const Textarea = forwardRef<"textarea", TextAreaProps>(
       getErrorMessageProps,
       isClearable,
       getClearButtonProps,
-    } = useInput<HTMLTextAreaElement>({...otherProps, ref, isMultiline: true});
+    } = useInput<HTMLTextAreaElement>({ ...otherProps, ref, isMultiline: true });
 
     const [hasMultipleRows, setIsHasMultipleRows] = useState(minRows > 1);
     const [isLimitReached, setIsLimitReached] = useState(false);
@@ -166,7 +163,7 @@ const Textarea = forwardRef<"textarea", TextAreaProps>(
         ) : null}
       </Component>
     );
-  },
+  }
 );
 
 Textarea.displayName = "HeroUI.Textarea";

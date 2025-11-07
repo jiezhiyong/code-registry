@@ -1,19 +1,13 @@
-import type {ButtonProps} from "@heroui/button";
-import type {UseAlertProps} from "./use-alert";
+import type { ButtonProps } from "@heroui/button";
+import type { UseAlertProps } from "./use-alert";
 
-import {forwardRef} from "@heroui/system";
-import {
-  CloseIcon,
-  DangerIcon,
-  InfoCircleIcon,
-  SuccessIcon,
-  WarningIcon,
-} from "@heroui/shared-icons";
-import {isEmpty} from "@heroui/shared-utils";
-import {Button} from "@heroui/button";
-import {cloneElement, isValidElement} from "react";
+import { CloseIcon, DangerIcon, InfoCircleIcon, SuccessIcon, WarningIcon } from "@/lib/icons";
+import { forwardRef } from "@/lib/system";
+import { Button } from "@heroui/button";
+import { isEmpty } from "@heroui/shared-utils";
+import { cloneElement, isValidElement } from "react";
 
-import {useAlert} from "./use-alert";
+import { useAlert } from "./use-alert";
 
 const iconMap = {
   primary: InfoCircleIcon,
@@ -48,7 +42,7 @@ const Alert = forwardRef<"div", AlertProps>((props, ref) => {
     onClose,
     getAlertIconProps,
     getIconWrapperProps,
-  } = useAlert({...props, ref});
+  } = useAlert({ ...props, ref });
 
   if (!isVisible) return null;
 
@@ -59,9 +53,7 @@ const Alert = forwardRef<"div", AlertProps>((props, ref) => {
   return (
     <div ref={domRef} role="alert" {...getBaseProps()}>
       {startContent}
-      <div {...getIconWrapperProps()}>
-        {customIcon || <IconComponent {...getAlertIconProps()} />}
-      </div>
+      <div {...getIconWrapperProps()}>{customIcon || <IconComponent {...getAlertIconProps()} />}</div>
       <div {...getMainWrapperProps()}>
         {!isEmpty(title) && <div {...getTitleProps()}>{title}</div>}
         {!isEmpty(description) && <div {...getDescriptionProps()}>{description}</div>}

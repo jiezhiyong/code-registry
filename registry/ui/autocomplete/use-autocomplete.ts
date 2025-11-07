@@ -1,26 +1,26 @@
-import type {AutocompleteVariantProps, SlotsToClasses, AutocompleteSlots} from "@heroui/theme";
-import type {DOMAttributes, HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {FilterFn} from "@react-stately/combobox";
-import type {ReactRef} from "@heroui/react-utils";
-import type {ReactNode} from "react";
-import type {ComboBoxProps} from "@react-types/combobox";
-import type {PopoverProps} from "@heroui/popover";
-import type {ListboxProps} from "@heroui/listbox";
-import type {InputProps} from "@heroui/input";
-import type {ScrollShadowProps} from "@heroui/scroll-shadow";
-import type {ButtonProps} from "@heroui/button";
-import type {AsyncLoadable, PressEvent} from "@react-types/shared";
+import type { DOMAttributes, HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { AutocompleteSlots, AutocompleteVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { ButtonProps } from "@heroui/button";
+import type { InputProps } from "@heroui/input";
+import type { ListboxProps } from "@heroui/listbox";
+import type { PopoverProps } from "@heroui/popover";
+import type { ReactRef } from "@heroui/react-utils";
+import type { ScrollShadowProps } from "@heroui/scroll-shadow";
+import type { FilterFn } from "@react-stately/combobox";
+import type { ComboBoxProps } from "@react-types/combobox";
+import type { AsyncLoadable, PressEvent } from "@react-types/shared";
+import type { ReactNode } from "react";
 
-import {clsx, dataAttr, objectToDeps, chain, mergeProps} from "@heroui/shared-utils";
-import {useEffect, useMemo, useRef} from "react";
-import {useDOMRef} from "@heroui/react-utils";
-import {useComboBoxState} from "@react-stately/combobox";
-import {useFilter} from "@react-aria/i18n";
-import {autocomplete} from "@heroui/theme";
-import {useSafeLayoutEffect} from "@heroui/use-safe-layout-effect";
-import {mapPropsVariants, useProviderContext} from "@heroui/system";
-import {useComboBox} from "@react-aria/combobox";
-import {FormContext, useSlottedContext} from "@heroui/form";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { autocomplete } from "@/lib/theme";
+import { FormContext, useSlottedContext } from "@heroui/form";
+import { useDOMRef } from "@heroui/react-utils";
+import { chain, clsx, dataAttr, mergeProps, objectToDeps } from "@heroui/shared-utils";
+import { useSafeLayoutEffect } from "@heroui/use-safe-layout-effect";
+import { useComboBox } from "@react-aria/combobox";
+import { useFilter } from "@react-aria/i18n";
+import { useComboBoxState } from "@react-stately/combobox";
+import { useEffect, useMemo, useRef } from "react";
 
 interface Props<T> extends Omit<HTMLHeroUIProps<"input">, keyof ComboBoxProps<T>> {
   /**
@@ -144,7 +144,7 @@ export type UseAutocompleteProps<T> = Props<T> &
 
 export function useAutocomplete<T extends object>(originalProps: UseAutocompleteProps<T>) {
   const globalContext = useProviderContext();
-  const {validationBehavior: formValidationBehavior} = useSlottedContext(FormContext) || {};
+  const { validationBehavior: formValidationBehavior } = useSlottedContext(FormContext) || {};
 
   const [props, variantProps] = mapPropsVariants(originalProps, autocomplete.variantKeys);
   const disableAnimation =
@@ -200,7 +200,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
   } = props;
 
   // Setup filter function and state.
-  const {contains} = useFilter(filterOptions);
+  const { contains } = useFilter(filterOptions);
 
   let state = useComboBoxState({
     ...originalProps,
@@ -411,7 +411,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
 
     inputProps.onKeyDown = (e) => {
       if ("continuePropagation" in e) {
-        e.stopPropagation = () => {};
+        e.stopPropagation = () => { };
       }
 
       return originalOnKeyDown(e);
@@ -433,7 +433,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
   const getBaseProps: PropGetter = () => ({
     "data-invalid": dataAttr(isInvalid),
     "data-open": dataAttr(state.isOpen),
-    className: slots.base({class: baseStyles}),
+    className: slots.base({ class: baseStyles }),
   });
 
   const getSelectorButtonProps = () =>
@@ -488,7 +488,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
       validationBehavior,
       errorMessage:
         typeof errorMessage === "function"
-          ? errorMessage({isInvalid, validationErrors, validationDetails})
+          ? errorMessage({ isInvalid, validationErrors, validationDetails })
           : errorMessage || validationErrors?.join(" "),
       onClick: chain(slotsProps.inputProps.onClick, otherProps.onClick),
     }) as unknown as InputProps;
@@ -503,9 +503,9 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
       isVirtualized: shouldVirtualize,
       virtualization: shouldVirtualize
         ? {
-            maxListboxHeight,
-            itemHeight,
-          }
+          maxListboxHeight,
+          itemHeight,
+        }
         : undefined,
       scrollShadowProps: slotsProps.scrollShadowProps,
       ...mergeProps(slotsProps.listboxProps, listBoxProps, {

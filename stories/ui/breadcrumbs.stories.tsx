@@ -1,11 +1,6 @@
-import type {Meta} from "@storybook/react";
-import type {BreadcrumbsProps} from "../src";
+import type { Meta } from "@storybook/react";
+import type { BreadcrumbsProps } from "../src";
 
-import React from "react";
-import {breadcrumbItem} from "@heroui/theme";
-import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem} from "@heroui/dropdown";
-import {Button} from "@heroui/button";
-import {Tooltip} from "@heroui/tooltip";
 import {
   CheckIcon,
   ChevronDownIcon,
@@ -14,10 +9,15 @@ import {
   MailFilledIcon,
   PetBoldIcon,
   ShoppingCartBoldIcon,
-} from "@heroui/shared-icons";
-import {clsx} from "@heroui/shared-utils";
+} from "@/lib/icons";
+import { breadcrumbItem } from "@/lib/theme";
+import { Button } from "@heroui/button";
+import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@heroui/dropdown";
+import { clsx } from "@heroui/shared-utils";
+import { Tooltip } from "@heroui/tooltip";
+import React from "react";
 
-import {Breadcrumbs, BreadcrumbItem} from "../src";
+import { BreadcrumbItem, Breadcrumbs } from "../src";
 
 export default {
   title: "Components/Breadcrumbs",
@@ -80,7 +80,7 @@ const defaultProps = {
   variant: "light",
 };
 
-const Template = (args: BreadcrumbsProps & {page: number}) => (
+const Template = (args: BreadcrumbsProps & { page: number }) => (
   <Breadcrumbs {...args}>
     <BreadcrumbItem href="http://localhost:6006/?path=/story/components-breadcrumbs--default&args=page:1">
       Home
@@ -100,7 +100,7 @@ const Template = (args: BreadcrumbsProps & {page: number}) => (
   </Breadcrumbs>
 );
 
-const ControlledTemplate = (args: BreadcrumbsProps & {page: number}) => {
+const ControlledTemplate = (args: BreadcrumbsProps & { page: number }) => {
   const [currentPage, setCurrentPage] = React.useState<React.Key>("song");
 
   return (
@@ -124,7 +124,7 @@ const ControlledTemplate = (args: BreadcrumbsProps & {page: number}) => {
   );
 };
 
-const MenuTypeTemplate = (args: BreadcrumbsProps & {page: number}) => {
+const MenuTypeTemplate = (args: BreadcrumbsProps & { page: number }) => {
   const [currentPage, setCurrentPage] = React.useState<React.Key>("music");
 
   return (
@@ -162,7 +162,7 @@ const MenuTypeTemplate = (args: BreadcrumbsProps & {page: number}) => {
   );
 };
 
-const WithStartContentTemplate = (args: BreadcrumbsProps & {page: number}) => (
+const WithStartContentTemplate = (args: BreadcrumbsProps & { page: number }) => (
   <Breadcrumbs {...args}>
     <BreadcrumbItem
       href="http://localhost:6006/?path=/story/components-breadcrumbs--default&args=page:1"
@@ -197,7 +197,7 @@ const WithStartContentTemplate = (args: BreadcrumbsProps & {page: number}) => (
   </Breadcrumbs>
 );
 
-const WithEndContentTemplate = (args: BreadcrumbsProps & {page: number}) => (
+const WithEndContentTemplate = (args: BreadcrumbsProps & { page: number }) => (
   <Breadcrumbs {...args}>
     <BreadcrumbItem
       endContent={<PetBoldIcon />}
@@ -232,10 +232,10 @@ const WithEndContentTemplate = (args: BreadcrumbsProps & {page: number}) => (
   </Breadcrumbs>
 );
 
-const WithDropdownEllipsisTemplate = (args: BreadcrumbsProps & {page: number}) => (
+const WithDropdownEllipsisTemplate = (args: BreadcrumbsProps & { page: number }) => (
   <Breadcrumbs
     {...args}
-    renderEllipsis={({items, ellipsisIcon, separator}) => (
+    renderEllipsis={({ items, ellipsisIcon, separator }) => (
       <div className="flex items-center">
         <Dropdown>
           <DropdownTrigger>
@@ -276,7 +276,7 @@ const WithDropdownEllipsisTemplate = (args: BreadcrumbsProps & {page: number}) =
   </Breadcrumbs>
 );
 
-const WithDropdownItemTemplate = (args: BreadcrumbsProps & {page: number}) => {
+const WithDropdownItemTemplate = (args: BreadcrumbsProps & { page: number }) => {
   const sizeMap = {
     sm: "text-tiny",
     md: "text-small",
@@ -338,7 +338,7 @@ const WithDropdownItemTemplate = (args: BreadcrumbsProps & {page: number}) => {
   );
 };
 
-const CustomStylesTemplate = (args: BreadcrumbsProps & {page: number}) => (
+const CustomStylesTemplate = (args: BreadcrumbsProps & { page: number }) => (
   <Breadcrumbs
     {...args}
     classNames={{

@@ -1,17 +1,17 @@
-import type {AvatarSlots, AvatarVariantProps, SlotsToClasses} from "@heroui/theme";
-import type {DOMElement, DOMAttributes, HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {ReactRef} from "@heroui/react-utils";
+import type { DOMAttributes, DOMElement, HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { AvatarSlots, AvatarVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
 
-import {avatar} from "@heroui/theme";
-import {useProviderContext} from "@heroui/system";
-import {useDOMRef, filterDOMProps} from "@heroui/react-utils";
-import {clsx, dataAttr, mergeProps, safeInitials} from "@heroui/shared-utils";
-import {useFocusRing} from "@react-aria/focus";
-import {useMemo, useCallback} from "react";
-import {useImage} from "@heroui/use-image";
-import {useHover} from "@react-aria/interactions";
+import { useProviderContext } from "@/lib/system";
+import { avatar } from "@/lib/theme";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
+import { clsx, dataAttr, mergeProps, safeInitials } from "@heroui/shared-utils";
+import { useImage } from "@heroui/use-image";
+import { useFocusRing } from "@react-aria/focus";
+import { useHover } from "@react-aria/interactions";
+import { useCallback, useMemo } from "react";
 
-import {useAvatarGroupContext} from "./avatar-group-context";
+import { useAvatarGroupContext } from "./avatar-group-context";
 
 interface Props extends HTMLHeroUIProps<"span"> {
   /**
@@ -133,8 +133,8 @@ export function useAvatar(originalProps: UseAvatarProps = {}) {
   const domRef = useDOMRef(ref);
   const imgRef = useDOMRef(imgRefProp);
 
-  const {isFocusVisible, isFocused, focusProps} = useFocusRing();
-  const {isHovered, hoverProps} = useHover({isDisabled});
+  const { isFocusVisible, isFocused, focusProps } = useFocusRing();
+  const { isHovered, hoverProps } = useHover({ isDisabled });
   const disableAnimation = disableAnimationProp ?? globalContext?.disableAnimation ?? false;
 
   const isHeroImage =
@@ -212,11 +212,11 @@ export function useAvatar(originalProps: UseAvatarProps = {}) {
       ref: imgRef,
       src: src,
       "data-loaded": dataAttr(isImgLoaded),
-      className: slots.img({class: classNames?.img}),
+      className: slots.img({ class: classNames?.img }),
       ...mergeProps(
         imgProps,
         props,
-        filterDOMProps({disableAnimation} as DOMAttributes<DOMElement>, {
+        filterDOMProps({ disableAnimation } as DOMAttributes<DOMElement>, {
           enabled: shouldFilterDOMProps,
         }),
       ),

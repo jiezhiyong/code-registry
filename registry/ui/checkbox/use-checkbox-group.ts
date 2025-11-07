@@ -1,19 +1,19 @@
-import type {CheckboxGroupSlots, SlotsToClasses} from "@heroui/theme";
-import type {AriaCheckboxGroupProps} from "@react-types/checkbox";
-import type {Orientation} from "@react-types/shared";
-import type {ReactRef} from "@heroui/react-utils";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {CheckboxGroupState} from "@react-stately/checkbox";
-import type {CheckboxProps} from "./index";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { CheckboxGroupSlots, SlotsToClasses } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { CheckboxGroupState } from "@react-stately/checkbox";
+import type { AriaCheckboxGroupProps } from "@react-types/checkbox";
+import type { Orientation } from "@react-types/shared";
+import type { CheckboxProps } from "./index";
 
-import {useProviderContext} from "@heroui/system";
-import {useCallback, useMemo} from "react";
-import {checkboxGroup} from "@heroui/theme";
-import {useCheckboxGroup as useReactAriaCheckboxGroup} from "@react-aria/checkbox";
-import {useCheckboxGroupState} from "@react-stately/checkbox";
-import {filterDOMProps, useDOMRef} from "@heroui/react-utils";
-import {clsx, safeAriaLabel, chain, mergeProps} from "@heroui/shared-utils";
-import {FormContext, useSlottedContext} from "@heroui/form";
+import { useProviderContext } from "@/lib/system";
+import { checkboxGroup } from "@/lib/theme";
+import { FormContext, useSlottedContext } from "@heroui/form";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
+import { chain, clsx, mergeProps, safeAriaLabel } from "@heroui/shared-utils";
+import { useCheckboxGroup as useReactAriaCheckboxGroup } from "@react-aria/checkbox";
+import { useCheckboxGroupState } from "@react-stately/checkbox";
+import { useCallback, useMemo } from "react";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**
@@ -70,7 +70,7 @@ export type ContextType = {
 
 export function useCheckboxGroup(props: UseCheckboxGroupProps) {
   const globalContext = useProviderContext();
-  const {validationBehavior: formValidationBehavior} = useSlottedContext(FormContext) || {};
+  const { validationBehavior: formValidationBehavior } = useSlottedContext(FormContext) || {};
 
   const {
     as,
@@ -174,7 +174,7 @@ export function useCheckboxGroup(props: UseCheckboxGroupProps) {
   );
 
   const slots = useMemo(
-    () => checkboxGroup({isRequired, isInvalid: groupState.isInvalid, disableAnimation}),
+    () => checkboxGroup({ isRequired, isInvalid: groupState.isInvalid, disableAnimation }),
     [isRequired, groupState.isInvalid, , disableAnimation],
   );
 
@@ -183,7 +183,7 @@ export function useCheckboxGroup(props: UseCheckboxGroupProps) {
   const getGroupProps: PropGetter = useCallback(() => {
     return {
       ref: domRef,
-      className: slots.base({class: baseStyles}),
+      className: slots.base({ class: baseStyles }),
       ...mergeProps(
         groupProps,
         filterDOMProps(otherProps, {
@@ -195,14 +195,14 @@ export function useCheckboxGroup(props: UseCheckboxGroupProps) {
 
   const getLabelProps: PropGetter = useCallback(() => {
     return {
-      className: slots.label({class: classNames?.label}),
+      className: slots.label({ class: classNames?.label }),
       ...labelProps,
     };
   }, [slots, labelProps, classNames?.label]);
 
   const getWrapperProps: PropGetter = useCallback(() => {
     return {
-      className: slots.wrapper({class: classNames?.wrapper}),
+      className: slots.wrapper({ class: classNames?.wrapper }),
       role: "presentation",
       "data-orientation": orientation,
     };
@@ -213,7 +213,7 @@ export function useCheckboxGroup(props: UseCheckboxGroupProps) {
       return {
         ...props,
         ...descriptionProps,
-        className: slots.description({class: clsx(classNames?.description, props?.className)}),
+        className: slots.description({ class: clsx(classNames?.description, props?.className) }),
       };
     },
     [slots, descriptionProps, classNames?.description],
@@ -224,7 +224,7 @@ export function useCheckboxGroup(props: UseCheckboxGroupProps) {
       return {
         ...props,
         ...errorMessageProps,
-        className: slots.errorMessage({class: clsx(classNames?.errorMessage, props?.className)}),
+        className: slots.errorMessage({ class: clsx(classNames?.errorMessage, props?.className) }),
       };
     },
     [slots, errorMessageProps, classNames?.errorMessage],
@@ -239,7 +239,7 @@ export function useCheckboxGroup(props: UseCheckboxGroupProps) {
     isInvalid: groupState.isInvalid,
     errorMessage:
       typeof errorMessage === "function"
-        ? errorMessage({isInvalid: groupState.isInvalid, validationErrors, validationDetails})
+        ? errorMessage({ isInvalid: groupState.isInvalid, validationErrors, validationDetails })
         : errorMessage || validationErrors?.join(" "),
     getGroupProps,
     getLabelProps,

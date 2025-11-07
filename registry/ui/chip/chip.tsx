@@ -1,10 +1,10 @@
-import type {UseChipProps} from "./use-chip";
+import type { UseChipProps } from "./use-chip";
 
-import {CloseFilledIcon} from "@heroui/shared-icons";
-import {forwardRef} from "@heroui/system";
-import {useMemo} from "react";
+import { CloseFilledIcon } from "@/lib/icons";
+import { forwardRef } from "@/lib/system";
+import { useMemo } from "react";
 
-import {useChip} from "./use-chip";
+import { useChip } from "./use-chip";
 
 export interface ChipProps extends Omit<UseChipProps, "isOneChar" | "isCloseButtonFocusVisible"> {}
 
@@ -27,7 +27,7 @@ const Chip = forwardRef<"div", ChipProps>((props, ref) => {
 
   const start = useMemo(() => {
     if (isDot && !startContent) {
-      return <span className={slots.dot({class: classNames?.dot})} />;
+      return <span className={slots.dot({ class: classNames?.dot })} />;
     }
 
     return startContent;
@@ -44,7 +44,7 @@ const Chip = forwardRef<"div", ChipProps>((props, ref) => {
   return (
     <Component {...getChipProps()}>
       {start}
-      <span className={slots.content({class: classNames?.content})}>{children}</span>
+      <span className={slots.content({ class: classNames?.content })}>{children}</span>
       {end}
     </Component>
   );

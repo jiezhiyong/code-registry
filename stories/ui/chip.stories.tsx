@@ -1,12 +1,11 @@
-import type {Meta} from "@storybook/react";
-import type {ChipProps} from "../src";
+import type { Meta } from "@storybook/react";
+import type { ChipProps } from "../src";
 
-import React from "react";
-import {chip} from "@heroui/theme";
-import {Avatar} from "@heroui/avatar";
-import {CheckIcon} from "@heroui/shared-icons";
+import { CheckIcon } from "@/lib/icons";
+import { chip } from "@/lib/theme";
+import { Avatar } from "@heroui/avatar";
 
-import {Chip} from "../src";
+import { Chip } from "../src";
 
 export default {
   title: "Components/Chip",

@@ -1,12 +1,12 @@
-import type {DividerVariantProps} from "@heroui/theme";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system-rsc";
-import type {Ref} from "react";
-import type {SeparatorProps as AriaSeparatorProps} from "./use-separator";
+import type { DividerVariantProps } from "@/lib/theme";
+import type { HTMLHeroUIProps, PropGetter } from "@heroui/system-rsc";
+import type { Ref } from "react";
+import type { SeparatorProps as AriaSeparatorProps } from "./use-separator";
 
-import {divider} from "@heroui/theme";
-import {useCallback, useMemo} from "react";
+import { divider } from "@/lib/theme";
+import { useCallback, useMemo } from "react";
 
-import {useSeparator} from "./use-separator";
+import { useSeparator } from "./use-separator";
 
 interface Props extends HTMLHeroUIProps<"hr"> {
   /**
@@ -18,7 +18,7 @@ interface Props extends HTMLHeroUIProps<"hr"> {
 export type UseDividerProps = Props & DividerVariantProps & Omit<AriaSeparatorProps, "elementType">;
 
 export function useDivider(props: UseDividerProps) {
-  const {as, className, orientation, ...otherProps} = props;
+  const { as, className, orientation, ...otherProps } = props;
 
   let Component = as || "hr";
 
@@ -26,7 +26,7 @@ export function useDivider(props: UseDividerProps) {
     Component = "div";
   }
 
-  const {separatorProps} = useSeparator({
+  const { separatorProps } = useSeparator({
     elementType: typeof Component === "string" ? Component : "hr",
     orientation,
   });
@@ -52,7 +52,7 @@ export function useDivider(props: UseDividerProps) {
     [styles, orientation, separatorProps, otherProps],
   );
 
-  return {Component, getDividerProps};
+  return { Component, getDividerProps };
 }
 
 export type UseDividerReturn = ReturnType<typeof useDivider>;

@@ -1,22 +1,21 @@
-import type {FocusableProps, PressEvents} from "@react-types/shared";
-import type {SlotsToClasses, CardSlots, CardReturnType, CardVariantProps} from "@heroui/theme";
-import type {AriaButtonProps} from "@heroui/use-aria-button";
-import type {RippleProps} from "@heroui/ripple";
-import type {MouseEventHandler, ReactNode} from "react";
-import type {PressEvent} from "@react-aria/interactions";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {ReactRef} from "@heroui/react-utils";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { CardReturnType, CardSlots, CardVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { RippleProps } from "@heroui/ripple";
+import type { AriaButtonProps } from "@heroui/use-aria-button";
+import type { PressEvent } from "@react-aria/interactions";
+import type { FocusableProps, PressEvents } from "@react-types/shared";
+import type { MouseEventHandler, ReactNode } from "react";
 
-import {card} from "@heroui/theme";
-import {useCallback, useMemo} from "react";
-import {useFocusRing} from "@react-aria/focus";
-import {useHover} from "@react-aria/interactions";
-import {useAriaButton} from "@heroui/use-aria-button";
-import {mapPropsVariants, useProviderContext} from "@heroui/system";
-import {clsx, dataAttr, objectToDeps, chain, mergeProps} from "@heroui/shared-utils";
-import {filterDOMProps} from "@heroui/react-utils";
-import {useDOMRef} from "@heroui/react-utils";
-import {useRipple} from "@heroui/ripple";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { card } from "@/lib/theme";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
+import { useRipple } from "@heroui/ripple";
+import { chain, clsx, dataAttr, mergeProps, objectToDeps } from "@heroui/shared-utils";
+import { useAriaButton } from "@heroui/use-aria-button";
+import { useFocusRing } from "@react-aria/focus";
+import { useHover } from "@react-aria/interactions";
+import { useCallback, useMemo } from "react";
 
 export interface Props extends Omit<HTMLHeroUIProps<"div">, "onClick"> {
   /**
@@ -99,7 +98,7 @@ export function useCard(originalProps: UseCardProps) {
 
   const baseStyles = clsx(classNames?.base, className);
 
-  const {onClear: onClearRipple, onPress: onRipplePressHandler, ripples} = useRipple();
+  const { onClear: onClearRipple, onPress: onRipplePressHandler, ripples } = useRipple();
 
   const handlePress = useCallback(
     (e: PressEvent) => {
@@ -109,7 +108,7 @@ export function useCard(originalProps: UseCardProps) {
     [disableRipple, disableAnimation, domRef, onRipplePressHandler],
   );
 
-  const {buttonProps, isPressed} = useAriaButton(
+  const { buttonProps, isPressed } = useAriaButton(
     {
       onPress: chain(onPress, handlePress),
       elementType: as,
@@ -121,12 +120,12 @@ export function useCard(originalProps: UseCardProps) {
     domRef,
   );
 
-  const {hoverProps, isHovered} = useHover({
+  const { hoverProps, isHovered } = useHover({
     isDisabled: !originalProps.isHoverable,
     ...otherProps,
   });
 
-  const {isFocusVisible, isFocused, focusProps} = useFocusRing({
+  const { isFocusVisible, isFocused, focusProps } = useFocusRing({
     autoFocus,
   });
 
@@ -162,7 +161,7 @@ export function useCard(originalProps: UseCardProps) {
     (props = {}) => {
       return {
         ref: domRef,
-        className: slots.base({class: baseStyles}),
+        className: slots.base({ class: baseStyles }),
         tabIndex: originalProps.isPressable ? 0 : -1,
         "data-hover": dataAttr(isHovered),
         "data-pressed": dataAttr(isPressed),
@@ -170,7 +169,7 @@ export function useCard(originalProps: UseCardProps) {
         "data-focus-visible": dataAttr(isFocusVisible),
         "data-disabled": dataAttr(originalProps.isDisabled),
         ...mergeProps(
-          originalProps.isPressable ? {...buttonProps, ...focusProps, role: "button"} : {},
+          originalProps.isPressable ? { ...buttonProps, ...focusProps, role: "button" } : {},
           originalProps.isHoverable ? hoverProps : {},
           filterDOMProps(otherProps, {
             enabled: shouldFilterDOMProps,
@@ -198,7 +197,7 @@ export function useCard(originalProps: UseCardProps) {
   );
 
   const getRippleProps = useCallback<() => RippleProps>(
-    () => ({ripples, onClear: onClearRipple}),
+    () => ({ ripples, onClear: onClearRipple }),
     [ripples, onClearRipple],
   );
 

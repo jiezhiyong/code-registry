@@ -1,16 +1,16 @@
-import type {CalendarDate} from "@internationalized/date";
-import type {CalendarPropsBase} from "@react-types/calendar";
-import type {HTMLHeroUIProps} from "@heroui/system";
+import type { HTMLHeroUIProps } from "@/lib/system";
+import type { CalendarDate } from "@internationalized/date";
+import type { CalendarPropsBase } from "@react-types/calendar";
 
-import {endOfMonth, getWeeksInMonth} from "@internationalized/date";
-import {useLocale} from "@react-aria/i18n";
-import {useCalendarGrid} from "@react-aria/calendar";
-import {m} from "framer-motion";
-import {dataAttr, getInertValue} from "@heroui/shared-utils";
+import { dataAttr, getInertValue } from "@heroui/shared-utils";
+import { endOfMonth, getWeeksInMonth } from "@internationalized/date";
+import { useCalendarGrid } from "@react-aria/calendar";
+import { useLocale } from "@react-aria/i18n";
+import { m } from "framer-motion";
 
-import {CalendarCell} from "./calendar-cell";
-import {slideVariants} from "./calendar-transitions";
-import {useCalendarContext} from "./calendar-context";
+import { CalendarCell } from "./calendar-cell";
+import { useCalendarContext } from "./calendar-context";
+import { slideVariants } from "./calendar-transitions";
 
 export interface CalendarMonthProps extends HTMLHeroUIProps<"table">, CalendarPropsBase {
   startDate: CalendarDate;
@@ -19,29 +19,28 @@ export interface CalendarMonthProps extends HTMLHeroUIProps<"table">, CalendarPr
 }
 
 export function CalendarMonth(props: CalendarMonthProps) {
-  const {startDate, direction, currentMonth, firstDayOfWeek} = props;
+  const { startDate, direction, currentMonth, firstDayOfWeek } = props;
 
-  const {locale} = useLocale();
+  const { locale } = useLocale();
 
   const weeksInMonth = getWeeksInMonth(startDate, locale, firstDayOfWeek);
 
-  const {state, slots, weekdayStyle, isHeaderExpanded, disableAnimation, classNames} =
-    useCalendarContext();
+  const { state, slots, weekdayStyle, isHeaderExpanded, disableAnimation, classNames } = useCalendarContext();
 
-  const {gridProps, headerProps, weekDays} = useCalendarGrid(
+  const { gridProps, headerProps, weekDays } = useCalendarGrid(
     {
       ...props,
       weekdayStyle,
       endDate: endOfMonth(startDate),
       firstDayOfWeek,
     },
-    state,
+    state
   );
 
   const bodyContent = [...new Array(weeksInMonth).keys()].map((weekIndex) => (
     <tr
       key={weekIndex}
-      className={slots?.gridBodyRow({class: classNames?.gridBodyRow})}
+      className={slots?.gridBodyRow({ class: classNames?.gridBodyRow })}
       data-slot="grid-body-row"
       // makes the browser ignore the element and its children when tabbing
       // @ts-ignore
@@ -63,7 +62,7 @@ export function CalendarMonth(props: CalendarMonthProps) {
             />
           ) : (
             <td key={i} />
-          ),
+          )
         )}
     </tr>
   ));
@@ -72,23 +71,16 @@ export function CalendarMonth(props: CalendarMonthProps) {
     <table
       {...gridProps}
       aria-hidden={dataAttr(isHeaderExpanded)}
-      className={slots?.grid({class: classNames?.grid})}
+      className={slots?.grid({ class: classNames?.grid })}
       data-slot="grid"
       tabIndex={-1}
     >
-      <thead
-        {...headerProps}
-        className={slots?.gridHeader({class: classNames?.gridHeader})}
-        data-slot="grid-header"
-      >
-        <tr
-          className={slots?.gridHeaderRow({class: classNames?.gridHeaderRow})}
-          data-slot="grid-header-row"
-        >
+      <thead {...headerProps} className={slots?.gridHeader({ class: classNames?.gridHeader })} data-slot="grid-header">
+        <tr className={slots?.gridHeaderRow({ class: classNames?.gridHeaderRow })} data-slot="grid-header-row">
           {weekDays.map((day, index) => (
             <th
               key={index}
-              className={slots?.gridHeaderCell({class: classNames?.gridHeaderCell})}
+              className={slots?.gridHeaderCell({ class: classNames?.gridHeaderCell })}
               data-slot="grid-header-cell"
             >
               <span>{day}</span>
@@ -99,7 +91,7 @@ export function CalendarMonth(props: CalendarMonthProps) {
       {disableAnimation ? (
         <tbody
           key={currentMonth}
-          className={slots?.gridBody({class: classNames?.gridBody})}
+          className={slots?.gridBody({ class: classNames?.gridBody })}
           data-slot="grid-body"
           tabIndex={isHeaderExpanded ? -1 : 0}
         >
@@ -109,7 +101,7 @@ export function CalendarMonth(props: CalendarMonthProps) {
         <m.tbody
           key={currentMonth}
           animate="center"
-          className={slots?.gridBody({class: classNames?.gridBody})}
+          className={slots?.gridBody({ class: classNames?.gridBody })}
           custom={direction}
           data-slot="grid-body"
           exit="exit"

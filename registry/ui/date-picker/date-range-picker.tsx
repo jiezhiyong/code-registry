@@ -1,19 +1,18 @@
-import type {DateValue} from "@internationalized/date";
-import type {ForwardedRef, ReactElement} from "react";
-import type {UseDateRangePickerProps} from "./use-date-range-picker";
+import type { DateValue } from "@internationalized/date";
+import type { ForwardedRef, ReactElement } from "react";
+import type { UseDateRangePickerProps } from "./use-date-range-picker";
 
-import {useMemo} from "react";
-import {cloneElement, isValidElement} from "react";
-import {forwardRef} from "@heroui/system";
-import {Button} from "@heroui/button";
-import {TimeInput, DateInputGroup} from "@heroui/date-input";
-import {FreeSoloPopover} from "@heroui/popover";
-import {RangeCalendar} from "@heroui/calendar";
-import {AnimatePresence} from "framer-motion";
-import {CalendarBoldIcon} from "@heroui/shared-icons";
+import { CalendarBoldIcon } from "@/lib/icons";
+import { forwardRef } from "@/lib/system";
+import { Button } from "@heroui/button";
+import { RangeCalendar } from "@heroui/calendar";
+import { DateInputGroup, TimeInput } from "@heroui/date-input";
+import { FreeSoloPopover } from "@heroui/popover";
+import { AnimatePresence } from "framer-motion";
+import { cloneElement, isValidElement, useMemo } from "react";
 
 import DateRangePickerField from "./date-range-picker-field";
-import {useDateRangePicker} from "./use-date-range-picker";
+import { useDateRangePicker } from "./use-date-range-picker";
 
 export interface Props<T extends DateValue> extends UseDateRangePickerProps<T> {
   /**
@@ -27,9 +26,9 @@ export type DateRangePickerProps<T extends DateValue = DateValue> = Props<T>;
 
 const DateRangePicker = forwardRef(function DateRangePicker<T extends DateValue>(
   props: DateRangePickerProps<T>,
-  ref: ForwardedRef<HTMLDivElement>,
+  ref: ForwardedRef<HTMLDivElement>
 ) {
-  const {selectorButtonPlacement = "end", ...otherProps} = props;
+  const { selectorButtonPlacement = "end", ...otherProps } = props;
 
   const {
     state,
@@ -53,7 +52,7 @@ const DateRangePicker = forwardRef(function DateRangePicker<T extends DateValue>
     getCalendarProps,
     CalendarTopContent,
     CalendarBottomContent,
-  } = useDateRangePicker<T>({...otherProps, ref});
+  } = useDateRangePicker<T>({ ...otherProps, ref });
 
   const selectorContent = isValidElement(selectorIcon) ? (
     cloneElement(selectorIcon, getSelectorIconProps())
@@ -65,8 +64,8 @@ const DateRangePicker = forwardRef(function DateRangePicker<T extends DateValue>
     if (isCalendarHeaderExpanded) return null;
 
     return showTimeField ? (
-      <div className={slots?.bottomContent({class: classNames?.bottomContent})}>
-        <div className={slots?.timeInputWrapper({class: classNames?.timeInputWrapper})}>
+      <div className={slots?.bottomContent({ class: classNames?.bottomContent })}>
+        <div className={slots?.timeInputWrapper({ class: classNames?.timeInputWrapper })}>
           <TimeInput {...getStartTimeInputProps()} />
           <TimeInput {...getEndTimeInputProps()} />
         </div>
@@ -85,11 +84,7 @@ const DateRangePicker = forwardRef(function DateRangePicker<T extends DateValue>
 
   const popoverContent = state.isOpen ? (
     <FreeSoloPopover {...getPopoverProps()} offset={20}>
-      <RangeCalendar
-        {...getCalendarProps()}
-        bottomContent={calendarBottomContent}
-        topContent={calendarTopContent}
-      />
+      <RangeCalendar {...getCalendarProps()} bottomContent={calendarBottomContent} topContent={calendarTopContent} />
     </FreeSoloPopover>
   ) : null;
 

@@ -1,17 +1,17 @@
-import type {HTMLHeroUIProps} from "@heroui/system";
-import type {ReactNode} from "react";
-import type {AriaToggleButtonProps} from "@react-aria/button";
+import type { HTMLHeroUIProps } from "@/lib/system";
+import type { AriaToggleButtonProps } from "@react-aria/button";
+import type { ReactNode } from "react";
 
-import {useToggleButton as useAriaToggleButton} from "@react-aria/button";
-import {forwardRef} from "@heroui/system";
-import {useDOMRef} from "@heroui/react-utils";
-import {clsx, dataAttr, mergeProps} from "@heroui/shared-utils";
-import {useToggleState} from "@react-stately/toggle";
-import {useFocusRing} from "@react-aria/focus";
-import {useHover} from "@react-aria/interactions";
-import {useMemo} from "react";
+import { forwardRef } from "@/lib/system";
+import { useDOMRef } from "@heroui/react-utils";
+import { clsx, dataAttr, mergeProps } from "@heroui/shared-utils";
+import { useToggleButton as useAriaToggleButton } from "@react-aria/button";
+import { useFocusRing } from "@react-aria/focus";
+import { useHover } from "@react-aria/interactions";
+import { useToggleState } from "@react-stately/toggle";
+import { useMemo } from "react";
 
-import {useNavbarContext} from "./navbar-context";
+import { useNavbarContext } from "./navbar-context";
 
 export interface Props extends Omit<HTMLHeroUIProps<"button">, keyof AriaToggleButtonProps> {
   /**
@@ -32,31 +32,23 @@ export interface Props extends Omit<HTMLHeroUIProps<"button">, keyof AriaToggleB
 export type NavbarMenuToggleProps = Props & AriaToggleButtonProps;
 
 const NavbarMenuToggle = forwardRef<"button", NavbarMenuToggleProps>((props, ref) => {
-  const {
-    as,
-    icon,
-    className,
-    onChange,
-    autoFocus,
-    srOnlyText: srOnlyTextProp,
-    ...otherProps
-  } = props;
+  const { as, icon, className, onChange, autoFocus, srOnlyText: srOnlyTextProp, ...otherProps } = props;
 
   const Component = as || "button";
   const domRef = useDOMRef(ref);
 
-  const {slots, classNames, isMenuOpen, setIsMenuOpen} = useNavbarContext();
+  const { slots, classNames, isMenuOpen, setIsMenuOpen } = useNavbarContext();
 
   const handleChange = (isOpen: boolean) => {
     onChange?.(isOpen);
     setIsMenuOpen(isOpen);
   };
 
-  const state = useToggleState({...otherProps, isSelected: isMenuOpen, onChange: handleChange});
+  const state = useToggleState({ ...otherProps, isSelected: isMenuOpen, onChange: handleChange });
 
-  const {buttonProps, isPressed} = useAriaToggleButton(props, state, domRef);
-  const {isFocusVisible, focusProps} = useFocusRing({autoFocus});
-  const {isHovered, hoverProps} = useHover({});
+  const { buttonProps, isPressed } = useAriaToggleButton(props, state, domRef);
+  const { isFocusVisible, focusProps } = useFocusRing({ autoFocus });
+  const { isHovered, hoverProps } = useHover({});
 
   const toggleStyles = clsx(classNames?.toggle, className);
 
@@ -65,7 +57,7 @@ const NavbarMenuToggle = forwardRef<"button", NavbarMenuToggleProps>((props, ref
       return icon(isMenuOpen ?? false);
     }
 
-    return icon || <span className={slots.toggleIcon({class: classNames?.toggleIcon})} />;
+    return icon || <span className={slots.toggleIcon({ class: classNames?.toggleIcon })} />;
   }, [icon, isMenuOpen, slots.toggleIcon, classNames?.toggleIcon]);
 
   const srOnlyText = useMemo(() => {
@@ -79,7 +71,7 @@ const NavbarMenuToggle = forwardRef<"button", NavbarMenuToggleProps>((props, ref
   return (
     <Component
       ref={domRef}
-      className={slots.toggle?.({class: toggleStyles})}
+      className={slots.toggle?.({ class: toggleStyles })}
       data-focus-visible={dataAttr(isFocusVisible)}
       data-hover={dataAttr(isHovered)}
       data-open={dataAttr(isMenuOpen)}

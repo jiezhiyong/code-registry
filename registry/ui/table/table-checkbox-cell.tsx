@@ -1,15 +1,15 @@
-import type {GridNode} from "@react-types/grid";
-import type {Key} from "react";
-import type {HTMLHeroUIProps} from "@heroui/system";
-import type {ValuesType} from "./use-table";
+import type { HTMLHeroUIProps } from "@/lib/system";
+import type { GridNode } from "@react-types/grid";
+import type { Key } from "react";
+import type { ValuesType } from "./use-table";
 
-import {forwardRef} from "@heroui/system";
-import {useDOMRef, filterDOMProps} from "@heroui/react-utils";
-import {clsx, dataAttr, mergeProps} from "@heroui/shared-utils";
-import {useTableCell, useTableSelectionCheckbox} from "@react-aria/table";
-import {useFocusRing} from "@react-aria/focus";
-import {Checkbox} from "@heroui/checkbox";
-import {VisuallyHidden} from "@react-aria/visually-hidden";
+import { forwardRef } from "@/lib/system";
+import { Checkbox } from "@heroui/checkbox";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
+import { clsx, dataAttr, mergeProps } from "@heroui/shared-utils";
+import { useFocusRing } from "@react-aria/focus";
+import { useTableCell, useTableSelectionCheckbox } from "@react-aria/table";
+import { VisuallyHidden } from "@react-aria/visually-hidden";
 
 // @internal
 export interface TableCheckboxCellProps<T = object> extends HTMLHeroUIProps<"td"> {
@@ -51,16 +51,16 @@ const TableCheckboxCell = forwardRef<"td", TableCheckboxCellProps>((props, ref) 
 
   const domRef = useDOMRef(ref);
 
-  const {gridCellProps} = useTableCell({node}, state, domRef);
-  const {isFocusVisible, focusProps} = useFocusRing();
+  const { gridCellProps } = useTableCell({ node }, state, domRef);
+  const { isFocusVisible, focusProps } = useFocusRing();
 
-  const {checkboxProps} = useTableSelectionCheckbox({key: node?.parentKey || node.key}, state);
+  const { checkboxProps } = useTableSelectionCheckbox({ key: node?.parentKey || node.key }, state);
 
   const tdStyles = clsx(classNames?.td, className, node.props?.className);
 
   const isSingleSelectionMode = selectionMode === "single";
 
-  const {onChange, ...otherCheckboxProps} = checkboxProps;
+  const { onChange, ...otherCheckboxProps } = checkboxProps;
   const isRowSelected = state.selectionManager.isSelected(rowKey);
 
   return (
@@ -74,9 +74,9 @@ const TableCheckboxCell = forwardRef<"td", TableCheckboxCellProps>((props, ref) 
         filterDOMProps(node.props, {
           enabled: shouldFilterDOMProps,
         }),
-        otherProps,
+        otherProps
       )}
-      className={slots.td?.({class: tdStyles})}
+      className={slots.td?.({ class: tdStyles })}
     >
       {isSingleSelectionMode ? (
         <VisuallyHidden>{checkboxProps["aria-label"]}</VisuallyHidden>

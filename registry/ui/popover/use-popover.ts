@@ -1,25 +1,25 @@
-import type {PopoverVariantProps, SlotsToClasses, PopoverSlots} from "@heroui/theme";
-import type {HTMLMotionProps} from "framer-motion";
-import type {PressEvent} from "@react-types/shared";
-import type {RefObject, Ref} from "react";
-import type {ReactRef} from "@heroui/react-utils";
-import type {OverlayTriggerState} from "@react-stately/overlays";
-import type {OverlayTriggerProps} from "@react-types/overlays";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {AriaDialogProps} from "@react-aria/dialog";
-import type {ReactAriaPopoverProps} from "./use-aria-popover";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { PopoverSlots, PopoverVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { AriaDialogProps } from "@react-aria/dialog";
+import type { OverlayTriggerState } from "@react-stately/overlays";
+import type { OverlayTriggerProps } from "@react-types/overlays";
+import type { PressEvent } from "@react-types/shared";
+import type { HTMLMotionProps } from "framer-motion";
+import type { Ref, RefObject } from "react";
+import type { ReactAriaPopoverProps } from "./use-aria-popover";
 
-import {useDOMRef} from "@heroui/react-utils";
-import {useOverlayTriggerState} from "@react-stately/overlays";
-import {useFocusRing} from "@react-aria/focus";
-import {useOverlayTrigger, usePreventScroll} from "@react-aria/overlays";
-import {getShouldUseAxisPlacement, getArrowPlacement} from "@heroui/aria-utils";
-import {mapPropsVariants, useProviderContext} from "@heroui/system";
-import {popover} from "@heroui/theme";
-import {clsx, dataAttr, objectToDeps, mergeProps, mergeRefs} from "@heroui/shared-utils";
-import {useMemo, useCallback, useRef} from "react";
+import { getArrowPlacement, getShouldUseAxisPlacement } from "@/lib/aria";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { popover } from "@/lib/theme";
+import { useDOMRef } from "@heroui/react-utils";
+import { clsx, dataAttr, mergeProps, mergeRefs, objectToDeps } from "@heroui/shared-utils";
+import { useFocusRing } from "@react-aria/focus";
+import { useOverlayTrigger, usePreventScroll } from "@react-aria/overlays";
+import { useOverlayTriggerState } from "@react-stately/overlays";
+import { useCallback, useMemo, useRef } from "react";
 
-import {useReactAriaPopover} from "./use-aria-popover";
+import { useReactAriaPopover } from "./use-aria-popover";
 
 export interface Props extends HTMLHeroUIProps<"div"> {
   /**
@@ -188,9 +188,9 @@ export function usePopover(originalProps: UsePopoverProps) {
     return getShouldUseAxisPlacement(ariaPlacement, placementProp) ? ariaPlacement : placementProp;
   }, [ariaPlacement, placementProp]);
 
-  const {triggerProps} = useOverlayTrigger({type: triggerType}, state, triggerRef);
+  const { triggerProps } = useOverlayTrigger({ type: triggerType }, state, triggerRef);
 
-  const {isFocusVisible, isFocused, focusProps} = useFocusRing();
+  const { isFocusVisible, isFocused, focusProps } = useFocusRing();
 
   const slots = useMemo(
     () =>
@@ -228,7 +228,7 @@ export function usePopover(originalProps: UsePopoverProps) {
     "data-focus-visible": dataAttr(isFocusVisible),
     "data-placement": ariaPlacement ? getArrowPlacement(ariaPlacement, placementProp) : undefined,
     ...mergeProps(focusProps, dialogPropsProp, props),
-    className: slots.base({class: clsx(baseStyles)}),
+    className: slots.base({ class: clsx(baseStyles) }),
     style: {
       // this prevent the dialog to have a default outline
       outline: "none",
@@ -242,7 +242,7 @@ export function usePopover(originalProps: UsePopoverProps) {
       "data-open": dataAttr(state.isOpen),
       "data-arrow": dataAttr(showArrow),
       "data-placement": ariaPlacement ? getArrowPlacement(ariaPlacement, placementProp) : undefined,
-      className: slots.content({class: clsx(classNames?.content, props.className)}),
+      className: slots.content({ class: clsx(classNames?.content, props.className) }),
     }),
     [slots, state.isOpen, showArrow, placement, placementProp, classNames, ariaPlacement],
   );
@@ -276,11 +276,11 @@ export function usePopover(originalProps: UsePopoverProps) {
 
   const getTriggerProps = useCallback<PropGetter>(
     (props = {}, _ref: Ref<any> | null | undefined = null) => {
-      const {isDisabled, ...otherProps} = props;
+      const { isDisabled, ...otherProps } = props;
 
       return {
         "data-slot": "trigger",
-        ...mergeProps({"aria-haspopup": "dialog"}, triggerProps, otherProps),
+        ...mergeProps({ "aria-haspopup": "dialog" }, triggerProps, otherProps),
         onPress,
         isDisabled,
         className: slots.trigger({
@@ -298,7 +298,7 @@ export function usePopover(originalProps: UsePopoverProps) {
   const getBackdropProps = useCallback<PropGetter>(
     (props = {}) => ({
       "data-slot": "backdrop",
-      className: slots.backdrop({class: classNames?.backdrop}),
+      className: slots.backdrop({ class: classNames?.backdrop }),
       onClick: (e) => {
         if (!wasTriggerPressedRef.current) {
           e.preventDefault();

@@ -1,7 +1,7 @@
-import type {ItemProps} from "@heroui/aria-utils";
-import type {ReactNode, RefObject} from "react";
+import type { ItemProps } from "@/lib/aria";
+import type { ReactNode, RefObject } from "react";
 
-import {BaseItem} from "@heroui/aria-utils";
+import { BaseItem } from "@/lib/aria";
 interface Props<T extends object = {}> extends Omit<ItemProps<"button", T>, "children" | "title"> {
   /**
    * The content of the component.

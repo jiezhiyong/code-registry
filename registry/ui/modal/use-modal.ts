@@ -1,20 +1,20 @@
-import type {ModalVariantProps, SlotsToClasses, ModalSlots} from "@heroui/theme";
-import type {HTMLMotionProps} from "framer-motion";
-import type {AriaModalOverlayProps} from "@react-aria/overlays";
-import type {ReactNode} from "react";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {ReactRef} from "@heroui/react-utils";
-import type {OverlayTriggerProps} from "@react-stately/overlays";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { ModalSlots, ModalVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { AriaModalOverlayProps } from "@react-aria/overlays";
+import type { OverlayTriggerProps } from "@react-stately/overlays";
+import type { HTMLMotionProps } from "framer-motion";
+import type { ReactNode } from "react";
 
-import {useAriaModalOverlay} from "@heroui/use-aria-modal-overlay";
-import {useCallback, useId, useRef, useState, useMemo} from "react";
-import {modal} from "@heroui/theme";
-import {mapPropsVariants, useProviderContext} from "@heroui/system";
-import {useAriaButton} from "@heroui/use-aria-button";
-import {useFocusRing} from "@react-aria/focus";
-import {clsx, dataAttr, objectToDeps, mergeRefs, mergeProps} from "@heroui/shared-utils";
-import {useDOMRef} from "@heroui/react-utils";
-import {useOverlayTriggerState} from "@react-stately/overlays";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { modal } from "@/lib/theme";
+import { useDOMRef } from "@heroui/react-utils";
+import { clsx, dataAttr, mergeProps, mergeRefs, objectToDeps } from "@heroui/shared-utils";
+import { useAriaButton } from "@heroui/use-aria-button";
+import { useAriaModalOverlay } from "@heroui/use-aria-modal-overlay";
+import { useFocusRing } from "@react-aria/focus";
+import { useOverlayTriggerState } from "@react-stately/overlays";
+import { useCallback, useId, useMemo, useRef, useState } from "react";
 
 interface Props extends HTMLHeroUIProps<"section"> {
   /**
@@ -133,7 +133,7 @@ export function useModal(originalProps: UseModalProps) {
     },
   });
 
-  const {modalProps, underlayProps} = useAriaModalOverlay(
+  const { modalProps, underlayProps } = useAriaModalOverlay(
     {
       isDismissable,
       shouldBlockScroll,
@@ -143,8 +143,8 @@ export function useModal(originalProps: UseModalProps) {
     domRef,
   );
 
-  const {buttonProps: closeButtonProps} = useAriaButton({onPress: state.close}, closeButtonRef);
-  const {isFocusVisible: isCloseButtonFocusVisible, focusProps: closeButtonFocusProps} =
+  const { buttonProps: closeButtonProps } = useAriaButton({ onPress: state.close }, closeButtonRef);
+  const { isFocusVisible: isCloseButtonFocusVisible, focusProps: closeButtonFocusProps } =
     useFocusRing();
 
   const baseStyles = clsx(classNames?.base, className);
@@ -161,7 +161,7 @@ export function useModal(originalProps: UseModalProps) {
   const getDialogProps: PropGetter = (props = {}, ref = null) => ({
     ref: mergeRefs(ref, domRef),
     ...mergeProps(modalProps, otherProps, props),
-    className: slots.base({class: clsx(baseStyles, props.className)}),
+    className: slots.base({ class: clsx(baseStyles, props.className) }),
     id: dialogId,
     "data-open": dataAttr(state.isOpen),
     "data-dismissable": dataAttr(isDismissable),
@@ -173,7 +173,7 @@ export function useModal(originalProps: UseModalProps) {
 
   const getBackdropProps = useCallback<PropGetter>(
     (props = {}) => ({
-      className: slots.backdrop({class: classNames?.backdrop}),
+      className: slots.backdrop({ class: classNames?.backdrop }),
       ...underlayProps,
       ...props,
     }),
@@ -186,7 +186,7 @@ export function useModal(originalProps: UseModalProps) {
       tabIndex: 0,
       "aria-label": "Close",
       "data-focus-visible": dataAttr(isCloseButtonFocusVisible),
-      className: slots.closeButton({class: classNames?.closeButton}),
+      className: slots.closeButton({ class: classNames?.closeButton }),
       ...mergeProps(closeButtonProps, closeButtonFocusProps),
     };
   };

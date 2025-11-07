@@ -1,23 +1,19 @@
-import type {DateInputReturnType, DateInputSlots, SlotsToClasses} from "@heroui/theme";
-import type {AriaDatePickerProps} from "@react-types/datepicker";
-import type {HTMLHeroUIProps} from "@heroui/system";
-import type {DateInputProps} from "@heroui/date-input";
-import type {DateValue} from "@react-types/datepicker";
-import type {ForwardedRef, ReactElement} from "react";
+import type { HTMLHeroUIProps } from "@/lib/system";
+import type { DateInputReturnType, DateInputSlots, SlotsToClasses } from "@/lib/theme";
+import type { DateInputProps } from "@heroui/date-input";
+import type { AriaDatePickerProps, DateValue } from "@react-types/datepicker";
+import type { ForwardedRef, ReactElement } from "react";
 
-import {createCalendar} from "@internationalized/date";
-import {forwardRef, useRef} from "react";
-import {useDateField as useAriaDateField} from "@react-aria/datepicker";
-import {useDateFieldState} from "@react-stately/datepicker";
-import {DateInputSegment} from "@heroui/date-input";
-import {filterDOMProps, useDOMRef} from "@heroui/react-utils";
-import {useLocale} from "@react-aria/i18n";
-import {mergeProps} from "@heroui/shared-utils";
+import { DateInputSegment } from "@heroui/date-input";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
+import { mergeProps } from "@heroui/shared-utils";
+import { createCalendar } from "@internationalized/date";
+import { useDateField as useAriaDateField } from "@react-aria/datepicker";
+import { useLocale } from "@react-aria/i18n";
+import { useDateFieldState } from "@react-stately/datepicker";
+import { forwardRef, useRef } from "react";
 
-type HeroUIBaseProps<T extends DateValue> = Omit<
-  HTMLHeroUIProps<"div">,
-  keyof AriaDatePickerProps<T> | "onChange"
->;
+type HeroUIBaseProps<T extends DateValue> = Omit<HTMLHeroUIProps<"div">, keyof AriaDatePickerProps<T> | "onChange">;
 
 export interface Props<T extends DateValue>
   extends HeroUIBaseProps<T>,
@@ -33,15 +29,15 @@ export type DateRangePickerFieldProps<T extends DateValue = DateValue> = Props<T
 
 const DateRangePickerField = forwardRef(function DateRangePickerField<T extends DateValue>(
   props: DateRangePickerFieldProps<T>,
-  ref: ForwardedRef<HTMLDivElement>,
+  ref: ForwardedRef<HTMLDivElement>
 ) {
-  const {as, slots, createCalendar: createCalendarProp, classNames, ...otherProps} = props;
+  const { as, slots, createCalendar: createCalendarProp, classNames, ...otherProps } = props;
 
   const Component = as || "div";
 
   const domRef = useDOMRef(ref);
 
-  const {locale} = useLocale();
+  const { locale } = useLocale();
 
   let state = useDateFieldState({
     ...otherProps,
@@ -58,7 +54,7 @@ const DateRangePickerField = forwardRef(function DateRangePickerField<T extends 
     fieldProps,
     inputProps,
     isInvalid: ariaIsInvalid,
-  } = useAriaDateField({...otherProps, inputRef}, state, domRef);
+  } = useAriaDateField({ ...otherProps, inputRef }, state, domRef);
 
   const isInvalid = props.isInvalid || ariaIsInvalid;
 
@@ -67,13 +63,7 @@ const DateRangePickerField = forwardRef(function DateRangePickerField<T extends 
   return (
     <Component {...mergeProps(fieldProps, filterDOMProps(otherProps))} ref={domRef}>
       {state.segments.map((segment, i) => (
-        <DateInputSegment
-          key={i}
-          classNames={classNames}
-          segment={segment}
-          slots={slots}
-          state={state}
-        />
+        <DateInputSegment key={i} classNames={classNames} segment={segment} slots={slots} state={state} />
       ))}
       <input {...inputProps} ref={inputRef} />
     </Component>

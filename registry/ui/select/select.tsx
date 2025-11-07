@@ -1,19 +1,18 @@
-import type {ForwardedRef, ReactElement} from "react";
-import type {UseSelectProps} from "./use-select";
+import type { ForwardedRef, ReactElement } from "react";
+import type { UseSelectProps } from "./use-select";
 
-import {Listbox} from "@heroui/listbox";
-import {FreeSoloPopover} from "@heroui/popover";
-import {ChevronDownIcon, CloseFilledIcon} from "@heroui/shared-icons";
-import {Spinner} from "@heroui/spinner";
-import {useMemo} from "react";
-import {forwardRef} from "@heroui/system";
-import {ScrollShadow} from "@heroui/scroll-shadow";
-import {cloneElement} from "react";
-import {VisuallyHidden} from "@react-aria/visually-hidden";
-import {AnimatePresence} from "framer-motion";
+import { ChevronDownIcon, CloseFilledIcon } from "@/lib/icons";
+import { forwardRef } from "@/lib/system";
+import { Listbox } from "@heroui/listbox";
+import { FreeSoloPopover } from "@heroui/popover";
+import { ScrollShadow } from "@heroui/scroll-shadow";
+import { Spinner } from "@heroui/spinner";
+import { VisuallyHidden } from "@react-aria/visually-hidden";
+import { AnimatePresence } from "framer-motion";
+import { cloneElement, useMemo } from "react";
 
-import {HiddenSelect} from "./hidden-select";
-import {useSelect} from "./use-select";
+import { HiddenSelect } from "./hidden-select";
+import { useSelect } from "./use-select";
 
 interface Props<T> extends UseSelectProps<T> {}
 
@@ -21,7 +20,7 @@ export type SelectProps<T extends object = object> = Props<T>;
 
 const Select = forwardRef(function Select<T extends object>(
   props: SelectProps<T>,
-  ref: ForwardedRef<HTMLSelectElement>,
+  ref: ForwardedRef<HTMLSelectElement>
 ) {
   const {
     Component,
@@ -59,7 +58,7 @@ const Select = forwardRef(function Select<T extends object>(
     getClearButtonProps,
     getEndWrapperProps,
     getEndContentProps,
-  } = useSelect<T>({...props, ref});
+  } = useSelect<T>({ ...props, ref });
 
   const labelContent = label ? <label {...getLabelProps()}>{label}</label> : null;
 
@@ -148,7 +147,7 @@ const Select = forwardRef(function Select<T extends object>(
           </ScrollShadow>
         </FreeSoloPopover>
       ) : null,
-    [state.isOpen, getPopoverProps, state, triggerRef, getListboxWrapperProps, getListboxProps],
+    [state.isOpen, getPopoverProps, state, triggerRef, getListboxWrapperProps, getListboxProps]
   );
 
   return (
@@ -161,9 +160,7 @@ const Select = forwardRef(function Select<T extends object>(
           <div {...getInnerWrapperProps()}>
             {startContent}
             <span {...getValueProps()}>{renderSelectedItem}</span>
-            {endContent && state.selectedItems && (
-              <VisuallyHidden elementType="span">,</VisuallyHidden>
-            )}
+            {endContent && state.selectedItems && <VisuallyHidden elementType="span">,</VisuallyHidden>}
             {end}
           </div>
           {renderIndicator}

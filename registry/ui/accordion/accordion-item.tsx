@@ -1,18 +1,18 @@
-import type {Variants} from "framer-motion";
-import type {ReactNode} from "react";
-import type {UseAccordionItemProps} from "./use-accordion-item";
+import type { Variants } from "framer-motion";
+import type { ReactNode } from "react";
+import type { UseAccordionItemProps } from "./use-accordion-item";
 
-import {forwardRef} from "@heroui/system";
-import {useMemo} from "react";
-import {ChevronIcon} from "@heroui/shared-icons";
-import {AnimatePresence, LazyMotion, m, useWillChange} from "framer-motion";
-import {TRANSITION_VARIANTS} from "@heroui/framer-utils";
+import { TRANSITION_VARIANTS } from "@/lib/framer";
+import { ChevronIcon } from "@/lib/icons";
+import { forwardRef } from "@/lib/system";
+import { AnimatePresence, LazyMotion, m, useWillChange } from "framer-motion";
+import { useMemo } from "react";
 
-import {useAccordionItem} from "./use-accordion-item";
+import { useAccordionItem } from "./use-accordion-item";
 
 export interface AccordionItemProps extends UseAccordionItemProps {}
 
-const domAnimation = () => import("@heroui/dom-animation").then((res) => res.default);
+const domAnimation = () => import("@/lib/dom-animation").then((res) => res.default);
 
 const AccordionItem = forwardRef<"button", AccordionItemProps>((props, ref) => {
   const {
@@ -38,13 +38,13 @@ const AccordionItem = forwardRef<"button", AccordionItemProps>((props, ref) => {
     getSubtitleProps,
     getContentProps,
     getIndicatorProps,
-  } = useAccordionItem({...props, ref});
+  } = useAccordionItem({ ...props, ref });
 
   const willChange = useWillChange();
 
   const indicatorContent = useMemo<ReactNode>(() => {
     if (typeof indicator === "function") {
-      return indicator({indicator: <ChevronIcon />, isOpen, isDisabled});
+      return indicator({ indicator: <ChevronIcon />, isOpen, isDisabled });
     }
 
     if (indicator) return indicator;
@@ -64,8 +64,8 @@ const AccordionItem = forwardRef<"button", AccordionItemProps>((props, ref) => {
     }
 
     const transitionVariants: Variants = {
-      exit: {...TRANSITION_VARIANTS.collapse.exit, overflowY: "hidden"},
-      enter: {...TRANSITION_VARIANTS.collapse.enter, overflowY: "unset"},
+      exit: { ...TRANSITION_VARIANTS.collapse.exit, overflowY: "hidden" },
+      enter: { ...TRANSITION_VARIANTS.collapse.enter, overflowY: "unset" },
     };
 
     return keepContentMounted ? (
@@ -75,7 +75,7 @@ const AccordionItem = forwardRef<"button", AccordionItemProps>((props, ref) => {
           animate={isOpen ? "enter" : "exit"}
           exit="exit"
           initial="exit"
-          style={{willChange}}
+          style={{ willChange }}
           variants={transitionVariants}
           onKeyDown={(e) => {
             e.stopPropagation();
@@ -94,7 +94,7 @@ const AccordionItem = forwardRef<"button", AccordionItemProps>((props, ref) => {
               animate="enter"
               exit="exit"
               initial="exit"
-              style={{willChange}}
+              style={{ willChange }}
               variants={transitionVariants}
               onKeyDown={(e) => {
                 e.stopPropagation();
@@ -114,17 +114,13 @@ const AccordionItem = forwardRef<"button", AccordionItemProps>((props, ref) => {
       <HeadingComponent {...getHeadingProps()}>
         <button {...getButtonProps()}>
           {startContent && (
-            <div className={slots.startContent({class: classNames?.startContent})}>
-              {startContent}
-            </div>
+            <div className={slots.startContent({ class: classNames?.startContent })}>{startContent}</div>
           )}
-          <div className={slots.titleWrapper({class: classNames?.titleWrapper})}>
+          <div className={slots.titleWrapper({ class: classNames?.titleWrapper })}>
             {title && <span {...getTitleProps()}>{title}</span>}
             {subtitle && <span {...getSubtitleProps()}>{subtitle}</span>}
           </div>
-          {!hideIndicator && indicatorComponent && (
-            <span {...getIndicatorProps()}>{indicatorComponent}</span>
-          )}
+          {!hideIndicator && indicatorComponent && <span {...getIndicatorProps()}>{indicatorComponent}</span>}
         </button>
       </HeadingComponent>
       {content}

@@ -1,14 +1,14 @@
-import type {ReactNode} from "react";
-import type {UseSnippetProps} from "./use-snippet";
+import type { ReactNode } from "react";
+import type { UseSnippetProps } from "./use-snippet";
 
-import {useCallback, useMemo, cloneElement} from "react";
-import {forwardRef} from "@heroui/system";
-import {Tooltip} from "@heroui/tooltip";
-import {CopyLinearIcon, CheckLinearIcon} from "@heroui/shared-icons";
-import {Button} from "@heroui/button";
-import {objectToDeps} from "@heroui/shared-utils";
+import { CheckLinearIcon, CopyLinearIcon } from "@/lib/icons";
+import { forwardRef } from "@/lib/system";
+import { Button } from "@heroui/button";
+import { objectToDeps } from "@heroui/shared-utils";
+import { Tooltip } from "@heroui/tooltip";
+import { cloneElement, useCallback, useMemo } from "react";
 
-import {useSnippet} from "./use-snippet";
+import { useSnippet } from "./use-snippet";
 
 export interface SnippetProps extends UseSnippetProps {}
 
@@ -33,15 +33,15 @@ const Snippet = forwardRef<"div", SnippetProps>((props, ref) => {
     onCopy,
     getSnippetProps,
     getCopyButtonProps,
-  } = useSnippet({...props, ref});
+  } = useSnippet({ ...props, ref });
 
   const TooltipContent = useCallback(
-    ({children}: {children?: ReactNode}) => (
+    ({ children }: { children?: ReactNode }) => (
       <Tooltip {...tooltipProps} isDisabled={copied || tooltipProps.isDisabled}>
         {children}
       </Tooltip>
     ),
-    [objectToDeps(tooltipProps)],
+    [objectToDeps(tooltipProps)]
   );
 
   const contents = useMemo(() => {
@@ -49,8 +49,8 @@ const Snippet = forwardRef<"div", SnippetProps>((props, ref) => {
       return null;
     }
 
-    const clonedCheckIcon = checkIcon && cloneElement(checkIcon, {className: slots.checkIcon()});
-    const clonedCopyIcon = copyIcon && cloneElement(copyIcon, {className: slots.copyIcon()});
+    const clonedCheckIcon = checkIcon && cloneElement(checkIcon, { className: slots.checkIcon() });
+    const clonedCopyIcon = copyIcon && cloneElement(copyIcon, { className: slots.copyIcon() });
 
     const copyButton = (
       <Button {...getCopyButtonProps()}>
@@ -80,12 +80,10 @@ const Snippet = forwardRef<"div", SnippetProps>((props, ref) => {
   const preContent = useMemo(() => {
     if (isMultiLine && children && Array.isArray(children)) {
       return (
-        <div className={slots.content({class: classNames?.content})}>
+        <div className={slots.content({ class: classNames?.content })}>
           {children.map((t, index) => (
-            <pre key={`${index}-${t}`} className={slots.pre({class: classNames?.pre})}>
-              {!hideSymbol && (
-                <span className={slots.symbol({class: classNames?.symbol})}>{symbolBefore}</span>
-              )}
+            <pre key={`${index}-${t}`} className={slots.pre({ class: classNames?.pre })}>
+              {!hideSymbol && <span className={slots.symbol({ class: classNames?.symbol })}>{symbolBefore}</span>}
               {t}
             </pre>
           ))}
@@ -94,10 +92,8 @@ const Snippet = forwardRef<"div", SnippetProps>((props, ref) => {
     }
 
     return (
-      <pre ref={preRef} className={slots.pre({class: classNames?.pre})}>
-        {!hideSymbol && (
-          <span className={slots.symbol({class: classNames?.symbol})}>{symbolBefore}</span>
-        )}
+      <pre ref={preRef} className={slots.pre({ class: classNames?.pre })}>
+        {!hideSymbol && <span className={slots.symbol({ class: classNames?.symbol })}>{symbolBefore}</span>}
         {children}
       </pre>
     );

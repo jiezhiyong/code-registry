@@ -1,16 +1,16 @@
-import type {ChipVariantProps, ChipSlots, SlotsToClasses} from "@heroui/theme";
-import type {ReactNode} from "react";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {ReactRef} from "@heroui/react-utils";
-import type {PressEvent} from "@react-types/shared";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { ChipSlots, ChipVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { PressEvent } from "@react-types/shared";
+import type { ReactNode } from "react";
 
-import {mapPropsVariants} from "@heroui/system";
-import {usePress} from "@react-aria/interactions";
-import {useFocusRing} from "@react-aria/focus";
-import {chip} from "@heroui/theme";
-import {useDOMRef} from "@heroui/react-utils";
-import {clsx, objectToDeps, mergeProps} from "@heroui/shared-utils";
-import {useMemo, isValidElement, cloneElement} from "react";
+import { mapPropsVariants } from "@/lib/system";
+import { chip } from "@/lib/theme";
+import { useDOMRef } from "@heroui/react-utils";
+import { clsx, mergeProps, objectToDeps } from "@heroui/shared-utils";
+import { useFocusRing } from "@react-aria/focus";
+import { usePress } from "@react-aria/interactions";
+import { cloneElement, isValidElement, useMemo } from "react";
 
 export interface UseChipProps extends HTMLHeroUIProps, ChipVariantProps {
   /**
@@ -82,7 +82,7 @@ export function useChip(originalProps: UseChipProps) {
   const isCloseable = !!onClose;
   const isDotVariant = originalProps.variant === "dot";
 
-  const {focusProps: closeFocusProps, isFocusVisible: isCloseButtonFocusVisible} = useFocusRing();
+  const { focusProps: closeFocusProps, isFocusVisible: isCloseButtonFocusVisible } = useFocusRing();
 
   const isOneChar = useMemo(
     () => typeof children === "string" && children?.length === 1,
@@ -112,7 +112,7 @@ export function useChip(originalProps: UseChipProps) {
     ],
   );
 
-  const {pressProps: closePressProps} = usePress({
+  const { pressProps: closePressProps } = usePress({
     isDisabled: !!originalProps?.isDisabled,
     onPress: onClose,
   });
@@ -120,7 +120,7 @@ export function useChip(originalProps: UseChipProps) {
   const getChipProps: PropGetter = () => {
     return {
       ref: domRef,
-      className: slots.base({class: baseStyles}),
+      className: slots.base({ class: baseStyles }),
       ...otherProps,
     };
   };
@@ -129,7 +129,7 @@ export function useChip(originalProps: UseChipProps) {
     return {
       role: "button",
       tabIndex: 0,
-      className: slots.closeButton({class: classNames?.closeButton}),
+      className: slots.closeButton({ class: classNames?.closeButton }),
       "aria-label": "close chip",
       ...mergeProps(closePressProps, closeFocusProps),
     };
@@ -140,16 +140,16 @@ export function useChip(originalProps: UseChipProps) {
 
     return cloneElement(avatar, {
       // @ts-ignore
-      className: slots.avatar({class: classNames?.avatar}),
+      className: slots.avatar({ class: classNames?.avatar }),
     });
   };
 
   const getContentClone = (content: ReactNode) =>
     isValidElement(content)
       ? cloneElement(content, {
-          // @ts-ignore
-          className: clsx("max-h-[80%]", content.props.className),
-        })
+        // @ts-ignore
+        className: clsx("max-h-[80%]", content.props.className),
+      })
       : null;
 
   return {

@@ -1,4 +1,4 @@
-import type {IconSvgProps} from "@heroui/shared-icons";
+import type { IconSvgProps } from "@/lib/icons";
 
 export const ChevronDownIcon = (props: IconSvgProps) => (
   <svg
@@ -11,12 +11,6 @@ export const ChevronDownIcon = (props: IconSvgProps) => (
     width="1em"
     {...props}
   >
-    <path
-      d="M19 9L12 15L5 9"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.5"
-    />
+    <path d="M19 9L12 15L5 9" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
   </svg>
 );

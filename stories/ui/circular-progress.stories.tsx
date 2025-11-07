@@ -1,12 +1,12 @@
-import type {Meta} from "@storybook/react";
-import type {CircularProgressProps} from "../src";
+import type { Meta } from "@storybook/react";
+import type { CircularProgressProps } from "../src";
 
+import { circularProgress } from "@/lib/theme";
+import { Card, CardBody, CardFooter } from "@heroui/card";
+import { Chip } from "@heroui/chip";
 import React from "react";
-import {circularProgress} from "@heroui/theme";
-import {Card, CardBody, CardFooter} from "@heroui/card";
-import {Chip} from "@heroui/chip";
 
-import {CircularProgress} from "../src";
+import { CircularProgress } from "../src";
 
 export default {
   title: "Components/CircularProgress",
@@ -111,7 +111,7 @@ export const WithValueFormatting = {
     value: 70,
     color: "warning",
     showValueLabel: true,
-    formatOptions: {style: "unit", unit: "kilometer"},
+    formatOptions: { style: "unit", unit: "kilometer" },
   },
 };
 

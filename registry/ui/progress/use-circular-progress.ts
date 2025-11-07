@@ -1,20 +1,19 @@
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type {
+  CircularProgressSlots,
   CircularProgressVariantProps,
   SlotsToClasses,
-  CircularProgressSlots,
-} from "@heroui/theme";
-import type {PropGetter} from "@heroui/system";
-import type {AriaProgressBarProps} from "@react-types/progress";
-import type {HTMLHeroUIProps} from "@heroui/system";
-import type {ReactRef} from "@heroui/react-utils";
+} from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { AriaProgressBarProps } from "@react-types/progress";
 
-import {mapPropsVariants, useProviderContext} from "@heroui/system";
-import {circularProgress} from "@heroui/theme";
-import {useDOMRef} from "@heroui/react-utils";
-import {clampPercentage, clsx, dataAttr, objectToDeps, mergeProps} from "@heroui/shared-utils";
-import {useMemo, useCallback} from "react";
-import {useIsMounted} from "@heroui/use-is-mounted";
-import {useProgressBar as useAriaProgress} from "@react-aria/progress";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { circularProgress } from "@/lib/theme";
+import { useDOMRef } from "@heroui/react-utils";
+import { clampPercentage, clsx, dataAttr, mergeProps, objectToDeps } from "@heroui/shared-utils";
+import { useIsMounted } from "@heroui/use-is-mounted";
+import { useProgressBar as useAriaProgress } from "@react-aria/progress";
+import { useCallback, useMemo } from "react";
 
 export interface Props extends HTMLHeroUIProps<"div"> {
   /**
@@ -90,7 +89,7 @@ export function useCircularProgress(originalProps: UseCircularProgressProps) {
   const disableAnimation =
     originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
-  const {progressBarProps, labelProps} = useAriaProgress({
+  const { progressBarProps, labelProps } = useAriaProgress({
     id,
     label,
     value,
@@ -140,7 +139,7 @@ export function useCircularProgress(originalProps: UseCircularProgressProps) {
       ref: domRef,
       "data-indeterminate": dataAttr(isIndeterminate),
       "data-disabled": dataAttr(originalProps.isDisabled),
-      className: slots.base({class: baseStyles}),
+      className: slots.base({ class: baseStyles }),
       ...mergeProps(progressBarProps, otherProps, props),
     }),
     [
@@ -156,7 +155,7 @@ export function useCircularProgress(originalProps: UseCircularProgressProps) {
 
   const getLabelProps = useCallback<PropGetter>(
     (props = {}) => ({
-      className: slots.label({class: classNames?.label}),
+      className: slots.label({ class: classNames?.label }),
       ...mergeProps(labelProps, props),
     }),
     [slots, classNames, labelProps],
@@ -167,7 +166,7 @@ export function useCircularProgress(originalProps: UseCircularProgressProps) {
       viewBox: "0 0 32 32",
       fill: "none",
       strokeWidth,
-      className: slots.svg({class: classNames?.svg}),
+      className: slots.svg({ class: classNames?.svg }),
       ...props,
     }),
     [strokeWidth, slots, classNames],
@@ -183,7 +182,7 @@ export function useCircularProgress(originalProps: UseCircularProgressProps) {
       strokeDashoffset: offset,
       transform: "rotate(-90 16 16)",
       strokeLinecap: "round",
-      className: slots.indicator({class: classNames?.indicator}),
+      className: slots.indicator({ class: classNames?.indicator }),
       ...props,
     }),
     [slots, classNames, offset, circumference, radius],
@@ -199,7 +198,7 @@ export function useCircularProgress(originalProps: UseCircularProgressProps) {
       strokeDashoffset: 0,
       transform: "rotate(-90 16 16)",
       strokeLinecap: "round",
-      className: slots.track({class: classNames?.track}),
+      className: slots.track({ class: classNames?.track }),
       ...props,
     }),
     [slots, classNames, circumference, radius],

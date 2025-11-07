@@ -1,23 +1,21 @@
-import type {PaginationSlots, PaginationVariantProps, SlotsToClasses} from "@heroui/theme";
-import type {Key, ReactNode, Ref} from "react";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {Timer} from "@heroui/shared-utils";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { PaginationSlots, PaginationVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { Timer } from "@heroui/shared-utils";
 import type {
-  UsePaginationProps as UseBasePaginationProps,
   PaginationItemValue,
+  UsePaginationProps as UseBasePaginationProps,
 } from "@heroui/use-pagination";
-import type {PressEvent} from "@react-types/shared";
+import type { PressEvent } from "@react-types/shared";
+import type { Key, ReactNode, Ref } from "react";
 
-import {objectToDeps} from "@heroui/shared-utils";
-import {PaginationItemType} from "@heroui/use-pagination";
-import {useEffect, useRef, useMemo} from "react";
-import {mapPropsVariants, useProviderContext} from "@heroui/system";
-import {usePagination as useBasePagination} from "@heroui/use-pagination";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { pagination } from "@/lib/theme";
+import { useDOMRef } from "@heroui/react-utils";
+import { clsx, dataAttr, objectToDeps } from "@heroui/shared-utils";
+import { useIntersectionObserver } from "@heroui/use-intersection-observer";
+import { PaginationItemType, usePagination as useBasePagination } from "@heroui/use-pagination";
+import { useEffect, useMemo, useRef } from "react";
 import scrollIntoView from "scroll-into-view-if-needed";
-import {pagination} from "@heroui/theme";
-import {useDOMRef} from "@heroui/react-utils";
-import {clsx, dataAttr} from "@heroui/shared-utils";
-import {useIntersectionObserver} from "@heroui/use-intersection-observer";
 
 export type PaginationItemRenderProps = {
   /**
@@ -238,7 +236,7 @@ export function usePagination(originalProps: UsePaginationProps) {
     });
 
     // get position of the item
-    const {offsetLeft} = node;
+    const { offsetLeft } = node;
 
     // only shows the animation when the page changes, not on intial render or layout shift
     if (skipAnimation) {
@@ -265,7 +263,7 @@ export function usePagination(originalProps: UsePaginationProps) {
     }, CURSOR_TRANSITION_TIMEOUT);
   }
 
-  const {range, activePage, setPage, previous, next, first, last} = useBasePagination({
+  const { range, activePage, setPage, previous, next, first, last } = useBasePagination({
     page,
     total,
     initialPage,
@@ -344,7 +342,7 @@ export function usePagination(originalProps: UsePaginationProps) {
       "data-dots-jump": dotsJump,
       "data-total": total,
       "data-active-page": activePage,
-      className: slots.base({class: clsx(baseStyles, props?.className)}),
+      className: slots.base({ class: clsx(baseStyles, props?.className) }),
       ...otherProps,
     };
   };
@@ -353,7 +351,7 @@ export function usePagination(originalProps: UsePaginationProps) {
     return {
       ...props,
       "data-slot": "wrapper",
-      className: slots.wrapper({class: clsx(classNames?.wrapper, props?.className)}),
+      className: slots.wrapper({ class: clsx(classNames?.wrapper, props?.className) }),
     };
   };
 
@@ -386,7 +384,7 @@ export function usePagination(originalProps: UsePaginationProps) {
       ref: (node) => getItemRef(node, props.value),
       "data-slot": "item",
       isActive: props.value === activePage,
-      className: slots.item({class: clsx(classNames?.item, props?.className)}),
+      className: slots.item({ class: clsx(classNames?.item, props?.className) }),
       onPress: () => {
         if (props.value !== activePage) {
           setPage(props.value);
@@ -401,7 +399,7 @@ export function usePagination(originalProps: UsePaginationProps) {
       ref: cursorRef,
       activePage,
       "data-slot": "cursor",
-      className: slots.cursor({class: clsx(classNames?.cursor, props?.className)}),
+      className: slots.cursor({ class: clsx(classNames?.cursor, props?.className) }),
     };
   };
 

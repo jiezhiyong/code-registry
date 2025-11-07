@@ -1,13 +1,13 @@
-import type {Key} from "react";
-import type {UseAccordionProps} from "./use-accordion";
+import type { Key } from "react";
+import type { UseAccordionProps } from "./use-accordion";
 
-import {forwardRef} from "@heroui/system";
-import {LayoutGroup} from "framer-motion";
-import {Divider} from "@heroui/divider";
-import {Fragment, useCallback, useMemo} from "react";
+import { forwardRef } from "@/lib/system";
+import { Divider } from "@heroui/divider";
+import { LayoutGroup } from "framer-motion";
+import { Fragment, useCallback, useMemo } from "react";
 
-import {useAccordion} from "./use-accordion";
 import AccordionItem from "./accordion-item";
+import { useAccordion } from "./use-accordion";
 
 export interface AccordionProps extends UseAccordionProps {}
 
@@ -29,12 +29,12 @@ const AccordionGroup = forwardRef<"div", AccordionProps>((props, ref) => {
   });
   const handleFocusChanged = useCallback(
     (isFocused: boolean, key: Key) => handleFocusChangedProps(isFocused, key),
-    [handleFocusChangedProps],
+    [handleFocusChangedProps]
   );
 
   const content = useMemo(() => {
     return [...state.collection].map((item, index) => {
-      const classNames = {...itemClasses, ...(item.props.classNames || {})};
+      const classNames = { ...itemClasses, ...(item.props.classNames || {}) };
 
       return (
         <Fragment key={item.key}>
@@ -46,20 +46,15 @@ const AccordionGroup = forwardRef<"div", AccordionProps>((props, ref) => {
             {...item.props}
             classNames={classNames}
           />
-          {!item.props.hidden &&
-            !isSplitted &&
-            showDivider &&
-            index < state.collection.size - 1 && <Divider {...dividerProps} />}
+          {!item.props.hidden && !isSplitted && showDivider && index < state.collection.size - 1 && (
+            <Divider {...dividerProps} />
+          )}
         </Fragment>
       );
     });
   }, [values, itemClasses, handleFocusChanged, isSplitted, showDivider, state.collection]);
 
-  return (
-    <Component {...getBaseProps()}>
-      {disableAnimation ? content : <LayoutGroup>{content}</LayoutGroup>}
-    </Component>
-  );
+  return <Component {...getBaseProps()}>{disableAnimation ? content : <LayoutGroup>{content}</LayoutGroup>}</Component>;
 });
 
 AccordionGroup.displayName = "HeroUI.Accordion";

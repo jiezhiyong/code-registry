@@ -1,17 +1,17 @@
-import type {SnippetVariantProps, SnippetSlots, SlotsToClasses} from "@heroui/theme";
-import type {ReactRef} from "@heroui/react-utils";
-import type {ReactElement} from "react";
-import type {TooltipProps} from "@heroui/tooltip";
-import type {ButtonProps} from "@heroui/button";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { SlotsToClasses, SnippetSlots, SnippetVariantProps } from "@/lib/theme";
+import type { ButtonProps } from "@heroui/button";
+import type { ReactRef } from "@heroui/react-utils";
+import type { TooltipProps } from "@heroui/tooltip";
+import type { ReactElement } from "react";
 
-import {snippet} from "@heroui/theme";
-import {mapPropsVariants, useProviderContext} from "@heroui/system";
-import {useDOMRef, filterDOMProps} from "@heroui/react-utils";
-import {clsx, dataAttr, objectToDeps} from "@heroui/shared-utils";
-import {useClipboard} from "@heroui/use-clipboard";
-import {useFocusRing} from "@react-aria/focus";
-import {useMemo, useCallback, useRef} from "react";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { snippet } from "@/lib/theme";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
+import { clsx, dataAttr, objectToDeps } from "@heroui/shared-utils";
+import { useClipboard } from "@heroui/use-clipboard";
+import { useFocusRing } from "@react-aria/focus";
+import { useCallback, useMemo, useRef } from "react";
 
 export interface UseSnippetProps extends Omit<HTMLHeroUIProps, "onCopy">, SnippetVariantProps {
   /**
@@ -162,11 +162,11 @@ export function useSnippet(originalProps: UseSnippetProps) {
   const domRef = useDOMRef(ref);
   const preRef = useRef<HTMLPreElement>(null);
 
-  const {copy, copied} = useClipboard({timeout});
+  const { copy, copied } = useClipboard({ timeout });
 
   const isMultiLine = children && Array.isArray(children);
 
-  const {isFocusVisible, isFocused, focusProps} = useFocusRing({
+  const { isFocusVisible, isFocused, focusProps } = useFocusRing({
     autoFocus,
   });
 

@@ -1,11 +1,11 @@
-import type {UseNumberInputProps} from "./use-number-input";
+import type { UseNumberInputProps } from "./use-number-input";
 
-import {CloseFilledIcon} from "@heroui/shared-icons";
-import {useMemo} from "react";
-import {forwardRef} from "@heroui/system";
+import { CloseFilledIcon } from "@/lib/icons";
+import { forwardRef } from "@/lib/system";
+import { useMemo } from "react";
 
-import {useNumberInput} from "./use-number-input";
 import NumberInputStepper from "./number-input-stepper";
+import { useNumberInput } from "./use-number-input";
 
 export interface NumberInputProps extends Omit<UseNumberInputProps, "type"> {
   type?: "number";
@@ -40,7 +40,7 @@ const NumberInput = forwardRef<"input", NumberInputProps>((props, ref) => {
     getStepperIncreaseButtonProps,
     getStepperDecreaseButtonProps,
     getStepperWrapperProps,
-  } = useNumberInput({...props, ref});
+  } = useNumberInput({ ...props, ref });
 
   const labelContent = label ? <label {...getLabelProps()}>{label}</label> : null;
 

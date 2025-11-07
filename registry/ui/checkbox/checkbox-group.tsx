@@ -1,9 +1,9 @@
-import type {UseCheckboxGroupProps} from "./use-checkbox-group";
+import type { UseCheckboxGroupProps } from "./use-checkbox-group";
 
-import {forwardRef} from "@heroui/system";
+import { forwardRef } from "@/lib/system";
 
-import {CheckboxGroupProvider} from "./checkbox-group-context";
-import {useCheckboxGroup} from "./use-checkbox-group";
+import { CheckboxGroupProvider } from "./checkbox-group-context";
+import { useCheckboxGroup } from "./use-checkbox-group";
 
 export interface CheckboxGroupProps extends UseCheckboxGroupProps {}
 
@@ -20,7 +20,7 @@ const CheckboxGroup = forwardRef<"div", CheckboxGroupProps>((props, ref) => {
     getWrapperProps,
     getDescriptionProps,
     getErrorMessageProps,
-  } = useCheckboxGroup({...props, ref});
+  } = useCheckboxGroup({ ...props, ref });
 
   return (
     <div {...getGroupProps()}>

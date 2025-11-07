@@ -1,20 +1,19 @@
-import type {AriaDialogProps} from "@react-aria/dialog";
-import type {HTMLMotionProps} from "framer-motion";
-import type {ReactNode} from "react";
-import type {HTMLHeroUIProps} from "@heroui/system";
-import type {KeyboardEvent} from "react";
+import type { HTMLHeroUIProps } from "@/lib/system";
+import type { AriaDialogProps } from "@react-aria/dialog";
+import type { HTMLMotionProps } from "framer-motion";
+import type { KeyboardEvent, ReactNode } from "react";
 
-import {cloneElement, isValidElement, useMemo, useCallback} from "react";
-import {DismissButton} from "@react-aria/overlays";
-import {TRANSITION_VARIANTS} from "@heroui/framer-utils";
-import {CloseIcon} from "@heroui/shared-icons";
-import {LazyMotion, m} from "framer-motion";
-import {useDialog} from "@react-aria/dialog";
-import {chain, mergeProps} from "@heroui/shared-utils";
-import {useViewportSize} from "@heroui/use-viewport-size";
+import { TRANSITION_VARIANTS } from "@/lib/framer";
+import { CloseIcon } from "@/lib/icons";
+import { chain, mergeProps } from "@heroui/shared-utils";
+import { useViewportSize } from "@heroui/use-viewport-size";
+import { useDialog } from "@react-aria/dialog";
+import { DismissButton } from "@react-aria/overlays";
+import { LazyMotion, m } from "framer-motion";
+import { cloneElement, isValidElement, useCallback, useMemo } from "react";
 
-import {useModalContext} from "./modal-context";
-import {scaleInOut} from "./modal-transition";
+import { useModalContext } from "./modal-context";
+import { scaleInOut } from "./modal-transition";
 
 type KeysToOmit = "children" | "role";
 
@@ -22,10 +21,10 @@ export interface ModalContentProps extends AriaDialogProps, HTMLHeroUIProps<"div
   children: ReactNode | ((onClose: () => void) => ReactNode);
 }
 
-const domAnimation = () => import("@heroui/dom-animation").then((res) => res.default);
+const domAnimation = () => import(""@/lib/dom-animation").then((res) => res.default);
 
 const ModalContent = (props: ModalContentProps) => {
-  const {as, children, role = "dialog", ...otherProps} = props;
+  const { as, children, role = "dialog", ...otherProps } = props;
 
   const {
     Component: DialogComponent,
@@ -47,11 +46,11 @@ const ModalContent = (props: ModalContentProps) => {
 
   const viewport = useViewportSize();
 
-  const {dialogProps} = useDialog(
+  const { dialogProps } = useDialog(
     {
       role,
     },
-    domRef,
+    domRef
   );
 
   const closeButtonContent = isValidElement(closeButton) ? (
@@ -109,7 +108,7 @@ const ModalContent = (props: ModalContentProps) => {
 
   const contents = disableAnimation ? (
     <div
-      className={slots.wrapper({class: classNames?.wrapper})}
+      className={slots.wrapper({ class: classNames?.wrapper })}
       data-slot="wrapper"
       // @ts-ignore
       style={viewportStyle}
@@ -120,7 +119,7 @@ const ModalContent = (props: ModalContentProps) => {
     <LazyMotion features={domAnimation}>
       <m.div
         animate="enter"
-        className={slots.wrapper({class: classNames?.wrapper})}
+        className={slots.wrapper({ class: classNames?.wrapper })}
         data-slot="wrapper"
         exit="exit"
         initial="exit"

@@ -7,21 +7,21 @@
  * @internal
  */
 
-import type {HTMLMotionProps} from "framer-motion";
-import type {UsePopoverProps, UsePopoverReturn} from "./use-popover";
+import type { HTMLMotionProps } from "framer-motion";
+import type { UsePopoverProps, UsePopoverReturn } from "./use-popover";
 
+import { getTransformOrigins } from "@/lib/aria";
+import { TRANSITION_VARIANTS } from "@/lib/framer";
+import { forwardRef } from "@/lib/system";
+import { mergeProps } from "@heroui/shared-utils";
+import { useDialog } from "@react-aria/dialog";
+import { DismissButton, Overlay } from "@react-aria/overlays";
+import { LazyMotion, m } from "framer-motion";
 import * as React from "react";
-import {DismissButton, Overlay} from "@react-aria/overlays";
-import {forwardRef} from "@heroui/system";
-import {LazyMotion, m} from "framer-motion";
-import {mergeProps} from "@heroui/shared-utils";
-import {getTransformOrigins} from "@heroui/aria-utils";
-import {TRANSITION_VARIANTS} from "@heroui/framer-utils";
-import {useDialog} from "@react-aria/dialog";
 
-import {usePopover} from "./use-popover";
+import { usePopover } from "./use-popover";
 
-const domAnimation = () => import("@heroui/dom-animation").then((res) => res.default);
+const domAnimation = () => import(""@/lib/dom-animation").then((res) => res.default);
 
 export interface FreeSoloPopoverProps extends Omit<UsePopoverProps, "children"> {
   children: React.ReactNode | ((titleProps: React.DOMAttributes<HTMLElement>) => React.ReactNode);
@@ -42,16 +42,8 @@ type FreeSoloPopoverWrapperProps = {
 
 const FreeSoloPopoverWrapper = forwardRef<"div", FreeSoloPopoverWrapperProps>(
   (
-    {
-      children,
-      motionProps,
-      placement,
-      disableAnimation,
-      style: styleProp = {},
-      transformOrigin = {},
-      ...otherProps
-    },
-    ref,
+    { children, motionProps, placement, disableAnimation, style: styleProp = {}, transformOrigin = {}, ...otherProps },
+    ref
   ) => {
     let style = styleProp;
 
@@ -87,13 +79,13 @@ const FreeSoloPopoverWrapper = forwardRef<"div", FreeSoloPopoverWrapperProps>(
         </m.div>
       </LazyMotion>
     );
-  },
+  }
 );
 
 FreeSoloPopoverWrapper.displayName = "HeroUI.FreeSoloPopoverWrapper";
 
 const FreeSoloPopover = forwardRef<"div", FreeSoloPopoverProps>(
-  ({children, transformOrigin, disableDialogFocus = false, ...props}, ref) => {
+  ({ children, transformOrigin, disableDialogFocus = false, ...props }, ref) => {
     const {
       Component,
       state,
@@ -113,12 +105,12 @@ const FreeSoloPopover = forwardRef<"div", FreeSoloPopoverProps>(
     });
 
     const dialogRef = React.useRef(null);
-    const {dialogProps: ariaDialogProps, titleProps} = useDialog({}, dialogRef);
+    const { dialogProps: ariaDialogProps, titleProps } = useDialog({}, dialogRef);
     const dialogProps = getDialogProps({
       // by default, focus is moved into the dialog on mount
       // we can use `disableDialogFocus` to disable this behaviour
       // e.g. in autocomplete, the focus should be moved to the input (handled in autocomplete hook) instead of the dialog first
-      ...(!disableDialogFocus && {ref: dialogRef}),
+      ...(!disableDialogFocus && { ref: dialogRef }),
       ...ariaDialogProps,
     });
 
@@ -157,15 +149,13 @@ const FreeSoloPopover = forwardRef<"div", FreeSoloPopoverProps>(
             {...dialogProps}
           >
             {!isNonModal && <DismissButton onDismiss={state.close} />}
-            <div {...getContentProps()}>
-              {typeof children === "function" ? children(titleProps) : children}
-            </div>
+            <div {...getContentProps()}>{typeof children === "function" ? children(titleProps) : children}</div>
             <DismissButton onDismiss={state.close} />
           </FreeSoloPopoverWrapper>
         </Component>
       </Overlay>
     );
-  },
+  }
 );
 
 FreeSoloPopover.displayName = "HeroUI.FreeSoloPopover";

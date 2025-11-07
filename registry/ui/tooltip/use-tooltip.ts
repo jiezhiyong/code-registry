@@ -1,26 +1,24 @@
-import type {PopoverVariantProps, SlotsToClasses} from "@heroui/theme";
-import type {AriaTooltipProps} from "@react-types/tooltip";
-import type {OverlayTriggerProps} from "@react-types/overlays";
-import type {AriaOverlayProps} from "@react-aria/overlays";
-import type {HTMLMotionProps} from "framer-motion";
-import type {OverlayOptions} from "@heroui/aria-utils";
-import type {ReactNode, Ref} from "react";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {ReactRef} from "@heroui/react-utils";
+import type { OverlayOptions } from "@/lib/aria";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { PopoverVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { AriaOverlayProps } from "@react-aria/overlays";
+import type { OverlayTriggerProps } from "@react-types/overlays";
+import type { AriaTooltipProps } from "@react-types/tooltip";
+import type { HTMLMotionProps } from "framer-motion";
+import type { ReactNode, Ref } from "react";
 
-import {useId, useImperativeHandle} from "react";
-import {useTooltipTriggerState} from "@react-stately/tooltip";
-import {useTooltip as useReactAriaTooltip, useTooltipTrigger} from "@react-aria/tooltip";
-import {useOverlayPosition} from "@react-aria/overlays";
-import {mapPropsVariants, useProviderContext} from "@heroui/system";
-import {popover} from "@heroui/theme";
-import {clsx, dataAttr, objectToDeps, mergeProps} from "@heroui/shared-utils";
-import {mergeRefs} from "@heroui/react-utils";
-import {createDOMRef} from "@heroui/react-utils";
-import {useMemo, useRef, useCallback} from "react";
-import {toReactAriaPlacement, getArrowPlacement} from "@heroui/aria-utils";
-import {useSafeLayoutEffect} from "@heroui/use-safe-layout-effect";
-import {useAriaOverlay} from "@heroui/use-aria-overlay";
+import { getArrowPlacement, toReactAriaPlacement } from "@/lib/aria";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { popover } from "@/lib/theme";
+import { createDOMRef, mergeRefs } from "@heroui/react-utils";
+import { clsx, dataAttr, mergeProps, objectToDeps } from "@heroui/shared-utils";
+import { useAriaOverlay } from "@heroui/use-aria-overlay";
+import { useSafeLayoutEffect } from "@heroui/use-safe-layout-effect";
+import { useOverlayPosition } from "@react-aria/overlays";
+import { useTooltip as useReactAriaTooltip, useTooltipTrigger } from "@react-aria/tooltip";
+import { useTooltipTriggerState } from "@react-stately/tooltip";
+import { useCallback, useId, useImperativeHandle, useMemo, useRef } from "react";
 
 interface Props extends Omit<HTMLHeroUIProps, "content"> {
   /**
@@ -157,7 +155,7 @@ export function useTooltip(originalProps: UseTooltipProps) {
     createDOMRef(overlayRef),
   );
 
-  const {triggerProps, tooltipProps: triggerTooltipProps} = useTooltipTrigger(
+  const { triggerProps, tooltipProps: triggerTooltipProps } = useTooltipTrigger(
     {
       isDisabled,
       trigger: triggerAction,
@@ -166,7 +164,7 @@ export function useTooltip(originalProps: UseTooltipProps) {
     triggerRef,
   );
 
-  const {tooltipProps} = useReactAriaTooltip(
+  const { tooltipProps } = useReactAriaTooltip(
     {
       isOpen,
       ...mergeProps(props, triggerTooltipProps),
@@ -195,7 +193,7 @@ export function useTooltip(originalProps: UseTooltipProps) {
     updatePosition();
   }, updatePositionDeps);
 
-  const {overlayProps} = useAriaOverlay(
+  const { overlayProps } = useAriaOverlay(
     {
       isOpen: isOpen,
       onClose: state.close,
@@ -244,7 +242,7 @@ export function useTooltip(originalProps: UseTooltipProps) {
       "data-placement": getArrowPlacement(placement || "top", placementProp),
       ...mergeProps(tooltipProps, overlayProps, otherProps),
       style: mergeProps(positionProps.style, otherProps.style, props.style),
-      className: slots.base({class: classNames?.base}),
+      className: slots.base({ class: classNames?.base }),
       id: tooltipId,
     }),
     [
@@ -270,7 +268,7 @@ export function useTooltip(originalProps: UseTooltipProps) {
       "data-arrow": dataAttr(showArrow),
       "data-disabled": dataAttr(isDisabled),
       "data-placement": getArrowPlacement(placement || "top", placementProp),
-      className: slots.content({class: clsx(classNames?.content, className)}),
+      className: slots.content({ class: clsx(classNames?.content, className) }),
     }),
     [slots, isOpen, showArrow, isDisabled, placement, placementProp, classNames],
   );

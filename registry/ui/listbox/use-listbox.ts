@@ -1,19 +1,19 @@
-import type {KeyboardDelegate} from "@react-types/shared";
-import type {AriaListBoxProps} from "@react-aria/listbox";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {ListboxVariantProps, ListboxSlots, SlotsToClasses} from "@heroui/theme";
-import type {ListState} from "@react-stately/list";
-import type {ReactRef} from "@heroui/react-utils";
-import type {ReactNode} from "react";
-import type {ListboxItemProps} from "./listbox-item";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { ListboxSlots, ListboxVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { AriaListBoxProps } from "@react-aria/listbox";
+import type { ListState } from "@react-stately/list";
+import type { KeyboardDelegate } from "@react-types/shared";
+import type { ReactNode } from "react";
+import type { ListboxItemProps } from "./listbox-item";
 
-import {useListBox as useAriaListbox} from "@react-aria/listbox";
-import {useProviderContext} from "@heroui/system";
-import {listbox} from "@heroui/theme";
-import {useListState} from "@react-stately/list";
-import {filterDOMProps, useDOMRef} from "@heroui/react-utils";
-import {useMemo} from "react";
-import {clsx} from "@heroui/shared-utils";
+import { useProviderContext } from "@/lib/system";
+import { listbox } from "@/lib/theme";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
+import { clsx } from "@heroui/shared-utils";
+import { useListBox as useAriaListbox } from "@react-aria/listbox";
+import { useListState } from "@react-stately/list";
+import { useMemo } from "react";
 
 interface AriaListBoxOptions<T> extends AriaListBoxProps<T> {
   /** Whether the listbox uses virtual scrolling. */
@@ -127,10 +127,10 @@ export function useListbox<T extends object>(props: UseListboxProps<T>) {
 
   const domRef = useDOMRef(ref);
 
-  const innerState = useListState({...props, children, onSelectionChange});
+  const innerState = useListState({ ...props, children, onSelectionChange });
   const state = propState || innerState;
 
-  const {listBoxProps} = useAriaListbox({...props, onAction}, state, domRef);
+  const { listBoxProps } = useAriaListbox({ ...props, onAction }, state, domRef);
 
   const slots = useMemo(() => listbox(), []);
 
@@ -140,7 +140,7 @@ export function useListbox<T extends object>(props: UseListboxProps<T>) {
     return {
       ref: domRef,
       "data-slot": "base",
-      className: slots.base({class: baseStyles}),
+      className: slots.base({ class: baseStyles }),
       ...filterDOMProps(otherProps, {
         enabled: shouldFilterDOMProps,
       }),
@@ -151,7 +151,7 @@ export function useListbox<T extends object>(props: UseListboxProps<T>) {
   const getListProps: PropGetter = (props = {}) => {
     return {
       "data-slot": "list",
-      className: slots.list({class: classNames?.list}),
+      className: slots.list({ class: classNames?.list }),
       ...listBoxProps,
       ...props,
     };
@@ -161,7 +161,7 @@ export function useListbox<T extends object>(props: UseListboxProps<T>) {
     return {
       "data-slot": "empty-content",
       children: emptyContent,
-      className: slots.emptyContent({class: classNames?.emptyContent}),
+      className: slots.emptyContent({ class: classNames?.emptyContent }),
       ...props,
     };
   };

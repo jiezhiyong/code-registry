@@ -1,11 +1,11 @@
-import type {Meta} from "@storybook/react";
-import type {TooltipProps} from "../src";
+import type { Meta } from "@storybook/react";
+import type { TooltipProps } from "../src";
 
+import { popover } from "@/lib/theme";
+import { Button } from "@heroui/button";
 import React from "react";
-import {popover} from "@heroui/theme";
-import {Button} from "@heroui/button";
 
-import {Tooltip} from "../src";
+import { Tooltip } from "../src";
 
 export default {
   title: "Components/Tooltip",
@@ -169,7 +169,7 @@ const MultipleTemplate = (args: TooltipProps) => (
       </Tooltip>
     </div>
     <div className="grid grid-cols-3 gap-2">
-      {Array.from({length: 21}).map((_, index) => (
+      {Array.from({ length: 21 }).map((_, index) => (
         <Tooltip {...args} key={index} closeDelay={0} content={`Tooltip ${index}`} openDelay={0}>
           <Button>Hover me</Button>
         </Tooltip>
@@ -349,13 +349,13 @@ export const CustomMotion = {
         exit: {
           opacity: 0,
           transition: {
-            opacity: {duration: 0.1, easings: "easeInOut"},
+            opacity: { duration: 0.1, easings: "easeInOut" },
           },
         },
         enter: {
           opacity: 1,
           transition: {
-            opacity: {easings: "easeOut", duration: 0.15},
+            opacity: { easings: "easeOut", duration: 0.15 },
           },
         },
       },

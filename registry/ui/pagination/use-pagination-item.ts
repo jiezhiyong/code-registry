@@ -1,14 +1,14 @@
-import type {Ref} from "react";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {LinkDOMProps, PressEvent} from "@react-types/shared";
-import type {PaginationItemValue} from "@heroui/use-pagination";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { PaginationItemValue } from "@heroui/use-pagination";
+import type { LinkDOMProps, PressEvent } from "@react-types/shared";
+import type { Ref } from "react";
 
-import {useMemo} from "react";
-import {handleLinkClick, useRouter} from "@react-aria/utils";
-import {clsx, dataAttr, chain, mergeProps} from "@heroui/shared-utils";
-import {filterDOMProps, useDOMRef} from "@heroui/react-utils";
-import {useHover, usePress} from "@react-aria/interactions";
-import {useFocusRing} from "@react-aria/focus";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
+import { chain, clsx, dataAttr, mergeProps } from "@heroui/shared-utils";
+import { useFocusRing } from "@react-aria/focus";
+import { useHover, usePress } from "@react-aria/interactions";
+import { handleLinkClick, useRouter } from "@react-aria/utils";
+import { useMemo } from "react";
 
 interface Props extends Omit<HTMLHeroUIProps<"li">, "onClick"> {
   /**
@@ -75,13 +75,13 @@ export function usePaginationItem(props: UsePaginationItemProps) {
     [value, isActive],
   );
 
-  const {isPressed, pressProps} = usePress({
+  const { isPressed, pressProps } = usePress({
     isDisabled,
     onPress,
   });
 
-  const {focusProps, isFocused, isFocusVisible} = useFocusRing({});
-  const {isHovered, hoverProps} = useHover({isDisabled});
+  const { focusProps, isFocused, isFocusVisible } = useFocusRing({});
+  const { isHovered, hoverProps } = useHover({ isDisabled });
 
   const getItemProps: PropGetter = (props = {}) => {
     return {

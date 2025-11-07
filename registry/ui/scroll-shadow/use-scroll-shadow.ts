@@ -1,14 +1,14 @@
-import type {ScrollShadowVariantProps} from "@heroui/theme";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {ReactRef} from "@heroui/react-utils";
-import type {UseDataScrollOverflowProps} from "@heroui/use-data-scroll-overflow";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { ScrollShadowVariantProps } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { UseDataScrollOverflowProps } from "@heroui/use-data-scroll-overflow";
 
-import {mapPropsVariants} from "@heroui/system";
-import {scrollShadow} from "@heroui/theme";
-import {useDOMRef} from "@heroui/react-utils";
-import {useDataScrollOverflow} from "@heroui/use-data-scroll-overflow";
-import {useMemo} from "react";
-import {objectToDeps} from "@heroui/shared-utils";
+import { mapPropsVariants } from "@/lib/system";
+import { scrollShadow } from "@/lib/theme";
+import { useDOMRef } from "@heroui/react-utils";
+import { objectToDeps } from "@heroui/shared-utils";
+import { useDataScrollOverflow } from "@heroui/use-data-scroll-overflow";
+import { useMemo } from "react";
 
 interface Props extends HTMLHeroUIProps<"div">, Omit<UseDataScrollOverflowProps, "domRef"> {
   /**
@@ -77,7 +77,7 @@ export function useScrollShadow(originalProps: UseScrollShadowProps) {
     ...props,
   });
 
-  return {Component, styles, domRef, children, getBaseProps};
+  return { Component, styles, domRef, children, getBaseProps };
 }
 
 export type UseScrollShadowReturn = ReturnType<typeof useScrollShadow>;

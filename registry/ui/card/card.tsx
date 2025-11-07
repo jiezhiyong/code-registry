@@ -1,24 +1,16 @@
-import type {UseCardProps} from "./use-card";
+import type { UseCardProps } from "./use-card";
 
-import {forwardRef} from "@heroui/system";
-import {Ripple} from "@heroui/ripple";
+import { forwardRef } from "@/lib/system";
+import { Ripple } from "@heroui/ripple";
 
-import {CardProvider} from "./card-context";
-import {useCard} from "./use-card";
+import { CardProvider } from "./card-context";
+import { useCard } from "./use-card";
 
 export interface CardProps extends UseCardProps {}
 
 const Card = forwardRef<"div", CardProps>((props, ref) => {
-  const {
-    children,
-    context,
-    Component,
-    isPressable,
-    disableAnimation,
-    disableRipple,
-    getCardProps,
-    getRippleProps,
-  } = useCard({...props, ref});
+  const { children, context, Component, isPressable, disableAnimation, disableRipple, getCardProps, getRippleProps } =
+    useCard({ ...props, ref });
 
   return (
     <Component {...getCardProps()}>

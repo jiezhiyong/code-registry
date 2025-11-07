@@ -1,13 +1,13 @@
-import type {ReactNode} from "react";
-import type {UsePopoverProps} from "./use-popover";
+import type { ReactNode } from "react";
+import type { UsePopoverProps } from "./use-popover";
 
-import {Children} from "react";
-import {forwardRef} from "@heroui/system";
-import {Overlay} from "@react-aria/overlays";
-import {AnimatePresence} from "framer-motion";
+import { forwardRef } from "@/lib/system";
+import { Overlay } from "@react-aria/overlays";
+import { AnimatePresence } from "framer-motion";
+import { Children } from "react";
 
-import {usePopover} from "./use-popover";
-import {PopoverProvider} from "./popover-context";
+import { PopoverProvider } from "./popover-context";
+import { usePopover } from "./use-popover";
 
 export interface PopoverProps extends UsePopoverProps {
   /**
@@ -18,8 +18,8 @@ export interface PopoverProps extends UsePopoverProps {
 }
 
 const Popover = forwardRef<"div", PopoverProps>((props, ref) => {
-  const {children, ...otherProps} = props;
-  const context = usePopover({...otherProps, ref});
+  const { children, ...otherProps } = props;
+  const context = usePopover({ ...otherProps, ref });
 
   const [trigger, content] = Children.toArray(children);
 

@@ -1,20 +1,20 @@
 /* eslint-disable jsx-a11y/no-autofocus */
-import type {Meta} from "@storybook/react";
-import type {DrawerProps} from "../src";
+import type { Meta } from "@storybook/react";
+import type { DrawerProps } from "../src";
 
+import { LockFilledIcon, MailFilledIcon } from "@/lib/icons";
+import { drawer } from "@/lib/theme";
+import { Avatar, AvatarGroup } from "@heroui/avatar";
+import { Button } from "@heroui/button";
+import { Checkbox } from "@heroui/checkbox";
+import { Image } from "@heroui/image";
+import { Input } from "@heroui/input";
+import { Link } from "@heroui/link";
+import { Tooltip } from "@heroui/tooltip";
+import { useDisclosure } from "@heroui/use-disclosure";
 import React from "react";
-import {drawer} from "@heroui/theme";
-import {Button} from "@heroui/button";
-import {Input} from "@heroui/input";
-import {Checkbox} from "@heroui/checkbox";
-import {Link} from "@heroui/link";
-import {Tooltip} from "@heroui/tooltip";
-import {Image} from "@heroui/image";
-import {Avatar, AvatarGroup} from "@heroui/avatar";
-import {MailFilledIcon, LockFilledIcon} from "@heroui/shared-icons";
-import {useDisclosure} from "@heroui/use-disclosure";
 
-import {Drawer, DrawerContent, DrawerHeader, DrawerBody, DrawerFooter} from "../src";
+import { Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader } from "../src";
 
 export default {
   title: "Components/Drawer",
@@ -83,17 +83,13 @@ const content = (
         <DrawerBody>
           <Input
             autoFocus
-            endContent={
-              <MailFilledIcon className="text-2xl text-default-400 pointer-events-none shrink-0" />
-            }
+            endContent={<MailFilledIcon className="text-2xl text-default-400 pointer-events-none shrink-0" />}
             label="Email"
             placeholder="Enter your email"
             variant="bordered"
           />
           <Input
-            endContent={
-              <LockFilledIcon className="text-2xl text-default-400 pointer-events-none shrink-0" />
-            }
+            endContent={<LockFilledIcon className="text-2xl text-default-400 pointer-events-none shrink-0" />}
             label="Password"
             placeholder="Enter your password"
             type="password"
@@ -126,7 +122,7 @@ const content = (
 );
 
 const Template = (args: DrawerProps) => {
-  const {isOpen, onOpen, onOpenChange} = useDisclosure({defaultOpen: args.defaultOpen});
+  const { isOpen, onOpen, onOpenChange } = useDisclosure({ defaultOpen: args.defaultOpen });
 
   return (
     <>
@@ -140,7 +136,7 @@ const Template = (args: DrawerProps) => {
 
 const PlacementTemplate = (args: DrawerProps) => {
   const [placement, setPlacement] = React.useState<DrawerProps["placement"]>("right");
-  const {isOpen, onOpen, onOpenChange} = useDisclosure({defaultOpen: args.defaultOpen});
+  const { isOpen, onOpen, onOpenChange } = useDisclosure({ defaultOpen: args.defaultOpen });
 
   const handlePress = (placement: DrawerProps["placement"]) => {
     setPlacement(placement);
@@ -153,12 +149,7 @@ const PlacementTemplate = (args: DrawerProps) => {
     <>
       <div className="flex flex-wrap gap-2 px-4">
         {placements.map((placement) => (
-          <Button
-            key={placement}
-            color="primary"
-            variant="flat"
-            onPress={() => handlePress(placement)}
-          >
+          <Button key={placement} color="primary" variant="flat" onPress={() => handlePress(placement)}>
             Open Drawer {placement}
           </Button>
         ))}
@@ -171,7 +162,7 @@ const PlacementTemplate = (args: DrawerProps) => {
 };
 
 const CustomStylesTemplate = (args: DrawerProps) => {
-  const {isOpen, onOpen, onOpenChange} = useDisclosure({defaultOpen: args.defaultOpen});
+  const { isOpen, onOpen, onOpenChange } = useDisclosure({ defaultOpen: args.defaultOpen });
 
   return (
     <>
@@ -206,13 +197,7 @@ const CustomStylesTemplate = (args: DrawerProps) => {
             <>
               <DrawerHeader className="absolute top-0 inset-x-0 z-50 flex flex-row gap-2 px-2 py-2 border-b border-default-200/50 justify-between bg-content1/50 backdrop-saturate-150 backdrop-blur-lg">
                 <Tooltip content="Close">
-                  <Button
-                    isIconOnly
-                    className="text-default-400"
-                    size="sm"
-                    variant="light"
-                    onPress={onClose}
-                  >
+                  <Button isIconOnly className="text-default-400" size="sm" variant="light" onPress={onClose}>
                     <svg
                       fill="none"
                       height="20"
@@ -233,12 +218,7 @@ const CustomStylesTemplate = (args: DrawerProps) => {
                     className="font-medium text-small text-default-500"
                     size="sm"
                     startContent={
-                      <svg
-                        height="16"
-                        viewBox="0 0 16 16"
-                        width="16"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
+                      <svg height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
                         <path
                           d="M3.85.75c-.908 0-1.702.328-2.265.933-.558.599-.835 1.41-.835 2.29V7.88c0 .801.23 1.548.697 2.129.472.587 1.15.96 1.951 1.06a.75.75 0 1 0 .185-1.489c-.435-.054-.752-.243-.967-.51-.219-.273-.366-.673-.366-1.19V3.973c0-.568.176-.993.433-1.268.25-.27.632-.455 1.167-.455h4.146c.479 0 .828.146 1.071.359.246.215.43.54.497.979a.75.75 0 0 0 1.483-.23c-.115-.739-.447-1.4-.99-1.877C9.51 1 8.796.75 7.996.75zM7.9 4.828c-.908 0-1.702.326-2.265.93-.558.6-.835 1.41-.835 2.29v3.905c0 .879.275 1.69.833 2.289.563.605 1.357.931 2.267.931h4.144c.91 0 1.705-.326 2.268-.931.558-.599.833-1.41.833-2.289V8.048c0-.879-.275-1.69-.833-2.289-.563-.605-1.357-.931-2.267-.931zm-1.6 3.22c0-.568.176-.992.432-1.266.25-.27.632-.454 1.168-.454h4.145c.54 0 .92.185 1.17.453.255.274.43.698.43 1.267v3.905c0 .569-.175.993-.43 1.267-.25.268-.631.453-1.17.453H7.898c-.54 0-.92-.185-1.17-.453-.255-.274-.43-.698-.43-1.267z"
                           fill="currentColor"
@@ -323,9 +303,7 @@ const CustomStylesTemplate = (args: DrawerProps) => {
                 </div>
                 <div className="flex flex-col gap-2 py-4">
                   <h1 className="text-2xl font-bold leading-7">SF Bay Area Meetup in November</h1>
-                  <p className="text-sm text-default-500">
-                    555 California St, San Francisco, CA 94103
-                  </p>
+                  <p className="text-sm text-default-500">555 California St, San Francisco, CA 94103</p>
                   <div className="mt-4 flex flex-col gap-3">
                     <div className="flex gap-3 items-center">
                       <div className="flex-none border-1 border-default-200/50 rounded-small text-center w-11 overflow-hidden">
@@ -335,9 +313,7 @@ const CustomStylesTemplate = (args: DrawerProps) => {
                         </div>
                       </div>
                       <div className="flex flex-col gap-0.5">
-                        <p className="text-medium text-foreground font-medium">
-                          Tuesday, November 19
-                        </p>
+                        <p className="text-medium text-foreground font-medium">Tuesday, November 19</p>
                         <p className="text-small text-default-500">5:00 PM - 9:00 PM PST</p>
                       </div>
                     </div>
@@ -395,26 +371,21 @@ const CustomStylesTemplate = (args: DrawerProps) => {
                     <div className="flex flex-col mt-4 gap-3 items-start">
                       <span className="text-medium font-medium">About the event</span>
                       <div className="text-medium text-default-500 flex flex-col gap-2">
+                        <p>Hey Bay Area! We are excited to announce our next meetup on Tuesday, November 19th.</p>
                         <p>
-                          Hey Bay Area! We are excited to announce our next meetup on Tuesday,
-                          November 19th.
+                          Join us for an evening of insightful discussions and hands-on workshops focused on the latest
+                          developments in web development and design. Our featured speakers will share their experiences
+                          with modern frontend frameworks, responsive design patterns, and emerging web technologies.
+                          You&apos;ll have the opportunity to network with fellow developers and designers while
+                          enjoying refreshments and snacks.
                         </p>
                         <p>
-                          Join us for an evening of insightful discussions and hands-on workshops
-                          focused on the latest developments in web development and design. Our
-                          featured speakers will share their experiences with modern frontend
-                          frameworks, responsive design patterns, and emerging web technologies.
-                          You&apos;ll have the opportunity to network with fellow developers and
-                          designers while enjoying refreshments and snacks.
-                        </p>
-                        <p>
-                          During the main session, we&apos;ll dive deep into practical examples of
-                          building scalable applications, exploring best practices for component
-                          architecture, and understanding advanced state management techniques. Our
-                          interactive workshop portion will let you apply these concepts directly,
-                          with experienced mentors available to provide guidance and answer your
-                          questions. Whether you&apos;re a seasoned developer or just starting your
-                          journey, you&apos;ll find valuable takeaways from this session.
+                          During the main session, we&apos;ll dive deep into practical examples of building scalable
+                          applications, exploring best practices for component architecture, and understanding advanced
+                          state management techniques. Our interactive workshop portion will let you apply these
+                          concepts directly, with experienced mentors available to provide guidance and answer your
+                          questions. Whether you&apos;re a seasoned developer or just starting your journey, you&apos;ll
+                          find valuable takeaways from this session.
                         </p>
 
                         <p className="mt-4">
@@ -429,11 +400,7 @@ const CustomStylesTemplate = (args: DrawerProps) => {
                     <div className="flex flex-col mt-4 gap-3 items-start">
                       <span className="text-small text-default-500">Hosted By</span>
                       <div className="flex gap-2 items-center">
-                        <Avatar
-                          name="HeroUI"
-                          size="sm"
-                          src="https://heroui.com/android-chrome-192x192.png"
-                        />
+                        <Avatar name="HeroUI" size="sm" src="https://heroui.com/android-chrome-192x192.png" />
                         <span className="text-small text-default-500">HeroUI Team</span>
                       </div>
                     </div>

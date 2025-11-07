@@ -1,12 +1,12 @@
-import type {ForwardedRef, ReactElement} from "react";
-import type {UseListboxProps, UseListboxReturn} from "./use-listbox";
+import type { ForwardedRef, ReactElement } from "react";
+import type { UseListboxProps, UseListboxReturn } from "./use-listbox";
 
-import {forwardRef} from "@heroui/system";
-import {mergeProps} from "@heroui/shared-utils";
+import { forwardRef } from "@/lib/system";
+import { mergeProps } from "@heroui/shared-utils";
 
-import {useListbox} from "./use-listbox";
-import ListboxSection from "./listbox-section";
 import ListboxItem from "./listbox-item";
+import ListboxSection from "./listbox-section";
+import { useListbox } from "./use-listbox";
 import VirtualizedListbox from "./virtualized-listbox";
 
 export interface VirtualizationProps {
@@ -23,11 +23,11 @@ export type ListboxProps<T extends object = object> = Props<T>;
 
 const Listbox = forwardRef(function Listbox<T extends object>(
   props: ListboxProps<T>,
-  ref: ForwardedRef<HTMLUListElement>,
+  ref: ForwardedRef<HTMLUListElement>
 ) {
-  const {isVirtualized, ...restProps} = props;
+  const { isVirtualized, ...restProps } = props;
 
-  const useListboxProps = useListbox<T>({...restProps, ref});
+  const useListboxProps = useListbox<T>({ ...restProps, ref });
 
   const {
     Component,
@@ -47,9 +47,7 @@ const Listbox = forwardRef(function Listbox<T extends object>(
   } = useListboxProps;
 
   if (isVirtualized) {
-    return (
-      <VirtualizedListbox {...(props as Props<T>)} {...(useListboxProps as UseListboxReturn)} />
-    );
+    return <VirtualizedListbox {...(props as Props<T>)} {...(useListboxProps as UseListboxReturn)} />;
   }
 
   const content = (

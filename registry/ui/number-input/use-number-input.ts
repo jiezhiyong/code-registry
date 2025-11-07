@@ -1,21 +1,21 @@
-import type {NumberInputVariantProps, SlotsToClasses, NumberInputSlots} from "@heroui/theme";
-import type {AriaNumberFieldProps} from "@react-types/numberfield";
-import type {NumberFieldStateOptions} from "@react-stately/numberfield";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {Ref} from "react";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { NumberInputSlots, NumberInputVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { NumberFieldStateOptions } from "@react-stately/numberfield";
+import type { AriaNumberFieldProps } from "@react-types/numberfield";
+import type { Ref } from "react";
 
-import {useLabelPlacement, mapPropsVariants, useProviderContext} from "@heroui/system";
-import {useSafeLayoutEffect} from "@heroui/use-safe-layout-effect";
-import {useFocusRing} from "@react-aria/focus";
-import {numberInput} from "@heroui/theme";
-import {useDOMRef, filterDOMProps} from "@heroui/react-utils";
-import {useFocusWithin, useHover, usePress} from "@react-aria/interactions";
-import {useLocale} from "@react-aria/i18n";
-import {clsx, dataAttr, isEmpty, objectToDeps, chain, mergeProps} from "@heroui/shared-utils";
-import {useNumberFieldState} from "@react-stately/numberfield";
-import {useNumberField as useAriaNumberInput} from "@react-aria/numberfield";
-import {useMemo, useCallback, useState} from "react";
-import {FormContext, useSlottedContext} from "@heroui/form";
+import { mapPropsVariants, useLabelPlacement, useProviderContext } from "@/lib/system";
+import { numberInput } from "@/lib/theme";
+import { FormContext, useSlottedContext } from "@heroui/form";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
+import { chain, clsx, dataAttr, isEmpty, mergeProps, objectToDeps } from "@heroui/shared-utils";
+import { useSafeLayoutEffect } from "@heroui/use-safe-layout-effect";
+import { useFocusRing } from "@react-aria/focus";
+import { useLocale } from "@react-aria/i18n";
+import { useFocusWithin, useHover, usePress } from "@react-aria/interactions";
+import { useNumberField as useAriaNumberInput } from "@react-aria/numberfield";
+import { useNumberFieldState } from "@react-stately/numberfield";
+import { useCallback, useMemo, useState } from "react";
 
 export interface Props extends Omit<HTMLHeroUIProps<"input">, keyof NumberInputVariantProps> {
   /**
@@ -92,7 +92,7 @@ export type UseNumberInputProps = Props &
 
 export function useNumberInput(originalProps: UseNumberInputProps) {
   const globalContext = useProviderContext();
-  const {validationBehavior: formValidationBehavior} = useSlottedContext(FormContext) || {};
+  const { validationBehavior: formValidationBehavior } = useSlottedContext(FormContext) || {};
 
   const [props, variantProps] = mapPropsVariants(originalProps, numberInput.variantKeys);
 
@@ -131,7 +131,7 @@ export function useNumberInput(originalProps: UseNumberInputProps) {
   const inputWrapperRef = useDOMRef<HTMLDivElement>(wrapperRef);
   const innerWrapperRef = useDOMRef<HTMLDivElement>(innerWrapperRefProp);
 
-  const {locale} = useLocale();
+  const { locale } = useLocale();
 
   const state = useNumberFieldState({
     ...originalProps,
@@ -151,7 +151,7 @@ export function useNumberInput(originalProps: UseNumberInputProps) {
     isInvalid,
     validationErrors,
     validationDetails,
-  } = useAriaNumberInput({...originalProps, validationBehavior}, state, domRef);
+  } = useAriaNumberInput({ ...originalProps, validationBehavior }, state, domRef);
 
   const inputValue = isNaN(state.numberValue) ? "" : state.numberValue;
 
@@ -177,24 +177,24 @@ export function useNumberInput(originalProps: UseNumberInputProps) {
     state.setInputValue(domRef.current.value);
   }, [domRef.current]);
 
-  const {isFocusVisible, isFocused, focusProps} = useFocusRing({
+  const { isFocusVisible, isFocused, focusProps } = useFocusRing({
     autoFocus,
     isTextInput: true,
   });
 
-  const {isHovered, hoverProps} = useHover({isDisabled: !!originalProps?.isDisabled});
+  const { isHovered, hoverProps } = useHover({ isDisabled: !!originalProps?.isDisabled });
 
-  const {isHovered: isLabelHovered, hoverProps: labelHoverProps} = useHover({
+  const { isHovered: isLabelHovered, hoverProps: labelHoverProps } = useHover({
     isDisabled: !!originalProps?.isDisabled,
   });
 
-  const {focusProps: clearFocusProps, isFocusVisible: isClearButtonFocusVisible} = useFocusRing();
+  const { focusProps: clearFocusProps, isFocusVisible: isClearButtonFocusVisible } = useFocusRing();
 
-  const {focusWithinProps} = useFocusWithin({
+  const { focusWithinProps } = useFocusWithin({
     onFocusWithinChange: setFocusWithin,
   });
 
-  const {pressProps: clearPressProps} = usePress({
+  const { pressProps: clearPressProps } = usePress({
     isDisabled: !!originalProps?.isDisabled || !!originalProps?.isReadOnly,
     onPress: handleClear,
   });
@@ -206,7 +206,7 @@ export function useNumberInput(originalProps: UseNumberInputProps) {
 
   const errorMessage =
     typeof props.errorMessage === "function"
-      ? props.errorMessage({isInvalid, validationErrors, validationDetails})
+      ? props.errorMessage({ isInvalid, validationErrors, validationDetails })
       : props.errorMessage || validationErrors?.join(" ");
   const isClearable = !!onClear || originalProps.isClearable;
   const hasElements = !!label || !!description || !!errorMessage;
@@ -223,8 +223,8 @@ export function useNumberInput(originalProps: UseNumberInputProps) {
   const hasStartContent = !!startContent;
   const isLabelOutside = shouldLabelBeOutside
     ? labelPlacement === "outside-left" ||
-      hasPlaceholder ||
-      (labelPlacement === "outside" && hasStartContent)
+    hasPlaceholder ||
+    (labelPlacement === "outside" && hasStartContent)
     : false;
   const isLabelOutsideAsPlaceholder =
     labelPlacement === "outside" && !hasPlaceholder && !hasStartContent;
@@ -251,9 +251,9 @@ export function useNumberInput(originalProps: UseNumberInputProps) {
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
       const inputElement = e.currentTarget;
-      const {selectionStart, selectionEnd, value} = inputElement;
+      const { selectionStart, selectionEnd, value } = inputElement;
       // locale-aware grouping separator
-      const nf = new Intl.NumberFormat(locale, {useGrouping: true});
+      const nf = new Intl.NumberFormat(locale, { useGrouping: true });
       const groupChar = nf.formatToParts(1000).find((p) => p.type === "group")?.value ?? ",";
 
       // handle backspace when cursor is between a digit and the first group separator
@@ -308,7 +308,7 @@ export function useNumberInput(originalProps: UseNumberInputProps) {
     (props = {}) => {
       return {
         ref: baseDomRef,
-        className: slots.base({class: baseStyles}),
+        className: slots.base({ class: baseStyles }),
         "data-slot": "base",
         "data-filled": dataAttr(
           isFilled || hasPlaceholder || hasStartContent || isPlaceholderShown,
@@ -359,7 +359,7 @@ export function useNumberInput(originalProps: UseNumberInputProps) {
     (props = {}) => {
       return {
         "data-slot": "label",
-        className: slots.label({class: classNames?.label}),
+        className: slots.label({ class: classNames?.label }),
         ...mergeProps(labelProps, labelHoverProps, props),
       };
     },
@@ -507,7 +507,7 @@ export function useNumberInput(originalProps: UseNumberInputProps) {
         ...props,
         ...descriptionProps,
         "data-slot": "description",
-        className: slots.description({class: clsx(classNames?.description, props?.className)}),
+        className: slots.description({ class: clsx(classNames?.description, props?.className) }),
       };
     },
     [slots, classNames?.description],
@@ -519,7 +519,7 @@ export function useNumberInput(originalProps: UseNumberInputProps) {
         ...props,
         ...errorMessageProps,
         "data-slot": "error-message",
-        className: slots.errorMessage({class: clsx(classNames?.errorMessage, props?.className)}),
+        className: slots.errorMessage({ class: clsx(classNames?.errorMessage, props?.className) }),
       };
     },
     [slots, errorMessageProps, classNames?.errorMessage],
@@ -535,7 +535,7 @@ export function useNumberInput(originalProps: UseNumberInputProps) {
         "aria-label": "clear input",
         "data-slot": "clear-button",
         "data-focus-visible": dataAttr(isClearButtonFocusVisible),
-        className: slots.clearButton({class: clsx(classNames?.clearButton, props?.className)}),
+        className: slots.clearButton({ class: clsx(classNames?.clearButton, props?.className) }),
         ...mergeProps(clearPressProps, clearFocusProps),
       };
     },

@@ -1,9 +1,9 @@
-import type {HTMLAttributes, ReactElement, ReactNode} from "react";
-import type {GroupDOMAttributes, HelpTextProps, ValidationResult} from "@react-types/shared";
+import type { GroupDOMAttributes, HelpTextProps, ValidationResult } from "@react-types/shared";
+import type { HTMLAttributes, ReactElement, ReactNode } from "react";
 
-import {useMemo} from "react";
-import {forwardRef} from "@heroui/system";
-import {dataAttr} from "@heroui/shared-utils";
+import { forwardRef } from "@/lib/system";
+import { dataAttr } from "@heroui/shared-utils";
+import { useMemo } from "react";
 
 export interface DateInputGroupProps extends ValidationResult, HelpTextProps {
   children?: ReactElement | ReactElement[];
@@ -68,14 +68,7 @@ export const DateInputGroup = forwardRef<"div", DateInputGroupProps>((props, ref
         ) : null}
       </div>
     );
-  }, [
-    hasHelper,
-    errorMessage,
-    description,
-    helperWrapperProps,
-    errorMessageProps,
-    descriptionProps,
-  ]);
+  }, [hasHelper, errorMessage, description, helperWrapperProps, errorMessageProps, descriptionProps]);
 
   return (
     <Component {...otherProps} ref={ref} data-has-helper={dataAttr(hasHelper)}>

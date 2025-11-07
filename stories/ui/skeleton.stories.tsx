@@ -1,12 +1,12 @@
-import type {Meta} from "@storybook/react";
-import type {SkeletonProps} from "../src";
+import type { Meta } from "@storybook/react";
+import type { SkeletonProps } from "../src";
 
+import { skeleton } from "@/lib/theme";
+import { Button } from "@heroui/button";
+import { Card } from "@heroui/card";
 import React from "react";
-import {skeleton} from "@heroui/theme";
-import {Card} from "@heroui/card";
-import {Button} from "@heroui/button";
 
-import {Skeleton} from "../src";
+import { Skeleton } from "../src";
 
 export default {
   title: "Components/Skeleton",
@@ -90,13 +90,7 @@ const LoadedStateTemplate = (args: SkeletonProps) => {
           </Skeleton>
         </div>
       </Card>
-      <Button
-        className="max-w-[200px]"
-        color="secondary"
-        size="sm"
-        variant="flat"
-        onPress={toggleLoad}
-      >
+      <Button className="max-w-[200px]" color="secondary" size="sm" variant="flat" onPress={toggleLoad}>
         {isLoaded ? "Show" : "Hide"} Skeleton
       </Button>
     </div>

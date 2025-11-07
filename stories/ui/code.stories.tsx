@@ -1,8 +1,8 @@
-import type {Meta} from "@storybook/react";
+import type { Meta } from "@storybook/react";
 
-import {code} from "@heroui/theme";
+import { code } from "@/lib/theme";
 
-import {Code} from "../src";
+import { Code } from "../src";
 
 export default {
   title: "Components/Code",

@@ -1,13 +1,12 @@
-import type {UseSliderProps} from "./use-slider";
+import type { UseSliderProps } from "./use-slider";
 
-import {renderFn} from "@heroui/react-utils";
-import {forwardRef} from "@heroui/system";
+import { forwardRef } from "@/lib/system";
+import { renderFn } from "@heroui/react-utils";
 
 import Thumb from "./slider-thumb";
-import {useSlider} from "./use-slider";
+import { useSlider } from "./use-slider";
 
-export interface SliderProps
-  extends Omit<UseSliderProps, "isVertical" | "hasMarks" | "hasSingleThumb"> {}
+export interface SliderProps extends Omit<UseSliderProps, "isVertical" | "hasMarks" | "hasSingleThumb"> {}
 
 const Slider = forwardRef<"div", SliderProps>((props, ref) => {
   const {
@@ -32,7 +31,7 @@ const Slider = forwardRef<"div", SliderProps>((props, ref) => {
     getMarkProps,
     getStartContentProps,
     getEndContentProps,
-  } = useSlider({...props, ref});
+  } = useSlider({ ...props, ref });
 
   return (
     <Component {...getBaseProps()}>
@@ -55,7 +54,7 @@ const Slider = forwardRef<"div", SliderProps>((props, ref) => {
         <div {...getTrackProps()}>
           <div {...getFillerProps()} />
           {Number.isFinite(steps) &&
-            Array.from({length: steps}, (_, index) => <div key={index} {...getStepProps(index)} />)}
+            Array.from({ length: steps }, (_, index) => <div key={index} {...getStepProps(index)} />)}
           {state.values.map((_, index) => (
             <Thumb key={index} {...getThumbProps(index)} />
           ))}

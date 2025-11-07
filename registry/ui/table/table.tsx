@@ -1,19 +1,18 @@
-import type {UseTableProps} from "./use-table";
+import type { UseTableProps } from "./use-table";
 
-import {useCallback} from "react";
-import {Spacer} from "@heroui/spacer";
-import {forwardRef} from "@heroui/system";
+import { forwardRef } from "@/lib/system";
+import { Spacer } from "@heroui/spacer";
+import { useCallback } from "react";
 
-import {useTable} from "./use-table";
-import VirtualizedTable from "./virtualized-table";
-import TableRowGroup from "./table-row-group";
-import TableHeaderRow from "./table-header-row";
-import TableColumnHeader from "./table-column-header";
-import TableSelectAllCheckbox from "./table-select-all-checkbox";
 import TableBody from "./table-body";
+import TableColumnHeader from "./table-column-header";
+import TableHeaderRow from "./table-header-row";
+import TableRowGroup from "./table-row-group";
+import TableSelectAllCheckbox from "./table-select-all-checkbox";
+import { useTable } from "./use-table";
+import VirtualizedTable from "./virtualized-table";
 
-export interface TableProps<T = object>
-  extends Omit<UseTableProps<T>, "isSelectable" | "isMultiSelectable"> {
+export interface TableProps<T = object> extends Omit<UseTableProps<T>, "isSelectable" | "isMultiSelectable"> {
   isVirtualized?: boolean;
   rowHeight?: number;
   maxTableHeight?: number;
@@ -39,7 +38,7 @@ const Table = forwardRef<"table", TableProps>((props, ref) => {
     ref,
   });
 
-  const {isVirtualized, rowHeight = 40, maxTableHeight = 600} = props;
+  const { isVirtualized, rowHeight = 40, maxTableHeight = 600 } = props;
 
   // TODO: remove this after testing the table on production, users can only
   // enable the virtualization if the passed `isVirtualized` prop is true
@@ -48,24 +47,19 @@ const Table = forwardRef<"table", TableProps>((props, ref) => {
   const shouldVirtualize = isVirtualized;
 
   const Wrapper = useCallback(
-    ({children}: {children: JSX.Element}) => {
+    ({ children }: { children: JSX.Element }) => {
       if (removeWrapper) {
         return children;
       }
 
       return <BaseComponent {...getWrapperProps()}>{children}</BaseComponent>;
     },
-    [removeWrapper, getWrapperProps],
+    [removeWrapper, getWrapperProps]
   );
 
   if (shouldVirtualize) {
     return (
-      <VirtualizedTable
-        {...(props as TableProps)}
-        ref={ref}
-        maxTableHeight={maxTableHeight}
-        rowHeight={rowHeight}
-      />
+      <VirtualizedTable {...(props as TableProps)} ref={ref} maxTableHeight={maxTableHeight} rowHeight={rowHeight} />
     );
   }
 
@@ -107,7 +101,7 @@ const Table = forwardRef<"table", TableProps>((props, ref) => {
                         sortIcon={sortIcon}
                         state={values.state}
                       />
-                    ),
+                    )
                   )}
                 </TableHeaderRow>
               ))}

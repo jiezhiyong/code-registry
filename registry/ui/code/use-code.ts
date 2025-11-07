@@ -1,11 +1,11 @@
-import type {CodeVariantProps} from "@heroui/theme";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system-rsc";
-import type {ReactRef} from "@heroui/react-utils";
+import type { CodeVariantProps } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { HTMLHeroUIProps, PropGetter } from "@heroui/system-rsc";
 
-import {code} from "@heroui/theme";
-import {mapPropsVariants} from "@heroui/system-rsc";
-import {useMemo} from "react";
-import {objectToDeps} from "@heroui/shared-utils";
+import { code } from "@/lib/theme";
+import { objectToDeps } from "@heroui/shared-utils";
+import { mapPropsVariants } from "@heroui/system-rsc";
+import { useMemo } from "react";
 
 export interface UseCodeProps extends HTMLHeroUIProps<"code">, CodeVariantProps {
   /**
@@ -17,7 +17,7 @@ export interface UseCodeProps extends HTMLHeroUIProps<"code">, CodeVariantProps 
 export function useCode(originalProps: UseCodeProps) {
   const [props, variantProps] = mapPropsVariants(originalProps, code.variantKeys);
 
-  const {as, children, className, ...otherProps} = props;
+  const { as, children, className, ...otherProps } = props;
 
   const Component = as || "code";
 
@@ -37,7 +37,7 @@ export function useCode(originalProps: UseCodeProps) {
     };
   };
 
-  return {Component, children, getCodeProps};
+  return { Component, children, getCodeProps };
 }
 
 export type UseCodeReturn = ReturnType<typeof useCode>;

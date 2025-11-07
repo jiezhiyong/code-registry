@@ -1,42 +1,30 @@
 /* eslint-disable jsx-a11y/no-autofocus */
-import type {DatePickerProps} from "../src";
+import type { DatePickerProps } from "../src";
 
-import * as React from "react";
-import {render, act, fireEvent, waitFor, within} from "@testing-library/react";
-import {
-  errorSpy,
-  pointerMap,
-  shouldIgnoreReactWarning,
-  triggerPress,
-  warnSpy,
-} from "@heroui/test-utils";
+import { HeroUIProvider } from "@/lib/system";
+import { Form } from "@heroui/form";
+import { errorSpy, pointerMap, shouldIgnoreReactWarning, triggerPress, warnSpy } from "@heroui/test-utils";
+import { CalendarDate, CalendarDateTime } from "@internationalized/date";
+import { act, fireEvent, render, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import {CalendarDate, CalendarDateTime} from "@internationalized/date";
-import {HeroUIProvider} from "@heroui/system";
-import {Form} from "@heroui/form";
+import * as React from "react";
 
-import {DatePicker as DatePickerBase} from "../src";
+import { DatePicker as DatePickerBase } from "../src";
 
 /**
  * Custom date-picker to disable animations and avoid issues with react-motion and jest
  */
 const DatePicker = React.forwardRef((props: DatePickerProps, ref: React.Ref<HTMLDivElement>) => {
   return (
-    <DatePickerBase
-      {...props}
-      ref={ref}
-      disableAnimation
-      labelPlacement="outside"
-      shouldForceLeadingZeros={false}
-    />
+    <DatePickerBase {...props} ref={ref} disableAnimation labelPlacement="outside" shouldForceLeadingZeros={false} />
   );
 });
 
 DatePicker.displayName = "DatePicker";
 
 const DatePickerWithLocale = React.forwardRef(
-  (props: DatePickerProps & {locale: string}, ref: React.Ref<HTMLDivElement>) => {
-    const {locale, ...otherProps} = props;
+  (props: DatePickerProps & { locale: string }, ref: React.Ref<HTMLDivElement>) => {
+    const { locale, ...otherProps } = props;
 
     return (
       <HeroUIProvider locale={locale}>
@@ -49,7 +37,7 @@ const DatePickerWithLocale = React.forwardRef(
         />
       </HeroUIProvider>
     );
-  },
+  }
 );
 
 DatePickerWithLocale.displayName = "DatePickerWithLocale";
@@ -62,16 +50,14 @@ function getTextValue(el: any) {
     return "";
   }
 
-  return [...el.childNodes]
-    .map((el) => (el.nodeType === 3 ? el.textContent : getTextValue(el)))
-    .join("");
+  return [...el.childNodes].map((el) => (el.nodeType === 3 ? el.textContent : getTextValue(el))).join("");
 }
 
 describe("DatePicker", () => {
   let user;
 
   beforeAll(() => {
-    user = userEvent.setup({delay: null, pointerMap});
+    user = userEvent.setup({ delay: null, pointerMap });
     jest.useFakeTimers();
   });
 
@@ -96,7 +82,7 @@ describe("DatePicker", () => {
     });
 
     it("should render a datepicker with a specified date", function () {
-      let {getAllByRole} = render(<DatePicker label="Date" value={new CalendarDate(2019, 2, 3)} />);
+      let { getAllByRole } = render(<DatePicker label="Date" value={new CalendarDate(2019, 2, 3)} />);
 
       let combobox = getAllByRole("group")[0];
 
@@ -131,8 +117,8 @@ describe("DatePicker", () => {
     });
 
     it('should render a datepicker with granularity="second"', function () {
-      let {getAllByRole} = render(
-        <DatePicker granularity="second" label="Date" value={new CalendarDateTime(2019, 2, 3)} />,
+      let { getAllByRole } = render(
+        <DatePicker granularity="second" label="Date" value={new CalendarDateTime(2019, 2, 3)} />
       );
 
       let combobox = getAllByRole("group")[0];
@@ -193,32 +179,32 @@ describe("DatePicker", () => {
     });
 
     it("should support autoFocus", function () {
-      let {getAllByRole} = render(<DatePicker autoFocus label="Date" />);
+      let { getAllByRole } = render(<DatePicker autoFocus label="Date" />);
 
       expect(document.activeElement).toBe(getAllByRole("spinbutton")[0]);
     });
 
     it("should pass through data attributes", function () {
-      let {getByTestId} = render(<DatePicker data-testid="foo" label="Date" />);
+      let { getByTestId } = render(<DatePicker data-testid="foo" label="Date" />);
 
       expect(getByTestId("foo")).toHaveAttribute("role", "group");
     });
 
     it("should work with startContent", () => {
-      const {getByText} = render(<DatePicker label="Date" startContent={<div>start</div>} />);
+      const { getByText } = render(<DatePicker label="Date" startContent={<div>start</div>} />);
 
       expect(getByText("start")).toBeInTheDocument();
     });
 
     it("should work with endContent", () => {
-      const {getByText} = render(<DatePicker endContent={<div>end</div>} label="Date" />);
+      const { getByText } = render(<DatePicker endContent={<div>end</div>} label="Date" />);
 
       expect(getByText("end")).toBeInTheDocument();
     });
 
     it("should work with startContent and endContent", () => {
-      const {getByText} = render(
-        <DatePicker endContent={<div>end</div>} label="Date" startContent={<div>start</div>} />,
+      const { getByText } = render(
+        <DatePicker endContent={<div>end</div>} label="Date" startContent={<div>start</div>} />
       );
 
       expect(getByText("start")).toBeInTheDocument();
@@ -226,8 +212,8 @@ describe("DatePicker", () => {
     });
 
     it("should work with selectorButtonPlacement", () => {
-      const {getByRole} = render(
-        <DatePicker label="Date" selectorButtonPlacement="start" startContent={<div>start</div>} />,
+      const { getByRole } = render(
+        <DatePicker label="Date" selectorButtonPlacement="start" startContent={<div>start</div>} />
       );
 
       const button = getByRole("button");
@@ -242,23 +228,21 @@ describe("DatePicker", () => {
     });
 
     it("should apply custom dateInput classNames", function () {
-      const {getByText} = render(
+      const { getByText } = render(
         <DatePicker
           classNames={{
             inputWrapper: "border-green-500",
             label: "text-green-500",
           }}
           label="Date"
-        />,
+        />
       );
 
       const label = getByText("Date");
 
       expect(label).toHaveClass("text-green-500");
 
-      const inputWrapper = document.querySelector<HTMLButtonElement>(
-        `div[data-slot="input-wrapper"]`,
-      )!;
+      const inputWrapper = document.querySelector<HTMLButtonElement>(`div[data-slot="input-wrapper"]`)!;
 
       expect(inputWrapper).toHaveClass("border-green-500");
     });
@@ -280,13 +264,8 @@ describe("DatePicker", () => {
     });
 
     it("should focus field, move a segment, and open popover and does not blur", async function () {
-      let {getByRole, getAllByRole} = render(
-        <DatePicker
-          label="Date"
-          onBlur={onBlurSpy}
-          onFocus={onFocusSpy}
-          onFocusChange={onFocusChangeSpy}
-        />,
+      let { getByRole, getAllByRole } = render(
+        <DatePicker label="Date" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />
       );
       let segments = getAllByRole("spinbutton");
       let button = getByRole("button");
@@ -317,13 +296,8 @@ describe("DatePicker", () => {
     });
 
     it("should focus field and leave to blur", async function () {
-      let {getAllByRole} = render(
-        <DatePicker
-          label="Date"
-          onBlur={onBlurSpy}
-          onFocus={onFocusSpy}
-          onFocusChange={onFocusChangeSpy}
-        />,
+      let { getAllByRole } = render(
+        <DatePicker label="Date" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />
       );
       let segments = getAllByRole("spinbutton");
 
@@ -345,13 +319,8 @@ describe("DatePicker", () => {
     });
 
     it("should open popover and call picker onFocus", function () {
-      let {getByRole} = render(
-        <DatePicker
-          label="Date"
-          onBlur={onBlurSpy}
-          onFocus={onFocusSpy}
-          onFocusChange={onFocusChangeSpy}
-        />,
+      let { getByRole } = render(
+        <DatePicker label="Date" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />
       );
 
       let button = getByRole("button");
@@ -371,13 +340,8 @@ describe("DatePicker", () => {
     });
 
     it("should open and close popover and only call blur when focus leaves picker", async function () {
-      let {getByRole} = render(
-        <DatePicker
-          label="Date"
-          onBlur={onBlurSpy}
-          onFocus={onFocusSpy}
-          onFocusChange={onFocusChangeSpy}
-        />,
+      let { getByRole } = render(
+        <DatePicker label="Date" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />
       );
       let button = getByRole("button");
 
@@ -396,9 +360,9 @@ describe("DatePicker", () => {
       expect(onFocusSpy).toHaveBeenCalledTimes(1);
 
       //@ts-ignore
-      fireEvent.keyDown(document.activeElement, {key: "Escape"});
+      fireEvent.keyDown(document.activeElement, { key: "Escape" });
       //@ts-ignore
-      fireEvent.keyUp(document.activeElement, {key: "Escape"});
+      fireEvent.keyUp(document.activeElement, { key: "Escape" });
 
       act(() => jest.runAllTimers());
 
@@ -426,9 +390,7 @@ describe("DatePicker", () => {
     });
 
     it("should trigger right arrow key event for segment navigation", async function () {
-      let {getAllByRole} = render(
-        <DatePicker label="Date" onKeyDown={onKeyDownSpy} onKeyUp={onKeyUpSpy} />,
-      );
+      let { getAllByRole } = render(<DatePicker label="Date" onKeyDown={onKeyDownSpy} onKeyUp={onKeyUpSpy} />);
       let segments = getAllByRole("spinbutton");
 
       expect(onKeyDownSpy).not.toHaveBeenCalled();
@@ -440,9 +402,9 @@ describe("DatePicker", () => {
       expect(onKeyUpSpy).toHaveBeenCalledTimes(1);
 
       // @ts-ignore
-      fireEvent.keyDown(document.activeElement, {key: "ArrowRight"});
+      fireEvent.keyDown(document.activeElement, { key: "ArrowRight" });
       // @ts-ignore
-      fireEvent.keyUp(document.activeElement, {key: "ArrowRight"});
+      fireEvent.keyUp(document.activeElement, { key: "ArrowRight" });
 
       expect(segments[1]).toHaveFocus();
       expect(onKeyDownSpy).toHaveBeenCalledTimes(1);
@@ -454,14 +416,8 @@ describe("DatePicker", () => {
     it("should emit onChange when selecting a date in the calendar in controlled mode", function () {
       let onChange = jest.fn();
 
-      let {getByRole, getAllByRole, queryByLabelText} = render(
-        <DatePicker
-          hideTimeZone
-          isRequired
-          label="Date"
-          value={new CalendarDate(2019, 2, 3)}
-          onChange={onChange}
-        />,
+      let { getByRole, getAllByRole, queryByLabelText } = render(
+        <DatePicker hideTimeZone isRequired label="Date" value={new CalendarDate(2019, 2, 3)} onChange={onChange} />
       );
 
       let combobox = getAllByRole("group")[0];
@@ -482,10 +438,7 @@ describe("DatePicker", () => {
       let selected = cells.find((cell) => cell.getAttribute("aria-selected") === "true");
 
       // @ts-ignore
-      expect(selected.children[0]).toHaveAttribute(
-        "aria-label",
-        "Sunday, February 3, 2019 selected",
-      );
+      expect(selected.children[0]).toHaveAttribute("aria-label", "Sunday, February 3, 2019 selected");
 
       // @ts-ignore
       triggerPress(selected.nextSibling.children[0]);
@@ -509,8 +462,8 @@ describe("DatePicker", () => {
 
     it("should emit onChange when selecting a date in the calendar in uncontrolled mode", function () {
       let onChange = jest.fn();
-      let {getByRole, getAllByRole} = render(
-        <DatePicker defaultValue={new CalendarDate(2019, 2, 3)} label="Date" onChange={onChange} />,
+      let { getByRole, getAllByRole } = render(
+        <DatePicker defaultValue={new CalendarDate(2019, 2, 3)} label="Date" onChange={onChange} />
       );
 
       let combobox = getAllByRole("group")[0];
@@ -529,10 +482,7 @@ describe("DatePicker", () => {
       let selected = cells.find((cell) => cell.getAttribute("aria-selected") === "true");
 
       // @ts-ignore
-      expect(selected.children[0]).toHaveAttribute(
-        "aria-label",
-        "Sunday, February 3, 2019 selected",
-      );
+      expect(selected.children[0]).toHaveAttribute("aria-label", "Sunday, February 3, 2019 selected");
 
       // @ts-ignore
       triggerPress(selected.nextSibling.children[0]);
@@ -544,8 +494,8 @@ describe("DatePicker", () => {
     });
 
     it("should keep the selected date when the picker is opened, in showMonthAndYearPickers mode", function () {
-      const {getByRole, getAllByRole} = render(
-        <DatePicker showMonthAndYearPickers label="Date" value={new CalendarDate(2024, 5, 1)} />,
+      const { getByRole, getAllByRole } = render(
+        <DatePicker showMonthAndYearPickers label="Date" value={new CalendarDate(2024, 5, 1)} />
       );
 
       let combobox = getAllByRole("group")[0];
@@ -574,7 +524,7 @@ describe("DatePicker", () => {
     });
 
     it("should show the month and year picker (uncontrolled)", () => {
-      const {getByRole} = render(
+      const { getByRole } = render(
         <DatePicker
           showMonthAndYearPickers
           calendarProps={{
@@ -582,7 +532,7 @@ describe("DatePicker", () => {
           }}
           defaultValue={new CalendarDate(2024, 4, 26)}
           label="Date"
-        />,
+        />
       );
 
       const button = getByRole("button");
@@ -597,8 +547,8 @@ describe("DatePicker", () => {
 
       triggerPress(header);
 
-      const month = getByRole("button", {name: "April"});
-      const year = getByRole("button", {name: "2024"});
+      const month = getByRole("button", { name: "April" });
+      const year = getByRole("button", { name: "2024" });
 
       expect(month).toHaveAttribute("data-value", "4");
       expect(year).toHaveAttribute("data-value", "2024");
@@ -613,7 +563,7 @@ describe("DatePicker", () => {
     });
 
     it("should show the month and year picker (controlled)", () => {
-      const {getByRole} = render(
+      const { getByRole } = render(
         <DatePicker
           showMonthAndYearPickers
           calendarProps={{
@@ -622,7 +572,7 @@ describe("DatePicker", () => {
           }}
           defaultValue={new CalendarDate(2024, 4, 26)}
           label="Date"
-        />,
+        />
       );
 
       const button = getByRole("button");
@@ -630,8 +580,8 @@ describe("DatePicker", () => {
       triggerPress(button);
 
       const dialog = getByRole("dialog");
-      const month = getByRole("button", {name: "April"});
-      const year = getByRole("button", {name: "2024"});
+      const month = getByRole("button", { name: "April" });
+      const year = getByRole("button", { name: "2024" });
 
       expect(dialog).toBeVisible();
       expect(month).toHaveAttribute("data-value", "4");
@@ -645,12 +595,12 @@ describe("DatePicker", () => {
     });
 
     it("CalendarBottomContent should render correctly", () => {
-      const {getByRole, getByTestId} = render(
+      const { getByRole, getByTestId } = render(
         <DatePicker
           showMonthAndYearPickers
           CalendarBottomContent={<div data-testid="calendar-bottom-content" />}
           label="Date"
-        />,
+        />
       );
 
       const button = getByRole("button");
@@ -684,11 +634,11 @@ describe("DatePicker", () => {
     });
 
     it("should close listbox by clicking another datepicker", async () => {
-      const {getByRole, getAllByRole} = render(
+      const { getByRole, getAllByRole } = render(
         <>
           <DatePicker data-testid="datepicker" label="Date" />
           <DatePicker data-testid="datepicker2" label="Date" />
-        </>,
+        </>
       );
 
       const dateButtons = getAllByRole("button");
@@ -715,13 +665,13 @@ describe("DatePicker", () => {
     });
 
     it("should display the correct year and month in showMonthAndYearPickers with locale", () => {
-      const {getByRole} = render(
+      const { getByRole } = render(
         <DatePickerWithLocale
           showMonthAndYearPickers
           defaultValue={new CalendarDate(2024, 6, 26)}
           label="Date"
           locale="th-TH-u-ca-buddhist"
-        />,
+        />
       );
 
       const button = getByRole("button");
@@ -735,15 +685,15 @@ describe("DatePicker", () => {
 
       triggerPress(header);
 
-      const month = getByRole("button", {name: "มิถุนายน"});
-      const year = getByRole("button", {name: "พ.ศ. 2567"});
+      const month = getByRole("button", { name: "มิถุนายน" });
+      const year = getByRole("button", { name: "พ.ศ. 2567" });
 
       expect(month).toHaveAttribute("data-value", "6");
       expect(year).toHaveAttribute("data-value", "2567");
     });
 
     it("should open and close popover after clicking selector button", () => {
-      const {getByRole} = render(<DatePicker data-testid="datepicker" label="Date" />);
+      const { getByRole } = render(<DatePicker data-testid="datepicker" label="Date" />);
 
       const selectorButton = getByRole("button");
 
@@ -768,10 +718,10 @@ describe("DatePicker", () => {
   describe("validation", () => {
     describe("validationBehavior=native", () => {
       it("supports isRequired", async () => {
-        const {getByRole, getByTestId} = render(
+        const { getByRole, getByTestId } = render(
           <form data-testid="form">
             <DatePicker isRequired label="Date" name="date" validationBehavior="native" />
-          </form>,
+          </form>
         );
 
         const group = getByRole("group");
@@ -804,7 +754,7 @@ describe("DatePicker", () => {
     });
 
     it("supports validate function", async () => {
-      const {getByRole, getByTestId} = render(
+      const { getByRole, getByTestId } = render(
         <Form data-testid="form" validationBehavior="native">
           <DatePicker
             defaultValue={new CalendarDate(2020, 2, 3)}
@@ -812,7 +762,7 @@ describe("DatePicker", () => {
             name="date"
             validate={(v) => (v.year < 2022 ? "Invalid value" : null)}
           />
-        </Form>,
+        </Form>
       );
 
       const group = getByRole("group");
@@ -861,7 +811,7 @@ describe("DatePicker", () => {
         );
       }
 
-      const {getByTestId, getByRole} = render(<Test />);
+      const { getByTestId, getByRole } = render(<Test />);
 
       const group = getByRole("group");
       const input = document.querySelector("input[name=date]") as HTMLInputElement;
@@ -880,8 +830,8 @@ describe("DatePicker", () => {
       expect(getDescription()).toContain("Invalid value");
       expect(input.validity.valid).toBe(false);
 
-      await user.tab({shift: true});
-      await user.tab({shift: true});
+      await user.tab({ shift: true });
+      await user.tab({ shift: true });
       await user.keyboard("2024[ArrowLeft]2[ArrowLeft]2");
       act(() => (document.activeElement as HTMLInputElement)?.blur());
 
@@ -891,7 +841,7 @@ describe("DatePicker", () => {
 
     describe("validationBehavior=aria", () => {
       it("supports minValue and maxValue", async () => {
-        const {getByRole} = render(
+        const { getByRole } = render(
           <Form data-testid="form" validationBehavior="aria">
             <DatePicker
               defaultValue={new CalendarDate(2019, 2, 3)}
@@ -900,7 +850,7 @@ describe("DatePicker", () => {
               minValue={new CalendarDate(2020, 2, 3)}
               name="date"
             />
-          </Form>,
+          </Form>
         );
 
         const group = getByRole("group");
@@ -924,14 +874,14 @@ describe("DatePicker", () => {
       });
 
       it("supports validate function", async () => {
-        const {getByRole} = render(
+        const { getByRole } = render(
           <Form data-testid="form" validationBehavior="aria">
             <DatePicker
               defaultValue={new CalendarDate(2020, 2, 3)}
               label="Value"
               validate={(v) => (v.year < 2022 ? "Invalid value" : null)}
             />
-          </Form>,
+          </Form>
         );
 
         const group = getByRole("group");
@@ -951,10 +901,10 @@ describe("DatePicker", () => {
       });
 
       it("supports server validation", async () => {
-        const {getByRole} = render(
-          <Form validationBehavior="aria" validationErrors={{value: "Invalid value"}}>
+        const { getByRole } = render(
+          <Form validationBehavior="aria" validationErrors={{ value: "Invalid value" }}>
             <DatePicker defaultValue={new CalendarDate(2020, 2, 3)} label="Value" name="value" />
-          </Form>,
+          </Form>
         );
 
         const group = getByRole("group");

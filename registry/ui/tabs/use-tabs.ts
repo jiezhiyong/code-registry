@@ -1,20 +1,19 @@
-import type {TabsVariantProps, SlotsToClasses, TabsSlots, TabsReturnType} from "@heroui/theme";
-import type {ReactRef} from "@heroui/react-utils";
-import type {RefObject} from "react";
-import type {TabListState, TabListStateOptions} from "@react-stately/tabs";
-import type {AriaTabListProps} from "@react-aria/tabs";
-import type {CollectionProps} from "@heroui/aria-utils";
-import type {CollectionChildren} from "@react-types/shared";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
+import type { CollectionProps } from "@/lib/aria";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { SlotsToClasses, TabsReturnType, TabsSlots, TabsVariantProps } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { AriaTabListProps } from "@react-aria/tabs";
+import type { TabListState, TabListStateOptions } from "@react-stately/tabs";
+import type { CollectionChildren } from "@react-types/shared";
+import type { RefObject } from "react";
 
-import {mapPropsVariants, useProviderContext} from "@heroui/system";
-import {tabs} from "@heroui/theme";
-import {useDOMRef} from "@heroui/react-utils";
-import {clsx, objectToDeps, mergeProps} from "@heroui/shared-utils";
-import {filterDOMProps} from "@heroui/react-utils";
-import {useMemo, useCallback} from "react";
-import {useTabListState} from "@react-stately/tabs";
-import {useTabList} from "@react-aria/tabs";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { tabs } from "@/lib/theme";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
+import { clsx, mergeProps, objectToDeps } from "@heroui/shared-utils";
+import { useTabList } from "@react-aria/tabs";
+import { useTabListState } from "@react-stately/tabs";
+import { useCallback, useMemo } from "react";
 
 export interface Props extends Omit<HTMLHeroUIProps, "children"> {
   /**
@@ -110,14 +109,14 @@ export function useTabs<T extends object>(originalProps: UseTabsProps<T>) {
     children: children as CollectionChildren<T>,
     ...otherProps,
   });
-  const {tabListProps} = useTabList<T>(otherProps as AriaTabListProps<T>, state, domRef);
+  const { tabListProps } = useTabList<T>(otherProps as AriaTabListProps<T>, state, domRef);
 
   const slots = useMemo(
     () =>
       tabs({
         ...variantProps,
         disableAnimation,
-        ...(isVertical ? {placement: "start"} : {}),
+        ...(isVertical ? { placement: "start" } : {}),
       }),
     [objectToDeps(variantProps), disableAnimation, isVertical],
   );
@@ -150,7 +149,7 @@ export function useTabs<T extends object>(originalProps: UseTabsProps<T>) {
   const getBaseProps: PropGetter = useCallback(
     (props) => ({
       "data-slot": "base",
-      className: slots.base({class: clsx(baseStyles, props?.className)}),
+      className: slots.base({ class: clsx(baseStyles, props?.className) }),
       ...mergeProps(
         filterDOMProps(otherProps, {
           enabled: shouldFilterDOMProps,
@@ -165,7 +164,7 @@ export function useTabs<T extends object>(originalProps: UseTabsProps<T>) {
   const getWrapperProps: PropGetter = useCallback(
     (props) => ({
       "data-slot": "tabWrapper",
-      className: slots.tabWrapper({class: clsx(classNames?.tabWrapper, props?.className)}),
+      className: slots.tabWrapper({ class: clsx(classNames?.tabWrapper, props?.className) }),
       "data-placement": placement,
       "data-vertical":
         isVertical || placement === "start" || placement === "end" ? "vertical" : "horizontal",
@@ -177,7 +176,7 @@ export function useTabs<T extends object>(originalProps: UseTabsProps<T>) {
     (props) => ({
       ref: domRef,
       "data-slot": "tabList",
-      className: slots.tabList({class: clsx(classNames?.tabList, props?.className)}),
+      className: slots.tabList({ class: clsx(classNames?.tabList, props?.className) }),
       ...mergeProps(tabListProps, props),
     }),
     [domRef, tabListProps, classNames, slots],

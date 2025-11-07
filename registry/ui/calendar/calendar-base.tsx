@@ -1,25 +1,25 @@
-import type {AriaButtonProps} from "@react-types/button";
-import type {As, HTMLHeroUIProps} from "@heroui/system";
-import type {ButtonProps} from "@heroui/button";
-import type {HTMLAttributes, ReactNode, RefObject} from "react";
+import type { As, HTMLHeroUIProps } from "@/lib/system";
+import type { ButtonProps } from "@heroui/button";
+import type { AriaButtonProps } from "@react-types/button";
+import type { HTMLAttributes, ReactNode, RefObject } from "react";
 
-import {forwardRef, Fragment, useState} from "react";
-import {VisuallyHidden} from "@react-aria/visually-hidden";
-import {Button} from "@heroui/button";
-import {chain, mergeProps} from "@heroui/shared-utils";
-import {AnimatePresence, LazyMotion, MotionConfig} from "framer-motion";
-import {useLocale} from "@react-aria/i18n";
-import {ResizablePanel} from "@heroui/framer-utils";
+import { ResizablePanel } from "@/lib/framer";
+import { Button } from "@heroui/button";
+import { chain, mergeProps } from "@heroui/shared-utils";
+import { useLocale } from "@react-aria/i18n";
+import { VisuallyHidden } from "@react-aria/visually-hidden";
+import { AnimatePresence, LazyMotion, MotionConfig } from "framer-motion";
+import { forwardRef, Fragment, useState } from "react";
 
-import {ChevronLeftIcon} from "./chevron-left";
-import {ChevronRightIcon} from "./chevron-right";
-import {CalendarMonth} from "./calendar-month";
-import {transition} from "./calendar-transitions";
-import {CalendarHeader} from "./calendar-header";
-import {CalendarPicker} from "./calendar-picker";
-import {useCalendarContext} from "./calendar-context";
+import { useCalendarContext } from "./calendar-context";
+import { CalendarHeader } from "./calendar-header";
+import { CalendarMonth } from "./calendar-month";
+import { CalendarPicker } from "./calendar-picker";
+import { transition } from "./calendar-transitions";
+import { ChevronLeftIcon } from "./chevron-left";
+import { ChevronRightIcon } from "./chevron-right";
 
-const domAnimation = () => import("@heroui/dom-animation").then((res) => res.default);
+const domAnimation = () => import(""@/lib/dom-animation").then((res) => res.default);
 
 export interface CalendarBaseProps extends HTMLHeroUIProps<"div"> {
   Component?: As;
@@ -43,11 +43,9 @@ export interface CalendarBaseProps extends HTMLHeroUIProps<"div"> {
  *
  * @see https://www.framer.com/motion/animate-presence/###mode
  */
-const PopLayoutWrapper = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
-  (props, ref) => {
-    return <div ref={ref} {...props} />;
-  },
-);
+const PopLayoutWrapper = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>((props, ref) => {
+  return <div ref={ref} {...props} />;
+});
 
 PopLayoutWrapper.displayName = "HeroUI - PopLayoutWrapper";
 
@@ -68,12 +66,11 @@ export function CalendarBase(props: CalendarBaseProps) {
     ...otherProps
   } = props;
 
-  const {state, slots, visibleMonths, showMonthAndYearPickers, disableAnimation, classNames} =
-    useCalendarContext();
+  const { state, slots, visibleMonths, showMonthAndYearPickers, disableAnimation, classNames } = useCalendarContext();
 
   const [direction, setDirection] = useState<number>(0);
 
-  const {direction: localeDirection} = useLocale();
+  const { direction: localeDirection } = useLocale();
 
   const currentMonth = state.visibleRange.start;
 
@@ -83,16 +80,14 @@ export function CalendarBase(props: CalendarBaseProps) {
   const isRTL = localeDirection === "rtl";
 
   for (let i = 0; i < visibleMonths; i++) {
-    let d = currentMonth.add({months: i});
+    let d = currentMonth.add({ months: i });
 
     headers.push(
       <Fragment key={`calendar-header-${i}`}>
         {i === 0 && (
           <Button
             {...(isRTL ? nextButtonProps : prevButtonProps)}
-            onPress={chain(isRTL ? nextButtonProps.onPress : prevButtonProps.onPress, () =>
-              setDirection(-1),
-            )}
+            onPress={chain(isRTL ? nextButtonProps.onPress : prevButtonProps.onPress, () => setDirection(-1))}
           >
             <ChevronLeftIcon />
           </Button>
@@ -106,14 +101,12 @@ export function CalendarBase(props: CalendarBaseProps) {
         {i === visibleMonths - 1 && (
           <Button
             {...(isRTL ? prevButtonProps : nextButtonProps)}
-            onPress={chain(isRTL ? prevButtonProps.onPress : nextButtonProps.onPress, () =>
-              setDirection(1),
-            )}
+            onPress={chain(isRTL ? prevButtonProps.onPress : nextButtonProps.onPress, () => setDirection(1))}
           >
             <ChevronRightIcon />
           </Button>
         )}
-      </Fragment>,
+      </Fragment>
     );
 
     const calendarMonthContent = (
@@ -135,7 +128,7 @@ export function CalendarBase(props: CalendarBaseProps) {
         </Fragment>
       ) : (
         calendarMonthContent
-      ),
+      )
     );
   }
 
@@ -143,14 +136,14 @@ export function CalendarBase(props: CalendarBaseProps) {
     <>
       <div
         key="header-wrapper"
-        className={slots?.headerWrapper({class: classNames?.headerWrapper})}
+        className={slots?.headerWrapper({ class: classNames?.headerWrapper })}
         data-slot="header-wrapper"
       >
         {headers}
       </div>
       <div
         key="grid-wrapper"
-        className={slots?.gridWrapper({class: classNames?.gridWrapper})}
+        className={slots?.gridWrapper({ class: classNames?.gridWrapper })}
         data-slot="grid-wrapper"
       >
         {calendars}
@@ -170,14 +163,11 @@ export function CalendarBase(props: CalendarBaseProps) {
         <h2>{calendarProps["aria-label"]}</h2>
       </VisuallyHidden>
       {disableAnimation ? (
-        <div className={slots?.content({class: classNames?.content})} data-slot="content">
+        <div className={slots?.content({ class: classNames?.content })} data-slot="content">
           {calendarContent}
         </div>
       ) : (
-        <ResizablePanel
-          className={slots?.content({class: classNames?.content})}
-          data-slot="content"
-        >
+        <ResizablePanel className={slots?.content({ class: classNames?.content })} data-slot="content">
           <AnimatePresence custom={direction} initial={false} mode="popLayout">
             <PopLayoutWrapper>
               <MotionConfig transition={transition}>
@@ -199,13 +189,10 @@ export function CalendarBase(props: CalendarBaseProps) {
         />
       </VisuallyHidden>
       {state.isValueInvalid && showHelper && (
-        <div
-          className={slots?.helperWrapper({class: classNames?.helperWrapper})}
-          data-slot="helper-wrapper"
-        >
+        <div className={slots?.helperWrapper({ class: classNames?.helperWrapper })} data-slot="helper-wrapper">
           <span
             {...errorMessageProps}
-            className={slots?.errorMessage({class: classNames?.errorMessage})}
+            className={slots?.errorMessage({ class: classNames?.errorMessage })}
             data-slot="error-message"
           >
             {errorMessage || "Selected date unavailable."}

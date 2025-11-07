@@ -1,15 +1,13 @@
-import type {SlotProps} from "input-otp";
+import type { SlotProps } from "input-otp";
 
-import {useMemo} from "react";
-import {clsx, dataAttr} from "@heroui/shared-utils";
-import {cn} from "@heroui/theme";
+import { cn } from "@/lib/theme";
+import { clsx, dataAttr } from "@heroui/shared-utils";
+import { useMemo } from "react";
 
-import {useInputOtpContext} from "./input-otp-context";
+import { useInputOtpContext } from "./input-otp-context";
 
-export const InputOtpSegment = ({
-  ...props
-}: SlotProps & {isFocused?: boolean; isFocusVisible?: boolean}) => {
-  const {classNames, slots, type} = useInputOtpContext();
+export const InputOtpSegment = ({ ...props }: SlotProps & { isFocused?: boolean; isFocusVisible?: boolean }) => {
+  const { classNames, slots, type } = useInputOtpContext();
 
   const passwordCharStyles = clsx(classNames?.passwordChar);
   const caretStyles = clsx(classNames?.caret);
@@ -17,11 +15,11 @@ export const InputOtpSegment = ({
 
   const displayValue = useMemo(() => {
     if (props.isActive && !props.char) {
-      return <div className={cn(slots.caret?.({class: caretStyles}))} />;
+      return <div className={cn(slots.caret?.({ class: caretStyles }))} />;
     }
     if (props.char) {
       return type === "password" ? (
-        <div className={cn(slots.passwordChar?.({class: passwordCharStyles}))} />
+        <div className={cn(slots.passwordChar?.({ class: passwordCharStyles }))} />
       ) : (
         <div>{props.char}</div>
       );
@@ -32,7 +30,7 @@ export const InputOtpSegment = ({
 
   return (
     <div
-      className={cn(slots.segment?.({class: segmentStyles}))}
+      className={cn(slots.segment?.({ class: segmentStyles }))}
       data-active={dataAttr(props.isActive)}
       data-focus={dataAttr(props.isFocused && props.isActive)}
       data-focus-visible={dataAttr(props.isFocusVisible && props.isActive)}

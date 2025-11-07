@@ -1,21 +1,19 @@
-import type {DateInputVariantProps, DateInputSlots, SlotsToClasses} from "@heroui/theme";
-import type {AriaTimeFieldProps, TimeValue} from "@react-types/datepicker";
-import type {ReactRef} from "@heroui/react-utils";
-import type {DOMAttributes, GroupDOMAttributes} from "@react-types/shared";
-import type {DateInputGroupProps} from "./date-input-group";
-import type {PropGetter} from "@heroui/system";
-import type {HTMLHeroUIProps} from "@heroui/system";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { DateInputSlots, DateInputVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { AriaTimeFieldProps, TimeValue } from "@react-types/datepicker";
+import type { DOMAttributes, GroupDOMAttributes } from "@react-types/shared";
+import type { DateInputGroupProps } from "./date-input-group";
 
-import {useLocale} from "@react-aria/i18n";
-import {useLabelPlacement, useProviderContext} from "@heroui/system";
-import {mapPropsVariants} from "@heroui/system";
-import {useDOMRef} from "@heroui/react-utils";
-import {useTimeField as useAriaTimeField} from "@react-aria/datepicker";
-import {useTimeFieldState} from "@react-stately/datepicker";
-import {objectToDeps, clsx, dataAttr, mergeProps} from "@heroui/shared-utils";
-import {dateInput} from "@heroui/theme";
-import {useMemo} from "react";
-import {FormContext, useSlottedContext} from "@heroui/form";
+import { mapPropsVariants, useLabelPlacement, useProviderContext } from "@/lib/system";
+import { dateInput } from "@/lib/theme";
+import { FormContext, useSlottedContext } from "@heroui/form";
+import { useDOMRef } from "@heroui/react-utils";
+import { clsx, dataAttr, mergeProps, objectToDeps } from "@heroui/shared-utils";
+import { useTimeField as useAriaTimeField } from "@react-aria/datepicker";
+import { useLocale } from "@react-aria/i18n";
+import { useTimeFieldState } from "@react-stately/datepicker";
+import { useMemo } from "react";
 
 type HeroUIBaseProps<T extends TimeValue> = Omit<
   HTMLHeroUIProps<"div">,
@@ -76,7 +74,7 @@ export type UseTimeInputProps<T extends TimeValue> = Props<T> &
 
 export function useTimeInput<T extends TimeValue>(originalProps: UseTimeInputProps<T>) {
   const globalContext = useProviderContext();
-  const {validationBehavior: formValidationBehavior} = useSlottedContext(FormContext) || {};
+  const { validationBehavior: formValidationBehavior } = useSlottedContext(FormContext) || {};
 
   const [props, variantProps] = mapPropsVariants(originalProps, dateInput.variantKeys);
 
@@ -106,7 +104,7 @@ export function useTimeInput<T extends TimeValue>(originalProps: UseTimeInputPro
   const domRef = useDOMRef(ref);
   const inputRef = useDOMRef(inputRefProp);
 
-  const {locale} = useLocale();
+  const { locale } = useLocale();
 
   const disableAnimation = originalProps.disableAnimation ?? globalContext?.disableAnimation;
 
@@ -130,7 +128,7 @@ export function useTimeInput<T extends TimeValue>(originalProps: UseTimeInputPro
     descriptionProps,
     errorMessageProps,
     isInvalid,
-  } = useAriaTimeField({...originalProps, label, validationBehavior, inputRef}, state, domRef);
+  } = useAriaTimeField({ ...originalProps, label, validationBehavior, inputRef }, state, domRef);
 
   const baseStyles = clsx(classNames?.base, className);
 
@@ -216,7 +214,7 @@ export function useTimeInput<T extends TimeValue>(originalProps: UseTimeInputPro
     return {
       ...mergeProps(errorMessageProps, errorMessagePropsProp, props),
       "data-slot": "error-message",
-      className: slots.errorMessage({class: clsx(classNames?.errorMessage, props?.className)}),
+      className: slots.errorMessage({ class: clsx(classNames?.errorMessage, props?.className) }),
     };
   };
 
@@ -224,7 +222,7 @@ export function useTimeInput<T extends TimeValue>(originalProps: UseTimeInputPro
     return {
       ...mergeProps(descriptionProps, descriptionPropsProp, props),
       "data-slot": "description",
-      className: slots.description({class: clsx(classNames?.description, props?.className)}),
+      className: slots.description({ class: clsx(classNames?.description, props?.className) }),
     };
   };
 
@@ -253,7 +251,7 @@ export function useTimeInput<T extends TimeValue>(originalProps: UseTimeInputPro
       helperWrapperProps: getHelperWrapperProps(),
       labelProps: getLabelProps(),
       wrapperProps: getInnerWrapperProps(),
-      className: slots.base({class: baseStyles}),
+      className: slots.base({ class: baseStyles }),
     } as DateInputGroupProps;
   };
 

@@ -1,14 +1,13 @@
-import type {Meta} from "@storybook/react";
-import type {CardProps} from "../src";
+import type { Meta } from "@storybook/react";
+import type { CardProps } from "../src";
 
-import React from "react";
-import {card} from "@heroui/theme";
-import {Link} from "@heroui/link";
-import {Button} from "@heroui/button";
-import {Code} from "@heroui/code";
-import {Image} from "@heroui/image";
+import { card } from "@/lib/theme";
+import { Button } from "@heroui/button";
+import { Code } from "@heroui/code";
+import { Image } from "@heroui/image";
+import { Link } from "@heroui/link";
 
-import {Card, CardBody, CardHeader, CardFooter} from "../src";
+import { Card, CardBody, CardFooter, CardHeader } from "../src";
 
 export default {
   title: "Components/Card",
@@ -152,8 +151,7 @@ const WithAbsImgHeaderFooterTemplate = (args: CardProps) => (
         <p className="text-xs text-black/40 uppercase font-bold">New</p>
         <h4 className="text-3xl font-medium text-black">HomePod mini</h4>
         <p className="text-sm text-black/80 pr-1.5">
-          Room-filling sound, Intelligent assistant. Smart home control. Works seamlessly with
-          iPhone. Check it out
+          Room-filling sound, Intelligent assistant. Smart home control. Works seamlessly with iPhone. Check it out
         </p>
       </div>
     </CardHeader>
@@ -267,12 +265,7 @@ const CenterImgTemplate = (args: CardProps) => (
       <h4 className="font-bold text-lg">Frontend Radio</h4>
     </CardHeader>
     <CardBody className="overflow-visible py-2">
-      <Image
-        isBlurred
-        alt="Card background"
-        src={"/images/assets/local-image-1.jpeg"}
-        width={300}
-      />
+      <Image isBlurred alt="Card background" src={"/images/assets/local-image-1.jpeg"} width={300} />
     </CardBody>
   </Card>
 );
@@ -333,11 +326,7 @@ const PrimaryActionTemplate = (args: CardProps) => {
       {list.map((item, index) => (
         <Card {...args} key={index} isPressable onPress={() => handlePress(item)}>
           <CardBody className="p-0">
-            <img
-              alt={item.title}
-              className="w-full h-[140px] object-cover"
-              src={"https://heroui.com" + item.img}
-            />
+            <img alt={item.title} className="w-full h-[140px] object-cover" src={"https://heroui.com" + item.img} />
           </CardBody>
           <CardFooter className="justify-between">
             <b>{item.title}</b>

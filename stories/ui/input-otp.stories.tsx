@@ -1,32 +1,32 @@
-import type {Meta} from "@storybook/react";
-import type {ValidationResult} from "@react-types/shared";
+import type { ValidationResult } from "@react-types/shared";
+import type { Meta } from "@storybook/react";
 
+import { button, inputOtp } from "@/lib/theme";
+import { Button } from "@heroui/button";
+import { Form } from "@heroui/form";
 import React from "react";
-import {button, inputOtp} from "@heroui/theme";
-import {Controller, useForm} from "react-hook-form";
-import {Button} from "@heroui/button";
-import {Form} from "@heroui/form";
+import { Controller, useForm } from "react-hook-form";
 
-import {InputOtp} from "../src";
+import { InputOtp } from "../src";
 
 export default {
   title: "Components/InputOtp",
   component: InputOtp,
   argTypes: {
     variant: {
-      control: {type: "select"},
+      control: { type: "select" },
       options: ["flat", "faded", "bordered", "underlined"],
     },
     color: {
-      control: {type: "select"},
+      control: { type: "select" },
       options: ["default", "primary", "secondary", "success", "warning", "danger"],
     },
     radius: {
-      control: {type: "select"},
+      control: { type: "select" },
       options: ["none", "sm", "md", "lg", "full"],
     },
     size: {
-      control: {type: "select"},
+      control: { type: "select" },
       options: ["sm", "md", "lg"],
     },
     isDisabled: {
@@ -54,7 +54,7 @@ const Template = (args) => (
 );
 
 const ErrorMessageFunctionTemplate = (args) => {
-  const {register, handleSubmit} = useForm({
+  const { register, handleSubmit } = useForm({
     defaultValues: {
       otp: "",
     },
@@ -67,8 +67,8 @@ const ErrorMessageFunctionTemplate = (args) => {
   return (
     <div className="flex flex-col">
       <form className="flex flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
-        <InputOtp {...args} length={4} {...register("otp", {required: true})} />
-        <button className={button({class: "w-fit"})} type="submit">
+        <InputOtp {...args} length={4} {...register("otp", { required: true })} />
+        <button className={button({ class: "w-fit" })} type="submit">
           Submit
         </button>
       </form>
@@ -123,14 +123,7 @@ const RequiredTemplate = (args) => {
         alert(`OTP submitted: ${otp}`);
       }}
     >
-      <InputOtp
-        isRequired
-        aria-label="OTP input field"
-        length={4}
-        name="otp"
-        placeholder="Enter code"
-        {...args}
-      />
+      <InputOtp isRequired aria-label="OTP input field" length={4} name="otp" placeholder="Enter code" {...args} />
       <Button size="sm" type="submit" variant="bordered">
         Submit
       </Button>
@@ -141,7 +134,7 @@ const RequiredTemplate = (args) => {
 const WithReactHookFormTemplate = (args) => {
   const {
     register,
-    formState: {errors},
+    formState: { errors },
     handleSubmit,
   } = useForm({
     defaultValues: {
@@ -164,12 +157,10 @@ const WithReactHookFormTemplate = (args) => {
       </div>
       <div className="flex flex-col">
         <div className="text-default-400/60 text-xs">Required value:</div>
-        <InputOtp {...args} {...register("requiredField", {required: true})} />
-        {errors.requiredField && (
-          <span className="text-danger text-tiny">This field is required</span>
-        )}
+        <InputOtp {...args} {...register("requiredField", { required: true })} />
+        {errors.requiredField && <span className="text-danger text-tiny">This field is required</span>}
       </div>
-      <button className={button({class: "w-fit"})} type="submit">
+      <button className={button({ class: "w-fit" })} type="submit">
         Submit
       </button>
     </form>
@@ -180,7 +171,7 @@ const WithReactHookFormControllerTemplate = (args) => {
   const {
     handleSubmit,
     control,
-    formState: {errors},
+    formState: { errors },
   } = useForm({
     defaultValues: {
       otp: "",
@@ -196,13 +187,8 @@ const WithReactHookFormControllerTemplate = (args) => {
       <Controller
         control={control}
         name="otp"
-        render={({field}) => (
-          <InputOtp
-            {...field}
-            errorMessage={errors.otp && errors.otp.message}
-            isInvalid={!!errors.otp}
-            {...args}
-          />
+        render={({ field }) => (
+          <InputOtp {...field} errorMessage={errors.otp && errors.otp.message} isInvalid={!!errors.otp} {...args} />
         )}
         rules={{
           required: "OTP is required",
@@ -230,11 +216,7 @@ const ServerValidationTemplate = (args) => {
   };
 
   return (
-    <Form
-      className="flex flex-col items-start gap-2"
-      validationErrors={serverErrors}
-      onSubmit={onSubmit}
-    >
+    <Form className="flex flex-col items-start gap-2" validationErrors={serverErrors} onSubmit={onSubmit}>
       <InputOtp {...args} name="otp" />
       <Button size="sm" type="submit">
         Submit

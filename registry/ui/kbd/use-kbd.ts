@@ -1,12 +1,12 @@
-import type {KbdVariantProps, KbdSlots, SlotsToClasses} from "@heroui/theme";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system-rsc";
-import type {ReactRef} from "@heroui/react-utils";
-import type {KbdKey} from "./utils";
+import type { KbdSlots, KbdVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { HTMLHeroUIProps, PropGetter } from "@heroui/system-rsc";
+import type { KbdKey } from "./utils";
 
-import {mapPropsVariants} from "@heroui/system-rsc";
-import {kbd} from "@heroui/theme";
-import {clsx, objectToDeps} from "@heroui/shared-utils";
-import {useMemo} from "react";
+import { kbd } from "@/lib/theme";
+import { clsx, objectToDeps } from "@heroui/shared-utils";
+import { mapPropsVariants } from "@heroui/system-rsc";
+import { useMemo } from "react";
 
 interface Props extends HTMLHeroUIProps<"kbd"> {
   /**
@@ -38,7 +38,7 @@ export type UseKbdProps = Props & KbdVariantProps;
 export function useKbd(originalProps: UseKbdProps) {
   const [props, variantProps] = mapPropsVariants(originalProps, kbd.variantKeys);
 
-  const {as, children, className, keys, title, classNames, ...otherProps} = props;
+  const { as, children, className, keys, title, classNames, ...otherProps } = props;
 
   const Component = as || "kbd";
 
@@ -57,10 +57,10 @@ export function useKbd(originalProps: UseKbdProps) {
   const getKbdProps: PropGetter = (props = {}) => ({
     ...otherProps,
     ...props,
-    className: clsx(slots.base({class: clsx(baseStyles, props.className)})),
+    className: clsx(slots.base({ class: clsx(baseStyles, props.className) })),
   });
 
-  return {Component, slots, classNames, title, children, keysToRender, getKbdProps};
+  return { Component, slots, classNames, title, children, keysToRender, getKbdProps };
 }
 
 export type UseKbdReturn = ReturnType<typeof useKbd>;

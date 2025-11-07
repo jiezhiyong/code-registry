@@ -1,10 +1,10 @@
-import type {UseButtonProps} from "./use-button";
+import type { UseButtonProps } from "./use-button";
 
-import {Spinner} from "@heroui/spinner";
-import {Ripple} from "@heroui/ripple";
-import {forwardRef} from "@heroui/system";
+import { forwardRef } from "@/lib/system";
+import { Ripple } from "@heroui/ripple";
+import { Spinner } from "@heroui/spinner";
 
-import {useButton} from "./use-button";
+import { useButton } from "./use-button";
 
 export interface ButtonProps extends UseButtonProps {}
 
@@ -23,7 +23,7 @@ const Button = forwardRef<"button", ButtonProps>((props, ref) => {
     getButtonProps,
     getRippleProps,
     isIconOnly,
-  } = useButton({...props, ref});
+  } = useButton({ ...props, ref });
 
   return (
     <Component ref={domRef} {...getButtonProps()}>

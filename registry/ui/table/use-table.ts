@@ -1,22 +1,21 @@
-import type {TableVariantProps, SlotsToClasses, TableReturnType, TableSlots} from "@heroui/theme";
-import type {Layout} from "@react-stately/virtualizer";
-import type {SelectionBehavior, DisabledBehavior, Node} from "@react-types/shared";
-import type {TableState, TableStateProps} from "@react-stately/table";
-import type {TableCollection} from "@react-types/table";
-import type {ReactNode, Key} from "react";
-import type {AriaTableProps} from "@react-aria/table";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {ReactRef} from "@heroui/react-utils";
-import type {CheckboxProps} from "@heroui/checkbox";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { SlotsToClasses, TableReturnType, TableSlots, TableVariantProps } from "@/lib/theme";
+import type { CheckboxProps } from "@heroui/checkbox";
+import type { ReactRef } from "@heroui/react-utils";
+import type { AriaTableProps } from "@react-aria/table";
+import type { TableState, TableStateProps } from "@react-stately/table";
+import type { Layout } from "@react-stately/virtualizer";
+import type { DisabledBehavior, Node, SelectionBehavior } from "@react-types/shared";
+import type { TableCollection } from "@react-types/table";
+import type { Key, ReactNode } from "react";
 
-import {useCallback} from "react";
-import {useTableState} from "@react-stately/table";
-import {useTable as useReactAriaTable} from "@react-aria/table";
-import {mapPropsVariants, useProviderContext} from "@heroui/system";
-import {table} from "@heroui/theme";
-import {useDOMRef, filterDOMProps} from "@heroui/react-utils";
-import {clsx, objectToDeps, mergeProps} from "@heroui/shared-utils";
-import {useMemo} from "react";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { table } from "@/lib/theme";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
+import { clsx, mergeProps, objectToDeps } from "@heroui/shared-utils";
+import { useTable as useReactAriaTable } from "@react-aria/table";
+import { useTableState } from "@react-stately/table";
+import { useCallback, useMemo } from "react";
 
 type TableContentPlacement = "inside" | "outside";
 
@@ -192,12 +191,12 @@ export function useTable<T extends object>(originalProps: UseTableProps<T>) {
     state.setKeyboardNavigationDisabled(true);
   }
 
-  const {collection} = state;
+  const { collection } = state;
 
   // Exclude the layout prop because it has a name conflict and is deprecated in useTable.
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const {layout, ...otherOriginalProps} = originalProps;
-  const {gridProps} = useReactAriaTable<T>({...otherOriginalProps}, state, domRef);
+  const { layout, ...otherOriginalProps } = originalProps;
+  const { gridProps } = useReactAriaTable<T>({ ...otherOriginalProps }, state, domRef);
 
   const isSelectable = selectionMode !== "none";
   const isMultiSelectable = selectionMode === "multiple";
@@ -255,7 +254,7 @@ export function useTable<T extends object>(originalProps: UseTableProps<T>) {
     (props) => ({
       ...props,
       ref: domBaseRef,
-      className: slots.base({class: clsx(baseStyles, props?.className)}),
+      className: slots.base({ class: clsx(baseStyles, props?.className) }),
     }),
     [baseStyles, slots],
   );
@@ -264,7 +263,7 @@ export function useTable<T extends object>(originalProps: UseTableProps<T>) {
     (props) => ({
       ...props,
       ref: domBaseRef,
-      className: slots.wrapper({class: clsx(classNames?.wrapper, props?.className)}),
+      className: slots.wrapper({ class: clsx(classNames?.wrapper, props?.className) }),
     }),
     [classNames?.wrapper, slots],
   );
@@ -282,7 +281,7 @@ export function useTable<T extends object>(originalProps: UseTableProps<T>) {
       // so that typing with space won't be blocked
       onKeyDownCapture: undefined,
       ref: domRef,
-      className: slots.table({class: clsx(classNames?.table, props?.className)}),
+      className: slots.table({ class: clsx(classNames?.table, props?.className) }),
     }),
     [classNames?.table, shouldFilterDOMProps, slots, gridProps, otherProps],
   );

@@ -1,15 +1,14 @@
-import type {SlotsToClasses, UserSlots} from "@heroui/theme";
-import type {AvatarProps} from "@heroui/avatar";
-import type {ReactNode} from "react";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {ReactRef} from "@heroui/react-utils";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { SlotsToClasses, UserSlots } from "@/lib/theme";
+import type { AvatarProps } from "@heroui/avatar";
+import type { ReactRef } from "@heroui/react-utils";
+import type { ReactNode } from "react";
 
-import {useMemo, useCallback} from "react";
-import {useFocusRing} from "@react-aria/focus";
-import {user} from "@heroui/theme";
-import {clsx, dataAttr, mergeProps} from "@heroui/shared-utils";
-import {filterDOMProps} from "@heroui/react-utils";
-import {useDOMRef} from "@heroui/react-utils";
+import { user } from "@/lib/theme";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
+import { clsx, dataAttr, mergeProps } from "@heroui/shared-utils";
+import { useFocusRing } from "@react-aria/focus";
+import { useCallback, useMemo } from "react";
 interface Props {
   /**
    * Ref to the DOM node.
@@ -75,7 +74,7 @@ export function useUser(props: UseUserProps) {
 
   const domRef = useDOMRef(ref);
 
-  const {isFocusVisible, isFocused, focusProps} = useFocusRing({});
+  const { isFocusVisible, isFocused, focusProps } = useFocusRing({});
 
   const canBeFocused = useMemo(() => {
     return isFocusable || as === "button";

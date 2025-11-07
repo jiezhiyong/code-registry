@@ -1,8 +1,8 @@
-import type {UseRadioProps} from "./use-radio";
+import type { UseRadioProps } from "./use-radio";
 
-import {forwardRef} from "@heroui/system";
+import { forwardRef } from "@/lib/system";
 
-import {useRadio} from "./use-radio";
+import { useRadio } from "./use-radio";
 
 export interface RadioProps extends UseRadioProps {}
 
@@ -18,7 +18,7 @@ const Radio = forwardRef<"input", RadioProps>((props, ref) => {
     getLabelWrapperProps,
     getControlProps,
     getDescriptionProps,
-  } = useRadio({...props, ref});
+  } = useRadio({ ...props, ref });
 
   return (
     <Component {...getBaseProps()}>

@@ -1,21 +1,21 @@
-import type {SliderSlots, SliderVariantProps, SlotsToClasses} from "@heroui/theme";
-import type {DOMAttributes, HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {ReactRef} from "@heroui/react-utils";
-import type {ReactNode} from "react";
-import type {AriaSliderProps} from "@react-aria/slider";
-import type {TooltipProps} from "@heroui/tooltip";
-import type {ValueBase} from "@react-types/shared";
-import type {SliderThumbProps} from "./slider-thumb";
+import type { DOMAttributes, HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { SliderSlots, SliderVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { TooltipProps } from "@heroui/tooltip";
+import type { AriaSliderProps } from "@react-aria/slider";
+import type { ValueBase } from "@react-types/shared";
+import type { ReactNode } from "react";
+import type { SliderThumbProps } from "./slider-thumb";
 
-import {mapPropsVariants, useProviderContext} from "@heroui/system";
-import {slider} from "@heroui/theme";
-import {useDOMRef, filterDOMProps} from "@heroui/react-utils";
-import {useSliderState} from "@react-stately/slider";
-import {useCallback, useMemo, useRef} from "react";
-import {useNumberFormatter, useLocale} from "@react-aria/i18n";
-import {useSlider as useAriaSlider} from "@react-aria/slider";
-import {clsx, mergeProps, objectToDeps, warn} from "@heroui/shared-utils";
-import {useHover} from "@react-aria/interactions";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { slider } from "@/lib/theme";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
+import { clsx, mergeProps, objectToDeps, warn } from "@heroui/shared-utils";
+import { useLocale, useNumberFormatter } from "@react-aria/i18n";
+import { useHover } from "@react-aria/interactions";
+import { useSlider as useAriaSlider } from "@react-aria/slider";
+import { useSliderState } from "@react-stately/slider";
+import { useCallback, useMemo, useRef } from "react";
 
 export type SliderValue = number | number[];
 export type SliderStepMark = {
@@ -23,7 +23,7 @@ export type SliderStepMark = {
   label: string;
 };
 
-export type SliderRenderThumbProps = DOMAttributes<HTMLDivElement> & {index?: number};
+export type SliderRenderThumbProps = DOMAttributes<HTMLDivElement> & { index?: number; };
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**
@@ -194,7 +194,7 @@ export function useSlider(originalProps: UseSliderProps) {
   const trackRef = useRef<HTMLDivElement>(null);
 
   const numberFormatter = useNumberFormatter(formatOptions);
-  const {direction} = useLocale();
+  const { direction } = useLocale();
 
   const clampValue = useCallback(
     (valueToClamp: number) => {
@@ -240,12 +240,12 @@ export function useSlider(originalProps: UseSliderProps) {
     ...userTooltipProps,
   };
 
-  const {groupProps, trackProps, labelProps, outputProps} = useAriaSlider(
+  const { groupProps, trackProps, labelProps, outputProps } = useAriaSlider(
     originalProps,
     state,
     trackRef,
   );
-  const {isHovered, hoverProps} = useHover({isDisabled: originalProps.isDisabled});
+  const { isHovered, hoverProps } = useHover({ isDisabled: originalProps.isDisabled });
 
   const baseStyles = clsx(classNames?.base, className);
   const isVertical = orientation === "vertical";
@@ -286,7 +286,7 @@ export function useSlider(originalProps: UseSliderProps) {
       "data-orientation": state.orientation,
       "data-slot": "base",
       "data-hover": isHovered,
-      className: slots.base({class: baseStyles}),
+      className: slots.base({ class: baseStyles }),
       ...mergeProps(
         groupProps,
         hoverProps,
@@ -300,7 +300,7 @@ export function useSlider(originalProps: UseSliderProps) {
 
   const getLabelWrapperProps: PropGetter = (props = {}) => {
     return {
-      className: slots.labelWrapper({class: classNames?.labelWrapper}),
+      className: slots.labelWrapper({ class: classNames?.labelWrapper }),
       "data-slot": "labelWrapper",
       ...props,
     };
@@ -309,7 +309,7 @@ export function useSlider(originalProps: UseSliderProps) {
   const getLabelProps: PropGetter = (props = {}) => {
     return {
       "data-slot": "label",
-      className: slots.label({class: classNames?.label}),
+      className: slots.label({ class: classNames?.label }),
       children: label,
       ...labelProps,
       ...props,
@@ -319,7 +319,7 @@ export function useSlider(originalProps: UseSliderProps) {
   const getValueProps: PropGetter = (props = {}) => {
     return {
       "data-slot": "value",
-      className: slots.value({class: classNames?.value}),
+      className: slots.value({ class: classNames?.value }),
       children: getValue && typeof getValue === "function" ? getValue(state.values) : value,
       ...outputProps,
       ...props,
@@ -336,14 +336,14 @@ export function useSlider(originalProps: UseSliderProps) {
       "data-vertical": isVertical,
       ...(hasSingleThumb
         ? {
-            "data-fill-start": fillWidth > 0,
-            "data-fill-end": fillWidth == 100,
-          }
+          "data-fill-start": fillWidth > 0,
+          "data-fill-end": fillWidth == 100,
+        }
         : {
-            "data-fill-start": startOffset == 0,
-            "data-fill-end": startOffset * 100 + fillWidth == 100,
-          }),
-      className: slots.track({class: classNames?.track}),
+          "data-fill-start": startOffset == 0,
+          "data-fill-end": startOffset * 100 + fillWidth == 100,
+        }),
+      className: slots.track({ class: classNames?.track }),
       ...trackProps,
       ...props,
     };
@@ -352,7 +352,7 @@ export function useSlider(originalProps: UseSliderProps) {
   const getTrackWrapperProps: PropGetter = (props = {}) => {
     return {
       "data-slot": "track-wrapper",
-      className: slots.trackWrapper({class: classNames?.trackWrapper}),
+      className: slots.trackWrapper({ class: classNames?.trackWrapper }),
       ...props,
     };
   };
@@ -360,18 +360,18 @@ export function useSlider(originalProps: UseSliderProps) {
   const getFillerProps: PropGetter = (props = {}) => {
     return {
       "data-slot": "filler",
-      className: slots.filler({class: classNames?.filler}),
+      className: slots.filler({ class: classNames?.filler }),
       ...props,
       style: {
         ...props.style,
         [isVertical ? "bottom" : direction === "rtl" ? "right" : "left"]: `${startOffset * 100}%`,
         ...(isVertical
           ? {
-              height: `${(endOffset - startOffset) * 100}%`,
-            }
+            height: `${(endOffset - startOffset) * 100}%`,
+          }
           : {
-              width: `${(endOffset - startOffset) * 100}%`,
-            }),
+            width: `${(endOffset - startOffset) * 100}%`,
+          }),
       },
     };
   };
@@ -389,7 +389,7 @@ export function useSlider(originalProps: UseSliderProps) {
       showTooltip,
       renderThumb,
       formatOptions: tooltipValueFormatOptions,
-      className: slots.thumb({class: classNames?.thumb}),
+      className: slots.thumb({ class: classNames?.thumb }),
     } as SliderThumbProps;
   };
 
@@ -397,7 +397,7 @@ export function useSlider(originalProps: UseSliderProps) {
     const percent = state.getValuePercent(index * step + minValue);
 
     return {
-      className: slots.step({class: classNames?.step}),
+      className: slots.step({ class: classNames?.step }),
       "data-slot": "step",
       "data-in-range": percent <= endOffset && percent >= startOffset,
       style: {
@@ -410,7 +410,7 @@ export function useSlider(originalProps: UseSliderProps) {
     const percent = state.getValuePercent(mark.value);
 
     return {
-      className: slots.mark({class: classNames?.mark}),
+      className: slots.mark({ class: classNames?.mark }),
       "data-slot": "mark",
       "data-in-range": percent <= endOffset && percent >= startOffset,
       style: {
@@ -447,13 +447,13 @@ export function useSlider(originalProps: UseSliderProps) {
 
   const getStartContentProps: PropGetter = (props = {}) => ({
     "data-slot": "startContent",
-    className: slots.startContent({class: classNames?.startContent}),
+    className: slots.startContent({ class: classNames?.startContent }),
     ...props,
   });
 
   const getEndContentProps: PropGetter = (props = {}) => ({
     "data-slot": "endContent",
-    className: slots.endContent({class: classNames?.endContent}),
+    className: slots.endContent({ class: classNames?.endContent }),
     ...props,
   });
 

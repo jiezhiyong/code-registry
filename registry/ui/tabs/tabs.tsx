@@ -1,21 +1,18 @@
-import type {ForwardedRef, ReactElement} from "react";
-import type {UseTabsProps} from "./use-tabs";
+import type { ForwardedRef, ReactElement } from "react";
+import type { UseTabsProps } from "./use-tabs";
 
-import {useRef, useMemo} from "react";
-import {forwardRef} from "@heroui/system";
+import { forwardRef } from "@/lib/system";
+import { useMemo, useRef } from "react";
 
-import {useTabs} from "./use-tabs";
 import Tab from "./tab";
 import TabPanel from "./tab-panel";
+import { useTabs } from "./use-tabs";
 
 interface Props<T> extends UseTabsProps<T> {}
 
 export type TabsProps<T extends object = object> = Props<T>;
 
-const Tabs = forwardRef(function Tabs<T extends object>(
-  props: TabsProps<T>,
-  ref: ForwardedRef<HTMLDivElement>,
-) {
+const Tabs = forwardRef(function Tabs<T extends object>(props: TabsProps<T>, ref: ForwardedRef<HTMLDivElement>) {
   const {
     Component,
     values,
@@ -40,9 +37,7 @@ const Tabs = forwardRef(function Tabs<T extends object>(
     shouldSelectOnPressUp: values.shouldSelectOnPressUp,
   };
 
-  const tabs = [...state.collection].map((item) => (
-    <Tab key={item.key} item={item} {...tabsProps} {...item.props} />
-  ));
+  const tabs = [...state.collection].map((item) => <Tab key={item.key} item={item} {...tabsProps} {...item.props} />);
 
   const selectedItem = state.selectedItem;
   const selectedKey = selectedItem?.key;
@@ -94,8 +89,7 @@ const Tabs = forwardRef(function Tabs<T extends object>(
 
     if (!selectedTab || !domRef.current) return;
 
-    const shouldDisableTransition =
-      prevSelectedKey.current === undefined || prevVariant.current !== variant;
+    const shouldDisableTransition = prevSelectedKey.current === undefined || prevVariant.current !== variant;
 
     node.style.transition = shouldDisableTransition ? "none" : "";
 
@@ -147,7 +141,7 @@ const Tabs = forwardRef(function Tabs<T extends object>(
       domRef,
       variant,
       isVertical,
-    ],
+    ]
   );
 
   if ("placement" in props || "isVertical" in props) {

@@ -1,11 +1,11 @@
-import type {ReactElement} from "react";
-import type {UseCheckboxProps} from "./use-checkbox";
+import type { ReactElement } from "react";
+import type { UseCheckboxProps } from "./use-checkbox";
 
-import {forwardRef} from "@heroui/system";
-import {cloneElement} from "react";
+import { forwardRef } from "@/lib/system";
+import { cloneElement } from "react";
 
-import {useCheckbox} from "./use-checkbox";
-import {CheckboxIcon} from "./checkbox-icon";
+import { CheckboxIcon } from "./checkbox-icon";
+import { useCheckbox } from "./use-checkbox";
 
 export interface CheckboxProps extends UseCheckboxProps {}
 
@@ -19,12 +19,10 @@ const Checkbox = forwardRef<"input", CheckboxProps>((props, ref) => {
     getInputProps,
     getIconProps,
     getLabelProps,
-  } = useCheckbox({...props, ref});
+  } = useCheckbox({ ...props, ref });
 
   const clonedIcon =
-    typeof icon === "function"
-      ? icon(getIconProps())
-      : cloneElement(icon as ReactElement, getIconProps());
+    typeof icon === "function" ? icon(getIconProps()) : cloneElement(icon as ReactElement, getIconProps());
 
   return (
     <Component {...getBaseProps()}>

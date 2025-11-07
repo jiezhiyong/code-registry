@@ -1,8 +1,8 @@
-import type {UseCircularProgressProps} from "./use-circular-progress";
+import type { UseCircularProgressProps } from "./use-circular-progress";
 
-import {forwardRef} from "@heroui/system";
+import { forwardRef } from "@/lib/system";
 
-import {useCircularProgress} from "./use-circular-progress";
+import { useCircularProgress } from "./use-circular-progress";
 
 export interface CircularProgressProps extends UseCircularProgressProps {}
 
@@ -18,21 +18,19 @@ const CircularProgress = forwardRef<"div", CircularProgressProps>((props, ref) =
     getSvgProps,
     getIndicatorProps,
     getTrackProps,
-  } = useCircularProgress({ref, ...props});
+  } = useCircularProgress({ ref, ...props });
 
   const progressBarProps = getProgressBarProps();
 
   return (
     <Component {...progressBarProps}>
-      <div className={slots.svgWrapper({class: classNames?.svgWrapper})}>
+      <div className={slots.svgWrapper({ class: classNames?.svgWrapper })}>
         <svg {...getSvgProps()}>
           <circle {...getTrackProps()} />
           <circle {...getIndicatorProps()} />
         </svg>
         {showValueLabel && (
-          <span className={slots.value({class: classNames?.value})}>
-            {progressBarProps["aria-valuetext"]}
-          </span>
+          <span className={slots.value({ class: classNames?.value })}>{progressBarProps["aria-valuetext"]}</span>
         )}
       </div>
       {label && <span {...getLabelProps()}>{label}</span>}

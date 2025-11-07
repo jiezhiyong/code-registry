@@ -1,10 +1,9 @@
-import type {Meta} from "@storybook/react";
-import type {DividerProps} from "../src";
+import type { Meta } from "@storybook/react";
+import type { DividerProps } from "../src";
 
-import React from "react";
-import {divider} from "@heroui/theme";
+import { divider } from "@/lib/theme";
 
-import {Divider} from "../src";
+import { Divider } from "../src";
 
 export default {
   title: "Components/Divider",

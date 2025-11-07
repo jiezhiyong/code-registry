@@ -1,18 +1,18 @@
-import type {UseTooltipProps} from "./use-tooltip";
+import type { UseTooltipProps } from "./use-tooltip";
 
-import {forwardRef} from "@heroui/system";
-import {OverlayContainer} from "@react-aria/overlays";
-import {AnimatePresence, m, LazyMotion} from "framer-motion";
-import {TRANSITION_VARIANTS} from "@heroui/framer-utils";
-import {warn, mergeProps} from "@heroui/shared-utils";
-import {Children, cloneElement, isValidElement} from "react";
-import {getTransformOrigins} from "@heroui/aria-utils";
+import { getTransformOrigins } from "@/lib/aria";
+import { TRANSITION_VARIANTS } from "@/lib/framer";
+import { forwardRef } from "@/lib/system";
+import { mergeProps, warn } from "@heroui/shared-utils";
+import { OverlayContainer } from "@react-aria/overlays";
+import { AnimatePresence, LazyMotion, m } from "framer-motion";
+import { Children, cloneElement, isValidElement } from "react";
 
-import {useTooltip} from "./use-tooltip";
+import { useTooltip } from "./use-tooltip";
 
 export interface TooltipProps extends Omit<UseTooltipProps, "disableTriggerFocus" | "backdrop"> {}
 
-const domAnimation = () => import("@heroui/dom-animation").then((res) => res.default);
+const domAnimation = () => import(""@/lib/dom-animation").then((res) => res.default);
 
 const Tooltip = forwardRef<"div", TooltipProps>((props, ref) => {
   const {
@@ -60,7 +60,7 @@ const Tooltip = forwardRef<"div", TooltipProps>((props, ref) => {
     warn("Tooltip must have only one child node. Please, check your code.");
   }
 
-  const {ref: tooltipRef, id, style, ...otherTooltipProps} = getTooltipProps();
+  const { ref: tooltipRef, id, style, ...otherTooltipProps } = getTooltipProps();
 
   const animatedContent = (
     <div key={`${id}-tooltip-content`} ref={tooltipRef} id={id} style={style}>
@@ -94,11 +94,7 @@ const Tooltip = forwardRef<"div", TooltipProps>((props, ref) => {
       ) : (
         <LazyMotion features={domAnimation}>
           <AnimatePresence>
-            {isOpen && (
-              <OverlayContainer portalContainer={portalContainer}>
-                {animatedContent}
-              </OverlayContainer>
-            )}
+            {isOpen && <OverlayContainer portalContainer={portalContainer}>{animatedContent}</OverlayContainer>}
           </AnimatePresence>
         </LazyMotion>
       )}

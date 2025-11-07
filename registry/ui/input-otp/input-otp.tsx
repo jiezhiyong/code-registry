@@ -1,17 +1,17 @@
-import type {UseInputOtpProps} from "./use-input-otp";
+import type { UseInputOtpProps } from "./use-input-otp";
 
-import {forwardRef} from "@heroui/system";
-import {useMemo} from "react";
-import {OTPInput} from "input-otp";
+import { forwardRef } from "@/lib/system";
+import { OTPInput } from "input-otp";
+import { useMemo } from "react";
 
-import {useInputOtp} from "./use-input-otp";
-import {InputOtpProvider} from "./input-otp-context";
-import {InputOtpSegment} from "./input-otp-segment";
+import { InputOtpProvider } from "./input-otp-context";
+import { InputOtpSegment } from "./input-otp-segment";
+import { useInputOtp } from "./use-input-otp";
 
 export interface InputOtpProps extends UseInputOtpProps {}
 
 const InputOtp = forwardRef<"input", InputOtpProps>((props, ref) => {
-  const context = useInputOtp({...props, ref});
+  const context = useInputOtp({ ...props, ref });
 
   const {
     Component,
@@ -58,15 +58,10 @@ const InputOtp = forwardRef<"input", InputOtpProps>((props, ref) => {
       <Component {...getBaseProps()}>
         <OTPInput
           {...getInputOtpProps()}
-          render={({slots}) => (
+          render={({ slots }) => (
             <div {...getSegmentWrapperProps()}>
               {slots.map((slot, idx) => (
-                <InputOtpSegment
-                  key={idx}
-                  {...slot}
-                  isFocusVisible={isFocusVisible}
-                  isFocused={isFocused}
-                />
+                <InputOtpSegment key={idx} {...slot} isFocusVisible={isFocusVisible} isFocused={isFocused} />
               ))}
             </div>
           )}

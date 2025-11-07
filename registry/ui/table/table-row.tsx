@@ -1,14 +1,14 @@
-import type {GridNode} from "@react-types/grid";
-import type {TableRowProps as BaseTableRowProps} from "./base/table-row";
-import type {ValuesType} from "./use-table";
+import type { GridNode } from "@react-types/grid";
+import type { TableRowProps as BaseTableRowProps } from "./base/table-row";
+import type { ValuesType } from "./use-table";
 
-import {forwardRef} from "@heroui/system";
-import {useDOMRef, filterDOMProps} from "@heroui/react-utils";
-import {clsx, dataAttr, mergeProps} from "@heroui/shared-utils";
-import {useTableRow} from "@react-aria/table";
-import {useFocusRing} from "@react-aria/focus";
-import {useHover} from "@react-aria/interactions";
-import {useMemo} from "react";
+import { forwardRef } from "@/lib/system";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
+import { clsx, dataAttr, mergeProps } from "@heroui/shared-utils";
+import { useFocusRing } from "@react-aria/focus";
+import { useHover } from "@react-aria/interactions";
+import { useTableRow } from "@react-aria/table";
+import { useMemo } from "react";
 
 // @internal
 export interface TableRowProps<T = object> extends Omit<BaseTableRowProps, "children"> {
@@ -23,26 +23,25 @@ export interface TableRowProps<T = object> extends Omit<BaseTableRowProps, "chil
 }
 
 const TableRow = forwardRef<"tr", TableRowProps>((props, ref) => {
-  const {as, className, children, node, slots, state, isSelectable, classNames, ...otherProps} =
-    props;
+  const { as, className, children, node, slots, state, isSelectable, classNames, ...otherProps } = props;
 
   const Component = as || (props?.href ? "a" : "tr");
   const shouldFilterDOMProps = typeof Component === "string";
 
   const domRef = useDOMRef(ref);
 
-  const {rowProps} = useTableRow({node}, state, domRef);
+  const { rowProps } = useTableRow({ node }, state, domRef);
 
   const trStyles = clsx(classNames?.tr, className, node.props?.className);
 
-  const {isFocusVisible, focusProps} = useFocusRing();
+  const { isFocusVisible, focusProps } = useFocusRing();
 
   const isDisabled = state.disabledKeys.has(node.key);
   const isSelected = state.selectionManager.isSelected(node.key);
 
-  const {isHovered, hoverProps} = useHover({isDisabled});
+  const { isHovered, hoverProps } = useHover({ isDisabled });
 
-  const {isFirst, isLast, isMiddle, isOdd} = useMemo(() => {
+  const { isFirst, isLast, isMiddle, isOdd } = useMemo(() => {
     const isFirst = node.key === state.collection.getFirstKey();
     const isLast = node.key === state.collection.getLastKey();
     const isMiddle = !isFirst && !isLast;
@@ -74,9 +73,9 @@ const TableRow = forwardRef<"tr", TableRowProps>((props, ref) => {
         filterDOMProps(node.props, {
           enabled: shouldFilterDOMProps,
         }),
-        otherProps,
+        otherProps
       )}
-      className={slots.tr?.({class: trStyles})}
+      className={slots.tr?.({ class: trStyles })}
     >
       {children}
     </Component>

@@ -1,19 +1,19 @@
-import type {HTMLHeroUIProps, PropGetter, SharedSelection} from "@heroui/system";
-import type {AriaMenuProps} from "@react-types/menu";
-import type {AriaMenuOptions} from "@react-aria/menu";
-import type {MenuVariantProps, SlotsToClasses, MenuSlots} from "@heroui/theme";
-import type {TreeState} from "@react-stately/tree";
-import type {ReactRef} from "@heroui/react-utils";
-import type {ReactNode} from "react";
-import type {MenuItemProps} from "./menu-item";
+import type { HTMLHeroUIProps, PropGetter, SharedSelection } from "@/lib/system";
+import type { MenuSlots, MenuVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { AriaMenuOptions } from "@react-aria/menu";
+import type { TreeState } from "@react-stately/tree";
+import type { AriaMenuProps } from "@react-types/menu";
+import type { ReactNode } from "react";
+import type { MenuItemProps } from "./menu-item";
 
-import {useProviderContext} from "@heroui/system";
-import {useMenu as useAriaMenu} from "@react-aria/menu";
-import {menu} from "@heroui/theme";
-import {useTreeState} from "@react-stately/tree";
-import {filterDOMProps, useDOMRef} from "@heroui/react-utils";
-import {useMemo} from "react";
-import {clsx} from "@heroui/shared-utils";
+import { useProviderContext } from "@/lib/system";
+import { menu } from "@/lib/theme";
+import { filterDOMProps, useDOMRef } from "@heroui/react-utils";
+import { clsx } from "@heroui/shared-utils";
+import { useMenu as useAriaMenu } from "@react-aria/menu";
+import { useTreeState } from "@react-stately/tree";
+import { useMemo } from "react";
 
 interface Props<T> {
   /**
@@ -128,20 +128,20 @@ export function useMenu<T extends object>(props: UseMenuProps<T>) {
   const domRef = useDOMRef(ref);
   const shouldFilterDOMProps = typeof Component === "string";
 
-  const innerState = useTreeState({...otherProps, ...userMenuProps, children});
+  const innerState = useTreeState({ ...otherProps, ...userMenuProps, children });
 
   const state = propState || innerState;
 
-  const {menuProps} = useAriaMenu({...otherProps, ...userMenuProps, onAction}, state, domRef);
+  const { menuProps } = useAriaMenu({ ...otherProps, ...userMenuProps, onAction }, state, domRef);
 
-  const slots = useMemo(() => menu({className}), [className]);
+  const slots = useMemo(() => menu({ className }), [className]);
   const baseStyles = clsx(classNames?.base, className);
 
   const getBaseProps: PropGetter = (props = {}) => {
     return {
       ref: domRef,
       "data-slot": "base",
-      className: slots.base({class: baseStyles}),
+      className: slots.base({ class: baseStyles }),
       ...filterDOMProps(otherProps, {
         enabled: shouldFilterDOMProps,
       }),
@@ -152,7 +152,7 @@ export function useMenu<T extends object>(props: UseMenuProps<T>) {
   const getListProps: PropGetter = (props = {}) => {
     return {
       "data-slot": "list",
-      className: slots.list({class: classNames?.list}),
+      className: slots.list({ class: classNames?.list }),
       ...menuProps,
       ...props,
     };
@@ -161,7 +161,7 @@ export function useMenu<T extends object>(props: UseMenuProps<T>) {
   const getEmptyContentProps: PropGetter = (props = {}) => {
     return {
       children: emptyContent,
-      className: slots.emptyContent({class: classNames?.emptyContent}),
+      className: slots.emptyContent({ class: classNames?.emptyContent }),
       ...props,
     };
   };

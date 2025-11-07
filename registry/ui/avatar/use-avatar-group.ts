@@ -1,14 +1,13 @@
-import type {ReactNode} from "react";
-import type {SlotsToClasses, AvatarGroupSlots, AvatarGroupVariantProps} from "@heroui/theme";
-import type {HTMLHeroUIProps, PropGetter} from "@heroui/system";
-import type {ReactRef} from "@heroui/react-utils";
-import type {AvatarProps} from "./index";
+import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
+import type { AvatarGroupSlots, AvatarGroupVariantProps, SlotsToClasses } from "@/lib/theme";
+import type { ReactRef } from "@heroui/react-utils";
+import type { ReactNode } from "react";
+import type { AvatarProps } from "./index";
 
-import {avatarGroup} from "@heroui/theme";
-import {useDOMRef} from "@heroui/react-utils";
-import {clsx, compact} from "@heroui/shared-utils";
-import {getValidChildren} from "@heroui/react-utils";
-import {cloneElement, useMemo} from "react";
+import { avatarGroup } from "@/lib/theme";
+import { getValidChildren, useDOMRef } from "@heroui/react-utils";
+import { clsx, compact } from "@heroui/shared-utils";
+import { cloneElement, useMemo } from "react";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**
@@ -94,7 +93,7 @@ export function useAvatarGroup(props: UseAvatarGroupProps = {}) {
     }),
     [size, color, radius, isGrid, isBordered, isDisabled],
   );
-  const slots = useMemo(() => avatarGroup({className, isGrid}), [className, isGrid]);
+  const slots = useMemo(() => avatarGroup({ className, isGrid }), [className, isGrid]);
 
   const validChildren = getValidChildren(children);
   const childrenWithinMax = max ? validChildren.slice(0, max) : validChildren;

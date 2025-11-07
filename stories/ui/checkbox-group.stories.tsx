@@ -1,13 +1,12 @@
-import type {ValidationResult} from "@react-types/shared";
-import type {Meta} from "@storybook/react";
-import type {CheckboxGroupProps} from "../src";
+import type { ValidationResult } from "@react-types/shared";
+import type { Meta } from "@storybook/react";
+import type { CheckboxGroupProps } from "../src";
 
+import { button, checkbox } from "@/lib/theme";
+import { Form } from "@heroui/form";
 import React from "react";
-import {checkbox} from "@heroui/theme";
-import {button} from "@heroui/theme";
-import {Form} from "@heroui/form";
 
-import {CheckboxGroup, Checkbox} from "../src";
+import { Checkbox, CheckboxGroup } from "../src";
 
 export default {
   title: "Components/CheckboxGroup",
@@ -108,7 +107,7 @@ const FormTemplate = (args: CheckboxGroupProps) => {
         <Checkbox value="london">London</Checkbox>
         <Checkbox value="tokyo">Tokyo</Checkbox>
       </CheckboxGroup>
-      <button className={button({color: "primary"})} type="submit">
+      <button className={button({ color: "primary" })} type="submit">
         Submit
       </button>
     </form>
@@ -149,17 +148,13 @@ const ServerValidationTemplate = (args: CheckboxGroupProps) => {
   };
 
   return (
-    <Form
-      className="flex flex-col items-start gap-2"
-      validationErrors={serverErrors}
-      onSubmit={onSubmit}
-    >
+    <Form className="flex flex-col items-start gap-2" validationErrors={serverErrors} onSubmit={onSubmit}>
       <CheckboxGroup {...args} label="Agree to the following" name="terms">
         <Checkbox value="terms">Terms and conditions</Checkbox>
         <Checkbox value="cookies">Cookies</Checkbox>
         <Checkbox value="privacy">Privacy policy</Checkbox>
       </CheckboxGroup>
-      <button className={button({color: "primary"})} type="submit">
+      <button className={button({ color: "primary" })} type="submit">
         Submit
       </button>
     </Form>

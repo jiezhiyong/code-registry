@@ -1,10 +1,9 @@
-import type {Meta} from "@storybook/react";
-import type {SpacerProps} from "../src";
+import type { Meta } from "@storybook/react";
+import type { SpacerProps } from "../src";
 
-import React from "react";
-import {spacer} from "@heroui/theme";
+import { spacer } from "@/lib/theme";
 
-import {Spacer} from "../src";
+import { Spacer } from "../src";
 
 export default {
   title: "Components/Spacer",
@@ -39,9 +38,7 @@ const defaultProps = {
   ...spacer.defaultVariants,
 };
 
-const content = (
-  <div className="flex flex-col w-[300px] h-[100px] bg-primary rounded-xl shadow-lg" />
-);
+const content = <div className="flex flex-col w-[300px] h-[100px] bg-primary rounded-xl shadow-lg" />;
 
 const VerticalTemplate = (args: SpacerProps) => (
   <div className="flex flex-col">
