@@ -2,7 +2,6 @@ import type { SpacerProps } from "@/registry/ui";
 import type { Meta } from "@storybook/nextjs-vite";
 
 import { spacer } from "@/registry/ui";
-
 import { Spacer } from "@/registry/ui";
 
 export default {

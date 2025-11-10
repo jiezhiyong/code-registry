@@ -10,4 +10,3 @@ export { useTabs } from "./use-tabs";
 // export components
 export { default as Tab } from "./tab-item-base";
 export { Tabs };
-

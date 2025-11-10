@@ -1,12 +1,13 @@
 import type { AriaButtonProps } from "@/lib/hooks/use-aria-button";
 import type { HTMLHeroUIProps } from "@/lib/system";
 
-import { dataAttr, mergeProps } from "@/lib/base";
-import { useAriaButton } from "@/lib/hooks/use-aria-button";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { useFocusRing } from "@react-aria/focus";
 import { useHover } from "@react-aria/interactions";
 import { forwardRef } from "react";
+
+import { dataAttr, mergeProps } from "@/lib/base";
+import { useAriaButton } from "@/lib/hooks/use-aria-button";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
 
 const CalendarPickerItem = forwardRef<HTMLButtonElement, HTMLHeroUIProps<"button"> & AriaButtonProps>(
   ({ children, autoFocus, isDisabled, onKeyDown, ...otherProps }, ref) => {
@@ -19,7 +20,7 @@ const CalendarPickerItem = forwardRef<HTMLButtonElement, HTMLHeroUIProps<"button
         onKeyDown,
         ...otherProps,
       } as AriaButtonProps,
-      domRef
+      domRef,
     );
 
     const { isFocusVisible, isFocused, focusProps } = useFocusRing({
@@ -42,7 +43,7 @@ const CalendarPickerItem = forwardRef<HTMLButtonElement, HTMLHeroUIProps<"button
         {children}
       </button>
     );
-  }
+  },
 );
 
 CalendarPickerItem.displayName = "CalendarPickerItem";

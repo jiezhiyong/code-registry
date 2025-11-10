@@ -1,9 +1,9 @@
 import type { UseCheckboxGroupProps } from "./use-checkbox-group";
 
-import { forwardRef } from "@/lib/system";
-
 import { CheckboxGroupProvider } from "./checkbox-group-context";
 import { useCheckboxGroup } from "./use-checkbox-group";
+
+import { forwardRef } from "@/lib/system";
 
 export interface CheckboxGroupProps extends UseCheckboxGroupProps {}
 

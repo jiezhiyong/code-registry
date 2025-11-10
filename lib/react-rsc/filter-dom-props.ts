@@ -42,10 +42,7 @@ const funcRe = /^(on[A-Z].*)$/;
  * @param props - The component props to be filtered.
  * @param opts - Props to override.
  */
-export function filterDOMProps(
-  props: DOMProps & AriaLabelingProps,
-  opts: Options = {},
-): DOMProps & AriaLabelingProps {
+export function filterDOMProps(props: DOMProps & AriaLabelingProps, opts: Options = {}): DOMProps & AriaLabelingProps {
   let {
     labelable = true,
     enabled = true,
@@ -83,10 +80,7 @@ export function filterDOMProps(
 
     if (
       (Object.prototype.hasOwnProperty.call(props, prop) &&
-        (DOMPropNames.has(prop) ||
-          (labelable && ariaRe.test(prop)) ||
-          propNames?.has(prop) ||
-          propRe.test(prop))) ||
+        (DOMPropNames.has(prop) || (labelable && ariaRe.test(prop)) || propNames?.has(prop) || propRe.test(prop))) ||
       funcRe.test(prop)
     ) {
       // @ts-ignore

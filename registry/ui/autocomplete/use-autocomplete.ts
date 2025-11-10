@@ -11,18 +11,19 @@ import type { ComboBoxProps } from "@react-types/combobox";
 import type { AsyncLoadable, PressEvent } from "@react-types/shared";
 import type { ReactNode } from "react";
 import type { AutocompleteSlots, AutocompleteVariantProps } from "./theme";
-;
+
+import { useComboBox } from "@react-aria/combobox";
+import { useFilter } from "@react-aria/i18n";
+import { useComboBoxState } from "@react-stately/combobox";
+import { useEffect, useMemo, useRef } from "react";
+
+import { autocomplete } from "./theme";
 
 import { chain, clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
 import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
 import { FormContext, useSlottedContext } from "@/registry/ui/form";
-import { useComboBox } from "@react-aria/combobox";
-import { useFilter } from "@react-aria/i18n";
-import { useComboBoxState } from "@react-stately/combobox";
-import { useEffect, useMemo, useRef } from "react";
-import { autocomplete } from "./theme";
 
 interface Props<T> extends Omit<HTMLHeroUIProps<"input">, keyof ComboBoxProps<T>> {
   /**
@@ -149,8 +150,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
   const { validationBehavior: formValidationBehavior } = useSlottedContext(FormContext) || {};
 
   const [props, variantProps] = mapPropsVariants(originalProps, autocomplete.variantKeys);
-  const disableAnimation =
-    originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   // TODO: Remove disableClearable prop in the next minor release.
   const isClearable =
@@ -331,9 +331,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
   };
 
   const baseStyles = clsx(classNames?.base, className);
-  const isOpen = slotsProps.listboxProps?.hideEmptyContent
-    ? state.isOpen && !!state.collection.size
-    : state.isOpen;
+  const isOpen = slotsProps.listboxProps?.hideEmptyContent ? state.isOpen && !!state.collection.size : state.isOpen;
 
   // if we use `react-hook-form`, it will set the native input value using the ref in register
   // i.e. setting ref.current.value to something which is uncontrolled
@@ -383,9 +381,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
         let scrollShadowHeight = scrollShadowRect.height;
 
         scrollShadow.scrollTop =
-          selectedItem.parentElement.offsetTop -
-          scrollShadowHeight / 2 +
-          selectedItem.parentElement.clientHeight / 2;
+          selectedItem.parentElement.offsetTop - scrollShadowHeight / 2 + selectedItem.parentElement.clientHeight / 2;
 
         state.selectionManager.setFocusedKey(state.selectedKey);
       }
@@ -413,7 +409,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
 
     inputProps.onKeyDown = (e) => {
       if ("continuePropagation" in e) {
-        e.stopPropagation = () => { };
+        e.stopPropagation = () => {};
       }
 
       return originalOnKeyDown(e);
@@ -505,9 +501,9 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
       isVirtualized: shouldVirtualize,
       virtualization: shouldVirtualize
         ? {
-          maxListboxHeight,
-          itemHeight,
-        }
+            maxListboxHeight,
+            itemHeight,
+          }
         : undefined,
       scrollShadowProps: slotsProps.scrollShadowProps,
       ...mergeProps(slotsProps.listboxProps, listBoxProps, {
@@ -529,11 +525,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
       classNames: {
         ...slotsProps.popoverProps?.classNames,
         content: slots.popoverContent({
-          class: clsx(
-            classNames?.popoverContent,
-            slotsProps.popoverProps?.classNames?.["content"],
-            props.className,
-          ),
+          class: clsx(classNames?.popoverContent, slotsProps.popoverProps?.classNames?.["content"], props.className),
         }),
       },
       // when the popover is open, the focus should be on input instead of dialog
@@ -553,11 +545,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
   const getListBoxWrapperProps: PropGetter = (props: any = {}) => ({
     ...mergeProps(slotsProps.scrollShadowProps, props),
     className: slots.listboxWrapper({
-      class: clsx(
-        classNames?.listboxWrapper,
-        slotsProps.scrollShadowProps?.className,
-        props?.className,
-      ),
+      class: clsx(classNames?.listboxWrapper, slotsProps.scrollShadowProps?.className, props?.className),
     }),
     style: {
       maxHeight: originalProps.maxListboxHeight ?? 256,

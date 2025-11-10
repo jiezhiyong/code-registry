@@ -1,11 +1,9 @@
-import { MoonIcon, SunIcon } from "@/lib/icons";
-import { cn } from "@/lib/theme";
 import type { DateRangePickerProps } from "@/registry/ui";
-import { button, dateInput } from "@/registry/ui";
-import { Button, ButtonGroup } from "@/registry/ui/button";
-import { Form } from "@/registry/ui/form";
 import type { RadioProps } from "@/registry/ui/radio";
-import { Radio, RadioGroup } from "@/registry/ui/radio";
+import type { DateValue, MappedDateValue } from "@react-types/datepicker";
+import type { RangeValue, ValidationResult } from "@react-types/shared";
+import type { Meta } from "@storybook/nextjs-vite";
+
 import {
   endOfMonth,
   endOfWeek,
@@ -19,11 +17,14 @@ import {
   today,
 } from "@internationalized/date";
 import { I18nProvider, useDateFormatter, useLocale } from "@react-aria/i18n";
-import type { DateValue, MappedDateValue } from "@react-types/datepicker";
-import type { RangeValue, ValidationResult } from "@react-types/shared";
-import type { Meta } from "@storybook/nextjs-vite";
 import React from "react";
 
+import { MoonIcon, SunIcon } from "@/lib/icons";
+import { cn } from "@/lib/theme";
+import { button, dateInput } from "@/registry/ui";
+import { Button, ButtonGroup } from "@/registry/ui/button";
+import { Form } from "@/registry/ui/form";
+import { Radio, RadioGroup } from "@/registry/ui/radio";
 import { DateRangePicker } from "@/registry/ui";
 
 export default {
@@ -226,7 +227,7 @@ const UnavailableDatesTemplate = (args: DateRangePickerProps) => {
       minValue={today(getLocalTimeZone())}
       validate={(value) =>
         disabledRanges.some(
-          (interval) => value && value.end.compare(interval[0]) >= 0 && value.start.compare(interval[1]) <= 0
+          (interval) => value && value.end.compare(interval[0]) >= 0 && value.start.compare(interval[1]) <= 0,
         )
           ? "Selected date range may not include unavailable dates."
           : null
@@ -282,7 +283,7 @@ const PresetsTemplate = (args: DateRangePickerProps) => {
           base: cn(
             "flex-none m-0 h-8 bg-content1 hover:bg-content2 items-center justify-between",
             "cursor-pointer rounded-full border-2 border-default-200/60",
-            "data-[selected=true]:border-primary"
+            "data-[selected=true]:border-primary",
           ),
           label: "text-tiny text-default-500",
           labelWrapper: "px-1 m-0",

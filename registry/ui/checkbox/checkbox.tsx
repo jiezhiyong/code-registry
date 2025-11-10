@@ -1,11 +1,12 @@
 import type { ReactElement } from "react";
 import type { UseCheckboxProps } from "./use-checkbox";
 
-import { forwardRef } from "@/lib/system";
 import { cloneElement } from "react";
 
 import { CheckboxIcon } from "./checkbox-icon";
 import { useCheckbox } from "./use-checkbox";
+
+import { forwardRef } from "@/lib/system";
 
 export interface CheckboxProps extends UseCheckboxProps {}
 

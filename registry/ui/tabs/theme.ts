@@ -425,4 +425,3 @@ export type TabsSlots = keyof ReturnType<typeof tabs>;
 export type TabsReturnType = ReturnType<typeof tabs>;
 
 export { tabs };
-

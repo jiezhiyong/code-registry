@@ -1,7 +1,13 @@
 "use client";
 
-import { Link } from "@/registry/ui backup/link";
-import { link as linkStyles } from "@/registry/ui backup/link/theme";
+import clsx from "clsx";
+import NextLink from "next/link";
+
+import { siteConfig } from "../app/siteConfig";
+
+import { Logo } from "./Icons";
+import { ThemeSwitch } from "./ThemeSwitch";
+
 import {
   Navbar as HeroUINavbar,
   NavbarBrand,
@@ -11,12 +17,8 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
 } from "@/registry/ui backup/navbar";
-import clsx from "clsx";
-import NextLink from "next/link";
-
-import { siteConfig } from "../app/siteConfig";
-import { Logo } from "./Icons";
-import { ThemeSwitch } from "./ThemeSwitch";
+import { link as linkStyles } from "@/registry/ui backup/link/theme";
+import { Link } from "@/registry/ui backup/link";
 
 export const Navbar = () => {
   return (
@@ -34,7 +36,7 @@ export const Navbar = () => {
               <NextLink
                 className={clsx(
                   linkStyles({ color: "foreground" }),
-                  "data-[active=true]:text-primary data-[active=true]:font-medium"
+                  "data-[active=true]:text-primary data-[active=true]:font-medium",
                 )}
                 color="foreground"
                 href={item.href}

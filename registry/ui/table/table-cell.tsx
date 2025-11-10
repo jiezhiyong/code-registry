@@ -4,12 +4,13 @@ import type { Key } from "react";
 import type { TableColumnProps } from "./base";
 import type { ValuesType } from "./use-table";
 
-import { clsx, dataAttr, mergeProps } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
-import { forwardRef } from "@/lib/system";
 import { useFocusRing } from "@react-aria/focus";
 import { useTableCell } from "@react-aria/table";
 import { useMemo } from "react";
+
+import { clsx, dataAttr, mergeProps } from "@/lib/base";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { forwardRef } from "@/lib/system";
 
 // @internal
 export interface TableCellProps<T = object> extends HTMLHeroUIProps<"td"> {
@@ -59,7 +60,7 @@ const TableCell = forwardRef<"td", TableCellProps>((props, ref) => {
         filterDOMProps(node.props, {
           enabled: shouldFilterDOMProps,
         }),
-        otherProps
+        otherProps,
       )}
       className={slots.td?.({ align: columnProps.align, class: tdStyles })}
     >

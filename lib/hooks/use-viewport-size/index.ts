@@ -20,7 +20,7 @@ function getServerSnapshot() {
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function subscribe(onStoreChange: () => void): () => void {
   // noop
-  return () => { };
+  return () => {};
 }
 
 export function useIsSSR(): boolean {

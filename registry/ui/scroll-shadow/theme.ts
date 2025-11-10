@@ -46,4 +46,3 @@ const scrollShadow = tv({
 export type ScrollShadowVariantProps = VariantProps<typeof scrollShadow>;
 
 export { scrollShadow };
-

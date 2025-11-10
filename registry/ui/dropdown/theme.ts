@@ -425,4 +425,3 @@ export type DropdownItemVariantProps = VariantProps<typeof dropdownItem>;
 export type DropdownItemSlots = keyof ReturnType<typeof dropdownItem>;
 
 export { dropdown, dropdownItem, dropdownMenu, dropdownSection };
-

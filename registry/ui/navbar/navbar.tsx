@@ -1,14 +1,15 @@
 import type { UseNavbarProps } from "./use-navbar";
 
-import { mergeProps } from "@/lib/base";
-import { pickChildren } from "@/lib/react";
-import { forwardRef } from "@/lib/system";
 import { LazyMotion, m } from "framer-motion";
 
 import { NavbarProvider } from "./navbar-context";
 import NavbarMenu from "./navbar-menu";
 import { hideOnScrollVariants } from "./navbar-transitions";
 import { useNavbar } from "./use-navbar";
+
+import { forwardRef } from "@/lib/system";
+import { pickChildren } from "@/lib/react";
+import { mergeProps } from "@/lib/base";
 
 export interface NavbarProps extends Omit<UseNavbarProps, "hideOnScroll"> {
   children?: React.ReactNode | React.ReactNode[];

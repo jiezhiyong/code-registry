@@ -1,10 +1,10 @@
 import type { HTMLHeroUIProps } from "@/lib/system";
 
+import { useModalContext } from "./modal-context";
+
 import { clsx } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { forwardRef } from "@/lib/system";
-
-import { useModalContext } from "./modal-context";
 
 export interface ModalFooterProps extends HTMLHeroUIProps<"footer"> {}
 

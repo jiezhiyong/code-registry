@@ -195,4 +195,3 @@ export type PopoverVariantProps = VariantProps<typeof popover>;
 export type PopoverSlots = keyof ReturnType<typeof popover>;
 
 export { popover };
-

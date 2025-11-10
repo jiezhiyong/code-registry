@@ -5,7 +5,7 @@ interface RefObject<T> {
 }
 
 export const useLayoutEffect: typeof React.useLayoutEffect =
-  typeof document !== "undefined" ? React.useLayoutEffect : () => { };
+  typeof document !== "undefined" ? React.useLayoutEffect : () => {};
 
 export function useEffectEvent<T extends Function>(fn?: T): T {
   const ref = useRef<T | null | undefined>(null);

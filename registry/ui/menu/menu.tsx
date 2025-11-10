@@ -1,12 +1,12 @@
 import type { ForwardedRef, ReactElement } from "react";
 import type { UseMenuProps } from "./use-menu";
 
-import { forwardRef } from "@/lib/system";
-import { mergeClasses } from "@/lib/theme";
-
 import MenuItem from "./menu-item";
 import MenuSection from "./menu-section";
 import { useMenu } from "./use-menu";
+
+import { mergeClasses } from "@/lib/theme";
+import { forwardRef } from "@/lib/system";
 
 interface Props<T> extends UseMenuProps<T> {}
 

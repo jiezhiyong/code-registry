@@ -30,9 +30,7 @@ export function ariaHideOutside(targets: Element[], root = document.body) {
   let walk = (root: Element) => {
     // Keep live announcer and top layer elements (e.g. toasts) visible.
     // @ts-ignore
-    for (let element of root.querySelectorAll(
-      "[data-live-announcer], [data-react-aria-top-layer]",
-    )) {
+    for (let element of root.querySelectorAll("[data-live-announcer], [data-react-aria-top-layer]")) {
       visibleNodes.add(element);
     }
 
@@ -43,9 +41,7 @@ export function ariaHideOutside(targets: Element[], root = document.body) {
       // For that case we want to hide the cells inside as well (https://bugs.webkit.org/show_bug.cgi?id=222623).
       if (
         visibleNodes.has(node) ||
-        (node.parentElement &&
-          hiddenNodes.has(node.parentElement) &&
-          node.parentElement.getAttribute("role") !== "row")
+        (node.parentElement && hiddenNodes.has(node.parentElement) && node.parentElement.getAttribute("role") !== "row")
       ) {
         return NodeFilter.FILTER_REJECT;
       }

@@ -1,6 +1,9 @@
 import type { NavbarProps } from "@/registry/ui";
 import type { Meta } from "@storybook/nextjs-vite";
 
+import React from "react";
+import Lorem from "react-lorem-component";
+
 import { Activity, ChevronDown, Flash, Lock, Scale, SearchIcon, Server, TagUser } from "@/lib/icons";
 import { navbar } from "@/registry/ui";
 import { Avatar } from "@/registry/ui/avatar";
@@ -8,9 +11,6 @@ import { Button } from "@/registry/ui/button";
 import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@/registry/ui/dropdown";
 import { Input } from "@/registry/ui/input";
 import { Link } from "@/registry/ui/link";
-import React from "react";
-import Lorem from "react-lorem-component";
-
 import {
   Navbar,
   NavbarBrand,

@@ -1,10 +1,10 @@
 import type { HTMLHeroUIProps } from "@/lib/system";
 
+import { useCardContext } from "./card-context";
+
 import { clsx } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { forwardRef } from "@/lib/system";
-
-import { useCardContext } from "./card-context";
 
 export interface CardFooterProps extends HTMLHeroUIProps<"div"> {}
 

@@ -30,4 +30,3 @@ const user = tv({
 export type UserSlots = keyof ReturnType<typeof user>;
 
 export { user };
-

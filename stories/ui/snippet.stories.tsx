@@ -1,7 +1,6 @@
 import type { Meta } from "@storybook/nextjs-vite";
 
 import { snippet } from "@/registry/ui";
-
 import { Snippet } from "@/registry/ui";
 
 export default {

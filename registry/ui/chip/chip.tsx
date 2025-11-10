@@ -1,10 +1,11 @@
 import type { UseChipProps } from "./use-chip";
 
-import { forwardRef } from "@/lib/system";
 import { useMemo } from "react";
 
-import { CloseFilledIcon } from "@/lib/icons/close-filled";
 import { useChip } from "./use-chip";
+
+import { forwardRef } from "@/lib/system";
+import { CloseFilledIcon } from "@/lib/icons/close-filled";
 
 export interface ChipProps extends Omit<UseChipProps, "isOneChar" | "isCloseButtonFocusVisible"> {}
 

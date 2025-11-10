@@ -59,4 +59,3 @@ export type AutocompleteVariantProps = VariantProps<typeof autocomplete>;
 export type AutocompleteSlots = keyof ReturnType<typeof autocomplete>;
 
 export { autocomplete };
-

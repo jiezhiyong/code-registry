@@ -6,5 +6,4 @@ import type { As, HTMLHeroUIProps } from "../../system";
  * A modified version of the ItemProps from @react-types/shared, with the addition of the HeroUI props.
  *
  */
-export type ItemProps<Type extends As = "div", T extends object = {}> = BaseItemProps<T> &
-  HTMLHeroUIProps<Type>;
+export type ItemProps<Type extends As = "div", T extends object = {}> = BaseItemProps<T> & HTMLHeroUIProps<Type>;

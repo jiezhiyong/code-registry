@@ -5,12 +5,6 @@ import type { MappedDateValue } from "@react-types/datepicker";
 import type { ValidationResult } from "@react-types/shared";
 import type { Meta } from "@storybook/nextjs-vite";
 
-import { MoonIcon, SunIcon } from "@/lib/icons";
-import { cn } from "@/lib/theme";
-import { button, dateInput } from "@/registry/ui";
-import { Button, ButtonGroup } from "@/registry/ui/button";
-import { Form } from "@/registry/ui/form";
-import { Radio, RadioGroup } from "@/registry/ui/radio";
 import {
   getLocalTimeZone,
   isWeekend,
@@ -25,6 +19,12 @@ import {
 import { I18nProvider, useDateFormatter, useLocale } from "@react-aria/i18n";
 import React from "react";
 
+import { MoonIcon, SunIcon } from "@/lib/icons";
+import { cn } from "@/lib/theme";
+import { button, dateInput } from "@/registry/ui";
+import { Button, ButtonGroup } from "@/registry/ui/button";
+import { Form } from "@/registry/ui/form";
+import { Radio, RadioGroup } from "@/registry/ui/radio";
 import { DatePicker } from "@/registry/ui";
 
 export default {
@@ -214,7 +214,7 @@ const PresetsTemplate = (args: DatePickerProps) => {
           base: cn(
             "flex-none m-0 h-8 bg-content1 hover:bg-content2 items-center justify-between",
             "cursor-pointer rounded-full border-2 border-default-200/60",
-            "data-[selected=true]:border-primary"
+            "data-[selected=true]:border-primary",
           ),
           label: "text-tiny text-default-500",
           labelWrapper: "px-1 m-0",

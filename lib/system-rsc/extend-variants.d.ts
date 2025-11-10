@@ -1,9 +1,4 @@
-import type {
-  ForwardRefExoticComponent,
-  JSXElementConstructor,
-  PropsWithoutRef,
-  RefAttributes,
-} from "react";
+import type { ForwardRefExoticComponent, JSXElementConstructor, PropsWithoutRef, RefAttributes } from "react";
 import type { ClassProp, ClassValue, OmitUndefined, StringToBoolean } from "tailwind-variants";
 
 type SlotsClassValue<S> = {
@@ -11,12 +6,12 @@ type SlotsClassValue<S> = {
 };
 
 type Variants<S> = {
-  [K: string]: { [P: string]: S extends undefined ? ClassValue : SlotsClassValue<S>; };
+  [K: string]: { [P: string]: S extends undefined ? ClassValue : SlotsClassValue<S> };
 };
 
 type ComponentProps<C> = C extends JSXElementConstructor<infer P> ? P : never;
 
-type ComponentSlots<CP> = CP extends { classNames?: infer S; } ? S : undefined;
+type ComponentSlots<CP> = CP extends { classNames?: infer S } ? S : undefined;
 
 type ValidateSubtype<T, U> = OmitUndefined<T> extends U ? "true" : "false";
 
@@ -24,26 +19,26 @@ type GetSuggestedValues<S> = S extends undefined ? ClassValue : SlotsClassValue<
 
 type SuggestedVariants<CP, S> = {
   [K in keyof CP]?: ValidateSubtype<CP[K], string> extends "true"
-  ? { [K2 in CP[K]]?: GetSuggestedValues<S> }
-  : ValidateSubtype<CP[K], boolean> extends "true"
-  ? {
-    true?: GetSuggestedValues<S>;
-    false?: GetSuggestedValues<S>;
-  }
-  : never;
+    ? { [K2 in CP[K]]?: GetSuggestedValues<S> }
+    : ValidateSubtype<CP[K], boolean> extends "true"
+      ? {
+          true?: GetSuggestedValues<S>;
+          false?: GetSuggestedValues<S>;
+        }
+      : never;
 };
 
 type ComposeVariants<CP, S> = SuggestedVariants<CP, S> | Variants<S>;
 
 type VariantValue<V, SV> = {
   [K in keyof V | keyof SV]?:
-  | (K extends keyof V ? StringToBoolean<keyof V[K]> : never)
-  | (K extends keyof V ? StringToBoolean<keyof V[K]>[] : never)
-  | (K extends keyof SV
-    ? ValidateSubtype<SV[K], object> extends "true"
-    ? keyof OmitUndefined<SV[K]>
-    : never
-    : never);
+    | (K extends keyof V ? StringToBoolean<keyof V[K]> : never)
+    | (K extends keyof V ? StringToBoolean<keyof V[K]>[] : never)
+    | (K extends keyof SV
+        ? ValidateSubtype<SV[K], object> extends "true"
+          ? keyof OmitUndefined<SV[K]>
+          : never
+        : never);
 };
 
 type DefaultVariants<V, SV> = VariantValue<V, SV>;
@@ -78,11 +73,7 @@ export type ExtendVariantWithSlotsProps = {
 };
 
 type InferRef<C> =
-  C extends ForwardRefExoticComponent<RefAttributes<infer R>>
-  ? R
-  : C extends new (...args: any[]) => infer I
-  ? I
-  : any;
+  C extends ForwardRefExoticComponent<RefAttributes<infer R>> ? R : C extends new (...args: any[]) => infer I ? I : any;
 
 export type ExtendVariants = {
   <
@@ -108,7 +99,7 @@ export type ExtendVariants = {
         [key in keyof V]?: StringToBoolean<keyof V[key]>;
       }
     > &
-    RefAttributes<InferRef<C>>
+      RefAttributes<InferRef<C>>
   >;
 };
 

@@ -61,4 +61,3 @@ export type KbdVariantProps = VariantProps<typeof kbd>;
 export type KbdSlots = keyof ReturnType<typeof kbd>;
 
 export { kbd };
-

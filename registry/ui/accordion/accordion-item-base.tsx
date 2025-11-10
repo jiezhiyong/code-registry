@@ -5,6 +5,7 @@ import type { FocusableProps, PressEvents } from "@react-types/shared";
 import type { HTMLMotionProps } from "framer-motion";
 import type { JSX, ReactNode } from "react";
 import type { AccordionItemSlots, AccordionItemVariantProps } from "./theme";
+
 import { BaseItem } from "@/lib/aria";
 
 export type AccordionItemIndicatorProps = {

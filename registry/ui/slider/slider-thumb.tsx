@@ -1,11 +1,12 @@
 import type { UseSliderThumbProps } from "./use-slider-thumb";
 
-import { renderFn } from "@/lib/react";
-import { forwardRef } from "@/lib/system";
-import { Tooltip } from "@/registry/ui/tooltip";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 
 import { useSliderThumb } from "./use-slider-thumb";
+
+import { renderFn } from "@/lib/react";
+import { forwardRef } from "@/lib/system";
+import { Tooltip } from "@/registry/ui/tooltip";
 
 export interface SliderThumbProps extends UseSliderThumbProps {}
 

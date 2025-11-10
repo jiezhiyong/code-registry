@@ -2,6 +2,7 @@ import type { RefObject } from "react";
 import type { ShapeType } from "../../react";
 
 import { useCallback, useEffect, useState } from "react";
+
 import { getRealShape } from "../../react";
 
 export type ShapeResult = [ShapeType, () => void];

@@ -6,7 +6,6 @@ import { Button } from "@/registry/ui/button";
 import { Code } from "@/registry/ui/code";
 import { Image } from "@/registry/ui/image";
 import { Link } from "@/registry/ui/link";
-
 import { Card, CardBody, CardFooter, CardHeader } from "@/registry/ui";
 
 export default {

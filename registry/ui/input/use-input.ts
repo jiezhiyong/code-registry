@@ -4,27 +4,20 @@ import type { AriaTextFieldOptions } from "@react-aria/textfield";
 import type { AriaTextFieldProps } from "@react-types/textfield";
 import type { Ref } from "react";
 import type { InputSlots, InputVariantProps } from "./theme";
-;
 
-import {
-  chain,
-  clsx,
-  dataAttr,
-  isEmpty,
-  mergeProps,
-  objectToDeps,
-  safeAriaLabel,
-} from "@/lib/base";
-import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
-import { mapPropsVariants, useInputLabelPlacement, useProviderContext } from "@/lib/system";
-import { FormContext, useSlottedContext } from "@/registry/ui/form";
 import { useFocusRing } from "@react-aria/focus";
 import { useFocusWithin, useHover, usePress } from "@react-aria/interactions";
 import { useTextField } from "@react-aria/textfield";
 import { useControlledState } from "@react-stately/utils";
 import { useCallback, useMemo, useState } from "react";
+
 import { input } from "./theme";
+
+import { FormContext, useSlottedContext } from "@/registry/ui/form";
+import { mapPropsVariants, useInputLabelPlacement, useProviderContext } from "@/lib/system";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
+import { chain, clsx, dataAttr, isEmpty, mergeProps, objectToDeps, safeAriaLabel } from "@/lib/base";
 
 export interface Props<T extends HTMLInputElement | HTMLTextAreaElement = HTMLInputElement>
   extends Omit<HTMLHeroUIProps<"input">, keyof InputVariantProps> {
@@ -92,8 +85,9 @@ export interface Props<T extends HTMLInputElement | HTMLTextAreaElement = HTMLIn
 
 type AutoCapitalize = AriaTextFieldOptions<"input">["autoCapitalize"];
 
-export type UseInputProps<T extends HTMLInputElement | HTMLTextAreaElement = HTMLInputElement> =
-  Props<T> & Omit<AriaTextFieldProps, "onChange"> & InputVariantProps;
+export type UseInputProps<T extends HTMLInputElement | HTMLTextAreaElement = HTMLInputElement> = Props<T> &
+  Omit<AriaTextFieldProps, "onChange"> &
+  InputVariantProps;
 
 export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTMLInputElement>(
   originalProps: UseInputProps<T>,
@@ -121,7 +115,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
     validationState,
     validationBehavior = formValidationBehavior ?? globalContext?.validationBehavior ?? "native",
     innerWrapperRef: innerWrapperRefProp,
-    onValueChange = () => { },
+    onValueChange = () => {},
     ...otherProps
   } = props;
 
@@ -136,8 +130,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
 
   const Component = as || "div";
 
-  const disableAnimation =
-    originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   const domRef = useDOMRef<T>(ref);
 
@@ -262,19 +255,14 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
 
   const shouldLabelBeInside = labelPlacement === "inside";
   const isPlaceholderShown = domRef.current
-    ? (!domRef.current.value || domRef.current.value === "" || !inputValue || inputValue === "") &&
-    hasPlaceholder
+    ? (!domRef.current.value || domRef.current.value === "" || !inputValue || inputValue === "") && hasPlaceholder
     : false;
 
   const hasStartContent = !!startContent;
   const isLabelOutside = shouldLabelBeOutside
-    ? isOutsideLeft ||
-    isOutsideTop ||
-    hasPlaceholder ||
-    (labelPlacement === "outside" && hasStartContent)
+    ? isOutsideLeft || isOutsideTop || hasPlaceholder || (labelPlacement === "outside" && hasStartContent)
     : false;
-  const isLabelOutsideAsPlaceholder =
-    labelPlacement === "outside" && !hasPlaceholder && !hasStartContent;
+  const isLabelOutsideAsPlaceholder = labelPlacement === "outside" && !hasPlaceholder && !hasStartContent;
 
   const slots = useMemo(
     () =>
@@ -285,14 +273,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
         isClearable,
         disableAnimation,
       }),
-    [
-      objectToDeps(variantProps),
-      isInvalid,
-      labelPlacement,
-      isClearable,
-      hasStartContent,
-      disableAnimation,
-    ],
+    [objectToDeps(variantProps), isInvalid, labelPlacement, isClearable, hasStartContent, disableAnimation],
   );
 
   const getBaseProps: PropGetter = useCallback(
@@ -301,15 +282,9 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
         ref: baseDomRef,
         className: slots.base({ class: baseStyles }),
         "data-slot": "base",
-        "data-filled": dataAttr(
-          isFilled || hasPlaceholder || hasStartContent || isPlaceholderShown || isFileTypeInput,
-        ),
+        "data-filled": dataAttr(isFilled || hasPlaceholder || hasStartContent || isPlaceholderShown || isFileTypeInput),
         "data-filled-within": dataAttr(
-          isFilledWithin ||
-          hasPlaceholder ||
-          hasStartContent ||
-          isPlaceholderShown ||
-          isFileTypeInput,
+          isFilledWithin || hasPlaceholder || hasStartContent || isPlaceholderShown || isFileTypeInput,
         ),
         "data-focus-within": dataAttr(isFocusWithin),
         "data-focus-visible": dataAttr(isFocusVisible),
@@ -366,12 +341,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
 
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLInputElement>) => {
-      if (
-        e.key === "Escape" &&
-        inputValue &&
-        (isClearable || onClear) &&
-        !originalProps.isReadOnly
-      ) {
+      if (e.key === "Escape" && inputValue && (isClearable || onClear) && !originalProps.isReadOnly) {
         setInputValue("");
         onClear?.();
       }
@@ -453,15 +423,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
         },
       };
     },
-    [
-      slots,
-      isHovered,
-      isLabelHovered,
-      isFocusVisible,
-      isFocused,
-      inputValue,
-      classNames?.inputWrapper,
-    ],
+    [slots, isHovered, isLabelHovered, isFocusVisible, isFocused, inputValue, classNames?.inputWrapper],
   );
 
   const getInnerWrapperProps: PropGetter = useCallback(

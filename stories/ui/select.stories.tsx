@@ -4,6 +4,9 @@ import type { Selection, ValidationResult } from "@react-types/shared";
 import type { Meta } from "@storybook/nextjs-vite";
 import type { ChangeEvent } from "react";
 
+import React from "react";
+import { useForm } from "react-hook-form";
+
 import { useInfiniteScroll } from "@/lib/hooks/use-infinite-scroll";
 import { SelectorIcon } from "@/lib/icons";
 import { button, select } from "@/registry/ui";
@@ -13,9 +16,6 @@ import { Chip } from "@/registry/ui/chip";
 import { Form } from "@/registry/ui/form";
 import { PetBoldIcon } from "@/utils/icons";
 import { animalsData, usePokemonList, usersData } from "@/utils/storybook";
-import React from "react";
-import { useForm } from "react-hook-form";
-
 import { Select, SelectItem, SelectSection } from "@/registry/ui";
 
 export default {

@@ -4,8 +4,8 @@ type AnyFunction<T = any> = (...args: T[]) => any;
 
 type Extractable =
   | {
-    [key: string]: any;
-  }
+      [key: string]: any;
+    }
   | undefined;
 
 type Iteratee<T> = ((value: T) => any) | keyof T;
@@ -124,7 +124,7 @@ export function getUniqueID(prefix: string) {
  * @example
  * removeEvents({ onClick: () => {}, onChange: () => {}, value: 10 }); // returns { value: 10 }
  */
-export function removeEvents(input: { [key: string]: any; }) {
+export function removeEvents(input: { [key: string]: any }) {
   for (const key in input) {
     if (key.startsWith("on")) {
       delete input[key];
@@ -175,10 +175,7 @@ export function objectToDeps(obj: Extractable) {
  * save(); // Will log 'Saved!' after 300ms, subsequent calls within 300ms will reset the timer.
  */
 
-export function debounce<F extends (...args: any[]) => void>(
-  func: F,
-  waitMilliseconds: number = 0,
-) {
+export function debounce<F extends (...args: any[]) => void>(func: F, waitMilliseconds: number = 0) {
   let timeout: ReturnType<typeof setTimeout> | undefined;
 
   return function (this: ThisParameterType<F>, ...args: Parameters<F>) {
@@ -266,13 +263,8 @@ export const kebabCase = (s: string) => {
  * @example
  * mapKeys({ a: 1, b: 2 }, (value, key) => key + value); // returns { a1: 1, b2: 2 }
  */
-export const mapKeys = (
-  obj: Record<string, any>,
-  iteratee: (value: any, key: string) => any,
-): Record<string, any> => {
-  return Object.fromEntries(
-    Object.entries(obj).map(([key, value]) => [iteratee(value, key), value]),
-  );
+export const mapKeys = (obj: Record<string, any>, iteratee: (value: any, key: string) => any): Record<string, any> => {
+  return Object.fromEntries(Object.entries(obj).map(([key, value]) => [iteratee(value, key), value]));
 };
 
 /**
@@ -298,11 +290,7 @@ export const mapKeys = (
  * // Using default value for non-existent path
  * get(obj, 'a.b[1].c', 'not found'); // returns 'not found'
  */
-export const get = (
-  object: Record<string, any>,
-  path: string | (string | number)[],
-  defaultValue?: any,
-): any => {
+export const get = (object: Record<string, any>, path: string | (string | number)[], defaultValue?: any): any => {
   const keys = Array.isArray(path) ? path : path.replace(/\[(\d+)\]/g, ".$1").split(".");
 
   let res: any = object;
@@ -364,9 +352,7 @@ export const intersectionBy = <T>(...args: [...arrays: T[][], iteratee: Iteratee
   const [first, ...rest] = arrays;
   const transformedFirst = first.map((item) => getIterateeValue(item));
 
-  const transformedSets: Set<unknown>[] = rest.map(
-    (array) => new Set(array.map((item) => getIterateeValue(item))),
-  );
+  const transformedSets: Set<unknown>[] = rest.map((array) => new Set(array.map((item) => getIterateeValue(item))));
 
   const res: T[] = [];
   const seen = new Set<unknown>();

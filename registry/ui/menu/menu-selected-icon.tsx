@@ -4,16 +4,10 @@ export interface MenuSelectedIconProps {
 }
 
 export function MenuSelectedIcon(props: MenuSelectedIconProps) {
-  const {isSelected, disableAnimation, ...otherProps} = props;
+  const { isSelected, disableAnimation, ...otherProps } = props;
 
   return (
-    <svg
-      aria-hidden="true"
-      data-selected={isSelected}
-      role="presentation"
-      viewBox="0 0 17 18"
-      {...otherProps}
-    >
+    <svg aria-hidden="true" data-selected={isSelected} role="presentation" viewBox="0 0 17 18" {...otherProps}>
       <polyline
         fill="none"
         points="1 9 7 14 15 4"

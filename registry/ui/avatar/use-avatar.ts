@@ -2,18 +2,18 @@ import type { ReactRef } from "@/lib/react";
 import type { DOMAttributes, DOMElement, HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type { SlotsToClasses } from "@/lib/theme";
 import type { AvatarSlots, AvatarVariantProps } from "./theme";
-;
 
-import { clsx, dataAttr, mergeProps, safeInitials } from "@/lib/base";
-import { useImage } from "@/lib/hooks/use-image";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
-import { useProviderContext } from "@/lib/system";
 import { useFocusRing } from "@react-aria/focus";
 import { useHover } from "@react-aria/interactions";
 import { useCallback, useMemo } from "react";
-import { avatar } from "./theme";
 
+import { avatar } from "./theme";
 import { useAvatarGroupContext } from "./avatar-group-context";
+
+import { useProviderContext } from "@/lib/system";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { clsx, dataAttr, mergeProps, safeInitials } from "@/lib/base";
+import { useImage } from "@/lib/hooks/use-image";
 
 interface Props extends HTMLHeroUIProps<"span"> {
   /**
@@ -95,8 +95,7 @@ interface Props extends HTMLHeroUIProps<"span"> {
   classNames?: SlotsToClasses<AvatarSlots>;
 }
 
-export type UseAvatarProps = Props &
-  Omit<AvatarVariantProps, "children" | "isInGroup" | "isInGridGroup">;
+export type UseAvatarProps = Props & Omit<AvatarVariantProps, "children" | "isInGroup" | "isInGridGroup">;
 
 export function useAvatar(originalProps: UseAvatarProps = {}) {
   const globalContext = useProviderContext();
@@ -140,8 +139,7 @@ export function useAvatar(originalProps: UseAvatarProps = {}) {
   const disableAnimation = disableAnimationProp ?? globalContext?.disableAnimation ?? false;
 
   const isHeroImage =
-    (typeof ImgComponent === "object" && (ImgComponent as any)?.displayName?.includes("HeroUI")) ??
-    false;
+    (typeof ImgComponent === "object" && (ImgComponent as any)?.displayName?.includes("HeroUI")) ?? false;
 
   const imageStatus = useImage({
     src,
@@ -176,16 +174,7 @@ export function useAvatar(originalProps: UseAvatarProps = {}) {
         disableAnimation,
         isInGridGroup: groupContext?.isGrid ?? false,
       }),
-    [
-      color,
-      radius,
-      size,
-      isBordered,
-      isDisabled,
-      disableAnimation,
-      isInGroup,
-      groupContext?.isGrid,
-    ],
+    [color, radius, size, isBordered, isDisabled, disableAnimation, isInGroup, groupContext?.isGrid],
   );
 
   const baseStyles = clsx(classNames?.base, className);

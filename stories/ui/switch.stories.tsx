@@ -1,13 +1,13 @@
 import type { SwitchProps, SwitchThumbIconProps } from "@/registry/ui";
 import type { Meta } from "@storybook/nextjs-vite";
 
-import { clsx } from "@/lib/base";
-import { MoonFilledIcon, SunFilledIcon } from "@/lib/icons";
-import { button, toggle } from "@/registry/ui";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import React from "react";
 import { useForm } from "react-hook-form";
 
+import { clsx } from "@/lib/base";
+import { MoonFilledIcon, SunFilledIcon } from "@/lib/icons";
+import { button, toggle } from "@/registry/ui";
 import { Switch, useSwitch } from "@/registry/ui";
 
 export default {
@@ -85,7 +85,7 @@ const CustomWithClassNamesTemplate = (args: SwitchProps) => {
             "inline-flex flex-row-reverse w-full max-w-md bg-content1 hover:bg-content2 items-center justify-between cursor-pointer rounded-lg gap-2 p-4 border-2 border-transparent",
             {
               "border-primary": isSelected,
-            }
+            },
           ),
         }}
         isSelected={isSelected}

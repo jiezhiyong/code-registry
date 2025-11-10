@@ -1,18 +1,19 @@
 import type { PaginationItemValue } from "@/lib/hooks/use-pagination";
 import type { UsePaginationProps } from "./use-pagination";
 
-import { clsx, dataAttr } from "@/lib/base";
-import { PaginationItemType } from "@/lib/hooks/use-pagination";
-import { forwardRef } from "@/lib/system";
 import { useLocale } from "@react-aria/i18n";
 import { useCallback } from "react";
 
-import { ChevronIcon } from "@/lib/icons/chevron";
-import { EllipsisIcon } from "@/lib/icons/ellipsis";
-import { ForwardIcon } from "@/lib/icons/forward";
 import PaginationCursor from "./pagination-cursor";
 import PaginationItem from "./pagination-item";
 import { usePagination } from "./use-pagination";
+
+import { clsx, dataAttr } from "@/lib/base";
+import { PaginationItemType } from "@/lib/hooks/use-pagination";
+import { forwardRef } from "@/lib/system";
+import { ChevronIcon } from "@/lib/icons/chevron";
+import { EllipsisIcon } from "@/lib/icons/ellipsis";
+import { ForwardIcon } from "@/lib/icons/forward";
 
 export interface PaginationProps extends UsePaginationProps {}
 
@@ -58,7 +59,7 @@ const Pagination = forwardRef<"nav", PaginationProps>((props, ref) => {
         />
       );
     },
-    [slots, isRTL]
+    [slots, isRTL],
   );
 
   const renderPrevItem = useCallback(
@@ -79,7 +80,7 @@ const Pagination = forwardRef<"nav", PaginationProps>((props, ref) => {
         </PaginationItem>
       );
     },
-    [slots, classNames, loop, activePage, isRTL, total, getItemAriaLabel, onPrevious]
+    [slots, classNames, loop, activePage, isRTL, total, getItemAriaLabel, onPrevious],
   );
 
   const renderNextItem = useCallback(
@@ -100,7 +101,7 @@ const Pagination = forwardRef<"nav", PaginationProps>((props, ref) => {
         </PaginationItem>
       );
     },
-    [slots, classNames, loop, activePage, isRTL, total, getItemAriaLabel, onNext]
+    [slots, classNames, loop, activePage, isRTL, total, getItemAriaLabel, onNext],
   );
 
   const renderItem = useCallback(
@@ -124,8 +125,8 @@ const Pagination = forwardRef<"nav", PaginationProps>((props, ref) => {
               ? activePage - dotsJump
               : 1
             : activePage + dotsJump <= total
-            ? activePage + dotsJump
-            : total;
+              ? activePage + dotsJump
+              : total;
         }
 
         const itemChildren: Record<PaginationItemType, React.ReactNode> = {
@@ -222,7 +223,7 @@ const Pagination = forwardRef<"nav", PaginationProps>((props, ref) => {
       setPage,
       renderPrevItem,
       renderNextItem,
-    ]
+    ],
   );
 
   return (

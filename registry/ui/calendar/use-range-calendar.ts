@@ -5,8 +5,6 @@ import type { AriaRangeCalendarProps, DateValue } from "@react-types/calendar";
 import type { CalendarBaseProps } from "./calendar-base";
 import type { ContextType, UseCalendarBaseProps } from "./use-calendar-base";
 
-import { chain, clsx } from "@/lib/base";
-import { filterDOMProps } from "@/lib/react";
 import { createCalendar } from "@internationalized/date";
 import { useRangeCalendar as useAriaRangeCalendar } from "@react-aria/calendar";
 import { useRangeCalendarState } from "@react-stately/calendar";
@@ -14,12 +12,12 @@ import { useMemo, useRef } from "react";
 
 import { useCalendarBase } from "./use-calendar-base";
 
-type HeroUIBaseProps<T extends DateValue> = Omit<
-  HTMLHeroUIProps<"div">,
-  keyof AriaRangeCalendarProps<T>
->;
+import { filterDOMProps } from "@/lib/react";
+import { chain, clsx } from "@/lib/base";
 
-interface Props<T extends DateValue> extends UseCalendarBaseProps, HeroUIBaseProps<T> { }
+type HeroUIBaseProps<T extends DateValue> = Omit<HTMLHeroUIProps<"div">, keyof AriaRangeCalendarProps<T>>;
+
+interface Props<T extends DateValue> extends UseCalendarBaseProps, HeroUIBaseProps<T> {}
 
 export type UseRangeCalendarProps<T extends DateValue> = Props<T> & AriaRangeCalendarProps<T>;
 
@@ -72,8 +70,11 @@ export function useRangeCalendar<T extends DateValue>({
         : (createCalendarProp as typeof createCalendar),
   });
 
-  const { title, calendarProps, prevButtonProps, nextButtonProps, errorMessageProps } =
-    useAriaRangeCalendar(originalProps, state, domRef);
+  const { title, calendarProps, prevButtonProps, nextButtonProps, errorMessageProps } = useAriaRangeCalendar(
+    originalProps,
+    state,
+    domRef,
+  );
 
   const baseStyles = clsx(classNames?.base, className);
 

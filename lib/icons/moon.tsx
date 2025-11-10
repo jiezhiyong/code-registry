@@ -1,4 +1,4 @@
-import type {IconSvgProps} from "./types";
+import type { IconSvgProps } from "./types";
 
 export const MoonIcon = (props: IconSvgProps) => (
   <svg

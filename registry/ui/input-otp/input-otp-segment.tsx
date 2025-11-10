@@ -1,10 +1,11 @@
 import type { SlotProps } from "input-otp";
 
-import { clsx, dataAttr } from "@/lib/base";
 import { useMemo } from "react";
-import { cn } from "./theme";
 
+import { cn } from "./theme";
 import { useInputOtpContext } from "./input-otp-context";
+
+import { clsx, dataAttr } from "@/lib/base";
 
 export const InputOtpSegment = ({ ...props }: SlotProps & { isFocused?: boolean; isFocusVisible?: boolean }) => {
   const { classNames, slots, type } = useInputOtpContext();

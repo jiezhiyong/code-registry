@@ -1,6 +1,10 @@
 // export types
 export type {
-  DisabledBehavior, Selection, SelectionBehavior, SelectionMode, SortDescriptor
+  DisabledBehavior,
+  Selection,
+  SelectionBehavior,
+  SelectionMode,
+  SortDescriptor,
 } from "@react-types/shared";
 export type { TableProps } from "./table";
 
@@ -26,4 +30,3 @@ export type { TableCellProps } from "./table-cell-base";
 export type { TableColumnProps } from "./table-column-base";
 export type { TableHeaderProps } from "./table-header-base";
 export type { TableRowProps } from "./table-row-base";
-

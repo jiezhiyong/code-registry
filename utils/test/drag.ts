@@ -41,9 +41,9 @@ const getCoords = (
   charlie:
     | HTMLElement
     | {
-      x: number;
-      y: number;
-    },
+        x: number;
+        y: number;
+      },
 ) => (isElement(charlie) ? getElementClientCenter(charlie) : charlie);
 
 const sleep = (ms: number) =>
@@ -59,7 +59,7 @@ export async function drag(
     steps = 20,
     duration = 500,
   }: {
-    to?: HTMLElement | { x: number; y: number; };
+    to?: HTMLElement | { x: number; y: number };
     delta?: {
       x: number;
       y: number;
@@ -71,9 +71,9 @@ export async function drag(
   const from = getElementClientCenter(element);
   const to = delta
     ? {
-      x: from.x + delta.x,
-      y: from.y + delta.y,
-    }
+        x: from.x + delta.x,
+        y: from.y + delta.y,
+      }
     : inTo
       ? getCoords(inTo)
       : null;

@@ -1,11 +1,11 @@
 import type { CircularProgressProps } from "@/registry/ui";
 import type { Meta } from "@storybook/nextjs-vite";
 
+import React from "react";
+
 import { circularProgress } from "@/registry/ui";
 import { Card, CardBody, CardFooter } from "@/registry/ui/card";
 import { Chip } from "@/registry/ui/chip";
-import React from "react";
-
 import { CircularProgress } from "@/registry/ui";
 
 export default {

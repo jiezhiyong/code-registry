@@ -122,12 +122,7 @@ const card = tv({
     },
     isBlurred: {
       true: {
-        base: [
-          "bg-background/80",
-          "dark:bg-background/20",
-          "backdrop-blur-md",
-          "backdrop-saturate-150",
-        ],
+        base: ["bg-background/80", "dark:bg-background/20", "backdrop-blur-md", "backdrop-saturate-150"],
       },
     },
     isFooterBlurred: {
@@ -167,4 +162,3 @@ export type CardSlots = keyof ReturnType<typeof card>;
 export type CardReturnType = ReturnType<typeof card>;
 
 export { card };
-

@@ -1,9 +1,9 @@
 import type { ProgressProps } from "@/registry/ui";
 import type { Meta } from "@storybook/nextjs-vite";
 
-import { progress } from "@/registry/ui";
 import React from "react";
 
+import { progress } from "@/registry/ui";
 import { Progress } from "@/registry/ui";
 
 export default {

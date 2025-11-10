@@ -1,19 +1,20 @@
 import type { ForwardedRef, ReactElement } from "react";
 import type { UseSelectProps } from "./use-select";
 
+import { VisuallyHidden } from "@react-aria/visually-hidden";
+import { AnimatePresence } from "framer-motion";
+import { cloneElement, useMemo } from "react";
+
+import { HiddenSelect } from "./hidden-select";
+import { useSelect } from "./use-select";
+
 import { forwardRef } from "@/lib/system";
 import { Listbox } from "@/registry/ui/listbox";
 import { FreeSoloPopover } from "@/registry/ui/popover";
 import { ScrollShadow } from "@/registry/ui/scroll-shadow";
 import { Spinner } from "@/registry/ui/spinner";
-import { VisuallyHidden } from "@react-aria/visually-hidden";
-import { AnimatePresence } from "framer-motion";
-import { cloneElement, useMemo } from "react";
-
 import { ChevronDownIcon } from "@/lib/icons/chevron-down";
 import { CloseFilledIcon } from "@/lib/icons/close-filled";
-import { HiddenSelect } from "./hidden-select";
-import { useSelect } from "./use-select";
 
 interface Props<T> extends UseSelectProps<T> {}
 
@@ -21,7 +22,7 @@ export type SelectProps<T extends object = object> = Props<T>;
 
 const Select = forwardRef(function Select<T extends object>(
   props: SelectProps<T>,
-  ref: ForwardedRef<HTMLSelectElement>
+  ref: ForwardedRef<HTMLSelectElement>,
 ) {
   const {
     Component,
@@ -148,7 +149,7 @@ const Select = forwardRef(function Select<T extends object>(
           </ScrollShadow>
         </FreeSoloPopover>
       ) : null,
-    [state.isOpen, getPopoverProps, state, triggerRef, getListboxWrapperProps, getListboxProps]
+    [state.isOpen, getPopoverProps, state, triggerRef, getListboxWrapperProps, getListboxProps],
   );
 
   return (

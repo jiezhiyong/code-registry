@@ -1,12 +1,12 @@
 import type { BadgeProps } from "@/registry/ui";
 import type { Meta } from "@storybook/nextjs-vite";
 
+import React from "react";
+
 import { CartIcon, CheckIcon, Notification } from "@/lib/icons";
 import { badge } from "@/registry/ui";
 import { Avatar } from "@/registry/ui/avatar";
 import { Switch } from "@/registry/ui/switch";
-import React from "react";
-
 import { Badge } from "@/registry/ui";
 
 export default {

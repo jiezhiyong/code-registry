@@ -2,7 +2,6 @@ import type { SpinnerProps } from "@/registry/ui";
 import type { Meta } from "@storybook/nextjs-vite";
 
 import { spinner } from "@/registry/ui";
-
 import { Spinner } from "@/registry/ui";
 
 export default {

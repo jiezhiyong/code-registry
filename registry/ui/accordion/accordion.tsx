@@ -1,13 +1,14 @@
 import type { Key } from "react";
 import type { UseAccordionProps } from "./use-accordion";
 
-import { forwardRef } from "@/lib/system";
-import { Divider } from "@/registry/ui/divider";
 import { LayoutGroup } from "framer-motion";
 import { Fragment, useCallback, useMemo } from "react";
 
 import AccordionItem from "./accordion-item";
 import { useAccordion } from "./use-accordion";
+
+import { Divider } from "@/registry/ui/divider";
+import { forwardRef } from "@/lib/system";
 
 export interface AccordionProps extends UseAccordionProps {}
 
@@ -29,7 +30,7 @@ const AccordionGroup = forwardRef<"div", AccordionProps>((props, ref) => {
   });
   const handleFocusChanged = useCallback(
     (isFocused: boolean, key: Key) => handleFocusChangedProps(isFocused, key),
-    [handleFocusChangedProps]
+    [handleFocusChangedProps],
   );
 
   const content = useMemo(() => {

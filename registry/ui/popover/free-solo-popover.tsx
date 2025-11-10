@@ -10,16 +10,17 @@
 import type { HTMLMotionProps } from "framer-motion";
 import type { UsePopoverProps, UsePopoverReturn } from "./use-popover";
 
-import { getTransformOrigins } from "@/lib/aria";
-import { mergeProps } from "@/lib/base";
-import { TRANSITION_VARIANTS } from "@/lib/framer";
-import { forwardRef } from "@/lib/system";
 import { useDialog } from "@react-aria/dialog";
 import { DismissButton, Overlay } from "@react-aria/overlays";
 import { LazyMotion, m } from "framer-motion";
 import * as React from "react";
 
 import { usePopover } from "./use-popover";
+
+import { forwardRef } from "@/lib/system";
+import { TRANSITION_VARIANTS } from "@/lib/framer";
+import { mergeProps } from "@/lib/base";
+import { getTransformOrigins } from "@/lib/aria";
 
 const domAnimation = () => import("@/lib/dom-animation").then((res) => res.default);
 
@@ -43,7 +44,7 @@ type FreeSoloPopoverWrapperProps = {
 const FreeSoloPopoverWrapper = forwardRef<"div", FreeSoloPopoverWrapperProps>(
   (
     { children, motionProps, placement, disableAnimation, style: styleProp = {}, transformOrigin = {}, ...otherProps },
-    ref
+    ref,
   ) => {
     let style = styleProp;
 
@@ -79,7 +80,7 @@ const FreeSoloPopoverWrapper = forwardRef<"div", FreeSoloPopoverWrapperProps>(
         </m.div>
       </LazyMotion>
     );
-  }
+  },
 );
 
 FreeSoloPopoverWrapper.displayName = "HeroUI.FreeSoloPopoverWrapper";
@@ -155,7 +156,7 @@ const FreeSoloPopover = forwardRef<"div", FreeSoloPopoverProps>(
         </Component>
       </Overlay>
     );
-  }
+  },
 );
 
 FreeSoloPopover.displayName = "HeroUI.FreeSoloPopover";

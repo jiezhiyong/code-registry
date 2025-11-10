@@ -1,8 +1,8 @@
 import type { HTMLHeroUIProps } from "@/lib/system";
 import type { RowProps } from "@react-types/table";
+import type { JSX } from "react";
 
 import { Row } from "@react-stately/table";
-import { JSX } from "react";
 
 export type TableRowProps<T = object> = RowProps<T> & Omit<HTMLHeroUIProps<"tr">, keyof RowProps<T>>;
 

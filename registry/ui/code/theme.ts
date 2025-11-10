@@ -46,4 +46,3 @@ const code = tv({
 export type CodeVariantProps = VariantProps<typeof code>;
 
 export { code };
-

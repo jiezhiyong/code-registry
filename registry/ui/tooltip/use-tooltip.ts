@@ -3,13 +3,16 @@ import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type { SlotsToClasses } from "@/lib/theme";
 import type { PopoverVariantProps } from "@/registry/ui/popover/theme";
-import { popover } from "@/registry/ui/popover/theme";
 import type { AriaOverlayProps } from "@react-aria/overlays";
 import type { OverlayTriggerProps } from "@react-types/overlays";
 import type { AriaTooltipProps } from "@react-types/tooltip";
 import type { HTMLMotionProps } from "framer-motion";
 import type { ReactNode, Ref } from "react";
-;
+
+import { useOverlayPosition } from "@react-aria/overlays";
+import { useTooltip as useReactAriaTooltip, useTooltipTrigger } from "@react-aria/tooltip";
+import { useTooltipTriggerState } from "@react-stately/tooltip";
+import { useCallback, useId, useImperativeHandle, useMemo, useRef } from "react";
 
 import { getArrowPlacement, toReactAriaPlacement } from "@/lib/aria";
 import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
@@ -17,10 +20,7 @@ import { useAriaOverlay } from "@/lib/hooks/use-aria-overlay";
 import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
 import { createDOMRef, mergeRefs } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { useOverlayPosition } from "@react-aria/overlays";
-import { useTooltip as useReactAriaTooltip, useTooltipTrigger } from "@react-aria/tooltip";
-import { useTooltipTriggerState } from "@react-stately/tooltip";
-import { useCallback, useId, useImperativeHandle, useMemo, useRef } from "react";
+import { popover } from "@/registry/ui/popover/theme";
 
 interface Props extends Omit<HTMLHeroUIProps, "content"> {
   /**
@@ -127,8 +127,7 @@ export function useTooltip(originalProps: UseTooltipProps) {
 
   const Component = as || "div";
 
-  const disableAnimation =
-    originalProps?.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps?.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   const state = useTooltipTriggerState({
     delay,
@@ -216,13 +215,7 @@ export function useTooltip(originalProps: UseTooltipProps) {
         size: originalProps?.size ?? "md",
         shadow: originalProps?.shadow ?? "sm",
       }),
-    [
-      objectToDeps(variantProps),
-      disableAnimation,
-      originalProps?.radius,
-      originalProps?.size,
-      originalProps?.shadow,
-    ],
+    [objectToDeps(variantProps), disableAnimation, originalProps?.radius, originalProps?.size, originalProps?.shadow],
   );
 
   const getTriggerProps = useCallback<PropGetter>(

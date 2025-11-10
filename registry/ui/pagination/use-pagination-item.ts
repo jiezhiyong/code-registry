@@ -3,12 +3,13 @@ import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type { LinkDOMProps, PressEvent } from "@react-types/shared";
 import type { Ref } from "react";
 
-import { chain, clsx, dataAttr, mergeProps } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { useFocusRing } from "@react-aria/focus";
 import { useHover, usePress } from "@react-aria/interactions";
 import { handleLinkClick, useRouter } from "@react-aria/utils";
 import { useMemo } from "react";
+
+import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { chain, clsx, dataAttr, mergeProps } from "@/lib/base";
 
 interface Props extends Omit<HTMLHeroUIProps<"li">, "onClick"> {
   /**
@@ -49,19 +50,8 @@ interface Props extends Omit<HTMLHeroUIProps<"li">, "onClick"> {
 export type UsePaginationItemProps = Props & LinkDOMProps;
 
 export function usePaginationItem(props: UsePaginationItemProps) {
-  const {
-    as,
-    ref,
-    value,
-    children,
-    isActive,
-    isDisabled,
-    onPress,
-    onClick,
-    getAriaLabel,
-    className,
-    ...otherProps
-  } = props;
+  const { as, ref, value, children, isActive, isDisabled, onPress, onClick, getAriaLabel, className, ...otherProps } =
+    props;
 
   const isLink = !!props?.href;
   const Component = as || isLink ? "a" : "li";

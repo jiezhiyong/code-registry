@@ -1,8 +1,8 @@
 import type { UsePaginationItemProps } from "./use-pagination-item";
 
-import { forwardRef } from "@/lib/system";
-
 import { usePaginationItem } from "./use-pagination-item";
+
+import { forwardRef } from "@/lib/system";
 
 export interface PaginationItemProps extends UsePaginationItemProps {}
 

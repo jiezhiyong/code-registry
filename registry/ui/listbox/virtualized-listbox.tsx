@@ -4,14 +4,15 @@ import type { VirtualItem } from "@tanstack/react-virtual";
 import type { VirtualizationProps } from "./listbox";
 import type { UseListboxReturn } from "./use-listbox";
 
-import { isEmpty, mergeProps } from "@/lib/base";
-import { filterDOMProps } from "@/lib/react";
-import { useScrollShadow } from "@/registry/ui/scroll-shadow";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { useMemo, useRef, useState } from "react";
 
 import ListboxItem from "./listbox-item";
 import ListboxSection from "./listbox-section";
+
+import { useScrollShadow } from "@/registry/ui/scroll-shadow";
+import { filterDOMProps } from "@/lib/react";
+import { isEmpty, mergeProps } from "@/lib/base";
 
 interface Props extends UseListboxReturn {
   isVirtualized?: boolean;
@@ -83,7 +84,7 @@ const VirtualizedListbox = (props: Props) => {
 
   if (!virtualization || (!isEmpty(virtualization) && !virtualization.maxListboxHeight && !virtualization.itemHeight)) {
     throw new Error(
-      "You are using a virtualized listbox. VirtualizedListbox requires 'virtualization' props with 'maxListboxHeight' and 'itemHeight' properties. This error might have originated from autocomplete components that use VirtualizedListbox. Please provide these props to use the virtualized listbox."
+      "You are using a virtualized listbox. VirtualizedListbox requires 'virtualization' props with 'maxListboxHeight' and 'itemHeight' properties. This error might have originated from autocomplete components that use VirtualizedListbox. Please provide these props to use the virtualized listbox.",
     );
   }
   const { maxListboxHeight, itemHeight } = virtualization;
@@ -93,7 +94,7 @@ const VirtualizedListbox = (props: Props) => {
   const parentRef = useRef<HTMLDivElement>(null);
   const itemSizes = useMemo(
     () => getItemSizesForCollection([...state.collection], itemHeight),
-    [state.collection, itemHeight]
+    [state.collection, itemHeight],
   );
 
   const rowVirtualizer = useVirtualizer({

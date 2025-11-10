@@ -1,8 +1,8 @@
 import type { UseCodeProps } from "./use-code";
 
-import { forwardRef } from "@/lib/system-rsc";
-
 import { useCode } from "./use-code";
+
+import { forwardRef } from "@/lib/system-rsc";
 
 export interface CodeProps extends UseCodeProps {}
 

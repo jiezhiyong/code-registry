@@ -1,8 +1,8 @@
 import type { UseBreadcrumbItemProps } from "./use-breadcrumb-item";
 
-import { forwardRef } from "@/lib/system";
-
 import { useBreadcrumbItem } from "./use-breadcrumb-item";
+
+import { forwardRef } from "@/lib/system";
 
 export interface BreadcrumbItemProps extends UseBreadcrumbItemProps {}
 

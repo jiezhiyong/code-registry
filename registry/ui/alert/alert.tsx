@@ -1,17 +1,18 @@
 import type { ButtonProps } from "@/registry/ui/button";
 import type { UseAlertProps } from "./use-alert";
 
+import { cloneElement, isValidElement } from "react";
+
+import { useAlert } from "./use-alert";
+
 import { isEmpty } from "@/lib/base";
 import { forwardRef } from "@/lib/system";
 import { Button } from "@/registry/ui/button";
-import { cloneElement, isValidElement } from "react";
-
 import { CloseIcon } from "@/lib/icons/close";
 import { DangerIcon } from "@/lib/icons/danger";
 import { InfoCircleIcon } from "@/lib/icons/info-circle";
 import { SuccessIcon } from "@/lib/icons/success";
 import { WarningIcon } from "@/lib/icons/warning";
-import { useAlert } from "./use-alert";
 
 const iconMap = {
   primary: InfoCircleIcon,

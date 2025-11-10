@@ -3,6 +3,7 @@ import type { SlotsToClasses } from "@/lib/theme";
 import type { DividerProps } from "@/registry/ui/divider";
 import type { ListboxItemProps } from "./listbox-item";
 import type { ListboxSectionSlots } from "./theme";
+
 import { BaseSection } from "@/lib/aria";
 
 export interface ListboxSectionBaseProps<T extends object = {}> extends SectionProps<"ul", T> {

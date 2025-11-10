@@ -2,12 +2,12 @@ import type { RadioGroupProps, RadioProps } from "@/registry/ui";
 import type { ValidationResult } from "@react-types/shared";
 import type { Meta } from "@storybook/nextjs-vite";
 
-import { clsx } from "@/lib/base";
-import { button, radio } from "@/registry/ui";
-import { Form } from "@/registry/ui/form";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import React from "react";
 
+import { clsx } from "@/lib/base";
+import { button, radio } from "@/registry/ui";
+import { Form } from "@/registry/ui/form";
 import { Radio, RadioGroup, useRadio, useRadioGroupContext } from "@/registry/ui";
 
 export default {
@@ -363,7 +363,7 @@ const CustomRadio = (props: RadioProps) => {
           "inline-flex bg-content1 hover:bg-content2 items-center justify-between flex-row-reverse max-w-[300px] cursor-pointer rounded-lg gap-4 p-4 border-2 border-transparent",
           {
             "border-primary": isSelected,
-          }
+          },
         ),
       }}
     >
@@ -409,7 +409,7 @@ const RadioCard = (props: RadioProps) => {
         "group inline-flex items-center justify-between hover:bg-content2 flex-row-reverse max-w-[300px] cursor-pointer border-2 border-default rounded-lg gap-4 p-4",
         {
           "border-primary": isSelected,
-        }
+        },
       )}
     >
       <VisuallyHidden>

@@ -1,14 +1,7 @@
-import type {IconSvgProps} from "./types";
+import type { IconSvgProps } from "./types";
 
 export const SortIcon = (props: IconSvgProps) => (
-  <svg
-    fill="none"
-    height="15"
-    viewBox="0 0 16 15"
-    width="16"
-    xmlns="http://www.w3.org/2000/svg"
-    {...props}
-  >
+  <svg fill="none" height="15" viewBox="0 0 16 15" width="16" xmlns="http://www.w3.org/2000/svg" {...props}>
     <path
       clipRule="evenodd"
       d="M7.89789 10.0175C8.19079 9.72463 8.66566 9.72463 8.95855 10.0175L11.4282 12.4872L13.8979 10.0175C14.1908 9.72463 14.6657 9.72463 14.9586 10.0175C15.2514 10.3104 15.2514 10.7853 14.9586 11.0782L11.9586 14.0782C11.6657 14.3711 11.1908 14.3711 10.8979 14.0782L7.89789 11.0782C7.605 10.7853 7.605 10.3104 7.89789 10.0175Z"

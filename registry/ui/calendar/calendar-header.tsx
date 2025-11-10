@@ -2,7 +2,6 @@ import type { HTMLHeroUIProps } from "@/lib/system";
 import type { ButtonProps } from "@/registry/ui/button";
 import type { CalendarDate } from "@internationalized/date";
 
-import { Button } from "@/registry/ui/button";
 import { useDateFormatter } from "@react-aria/i18n";
 import { m } from "framer-motion";
 import { useCallback } from "react";
@@ -10,6 +9,8 @@ import { useCallback } from "react";
 import { useCalendarContext } from "./calendar-context";
 import { slideVariants } from "./calendar-transitions";
 import { ChevronDownIcon } from "./chevron-down";
+
+import { Button } from "@/registry/ui/button";
 
 export interface CalendarHeaderProps extends HTMLHeroUIProps<"header"> {
   direction: number;
@@ -90,7 +91,7 @@ export function CalendarHeader(props: CalendarHeaderProps) {
         setIsHeaderExpanded?.(false);
       }
     },
-    [setIsHeaderExpanded]
+    [setIsHeaderExpanded],
   );
 
   return showMonthAndYearPickers ? (

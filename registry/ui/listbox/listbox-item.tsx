@@ -1,10 +1,10 @@
-import type {ReactNode} from "react";
-import type {UseListboxItemProps} from "./use-listbox-item";
+import type { ReactNode } from "react";
+import type { UseListboxItemProps } from "./use-listbox-item";
 
-import {useMemo} from "react";
+import { useMemo } from "react";
 
-import {useListboxItem} from "./use-listbox-item";
-import {ListboxSelectedIcon} from "./listbox-selected-icon";
+import { useListboxItem } from "./use-listbox-item";
+import { ListboxSelectedIcon } from "./listbox-selected-icon";
 
 export interface ListboxItemProps<T extends object = object>
   extends Omit<UseListboxItemProps<T>, "hasDescriptionTextChild" | "hasTitleTextChild"> {}
@@ -33,12 +33,10 @@ const ListboxItem = (props: ListboxItemProps) => {
   } = useListboxItem(props);
 
   const selectedContent = useMemo<ReactNode>(() => {
-    const defaultIcon = (
-      <ListboxSelectedIcon disableAnimation={disableAnimation} isSelected={isSelected} />
-    );
+    const defaultIcon = <ListboxSelectedIcon disableAnimation={disableAnimation} isSelected={isSelected} />;
 
     if (typeof selectedIcon === "function") {
-      return selectedIcon({icon: defaultIcon, isSelected, isDisabled});
+      return selectedIcon({ icon: defaultIcon, isSelected, isDisabled });
     }
 
     if (selectedIcon) return selectedIcon;
@@ -57,9 +55,7 @@ const ListboxItem = (props: ListboxItemProps) => {
       ) : (
         <span {...getLabelProps()}>{rendered}</span>
       )}
-      {isSelectable && !hideSelectedIcon && (
-        <span {...getSelectedIconProps()}>{selectedContent}</span>
-      )}
+      {isSelectable && !hideSelectedIcon && <span {...getSelectedIconProps()}>{selectedContent}</span>}
       {endContent}
     </Component>
   );

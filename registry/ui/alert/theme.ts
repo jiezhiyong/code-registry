@@ -24,8 +24,7 @@ import { colorVariants, tv } from "@/lib/theme";
 const alert = tv({
   slots: {
     base: "flex flex-grow flex-row w-full items-center py-3 px-4 gap-x-1",
-    mainWrapper:
-      "h-full flex-grow min-h-10 ms-2 flex flex-col box-border items-start text-inherit justify-center",
+    mainWrapper: "h-full flex-grow min-h-10 ms-2 flex flex-col box-border items-start text-inherit justify-center",
     title: "text-small w-full font-medium block text-inherit leading-5",
     description: "pl-[1px] text-small font-normal text-inherit",
     closeButton: "relative text-inherit translate-x-1 -translate-y-1",
@@ -144,11 +143,7 @@ const alert = tv({
       variant: ["flat", "faded"],
       color: "default",
       class: {
-        base: [
-          colorVariants.flat.default,
-          "bg-default-100 dark:bg-default-50/50",
-          "text-default-foreground",
-        ],
+        base: [colorVariants.flat.default, "bg-default-100 dark:bg-default-50/50", "text-default-foreground"],
         description: "text-default-600",
         closeButton: "text-default-400",
         iconWrapper: "bg-default-50 dark:bg-default-100 border-default-200",
@@ -356,4 +351,3 @@ export type AlertVariantProps = VariantProps<typeof alert>;
 export type AlertSlots = keyof ReturnType<typeof alert>;
 
 export { alert };
-

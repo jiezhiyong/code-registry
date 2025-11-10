@@ -4,8 +4,8 @@ import type { DividerVariantProps } from "./theme";
 import type { SeparatorProps as AriaSeparatorProps } from "./use-separator";
 
 import { useCallback, useMemo } from "react";
-import { divider } from "./theme";
 
+import { divider } from "./theme";
 import { useSeparator } from "./use-separator";
 
 interface Props extends HTMLHeroUIProps<"hr"> {

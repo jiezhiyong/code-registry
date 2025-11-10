@@ -1,11 +1,12 @@
 import type { ReactNode } from "react";
 import type { UseDropdownProps } from "./use-dropdown";
 
-import { Popover } from "@/registry/ui/popover";
 import React from "react";
 
 import { DropdownProvider } from "./dropdown-context";
 import { useDropdown } from "./use-dropdown";
+
+import { Popover } from "@/registry/ui/popover";
 
 export interface DropdownProps extends UseDropdownProps {
   /**

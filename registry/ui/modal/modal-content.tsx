@@ -3,17 +3,18 @@ import type { AriaDialogProps } from "@react-aria/dialog";
 import type { HTMLMotionProps } from "framer-motion";
 import type { KeyboardEvent, ReactNode } from "react";
 
-import { chain, mergeProps } from "@/lib/base";
-import { TRANSITION_VARIANTS } from "@/lib/framer";
-import { useViewportSize } from "@/lib/hooks/use-viewport-size";
 import { useDialog } from "@react-aria/dialog";
 import { DismissButton } from "@react-aria/overlays";
 import { LazyMotion, m } from "framer-motion";
 import { cloneElement, isValidElement, useCallback, useMemo } from "react";
 
-import { CloseIcon } from "@/lib/icons/close";
 import { useModalContext } from "./modal-context";
 import { scaleInOut } from "./modal-transition";
+
+import { CloseIcon } from "@/lib/icons/close";
+import { useViewportSize } from "@/lib/hooks/use-viewport-size";
+import { TRANSITION_VARIANTS } from "@/lib/framer";
+import { chain, mergeProps } from "@/lib/base";
 
 type KeysToOmit = "children" | "role";
 
@@ -50,7 +51,7 @@ const ModalContent = (props: ModalContentProps) => {
     {
       role,
     },
-    domRef
+    domRef,
   );
 
   const closeButtonContent = isValidElement(closeButton) ? (

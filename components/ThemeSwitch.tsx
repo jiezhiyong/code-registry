@@ -1,13 +1,16 @@
 "use client";
 
-import { SwitchProps, useSwitch } from "@/registry/ui backup/switch";
+import type { FC } from "react";
+import type { SwitchProps } from "@/registry/ui backup/switch";
+
 import { useIsSSR } from "@react-aria/ssr";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import clsx from "clsx";
 import { useTheme } from "next-themes";
-import { FC } from "react";
 
 import { MoonFilledIcon, SunFilledIcon } from "./Icons";
+
+import { useSwitch } from "@/registry/ui backup/switch";
 
 export interface ThemeSwitchProps {
   className?: string;
@@ -52,7 +55,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className, classNames }) => 
               "px-0",
               "mx-0",
             ],
-            classNames?.wrapper
+            classNames?.wrapper,
           ),
         })}
       >

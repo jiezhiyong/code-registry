@@ -1,10 +1,10 @@
 import type { AlertProps } from "@/registry/ui";
 import type { Meta } from "@storybook/nextjs-vite";
 
-import { alert } from "@/registry/ui";
-import { Button } from "@/registry/ui/button";
 import React from "react";
 
+import { alert } from "@/registry/ui";
+import { Button } from "@/registry/ui/button";
 import { cn } from "@/lib/theme";
 import { Alert } from "@/registry/ui";
 
@@ -159,7 +159,7 @@ const CustomAlert = React.forwardRef<HTMLDivElement, AlertProps>(
               colorClass,
             ],
             classNames?.base,
-            className
+            className,
           ),
           mainWrapper: cn("pt-1", classNames?.mainWrapper),
           iconWrapper: cn("dark:bg-transparent", classNames?.iconWrapper),
@@ -172,7 +172,7 @@ const CustomAlert = React.forwardRef<HTMLDivElement, AlertProps>(
         <div className="flex items-center gap-1 mt-3">{children}</div>
       </Alert>
     );
-  }
+  },
 );
 
 CustomAlert.displayName = "CustomAlert";

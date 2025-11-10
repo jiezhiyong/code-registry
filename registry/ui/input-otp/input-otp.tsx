@@ -1,12 +1,13 @@
 import type { UseInputOtpProps } from "./use-input-otp";
 
-import { forwardRef } from "@/lib/system";
 import { OTPInput } from "input-otp";
 import { useMemo } from "react";
 
 import { InputOtpProvider } from "./input-otp-context";
 import { InputOtpSegment } from "./input-otp-segment";
 import { useInputOtp } from "./use-input-otp";
+
+import { forwardRef } from "@/lib/system";
 
 export interface InputOtpProps extends UseInputOtpProps {}
 

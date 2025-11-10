@@ -5,21 +5,16 @@ import type { TreeState } from "@react-stately/tree";
 import type { AccordionItemBaseProps } from "./accordion-item-base";
 import type { AccordionItemVariantProps } from "./theme";
 
-import {
-  callAllHandlers,
-  chain,
-  clsx,
-  dataAttr,
-  mergeProps,
-  objectToDeps,
-} from "@/lib/base";
-import { useReactAriaAccordionItem } from "@/lib/hooks/use-aria-accordion";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
-import { useProviderContext } from "@/lib/system";
 import { useFocusRing } from "@react-aria/focus";
 import { useHover, usePress } from "@react-aria/interactions";
 import { useCallback, useMemo } from "react";
+
 import { accordionItem } from "./theme";
+
+import { callAllHandlers, chain, clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
+import { useReactAriaAccordionItem } from "@/lib/hooks/use-aria-accordion";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { useProviderContext } from "@/lib/system";
 
 export interface Props<T extends object> extends HTMLHeroUIProps<"div"> {
   /**
@@ -172,20 +167,8 @@ export function useAccordionItem<T extends object = {}>(props: UseAccordionItemP
       "data-pressed": dataAttr(isPressed),
       "data-slot": "trigger",
       className: slots.trigger({ class: classNames?.trigger }),
-      onFocus: callAllHandlers(
-        handleFocus,
-        onFocusButton,
-        focusProps.onFocus,
-        otherProps.onFocus,
-        item.props?.onFocus,
-      ),
-      onBlur: callAllHandlers(
-        handleBlur,
-        onBlurButton,
-        focusProps.onBlur,
-        otherProps.onBlur,
-        item.props?.onBlur,
-      ),
+      onFocus: callAllHandlers(handleFocus, onFocusButton, focusProps.onFocus, otherProps.onFocus, item.props?.onFocus),
+      onBlur: callAllHandlers(handleBlur, onBlurButton, focusProps.onBlur, otherProps.onBlur, item.props?.onBlur),
       ...mergeProps(buttonProps, hoverProps, pressProps, props, {
         onClick: chain(pressProps.onClick, onClick),
       }),

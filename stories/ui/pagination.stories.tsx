@@ -1,11 +1,12 @@
-import { ChevronIcon } from "@/lib/icons";
-import { cn } from "@/lib/theme";
 import type { PaginationItemRenderProps } from "@/registry/ui";
-import { button, pagination } from "@/registry/ui";
-import { useLocale } from "@react-aria/i18n";
 import type { Meta } from "@storybook/nextjs-vite";
+
+import { useLocale } from "@react-aria/i18n";
 import React from "react";
 
+import { ChevronIcon } from "@/lib/icons";
+import { cn } from "@/lib/theme";
+import { button, pagination } from "@/registry/ui";
 import { Pagination, PaginationItemType, usePagination } from "@/registry/ui";
 
 export default {
@@ -165,7 +166,7 @@ export const CustomItems = () => {
         className={cn(
           className,
           isActive &&
-            "bg-gradient-to-b shadow-lg from-default-500 to-default-800 dark:from-default-300 dark:to-default-100 text-white font-bold"
+            "bg-gradient-to-b shadow-lg from-default-500 to-default-800 dark:from-default-300 dark:to-default-100 text-white font-bold",
         )}
         onClick={() => setPage(value)}
       >

@@ -1,9 +1,9 @@
 import type { LinkProps, VariantProps } from "@/registry/ui";
 import type { Meta } from "@storybook/nextjs-vite";
 
-import { link, tv } from "@/registry/ui";
 import { useState } from "react";
 
+import { link, tv } from "@/registry/ui";
 import { Link } from "@/registry/ui";
 
 export default {

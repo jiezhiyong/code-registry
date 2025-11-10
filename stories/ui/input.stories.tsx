@@ -4,12 +4,12 @@ import type { InputProps } from "@/registry/ui";
 import type { ValidationResult } from "@react-types/shared";
 import type { Meta } from "@storybook/nextjs-vite";
 
-import { CloseFilledIcon, EyeFilledIcon, EyeSlashFilledIcon, MailFilledIcon, SearchIcon } from "@/lib/icons";
-import { button, input } from "@/registry/ui";
-import { Form } from "@/registry/ui/form";
 import React from "react";
 import { useForm } from "react-hook-form";
 
+import { CloseFilledIcon, EyeFilledIcon, EyeSlashFilledIcon, MailFilledIcon, SearchIcon } from "@/lib/icons";
+import { button, input } from "@/registry/ui";
+import { Form } from "@/registry/ui/form";
 import { Input, useInput } from "@/registry/ui";
 
 export default {

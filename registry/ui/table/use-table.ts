@@ -10,13 +10,15 @@ import type { TableCollection } from "@react-types/table";
 import type { Key, ReactNode } from "react";
 import type { TableReturnType, TableSlots, TableVariantProps } from "./theme";
 
-import { clsx, mergeProps, objectToDeps } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
-import { mapPropsVariants, useProviderContext } from "@/lib/system";
 import { useTable as useReactAriaTable } from "@react-aria/table";
 import { useTableState } from "@react-stately/table";
 import { useCallback, useMemo } from "react";
+
 import { table } from "./theme";
+
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { clsx, mergeProps, objectToDeps } from "@/lib/base";
 
 type TableContentPlacement = "inside" | "outside";
 

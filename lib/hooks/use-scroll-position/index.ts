@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef } from "react";
 
 const isBrowser = typeof window !== "undefined";
 
-export type ScrollValue = { x: number; y: number; };
+export type ScrollValue = { x: number; y: number };
 
 function getScrollPosition(element: HTMLElement | undefined | null): ScrollValue {
   if (!isBrowser) return { x: 0, y: 0 };
@@ -31,15 +31,13 @@ export interface UseScrollPositionOptions {
   /**
    * The callback function to be called when the scroll position changes.
    */
-  callback?: ({ prevPos, currPos }: { prevPos: ScrollValue; currPos: ScrollValue; }) => void;
+  callback?: ({ prevPos, currPos }: { prevPos: ScrollValue; currPos: ScrollValue }) => void;
 }
 
 export const useScrollPosition = (props: UseScrollPositionOptions): ScrollValue => {
   const { elementRef, delay = 30, callback, isEnabled } = props;
 
-  const position = useRef<ScrollValue>(
-    isEnabled ? getScrollPosition(elementRef?.current) : { x: 0, y: 0 },
-  );
+  const position = useRef<ScrollValue>(isEnabled ? getScrollPosition(elementRef?.current) : { x: 0, y: 0 });
 
   const throttleTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 

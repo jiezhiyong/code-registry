@@ -1,8 +1,8 @@
 import type { HTMLHeroUIProps } from "@/lib/system";
 import type { TableHeaderProps as TableHeaderBaseProps } from "@react-types/table";
+import type { JSX } from "react";
 
 import { TableHeader as TableHeaderBase } from "@react-stately/table";
-import { JSX } from "react";
 
 export type TableHeaderProps<T> = TableHeaderBaseProps<T> &
   Omit<HTMLHeroUIProps<"thead">, keyof TableHeaderBaseProps<T>>;

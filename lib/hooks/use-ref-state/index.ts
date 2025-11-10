@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 export type CurrentStateType<S> = [S, Dispatch<SetStateAction<S>>, MutableRefObject<S>];
 
-export interface UseUseRefStateProps { }
+export interface UseUseRefStateProps {}
 
 export function useRefState<S>(initialState: S | (() => S)) {
   const [state, setState] = useState<S>(() => {

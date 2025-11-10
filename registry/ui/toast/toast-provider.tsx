@@ -2,11 +2,12 @@ import type { ToastOptions } from "@react-stately/toast";
 import type { RegionProps } from "./toast-region";
 import type { ToastPlacement, ToastProps } from "./use-toast";
 
-import { useProviderContext } from "@/lib/system";
 import { ToastQueue, useToastQueue } from "@react-stately/toast";
 import { LazyMotion } from "framer-motion";
 
 import { ToastRegion } from "./toast-region";
+
+import { useProviderContext } from "@/lib/system";
 
 const loadFeatures = () => import("framer-motion").then((res) => res.domMax);
 

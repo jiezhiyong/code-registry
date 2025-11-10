@@ -4,20 +4,21 @@ import type { NumberFieldStateOptions } from "@react-stately/numberfield";
 import type { AriaNumberFieldProps } from "@react-types/numberfield";
 import type { Ref } from "react";
 import type { NumberInputSlots, NumberInputVariantProps } from "./theme";
-;
 
-import { chain, clsx, dataAttr, isEmpty, mergeProps, objectToDeps } from "@/lib/base";
-import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
-import { mapPropsVariants, useLabelPlacement, useProviderContext } from "@/lib/system";
-import { FormContext, useSlottedContext } from "@/registry/ui/form";
 import { useFocusRing } from "@react-aria/focus";
 import { useLocale } from "@react-aria/i18n";
 import { useFocusWithin, useHover, usePress } from "@react-aria/interactions";
 import { useNumberField as useAriaNumberInput } from "@react-aria/numberfield";
 import { useNumberFieldState } from "@react-stately/numberfield";
 import { useCallback, useMemo, useState } from "react";
+
 import { numberInput } from "./theme";
+
+import { FormContext, useSlottedContext } from "@/registry/ui/form";
+import { mapPropsVariants, useLabelPlacement, useProviderContext } from "@/lib/system";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { chain, clsx, dataAttr, isEmpty, mergeProps, objectToDeps } from "@/lib/base";
+import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
 
 export interface Props extends Omit<HTMLHeroUIProps<"input">, keyof NumberInputVariantProps> {
   /**
@@ -124,8 +125,7 @@ export function useNumberInput(originalProps: UseNumberInputProps) {
 
   const Component = as || "div";
 
-  const disableAnimation =
-    originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   const domRef = useDOMRef<HTMLInputElement>(ref);
 
@@ -224,12 +224,9 @@ export function useNumberInput(originalProps: UseNumberInputProps) {
 
   const hasStartContent = !!startContent;
   const isLabelOutside = shouldLabelBeOutside
-    ? labelPlacement === "outside-left" ||
-    hasPlaceholder ||
-    (labelPlacement === "outside" && hasStartContent)
+    ? labelPlacement === "outside-left" || hasPlaceholder || (labelPlacement === "outside" && hasStartContent)
     : false;
-  const isLabelOutsideAsPlaceholder =
-    labelPlacement === "outside" && !hasPlaceholder && !hasStartContent;
+  const isLabelOutsideAsPlaceholder = labelPlacement === "outside" && !hasPlaceholder && !hasStartContent;
 
   const slots = useMemo(
     () =>
@@ -240,14 +237,7 @@ export function useNumberInput(originalProps: UseNumberInputProps) {
         isClearable,
         disableAnimation,
       }),
-    [
-      objectToDeps(variantProps),
-      isInvalid,
-      labelPlacement,
-      isClearable,
-      hasStartContent,
-      disableAnimation,
-    ],
+    [objectToDeps(variantProps), isInvalid, labelPlacement, isClearable, hasStartContent, disableAnimation],
   );
 
   const handleKeyDown = useCallback(
@@ -293,12 +283,7 @@ export function useNumberInput(originalProps: UseNumberInputProps) {
 
           inputElement.setSelectionRange(pos, pos);
         }, 0);
-      } else if (
-        e.key === "Escape" &&
-        inputValue &&
-        (isClearable || onClear) &&
-        !originalProps.isReadOnly
-      ) {
+      } else if (e.key === "Escape" && inputValue && (isClearable || onClear) && !originalProps.isReadOnly) {
         state.setInputValue("");
         onClear?.();
       }
@@ -312,12 +297,8 @@ export function useNumberInput(originalProps: UseNumberInputProps) {
         ref: baseDomRef,
         className: slots.base({ class: baseStyles }),
         "data-slot": "base",
-        "data-filled": dataAttr(
-          isFilled || hasPlaceholder || hasStartContent || isPlaceholderShown,
-        ),
-        "data-filled-within": dataAttr(
-          isFilledWithin || hasPlaceholder || hasStartContent || isPlaceholderShown,
-        ),
+        "data-filled": dataAttr(isFilled || hasPlaceholder || hasStartContent || isPlaceholderShown),
+        "data-filled-within": dataAttr(isFilledWithin || hasPlaceholder || hasStartContent || isPlaceholderShown),
         "data-focus-within": dataAttr(isFocusWithin),
         "data-focus-visible": dataAttr(isFocusVisible),
         "data-readonly": dataAttr(originalProps.isReadOnly),
@@ -447,15 +428,7 @@ export function useNumberInput(originalProps: UseNumberInputProps) {
         },
       };
     },
-    [
-      slots,
-      isHovered,
-      isLabelHovered,
-      isFocusVisible,
-      isFocused,
-      inputValue,
-      classNames?.inputWrapper,
-    ],
+    [slots, isHovered, isLabelHovered, isFocusVisible, isFocused, inputValue, classNames?.inputWrapper],
   );
 
   const getInnerWrapperProps: PropGetter = useCallback(

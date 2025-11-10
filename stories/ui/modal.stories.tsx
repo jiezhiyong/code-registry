@@ -2,6 +2,9 @@
 import type { ModalProps } from "@/registry/ui";
 import type { Meta } from "@storybook/nextjs-vite";
 
+import React from "react";
+import Lorem from "react-lorem-component";
+
 import { LockFilledIcon, MailFilledIcon } from "@/lib/icons";
 import { modal } from "@/registry/ui";
 import { Autocomplete, AutocompleteItem } from "@/registry/ui/autocomplete";
@@ -10,9 +13,6 @@ import { Checkbox } from "@/registry/ui/checkbox";
 import { Input } from "@/registry/ui/input";
 import { Link } from "@/registry/ui/link";
 import { Switch } from "@/registry/ui/switch";
-import React from "react";
-import Lorem from "react-lorem-component";
-
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure, useDraggable } from "@/registry/ui";
 
 export default {

@@ -1,8 +1,8 @@
 import type { UseSkeletonProps } from "./use-skeleton";
 
-import { forwardRef } from "@/lib/system";
-
 import { useSkeleton } from "./use-skeleton";
+
+import { forwardRef } from "@/lib/system";
 
 export interface SkeletonProps extends UseSkeletonProps {}
 

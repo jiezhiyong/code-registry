@@ -3,11 +3,13 @@ import type { SlotsToClasses } from "@/lib/theme";
 import type { Ref } from "react";
 import type { SpinnerSlots, SpinnerVariantProps } from "./theme";
 
+import { useCallback, useMemo } from "react";
+
+import { spinner } from "./theme";
+
 import { clsx, objectToDeps } from "@/lib/base";
 import { useProviderContext } from "@/lib/system";
 import { mapPropsVariants } from "@/lib/system-rsc";
-import { useCallback, useMemo } from "react";
-import { spinner } from "./theme";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**

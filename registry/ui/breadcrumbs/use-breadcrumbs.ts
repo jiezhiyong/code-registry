@@ -5,16 +5,16 @@ import type { AriaBreadcrumbsProps } from "@react-types/breadcrumbs";
 import type { Key, ReactElement, ReactNode } from "react";
 import type { BreadcrumbItemProps } from "./breadcrumb-item";
 import type { BreadcrumbsSlots, BreadcrumbsVariantProps } from "./theme";
-;
 
-import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
-import { filterDOMProps, pickChildren, useDOMRef } from "@/lib/react";
-import { mapPropsVariants, useProviderContext } from "@/lib/system";
 import { useBreadcrumbs as useAriaBreadcrumbs } from "@react-aria/breadcrumbs";
 import { Children, useMemo } from "react";
-import { breadcrumbs } from "./theme";
 
+import { breadcrumbs } from "./theme";
 import BreadcrumbItem from "./breadcrumb-item";
+
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { filterDOMProps, pickChildren, useDOMRef } from "@/lib/react";
+import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 
 type RenderEllipsisItemProps = {
   /**
@@ -102,15 +102,12 @@ interface Props extends HTMLHeroUIProps<"nav">, AriaBreadcrumbsProps {
 
 export type UseBreadcrumbsProps = Props &
   BreadcrumbsVariantProps &
-  Partial<
-    Pick<BreadcrumbItemProps, "color" | "size" | "underline" | "hideSeparator" | "disableAnimation">
-  >;
+  Partial<Pick<BreadcrumbItemProps, "color" | "size" | "underline" | "hideSeparator" | "disableAnimation">>;
 
 export function useBreadcrumbs(originalProps: UseBreadcrumbsProps) {
   const globalContext = useProviderContext();
 
-  const disableAnimation =
-    originalProps?.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps?.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   const [props, variantProps] = mapPropsVariants(originalProps, breadcrumbs.variantKeys);
 

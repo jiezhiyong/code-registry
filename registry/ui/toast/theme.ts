@@ -415,4 +415,3 @@ export type ToastRegionVariantProps = VariantProps<typeof toastRegion>;
 export type ToastRegionSlots = keyof ReturnType<typeof toastRegion>;
 
 export { toast, toastRegion };
-

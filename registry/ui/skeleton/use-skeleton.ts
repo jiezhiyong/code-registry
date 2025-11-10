@@ -2,12 +2,13 @@ import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type { SlotsToClasses } from "@/lib/theme";
 import type { Ref } from "react";
 import type { SkeletonSlots, SkeletonVariantProps } from "./theme";
-;
+
+import { useMemo } from "react";
+
+import { skeleton } from "./theme";
 
 import { clsx, dataAttr, objectToDeps } from "@/lib/base";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { useMemo } from "react";
-import { skeleton } from "./theme";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**
@@ -45,8 +46,7 @@ export function useSkeleton(originalProps: UseSkeletonProps) {
 
   const Component = as || "div";
 
-  const disableAnimation =
-    originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   const slots = useMemo(
     () =>

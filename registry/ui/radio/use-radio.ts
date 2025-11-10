@@ -3,18 +3,18 @@ import type { SlotsToClasses } from "@/lib/theme";
 import type { AriaRadioProps } from "@react-types/radio";
 import type { ReactNode, Ref } from "react";
 import type { RadioSlots, RadioVariantProps } from "./theme";
-;
 
-import { __DEV__, chain, clsx, dataAttr, mergeProps, warn } from "@/lib/base";
-import { useDOMRef } from "@/lib/react";
-import { useProviderContext } from "@/lib/system";
 import { useFocusRing } from "@react-aria/focus";
 import { useHover } from "@react-aria/interactions";
 import { useRadio as useReactAriaRadio } from "@react-aria/radio";
 import { useCallback, useId, useMemo, useRef } from "react";
-import { radio } from "./theme";
 
+import { radio } from "./theme";
 import { useRadioGroupContext } from "./radio-group-context";
+
+import { useProviderContext } from "@/lib/system";
+import { __DEV__, chain, clsx, dataAttr, mergeProps, warn } from "@/lib/base";
+import { useDOMRef } from "@/lib/react";
 
 interface Props extends Omit<HTMLHeroUIProps<"input">, keyof RadioVariantProps> {
   /**
@@ -95,8 +95,7 @@ export function useRadio(props: UseRadioProps) {
   const isInvalid = groupContext.isInvalid;
 
   const ariaRadioProps = useMemo(() => {
-    const ariaDescribedBy =
-      [otherProps["aria-describedby"], descriptionId].filter(Boolean).join(" ") || undefined;
+    const ariaDescribedBy = [otherProps["aria-describedby"], descriptionId].filter(Boolean).join(" ") || undefined;
 
     return {
       id,

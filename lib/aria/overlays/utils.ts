@@ -89,10 +89,7 @@ export const toOverlayPlacement = (placement: PlacementAxis) => {
   return mapPositions[placement];
 };
 
-export const getShouldUseAxisPlacement = (
-  axisPlacement: PlacementAxis,
-  overlayPlacement: OverlayPlacement,
-) => {
+export const getShouldUseAxisPlacement = (axisPlacement: PlacementAxis, overlayPlacement: OverlayPlacement) => {
   if (overlayPlacement.includes("-")) {
     const [position] = overlayPlacement.split("-");
 

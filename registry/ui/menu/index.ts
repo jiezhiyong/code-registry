@@ -11,4 +11,3 @@ export { useMenu } from "./use-menu";
 export { default as MenuItem } from "./menu-item-base";
 export { default as MenuSection } from "./menu-section-base";
 export { Menu };
-

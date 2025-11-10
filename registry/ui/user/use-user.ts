@@ -4,11 +4,13 @@ import type { AvatarProps } from "@/registry/ui/avatar";
 import type { ReactNode } from "react";
 import type { SlotsToClasses, UserSlots } from "./theme";
 
-import { clsx, dataAttr, mergeProps } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { useFocusRing } from "@react-aria/focus";
 import { useCallback, useMemo } from "react";
+
 import { user } from "./theme";
+
+import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { clsx, dataAttr, mergeProps } from "@/lib/base";
 interface Props {
   /**
    * Ref to the DOM node.

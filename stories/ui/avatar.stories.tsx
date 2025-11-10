@@ -2,7 +2,6 @@ import type { Meta } from "@storybook/nextjs-vite";
 
 import { Activity, Camera } from "@/lib/icons";
 import { avatar } from "@/registry/ui";
-
 import { Avatar } from "@/registry/ui";
 
 export default {

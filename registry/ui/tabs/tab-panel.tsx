@@ -3,11 +3,12 @@ import type { AriaTabPanelProps } from "@react-aria/tabs";
 import type { Key } from "@react-types/shared";
 import type { ValuesType } from "./use-tabs";
 
+import { useFocusRing } from "@react-aria/focus";
+import { useTabPanel } from "@react-aria/tabs";
+
 import { clsx, getInertValue, mergeProps } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { forwardRef } from "@/lib/system";
-import { useFocusRing } from "@react-aria/focus";
-import { useTabPanel } from "@react-aria/tabs";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**

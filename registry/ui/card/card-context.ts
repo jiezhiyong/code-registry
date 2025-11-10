@@ -5,6 +5,5 @@ import { createContext } from "@/lib/react";
 export const [CardProvider, useCardContext] = createContext<ContextType>({
   name: "CardContext",
   strict: true,
-  errorMessage:
-    "useCardContext: `context` is undefined. Seems you forgot to wrap component within <Card />",
+  errorMessage: "useCardContext: `context` is undefined. Seems you forgot to wrap component within <Card />",
 });

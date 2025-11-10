@@ -108,4 +108,3 @@ export const linkAnchorClasses = "flex mx-1 text-current self-center";
 export type LinkVariantProps = VariantProps<typeof link>;
 
 export { link };
-

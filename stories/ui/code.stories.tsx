@@ -1,7 +1,6 @@
 import type { Meta } from "@storybook/nextjs-vite";
 
 import { code } from "@/registry/ui";
-
 import { Code } from "@/registry/ui";
 
 export default {

@@ -3,12 +3,13 @@ import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type { SlotsToClasses } from "@/lib/theme";
 import type { ReactNode } from "react";
 import type { BadgeSlots, BadgeVariantProps } from "./theme";
-;
+
+import { useMemo } from "react";
+
+import { badge } from "./theme";
 
 import { clsx, objectToDeps } from "@/lib/base";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { useMemo } from "react";
-import { badge } from "./theme";
 
 interface Props extends HTMLHeroUIProps<"span", "content"> {
   /**
@@ -48,8 +49,7 @@ export type UseBadgeProps = Props & BadgeVariantProps;
 
 export function useBadge(originalProps: UseBadgeProps) {
   const globalContext = useProviderContext();
-  const disableAnimation =
-    originalProps?.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps?.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   const [props, variantProps] = mapPropsVariants(originalProps, badge.variantKeys);
 
@@ -70,9 +70,7 @@ export function useBadge(originalProps: UseBadgeProps) {
     () =>
       badge({
         ...variantProps,
-        showOutline: !!originalProps?.disableOutline
-          ? !originalProps?.disableOutline
-          : originalProps?.showOutline,
+        showOutline: !!originalProps?.disableOutline ? !originalProps?.disableOutline : originalProps?.showOutline,
         isOneChar,
         isDot,
       }),

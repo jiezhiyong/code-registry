@@ -1,11 +1,12 @@
 import type { HTMLHeroUIProps } from "@/lib/system";
 import type { CalendarPickerProps } from "./use-calendar-picker";
 
-import { getInertValue } from "@/lib/base";
 import { useCallback } from "react";
 
 import { CalendarPickerItem } from "./calendar-picker-item";
 import { useCalendarPicker } from "./use-calendar-picker";
+
+import { getInertValue } from "@/lib/base";
 
 export type PickerValue = {
   value: string;
@@ -42,7 +43,7 @@ export function CalendarPicker(props: CalendarPickerProps) {
         &nbsp;
       </div>
     ),
-    [slots, classNames?.pickerItem]
+    [slots, classNames?.pickerItem],
   );
 
   const PickerItemWrapper = useCallback(
@@ -57,7 +58,7 @@ export function CalendarPicker(props: CalendarPickerProps) {
         ))}
       </>
     ),
-    [EmptyItem]
+    [EmptyItem],
   );
 
   return (

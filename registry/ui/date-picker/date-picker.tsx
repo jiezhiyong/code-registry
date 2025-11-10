@@ -2,16 +2,17 @@ import type { DateValue } from "@internationalized/date";
 import type { ForwardedRef, ReactElement } from "react";
 import type { UseDatePickerProps } from "./use-date-picker";
 
+import { AnimatePresence } from "framer-motion";
+import { cloneElement, isValidElement, useMemo } from "react";
+
+import { useDatePicker } from "./use-date-picker";
+
 import { CalendarBoldIcon } from "@/lib/icons/calendar-bold";
 import { forwardRef } from "@/lib/system";
 import { Button } from "@/registry/ui/button";
 import { Calendar } from "@/registry/ui/calendar";
 import { DateInput, TimeInput } from "@/registry/ui/date-input";
 import { FreeSoloPopover } from "@/registry/ui/popover";
-import { AnimatePresence } from "framer-motion";
-import { cloneElement, isValidElement, useMemo } from "react";
-
-import { useDatePicker } from "./use-date-picker";
 
 export interface Props<T extends DateValue> extends UseDatePickerProps<T> {
   /**
@@ -25,7 +26,7 @@ export type DatePickerProps<T extends DateValue = DateValue> = Props<T>;
 
 const DatePicker = forwardRef(function DatePicker<T extends DateValue>(
   props: DatePickerProps<T>,
-  ref: ForwardedRef<HTMLInputElement>
+  ref: ForwardedRef<HTMLInputElement>,
 ) {
   const { selectorButtonPlacement = "end", ...otherProps } = props;
 

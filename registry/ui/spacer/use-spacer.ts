@@ -3,12 +3,13 @@ import type { HTMLHeroUIProps, PropGetter } from "@/lib/system-rsc";
 import type { SpacerVariantProps } from "./theme";
 import type { Space } from "./utils";
 
-import { clsx, dataAttr, objectToDeps } from "@/lib/base";
-import { mapPropsVariants } from "@/lib/system-rsc";
 import { useMemo } from "react";
-import { spacer } from "./theme";
 
+import { spacer } from "./theme";
 import { spacing } from "./utils";
+
+import { mapPropsVariants } from "@/lib/system-rsc";
+import { clsx, dataAttr, objectToDeps } from "@/lib/base";
 
 interface Props extends HTMLHeroUIProps<"span"> {
   /**

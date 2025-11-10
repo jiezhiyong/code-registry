@@ -8,13 +8,15 @@ import type { Key } from "react";
 import type { AccordionItemProps } from "./accordion-item";
 import type { AccordionGroupVariantProps } from "./theme";
 
+import { useTreeState } from "@react-stately/tree";
+import React, { useCallback, useMemo, useState } from "react";
+
+import { accordion } from "./theme";
+
 import { mergeProps } from "@/lib/base";
 import { useReactAriaAccordion } from "@/lib/hooks/use-aria-accordion";
 import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { useProviderContext } from "@/lib/system";
-import { useTreeState } from "@react-stately/tree";
-import React, { useCallback, useMemo, useState } from "react";
-import { accordion } from "./theme";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**
@@ -51,12 +53,7 @@ export type UseAccordionProps<T extends object = {}> = Props &
   AccordionGroupVariantProps &
   Pick<
     AccordionItemProps,
-    | "isCompact"
-    | "isDisabled"
-    | "hideIndicator"
-    | "disableAnimation"
-    | "disableIndicatorAnimation"
-    | "motionProps"
+    "isCompact" | "isDisabled" | "hideIndicator" | "disableAnimation" | "disableIndicatorAnimation" | "motionProps"
   > &
   AriaAccordionProps<T> &
   MultipleSelection;

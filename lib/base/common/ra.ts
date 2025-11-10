@@ -10,14 +10,10 @@ interface Props {
 type PropsArg = Props | null | undefined;
 
 // taken from: https://stackoverflow.com/questions/51603250/typescript-3-parameter-list-intersection-type/51604379#51604379
-type TupleTypes<T> = { [P in keyof T]: T[P] } extends { [key: number]: infer V; }
-  ? NullToObject<V>
-  : never;
+type TupleTypes<T> = { [P in keyof T]: T[P] } extends { [key: number]: infer V } ? NullToObject<V> : never;
 type NullToObject<T> = T extends null | undefined ? {} : T;
 
-type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void
-  ? I
-  : never;
+type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : never;
 
 /**
  * Calls all functions in the order they were chained with the same arguments.
@@ -32,7 +28,7 @@ export function chain(...callbacks: any[]): (...args: any[]) => void {
   };
 }
 
-export let idsUpdaterMap: Map<string, { current: string | null; }[]> = new Map();
+export let idsUpdaterMap: Map<string, { current: string | null }[]> = new Map();
 /**
  * Merges two ids.
  * Different ids will trigger a side-effect and re-render components hooked up with `useId`.
@@ -112,9 +108,7 @@ export function mergeProps<T extends PropsArg[]>(...args: T): UnionToIntersectio
   return result as UnionToIntersection<TupleTypes<T>>;
 }
 
-export function mergeRefs<T>(
-  ...refs: Array<Ref<T> | MutableRefObject<T> | null | undefined>
-): Ref<T> {
+export function mergeRefs<T>(...refs: Array<Ref<T> | MutableRefObject<T> | null | undefined>): Ref<T> {
   if (refs.length === 1 && refs[0]) {
     return refs[0];
   }
@@ -144,10 +138,7 @@ export function mergeRefs<T>(
   };
 }
 
-function setRef<T>(
-  ref: Ref<T> | MutableRefObject<T> | null | undefined,
-  value: T,
-): (() => void) | void {
+function setRef<T>(ref: Ref<T> | MutableRefObject<T> | null | undefined, value: T): (() => void) | void {
   if (typeof ref === "function") {
     return () => ref(value);
   } else if (ref != null) {

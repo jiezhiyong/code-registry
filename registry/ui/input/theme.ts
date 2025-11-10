@@ -37,8 +37,7 @@ const input = tv({
       "text-foreground-500",
     ],
     mainWrapper: "h-full",
-    inputWrapper:
-      "relative w-full inline-flex tap-highlight-transparent flex-row items-center shadow-xs px-3 gap-3",
+    inputWrapper: "relative w-full inline-flex tap-highlight-transparent flex-row items-center shadow-xs px-3 gap-3",
     innerWrapper: "inline-flex w-full items-center h-full box-border",
     input: [
       "w-full font-normal bg-transparent !outline-solid outline-transparent placeholder:text-foreground-500 focus-visible:outline-solid outline-transparent",
@@ -73,11 +72,7 @@ const input = tv({
   variants: {
     variant: {
       flat: {
-        inputWrapper: [
-          "bg-default-100",
-          "data-[hover=true]:bg-default-200",
-          "group-data-[focus=true]:bg-default-100",
-        ],
+        inputWrapper: ["bg-default-100", "data-[hover=true]:bg-default-200", "group-data-[focus=true]:bg-default-100"],
       },
       faded: {
         inputWrapper: [
@@ -552,11 +547,7 @@ const input = tv({
       isInvalid: true,
       variant: "flat",
       class: {
-        inputWrapper: [
-          "!bg-danger-50",
-          "data-[hover=true]:!bg-danger-100",
-          "group-data-[focus=true]:!bg-danger-50",
-        ],
+        inputWrapper: ["!bg-danger-50", "data-[hover=true]:!bg-danger-100", "group-data-[focus=true]:!bg-danger-50"],
       },
     },
     {
@@ -617,13 +608,7 @@ const input = tv({
       isMultiline: false,
       class: {
         base: "relative justify-end",
-        label: [
-          "pb-0",
-          "z-20",
-          "top-1/2",
-          "-translate-y-1/2",
-          "group-data-[filled-within=true]:start-0",
-        ],
+        label: ["pb-0", "z-20", "top-1/2", "-translate-y-1/2", "group-data-[filled-within=true]:start-0"],
       },
     },
     // labelPlacement=[inside]
@@ -669,9 +654,7 @@ const input = tv({
       isMultiline: false,
       size: "sm",
       class: {
-        label: [
-          "group-data-[filled-within=true]:-translate-y-[calc(50%_+_var(--heroui-font-size-tiny)/2_-_8px)]",
-        ],
+        label: ["group-data-[filled-within=true]:-translate-y-[calc(50%_+_var(--heroui-font-size-tiny)/2_-_8px)]"],
       },
     },
     {
@@ -679,9 +662,7 @@ const input = tv({
       isMultiline: false,
       size: "md",
       class: {
-        label: [
-          "group-data-[filled-within=true]:-translate-y-[calc(50%_+_var(--heroui-font-size-small)/2_-_6px)]",
-        ],
+        label: ["group-data-[filled-within=true]:-translate-y-[calc(50%_+_var(--heroui-font-size-small)/2_-_6px)]"],
       },
     },
     {
@@ -737,9 +718,7 @@ const input = tv({
       isMultiline: false,
       size: "sm",
       class: {
-        label: [
-          "group-data-[filled-within=true]:-translate-y-[calc(50%_+_var(--heroui-font-size-tiny)/2_-_5px)]",
-        ],
+        label: ["group-data-[filled-within=true]:-translate-y-[calc(50%_+_var(--heroui-font-size-tiny)/2_-_5px)]"],
       },
     },
     {
@@ -748,9 +727,7 @@ const input = tv({
       isMultiline: false,
       size: "md",
       class: {
-        label: [
-          "group-data-[filled-within=true]:-translate-y-[calc(50%_+_var(--heroui-font-size-small)/2_-_3.5px)]",
-        ],
+        label: ["group-data-[filled-within=true]:-translate-y-[calc(50%_+_var(--heroui-font-size-small)/2_-_3.5px)]"],
       },
     },
     {
@@ -904,4 +881,3 @@ export type InputVariantProps = VariantProps<typeof input>;
 export type InputSlots = keyof ReturnType<typeof input>;
 
 export { input };
-

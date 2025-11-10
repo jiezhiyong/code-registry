@@ -1,17 +1,18 @@
 import type { ForwardedRef, ReactElement } from "react";
 import type { UseAutocompleteProps } from "./use-autocomplete";
 
+import { AnimatePresence } from "framer-motion";
+import { ChevronDownIcon } from "lucide-react";
+
+import { useAutocomplete } from "./use-autocomplete";
+
 import { forwardRef } from "@/lib/system";
 import { Button } from "@/registry/ui/button";
 import { Input } from "@/registry/ui/input";
 import { Listbox } from "@/registry/ui/listbox";
 import { FreeSoloPopover } from "@/registry/ui/popover";
 import { ScrollShadow } from "@/registry/ui/scroll-shadow";
-import { AnimatePresence } from "framer-motion";
-
 import { CloseIcon } from "@/lib/icons/close";
-import { ChevronDownIcon } from "lucide-react";
-import { useAutocomplete } from "./use-autocomplete";
 
 interface Props<T> extends UseAutocompleteProps<T> {}
 
@@ -19,7 +20,7 @@ export type AutocompleteProps<T extends object = object> = Props<T>;
 
 const Autocomplete = forwardRef(function Autocomplete<T extends object>(
   props: AutocompleteProps<T>,
-  ref: ForwardedRef<HTMLInputElement>
+  ref: ForwardedRef<HTMLInputElement>,
 ) {
   const {
     Component,

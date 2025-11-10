@@ -2,9 +2,6 @@ import type { HTMLHeroUIProps } from "@/lib/system";
 import type { AriaToggleButtonProps } from "@react-aria/button";
 import type { ReactNode } from "react";
 
-import { clsx, dataAttr, mergeProps } from "@/lib/base";
-import { useDOMRef } from "@/lib/react";
-import { forwardRef } from "@/lib/system";
 import { useToggleButton as useAriaToggleButton } from "@react-aria/button";
 import { useFocusRing } from "@react-aria/focus";
 import { useHover } from "@react-aria/interactions";
@@ -12,6 +9,10 @@ import { useToggleState } from "@react-stately/toggle";
 import { useMemo } from "react";
 
 import { useNavbarContext } from "./navbar-context";
+
+import { forwardRef } from "@/lib/system";
+import { useDOMRef } from "@/lib/react";
+import { clsx, dataAttr, mergeProps } from "@/lib/base";
 
 export interface Props extends Omit<HTMLHeroUIProps<"button">, keyof AriaToggleButtonProps> {
   /**

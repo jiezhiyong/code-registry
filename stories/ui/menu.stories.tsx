@@ -1,11 +1,11 @@
 import type { MenuProps } from "@/registry/ui";
 import type { Meta } from "@storybook/nextjs-vite";
 
+import React from "react";
+
 import { clsx } from "@/lib/base";
 import { AddNoteBulkIcon, CopyDocumentBulkIcon, DeleteDocumentBulkIcon, EditDocumentBulkIcon } from "@/lib/icons";
 import { menuItem } from "@/registry/ui";
-import React from "react";
-
 import { Menu, MenuItem, MenuSection } from "@/registry/ui";
 
 export default {

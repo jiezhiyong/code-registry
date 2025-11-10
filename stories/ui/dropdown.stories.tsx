@@ -1,14 +1,14 @@
 import type { DropdownMenuProps, DropdownProps } from "@/registry/ui";
 import type { Meta } from "@storybook/nextjs-vite";
 
+import React from "react";
+
 import { clsx } from "@/lib/base";
 import { AddNoteBulkIcon, CopyDocumentBulkIcon, DeleteDocumentBulkIcon, EditDocumentBulkIcon } from "@/lib/icons";
 import { dropdown, popover } from "@/registry/ui";
 import { Avatar } from "@/registry/ui/avatar";
 import { Button } from "@/registry/ui/button";
 import { User } from "@/registry/ui/user";
-import React from "react";
-
 import { Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger } from "@/registry/ui";
 
 export default {
@@ -252,7 +252,7 @@ const SingleSelectionTemplate = ({ color, variant, ...args }: DropdownProps & Dr
       Array.from(selected)
         .map((key) => key.toString().replace("_", " "))
         .join(", "),
-    [selected]
+    [selected],
   );
 
   return (
@@ -287,7 +287,7 @@ const MultipleSelectionTemplate = ({ color, variant, ...args }: DropdownProps & 
       Array.from(selected)
         .map((key) => key.toString().replace("_", " "))
         .join(", "),
-    [selected]
+    [selected],
   );
 
   return (

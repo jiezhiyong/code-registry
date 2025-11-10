@@ -243,4 +243,3 @@ export type CheckboxVariantProps = VariantProps<typeof checkbox>;
 export type CheckboxSlots = keyof ReturnType<typeof checkbox>;
 
 export { checkbox, checkboxGroup };
-

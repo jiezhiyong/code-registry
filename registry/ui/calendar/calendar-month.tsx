@@ -2,7 +2,6 @@ import type { HTMLHeroUIProps } from "@/lib/system";
 import type { CalendarDate } from "@internationalized/date";
 import type { CalendarPropsBase } from "@react-types/calendar";
 
-import { dataAttr, getInertValue } from "@/lib/base";
 import { endOfMonth, getWeeksInMonth } from "@internationalized/date";
 import { useCalendarGrid } from "@react-aria/calendar";
 import { useLocale } from "@react-aria/i18n";
@@ -11,6 +10,8 @@ import { m } from "framer-motion";
 import { CalendarCell } from "./calendar-cell";
 import { useCalendarContext } from "./calendar-context";
 import { slideVariants } from "./calendar-transitions";
+
+import { dataAttr, getInertValue } from "@/lib/base";
 
 export interface CalendarMonthProps extends HTMLHeroUIProps<"table">, CalendarPropsBase {
   startDate: CalendarDate;
@@ -34,7 +35,7 @@ export function CalendarMonth(props: CalendarMonthProps) {
       endDate: endOfMonth(startDate),
       firstDayOfWeek,
     },
-    state
+    state,
   );
 
   const bodyContent = [...new Array(weeksInMonth).keys()].map((weekIndex) => (
@@ -62,7 +63,7 @@ export function CalendarMonth(props: CalendarMonthProps) {
             />
           ) : (
             <td key={i} />
-          )
+          ),
         )}
     </tr>
   ));

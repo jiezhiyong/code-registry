@@ -3,13 +3,14 @@ import type { GridNode } from "@react-types/grid";
 import type { Key } from "react";
 import type { ValuesType } from "./use-table";
 
+import { useFocusRing } from "@react-aria/focus";
+import { useTableCell, useTableSelectionCheckbox } from "@react-aria/table";
+import { VisuallyHidden } from "@react-aria/visually-hidden";
+
 import { clsx, dataAttr, mergeProps } from "@/lib/base";
 import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { forwardRef } from "@/lib/system";
 import { Checkbox } from "@/registry/ui/checkbox";
-import { useFocusRing } from "@react-aria/focus";
-import { useTableCell, useTableSelectionCheckbox } from "@react-aria/table";
-import { VisuallyHidden } from "@react-aria/visually-hidden";
 
 // @internal
 export interface TableCheckboxCellProps<T = object> extends HTMLHeroUIProps<"td"> {
@@ -74,7 +75,7 @@ const TableCheckboxCell = forwardRef<"td", TableCheckboxCellProps>((props, ref) 
         filterDOMProps(node.props, {
           enabled: shouldFilterDOMProps,
         }),
-        otherProps
+        otherProps,
       )}
       className={slots.td?.({ class: tdStyles })}
     >

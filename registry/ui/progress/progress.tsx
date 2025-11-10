@@ -1,8 +1,8 @@
 import type { UseProgressProps } from "./use-progress";
 
-import { forwardRef } from "@/lib/system";
-
 import { useProgress } from "./use-progress";
+
+import { forwardRef } from "@/lib/system";
 
 export interface ProgressProps extends UseProgressProps {}
 

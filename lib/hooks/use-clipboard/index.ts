@@ -41,8 +41,7 @@ export function useClipboard({ timeout = 2000 }: UseClipboardProps = {}) {
   const copy = useCallback(
     (valueToCopy: any) => {
       if ("clipboard" in navigator) {
-        const transformedValue =
-          typeof valueToCopy === "string" ? transformValue(valueToCopy) : valueToCopy;
+        const transformedValue = typeof valueToCopy === "string" ? transformValue(valueToCopy) : valueToCopy;
 
         navigator.clipboard
           .writeText(transformedValue)

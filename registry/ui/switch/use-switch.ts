@@ -3,16 +3,18 @@ import type { AriaSwitchProps } from "@react-aria/switch";
 import type { ReactNode, Ref } from "react";
 import type { SlotsToClasses, ToggleSlots, ToggleVariantProps } from "./theme";
 
-import { chain, clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
-import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
-import { mergeRefs } from "@/lib/react";
-import { mapPropsVariants, useProviderContext } from "@/lib/system";
 import { useFocusRing } from "@react-aria/focus";
 import { useHover } from "@react-aria/interactions";
 import { useSwitch as useReactAriaSwitch } from "@react-aria/switch";
 import { useToggleState } from "@react-stately/toggle";
 import { useCallback, useId, useMemo, useRef } from "react";
+
 import { toggle } from "./theme";
+
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { mergeRefs } from "@/lib/react";
+import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
+import { chain, clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 
 export type SwitchThumbIconProps = {
   width: string;
@@ -105,14 +107,12 @@ export function useSwitch(originalProps: UseSwitchProps = {}) {
 
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const disableAnimation =
-    originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   const labelId = useId();
 
   const ariaSwitchProps = useMemo(() => {
-    const ariaLabel =
-      otherProps["aria-label"] || typeof children === "string" ? (children as string) : undefined;
+    const ariaLabel = otherProps["aria-label"] || typeof children === "string" ? (children as string) : undefined;
 
     return {
       name,
@@ -245,8 +245,8 @@ export function useSwitch(originalProps: UseSwitchProps = {}) {
         },
         props.includeStateProps
           ? {
-            isSelected: isSelected,
-          }
+              isSelected: isSelected,
+            }
           : {},
       ) as unknown as SwitchThumbIconProps,
     [slots, classNames?.thumbIcon, isSelected],

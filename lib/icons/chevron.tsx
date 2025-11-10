@@ -1,4 +1,4 @@
-import type {IconSvgProps} from "./types";
+import type { IconSvgProps } from "./types";
 
 export const ChevronIcon = (props: IconSvgProps) => (
   <svg
@@ -11,12 +11,6 @@ export const ChevronIcon = (props: IconSvgProps) => (
     width="1em"
     {...props}
   >
-    <path
-      d="M15.5 19l-7-7 7-7"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.5"
-    />
+    <path d="M15.5 19l-7-7 7-7" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
   </svg>
 );

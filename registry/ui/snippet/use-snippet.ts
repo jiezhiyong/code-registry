@@ -6,13 +6,15 @@ import type { TooltipProps } from "@/registry/ui/tooltip";
 import type { ReactElement } from "react";
 import type { SnippetSlots, SnippetVariantProps } from "./theme";
 
+import { useFocusRing } from "@react-aria/focus";
+import { useCallback, useMemo, useRef } from "react";
+
+import { snippet } from "./theme";
+
 import { clsx, dataAttr, objectToDeps } from "@/lib/base";
 import { useClipboard } from "@/lib/hooks/use-clipboard";
 import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { useFocusRing } from "@react-aria/focus";
-import { useCallback, useMemo, useRef } from "react";
-import { snippet } from "./theme";
 
 export interface UseSnippetProps extends Omit<HTMLHeroUIProps, "onCopy">, SnippetVariantProps {
   /**
@@ -148,8 +150,7 @@ export function useSnippet(originalProps: UseSnippetProps) {
 
   const Component = as || "div";
   const shouldFilterDOMProps = typeof Component === "string";
-  const disableAnimation =
-    originalProps?.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps?.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   const tooltipProps: Partial<TooltipProps> = {
     offset: 15,
@@ -228,8 +229,7 @@ export function useSnippet(originalProps: UseSnippetProps) {
   }, [copy, codeString, disableCopy, onCopyProp, children]);
 
   const copyButtonProps: Partial<ButtonProps> = {
-    "aria-label":
-      typeof tooltipProps.content === "string" ? tooltipProps.content : "Copy to clipboard",
+    "aria-label": typeof tooltipProps.content === "string" ? tooltipProps.content : "Copy to clipboard",
     size: "sm",
     variant: "light",
     isDisabled: disableCopy,
@@ -247,15 +247,7 @@ export function useSnippet(originalProps: UseSnippetProps) {
           class: clsx(classNames?.copyButton),
         }),
       }) as ButtonProps,
-    [
-      slots,
-      isFocusVisible,
-      isFocused,
-      disableCopy,
-      classNames?.copyButton,
-      copyButtonProps,
-      focusProps,
-    ],
+    [slots, isFocusVisible, isFocused, disableCopy, classNames?.copyButton, copyButtonProps, focusProps],
   );
 
   return {

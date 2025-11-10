@@ -5,10 +5,7 @@ import type { Key } from "react";
 import { useListState } from "@react-stately/list";
 import { useMemo } from "react";
 
-export interface MultiSelectListProps<T>
-  extends CollectionBase<T>,
-  AsyncLoadable,
-  MultipleSelection { }
+export interface MultiSelectListProps<T> extends CollectionBase<T>, AsyncLoadable, MultipleSelection {}
 
 export interface MultiSelectListState<T> extends ListState<T> {
   /** The keys for the currently selected items. */
@@ -21,9 +18,7 @@ export interface MultiSelectListState<T> extends ListState<T> {
   selectionMode: MultipleSelection["selectionMode"];
 }
 
-export function useMultiSelectListState<T extends object>(
-  props: MultiSelectListProps<T>,
-): MultiSelectListState<T> {
+export function useMultiSelectListState<T extends object>(props: MultiSelectListProps<T>): MultiSelectListState<T> {
   const {
     collection,
     disabledKeys,
@@ -44,20 +39,18 @@ export function useMultiSelectListState<T extends object>(
   const selectedItems = (
     selectedKeys.size !== 0
       ? Array.from(selectedKeys)
-        .map((key) => {
-          return collection.getItem(key);
-        })
-        // Remove undefined values when some keys are not present in the collection
-        .filter(Boolean)
+          .map((key) => {
+            return collection.getItem(key);
+          })
+          // Remove undefined values when some keys are not present in the collection
+          .filter(Boolean)
       : null
   ) as Node<T>[] | null;
 
   if (missingKeys.length) {
     // eslint-disable-next-line no-console
     console.warn(
-      `Select: Keys "${missingKeys.join(
-        ", ",
-      )}" passed to "selectedKeys" are not present in the collection.`,
+      `Select: Keys "${missingKeys.join(", ")}" passed to "selectedKeys" are not present in the collection.`,
     );
   }
 

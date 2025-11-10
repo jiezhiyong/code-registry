@@ -1,12 +1,13 @@
+import type { SliderProps, SliderValue } from "@/registry/ui";
+import type { Meta } from "@storybook/nextjs-vite";
+
+import React from "react";
+
 import { InfoIcon } from "@/lib/icons";
 import { cn } from "@/lib/theme";
-import type { SliderProps, SliderValue } from "@/registry/ui";
 import { slider } from "@/registry/ui";
 import { Tooltip } from "@/registry/ui/tooltip";
 import { VolumeHighBoldIcon, VolumeLowBoldIcon } from "@/utils/icons";
-import type { Meta } from "@storybook/nextjs-vite";
-import React from "react";
-
 import { Slider } from "@/registry/ui";
 
 export default {
@@ -459,7 +460,7 @@ export const CustomRenderRangeThumb = {
         <span
           className={cn(
             "transition-transform bg-gradient-to-br shadow-small rounded-full w-5 h-5 block group-data-[dragging=true]:scale-80",
-            index === 0 ? "from-pink-200 to-pink-500" : "from-cyan-100 to-cyan-500"
+            index === 0 ? "from-pink-200 to-pink-500" : "from-cyan-100 to-cyan-500",
           )}
         />
       </div>
@@ -503,7 +504,7 @@ export const CustomRenderLabel = {
         <span
           className={cn(
             "transition-transform bg-gradient-to-br shadow-small rounded-full w-5 h-5 block group-data-[dragging=true]:scale-80",
-            index === 0 ? "from-pink-200 to-pink-500" : "from-cyan-100 to-cyan-500"
+            index === 0 ? "from-pink-200 to-pink-500" : "from-cyan-100 to-cyan-500",
           )}
         />
       </div>

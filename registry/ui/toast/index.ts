@@ -1,13 +1,13 @@
 import Toast from "./toast";
-import {ToastProvider} from "./toast-provider";
+import { ToastProvider } from "./toast-provider";
 
 // export types
-export type {ToastProps} from "./toast";
+export type { ToastProps } from "./toast";
 
 // export hooks
-export {useToast} from "./use-toast";
-export {addToast, closeAll, closeToast, getToastQueue, isToastClosing} from "./toast-provider";
+export { useToast } from "./use-toast";
+export { addToast, closeAll, closeToast, getToastQueue, isToastClosing } from "./toast-provider";
 
 // export component
-export {Toast};
-export {ToastProvider};
+export { Toast };
+export { ToastProvider };

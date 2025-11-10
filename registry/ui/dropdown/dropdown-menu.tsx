@@ -1,12 +1,13 @@
 import type { MenuProps } from "@/registry/ui/menu";
 import type { ForwardedRef, ReactElement } from "react";
 
-import { forwardRef } from "@/lib/system";
-import { Menu } from "@/registry/ui/menu";
-import { PopoverContent } from "@/registry/ui/popover";
 import { FocusScope } from "@react-aria/focus";
 
 import { useDropdownContext } from "./dropdown-context";
+
+import { forwardRef } from "@/lib/system";
+import { Menu } from "@/registry/ui/menu";
+import { PopoverContent } from "@/registry/ui/popover";
 
 interface Props<T extends object = object> extends Omit<MenuProps<T>, "menuProps"> {}
 
@@ -14,7 +15,7 @@ export type DropdownMenuProps<T extends object = object> = Props<T>;
 
 const DropdownMenu = forwardRef(function DropdownMenu<T extends object>(
   props: DropdownMenuProps<T>,
-  ref: ForwardedRef<HTMLUListElement>
+  ref: ForwardedRef<HTMLUListElement>,
 ) {
   const { getMenuProps } = useDropdownContext();
 

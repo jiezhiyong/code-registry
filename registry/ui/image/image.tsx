@@ -1,9 +1,10 @@
 import type { UseImageProps } from "./use-image";
 
-import { forwardRef } from "@/lib/system";
 import { cloneElement } from "react";
 
 import { useImage } from "./use-image";
+
+import { forwardRef } from "@/lib/system";
 
 export interface ImageProps extends Omit<UseImageProps, "showSkeleton"> {}
 

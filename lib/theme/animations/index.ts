@@ -9,8 +9,7 @@ export const animations = {
     "fade-out": "fade-out 1.2s linear 0s infinite normal none running",
     "appearance-in": "appearance-in 250ms ease-out normal both",
     "appearance-out": "appearance-out 60ms ease-in normal both",
-    "indeterminate-bar":
-      "indeterminate-bar 1.5s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite normal none running",
+    "indeterminate-bar": "indeterminate-bar 1.5s cubic-bezier(0.65, 0.815, 0.735, 0.395) infinite normal none running",
   },
   keyframes: {
     shimmer: {

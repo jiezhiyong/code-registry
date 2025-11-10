@@ -2,6 +2,12 @@ import type { TableProps } from "@/registry/ui";
 import type { ChipProps } from "@/registry/ui/chip";
 import type { Meta } from "@storybook/nextjs-vite";
 
+import { useAsyncList } from "@react-stately/data";
+import React, { useMemo } from "react";
+import useSWR from "swr";
+
+import { Switch } from "../../switch/src";
+
 import { useInfiniteScroll } from "@/lib/hooks/use-infinite-scroll";
 import { DeleteIcon, EditIcon, EyeIcon, SortIcon } from "@/lib/icons";
 import { table } from "@/registry/ui";
@@ -11,12 +17,7 @@ import { Pagination } from "@/registry/ui/pagination";
 import { Spinner } from "@/registry/ui/spinner";
 import { Tooltip } from "@/registry/ui/tooltip";
 import { User } from "@/registry/ui/user";
-import { useAsyncList } from "@react-stately/data";
-import React, { useMemo } from "react";
-import useSWR from "swr";
-
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, getKeyValue } from "@/registry/ui";
-import { Switch } from "../../switch/src";
 
 export default {
   title: "Components/Table",

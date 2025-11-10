@@ -1,8 +1,8 @@
 import type { UseBadgeProps } from "./use-badge";
 
-import { forwardRef } from "@/lib/system";
-
 import { useBadge } from "./use-badge";
+
+import { forwardRef } from "@/lib/system";
 
 export interface BadgeProps extends UseBadgeProps {}
 

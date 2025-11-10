@@ -1,8 +1,8 @@
 import type { UseScrollShadowProps } from "./use-scroll-shadow";
 
-import { forwardRef } from "@/lib/system";
-
 import { useScrollShadow } from "./use-scroll-shadow";
+
+import { forwardRef } from "@/lib/system";
 
 export interface ScrollShadowProps extends UseScrollShadowProps {}
 

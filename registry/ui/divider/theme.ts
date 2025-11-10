@@ -27,4 +27,3 @@ const divider = tv({
 export type DividerVariantProps = VariantProps<typeof divider>;
 
 export { divider };
-

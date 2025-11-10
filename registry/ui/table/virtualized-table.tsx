@@ -1,7 +1,5 @@
 import type { UseTableProps } from "./use-table";
 
-import { forwardRef } from "@/lib/system";
-import { Spacer } from "@/registry/ui/spacer";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 
@@ -11,6 +9,9 @@ import TableRowGroup from "./table-row-group";
 import TableSelectAllCheckbox from "./table-select-all-checkbox";
 import { useTable } from "./use-table";
 import VirtualizedTableBody from "./virtualized-table-body";
+
+import { Spacer } from "@/registry/ui/spacer";
+import { forwardRef } from "@/lib/system";
 
 export interface TableProps<T = object> extends Omit<UseTableProps<T>, "isSelectable" | "isMultiSelectable"> {
   isVirtualized?: boolean;
@@ -51,7 +52,7 @@ const VirtualizedTable = forwardRef<"table", TableProps>((props, ref) => {
         </BaseComponent>
       );
     },
-    [getWrapperProps, maxTableHeight]
+    [getWrapperProps, maxTableHeight],
   );
 
   const items = [...collection.body.childNodes];
@@ -123,7 +124,7 @@ const VirtualizedTable = forwardRef<"table", TableProps>((props, ref) => {
                         slots={values.slots}
                         state={values.state}
                       />
-                    )
+                    ),
                   )}
                 </TableHeaderRow>
               ))}

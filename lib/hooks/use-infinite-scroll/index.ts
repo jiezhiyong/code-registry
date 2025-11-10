@@ -1,4 +1,5 @@
 import { useCallback, useLayoutEffect, useRef } from "react";
+
 import { debounce } from "../../base";
 
 export interface UseInfiniteScrollProps {
@@ -27,13 +28,7 @@ export interface UseInfiniteScrollProps {
 }
 
 export function useInfiniteScroll(props: UseInfiniteScrollProps = {}) {
-  const {
-    hasMore = true,
-    distance = 250,
-    isEnabled = true,
-    shouldUseLoader = true,
-    onLoadMore,
-  } = props;
+  const { hasMore = true, distance = 250, isEnabled = true, shouldUseLoader = true, onLoadMore } = props;
 
   const scrollContainerRef = useRef<HTMLElement>(null);
   const loaderRef = useRef<HTMLElement>(null);

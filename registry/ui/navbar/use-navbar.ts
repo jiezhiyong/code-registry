@@ -3,17 +3,18 @@ import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type { SlotsToClasses } from "@/lib/theme";
 import type { HTMLMotionProps } from "framer-motion";
 import type { NavbarSlots, NavbarVariantProps } from "./theme";
-;
+
+import { usePreventScroll } from "@react-aria/overlays";
+import { useControlledState } from "@react-stately/utils";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+
+import { navbar } from "./theme";
 
 import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 import { useResizeObserver } from "@/lib/hooks/use-resize";
 import { useScrollPosition } from "@/lib/hooks/use-scroll-position";
 import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { usePreventScroll } from "@react-aria/overlays";
-import { useControlledState } from "@react-stately/utils";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { navbar } from "./theme";
 
 interface Props extends HTMLHeroUIProps<"nav"> {
   /**
@@ -110,7 +111,7 @@ export function useNavbar(originalProps: UseNavbarProps) {
     onScrollPositionChange,
     isMenuOpen: isMenuOpenProp,
     isMenuDefaultOpen,
-    onMenuOpenChange = () => { },
+    onMenuOpenChange = () => {},
     motionProps,
     className,
     classNames,
@@ -118,8 +119,7 @@ export function useNavbar(originalProps: UseNavbarProps) {
   } = props;
 
   const Component = as || "nav";
-  const disableAnimation =
-    originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   const domRef = useDOMRef(ref);
 

@@ -5,6 +5,5 @@ import { createContext } from "@/lib/react";
 export const [NavbarProvider, useNavbarContext] = createContext<UseNavbarReturn>({
   name: "NavbarContext",
   strict: true,
-  errorMessage:
-    "useNavbarContext: `context` is undefined. Seems you forgot to wrap component within <Navbar />",
+  errorMessage: "useNavbarContext: `context` is undefined. Seems you forgot to wrap component within <Navbar />",
 });

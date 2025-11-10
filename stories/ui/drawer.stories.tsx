@@ -2,6 +2,8 @@
 import type { DrawerProps } from "@/registry/ui";
 import type { Meta } from "@storybook/nextjs-vite";
 
+import React from "react";
+
 import { useDisclosure } from "@/lib/hooks/use-disclosure";
 import { LockFilledIcon, MailFilledIcon } from "@/lib/icons";
 import { drawer } from "@/registry/ui";
@@ -12,8 +14,6 @@ import { Image } from "@/registry/ui/image";
 import { Input } from "@/registry/ui/input";
 import { Link } from "@/registry/ui/link";
 import { Tooltip } from "@/registry/ui/tooltip";
-import React from "react";
-
 import { Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader } from "@/registry/ui";
 
 export default {

@@ -7,17 +7,18 @@ import type { ValueBase } from "@react-types/shared";
 import type { ReactNode } from "react";
 import type { SliderThumbProps } from "./slider-thumb";
 import type { SliderSlots, SliderVariantProps } from "./theme";
-;
 
-import { clsx, mergeProps, objectToDeps, warn } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
-import { mapPropsVariants, useProviderContext } from "@/lib/system";
 import { useLocale, useNumberFormatter } from "@react-aria/i18n";
 import { useHover } from "@react-aria/interactions";
 import { useSlider as useAriaSlider } from "@react-aria/slider";
 import { useSliderState } from "@react-stately/slider";
 import { useCallback, useMemo, useRef } from "react";
+
 import { slider } from "./theme";
+
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { clsx, mergeProps, objectToDeps, warn } from "@/lib/base";
 
 export type SliderValue = number | number[];
 export type SliderStepMark = {
@@ -25,7 +26,7 @@ export type SliderStepMark = {
   label: string;
 };
 
-export type SliderRenderThumbProps = DOMAttributes<HTMLDivElement> & { index?: number; };
+export type SliderRenderThumbProps = DOMAttributes<HTMLDivElement> & { index?: number };
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**
@@ -141,9 +142,7 @@ interface Props extends HTMLHeroUIProps<"div"> {
   renderThumb?: (props: SliderRenderThumbProps) => React.ReactNode;
 }
 
-export type UseSliderProps = Omit<Props, keyof ValueBase<SliderValue>> &
-  AriaSliderProps &
-  SliderVariantProps;
+export type UseSliderProps = Omit<Props, keyof ValueBase<SliderValue>> & AriaSliderProps & SliderVariantProps;
 
 export function useSlider(originalProps: UseSliderProps) {
   const globalContext = useProviderContext();
@@ -189,8 +188,7 @@ export function useSlider(originalProps: UseSliderProps) {
 
   const Component = as || "div";
   const shouldFilterDOMProps = typeof Component === "string";
-  const disableAnimation =
-    originalProps?.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps?.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   const domRef = useDOMRef(ref);
   const trackRef = useRef<HTMLDivElement>(null);
@@ -235,18 +233,12 @@ export function useSlider(originalProps: UseSliderProps) {
     delay: 0,
     size: "sm",
     showArrow: true,
-    color: originalProps?.color
-      ? originalProps?.color
-      : (slider.defaultVariants?.color as TooltipProps["color"]),
+    color: originalProps?.color ? originalProps?.color : (slider.defaultVariants?.color as TooltipProps["color"]),
     isDisabled: originalProps.isDisabled,
     ...userTooltipProps,
   };
 
-  const { groupProps, trackProps, labelProps, outputProps } = useAriaSlider(
-    originalProps,
-    state,
-    trackRef,
-  );
+  const { groupProps, trackProps, labelProps, outputProps } = useAriaSlider(originalProps, state, trackRef);
   const { isHovered, hoverProps } = useHover({ isDisabled: originalProps.isDisabled });
 
   const baseStyles = clsx(classNames?.base, className);
@@ -338,13 +330,13 @@ export function useSlider(originalProps: UseSliderProps) {
       "data-vertical": isVertical,
       ...(hasSingleThumb
         ? {
-          "data-fill-start": fillWidth > 0,
-          "data-fill-end": fillWidth == 100,
-        }
+            "data-fill-start": fillWidth > 0,
+            "data-fill-end": fillWidth == 100,
+          }
         : {
-          "data-fill-start": startOffset == 0,
-          "data-fill-end": startOffset * 100 + fillWidth == 100,
-        }),
+            "data-fill-start": startOffset == 0,
+            "data-fill-end": startOffset * 100 + fillWidth == 100,
+          }),
       className: slots.track({ class: classNames?.track }),
       ...trackProps,
       ...props,
@@ -369,11 +361,11 @@ export function useSlider(originalProps: UseSliderProps) {
         [isVertical ? "bottom" : direction === "rtl" ? "right" : "left"]: `${startOffset * 100}%`,
         ...(isVertical
           ? {
-            height: `${(endOffset - startOffset) * 100}%`,
-          }
+              height: `${(endOffset - startOffset) * 100}%`,
+            }
           : {
-            width: `${(endOffset - startOffset) * 100}%`,
-          }),
+              width: `${(endOffset - startOffset) * 100}%`,
+            }),
       },
     };
   };

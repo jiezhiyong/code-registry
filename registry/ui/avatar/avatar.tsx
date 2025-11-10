@@ -1,10 +1,11 @@
 import type { UseAvatarProps } from "./use-avatar";
 
-import { forwardRef } from "@/lib/system";
 import { useMemo } from "react";
 
 import { AvatarIcon } from "./avatar-icon";
 import { useAvatar } from "./use-avatar";
+
+import { forwardRef } from "@/lib/system";
 
 export interface AvatarProps extends UseAvatarProps {}
 

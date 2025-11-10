@@ -258,4 +258,3 @@ export type BreadcrumbItemVariantProps = VariantProps<typeof breadcrumbItem>;
 export type BreadcrumbItemSlots = keyof ReturnType<typeof breadcrumbItem>;
 
 export { breadcrumbItem, breadcrumbs };
-

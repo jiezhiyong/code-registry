@@ -1,4 +1,4 @@
-const warningStack: { [key: string]: boolean; } = {};
+const warningStack: { [key: string]: boolean } = {};
 
 export function warn(message: string, component?: string, ...args: any[]) {
   const tag = component ? ` [${component}]` : " ";

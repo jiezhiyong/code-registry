@@ -10,8 +10,7 @@ export default {
     "transition-duration": DEFAULT_TRANSITION_DURATION,
   },
   ".transition-colors-opacity": {
-    "transition-property":
-      "color, background-color, border-color, text-decoration-color, fill, stroke, opacity",
+    "transition-property": "color, background-color, border-color, text-decoration-color, fill, stroke, opacity",
     "transition-timing-function": "ease",
     "transition-duration": DEFAULT_TRANSITION_DURATION,
   },

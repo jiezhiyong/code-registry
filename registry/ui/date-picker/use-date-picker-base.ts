@@ -9,20 +9,18 @@ import type { ValueBase } from "@react-types/shared";
 import type { ReactNode } from "react";
 import type { DatePickerVariantProps } from "./theme";
 
-import { dataAttr, mergeProps } from "@/lib/base";
-import { useDOMRef } from "@/lib/react";
-import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { dateInput } from "@/registry/ui/date-input/theme";
 import { useLocalizedStringFormatter } from "@react-aria/i18n";
 import { useControlledState } from "@react-stately/utils";
 import { useCallback } from "react";
 
 import intlMessages from "./intl-messages";
 
-type HeroUIBaseProps<T extends DateValue> = Omit<
-  HTMLHeroUIProps<"div">,
-  keyof AriaDatePickerBaseProps<T> | "onChange"
->;
+import { dataAttr, mergeProps } from "@/lib/base";
+import { useDOMRef } from "@/lib/react";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { dateInput } from "@/registry/ui/date-input/theme";
+
+type HeroUIBaseProps<T extends DateValue> = Omit<HTMLHeroUIProps<"div">, keyof AriaDatePickerBaseProps<T> | "onChange">;
 
 interface Props<T extends DateValue> extends HeroUIBaseProps<T> {
   /**
@@ -107,10 +105,7 @@ type Variants =
 
 export type UseDatePickerBaseProps<T extends DateValue> = Props<T> &
   DatePickerVariantProps &
-  Pick<
-    DateInputProps<T>,
-    Variants | "ref" | "createCalendar" | "startContent" | "endContent" | "inputRef"
-  > &
+  Pick<DateInputProps<T>, Variants | "ref" | "createCalendar" | "startContent" | "endContent" | "inputRef"> &
   Omit<AriaDatePickerBaseProps<T>, keyof ValueBase<T> | "validate">;
 
 export function useDatePickerBase<T extends DateValue>(originalProps: UseDatePickerBaseProps<T>) {
@@ -147,12 +142,8 @@ export function useDatePickerBase<T extends DateValue>(originalProps: UseDatePic
     createCalendar,
   } = props;
 
-  const {
-    isHeaderExpanded,
-    isHeaderDefaultExpanded,
-    onHeaderExpandedChange,
-    ...restUserCalendarProps
-  } = userCalendarProps;
+  const { isHeaderExpanded, isHeaderDefaultExpanded, onHeaderExpandedChange, ...restUserCalendarProps } =
+    userCalendarProps;
 
   const handleHeaderExpandedChange = useCallback(
     (isExpanded: boolean | undefined) => {
@@ -161,13 +152,14 @@ export function useDatePickerBase<T extends DateValue>(originalProps: UseDatePic
     [onHeaderExpandedChange],
   );
 
-  const [isCalendarHeaderExpanded, setIsCalendarHeaderExpanded] = useControlledState<
-    boolean | undefined
-  >(isHeaderExpanded, isHeaderDefaultExpanded ?? false, handleHeaderExpandedChange);
+  const [isCalendarHeaderExpanded, setIsCalendarHeaderExpanded] = useControlledState<boolean | undefined>(
+    isHeaderExpanded,
+    isHeaderDefaultExpanded ?? false,
+    handleHeaderExpandedChange,
+  );
 
   const domRef = useDOMRef(ref);
-  const disableAnimation =
-    originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   let stringFormatter = useLocalizedStringFormatter(intlMessages);
 
@@ -177,10 +169,8 @@ export function useDatePickerBase<T extends DateValue>(originalProps: UseDatePic
   // Time field values
   const placeholder = originalProps?.placeholderValue;
   const timePlaceholder = placeholder && "hour" in placeholder ? placeholder : null;
-  const timeMinValue =
-    originalProps.minValue && "hour" in originalProps.minValue ? originalProps.minValue : null;
-  const timeMaxValue =
-    originalProps.maxValue && "hour" in originalProps.maxValue ? originalProps.maxValue : null;
+  const timeMinValue = originalProps.minValue && "hour" in originalProps.minValue ? originalProps.minValue : null;
+  const timeMaxValue = originalProps.maxValue && "hour" in originalProps.maxValue ? originalProps.maxValue : null;
 
   const slotsProps: {
     popoverProps: UseDatePickerBaseProps<T>["popoverProps"];

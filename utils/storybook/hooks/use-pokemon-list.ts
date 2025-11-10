@@ -28,10 +28,7 @@ export function usePokemonList({ fetchDelay = 0 }: UsePokemonListProps = {}) {
       // Delay to simulate network latency
       await new Promise((resolve) => setTimeout(resolve, fetchDelay));
 
-      let res = await fetch(
-        `https://pokeapi.co/api/v2/pokemon?offset=${currentOffset}&limit=${limit}`,
-        { signal },
-      );
+      let res = await fetch(`https://pokeapi.co/api/v2/pokemon?offset=${currentOffset}&limit=${limit}`, { signal });
 
       if (!res.ok) {
         throw new Error("Network response was not ok");

@@ -3,6 +3,8 @@ import type { Selection } from "@react-types/shared";
 import type { Meta } from "@storybook/nextjs-vite";
 import type { Key } from "react";
 
+import React from "react";
+
 import { clsx } from "@/lib/base";
 import {
   AddNoteBulkIcon,
@@ -16,8 +18,6 @@ import { Avatar } from "@/registry/ui/avatar";
 import { Chip } from "@/registry/ui/chip";
 import { ScrollShadow } from "@/registry/ui/scroll-shadow";
 import { usersData } from "@/utils/storybook";
-import React from "react";
-
 import { Listbox, ListboxItem, ListboxSection } from "@/registry/ui";
 
 const BugIcon = (props) => (

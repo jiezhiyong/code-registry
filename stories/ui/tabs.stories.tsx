@@ -1,6 +1,9 @@
 import type { TabsProps } from "@/registry/ui";
 import type { Meta } from "@storybook/nextjs-vite";
 
+import React from "react";
+import Lorem from "react-lorem-component";
+
 import { button, link, tabs } from "@/registry/ui";
 import { Button } from "@/registry/ui/button";
 import { Card, CardBody } from "@/registry/ui/card";
@@ -13,9 +16,6 @@ import {
   AlignTopBoldIcon,
   AlignVerticallyBoldIcon,
 } from "@/utils/icons";
-import React from "react";
-import Lorem from "react-lorem-component";
-
 import { Tab, Tabs } from "@/registry/ui";
 
 export default {

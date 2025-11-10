@@ -5,22 +5,20 @@ import type { AriaTimeFieldProps, TimeValue } from "@react-types/datepicker";
 import type { DOMAttributes, GroupDOMAttributes } from "@react-types/shared";
 import type { DateInputGroupProps } from "./date-input-group";
 import type { DateInputSlots, DateInputVariantProps } from "./theme";
-;
 
-import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
-import { useDOMRef } from "@/lib/react";
-import { mapPropsVariants, useLabelPlacement, useProviderContext } from "@/lib/system";
-import { FormContext, useSlottedContext } from "@/registry/ui/form";
 import { useTimeField as useAriaTimeField } from "@react-aria/datepicker";
 import { useLocale } from "@react-aria/i18n";
 import { useTimeFieldState } from "@react-stately/datepicker";
 import { useMemo } from "react";
+
 import { dateInput } from "./theme";
 
-type HeroUIBaseProps<T extends TimeValue> = Omit<
-  HTMLHeroUIProps<"div">,
-  keyof AriaTimeFieldProps<T> | "onChange"
->;
+import { FormContext, useSlottedContext } from "@/registry/ui/form";
+import { mapPropsVariants, useLabelPlacement, useProviderContext } from "@/lib/system";
+import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
+import { useDOMRef } from "@/lib/react";
+
+type HeroUIBaseProps<T extends TimeValue> = Omit<HTMLHeroUIProps<"div">, keyof AriaTimeFieldProps<T> | "onChange">;
 
 interface Props<T extends TimeValue> extends HeroUIBaseProps<T> {
   /**
@@ -70,9 +68,7 @@ interface Props<T extends TimeValue> extends HeroUIBaseProps<T> {
   classNames?: SlotsToClasses<DateInputSlots>;
 }
 
-export type UseTimeInputProps<T extends TimeValue> = Props<T> &
-  DateInputVariantProps &
-  AriaTimeFieldProps<T>;
+export type UseTimeInputProps<T extends TimeValue> = Props<T> & DateInputVariantProps & AriaTimeFieldProps<T>;
 
 export function useTimeInput<T extends TimeValue>(originalProps: UseTimeInputProps<T>) {
   const globalContext = useProviderContext();

@@ -55,12 +55,7 @@ const dateInput = tv({
         ],
       },
       faded: {
-        inputWrapper: [
-          "bg-default-100",
-          "border-medium",
-          "border-default-200",
-          "hover:border-default-400",
-        ],
+        inputWrapper: ["bg-default-100", "border-medium", "border-default-200", "hover:border-default-400"],
       },
       bordered: {
         inputWrapper: [
@@ -113,16 +108,13 @@ const dateInput = tv({
         segment: "focus:bg-secondary-400/50 data-[editable=true]:focus:text-secondary",
       },
       success: {
-        segment:
-          "focus:bg-success-400/50 dark:focus:bg-success-400/20 data-[editable=true]:focus:text-success",
+        segment: "focus:bg-success-400/50 dark:focus:bg-success-400/20 data-[editable=true]:focus:text-success",
       },
       warning: {
-        segment:
-          "focus:bg-warning-400/50 dark:focus:bg-warning-400/20 data-[editable=true]:focus:text-warning",
+        segment: "focus:bg-warning-400/50 dark:focus:bg-warning-400/20 data-[editable=true]:focus:text-warning",
       },
       danger: {
-        segment:
-          "focus:bg-danger-400/50 dark:focus:bg-danger-400/20 data-[editable=true]:focus:text-danger",
+        segment: "focus:bg-danger-400/50 dark:focus:bg-danger-400/20 data-[editable=true]:focus:text-danger",
       },
     },
     size: {
@@ -278,11 +270,7 @@ const dateInput = tv({
       color: "primary",
       class: {
         innerWrapper: "text-primary",
-        inputWrapper: [
-          "hover:border-primary",
-          "focus-within:border-primary",
-          "focus-within:hover:border-primary",
-        ],
+        inputWrapper: ["hover:border-primary", "focus-within:border-primary", "focus-within:hover:border-primary"],
         label: "text-primary",
       },
     },
@@ -304,11 +292,7 @@ const dateInput = tv({
       color: "success",
       class: {
         innerWrapper: "text-success",
-        inputWrapper: [
-          "hover:border-success",
-          "focus-within:border-success",
-          "focus-within:hover:border-success",
-        ],
+        inputWrapper: ["hover:border-success", "focus-within:border-success", "focus-within:hover:border-success"],
         label: "text-success",
       },
     },
@@ -317,11 +301,7 @@ const dateInput = tv({
       color: "warning",
       class: {
         innerWrapper: "text-warning",
-        inputWrapper: [
-          "hover:border-warning",
-          "focus-within:border-warning",
-          "focus-within:hover:border-warning",
-        ],
+        inputWrapper: ["hover:border-warning", "focus-within:border-warning", "focus-within:hover:border-warning"],
         label: "text-warning",
       },
     },
@@ -330,11 +310,7 @@ const dateInput = tv({
       color: "danger",
       class: {
         innerWrapper: "text-danger",
-        inputWrapper: [
-          "hover:border-danger",
-          "focus-within:border-danger",
-          "focus-within:hover:border-danger",
-        ],
+        inputWrapper: ["hover:border-danger", "focus-within:border-danger", "focus-within:hover:border-danger"],
         label: "text-danger",
       },
     },
@@ -476,4 +452,3 @@ export type DateInputVariantProps = VariantProps<typeof dateInput>;
 export type DateInputSlots = keyof ReturnType<typeof dateInput>;
 
 export { dateInput };
-

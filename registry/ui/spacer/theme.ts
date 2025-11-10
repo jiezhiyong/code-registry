@@ -27,4 +27,3 @@ const spacer = tv({
 export type SpacerVariantProps = VariantProps<typeof spacer>;
 
 export { spacer };
-

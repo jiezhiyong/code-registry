@@ -1,12 +1,13 @@
 import type { ReactNode } from "react";
 import type { UseModalProps } from "./use-modal";
 
-import { forwardRef } from "@/lib/system";
 import { Overlay } from "@react-aria/overlays";
 import { AnimatePresence } from "framer-motion";
 
 import { ModalProvider } from "./modal-context";
 import { useModal } from "./use-modal";
+
+import { forwardRef } from "@/lib/system";
 
 export interface ModalProps extends UseModalProps {
   /**

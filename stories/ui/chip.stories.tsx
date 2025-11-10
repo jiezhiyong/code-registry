@@ -4,7 +4,6 @@ import type { Meta } from "@storybook/nextjs-vite";
 import { CheckIcon } from "@/lib/icons";
 import { chip } from "@/registry/ui";
 import { Avatar } from "@/registry/ui/avatar";
-
 import { Chip } from "@/registry/ui";
 
 export default {

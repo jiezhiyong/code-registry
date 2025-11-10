@@ -1,10 +1,11 @@
 import type { ForwardedRef } from "react";
 import type { FormProps } from "./base-form";
 
-import { useProviderContext } from "@/lib/system";
 import { forwardRef } from "react";
 
 import { Form as AriaForm } from "./base-form";
+
+import { useProviderContext } from "@/lib/system";
 
 export const Form = forwardRef(function Form(props: FormProps, ref: ForwardedRef<HTMLFormElement>) {
   const globalContext = useProviderContext();

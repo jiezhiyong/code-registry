@@ -1,10 +1,10 @@
 import type { HTMLHeroUIProps } from "@/lib/system";
 
+import { useNavbarContext } from "./navbar-context";
+
 import { clsx, dataAttr } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { forwardRef } from "@/lib/system";
-
-import { useNavbarContext } from "./navbar-context";
 
 export interface NavbarMenuItemProps extends HTMLHeroUIProps<"li"> {
   /**

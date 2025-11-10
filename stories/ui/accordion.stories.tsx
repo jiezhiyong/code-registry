@@ -2,6 +2,8 @@ import type { AccordionItemProps, AccordionProps } from "@/registry/ui";
 import type { Selection } from "@react-types/shared";
 import type { Meta } from "@storybook/nextjs-vite";
 
+import React from "react";
+
 import {
   AnchorIcon,
   InfoIcon,
@@ -15,8 +17,6 @@ import { accordionItem, button } from "@/registry/ui";
 import { Avatar } from "@/registry/ui/avatar";
 import { Button } from "@/registry/ui/button";
 import { Input, Textarea } from "@/registry/ui/input";
-import React from "react";
-
 import { Accordion, AccordionItem } from "@/registry/ui";
 
 export default {

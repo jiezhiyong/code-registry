@@ -5,8 +5,9 @@
 import type { RefObject, DOMProps as SharedDOMProps } from "@react-types/shared";
 import type { Context, CSSProperties, ForwardedRef, MutableRefObject, ReactNode } from "react";
 
-import { mergeProps, mergeRefs } from "@/lib/base";
 import { useCallback, useContext, useMemo, useRef } from "react";
+
+import { mergeProps, mergeRefs } from "@/lib/base";
 
 export const DEFAULT_SLOT = Symbol("default");
 
@@ -14,7 +15,7 @@ interface SlottedValue<T> {
   slots?: Record<string | symbol, T>;
 }
 
-export type WithRef<T, E> = T & { ref?: ForwardedRef<E>; };
+export type WithRef<T, E> = T & { ref?: ForwardedRef<E> };
 export type SlottedContextValue<T> = SlottedValue<T> | T | null | undefined;
 export type ContextValue<T, E> = SlottedContextValue<WithRef<T, E>>;
 
@@ -145,14 +146,9 @@ export function useContextProps<T, U extends SlotProps, E extends Element>(
       // @ts-ignore
       mergedProps.style = (renderProps) => {
         let contextStyle =
-          typeof contextProps.style === "function"
-            ? contextProps.style(renderProps)
-            : contextProps.style;
+          typeof contextProps.style === "function" ? contextProps.style(renderProps) : contextProps.style;
         let defaultStyle = { ...renderProps.defaultStyle, ...contextStyle };
-        let style =
-          typeof props.style === "function"
-            ? props.style({ ...renderProps, defaultStyle })
-            : props.style;
+        let style = typeof props.style === "function" ? props.style({ ...renderProps, defaultStyle }) : props.style;
 
         return { ...defaultStyle, ...style };
       };

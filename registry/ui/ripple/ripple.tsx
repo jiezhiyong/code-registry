@@ -3,8 +3,9 @@ import type { HTMLMotionProps } from "framer-motion";
 import type { FC } from "react";
 import type { RippleType } from "./use-ripple";
 
-import { clamp } from "@/lib/base";
 import { AnimatePresence, LazyMotion, m } from "framer-motion";
+
+import { clamp } from "@/lib/base";
 
 export interface RippleProps extends HTMLHeroUIProps<"span"> {
   ripples: RippleType[];

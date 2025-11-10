@@ -6,12 +6,13 @@ import type { MultiSelectProps, MultiSelectState } from "@/lib/hooks/use-aria-mu
 import type { FocusableElement } from "@react-types/shared";
 import type { ReactNode, RefObject } from "react";
 
-import { useFormReset } from "@/lib/hooks/use-form-reset";
 import { useFormValidation } from "@react-aria/form";
 import { useVisuallyHidden } from "@react-aria/visually-hidden";
 import React from "react";
 
 import { selectData } from "./use-select";
+
+import { useFormReset } from "@/lib/hooks/use-form-reset";
 export interface AriaHiddenSelectProps {
   /**
    * Describes the type of autocomplete functionality the input should provide if any. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefautocomplete).
@@ -57,7 +58,7 @@ export interface AriaHiddenSelectOptions<T> extends CombinedAriaSelectProps {
 export function useHiddenSelect<T>(
   props: AriaHiddenSelectOptions<T>,
   state: MultiSelectState<T>,
-  triggerRef: RefObject<FocusableElement>
+  triggerRef: RefObject<FocusableElement>,
 ) {
   let data = selectData.get(state) || {};
 
@@ -72,7 +73,7 @@ export function useHiddenSelect<T>(
       focus: () => triggerRef.current?.focus(),
     },
     state,
-    props.selectRef
+    props.selectRef,
   );
 
   return {
@@ -94,7 +95,9 @@ export function useHiddenSelect<T>(
       name,
       tabIndex: -1,
       value:
-        selectionMode === "multiple" ? [...state.selectedKeys].map((k) => String(k)) : [...state.selectedKeys][0] ?? "",
+        selectionMode === "multiple"
+          ? [...state.selectedKeys].map((k) => String(k))
+          : ([...state.selectedKeys][0] ?? ""),
       multiple: selectionMode === "multiple",
       onChange: (e: React.ChangeEvent<HTMLSelectElement>) => {
         state.setSelectedKeys(e.target.value);

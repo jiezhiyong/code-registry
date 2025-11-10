@@ -41,4 +41,3 @@ export type DateRangePickerVariantProps = VariantProps<typeof dateRangePicker>;
 export type DateRangePickerSlots = keyof ReturnType<typeof dateRangePicker>;
 
 export { datePicker, dateRangePicker };
-

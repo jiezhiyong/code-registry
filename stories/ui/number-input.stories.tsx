@@ -2,10 +2,10 @@ import type { NumberInputProps } from "@/registry/ui";
 import type { ValidationResult } from "@react-types/shared";
 import type { Meta } from "@storybook/nextjs-vite";
 
-import { button, numberInput } from "@/registry/ui";
-import { Form } from "@/registry/ui/form";
 import React from "react";
 
+import { button, numberInput } from "@/registry/ui";
+import { Form } from "@/registry/ui/form";
 import { NumberInput } from "@/registry/ui";
 
 export default {

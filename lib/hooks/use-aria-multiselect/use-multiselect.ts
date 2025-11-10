@@ -2,10 +2,7 @@ import type { AriaListBoxOptions } from "@react-aria/listbox";
 import type { AriaButtonProps } from "@react-types/button";
 import type { ValidationResult } from "@react-types/shared";
 import type { FocusEvent, HTMLAttributes, Key, RefObject } from "react";
-import type {
-  MultiSelectState,
-  MultiSelectProps as MultiSelectStateProps,
-} from "./use-multiselect-state";
+import type { MultiSelectState, MultiSelectProps as MultiSelectStateProps } from "./use-multiselect-state";
 
 import { useCollator } from "@react-aria/i18n";
 import { setInteractionModality } from "@react-aria/interactions";

@@ -51,7 +51,10 @@ export { menuSection as listboxSection } from "@/registry/ui/menu/theme";
 
 // export types
 export type {
-  MenuItemSlots as ListboxItemSlots, MenuItemVariantProps as ListboxItemVariantProps, MenuSectionSlots as ListboxSectionSlots, MenuSectionVariantProps as ListboxSectionVariantProps,
-  MenuSlots as ListboxSlots, MenuVariantProps as ListboxVariantProps
+  MenuItemSlots as ListboxItemSlots,
+  MenuItemVariantProps as ListboxItemVariantProps,
+  MenuSectionSlots as ListboxSectionSlots,
+  MenuSectionVariantProps as ListboxSectionVariantProps,
+  MenuSlots as ListboxSlots,
+  MenuVariantProps as ListboxVariantProps,
 } from "@/registry/ui/menu/theme";
-

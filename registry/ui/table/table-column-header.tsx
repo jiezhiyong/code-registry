@@ -3,15 +3,16 @@ import type { GridNode } from "@react-types/grid";
 import type { ReactElement, ReactNode } from "react";
 import type { ValuesType } from "./use-table";
 
-import { clsx, dataAttr, mergeProps } from "@/lib/base";
-import { ChevronDownIcon } from "@/lib/icons/chevron-down";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
-import { forwardRef } from "@/lib/system";
 import { useFocusRing } from "@react-aria/focus";
 import { useHover } from "@react-aria/interactions";
 import { useTableColumnHeader } from "@react-aria/table";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { cloneElement, isValidElement } from "react";
+
+import { forwardRef } from "@/lib/system";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { ChevronDownIcon } from "@/lib/icons/chevron-down";
+import { clsx, dataAttr, mergeProps } from "@/lib/base";
 
 // @internal
 export type SortIconProps = {
@@ -79,7 +80,7 @@ const TableColumnHeader = forwardRef<"th", TableColumnHeaderProps>((props, ref) 
           enabled: shouldFilterDOMProps,
         }),
         allowsSorting ? hoverProps : {},
-        otherProps
+        otherProps,
       )}
       className={slots.th?.({ align, class: thStyles })}
     >

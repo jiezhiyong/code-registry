@@ -17,4 +17,3 @@ export { DateInputField } from "./date-input-field";
 export { DateInputGroup } from "./date-input-group";
 export { DateInputSegment } from "./date-input-segment";
 export { DateInput, TimeInput };
-

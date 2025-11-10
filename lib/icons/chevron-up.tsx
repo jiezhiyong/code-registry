@@ -1,6 +1,6 @@
-import type {IconSvgProps} from "./types";
+import type { IconSvgProps } from "./types";
 
-export const ChevronUpIcon = ({strokeWidth = 1.5, ...props}: IconSvgProps) => (
+export const ChevronUpIcon = ({ strokeWidth = 1.5, ...props }: IconSvgProps) => (
   <svg
     aria-hidden="true"
     fill="none"

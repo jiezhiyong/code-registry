@@ -319,4 +319,3 @@ export type TableSlots = keyof ReturnType<typeof table>;
 export type TableReturnType = ReturnType<typeof table>;
 
 export { table };
-

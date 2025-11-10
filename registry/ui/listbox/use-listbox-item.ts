@@ -4,15 +4,17 @@ import type { ListState } from "@react-stately/list";
 import type { Node } from "@react-types/shared";
 import type { ListboxItemBaseProps } from "./listbox-item-base";
 
-import { clsx, dataAttr, mergeProps, objectToDeps, removeEvents } from "@/lib/base";
-import { useIsMobile } from "@/lib/hooks/use-is-mobile";
-import { filterDOMProps } from "@/lib/react";
-import { mapPropsVariants, useProviderContext } from "@/lib/system";
 import { useFocusRing } from "@react-aria/focus";
 import { useHover, usePress } from "@react-aria/interactions";
 import { useOption } from "@react-aria/listbox";
 import { useCallback, useMemo, useRef } from "react";
+
 import { listboxItem } from "./theme";
+
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { filterDOMProps } from "@/lib/react";
+import { useIsMobile } from "@/lib/hooks/use-is-mobile";
+import { clsx, dataAttr, mergeProps, objectToDeps, removeEvents } from "@/lib/base";
 
 interface Props<T extends object> extends ListboxItemBaseProps<T> {
   item: Node<T>;
@@ -52,8 +54,7 @@ export function useListboxItem<T extends object>(originalProps: UseListboxItemPr
     ...otherProps
   } = props;
 
-  const disableAnimation =
-    originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   const domRef = useRef<HTMLLIElement>(null);
 

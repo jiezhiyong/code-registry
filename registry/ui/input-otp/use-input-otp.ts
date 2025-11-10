@@ -1,34 +1,23 @@
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type {
-  SlotsToClasses,
-} from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme";
 import type { AriaTextFieldProps } from "@react-types/textfield";
 import type { OTPInputProps } from "input-otp";
-import type {
-  InputOtpReturnType,
-  InputOtpSlots,
-  InputOtpVariantProps,
-} from "./theme";
+import type { InputOtpReturnType, InputOtpSlots, InputOtpVariantProps } from "./theme";
 
-import {
-  chain,
-  clsx,
-  dataAttr,
-  isPatternNumeric,
-  mergeProps,
-  objectToDeps,
-} from "@/lib/base";
-import { useFormReset } from "@/lib/hooks/use-form-reset";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
-import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { FormContext, useSlottedContext } from "@/registry/ui/form";
 import { useFocusRing } from "@react-aria/focus";
 import { useFormValidation } from "@react-aria/form";
 import { useFormValidationState } from "@react-stately/form";
 import { useControlledState } from "@react-stately/utils";
 import { useCallback, useMemo } from "react";
+
 import { inputOtp } from "./theme";
+
+import { FormContext, useSlottedContext } from "@/registry/ui/form";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { useFormReset } from "@/lib/hooks/use-form-reset";
+import { chain, clsx, dataAttr, isPatternNumeric, mergeProps, objectToDeps } from "@/lib/base";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**
@@ -92,10 +81,7 @@ export type ValueTypes = {
 export type UseInputOtpProps = Props &
   InputOtpVariantProps &
   Omit<AriaTextFieldProps, "onChange"> &
-  Omit<
-    Partial<OTPInputProps>,
-    "render" | "children" | "value" | "onChange" | keyof InputOtpVariantProps
-  >;
+  Omit<Partial<OTPInputProps>, "render" | "children" | "value" | "onChange" | keyof InputOtpVariantProps>;
 
 export function useInputOtp(originalProps: UseInputOtpProps) {
   const globalContext = useProviderContext();
@@ -112,7 +98,7 @@ export function useInputOtp(originalProps: UseInputOtpProps) {
     length = 4,
     autoFocus,
     "aria-label": ariaLabel = "One-time password input",
-    onValueChange = () => { },
+    onValueChange = () => {},
     allowedKeys = "^[0-9]*$",
     validationBehavior = formValidationBehavior ?? globalContext?.validationBehavior ?? "native",
     type,
@@ -120,7 +106,7 @@ export function useInputOtp(originalProps: UseInputOtpProps) {
     maxLength,
     minLength,
     textAlign = "center",
-    onComplete = () => { },
+    onComplete = () => {},
     pushPasswordManagerStrategy,
     pasteTransformer,
     containerClassName,
@@ -147,14 +133,9 @@ export function useInputOtp(originalProps: UseInputOtpProps) {
     [onValueChange],
   );
 
-  const [value, setValue] = useControlledState(
-    props.value,
-    props.defaultValue ?? "",
-    handleValueChange,
-  );
+  const [value, setValue] = useControlledState(props.value, props.defaultValue ?? "", handleValueChange);
 
-  const disableAnimation =
-    originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
   const isDisabled = originalProps.isDisabled;
   const baseStyles = clsx(classNames?.base, className);
 
@@ -167,11 +148,7 @@ export function useInputOtp(originalProps: UseInputOtpProps) {
   useFormReset(inputRef, value, setValue);
   useFormValidation({ ...props, validationBehavior }, validationState, inputRef);
 
-  const {
-    isInvalid: isAriaInvalid,
-    validationErrors,
-    validationDetails,
-  } = validationState.displayValidation;
+  const { isInvalid: isAriaInvalid, validationErrors, validationDetails } = validationState.displayValidation;
   const isReadOnly = originalProps.isReadOnly;
   const isRequired = originalProps.isRequired;
   const isInvalid = originalProps.isInvalid || isAriaInvalid;

@@ -1,10 +1,11 @@
+import React, { Children, cloneElement, useMemo } from "react";
+
+import { usePopoverContext } from "./popover-context";
+
 import { mergeProps } from "@/lib/base";
 import { useAriaButton } from "@/lib/hooks/use-aria-button";
 import { pickChildren } from "@/lib/react";
 import { Button } from "@/registry/ui/button";
-import React, { Children, cloneElement, useMemo } from "react";
-
-import { usePopoverContext } from "./popover-context";
 
 export interface PopoverTriggerProps {
   children?: React.ReactNode;

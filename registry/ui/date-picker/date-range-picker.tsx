@@ -2,17 +2,18 @@ import type { DateValue } from "@internationalized/date";
 import type { ForwardedRef, ReactElement } from "react";
 import type { UseDateRangePickerProps } from "./use-date-range-picker";
 
+import { AnimatePresence } from "framer-motion";
+import { cloneElement, isValidElement, useMemo } from "react";
+
+import DateRangePickerField from "./date-range-picker-field";
+import { useDateRangePicker } from "./use-date-range-picker";
+
 import { forwardRef } from "@/lib/system";
 import { Button } from "@/registry/ui/button";
 import { RangeCalendar } from "@/registry/ui/calendar";
 import { DateInputGroup, TimeInput } from "@/registry/ui/date-input";
 import { FreeSoloPopover } from "@/registry/ui/popover";
-import { AnimatePresence } from "framer-motion";
-import { cloneElement, isValidElement, useMemo } from "react";
-
 import { CalendarBoldIcon } from "@/lib/icons/calendar-bold";
-import DateRangePickerField from "./date-range-picker-field";
-import { useDateRangePicker } from "./use-date-range-picker";
 
 export interface Props<T extends DateValue> extends UseDateRangePickerProps<T> {
   /**
@@ -26,7 +27,7 @@ export type DateRangePickerProps<T extends DateValue = DateValue> = Props<T>;
 
 const DateRangePicker = forwardRef(function DateRangePicker<T extends DateValue>(
   props: DateRangePickerProps<T>,
-  ref: ForwardedRef<HTMLDivElement>
+  ref: ForwardedRef<HTMLDivElement>,
 ) {
   const { selectorButtonPlacement = "end", ...otherProps } = props;
 

@@ -2,11 +2,13 @@ import type { ReactRef } from "@/lib/react";
 import type { PropGetter } from "@/lib/system";
 import type { ModalProps } from "@/registry/ui/modal";
 
+import { useCallback, useMemo } from "react";
+
+import { drawer } from "./theme";
+
 import { clsx, isEmpty } from "@/lib/base";
 import { TRANSITION_EASINGS } from "@/lib/framer";
 import { useDOMRef } from "@/lib/react";
-import { useCallback, useMemo } from "react";
-import { drawer } from "./theme";
 
 interface Props extends Omit<ModalProps, "placement" | "scrollBehavior" | "children"> {
   /**

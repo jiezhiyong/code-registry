@@ -1,10 +1,11 @@
 import type { UseKbdProps } from "./use-kbd";
 
-import { forwardRef } from "@/lib/system-rsc";
 import { useMemo } from "react";
 
 import { useKbd } from "./use-kbd";
 import { kbdKeysLabelMap, kbdKeysMap } from "./utils";
+
+import { forwardRef } from "@/lib/system-rsc";
 
 export interface KbdProps extends UseKbdProps {}
 

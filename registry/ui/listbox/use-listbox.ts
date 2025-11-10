@@ -7,15 +7,16 @@ import type { KeyboardDelegate } from "@react-types/shared";
 import type { ReactNode } from "react";
 import type { ListboxItemProps } from "./listbox-item";
 import type { ListboxSlots, ListboxVariantProps } from "./theme";
-;
 
-import { clsx } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
-import { useProviderContext } from "@/lib/system";
 import { useListBox as useAriaListbox } from "@react-aria/listbox";
 import { useListState } from "@react-stately/list";
 import { useMemo } from "react";
+
 import { listbox } from "./theme";
+
+import { useProviderContext } from "@/lib/system";
+import { clsx } from "@/lib/base";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
 
 interface AriaListBoxOptions<T> extends AriaListBoxProps<T> {
   /** Whether the listbox uses virtual scrolling. */

@@ -2,13 +2,14 @@ import type { HTMLHeroUIProps } from "@/lib/system";
 import type { GridNode } from "@react-types/grid";
 import type { ValuesType } from "./use-table";
 
+import { useFocusRing } from "@react-aria/focus";
+import { useTableColumnHeader, useTableSelectAllCheckbox } from "@react-aria/table";
+import { VisuallyHidden } from "@react-aria/visually-hidden";
+
 import { clsx, dataAttr, mergeProps } from "@/lib/base";
 import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { forwardRef } from "@/lib/system";
 import { Checkbox } from "@/registry/ui/checkbox";
-import { useFocusRing } from "@react-aria/focus";
-import { useTableColumnHeader, useTableSelectAllCheckbox } from "@react-aria/table";
-import { VisuallyHidden } from "@react-aria/visually-hidden";
 
 export interface TableSelectAllCheckboxProps<T = object> extends HTMLHeroUIProps<"th"> {
   /**
@@ -67,7 +68,7 @@ const TableSelectAllCheckbox = forwardRef<"th", TableSelectAllCheckboxProps>((pr
         }),
         filterDOMProps(otherProps, {
           enabled: shouldFilterDOMProps,
-        })
+        }),
       )}
       className={slots.th?.({ class: thStyles })}
     >

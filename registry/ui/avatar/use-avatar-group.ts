@@ -4,12 +4,13 @@ import type { SlotsToClasses } from "@/lib/theme";
 import type { ReactNode } from "react";
 import type { AvatarProps } from "./index";
 import type { AvatarGroupSlots, AvatarGroupVariantProps } from "./theme";
-;
+
+import { cloneElement, useMemo } from "react";
+
+import { avatarGroup } from "./theme";
 
 import { clsx, compact } from "@/lib/base";
 import { getValidChildren, useDOMRef } from "@/lib/react";
-import { cloneElement, useMemo } from "react";
-import { avatarGroup } from "./theme";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**

@@ -9,4 +9,3 @@ export { useSwitch } from "./use-switch";
 
 // export component
 export { Switch };
-

@@ -1,14 +1,15 @@
 import type { UseTooltipProps } from "./use-tooltip";
 
-import { getTransformOrigins } from "@/lib/aria";
-import { mergeProps, warn } from "@/lib/base";
-import { TRANSITION_VARIANTS } from "@/lib/framer";
-import { forwardRef } from "@/lib/system";
 import { OverlayContainer } from "@react-aria/overlays";
 import { AnimatePresence, LazyMotion, m } from "framer-motion";
 import { Children, cloneElement, isValidElement } from "react";
 
 import { useTooltip } from "./use-tooltip";
+
+import { getTransformOrigins } from "@/lib/aria";
+import { mergeProps, warn } from "@/lib/base";
+import { TRANSITION_VARIANTS } from "@/lib/framer";
+import { forwardRef } from "@/lib/system";
 
 export interface TooltipProps extends Omit<UseTooltipProps, "disableTriggerFocus" | "backdrop"> {}
 

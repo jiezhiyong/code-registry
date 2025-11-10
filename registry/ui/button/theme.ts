@@ -293,10 +293,7 @@ const button = tv({
     {
       variant: "ghost",
       color: "primary",
-      class: [
-        colorVariants.ghost.primary,
-        "data-[hover=true]:!bg-primary data-[hover=true]:!text-primary-foreground",
-      ],
+      class: [colorVariants.ghost.primary, "data-[hover=true]:!bg-primary data-[hover=true]:!text-primary-foreground"],
     },
     {
       variant: "ghost",
@@ -309,26 +306,17 @@ const button = tv({
     {
       variant: "ghost",
       color: "success",
-      class: [
-        colorVariants.ghost.success,
-        "data-[hover=true]:!bg-success data-[hover=true]:!text-success-foreground",
-      ],
+      class: [colorVariants.ghost.success, "data-[hover=true]:!bg-success data-[hover=true]:!text-success-foreground"],
     },
     {
       variant: "ghost",
       color: "warning",
-      class: [
-        colorVariants.ghost.warning,
-        "data-[hover=true]:!bg-warning data-[hover=true]:!text-warning-foreground",
-      ],
+      class: [colorVariants.ghost.warning, "data-[hover=true]:!bg-warning data-[hover=true]:!text-warning-foreground"],
     },
     {
       variant: "ghost",
       color: "danger",
-      class: [
-        colorVariants.ghost.danger,
-        "data-[hover=true]:!bg-danger data-[hover=true]:!text-danger-foreground",
-      ],
+      class: [colorVariants.ghost.danger, "data-[hover=true]:!bg-danger data-[hover=true]:!text-danger-foreground"],
     },
     // isInGroup / radius / size <-- radius not provided
     {
@@ -473,4 +461,3 @@ export type ButtonGroupVariantProps = VariantProps<typeof buttonGroup>;
 export type ButtonVariantProps = VariantProps<typeof button>;
 
 export { button, buttonGroup };
-

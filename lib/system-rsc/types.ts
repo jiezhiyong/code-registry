@@ -3,13 +3,13 @@
  */
 
 import type { Selection as AriaSharedSelection } from "@react-types/shared";
-import { JSX } from "react";
+import type { JSX } from "react";
 
 export type As<Props = any> = React.ElementType<Props>;
 export type DOMElements = keyof JSX.IntrinsicElements;
 export type CapitalizedDOMElements = Capitalize<DOMElements>;
 
-export interface DOMElement extends Element, HTMLOrSVGElement { }
+export interface DOMElement extends Element, HTMLOrSVGElement {}
 
 type DataAttributes = {
   [dataAttr: string]: any;
@@ -29,10 +29,11 @@ export type OmitCommonProps<Target, OmitAdditionalProps extends keyof any = neve
   "transition" | "as" | "color" | OmitAdditionalProps
 >;
 
-export type RightJoinProps<
-  SourceProps extends object = {},
-  OverrideProps extends object = {},
-> = OmitCommonProps<SourceProps, keyof OverrideProps> & OverrideProps;
+export type RightJoinProps<SourceProps extends object = {}, OverrideProps extends object = {}> = OmitCommonProps<
+  SourceProps,
+  keyof OverrideProps
+> &
+  OverrideProps;
 
 export type MergeWithAs<
   ComponentProps extends object,

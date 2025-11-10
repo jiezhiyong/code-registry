@@ -1,11 +1,13 @@
 import type { UseBreadcrumbsProps } from "./use-breadcrumbs";
 
-import { chain, warn } from "@/lib/base";
-import { forwardRef } from "@/lib/system";
 import { cloneElement, isValidElement, useMemo } from "react";
 
-import { ChevronRightIcon } from "@/lib/icons/chevron-right";
 import { useBreadcrumbs } from "./use-breadcrumbs";
+
+import { chain, warn } from "@/lib/base";
+import { ChevronRightIcon } from "@/lib/icons/chevron-right";
+import { EllipsisIcon } from "@/lib/icons/ellipsis";
+import { forwardRef } from "@/lib/system";
 
 export interface BreadcrumbsProps extends UseBreadcrumbsProps {}
 
@@ -57,7 +59,7 @@ const Breadcrumbs = forwardRef<"div", BreadcrumbsProps>((props, ref) => {
     if (itemsBeforeCollapse + itemsAfterCollapse >= childCount) {
       warn(
         `You have provided an invalid combination of props to the Breadcrumbs. itemsAfterCollapse={${itemsAfterCollapse}} + itemsBeforeCollapse={${itemsBeforeCollapse}} >= itemsCount={${childCount}}`,
-        "Breadcrumbs"
+        "Breadcrumbs",
       );
 
       return items;

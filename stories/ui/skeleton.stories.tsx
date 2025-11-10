@@ -1,11 +1,11 @@
 import type { SkeletonProps } from "@/registry/ui";
 import type { Meta } from "@storybook/nextjs-vite";
 
+import React from "react";
+
 import { skeleton } from "@/registry/ui";
 import { Button } from "@/registry/ui/button";
 import { Card } from "@/registry/ui/card";
-import React from "react";
-
 import { Skeleton } from "@/registry/ui";
 
 export default {

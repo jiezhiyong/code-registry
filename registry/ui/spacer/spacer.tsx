@@ -1,8 +1,8 @@
 import type { UseSpacerProps } from "./use-spacer";
 
-import { forwardRef } from "@/lib/system-rsc";
-
 import { useSpacer } from "./use-spacer";
+
+import { forwardRef } from "@/lib/system-rsc";
 
 export interface SpacerProps extends UseSpacerProps {}
 

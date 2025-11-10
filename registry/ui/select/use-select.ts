@@ -10,7 +10,13 @@ import type { CollectionChildren, ValidationError } from "@react-types/shared";
 import type { Key, ReactNode } from "react";
 import type { HiddenSelectProps } from "./hidden-select";
 import type { SelectSlots, SelectVariantProps } from "./theme";
-;
+
+import { useFocusRing } from "@react-aria/focus";
+import { useHover, usePress } from "@react-aria/interactions";
+import { usePreventScroll } from "@react-aria/overlays";
+import { useCallback, useEffect, useMemo, useRef } from "react";
+
+import { select } from "./theme";
 
 import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 import { useAriaButton } from "@/lib/hooks/use-aria-button";
@@ -19,11 +25,6 @@ import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
 import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useLabelPlacement, useProviderContext } from "@/lib/system";
 import { FormContext, useSlottedContext } from "@/registry/ui/form";
-import { useFocusRing } from "@react-aria/focus";
-import { useHover, usePress } from "@react-aria/interactions";
-import { usePreventScroll } from "@react-aria/overlays";
-import { useCallback, useEffect, useMemo, useRef } from "react";
-import { select } from "./theme";
 
 export type SelectedItemProps<T = object> = {
   /** A unique key for the item. */
@@ -151,10 +152,7 @@ interface SelectData {
 
 export const selectData = new WeakMap<MultiSelectState<any>, SelectData>();
 
-export type UseSelectProps<T> = Omit<
-  Props<T>,
-  keyof Omit<MultiSelectProps<T>, "onSelectionChange">
-> &
+export type UseSelectProps<T> = Omit<Props<T>, keyof Omit<MultiSelectProps<T>, "onSelectionChange">> &
   Omit<MultiSelectProps<T>, "onSelectionChange"> &
   SelectVariantProps & {
     /**
@@ -188,8 +186,7 @@ export function useSelect<T extends object>(originalProps: UseSelectProps<T>) {
 
   const [props, variantProps] = mapPropsVariants(originalProps, select.variantKeys);
 
-  const disableAnimation =
-    originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   const {
     ref,
@@ -332,11 +329,7 @@ export function useSelect<T extends object>(originalProps: UseSelectProps<T>) {
     isInvalid: isAriaInvalid,
     validationErrors,
     validationDetails,
-  } = useMultiSelect(
-    { ...props, disallowEmptySelection, isDisabled: originalProps.isDisabled },
-    state,
-    triggerRef,
-  );
+  } = useMultiSelect({ ...props, disallowEmptySelection, isDisabled: originalProps.isDisabled }, state, triggerRef);
 
   const handleClear = useCallback(() => {
     state.setSelectedKeys(new Set([]));
@@ -538,12 +531,7 @@ export function useSelect<T extends object>(originalProps: UseSelectProps<T>) {
       },
       ...mergeProps(slotsProps.scrollShadowProps, props),
     }),
-    [
-      slots.listboxWrapper,
-      classNames?.listboxWrapper,
-      slotsProps.scrollShadowProps,
-      maxListboxHeight,
-    ],
+    [slots.listboxWrapper, classNames?.listboxWrapper, slotsProps.scrollShadowProps, maxListboxHeight],
   );
 
   const getListboxProps = (props: any = {}) => {
@@ -555,9 +543,9 @@ export function useSelect<T extends object>(originalProps: UseSelectProps<T>) {
       isVirtualized: shouldVirtualize,
       virtualization: shouldVirtualize
         ? {
-          maxListboxHeight,
-          itemHeight,
-        }
+            maxListboxHeight,
+            itemHeight,
+          }
         : undefined,
       "data-slot": "listbox",
       className: slots.listbox({
@@ -588,18 +576,11 @@ export function useSelect<T extends object>(originalProps: UseSelectProps<T>) {
         offset:
           state.selectedItems && state.selectedItems.length > 0
             ? // forces the popover to update its position when the selected items change
-            state.selectedItems.length * 0.00000001 + (slotsProps.popoverProps?.offset || 0)
+              state.selectedItems.length * 0.00000001 + (slotsProps.popoverProps?.offset || 0)
             : slotsProps.popoverProps?.offset,
       } as PopoverProps;
     },
-    [
-      slots,
-      classNames?.popoverContent,
-      slotsProps.popoverProps,
-      triggerRef,
-      state,
-      state.selectedItems,
-    ],
+    [slots, classNames?.popoverContent, slotsProps.popoverProps, triggerRef, state, state.selectedItems],
   );
 
   const getSelectorIconProps = useCallback(

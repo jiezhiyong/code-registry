@@ -1,4 +1,4 @@
-import {fireEvent} from "@testing-library/react";
+import { fireEvent } from "@testing-library/react";
 
 /**
  * Triggers a simulated press event on the specified element.
@@ -6,9 +6,9 @@ import {fireEvent} from "@testing-library/react";
  * @param opts - Optional event options.
  */
 export function triggerPress(element: HTMLElement, opts = {}) {
-  fireEvent.mouseDown(element, {detail: 1, ...opts});
-  fireEvent.mouseUp(element, {detail: 1, ...opts});
-  fireEvent.click(element, {detail: 1, ...opts});
+  fireEvent.mouseDown(element, { detail: 1, ...opts });
+  fireEvent.mouseUp(element, { detail: 1, ...opts });
+  fireEvent.click(element, { detail: 1, ...opts });
 }
 
 /**
@@ -20,6 +20,6 @@ export function type(key: string) {
     throw new Error("No active element found.");
   }
 
-  fireEvent.keyDown(document.activeElement, {key});
-  fireEvent.keyUp(document.activeElement, {key});
+  fireEvent.keyDown(document.activeElement, { key });
+  fireEvent.keyUp(document.activeElement, { key });
 }

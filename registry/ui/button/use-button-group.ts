@@ -3,11 +3,13 @@ import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type { ButtonProps } from "./index";
 import type { ButtonGroupVariantProps } from "./theme";
 
+import { useCallback, useMemo } from "react";
+
+import { buttonGroup } from "./theme";
+
 import { objectToDeps } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { useCallback, useMemo } from "react";
-import { buttonGroup } from "./theme";
 interface Props extends HTMLHeroUIProps, ButtonGroupVariantProps {
   /**
    * Ref to the DOM node.
@@ -34,10 +36,7 @@ export type ContextType = {
 
 export type UseButtonGroupProps = Props &
   Partial<
-    Pick<
-      ButtonProps,
-      "size" | "color" | "radius" | "variant" | "isIconOnly" | "disableAnimation" | "disableRipple"
-    >
+    Pick<ButtonProps, "size" | "color" | "radius" | "variant" | "isIconOnly" | "disableAnimation" | "disableRipple">
   >;
 
 export function useButtonGroup(originalProps: UseButtonGroupProps) {
@@ -85,17 +84,7 @@ export function useButtonGroup(originalProps: UseButtonGroupProps) {
       disableRipple,
       fullWidth: !!originalProps?.fullWidth,
     }),
-    [
-      size,
-      color,
-      variant,
-      radius,
-      isDisabled,
-      isIconOnly,
-      disableAnimation,
-      disableRipple,
-      originalProps?.fullWidth,
-    ],
+    [size, color, variant, radius, isDisabled, isIconOnly, disableAnimation, disableRipple, originalProps?.fullWidth],
   );
 
   const getButtonGroupProps: PropGetter = useCallback(

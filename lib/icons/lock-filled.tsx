@@ -1,4 +1,4 @@
-import type {IconSvgProps} from "./types";
+import type { IconSvgProps } from "./types";
 
 export const LockFilledIcon = (props: IconSvgProps) => (
   <svg

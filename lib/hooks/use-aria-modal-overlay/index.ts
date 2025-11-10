@@ -5,9 +5,10 @@ import type { RefObject } from "react";
 import { ariaHideOutside, useOverlayFocusContain, usePreventScroll } from "@react-aria/overlays";
 import { mergeProps } from "@react-aria/utils";
 import { useEffect } from "react";
+
 import { useAriaOverlay } from "../use-aria-overlay";
 
-export interface UseAriaModalOverlayProps extends AriaModalOverlayProps { }
+export interface UseAriaModalOverlayProps extends AriaModalOverlayProps {}
 
 /**
  * Provides the behavior and accessibility implementation for a modal component.
@@ -21,8 +22,8 @@ export function useAriaModalOverlay(
   props: UseAriaModalOverlayProps & {
     shouldBlockScroll?: boolean;
   } = {
-      shouldBlockScroll: true,
-    },
+    shouldBlockScroll: true,
+  },
   state: OverlayTriggerState,
   ref: RefObject<HTMLElement>,
 ): ModalOverlayAria {

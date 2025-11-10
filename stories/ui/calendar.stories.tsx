@@ -1,15 +1,15 @@
 import type { CalendarProps, DateValue } from "@/registry/ui";
 import type { Meta } from "@storybook/nextjs-vite";
 
+import { getLocalTimeZone, isWeekend, parseDate, startOfMonth, startOfWeek, today } from "@internationalized/date";
+import { I18nProvider, useLocale } from "@react-aria/i18n";
+import React from "react";
+
 import { HeroUIProvider } from "@/lib/system";
 import { cn } from "@/lib/theme";
 import { calendar } from "@/registry/ui";
 import { Button, ButtonGroup } from "@/registry/ui/button";
 import { Radio, RadioGroup } from "@/registry/ui/radio";
-import { getLocalTimeZone, isWeekend, parseDate, startOfMonth, startOfWeek, today } from "@internationalized/date";
-import { I18nProvider, useLocale } from "@react-aria/i18n";
-import React from "react";
-
 import { Calendar } from "@/registry/ui";
 
 export default {
@@ -155,7 +155,7 @@ const PresetsTemplate = (args: CalendarProps) => {
           base: cn(
             "flex-none m-0 h-8 bg-content1 hover:bg-content2 items-center justify-between",
             "cursor-pointer rounded-full border-2 border-default-200/60",
-            "data-[selected=true]:border-primary"
+            "data-[selected=true]:border-primary",
           ),
           label: "text-tiny text-default-500",
           labelWrapper: "px-1 m-0",

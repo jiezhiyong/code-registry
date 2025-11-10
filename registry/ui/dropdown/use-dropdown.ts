@@ -6,13 +6,15 @@ import type { MenuTriggerType } from "@react-types/menu";
 import type { CollectionElement } from "@react-types/shared";
 import type { Ref } from "react";
 
-import { clsx, mergeProps } from "@/lib/base";
-import { mergeRefs } from "@/lib/react";
-import { useProviderContext } from "@/lib/system";
 import { useMenuTrigger } from "@react-aria/menu";
 import { useMenuTriggerState } from "@react-stately/menu";
 import { useMemo, useRef } from "react";
+
 import { dropdown } from "./theme";
+
+import { useProviderContext } from "@/lib/system";
+import { mergeRefs } from "@/lib/react";
+import { clsx, mergeProps } from "@/lib/base";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**
@@ -44,16 +46,14 @@ export type UseDropdownProps = Props & Omit<PopoverProps, "children" | "color" |
 
 const getMenuItem = <T extends object>(props: Partial<MenuProps<T>> | undefined, key: string) => {
   if (props) {
-    const mergedChildren = Array.isArray(props.children)
-      ? props.children
-      : [...(props?.items || [])];
+    const mergedChildren = Array.isArray(props.children) ? props.children : [...(props?.items || [])];
 
     if (mergedChildren && mergedChildren.length) {
       const item = ((mergedChildren as CollectionElement<T>[]).find((item) => {
         if (item && item.key === key) {
           return item;
         }
-      }) || {}) as { props: MenuProps; };
+      }) || {}) as { props: MenuProps };
 
       return item;
     }
@@ -62,11 +62,7 @@ const getMenuItem = <T extends object>(props: Partial<MenuProps<T>> | undefined,
   return null;
 };
 
-const getCloseOnSelect = <T extends object>(
-  props: Partial<MenuProps<T>> | undefined,
-  key: string,
-  item?: any,
-) => {
+const getCloseOnSelect = <T extends object>(props: Partial<MenuProps<T>> | undefined, key: string, item?: any) => {
   const mergedItem = item || getMenuItem(props, key);
 
   if (mergedItem && mergedItem.props && "closeOnSelect" in mergedItem.props) {
@@ -117,11 +113,7 @@ export function useDropdown(props: UseDropdownProps): UseDropdownReturn {
     },
   });
 
-  const { menuTriggerProps, menuProps } = useMenuTrigger<object>(
-    { type, trigger, isDisabled },
-    state,
-    menuTriggerRef,
-  );
+  const { menuTriggerProps, menuProps } = useMenuTrigger<object>({ type, trigger, isDisabled }, state, menuTriggerRef);
 
   const styles = useMemo(
     () =>
@@ -168,10 +160,7 @@ export function useDropdown(props: UseDropdownProps): UseDropdownReturn {
     return mergeProps(otherMenuTriggerProps, { isDisabled }, originalProps);
   };
 
-  const getMenuProps = <T extends object>(
-    props?: Partial<MenuProps<T>>,
-    _ref: Ref<any> | null | undefined = null,
-  ) => {
+  const getMenuProps = <T extends object>(props?: Partial<MenuProps<T>>, _ref: Ref<any> | null | undefined = null) => {
     return {
       ref: mergeRefs(_ref, menuRef),
       menuProps,

@@ -6,29 +6,21 @@ import type { AriaDateFieldProps, SpectrumDatePickerBase } from "@react-types/da
 import type { DOMAttributes, GroupDOMAttributes } from "@react-types/shared";
 import type { DateInputGroupProps } from "./date-input-group";
 import type { DateInputSlots, DateInputVariantProps } from "./theme";
-;
 
-import {
-  clsx,
-  dataAttr,
-  getGregorianYearOffset,
-  mergeProps,
-  objectToDeps,
-} from "@/lib/base";
-import { useDOMRef } from "@/lib/react";
-import { mapPropsVariants, useLabelPlacement, useProviderContext } from "@/lib/system";
-import { FormContext, useSlottedContext } from "@/registry/ui/form";
 import { CalendarDate, createCalendar, DateFormatter } from "@internationalized/date";
 import { useDateField as useAriaDateField } from "@react-aria/datepicker";
 import { useLocale } from "@react-aria/i18n";
 import { useDateFieldState } from "@react-stately/datepicker";
 import { useMemo } from "react";
+
 import { cn, dateInput } from "./theme";
 
-type HeroUIBaseProps<T extends DateValue> = Omit<
-  HTMLHeroUIProps<"div">,
-  keyof AriaDateFieldProps<T> | "onChange"
->;
+import { FormContext, useSlottedContext } from "@/registry/ui/form";
+import { mapPropsVariants, useLabelPlacement, useProviderContext } from "@/lib/system";
+import { clsx, dataAttr, getGregorianYearOffset, mergeProps, objectToDeps } from "@/lib/base";
+import { useDOMRef } from "@/lib/react";
+
+type HeroUIBaseProps<T extends DateValue> = Omit<HTMLHeroUIProps<"div">, keyof AriaDateFieldProps<T> | "onChange">;
 
 interface Props<T extends DateValue> extends HeroUIBaseProps<T> {
   /**
@@ -115,9 +107,7 @@ interface Props<T extends DateValue> extends HeroUIBaseProps<T> {
   classNames?: SlotsToClasses<DateInputSlots>;
 }
 
-export type UseDateInputProps<T extends DateValue> = Props<T> &
-  DateInputVariantProps &
-  AriaDateFieldProps<T>;
+export type UseDateInputProps<T extends DateValue> = Props<T> & DateInputVariantProps & AriaDateFieldProps<T>;
 
 export function useDateInput<T extends DateValue>(originalProps: UseDateInputProps<T>) {
   const globalContext = useProviderContext();
@@ -127,9 +117,7 @@ export function useDateInput<T extends DateValue>(originalProps: UseDateInputPro
 
   const { locale } = useLocale();
 
-  const calendarProp = createCalendar(
-    new DateFormatter(locale).resolvedOptions().calendar as CalendarIdentifier,
-  );
+  const calendarProp = createCalendar(new DateFormatter(locale).resolvedOptions().calendar as CalendarIdentifier);
 
   // by default, we are using gregorian calendar with possible years in [1900, 2099]
   // however, some locales such as `th-TH-u-ca-buddhist` using different calendar making the years out of bound

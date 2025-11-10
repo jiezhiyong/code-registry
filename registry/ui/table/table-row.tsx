@@ -2,13 +2,14 @@ import type { GridNode } from "@react-types/grid";
 import type { TableRowProps as BaseTableRowProps } from "./table-row-base";
 import type { ValuesType } from "./use-table";
 
-import { clsx, dataAttr, mergeProps } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
-import { forwardRef } from "@/lib/system";
 import { useFocusRing } from "@react-aria/focus";
 import { useHover } from "@react-aria/interactions";
 import { useTableRow } from "@react-aria/table";
 import { useMemo } from "react";
+
+import { forwardRef } from "@/lib/system";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { clsx, dataAttr, mergeProps } from "@/lib/base";
 
 // @internal
 export interface TableRowProps<T = object> extends Omit<BaseTableRowProps, "children"> {
@@ -73,7 +74,7 @@ const TableRow = forwardRef<"tr", TableRowProps>((props, ref) => {
         filterDOMProps(node.props, {
           enabled: shouldFilterDOMProps,
         }),
-        otherProps
+        otherProps,
       )}
       className={slots.tr?.({ class: trStyles })}
     >

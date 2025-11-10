@@ -41,15 +41,7 @@ const avatar = tv({
     ],
     fallback: [...translateCenterClasses, "flex", "items-center", "justify-center"],
     name: [...translateCenterClasses, "font-normal", "text-center", "text-inherit"],
-    icon: [
-      ...translateCenterClasses,
-      "flex",
-      "items-center",
-      "justify-center",
-      "text-inherit",
-      "w-full",
-      "h-full",
-    ],
+    icon: [...translateCenterClasses, "flex", "items-center", "justify-center", "text-inherit", "w-full", "h-full"],
   },
   variants: {
     size: {
@@ -214,4 +206,3 @@ export type AvatarVariantProps = VariantProps<typeof avatar>;
 export type AvatarSlots = keyof ReturnType<typeof avatar>;
 
 export { avatar, avatarGroup };
-

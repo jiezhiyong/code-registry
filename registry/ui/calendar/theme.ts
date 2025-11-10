@@ -463,4 +463,3 @@ export type CalendarVariantProps = VariantProps<typeof calendar>;
 export type CalendarSlots = keyof ReturnType<typeof calendar>;
 
 export { calendar };
-

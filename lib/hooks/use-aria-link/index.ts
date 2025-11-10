@@ -4,13 +4,7 @@ import type { RefObject } from "react";
 
 import { useFocusable } from "@react-aria/focus";
 import { usePress } from "@react-aria/interactions";
-import {
-  filterDOMProps,
-  handleLinkClick,
-  mergeProps,
-  useLinkProps,
-  useRouter,
-} from "@react-aria/utils";
+import { filterDOMProps, handleLinkClick, mergeProps, useLinkProps, useRouter } from "@react-aria/utils";
 
 export interface AriaLinkOptions extends AriaLinkProps {
   /** Indicates the element that represents the current item within a container or set of related elements. */
@@ -37,15 +31,7 @@ export interface LinkAria {
  * or application.
  */
 export function useAriaLink(props: AriaLinkOptions, ref: RefObject<FocusableElement>): LinkAria {
-  let {
-    elementType = "a",
-    onPress,
-    onPressStart,
-    onPressEnd,
-    onClick,
-    isDisabled,
-    ...otherProps
-  } = props;
+  let { elementType = "a", onPress, onPressStart, onPressEnd, onClick, isDisabled, ...otherProps } = props;
 
   let linkProps: DOMAttributes = {};
 

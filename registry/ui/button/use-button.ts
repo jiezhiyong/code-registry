@@ -7,17 +7,18 @@ import type { PressEvent } from "@react-aria/interactions";
 import type { MouseEventHandler, ReactNode } from "react";
 import type { ButtonVariantProps } from "./theme";
 
+import { useFocusRing } from "@react-aria/focus";
+import { useHover } from "@react-aria/interactions";
+import { cloneElement, isValidElement, useCallback, useMemo } from "react";
+
+import { button } from "./theme";
+import { useButtonGroupContext } from "./button-group-context";
+
 import { chain, dataAttr, mergeProps } from "@/lib/base";
 import { useAriaButton } from "@/lib/hooks/use-aria-button";
 import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { useProviderContext } from "@/lib/system";
 import { useRipple } from "@/registry/ui/ripple";
-import { useFocusRing } from "@react-aria/focus";
-import { useHover } from "@react-aria/interactions";
-import { cloneElement, isValidElement, useCallback, useMemo } from "react";
-import { button } from "./theme";
-
-import { useButtonGroupContext } from "./button-group-context";
 
 interface Props extends HTMLHeroUIProps<"button"> {
   /**
@@ -121,18 +122,7 @@ export function useButton(props: UseButtonProps) {
         isIconOnly,
         className,
       }),
-    [
-      size,
-      color,
-      variant,
-      radius,
-      fullWidth,
-      isDisabled,
-      isInGroup,
-      isIconOnly,
-      disableAnimation,
-      className,
-    ],
+    [size, color, variant, radius, fullWidth, isDisabled, isInGroup, isIconOnly, disableAnimation, className],
   );
 
   const { onPress: onRipplePressHandler, onClear: onClearRipple, ripples } = useRipple();
@@ -196,10 +186,10 @@ export function useButton(props: UseButtonProps) {
   const getIconClone = (icon: ReactNode) =>
     isValidElement(icon)
       ? cloneElement(icon, {
-        // @ts-ignore
-        "aria-hidden": true,
-        focusable: false,
-      })
+          // @ts-ignore
+          "aria-hidden": true,
+          focusable: false,
+        })
       : null;
 
   const startContent = getIconClone(startContentProp);

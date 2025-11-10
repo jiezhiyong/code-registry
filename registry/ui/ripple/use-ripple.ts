@@ -1,8 +1,9 @@
 import type { PressEvent } from "@react-types/shared";
 import type React from "react";
 
-import { getUniqueID } from "@/lib/base";
 import { useCallback, useState } from "react";
+
+import { getUniqueID } from "@/lib/base";
 
 export type RippleType = {
   key: React.Key;
@@ -11,7 +12,7 @@ export type RippleType = {
   size: number;
 };
 
-export interface UseRippleProps { }
+export interface UseRippleProps {}
 
 export function useRipple(props: UseRippleProps = {}) {
   const [ripples, setRipples] = useState<RippleType[]>([]);

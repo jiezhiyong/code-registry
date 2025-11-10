@@ -7,15 +7,16 @@ import type { AriaMenuProps } from "@react-types/menu";
 import type { ReactNode } from "react";
 import type { MenuItemProps } from "./menu-item";
 import type { MenuSlots, MenuVariantProps } from "./theme";
-;
 
-import { clsx } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
-import { useProviderContext } from "@/lib/system";
 import { useMenu as useAriaMenu } from "@react-aria/menu";
 import { useTreeState } from "@react-stately/tree";
 import { useMemo } from "react";
+
 import { menu } from "./theme";
+
+import { useProviderContext } from "@/lib/system";
+import { clsx } from "@/lib/base";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
 
 interface Props<T> {
   /**

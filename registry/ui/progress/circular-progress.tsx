@@ -1,8 +1,8 @@
 import type { UseCircularProgressProps } from "./use-circular-progress";
 
-import { forwardRef } from "@/lib/system";
-
 import { useCircularProgress } from "./use-circular-progress";
+
+import { forwardRef } from "@/lib/system";
 
 export interface CircularProgressProps extends UseCircularProgressProps {}
 

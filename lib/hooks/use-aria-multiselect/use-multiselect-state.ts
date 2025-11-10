@@ -25,16 +25,16 @@ import { useMultiSelectListState } from "./use-multiselect-list-state";
 
 export interface MultiSelectProps<T>
   extends CollectionBase<T>,
-  AsyncLoadable,
-  Omit<InputBase, "isReadOnly">,
-  DOMProps,
-  HelpTextProps,
-  Omit<Validation<T>, "validate">,
-  LabelableProps,
-  TextInputBase,
-  Omit<MultipleSelection, "none">,
-  FocusableProps,
-  OverlayTriggerProps {
+    AsyncLoadable,
+    Omit<InputBase, "isReadOnly">,
+    DOMProps,
+    HelpTextProps,
+    Omit<Validation<T>, "validate">,
+    LabelableProps,
+    TextInputBase,
+    Omit<MultipleSelection, "none">,
+    FocusableProps,
+    OverlayTriggerProps {
   /**
    * Whether the menu should automatically flip direction when space is limited.
    * @default true
@@ -53,10 +53,7 @@ export interface MultiSelectProps<T>
   hideEmptyContent?: boolean;
 }
 
-export interface MultiSelectState<T>
-  extends MultiSelectListState<T>,
-  MenuTriggerState,
-  FormValidationState {
+export interface MultiSelectState<T> extends MultiSelectListState<T>, MenuTriggerState, FormValidationState {
   /** Whether the select is currently focused. */
   isFocused: boolean;
   /** Sets whether the select is focused. */

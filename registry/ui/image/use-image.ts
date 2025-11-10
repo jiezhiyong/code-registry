@@ -3,14 +3,15 @@ import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type { SlotsToClasses } from "@/lib/theme";
 import type { ImgHTMLAttributes } from "react";
 import type { ImageSlots, ImageVariantProps } from "./theme";
-;
+
+import { useCallback, useMemo } from "react";
+
+import { image } from "./theme";
 
 import { clsx, dataAttr, objectToDeps } from "@/lib/base";
 import { useImage as useImageBase } from "@/lib/hooks/use-image";
 import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { useCallback, useMemo } from "react";
-import { image } from "./theme";
 type NativeImageProps = ImgHTMLAttributes<HTMLImageElement>;
 
 interface Props extends HTMLHeroUIProps<"img"> {
@@ -109,8 +110,7 @@ export function useImage(originalProps: UseImageProps) {
     shouldBypassImageLoad: as !== undefined,
   });
 
-  const disableAnimation =
-    originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   const isImgLoaded = imageStatus === "loaded" && !isLoadingProp;
   const isLoading = imageStatus === "loading" || isLoadingProp;
@@ -122,16 +122,8 @@ export function useImage(originalProps: UseImageProps) {
 
   const { w, h } = useMemo(() => {
     return {
-      w: props.width
-        ? typeof props.width === "number"
-          ? `${props.width}px`
-          : props.width
-        : "fit-content",
-      h: props.height
-        ? typeof props.height === "number"
-          ? `${props.height}px`
-          : props.height
-        : "auto",
+      w: props.width ? (typeof props.width === "number" ? `${props.width}px` : props.width) : "fit-content",
+      h: props.height ? (typeof props.height === "number" ? `${props.height}px` : props.height) : "auto",
     };
   }, [props?.width, props?.height]);
 
@@ -176,8 +168,8 @@ export function useImage(originalProps: UseImageProps) {
   const getWrapperProps = useCallback<PropGetter>(() => {
     const fallbackStyle = showFallback
       ? {
-        backgroundImage: `url(${fallbackSrc})`,
-      }
+          backgroundImage: `url(${fallbackSrc})`,
+        }
       : {};
 
     return {

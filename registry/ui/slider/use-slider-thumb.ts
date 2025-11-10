@@ -7,13 +7,14 @@ import type { RefObject } from "react";
 import type { SliderVariantProps } from "./theme";
 import type { SliderValue, UseSliderProps } from "./use-slider";
 
-import { dataAttr, mergeProps } from "@/lib/base";
-import { useDOMRef } from "@/lib/react";
 import { useFocusRing } from "@react-aria/focus";
 import { useNumberFormatter } from "@react-aria/i18n";
 import { useHover, usePress } from "@react-aria/interactions";
 import { useSliderThumb as useAriaSliderThumb } from "@react-aria/slider";
 import { useRef } from "react";
+
+import { useDOMRef } from "@/lib/react";
+import { dataAttr, mergeProps } from "@/lib/base";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**
@@ -113,8 +114,7 @@ export function useSliderThumb(props: UseSliderThumbProps) {
       "data-dragging": dataAttr(isDragging),
       "data-focused": dataAttr(isFocused),
       "data-focus-visible": dataAttr(isFocusVisible),
-      "aria-label":
-        props["aria-label"] || `Slider thumb ${index !== undefined ? `${index + 1}` : ""}`,
+      "aria-label": props["aria-label"] || `Slider thumb ${index !== undefined ? `${index + 1}` : ""}`,
       ...mergeProps(thumbProps, pressProps, hoverProps, otherProps),
       className,
       ...props,
@@ -130,10 +130,7 @@ export function useSliderThumb(props: UseSliderThumbProps) {
           : getTooltipValue(state.values, index ?? 0)
         : state.values[index ?? 0];
 
-    const value =
-      numberFormatter && typeof stateValue === "number"
-        ? numberFormatter.format(stateValue)
-        : stateValue;
+    const value = numberFormatter && typeof stateValue === "number" ? numberFormatter.format(stateValue) : stateValue;
 
     return {
       ...tooltipProps,

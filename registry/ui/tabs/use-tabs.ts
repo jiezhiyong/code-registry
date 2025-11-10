@@ -8,13 +8,15 @@ import type { CollectionChildren } from "@react-types/shared";
 import type { RefObject } from "react";
 import type { TabsReturnType, TabsSlots, TabsVariantProps } from "./theme";
 
-import { clsx, mergeProps, objectToDeps } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
-import { mapPropsVariants, useProviderContext } from "@/lib/system";
 import { useTabList } from "@react-aria/tabs";
 import { useTabListState } from "@react-stately/tabs";
 import { useCallback, useMemo } from "react";
+
 import { tabs } from "./theme";
+
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { clsx, mergeProps, objectToDeps } from "@/lib/base";
 
 export interface Props extends Omit<HTMLHeroUIProps, "children"> {
   /**
@@ -103,8 +105,7 @@ export function useTabs<T extends object>(originalProps: UseTabsProps<T>) {
 
   const domRef = useDOMRef(ref);
 
-  const disableAnimation =
-    originalProps?.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps?.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   const state = useTabListState<T>({
     children: children as CollectionChildren<T>,
@@ -167,8 +168,7 @@ export function useTabs<T extends object>(originalProps: UseTabsProps<T>) {
       "data-slot": "tabWrapper",
       className: slots.tabWrapper({ class: clsx(classNames?.tabWrapper, props?.className) }),
       "data-placement": placement,
-      "data-vertical":
-        isVertical || placement === "start" || placement === "end" ? "vertical" : "horizontal",
+      "data-vertical": isVertical || placement === "start" || placement === "end" ? "vertical" : "horizontal",
     }),
     [classNames, slots, placement, isVertical],
   );

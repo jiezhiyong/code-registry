@@ -22,8 +22,7 @@ const select = tv({
     mainWrapper: "w-full flex flex-col",
     trigger:
       "relative px-3 gap-3 w-full inline-flex flex-row items-center shadow-xs outline-solid outline-transparent tap-highlight-transparent",
-    innerWrapper:
-      "inline-flex h-fit w-[calc(100%_-theme(spacing.6))] min-h-4 items-center gap-1.5 box-border",
+    innerWrapper: "inline-flex h-fit w-[calc(100%_-theme(spacing.6))] min-h-4 items-center gap-1.5 box-border",
     selectorIcon: "absolute end-3 w-4 h-4",
     spinner: "absolute end-3",
     value: ["text-foreground-500", "font-normal", "w-full", "text-start"],
@@ -57,11 +56,7 @@ const select = tv({
   variants: {
     variant: {
       flat: {
-        trigger: [
-          "bg-default-100",
-          "data-[hover=true]:bg-default-200",
-          "group-data-[focus=true]:bg-default-200",
-        ],
+        trigger: ["bg-default-100", "data-[hover=true]:bg-default-200", "group-data-[focus=true]:bg-default-200"],
         clearButton: "mb-4",
       },
       faded: {
@@ -349,8 +344,7 @@ const select = tv({
       variant: "faded",
       color: "primary",
       class: {
-        trigger:
-          "data-[hover=true]:border-primary data-[focus=true]:border-primary data-[open=true]:border-primary",
+        trigger: "data-[hover=true]:border-primary data-[focus=true]:border-primary data-[open=true]:border-primary",
         label: "text-primary",
       },
     },
@@ -367,8 +361,7 @@ const select = tv({
       variant: "faded",
       color: "success",
       class: {
-        trigger:
-          "data-[hover=true]:border-success data-[focus=true]:border-success data-[open=true]:border-success",
+        trigger: "data-[hover=true]:border-success data-[focus=true]:border-success data-[open=true]:border-success",
         label: "text-success",
       },
     },
@@ -376,8 +369,7 @@ const select = tv({
       variant: "faded",
       color: "warning",
       class: {
-        trigger:
-          "data-[hover=true]:border-warning data-[focus=true]:border-warning data-[open=true]:border-warning",
+        trigger: "data-[hover=true]:border-warning data-[focus=true]:border-warning data-[open=true]:border-warning",
         label: "text-warning",
       },
     },
@@ -385,8 +377,7 @@ const select = tv({
       variant: "faded",
       color: "danger",
       class: {
-        trigger:
-          "data-[hover=true]:border-danger data-[focus=true]:border-danger data-[open=true]:border-danger",
+        trigger: "data-[hover=true]:border-danger data-[focus=true]:border-danger data-[open=true]:border-danger",
         label: "text-danger",
       },
     },
@@ -548,11 +539,7 @@ const select = tv({
       isInvalid: true,
       variant: "flat",
       class: {
-        trigger: [
-          "bg-danger-50",
-          "data-[hover=true]:bg-danger-100",
-          "group-data-[focus=true]:bg-danger-50",
-        ],
+        trigger: ["bg-danger-50", "data-[hover=true]:bg-danger-100", "group-data-[focus=true]:bg-danger-50"],
       },
     },
     {
@@ -620,9 +607,7 @@ const select = tv({
       isMultiline: false,
       size: "sm",
       class: {
-        label: [
-          "group-data-[filled=true]:-translate-y-[calc(50%_+_var(--heroui-font-size-tiny)/2_-_8px)]",
-        ],
+        label: ["group-data-[filled=true]:-translate-y-[calc(50%_+_var(--heroui-font-size-tiny)/2_-_8px)]"],
         innerWrapper: "group-data-[has-label=true]:pt-4",
       },
     },
@@ -631,9 +616,7 @@ const select = tv({
       isMultiline: false,
       size: "md",
       class: {
-        label: [
-          "group-data-[filled=true]:-translate-y-[calc(50%_+_var(--heroui-font-size-small)/2_-_6px)]",
-        ],
+        label: ["group-data-[filled=true]:-translate-y-[calc(50%_+_var(--heroui-font-size-small)/2_-_6px)]"],
         innerWrapper: "group-data-[has-label=true]:pt-4",
       },
     },
@@ -691,9 +674,7 @@ const select = tv({
       isMultiline: false,
       size: "sm",
       class: {
-        label: [
-          "group-data-[filled=true]:-translate-y-[calc(50%_+_var(--heroui-font-size-tiny)/2_-_5px)]",
-        ],
+        label: ["group-data-[filled=true]:-translate-y-[calc(50%_+_var(--heroui-font-size-tiny)/2_-_5px)]"],
       },
     },
     {
@@ -702,9 +683,7 @@ const select = tv({
       isMultiline: false,
       size: "md",
       class: {
-        label: [
-          "group-data-[filled=true]:-translate-y-[calc(50%_+_var(--heroui-font-size-small)/2_-_3.5px)]",
-        ],
+        label: ["group-data-[filled=true]:-translate-y-[calc(50%_+_var(--heroui-font-size-small)/2_-_3.5px)]"],
       },
     },
     {
@@ -846,4 +825,3 @@ export type SelectVariantProps = VariantProps<typeof select>;
 export type SelectSlots = keyof ReturnType<typeof select>;
 
 export { select };
-

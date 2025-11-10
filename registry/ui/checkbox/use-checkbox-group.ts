@@ -6,16 +6,17 @@ import type { AriaCheckboxGroupProps } from "@react-types/checkbox";
 import type { Orientation } from "@react-types/shared";
 import type { CheckboxProps } from "./index";
 import type { CheckboxGroupSlots } from "./theme";
-;
+
+import { useCheckboxGroup as useReactAriaCheckboxGroup } from "@react-aria/checkbox";
+import { useCheckboxGroupState } from "@react-stately/checkbox";
+import { useCallback, useMemo } from "react";
+
+import { checkboxGroup } from "./theme";
 
 import { chain, clsx, mergeProps, safeAriaLabel } from "@/lib/base";
 import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { useProviderContext } from "@/lib/system";
 import { FormContext, useSlottedContext } from "@/registry/ui/form";
-import { useCheckboxGroup as useReactAriaCheckboxGroup } from "@react-aria/checkbox";
-import { useCheckboxGroupState } from "@react-stately/checkbox";
-import { useCallback, useMemo } from "react";
-import { checkboxGroup } from "./theme";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**
@@ -51,12 +52,7 @@ interface Props extends HTMLHeroUIProps<"div"> {
 
 export type UseCheckboxGroupProps = Omit<Props, "onChange"> &
   AriaCheckboxGroupProps &
-  Partial<
-    Pick<
-      CheckboxProps,
-      "color" | "size" | "radius" | "lineThrough" | "isDisabled" | "disableAnimation"
-    >
-  >;
+  Partial<Pick<CheckboxProps, "color" | "size" | "radius" | "lineThrough" | "isDisabled" | "disableAnimation">>;
 
 export type ContextType = {
   groupState: CheckboxGroupState;
@@ -138,14 +134,8 @@ export function useCheckboxGroup(props: UseCheckboxGroupProps) {
   ]);
 
   const groupState = useCheckboxGroupState(checkboxGroupProps);
-  const {
-    labelProps,
-    groupProps,
-    descriptionProps,
-    errorMessageProps,
-    validationErrors,
-    validationDetails,
-  } = useReactAriaCheckboxGroup(checkboxGroupProps, groupState);
+  const { labelProps, groupProps, descriptionProps, errorMessageProps, validationErrors, validationDetails } =
+    useReactAriaCheckboxGroup(checkboxGroupProps, groupState);
 
   const context = useMemo<ContextType>(
     () => ({

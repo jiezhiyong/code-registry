@@ -1,8 +1,8 @@
 import type { UseSpinnerProps } from "./use-spinner";
 
-import { forwardRef } from "@/lib/system-rsc";
-
 import { useSpinner } from "./use-spinner";
+
+import { forwardRef } from "@/lib/system-rsc";
 
 export interface SpinnerProps extends UseSpinnerProps {}
 

@@ -4,14 +4,15 @@ import type { Key } from "react";
 import type { MenuItemProps } from "./menu-item";
 import type { MenuSectionBaseProps } from "./menu-section-base";
 
-import { clsx, mergeProps } from "@/lib/base";
-import { forwardRef } from "@/lib/system";
-import { Divider } from "@/registry/ui/divider";
 import { useMenuSection } from "@react-aria/menu";
 import { useMemo } from "react";
-import { menuSection } from "./theme";
 
+import { menuSection } from "./theme";
 import MenuItem from "./menu-item";
+
+import { Divider } from "@/registry/ui/divider";
+import { forwardRef } from "@/lib/system";
+import { clsx, mergeProps } from "@/lib/base";
 
 export interface MenuSectionProps<T extends object = object> extends MenuSectionBaseProps {
   item: Node<T>;
@@ -66,7 +67,7 @@ const MenuSection = forwardRef<"li", MenuSectionProps>(
       title,
       ...otherProps
     },
-    _
+    _,
   ) => {
     const Component = as || "li";
 
@@ -130,7 +131,7 @@ const MenuSection = forwardRef<"li", MenuSectionProps>(
         </ul>
       </Component>
     );
-  }
+  },
 );
 
 MenuSection.displayName = "HeroUI.MenuSection";

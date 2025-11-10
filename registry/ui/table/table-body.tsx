@@ -1,15 +1,16 @@
 import type { HTMLHeroUIProps } from "@/lib/system";
 import type { ValuesType } from "./use-table";
 
-import { clsx, dataAttr, mergeProps } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
-import { forwardRef } from "@/lib/system";
 import { useTableRowGroup } from "@react-aria/table";
 import { useMemo } from "react";
 
 import TableCell from "./table-cell";
 import TableCheckboxCell from "./table-checkbox-cell";
 import TableRow from "./table-row";
+
+import { forwardRef } from "@/lib/system";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { clsx, dataAttr, mergeProps } from "@/lib/base";
 
 // @internal
 export interface TableBodyProps extends HTMLHeroUIProps<"tbody"> {
@@ -86,7 +87,7 @@ const TableBody = forwardRef<"tbody", TableBodyProps>((props, ref) => {
               slots={slots}
               state={state}
             />
-          )
+          ),
         )}
       </TableRow>
     ));
@@ -134,7 +135,7 @@ const TableBody = forwardRef<"tbody", TableBodyProps>((props, ref) => {
         filterDOMProps(bodyProps, {
           enabled: shouldFilterDOMProps,
         }),
-        otherProps
+        otherProps,
       )}
       className={slots.tbody?.({ class: tbodyStyles })}
       data-empty={dataAttr(collection.size === 0)}

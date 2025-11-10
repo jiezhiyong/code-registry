@@ -18,4 +18,3 @@ export { usePaginationItem } from "./use-pagination-item";
 
 // export component
 export { Pagination, PaginationCursor, PaginationItem };
-

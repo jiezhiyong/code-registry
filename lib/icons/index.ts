@@ -41,4 +41,3 @@ export * from "./success";
 export * from "./sun";
 export * from "./sun-filled";
 export * from "./warning";
-

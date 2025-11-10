@@ -10,8 +10,8 @@ export function shouldIgnoreReactWarning(spy: jest.SpyInstance): boolean {
   return false;
 }
 
-const errorSpy = jest.spyOn(console, "error").mockImplementation(() => { });
-const warnSpy = jest.spyOn(console, "warn").mockImplementation(() => { });
+const errorSpy = jest.spyOn(console, "error").mockImplementation(() => {});
+const warnSpy = jest.spyOn(console, "warn").mockImplementation(() => {});
 const spy = errorSpy;
 
 export { errorSpy, spy, warnSpy };

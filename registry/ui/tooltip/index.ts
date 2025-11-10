@@ -9,4 +9,3 @@ export { useTooltip } from "./use-tooltip";
 
 // export component
 export { Tooltip };
-

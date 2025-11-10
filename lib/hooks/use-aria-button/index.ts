@@ -51,10 +51,7 @@ export function useAriaButton(
   props: AriaButtonProps<"span">,
   ref: RefObject<HTMLSpanElement>,
 ): ButtonAria<HTMLAttributes<HTMLSpanElement>>;
-export function useAriaButton(
-  props: AriaButtonProps<ElementType>,
-  ref: RefObject<Element>,
-): ButtonAria<DOMAttributes>;
+export function useAriaButton(props: AriaButtonProps<ElementType>, ref: RefObject<Element>): ButtonAria<DOMAttributes>;
 /**
  * Provides the behavior and accessibility implementation for a button component. Handles mouse, keyboard, and touch interactions,
  * focus behavior, and ARIA props for both native button elements and custom element types.
@@ -121,11 +118,7 @@ export function useAriaButton(
   if (allowFocusWhenDisabled) {
     focusableProps.tabIndex = isDisabled ? -1 : focusableProps.tabIndex;
   }
-  let buttonProps = mergeProps(
-    focusableProps,
-    pressProps,
-    filterDOMProps(props, { labelable: true }),
-  );
+  let buttonProps = mergeProps(focusableProps, pressProps, filterDOMProps(props, { labelable: true }));
 
   return {
     isPressed, // Used to indicate press state for visual

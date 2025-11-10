@@ -1,21 +1,18 @@
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type {
-  SlotsToClasses,
-} from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme";
 import type { AriaProgressBarProps } from "@react-types/progress";
-import type {
-  CircularProgressSlots,
-  CircularProgressVariantProps,
-} from "./theme";
+import type { CircularProgressSlots, CircularProgressVariantProps } from "./theme";
+
+import { useProgressBar as useAriaProgress } from "@react-aria/progress";
+import { useCallback, useMemo } from "react";
+
+import { circularProgress } from "./theme";
 
 import { clampPercentage, clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 import { useIsMounted } from "@/lib/hooks/use-is-mounted";
 import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { useProgressBar as useAriaProgress } from "@react-aria/progress";
-import { useCallback, useMemo } from "react";
-import { circularProgress } from "./theme";
 
 export interface Props extends HTMLHeroUIProps<"div"> {
   /**
@@ -88,8 +85,7 @@ export function useCircularProgress(originalProps: UseCircularProgressProps) {
 
   // default isIndeterminate to true
   const isIndeterminate = (originalProps.isIndeterminate ?? true) && value === undefined;
-  const disableAnimation =
-    originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   const { progressBarProps, labelProps } = useAriaProgress({
     id,
@@ -144,15 +140,7 @@ export function useCircularProgress(originalProps: UseCircularProgressProps) {
       className: slots.base({ class: baseStyles }),
       ...mergeProps(progressBarProps, otherProps, props),
     }),
-    [
-      domRef,
-      slots,
-      isIndeterminate,
-      originalProps.isDisabled,
-      baseStyles,
-      progressBarProps,
-      otherProps,
-    ],
+    [domRef, slots, isIndeterminate, originalProps.isDisabled, baseStyles, progressBarProps, otherProps],
   );
 
   const getLabelProps = useCallback<PropGetter>(

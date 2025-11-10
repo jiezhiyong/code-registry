@@ -22,4 +22,3 @@ export { ModalProvider, useModalContext } from "./modal-context";
 
 // export components
 export { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader };
-

@@ -1,8 +1,8 @@
 import type { UseDividerProps } from "./use-divider";
 
-import { forwardRef } from "@/lib/system-rsc";
-
 import { useDivider } from "./use-divider";
+
+import { forwardRef } from "@/lib/system-rsc";
 
 export interface DividerProps extends Omit<UseDividerProps, "children"> {}
 

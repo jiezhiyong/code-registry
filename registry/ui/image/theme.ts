@@ -154,4 +154,3 @@ export type ImageVariantProps = VariantProps<typeof image>;
 export type ImageSlots = keyof ReturnType<typeof image>;
 
 export { image };
-

@@ -1,14 +1,8 @@
 import { useEffect, useRef } from "react";
+
 import { capitalize } from "../../base";
 
-export type ScrollOverflowVisibility =
-  | "auto"
-  | "top"
-  | "bottom"
-  | "left"
-  | "right"
-  | "both"
-  | "none";
+export type ScrollOverflowVisibility = "auto" | "top" | "bottom" | "left" | "right" | "both" | "none";
 
 export type ScrollOverflowEdgeCheck = "all" | "top" | "bottom" | "left" | "right";
 
@@ -96,8 +90,7 @@ export function useDataScrollOverflow(props: UseDataScrollOverflowProps = {}) {
           el.removeAttribute(`data-${prefix}-${suffix}-scroll`);
         }
       } else {
-        const next =
-          hasBefore && hasAfter ? "both" : hasBefore ? prefix : hasAfter ? suffix : "none";
+        const next = hasBefore && hasAfter ? "both" : hasBefore ? prefix : hasAfter ? suffix : "none";
 
         if (next !== visibleRef.current) {
           onVisibilityChange?.(next as ScrollOverflowVisibility);
@@ -115,9 +108,7 @@ export function useDataScrollOverflow(props: UseDataScrollOverflowProps = {}) {
       const listbox = el.querySelector('ul[data-slot="list"]');
 
       // in virtualized listbox, el.scrollHeight is the height of the visible listbox
-      const scrollHeight = +(
-        listbox?.getAttribute("data-virtual-scroll-height") ?? el.scrollHeight
-      );
+      const scrollHeight = +(listbox?.getAttribute("data-virtual-scroll-height") ?? el.scrollHeight);
 
       // in virtualized listbox, el.scrollTop is always 0
       const scrollTop = +(listbox?.getAttribute("data-virtual-scroll-top") ?? el.scrollTop);

@@ -2,7 +2,6 @@ import type { DividerProps } from "@/registry/ui";
 import type { Meta } from "@storybook/nextjs-vite";
 
 import { divider } from "@/registry/ui";
-
 import { Divider } from "@/registry/ui";
 
 export default {

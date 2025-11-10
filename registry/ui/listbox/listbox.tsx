@@ -1,13 +1,13 @@
 import type { ForwardedRef, ReactElement } from "react";
 import type { UseListboxProps, UseListboxReturn } from "./use-listbox";
 
-import { mergeProps } from "@/lib/base";
-import { forwardRef } from "@/lib/system";
-
 import ListboxItem from "./listbox-item";
 import ListboxSection from "./listbox-section";
 import { useListbox } from "./use-listbox";
 import VirtualizedListbox from "./virtualized-listbox";
+
+import { forwardRef } from "@/lib/system";
+import { mergeProps } from "@/lib/base";
 
 export interface VirtualizationProps {
   maxListboxHeight: number;
@@ -23,7 +23,7 @@ export type ListboxProps<T extends object = object> = Props<T>;
 
 const Listbox = forwardRef(function Listbox<T extends object>(
   props: ListboxProps<T>,
-  ref: ForwardedRef<HTMLUListElement>
+  ref: ForwardedRef<HTMLUListElement>,
 ) {
   const { isVirtualized, ...restProps } = props;
 

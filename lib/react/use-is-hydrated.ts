@@ -20,7 +20,7 @@ import * as React from "react";
  */
 
 export function useIsHydrated() {
-  const subscribe = () => () => { };
+  const subscribe = () => () => {};
 
   return React.useSyncExternalStore(
     subscribe,

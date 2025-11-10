@@ -11,7 +11,7 @@ export function mockImage() {
       // eslint-disable-next-line no-console
       console.log("called");
     };
-    onerror: VoidFunction = () => { };
+    onerror: VoidFunction = () => {};
     src = "";
     alt = "";
     naturalWidth = 100;

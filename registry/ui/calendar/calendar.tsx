@@ -2,11 +2,11 @@ import type { DateValue } from "@internationalized/date";
 import type { ForwardedRef, ReactElement } from "react";
 import type { UseCalendarProps } from "./use-calendar";
 
-import { forwardRef } from "@/lib/system";
-
 import { CalendarBase } from "./calendar-base";
 import { CalendarProvider } from "./calendar-context";
 import { useCalendar } from "./use-calendar";
+
+import { forwardRef } from "@/lib/system";
 
 interface Props<T extends DateValue> extends Omit<UseCalendarProps<T>, "isHeaderWrapperExpanded"> {}
 
@@ -14,7 +14,7 @@ export type CalendarProps<T extends DateValue = DateValue> = Props<T>;
 
 const Calendar = forwardRef(function Calendar<T extends DateValue>(
   props: CalendarProps<T>,
-  ref: ForwardedRef<HTMLDivElement>
+  ref: ForwardedRef<HTMLDivElement>,
 ) {
   const { context, getBaseCalendarProps } = useCalendar<T>({ ...props, ref });
 

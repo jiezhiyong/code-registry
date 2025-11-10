@@ -1,9 +1,9 @@
 import type { UseRadioGroupProps } from "./use-radio-group";
 
-import { forwardRef } from "@/lib/system";
-
 import { RadioGroupProvider } from "./radio-group-context";
 import { useRadioGroup } from "./use-radio-group";
+
+import { forwardRef } from "@/lib/system";
 
 export interface RadioGroupProps extends Omit<UseRadioGroupProps, "defaultChecked"> {}
 

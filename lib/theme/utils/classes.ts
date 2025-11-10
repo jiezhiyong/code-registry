@@ -45,13 +45,7 @@ export const ringClasses = [
 /**
  * This classes centers the element by using absolute positioning.
  */
-export const translateCenterClasses = [
-  "absolute",
-  "top-1/2",
-  "left-1/2",
-  "-translate-x-1/2",
-  "-translate-y-1/2",
-];
+export const translateCenterClasses = ["absolute", "top-1/2", "left-1/2", "-translate-x-1/2", "-translate-y-1/2"];
 
 export const absoluteFullClasses = ["absolute", "inset-0"];
 
@@ -62,9 +56,7 @@ export const absoluteFullClasses = ["absolute", "inset-0"];
 export const collapseAdjacentVariantBorders = {
   default: ["[&+.border-medium.border-default]:ms-[calc(var(--heroui-border-width-medium)*-1)]"],
   primary: ["[&+.border-medium.border-primary]:ms-[calc(var(--heroui-border-width-medium)*-1)]"],
-  secondary: [
-    "[&+.border-medium.border-secondary]:ms-[calc(var(--heroui-border-width-medium)*-1)]",
-  ],
+  secondary: ["[&+.border-medium.border-secondary]:ms-[calc(var(--heroui-border-width-medium)*-1)]"],
   success: ["[&+.border-medium.border-success]:ms-[calc(var(--heroui-border-width-medium)*-1)]"],
   warning: ["[&+.border-medium.border-warning]:ms-[calc(var(--heroui-border-width-medium)*-1)]"],
   danger: ["[&+.border-medium.border-danger]:ms-[calc(var(--heroui-border-width-medium)*-1)]"],

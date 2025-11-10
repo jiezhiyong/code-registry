@@ -4,15 +4,16 @@ import type { SlotsToClasses } from "@/lib/theme";
 import type { PressEvent } from "@react-types/shared";
 import type { ReactNode } from "react";
 import type { ChipSlots, ChipVariantProps } from "./theme";
-;
 
-import { clsx, mergeProps, objectToDeps } from "@/lib/base";
-import { useDOMRef } from "@/lib/react";
-import { mapPropsVariants } from "@/lib/system";
 import { useFocusRing } from "@react-aria/focus";
 import { usePress } from "@react-aria/interactions";
 import { cloneElement, isValidElement, useMemo } from "react";
+
 import { chip } from "./theme";
+
+import { mapPropsVariants } from "@/lib/system";
+import { useDOMRef } from "@/lib/react";
+import { clsx, mergeProps, objectToDeps } from "@/lib/base";
 
 export interface UseChipProps extends HTMLHeroUIProps, ChipVariantProps {
   /**
@@ -62,18 +63,7 @@ export interface UseChipProps extends HTMLHeroUIProps, ChipVariantProps {
 export function useChip(originalProps: UseChipProps) {
   const [props, variantProps] = mapPropsVariants(originalProps, chip.variantKeys);
 
-  const {
-    ref,
-    as,
-    children,
-    avatar,
-    startContent,
-    endContent,
-    onClose,
-    classNames,
-    className,
-    ...otherProps
-  } = props;
+  const { ref, as, children, avatar, startContent, endContent, onClose, classNames, className, ...otherProps } = props;
 
   const Component = as || "div";
 
@@ -86,10 +76,7 @@ export function useChip(originalProps: UseChipProps) {
 
   const { focusProps: closeFocusProps, isFocusVisible: isCloseButtonFocusVisible } = useFocusRing();
 
-  const isOneChar = useMemo(
-    () => typeof children === "string" && children?.length === 1,
-    [children],
-  );
+  const isOneChar = useMemo(() => typeof children === "string" && children?.length === 1, [children]);
 
   const hasStartContent = useMemo(() => !!avatar || !!startContent, [avatar, startContent]);
   const hasEndContent = useMemo(() => !!endContent || isCloseable, [endContent, isCloseable]);
@@ -104,14 +91,7 @@ export function useChip(originalProps: UseChipProps) {
         isCloseable,
         isCloseButtonFocusVisible,
       }),
-    [
-      objectToDeps(variantProps),
-      isCloseButtonFocusVisible,
-      hasStartContent,
-      hasEndContent,
-      isOneChar,
-      isCloseable,
-    ],
+    [objectToDeps(variantProps), isCloseButtonFocusVisible, hasStartContent, hasEndContent, isOneChar, isCloseable],
   );
 
   const { pressProps: closePressProps } = usePress({
@@ -149,9 +129,9 @@ export function useChip(originalProps: UseChipProps) {
   const getContentClone = (content: ReactNode) =>
     isValidElement(content)
       ? cloneElement(content, {
-        // @ts-ignore
-        className: clsx("max-h-[80%]", content.props.className),
-      })
+          // @ts-ignore
+          className: clsx("max-h-[80%]", content.props.className),
+        })
       : null;
 
   return {

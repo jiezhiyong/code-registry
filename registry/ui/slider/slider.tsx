@@ -1,10 +1,10 @@
 import type { UseSliderProps } from "./use-slider";
 
-import { renderFn } from "@/lib/react";
-import { forwardRef } from "@/lib/system";
-
 import Thumb from "./slider-thumb";
 import { useSlider } from "./use-slider";
+
+import { renderFn } from "@/lib/react";
+import { forwardRef } from "@/lib/system";
 
 export interface SliderProps extends Omit<UseSliderProps, "isVertical" | "hasMarks" | "hasSingleThumb"> {}
 

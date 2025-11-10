@@ -6,17 +6,18 @@ import type { OverlayTriggerProps } from "@react-stately/overlays";
 import type { HTMLMotionProps } from "framer-motion";
 import type { ReactNode } from "react";
 import type { ModalSlots, ModalVariantProps } from "./theme";
-;
+
+import { useFocusRing } from "@react-aria/focus";
+import { useOverlayTriggerState } from "@react-stately/overlays";
+import { useCallback, useId, useMemo, useRef, useState } from "react";
+
+import { modal } from "./theme";
 
 import { clsx, dataAttr, mergeProps, mergeRefs, objectToDeps } from "@/lib/base";
 import { useAriaButton } from "@/lib/hooks/use-aria-button";
 import { useAriaModalOverlay } from "@/lib/hooks/use-aria-modal-overlay";
 import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { useFocusRing } from "@react-aria/focus";
-import { useOverlayTriggerState } from "@react-stately/overlays";
-import { useCallback, useId, useMemo, useRef, useState } from "react";
-import { modal } from "./theme";
 
 interface Props extends HTMLHeroUIProps<"section"> {
   /**
@@ -117,8 +118,7 @@ export function useModal(originalProps: UseModalProps) {
   const [headerMounted, setHeaderMounted] = useState(false);
   const [bodyMounted, setBodyMounted] = useState(false);
 
-  const disableAnimation =
-    originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   const dialogId = useId();
   const headerId = useId();
@@ -146,8 +146,7 @@ export function useModal(originalProps: UseModalProps) {
   );
 
   const { buttonProps: closeButtonProps } = useAriaButton({ onPress: state.close }, closeButtonRef);
-  const { isFocusVisible: isCloseButtonFocusVisible, focusProps: closeButtonFocusProps } =
-    useFocusRing();
+  const { isFocusVisible: isCloseButtonFocusVisible, focusProps: closeButtonFocusProps } = useFocusRing();
 
   const baseStyles = clsx(classNames?.base, className);
 

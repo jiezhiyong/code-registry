@@ -317,4 +317,3 @@ export type SpinnerVariantProps = VariantProps<typeof spinner>;
 export type SpinnerSlots = keyof ReturnType<typeof spinner>;
 
 export { spinner };
-

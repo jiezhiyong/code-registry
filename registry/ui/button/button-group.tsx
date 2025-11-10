@@ -1,9 +1,9 @@
 import type { UseButtonGroupProps } from "./use-button-group";
 
-import { forwardRef } from "@/lib/system";
-
 import { ButtonGroupProvider } from "./button-group-context";
 import { useButtonGroup } from "./use-button-group";
+
+import { forwardRef } from "@/lib/system";
 
 export interface ButtonGroupProps extends UseButtonGroupProps {}
 

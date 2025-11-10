@@ -1,12 +1,13 @@
 import type { UseInputProps } from "./use-input";
 
-import { dataAttr, mergeProps } from "@/lib/base";
-import { forwardRef } from "@/lib/system";
 import { useMemo, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 
-import { CloseFilledIcon } from "@/lib/icons/close-filled";
 import { useInput } from "./use-input";
+
+import { dataAttr, mergeProps } from "@/lib/base";
+import { forwardRef } from "@/lib/system";
+import { CloseFilledIcon } from "@/lib/icons/close-filled";
 
 type NativeTextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 type TextareaAutoSizeStyle = Omit<NonNullable<NativeTextareaProps["style"]>, "maxHeight" | "minHeight"> & {
@@ -62,7 +63,7 @@ const Textarea = forwardRef<"textarea", TextAreaProps>(
       onHeightChange,
       ...otherProps
     },
-    ref
+    ref,
   ) => {
     const {
       Component,
@@ -163,7 +164,7 @@ const Textarea = forwardRef<"textarea", TextAreaProps>(
         ) : null}
       </Component>
     );
-  }
+  },
 );
 
 Textarea.displayName = "HeroUI.Textarea";

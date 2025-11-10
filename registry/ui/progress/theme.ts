@@ -280,4 +280,3 @@ export type CircularProgressVariantProps = VariantProps<typeof circularProgress>
 export type CircularProgressSlots = keyof ReturnType<typeof circularProgress>;
 
 export { circularProgress, progress };
-

@@ -1,10 +1,10 @@
 import type { TooltipProps } from "@/registry/ui";
 import type { Meta } from "@storybook/nextjs-vite";
 
-import { popover } from "@/registry/ui";
-import { Button } from "@/registry/ui/button";
 import React from "react";
 
+import { popover } from "@/registry/ui";
+import { Button } from "@/registry/ui/button";
 import { Tooltip } from "@/registry/ui";
 
 export default {

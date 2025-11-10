@@ -11,4 +11,3 @@ export { useListbox } from "./use-listbox";
 export { default as ListboxItem } from "./listbox-item-base";
 export { default as ListboxSection } from "./listbox-section-base";
 export { Listbox };
-

@@ -14,11 +14,7 @@ export const ThemeProps = {
 
 // type definition for Theme using system theme names or custom theme names
 export type customTheme = string;
-export type Theme =
-  | typeof ThemeProps.LIGHT
-  | typeof ThemeProps.DARK
-  | typeof ThemeProps.SYSTEM
-  | customTheme;
+export type Theme = typeof ThemeProps.LIGHT | typeof ThemeProps.DARK | typeof ThemeProps.SYSTEM | customTheme;
 
 /**
  * React hook to switch between themes
@@ -55,11 +51,7 @@ export function useTheme(defaultTheme: Theme = ThemeProps.SYSTEM) {
 
       localStorage.setItem(ThemeProps.KEY, newTheme);
 
-      document.documentElement.classList.remove(
-        ThemeProps.LIGHT,
-        ThemeProps.DARK,
-        ThemeProps.SYSTEM,
-      );
+      document.documentElement.classList.remove(ThemeProps.LIGHT, ThemeProps.DARK, ThemeProps.SYSTEM);
 
       document.documentElement.classList.add(targetTheme);
 

@@ -1,9 +1,6 @@
 import type { DateValue, RangeCalendarProps, RangeValue } from "@/registry/ui";
 import type { Meta } from "@storybook/nextjs-vite";
 
-import { calendar, cn } from "@/registry/ui";
-import { Button, ButtonGroup } from "@/registry/ui/button";
-import { Radio, RadioGroup } from "@/registry/ui/radio";
 import {
   CalendarDate,
   endOfMonth,
@@ -17,6 +14,9 @@ import {
 import { I18nProvider, useLocale } from "@react-aria/i18n";
 import React from "react";
 
+import { calendar, cn } from "@/registry/ui";
+import { Button, ButtonGroup } from "@/registry/ui/button";
+import { Radio, RadioGroup } from "@/registry/ui/radio";
 import { RangeCalendar } from "@/registry/ui";
 
 export default {
@@ -186,7 +186,7 @@ const PresetsTemplate = (args: RangeCalendarProps) => {
           base: cn(
             "flex-none m-0 h-8 bg-content1 hover:bg-content2 items-center justify-between",
             "cursor-pointer rounded-full border-2 border-default-200/60",
-            "data-[selected=true]:border-primary"
+            "data-[selected=true]:border-primary",
           ),
           label: "text-tiny text-default-500",
           labelWrapper: "px-1 m-0",
@@ -255,7 +255,7 @@ const PresetsTemplate = (args: RangeCalendarProps) => {
             </Button>
             <Button
               onPress={() => {
-                setValue(nextMonthValue), setFocusedValue(nextMonthValue.start);
+                (setValue(nextMonthValue), setFocusedValue(nextMonthValue.start));
               }}
             >
               Next month

@@ -1,8 +1,8 @@
 import type { HTMLHeroUIProps } from "@/lib/system";
 import type { SpectrumColumnProps } from "@react-types/table";
+import type { JSX } from "react";
 
 import { Column } from "@react-stately/table";
-import { JSX } from "react";
 
 export type TableColumnProps<T> = Omit<SpectrumColumnProps<T>, "showDivider"> &
   Omit<HTMLHeroUIProps<"th">, keyof SpectrumColumnProps<T>>;

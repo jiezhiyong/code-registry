@@ -4,15 +4,17 @@ import type { Node, PressEvent } from "@react-types/shared";
 import type { MenuItemBaseProps } from "./menu-item-base";
 import type { MenuItemVariantProps } from "./theme";
 
-import { clsx, dataAttr, mergeProps, objectToDeps, removeEvents } from "@/lib/base";
-import { useIsMobile } from "@/lib/hooks/use-is-mobile";
-import { filterDOMProps } from "@/lib/react";
-import { mapPropsVariants, useProviderContext } from "@/lib/system";
 import { useFocusRing } from "@react-aria/focus";
 import { isFocusVisible as AriaIsFocusVisible, useHover } from "@react-aria/interactions";
 import { useMenuItem as useAriaMenuItem } from "@react-aria/menu";
 import { useCallback, useMemo, useRef } from "react";
+
 import { menuItem } from "./theme";
+
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { filterDOMProps } from "@/lib/react";
+import { useIsMobile } from "@/lib/hooks/use-is-mobile";
+import { clsx, dataAttr, mergeProps, objectToDeps, removeEvents } from "@/lib/base";
 
 interface Props<T extends object> extends MenuItemBaseProps<T> {
   item: Node<T>;
@@ -58,8 +60,7 @@ export function useMenuItem<T extends object>(originalProps: UseMenuItemProps<T>
     ...otherProps
   } = props;
 
-  const disableAnimation =
-    originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   const domRef = useRef<HTMLLIElement>(null);
 

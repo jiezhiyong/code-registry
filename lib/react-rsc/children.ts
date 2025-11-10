@@ -9,9 +9,7 @@ import { Children, isValidElement } from "react";
  * @param children the children
  */
 export function getValidChildren(children: React.ReactNode) {
-  return Children.toArray(children).filter((child) =>
-    isValidElement(child),
-  ) as React.ReactElement[];
+  return Children.toArray(children).filter((child) => isValidElement(child)) as React.ReactElement[];
 }
 
 export const pickChildren = <T = ReactNode>(

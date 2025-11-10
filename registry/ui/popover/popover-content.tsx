@@ -3,14 +3,15 @@ import type { AriaDialogProps } from "@react-aria/dialog";
 import type { HTMLMotionProps } from "framer-motion";
 import type { DOMAttributes, ReactNode } from "react";
 
-import { getTransformOrigins } from "@/lib/aria";
-import { TRANSITION_VARIANTS } from "@/lib/framer";
 import { useDialog } from "@react-aria/dialog";
 import { DismissButton } from "@react-aria/overlays";
 import { LazyMotion, m } from "framer-motion";
 import { useMemo, useRef } from "react";
 
 import { usePopoverContext } from "./popover-context";
+
+import { TRANSITION_VARIANTS } from "@/lib/framer";
+import { getTransformOrigins } from "@/lib/aria";
 
 export interface PopoverContentProps extends AriaDialogProps, Omit<HTMLHeroUIProps, "children" | "role"> {
   children?: ReactNode | ((titleProps: DOMAttributes<HTMLElement>) => ReactNode);

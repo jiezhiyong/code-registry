@@ -1,10 +1,10 @@
 import type { ButtonProps } from "@/registry/ui";
 import type { Meta } from "@storybook/nextjs-vite";
 
-import { Camera, HeadphonesIcon, Notification } from "@/lib/icons";
-import { button } from "@/registry/ui";
 import React from "react";
 
+import { Camera, HeadphonesIcon, Notification } from "@/lib/icons";
+import { button } from "@/registry/ui";
 import { Button } from "@/registry/ui";
 
 export default {

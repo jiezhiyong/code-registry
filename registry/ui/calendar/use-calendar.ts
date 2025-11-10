@@ -4,14 +4,15 @@ import type { AriaCalendarProps, DateValue } from "@react-types/calendar";
 import type { CalendarBaseProps } from "./calendar-base";
 import type { ContextType, UseCalendarBaseProps } from "./use-calendar-base";
 
-import { chain, clsx, mergeProps } from "@/lib/base";
-import { filterDOMProps } from "@/lib/react";
 import { createCalendar } from "@internationalized/date";
 import { useCalendar as useAriaCalendar } from "@react-aria/calendar";
 import { useCalendarState } from "@react-stately/calendar";
 import { useMemo, useRef } from "react";
 
 import { useCalendarBase } from "./use-calendar-base";
+
+import { filterDOMProps } from "@/lib/react";
+import { chain, clsx, mergeProps } from "@/lib/base";
 
 export type UseCalendarProps<T extends DateValue> = UseCalendarBaseProps & AriaCalendarProps<T>;
 
@@ -64,8 +65,10 @@ export function useCalendar<T extends DateValue>({
         : (createCalendarProp as typeof createCalendar),
   });
 
-  const { title, calendarProps, prevButtonProps, nextButtonProps, errorMessageProps } =
-    useAriaCalendar(originalProps, state);
+  const { title, calendarProps, prevButtonProps, nextButtonProps, errorMessageProps } = useAriaCalendar(
+    originalProps,
+    state,
+  );
 
   const baseStyles = clsx(classNames?.base, className);
 

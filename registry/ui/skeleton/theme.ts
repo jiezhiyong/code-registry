@@ -68,4 +68,3 @@ export type SkeletonVariantProps = VariantProps<typeof skeleton>;
 export type SkeletonSlots = keyof ReturnType<typeof skeleton>;
 
 export { skeleton };
-

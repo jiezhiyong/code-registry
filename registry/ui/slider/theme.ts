@@ -32,21 +32,8 @@ const slider = tv({
     labelWrapper: "w-full flex justify-between items-center",
     label: "",
     value: "",
-    step: [
-      "h-1.5",
-      "w-1.5",
-      "absolute",
-      "rounded-full",
-      "bg-default-300/50",
-      "data-[in-range=true]:bg-background/50",
-    ],
-    mark: [
-      "absolute",
-      "text-small",
-      "cursor-default",
-      "opacity-50",
-      "data-[in-range=true]:opacity-100",
-    ],
+    step: ["h-1.5", "w-1.5", "absolute", "rounded-full", "bg-default-300/50", "data-[in-range=true]:bg-background/50"],
+    mark: ["absolute", "text-small", "cursor-default", "opacity-50", "data-[in-range=true]:opacity-100"],
     trackWrapper: "relative flex gap-2",
     track: ["flex", "w-full", "relative", "rounded-full", "bg-default-300/50"],
     filler: "h-full absolute",
@@ -93,16 +80,13 @@ const slider = tv({
         thumb: "rounded-none after:rounded-none",
       },
       sm: {
-        thumb:
-          "rounded-[calc(var(--heroui-radius-small)/2)] after:rounded-[calc(var(--heroui-radius-small)/3)]",
+        thumb: "rounded-[calc(var(--heroui-radius-small)/2)] after:rounded-[calc(var(--heroui-radius-small)/3)]",
       },
       md: {
-        thumb:
-          "rounded-[calc(var(--heroui-radius-medium)/2)] after:rounded-[calc(var(--heroui-radius-medium)/3)]",
+        thumb: "rounded-[calc(var(--heroui-radius-medium)/2)] after:rounded-[calc(var(--heroui-radius-medium)/3)]",
       },
       lg: {
-        thumb:
-          "rounded-[calc(var(--heroui-radius-large)/1.5)] after:rounded-[calc(var(--heroui-radius-large)/2)]",
+        thumb: "rounded-[calc(var(--heroui-radius-large)/1.5)] after:rounded-[calc(var(--heroui-radius-large)/2)]",
       },
       full: {
         thumb: "rounded-full after:rounded-full",
@@ -265,24 +249,21 @@ const slider = tv({
       size: "sm",
       isVertical: false,
       class: {
-        track:
-          "h-1 my-[calc((theme(spacing.5)-theme(spacing.1))/2)] border-x-[calc(theme(spacing.5)/2)]",
+        track: "h-1 my-[calc((theme(spacing.5)-theme(spacing.1))/2)] border-x-[calc(theme(spacing.5)/2)]",
       },
     },
     {
       size: "md",
       isVertical: false,
       class: {
-        track:
-          "h-3 my-[calc((theme(spacing.6)-theme(spacing.3))/2)] border-x-[calc(theme(spacing.6)/2)]",
+        track: "h-3 my-[calc((theme(spacing.6)-theme(spacing.3))/2)] border-x-[calc(theme(spacing.6)/2)]",
       },
     },
     {
       size: "lg",
       isVertical: false,
       class: {
-        track:
-          "h-7 my-[calc((theme(spacing.7)-theme(spacing.5))/2)] border-x-[calc(theme(spacing.7)/2)]",
+        track: "h-7 my-[calc((theme(spacing.7)-theme(spacing.5))/2)] border-x-[calc(theme(spacing.7)/2)]",
       },
     },
     // size && isVertical
@@ -290,24 +271,21 @@ const slider = tv({
       size: "sm",
       isVertical: true,
       class: {
-        track:
-          "w-1 mx-[calc((theme(spacing.5)-theme(spacing.1))/2)] border-y-[calc(theme(spacing.5)/2)]",
+        track: "w-1 mx-[calc((theme(spacing.5)-theme(spacing.1))/2)] border-y-[calc(theme(spacing.5)/2)]",
       },
     },
     {
       size: "md",
       isVertical: true,
       class: {
-        track:
-          "w-3 mx-[calc((theme(spacing.6)-theme(spacing.3))/2)] border-y-[calc(theme(spacing.6)/2)]",
+        track: "w-3 mx-[calc((theme(spacing.6)-theme(spacing.3))/2)] border-y-[calc(theme(spacing.6)/2)]",
       },
     },
     {
       size: "lg",
       isVertical: true,
       class: {
-        track:
-          "w-7 mx-[calc((theme(spacing.7)-theme(spacing.5))/2)] border-y-[calc(theme(spacing.7)/2)]",
+        track: "w-7 mx-[calc((theme(spacing.7)-theme(spacing.5))/2)] border-y-[calc(theme(spacing.7)/2)]",
       },
     },
     // color && !isVertical
@@ -315,8 +293,7 @@ const slider = tv({
       color: "foreground",
       isVertical: false,
       class: {
-        track:
-          "data-[fill-start=true]:border-s-foreground data-[fill-end=true]:border-e-foreground",
+        track: "data-[fill-start=true]:border-s-foreground data-[fill-end=true]:border-e-foreground",
       },
     },
     {
@@ -359,8 +336,7 @@ const slider = tv({
       color: "foreground",
       isVertical: true,
       class: {
-        track:
-          "data-[fill-start=true]:border-b-foreground data-[fill-end=true]:border-t-foreground",
+        track: "data-[fill-start=true]:border-b-foreground data-[fill-end=true]:border-t-foreground",
       },
     },
     {
@@ -415,4 +391,3 @@ export type SliderVariantProps = VariantProps<typeof slider>;
 export type SliderSlots = keyof ReturnType<typeof slider>;
 
 export { slider };
-

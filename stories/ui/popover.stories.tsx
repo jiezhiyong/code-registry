@@ -2,12 +2,12 @@
 import type { ButtonVariantProps, PopoverProps } from "@/registry/ui";
 import type { Meta } from "@storybook/nextjs-vite";
 
+import React from "react";
+
 import { popover } from "@/registry/ui";
 import { Button } from "@/registry/ui/button";
 import { Card, CardFooter, CardHeader } from "@/registry/ui/card";
 import { Input } from "@/registry/ui/input";
-import React from "react";
-
 import { Popover, PopoverContent, PopoverTrigger } from "@/registry/ui";
 
 export default {

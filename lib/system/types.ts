@@ -78,11 +78,7 @@ export abstract class CalendarDateTime {
    * Returns a new `CalendarDateTime` with the given field adjusted by a specified amount.
    * When the resulting value reaches the limits of the field, it wraps around.
    */
-  abstract cycle(
-    field: DateField | TimeField,
-    amount: number,
-    options?: CycleTimeOptions,
-  ): CalendarDateTime;
+  abstract cycle(field: DateField | TimeField, amount: number, options?: CycleTimeOptions): CalendarDateTime;
   /** Converts the date to a native JavaScript Date object in the given time zone. */
   abstract toDate(timeZone: string, disambiguation?: Disambiguation): Date;
   /** Converts the date to an ISO 8601 formatted string. */
@@ -130,11 +126,7 @@ export abstract class ZonedDateTime {
    * Returns a new `ZonedDateTime` with the given field adjusted by a specified amount.
    * When the resulting value reaches the limits of the field, it wraps around.
    */
-  abstract cycle(
-    field: DateField | TimeField,
-    amount: number,
-    options?: CycleTimeOptions,
-  ): ZonedDateTime;
+  abstract cycle(field: DateField | TimeField, amount: number, options?: CycleTimeOptions): ZonedDateTime;
   /** Converts the date to a native JavaScript Date object. */
   abstract toDate(): Date;
   /** Converts the date to an ISO 8601 formatted string, including the UTC offset and time zone identifier. */
@@ -259,7 +251,7 @@ export interface TimeDuration {
 }
 
 /** Represents an amount of time with both date and time components, for use when performing arithmetic. */
-export interface DateTimeDuration extends DateDuration, TimeDuration { }
+export interface DateTimeDuration extends DateDuration, TimeDuration {}
 
 export interface DateFields {
   era?: string;

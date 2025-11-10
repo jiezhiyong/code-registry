@@ -9,19 +9,19 @@ import type { HTMLMotionProps } from "framer-motion";
 import type { Ref, RefObject } from "react";
 import type { PopoverSlots, PopoverVariantProps } from "./theme";
 import type { ReactAriaPopoverProps } from "./use-aria-popover";
-;
 
-import { getArrowPlacement, getShouldUseAxisPlacement } from "@/lib/aria";
-import { clsx, dataAttr, mergeProps, mergeRefs, objectToDeps } from "@/lib/base";
-import { useDOMRef } from "@/lib/react";
-import { mapPropsVariants, useProviderContext } from "@/lib/system";
 import { useFocusRing } from "@react-aria/focus";
 import { useOverlayTrigger, usePreventScroll } from "@react-aria/overlays";
 import { useOverlayTriggerState } from "@react-stately/overlays";
 import { useCallback, useMemo, useRef } from "react";
-import { popover } from "./theme";
 
+import { popover } from "./theme";
 import { useReactAriaPopover } from "./use-aria-popover";
+
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { useDOMRef } from "@/lib/react";
+import { getArrowPlacement, getShouldUseAxisPlacement } from "@/lib/aria";
+import { clsx, dataAttr, mergeProps, mergeRefs, objectToDeps } from "@/lib/base";
 
 export interface Props extends HTMLHeroUIProps<"div"> {
   /**
@@ -137,8 +137,7 @@ export function usePopover(originalProps: UsePopoverProps) {
   const wasTriggerPressedRef = useRef(false);
   const triggerRef = triggerRefProp || domTriggerRef;
 
-  const disableAnimation =
-    originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   const innerState = useOverlayTriggerState({
     isOpen: isOpenProp,
@@ -205,9 +204,7 @@ export function usePopover(originalProps: UsePopoverProps) {
   const baseStyles = clsx(classNames?.base, className);
 
   const anchorStyles = {
-    "--trigger-anchor-point": triggerAnchorPoint
-      ? `${triggerAnchorPoint.x}px ${triggerAnchorPoint.y}px`
-      : undefined,
+    "--trigger-anchor-point": triggerAnchorPoint ? `${triggerAnchorPoint.x}px ${triggerAnchorPoint.y}px` : undefined,
   };
 
   usePreventScroll({
@@ -256,10 +253,7 @@ export function usePopover(originalProps: UsePopoverProps) {
       // Artificial delay to prevent the underlay to be triggered immediately after the onPress
       // this only happens when the backdrop is blur or opaque & pointerType === "touch"
       // TODO: find a better way to handle this
-      if (
-        e.pointerType === "touch" &&
-        (originalProps?.backdrop === "blur" || originalProps?.backdrop === "opaque")
-      ) {
+      if (e.pointerType === "touch" && (originalProps?.backdrop === "blur" || originalProps?.backdrop === "opaque")) {
         pressTimer = setTimeout(() => {
           wasTriggerPressedRef.current = true;
         }, 100);

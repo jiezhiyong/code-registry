@@ -1,7 +1,8 @@
+import type { Metadata, Viewport } from "next";
+
 import { Navbar } from "@/components/Navbar";
 import { Providers } from "@/components/Provider";
 import { Link } from "@/registry/ui backup/link";
-import type { Metadata, Viewport } from "next";
 import "../styles/globals.css";
 
 export const metadata: Metadata = {

@@ -11,4 +11,3 @@ export { useAccordionItem } from "./use-accordion-item";
 
 // export component
 export { Accordion, AccordionItem };
-

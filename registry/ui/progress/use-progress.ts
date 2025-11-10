@@ -3,15 +3,16 @@ import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type { SlotsToClasses } from "@/lib/theme";
 import type { AriaProgressBarProps } from "@react-types/progress";
 import type { ProgressSlots, ProgressVariantProps } from "./theme";
-;
+
+import { useProgressBar as useAriaProgress } from "@react-aria/progress";
+import { useCallback, useMemo } from "react";
+
+import { progress } from "./theme";
 
 import { clampPercentage, clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 import { useIsMounted } from "@/lib/hooks/use-is-mounted";
 import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { useProgressBar as useAriaProgress } from "@react-aria/progress";
-import { useCallback, useMemo } from "react";
-import { progress } from "./theme";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**
@@ -78,8 +79,7 @@ export function useProgress(originalProps: UseProgressProps) {
 
   const isIndeterminate = originalProps.isIndeterminate;
 
-  const disableAnimation =
-    originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   const { progressBarProps, labelProps } = useAriaProgress({
     id,
@@ -108,9 +108,7 @@ export function useProgress(originalProps: UseProgressProps) {
   // Calculate the width of the progress bar as a percentage
   const percentage = useMemo(
     () =>
-      isIndeterminate || !selfMounted
-        ? undefined
-        : clampPercentage(((value - minValue) / (maxValue - minValue)) * 100),
+      isIndeterminate || !selfMounted ? undefined : clampPercentage(((value - minValue) / (maxValue - minValue)) * 100),
     [selfMounted, isIndeterminate, value, minValue, maxValue],
   );
 
@@ -122,15 +120,7 @@ export function useProgress(originalProps: UseProgressProps) {
       className: slots.base({ class: baseStyles }),
       ...mergeProps(progressBarProps, otherProps, props),
     }),
-    [
-      domRef,
-      slots,
-      isIndeterminate,
-      originalProps.isDisabled,
-      baseStyles,
-      progressBarProps,
-      otherProps,
-    ],
+    [domRef, slots, isIndeterminate, originalProps.isDisabled, baseStyles, progressBarProps, otherProps],
   );
 
   const getLabelProps = useCallback<PropGetter>(

@@ -1,4 +1,4 @@
-import type {IconSvgProps} from "./types";
+import type { IconSvgProps } from "./types";
 
 export const CloseIcon = (
   props: IconSvgProps & {
@@ -12,7 +12,7 @@ export const CloseIcon = (
 ) => {
   /* eslint-disable @typescript-eslint/no-unused-vars */
   // avoid passing non-DOM attributes to svg
-  const {isSelected, isIndeterminate, disableAnimation, ...otherProps} = props;
+  const { isSelected, isIndeterminate, disableAnimation, ...otherProps } = props;
 
   return (
     <svg

@@ -47,15 +47,7 @@ import { dataFocusVisibleClasses, tv } from "@/lib/theme";
  */
 const navbar = tv({
   slots: {
-    base: [
-      "flex",
-      "z-40",
-      "w-full",
-      "h-auto",
-      "items-center",
-      "justify-center",
-      "data-[menu-open=true]:border-none",
-    ],
+    base: ["flex", "z-40", "w-full", "h-auto", "items-center", "justify-center", "data-[menu-open=true]:border-none"],
     wrapper: [
       "z-40",
       "flex",
@@ -247,4 +239,3 @@ export type NavbarVariantProps = VariantProps<typeof navbar>;
 export type NavbarSlots = keyof ReturnType<typeof navbar>;
 
 export { navbar };
-

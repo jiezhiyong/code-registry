@@ -1,7 +1,5 @@
 import type { UseTableProps } from "./use-table";
 
-import { forwardRef } from "@/lib/system";
-import { Spacer } from "@/registry/ui/spacer";
 import { useCallback } from "react";
 
 import TableBody from "./table-body";
@@ -11,6 +9,9 @@ import TableRowGroup from "./table-row-group";
 import TableSelectAllCheckbox from "./table-select-all-checkbox";
 import { useTable } from "./use-table";
 import VirtualizedTable from "./virtualized-table";
+
+import { Spacer } from "@/registry/ui/spacer";
+import { forwardRef } from "@/lib/system";
 
 export interface TableProps<T = object> extends Omit<UseTableProps<T>, "isSelectable" | "isMultiSelectable"> {
   isVirtualized?: boolean;
@@ -54,7 +55,7 @@ const Table = forwardRef<"table", TableProps>((props, ref) => {
 
       return <BaseComponent {...getWrapperProps()}>{children}</BaseComponent>;
     },
-    [removeWrapper, getWrapperProps]
+    [removeWrapper, getWrapperProps],
   );
 
   if (shouldVirtualize) {
@@ -101,7 +102,7 @@ const Table = forwardRef<"table", TableProps>((props, ref) => {
                         sortIcon={sortIcon}
                         state={values.state}
                       />
-                    )
+                    ),
                   )}
                 </TableHeaderRow>
               ))}

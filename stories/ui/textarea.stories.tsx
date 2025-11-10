@@ -2,11 +2,11 @@ import type { TextAreaProps } from "@/registry/ui";
 import type { ValidationResult } from "@react-types/shared";
 import type { Meta } from "@storybook/nextjs-vite";
 
+import React from "react";
+
 import { PlusFilledIcon, SendFilledIcon } from "@/lib/icons";
 import { button, input } from "@/registry/ui";
 import { Form } from "@/registry/ui/form";
-import React from "react";
-
 import { Textarea } from "@/registry/ui";
 
 export default {

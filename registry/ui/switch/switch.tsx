@@ -1,10 +1,11 @@
 import type { ReactElement } from "react";
 import type { UseSwitchProps } from "./use-switch";
 
-import { forwardRef } from "@/lib/system";
 import { cloneElement } from "react";
 
 import { useSwitch } from "./use-switch";
+
+import { forwardRef } from "@/lib/system";
 
 export interface SwitchProps extends UseSwitchProps {}
 

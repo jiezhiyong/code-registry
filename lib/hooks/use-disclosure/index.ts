@@ -1,6 +1,7 @@
 import { chain } from "@react-aria/utils";
 import { useControlledState } from "@react-stately/utils";
 import { useCallback, useId } from "react";
+
 import { useCallbackRef } from "../use-callback-ref";
 
 export interface UseDisclosureProps {
@@ -19,7 +20,7 @@ export function useDisclosure(props: UseDisclosureProps = {}) {
     isOpen: isOpenProp,
     onClose: onCloseProp,
     onOpen: onOpenProp,
-    onChange = () => { },
+    onChange = () => {},
   } = props;
 
   const onOpenPropCallbackRef = useCallbackRef(onOpenProp);

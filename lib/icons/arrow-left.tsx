@@ -1,6 +1,6 @@
-import type {IconSvgProps} from "./types";
+import type { IconSvgProps } from "./types";
 
-export const ArrowLeftIcon = ({strokeWidth = 1.5, ...otherProps}: IconSvgProps) => (
+export const ArrowLeftIcon = ({ strokeWidth = 1.5, ...otherProps }: IconSvgProps) => (
   <svg
     aria-hidden="true"
     fill="none"

@@ -4,15 +4,16 @@ import type { QueuedToast, ToastState } from "@react-stately/toast";
 import type { ToastRegionSlots, ToastRegionVariantProps } from "./theme";
 import type { ToastPlacement, ToastProps } from "./use-toast";
 
-import { clsx, mergeProps } from "@/lib/base";
 import { useHover } from "@react-aria/interactions";
 import { useToastRegion } from "@react-aria/toast";
 import { AnimatePresence } from "framer-motion";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { toastRegion } from "./theme";
 
+import { toastRegion } from "./theme";
 import Toast from "./toast";
 import { isToastClosing } from "./toast-provider";
+
+import { clsx, mergeProps } from "@/lib/base";
 
 export interface RegionProps {
   className?: string;
@@ -51,7 +52,7 @@ export function ToastRegion<T extends ToastProps>({
       toastRegion({
         disableAnimation,
       }),
-    [disableAnimation]
+    [disableAnimation],
   );
 
   const baseStyles = clsx(classNames?.base, className);

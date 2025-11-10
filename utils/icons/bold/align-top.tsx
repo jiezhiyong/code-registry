@@ -1,4 +1,4 @@
-import { IconSvgProps } from "@/lib/icons/types";
+import type { IconSvgProps } from "@/lib/icons/types";
 
 export const AlignTopBoldIcon = (props: IconSvgProps) => (
   <svg

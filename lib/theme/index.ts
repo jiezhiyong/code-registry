@@ -6,4 +6,3 @@ export * from "./utils";
 
 export type { TV, VariantProps } from "tailwind-variants";
 export { tv } from "./utils/tv";
-

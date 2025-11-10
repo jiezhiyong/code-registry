@@ -1,12 +1,13 @@
 import type { ForwardedRef, ReactElement } from "react";
 import type { UseTabsProps } from "./use-tabs";
 
-import { forwardRef } from "@/lib/system";
 import { useMemo, useRef } from "react";
 
 import Tab from "./tab";
 import TabPanel from "./tab-panel";
 import { useTabs } from "./use-tabs";
+
+import { forwardRef } from "@/lib/system";
 
 interface Props<T> extends UseTabsProps<T> {}
 
@@ -141,7 +142,7 @@ const Tabs = forwardRef(function Tabs<T extends object>(props: TabsProps<T>, ref
       domRef,
       variant,
       isVertical,
-    ]
+    ],
   );
 
   if ("placement" in props || "isVertical" in props) {

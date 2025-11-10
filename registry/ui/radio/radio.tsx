@@ -1,8 +1,8 @@
 import type { UseRadioProps } from "./use-radio";
 
-import { forwardRef } from "@/lib/system";
-
 import { useRadio } from "./use-radio";
+
+import { forwardRef } from "@/lib/system";
 
 export interface RadioProps extends UseRadioProps {}
 

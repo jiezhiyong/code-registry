@@ -116,10 +116,7 @@ export function useAriaOverlay(props: UseAriaOverlayProps, ref: RefObject<Elemen
         return;
       }
 
-      if (
-        !shouldCloseOnInteractOutside ||
-        shouldCloseOnInteractOutside(e.relatedTarget as Element)
-      ) {
+      if (!shouldCloseOnInteractOutside || shouldCloseOnInteractOutside(e.relatedTarget as Element)) {
         onHide();
       }
     },
@@ -137,9 +134,7 @@ export function useAriaOverlay(props: UseAriaOverlayProps, ref: RefObject<Elemen
    * @param ref - Reference to the overlay element
    * @returns "pressEnd" for dialogs (close on release), "pressStart" for menus (close on press), or "unknown"
    */
-  function getOverlayInteractionType(
-    ref: RefObject<Element>,
-  ): "pressEnd" | "pressStart" | "unknown" {
+  function getOverlayInteractionType(ref: RefObject<Element>): "pressEnd" | "pressStart" | "unknown" {
     const el = ref.current;
 
     if (!el) return "unknown";

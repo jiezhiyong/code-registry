@@ -2,10 +2,11 @@
 
 import type { ThemeProviderProps } from "next-themes";
 
-import { HeroUIProvider } from "@/lib/provider";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { useRouter } from "next/navigation";
 import * as React from "react";
+
+import { HeroUIProvider } from "@/lib/provider";
 
 export interface ProvidersProps {
   children: React.ReactNode;

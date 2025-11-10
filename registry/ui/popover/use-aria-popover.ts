@@ -3,12 +3,13 @@ import type { AriaOverlayProps, AriaPopoverProps, PopoverAria } from "@react-ari
 import type { OverlayTriggerState } from "@react-stately/overlays";
 import type { RefObject } from "react";
 
+import { useOverlayPosition } from "@react-aria/overlays";
+import { useEffect } from "react";
+
 import { ariaHideOutside, keepVisible, toReactAriaPlacement } from "@/lib/aria";
 import { mergeProps } from "@/lib/base";
 import { useAriaOverlay } from "@/lib/hooks/use-aria-overlay";
 import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
-import { useOverlayPosition } from "@react-aria/overlays";
-import { useEffect } from "react";
 
 export interface Props {
   /**
@@ -44,7 +45,7 @@ export interface Props {
   /**
    * The origin of the target in the overlay's coordinate system. Useful for animations.
    */
-  triggerAnchorPoint?: { x: number; y: number; } | null;
+  triggerAnchorPoint?: { x: number; y: number } | null;
 }
 
 export type ReactAriaPopoverProps = Props &
@@ -55,10 +56,7 @@ export type ReactAriaPopoverProps = Props &
  * Provides the behavior and accessibility implementation for a popover component.
  * A popover is an overlay element positioned relative to a trigger.
  */
-export function useReactAriaPopover(
-  props: ReactAriaPopoverProps,
-  state: OverlayTriggerState,
-): PopoverAria {
+export function useReactAriaPopover(props: ReactAriaPopoverProps, state: OverlayTriggerState): PopoverAria {
   const {
     groupRef,
     triggerRef,
@@ -92,8 +90,7 @@ export function useReactAriaPopover(
       shouldCloseOnBlur,
       isDismissable: isDismissable || isSubmenu,
       isKeyboardDismissDisabled,
-      shouldCloseOnInteractOutside:
-        shouldCloseOnInteractOutside || ((el) => !triggerRef.current?.contains(el)),
+      shouldCloseOnInteractOutside: shouldCloseOnInteractOutside || ((el) => !triggerRef.current?.contains(el)),
       disableOutsideEvents: !isNonModal,
     },
     popoverRef,
@@ -117,7 +114,7 @@ export function useReactAriaPopover(
     containerPadding,
     placement: toReactAriaPlacement(placementProp),
     offset: showArrow ? offset + 3 : offset,
-    onClose: isNonModal && !isSubmenu && shouldCloseOnScroll ? state.close : () => { },
+    onClose: isNonModal && !isSubmenu && shouldCloseOnScroll ? state.close : () => {},
   });
 
   useSafeLayoutEffect(() => {

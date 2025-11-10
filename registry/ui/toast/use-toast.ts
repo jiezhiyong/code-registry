@@ -7,22 +7,18 @@ import type { MotionProps } from "framer-motion";
 import type { DOMAttributes, ReactNode } from "react";
 import type { ToastSlots, ToastVariantProps } from "./theme";
 
+import { useHover } from "@react-aria/interactions";
+import { useToast as useToastAria } from "@react-aria/toast";
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+
+import { toast as toastTheme } from "./theme";
+
 import { clsx, dataAttr, isEmpty, mergeProps, objectToDeps } from "@/lib/base";
 import { useIsMobile } from "@/lib/hooks/use-is-mobile";
 import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { useHover } from "@react-aria/interactions";
-import { useToast as useToastAria } from "@react-aria/toast";
-import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { toast as toastTheme } from "./theme";
 
-export type ToastPlacement =
-  | "bottom-right"
-  | "bottom-left"
-  | "bottom-center"
-  | "top-right"
-  | "top-left"
-  | "top-center";
+export type ToastPlacement = "bottom-right" | "bottom-left" | "bottom-center" | "top-right" | "top-left" | "top-center";
 
 export interface ToastProps extends ToastVariantProps {
   /**
@@ -130,9 +126,7 @@ interface Props<T> extends Omit<HTMLHeroUIProps<"div">, "title">, ToastProps {
   maxVisibleToasts: number;
 }
 
-export type UseToastProps<T = ToastProps> = Props<T> &
-  ToastVariantProps &
-  Omit<AriaToastProps<T>, "div">;
+export type UseToastProps<T = ToastProps> = Props<T> & ToastVariantProps & Omit<AriaToastProps<T>, "div">;
 
 const SWIPE_THRESHOLD_X = 100;
 const SWIPE_THRESHOLD_Y = 20;
@@ -178,8 +172,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
   });
 
   const globalContext = useProviderContext();
-  const disableAnimation =
-    originalProps?.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps?.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   const isMobile = useIsMobile();
   let placement = placementProp;
@@ -260,8 +253,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
       progressRef.current = Math.min((elapsed / timeout) * 100, 100);
 
       if (progressBarRef.current) {
-        progressBarRef.current.style.width = `${shouldShowTimeoutProgress ? progressRef.current : 0
-          }%`;
+        progressBarRef.current.style.width = `${shouldShowTimeoutProgress ? progressRef.current : 0}%`;
       }
 
       if (progressRef.current < 100) {
@@ -292,11 +284,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
 
   const domRef = useDOMRef(ref);
   const baseStyles = clsx(className, classNames?.base);
-  const { toastProps, contentProps, titleProps, descriptionProps } = useToastAria(
-    props,
-    state,
-    domRef,
-  );
+  const { toastProps, contentProps, titleProps, descriptionProps } = useToastAria(props, state, domRef);
 
   const [mounted, setMounted] = useState<boolean>(false);
 
@@ -438,13 +426,13 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
         onTransitionEnd: disableAnimation
           ? undefined
           : () => {
-            if (!isToastExiting) return;
-            state.close(toast.key);
-            if (!hasCalledOnCloseRef.current) {
-              hasCalledOnCloseRef.current = true;
-              onClose?.();
-            }
-          },
+              if (!isToastExiting) return;
+              state.close(toast.key);
+              if (!hasCalledOnCloseRef.current) {
+                hasCalledOnCloseRef.current = true;
+                onClose?.();
+              }
+            },
         style: {
           opacity: opacityValue,
           ...pseudoElementStyles,
@@ -565,9 +553,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
       "data-drag-value": number;
       className: string;
     } => {
-      const comparingValue = isRegionExpanded
-        ? maxVisibleToasts - 1
-        : Math.min(2, maxVisibleToasts - 1);
+      const comparingValue = isRegionExpanded ? maxVisibleToasts - 1 : Math.min(2, maxVisibleToasts - 1);
       const isCloseToEnd = total - index - 1 <= comparingValue;
       const dragDirection = placement === "bottom-center" || placement === "top-center" ? "y" : "x";
       const dragConstraints = { left: 0, right: 0, top: 0, bottom: 0 };
@@ -576,18 +562,12 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
       const animateProps = (() => {
         if (placement.includes("top")) {
           return {
-            top:
-              isRegionExpanded || drag
-                ? liftHeight + toastOffset
-                : (total - 1 - index) * 8 + toastOffset,
+            top: isRegionExpanded || drag ? liftHeight + toastOffset : (total - 1 - index) * 8 + toastOffset,
             bottom: "auto",
           };
         } else if (placement.includes("bottom")) {
           return {
-            bottom:
-              isRegionExpanded || drag
-                ? liftHeight + toastOffset
-                : (total - 1 - index) * 8 + toastOffset,
+            bottom: isRegionExpanded || drag ? liftHeight + toastOffset : (total - 1 - index) * 8 + toastOffset,
             top: "auto",
           };
         }

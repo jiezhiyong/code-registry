@@ -11,19 +11,18 @@ import type { DOMAttributes, GroupDOMAttributes } from "@react-types/shared";
 import type { DateRangePickerFieldProps } from "./date-range-picker-field";
 import type { DateRangePickerSlots } from "./theme";
 import type { UseDatePickerBaseProps } from "./use-date-picker-base";
-;
 
-import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
-import { useLabelPlacement, useProviderContext } from "@/lib/system";
-import { FormContext, useSlottedContext } from "@/registry/ui/form";
 import { useDateRangePicker as useAriaDateRangePicker } from "@react-aria/datepicker";
 import { useDateRangePickerState } from "@react-stately/datepicker";
 import { useEffect, useMemo, useRef } from "react";
-import { cn, dateInput, dateRangePicker } from "./theme";
 
+import { cn, dateInput, dateRangePicker } from "./theme";
 import { useDatePickerBase } from "./use-date-picker-base";
-interface Props<T extends DateValue>
-  extends Omit<UseDatePickerBaseProps<T>, keyof AriaDateRangePickerProps<T>> {
+
+import { FormContext, useSlottedContext } from "@/registry/ui/form";
+import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
+import { useLabelPlacement, useProviderContext } from "@/lib/system";
+interface Props<T extends DateValue> extends Omit<UseDatePickerBaseProps<T>, keyof AriaDateRangePickerProps<T>> {
   /**
    * Classname or List of classes to change the classNames of the element.
    * if `className` is passed, it will be added to the base slot.
@@ -74,10 +73,7 @@ export function useDateRangePicker<T extends DateValue>({
 
   const { validationBehavior: formValidationBehavior } = useSlottedContext(FormContext) || {};
   const validationBehavior =
-    originalProps.validationBehavior ??
-    formValidationBehavior ??
-    globalContext?.validationBehavior ??
-    "native";
+    originalProps.validationBehavior ?? formValidationBehavior ?? globalContext?.validationBehavior ?? "native";
 
   const {
     domRef,
@@ -215,11 +211,7 @@ export function useDateRangePicker<T extends DateValue>({
       triggerRef: popoverTriggerRef,
       classNames: {
         content: slots.popoverContent({
-          class: clsx(
-            classNames?.popoverContent,
-            slotsProps.popoverProps?.classNames?.["content"],
-            props.className,
-          ),
+          class: clsx(classNames?.popoverContent, slotsProps.popoverProps?.classNames?.["content"], props.className),
         }),
       },
     } as PopoverProps;

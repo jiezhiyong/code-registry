@@ -1,10 +1,10 @@
 import type { UseAvatarGroupProps } from "./use-avatar-group";
 
-import { forwardRef } from "@/lib/system";
-
 import Avatar from "./avatar";
 import { AvatarGroupProvider } from "./avatar-group-context";
 import { useAvatarGroup } from "./use-avatar-group";
+
+import { forwardRef } from "@/lib/system";
 
 export interface AvatarGroupProps extends UseAvatarGroupProps {}
 

@@ -1,5 +1,6 @@
 import { useLocale } from "@react-aria/i18n";
 import { useCallback, useEffect, useMemo, useState } from "react";
+
 import { range } from "../../base";
 
 export enum PaginationItemType {
@@ -46,15 +47,7 @@ export interface UsePaginationProps {
 export type PaginationItemValue = number | PaginationItemType;
 
 export function usePagination(props: UsePaginationProps) {
-  const {
-    page,
-    total,
-    siblings = 1,
-    boundaries = 1,
-    initialPage = 1,
-    showControls = false,
-    onChange,
-  } = props;
+  const { page, total, siblings = 1, boundaries = 1, initialPage = 1, showControls = false, onChange } = props;
   const [activePage, setActivePage] = useState(page || initialPage);
 
   const { direction } = useLocale();
@@ -131,11 +124,7 @@ export function usePagination(props: UsePaginationProps) {
     if (shouldShowLeftDots && !shouldShowRightDots) {
       const rightItemCount = boundaries + 1 + 2 * siblings;
 
-      return formatRange([
-        ...range(1, boundaries),
-        PaginationItemType.DOTS,
-        ...range(total - rightItemCount, total),
-      ]);
+      return formatRange([...range(1, boundaries), PaginationItemType.DOTS, ...range(total - rightItemCount, total)]);
     }
 
     return formatRange([

@@ -1,4 +1,4 @@
-import type {IconSvgProps} from "./types";
+import type { IconSvgProps } from "./types";
 
 export const MonitorMobileIcon = (props: IconSvgProps) => (
   <svg
@@ -18,20 +18,8 @@ export const MonitorMobileIcon = (props: IconSvgProps) => (
       strokeLinejoin="round"
       strokeWidth="1.5"
     />
-    <path
-      d="M10 21.4699V16.95"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.5"
-    />
-    <path
-      d="M2 12.95H10"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.5"
-    />
+    <path d="M10 21.4699V16.95" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
+    <path d="M2 12.95H10" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" />
     <path
       d="M6.73999 21.47H9.99999"
       stroke="currentColor"

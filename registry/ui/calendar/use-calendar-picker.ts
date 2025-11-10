@@ -2,13 +2,14 @@ import type { HTMLHeroUIProps } from "@/lib/system";
 import type { CalendarDate } from "@internationalized/date";
 import type { PressEvent } from "@react-types/shared";
 
-import { debounce } from "@/lib/base";
 import { useDateFormatter } from "@react-aria/i18n";
 import { useCallback, useEffect, useRef } from "react";
 import scrollIntoView from "scroll-into-view-if-needed";
 
 import { useCalendarContext } from "./calendar-context";
 import { getMonthsInYear, getYearRange } from "./utils";
+
+import { debounce } from "@/lib/base";
 
 export type PickerValue = {
   value: string;
@@ -27,8 +28,7 @@ const SCROLL_DEBOUNCE_TIME = 200;
 export function useCalendarPicker(props: CalendarPickerProps) {
   const { date, currentMonth } = props;
 
-  const { slots, state, headerRef, isHeaderExpanded, setIsHeaderExpanded, classNames } =
-    useCalendarContext();
+  const { slots, state, headerRef, isHeaderExpanded, setIsHeaderExpanded, classNames } = useCalendarContext();
 
   const highlightRef = useRef<HTMLDivElement>(null);
   const yearsListRef = useRef<HTMLDivElement>(null);
@@ -40,10 +40,7 @@ export function useCalendarPicker(props: CalendarPickerProps) {
 
   const monthDateFormatter = useDateFormatter({
     month: "long",
-    era:
-      currentMonth.calendar.identifier === "gregory" && currentMonth.era === "BC"
-        ? "short"
-        : undefined,
+    era: currentMonth.calendar.identifier === "gregory" && currentMonth.era === "BC" ? "short" : undefined,
     calendar: currentMonth.calendar.identifier,
     timeZone: state.timeZone,
   });
@@ -111,8 +108,7 @@ export function useCalendarPicker(props: CalendarPickerProps) {
 
         // Calculate distance between centers
         const distance = Math.sqrt(
-          Math.pow(highlightCenter.x - itemCenter.x, 2) +
-          Math.pow(highlightCenter.y - itemCenter.y, 2),
+          Math.pow(highlightCenter.x - itemCenter.x, 2) + Math.pow(highlightCenter.y - itemCenter.y, 2),
         );
 
         if (distance < minDistance) {
@@ -125,9 +121,7 @@ export function useCalendarPicker(props: CalendarPickerProps) {
 
       const [itemValue] = closestItem;
 
-      const updatedDate = focusedDateRef.current.set(
-        list === "months" ? { month: itemValue } : { year: itemValue },
-      );
+      const updatedDate = focusedDateRef.current.set(list === "months" ? { month: itemValue } : { year: itemValue });
 
       state.setFocusedDate(updatedDate);
     },

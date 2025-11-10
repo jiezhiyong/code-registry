@@ -206,4 +206,3 @@ export type ModalVariantProps = VariantProps<typeof modal>;
 export type ModalSlots = keyof ReturnType<typeof modal>;
 
 export { modal };
-

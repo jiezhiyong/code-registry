@@ -2,13 +2,14 @@ import type { Node } from "@react-types/shared";
 import type { TabItemProps as BaseTabItemProps } from "./tab-item-base";
 import type { ValuesType } from "./use-tabs";
 
-import { chain, clsx, dataAttr, mergeProps } from "@/lib/base";
-import { filterDOMProps, mergeRefs, useDOMRef } from "@/lib/react";
-import { forwardRef } from "@/lib/system";
 import { useFocusRing } from "@react-aria/focus";
 import { useHover } from "@react-aria/interactions";
 import { useTab } from "@react-aria/tabs";
 import scrollIntoView from "scroll-into-view-if-needed";
+
+import { forwardRef } from "@/lib/system";
+import { filterDOMProps, mergeRefs, useDOMRef } from "@/lib/react";
+import { chain, clsx, dataAttr, mergeProps } from "@/lib/base";
 
 export interface TabItemProps<T extends object = object> extends BaseTabItemProps<T> {
   item: Node<T>;
@@ -103,7 +104,7 @@ const Tab = forwardRef<"button", TabItemProps>((props, ref) => {
           // omit it to avoid executing onClick it twice.
           omitEventNames: new Set(["onClick"]),
         }),
-        { onClick: chain(handleClick, tabProps.onClick) }
+        { onClick: chain(handleClick, tabProps.onClick) },
       )}
       className={slots.tab?.({ class: tabStyles })}
       title={otherProps?.titleValue}

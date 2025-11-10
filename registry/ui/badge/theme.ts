@@ -394,4 +394,3 @@ export type BadgeVariantProps = VariantProps<typeof badge>;
 export type BadgeSlots = keyof ReturnType<typeof badge>;
 
 export { badge };
-

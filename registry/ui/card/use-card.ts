@@ -7,17 +7,18 @@ import type { PressEvent } from "@react-aria/interactions";
 import type { FocusableProps, PressEvents } from "@react-types/shared";
 import type { MouseEventHandler, ReactNode } from "react";
 import type { CardReturnType, CardSlots, CardVariantProps } from "./theme";
-;
+
+import { useFocusRing } from "@react-aria/focus";
+import { useHover } from "@react-aria/interactions";
+import { useCallback, useMemo } from "react";
+
+import { card } from "./theme";
 
 import { chain, clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 import { useAriaButton } from "@/lib/hooks/use-aria-button";
 import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
 import { useRipple } from "@/registry/ui/ripple";
-import { useFocusRing } from "@react-aria/focus";
-import { useHover } from "@react-aria/interactions";
-import { useCallback, useMemo } from "react";
-import { card } from "./theme";
 
 export interface Props extends Omit<HTMLHeroUIProps<"div">, "onClick"> {
   /**
@@ -94,8 +95,7 @@ export function useCard(originalProps: UseCardProps) {
   const Component = as || (originalProps.isPressable ? "button" : "div");
   const shouldFilterDOMProps = typeof Component === "string";
 
-  const disableAnimation =
-    originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
   const disableRipple = originalProps.disableRipple ?? globalContext?.disableRipple ?? false;
 
   const baseStyles = clsx(classNames?.base, className);

@@ -6,8 +6,6 @@
 import type { ConfigTheme, ConfigThemes, DefaultThemeType, HeroUIPluginConfig } from "./types";
 
 import Color from "color";
-// @ts-ignore
-import { kebabCase, mapKeys, omit } from "@/lib/base";
 import deepMerge from "deepmerge";
 import plugin from "tailwindcss/plugin.js";
 
@@ -20,18 +18,16 @@ import { baseStyles } from "./utils/classes";
 import { flattenThemeObject } from "./utils/object";
 import { isBaseTheme } from "./utils/theme";
 
+import { kebabCase, mapKeys, omit } from "@/lib/base";
+
 const DEFAULT_PREFIX = "heroui";
 
 const parsedColorsCache: Record<string, number[]> = {};
 
 // @internal
-const resolveConfig = (
-  themes: ConfigThemes = {},
-  defaultTheme: DefaultThemeType,
-  prefix: string,
-) => {
+const resolveConfig = (themes: ConfigThemes = {}, defaultTheme: DefaultThemeType, prefix: string) => {
   const resolved: {
-    variants: { name: string; definition: string[]; }[];
+    variants: { name: string; definition: string[] }[];
     utilities: Record<string, Record<string, any>>;
     colors: Record<string, string>;
     baseStyles: Record<string, Record<string, any>>;
@@ -55,14 +51,14 @@ const resolveConfig = (
     baseSelector &&
       (resolved.baseStyles[baseSelector] = scheme
         ? {
-          "color-scheme": scheme,
-        }
+            "color-scheme": scheme,
+          }
         : {});
 
     resolved.utilities[cssSelector] = scheme
       ? {
-        "color-scheme": scheme,
-      }
+          "color-scheme": scheme,
+        }
       : {};
 
     // flatten color definitions
@@ -83,8 +79,7 @@ const resolveConfig = (
       if (!colorValue) return;
 
       try {
-        const parsedColor =
-          parsedColorsCache[colorValue] || Color(colorValue).hsl().round(2).array();
+        const parsedColor = parsedColorsCache[colorValue] || Color(colorValue).hsl().round(2).array();
 
         parsedColorsCache[colorValue] = parsedColor;
 
@@ -93,11 +88,9 @@ const resolveConfig = (
 
         // set the css variable in "@layer utilities"
         resolved.utilities[cssSelector]![herouiColorVariable] = `${h} ${s}% ${l}%`;
-        baseSelector &&
-          (resolved.baseStyles[baseSelector]![herouiColorVariable] = `${h} ${s}% ${l}%`);
+        baseSelector && (resolved.baseStyles[baseSelector]![herouiColorVariable] = `${h} ${s}% ${l}%`);
         // set the dynamic color in tailwind config theme.colors
-        resolved.colors[colorName] = `hsl(var(${herouiColorVariable}) / ${defaultAlphaValue ?? "<alpha-value>"
-          })`;
+        resolved.colors[colorName] = `hsl(var(${herouiColorVariable}) / ${defaultAlphaValue ?? "<alpha-value>"})`;
       } catch (error: any) {
         // eslint-disable-next-line no-console
         console.log("error", error?.message);
@@ -248,9 +241,7 @@ export const heroui = (config: HeroUIPluginConfig = {}): ReturnType<typeof plugi
   const userDarkColors = themeObject?.dark?.colors || {};
 
   const defaultLayoutObj =
-    userLayout && typeof userLayout === "object"
-      ? deepMerge(defaultLayout, userLayout)
-      : defaultLayout;
+    userLayout && typeof userLayout === "object" ? deepMerge(defaultLayout, userLayout) : defaultLayout;
 
   const baseLayouts = {
     light: {
@@ -271,13 +262,11 @@ export const heroui = (config: HeroUIPluginConfig = {}): ReturnType<typeof plugi
 
     const baseColors = semanticColors[baseTheme];
 
-    otherThemes[themeName].colors =
-      colors && typeof colors === "object" ? deepMerge(baseColors, colors) : baseColors;
+    otherThemes[themeName].colors = colors && typeof colors === "object" ? deepMerge(baseColors, colors) : baseColors;
 
     const baseLayout = extend ? baseLayouts[extend] : defaultLayoutObj;
 
-    otherThemes[themeName].layout =
-      layout && typeof layout === "object" ? deepMerge(baseLayout, layout) : baseLayout;
+    otherThemes[themeName].layout = layout && typeof layout === "object" ? deepMerge(baseLayout, layout) : baseLayout;
   });
 
   const light: ConfigTheme = {

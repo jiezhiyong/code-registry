@@ -1,9 +1,9 @@
 import type { UseDrawerProps } from "./use-drawer";
 
+import { useDrawer } from "./use-drawer";
+
 import { forwardRef } from "@/lib/system";
 import { Modal } from "@/registry/ui/modal";
-
-import { useDrawer } from "./use-drawer";
 
 export interface DrawerProps extends UseDrawerProps {
   children: React.ReactNode;

@@ -4,19 +4,18 @@ import type { SlotsToClasses } from "@/lib/theme";
 import type { BreadcrumbItemProps as AriaBreadcrumbItemProps } from "@react-types/breadcrumbs";
 import type { ReactNode } from "react";
 import type { BreadcrumbItemSlots, BreadcrumbItemVariantProps } from "./theme";
-;
 
-import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
-import { mapPropsVariants } from "@/lib/system";
 import { useBreadcrumbItem as useAriaBreadcrumbItem } from "@react-aria/breadcrumbs";
 import { useFocusRing } from "@react-aria/focus";
 import { useMemo } from "react";
+
 import { breadcrumbItem } from "./theme";
 
-interface Props
-  extends Omit<HTMLHeroUIProps<"li">, keyof AriaBreadcrumbItemProps>,
-  AriaBreadcrumbItemProps {
+import { mapPropsVariants } from "@/lib/system";
+import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
+
+interface Props extends Omit<HTMLHeroUIProps<"li">, keyof AriaBreadcrumbItemProps>, AriaBreadcrumbItemProps {
   /**
    * Ref to the DOM node.
    */
@@ -78,10 +77,7 @@ export function useBreadcrumbItem(originalProps: UseBreadcrumbItemProps) {
 
   const domRef = useDOMRef(ref);
 
-  const { itemProps } = useAriaBreadcrumbItem(
-    { ...originalProps, isCurrent, elementType: Component },
-    domRef,
-  );
+  const { itemProps } = useAriaBreadcrumbItem({ ...originalProps, isCurrent, elementType: Component }, domRef);
   const { isFocusVisible, isFocused, focusProps } = useFocusRing();
 
   const slots = useMemo(
@@ -89,8 +85,7 @@ export function useBreadcrumbItem(originalProps: UseBreadcrumbItemProps) {
       breadcrumbItem({
         ...variantProps,
         isCurrent,
-        underline:
-          originalProps?.underline !== undefined && !isCurrent ? originalProps?.underline : "none",
+        underline: originalProps?.underline !== undefined && !isCurrent ? originalProps?.underline : "none",
         className,
       }),
     [objectToDeps(variantProps), isCurrent, className],

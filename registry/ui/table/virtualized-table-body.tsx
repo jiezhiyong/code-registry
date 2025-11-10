@@ -2,14 +2,15 @@ import type { HTMLHeroUIProps } from "@/lib/system";
 import type { Virtualizer } from "@tanstack/react-virtual";
 import type { ValuesType } from "./use-table";
 
-import { clsx, dataAttr, mergeProps } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
-import { forwardRef } from "@/lib/system";
 import { useTableRowGroup } from "@react-aria/table";
 
 import TableCell from "./table-cell";
 import TableCheckboxCell from "./table-checkbox-cell";
 import TableRow from "./table-row";
+
+import { forwardRef } from "@/lib/system";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { clsx, dataAttr, mergeProps } from "@/lib/base";
 
 // @internal
 export interface VirtualizedTableBodyProps extends HTMLHeroUIProps<"tbody"> {
@@ -101,7 +102,7 @@ const VirtualizedTableBody = forwardRef<"tbody", VirtualizedTableBodyProps>((pro
         filterDOMProps(bodyProps, {
           enabled: shouldFilterDOMProps,
         }),
-        otherProps
+        otherProps,
       )}
       className={slots.tbody?.({ class: tbodyStyles })}
       data-empty={dataAttr(collection.size === 0)}
@@ -150,7 +151,7 @@ const VirtualizedTableBody = forwardRef<"tbody", VirtualizedTableBodyProps>((pro
                   slots={slots}
                   state={state}
                 />
-              )
+              ),
             )}
           </TableRow>
         );

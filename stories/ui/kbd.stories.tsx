@@ -1,7 +1,6 @@
 import type { Meta } from "@storybook/nextjs-vite";
 
 import { kbd } from "@/registry/ui";
-
 import { Kbd } from "@/registry/ui";
 
 export default {

@@ -1,4 +1,4 @@
-import type {IconSvgProps} from "./types";
+import type { IconSvgProps } from "./types";
 
 export const EditIcon = (props: IconSvgProps) => (
   <svg

@@ -9,22 +9,17 @@ import type { AriaButtonProps } from "@react-types/button";
 import type { CalendarPropsBase as AriaCalendarPropsBase } from "@react-types/calendar";
 import type { ReactNode, RefObject } from "react";
 import type { CalendarReturnType, CalendarSlots, CalendarVariantProps } from "./theme";
-;
 
-import {
-  clamp,
-  dataAttr,
-  getGregorianYearOffset,
-  mergeProps,
-  objectToDeps,
-} from "@/lib/base";
-import { useDOMRef } from "@/lib/react";
-import { mapPropsVariants, useProviderContext } from "@/lib/system";
 import { CalendarDate, createCalendar, DateFormatter } from "@internationalized/date";
 import { useLocale } from "@react-aria/i18n";
 import { useControlledState } from "@react-stately/utils";
 import { useCallback, useMemo } from "react";
+
 import { calendar } from "./theme";
+
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
+import { clamp, dataAttr, getGregorianYearOffset, mergeProps, objectToDeps } from "@/lib/base";
+import { useDOMRef } from "@/lib/react";
 
 type HeroUIBaseProps = Omit<HTMLHeroUIProps<"div">, keyof AriaCalendarPropsBase | "onChange">;
 
@@ -203,9 +198,7 @@ export function useCalendarBase(originalProps: UseCalendarBasePropsComplete) {
 
   const isRTL = direction === "rtl";
 
-  const calendarProp = createCalendar(
-    new DateFormatter(locale).resolvedOptions().calendar as CalendarIdentifier,
-  );
+  const calendarProp = createCalendar(new DateFormatter(locale).resolvedOptions().calendar as CalendarIdentifier);
 
   // by default, we are using gregorian calendar with possible years in [1900, 2099]
   // however, some locales such as `th-TH-u-ca-buddhist` using different calendar making the years out of bound
@@ -227,7 +220,7 @@ export function useCalendarBase(originalProps: UseCalendarBasePropsComplete) {
     navButtonProps = {},
     isHeaderExpanded: isHeaderExpandedProp,
     isHeaderDefaultExpanded,
-    onHeaderExpandedChange = () => { },
+    onHeaderExpandedChange = () => {},
     createCalendar: createCalendarProp = globalContext?.createCalendar ?? null,
     minValue = (globalContext?.defaultDates?.minDate ??
       new CalendarDate(calendarProp, 1900 + gregorianYearOffset, 1, 1)) as DateValue,
@@ -282,8 +275,7 @@ export function useCalendarBase(originalProps: UseCalendarBasePropsComplete) {
     [objectToDeps(variantProps), showMonthAndYearPickers, isHeaderExpanded, className],
   );
 
-  const disableAnimation =
-    originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
+  const disableAnimation = originalProps.disableAnimation ?? globalContext?.disableAnimation ?? false;
 
   const commonButtonProps: ButtonProps = {
     size: "sm",
