@@ -188,10 +188,10 @@ export function useButton(props: UseButtonProps) {
   const getIconClone = (icon: ReactNode) =>
     isValidElement(icon)
       ? cloneElement(icon, {
-        // @ts-ignore
-        "aria-hidden": true,
-        focusable: false,
-      })
+          // @ts-ignore
+          "aria-hidden": true,
+          focusable: false,
+        })
       : null;
 
   const startContent = getIconClone(startContentProp);

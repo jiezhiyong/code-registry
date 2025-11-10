@@ -1,6 +1,6 @@
 import type { UseInputOtpReturn } from "./use-input-otp";
 
-import { createContext } from "@/lib/react";
+import { createContext } from "@/lib/react/context";
 
 export const [InputOtpProvider, useInputOtpContext] = createContext<UseInputOtpReturn>({
   name: "InputOtpContext",

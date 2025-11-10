@@ -1,7 +1,5 @@
 import type { VariantProps } from "tailwind-variants";
 
-import { collapseAdjacentVariantBorders, colorVariants, dataFocusVisibleClasses, tv } from "@/lib/theme";
-
 /**
  * Button wrapper **Tailwind Variants** component
  *

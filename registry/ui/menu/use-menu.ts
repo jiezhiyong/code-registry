@@ -1,6 +1,6 @@
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter, SharedSelection } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { AriaMenuOptions } from "@react-aria/menu";
 import type { TreeState } from "@react-stately/tree";
 import type { AriaMenuProps } from "@react-types/menu";
@@ -14,9 +14,9 @@ import { useMemo } from "react";
 
 import { menu } from "./theme";
 
-import { useProviderContext } from "@/lib/system";
 import { clsx } from "@/lib/base";
 import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { useProviderContext } from "@/lib/system";
 
 interface Props<T> {
   /**

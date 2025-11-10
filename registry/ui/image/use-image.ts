@@ -1,6 +1,6 @@
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { ImgHTMLAttributes } from "react";
 import type { ImageSlots, ImageVariantProps } from "./theme";
 
@@ -168,8 +168,8 @@ export function useImage(originalProps: UseImageProps) {
   const getWrapperProps = useCallback<PropGetter>(() => {
     const fallbackStyle = showFallback
       ? {
-          backgroundImage: `url(${fallbackSrc})`,
-        }
+        backgroundImage: `url(${fallbackSrc})`,
+      }
       : {};
 
     return {

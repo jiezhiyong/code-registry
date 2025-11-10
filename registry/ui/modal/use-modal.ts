@@ -1,6 +1,6 @@
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { AriaModalOverlayProps } from "@react-aria/overlays";
 import type { OverlayTriggerProps } from "@react-stately/overlays";
 import type { HTMLMotionProps } from "framer-motion";

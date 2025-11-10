@@ -1,9 +1,7 @@
 export type {
   As,
-  CapitalizedDOMElements,
   DOMAttributes,
   DOMElement,
-  DOMElements,
   HTMLHeroUIProps,
   InternalForwardRefRenderFunction,
   Merge,
@@ -15,7 +13,4 @@ export type {
   SharedSelection,
 } from "./types";
 
-export { forwardRef, isHeroUIEl, mapPropsVariants, mapPropsVariantsWithCommon, toIterator } from "./utils";
-
-export { extendVariants } from "./extend-variants";
-export type { ExtendVariantProps, ExtendVariants, ExtendVariantWithSlotsProps } from "./extend-variants";
+export { forwardRef, mapPropsVariants } from "./utils";

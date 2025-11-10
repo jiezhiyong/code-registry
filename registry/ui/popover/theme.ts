@@ -1,6 +1,8 @@
 import type { VariantProps } from "tailwind-variants";
 
-import { colorVariants, dataFocusVisibleClasses, tv } from "@/lib/theme";
+import { dataFocusVisibleClasses } from "@/lib/theme/utils/classes";
+import { tv } from "@/lib/theme/utils/tv";
+import { colorVariants } from "@/lib/theme/utils/variants";
 /**
  * Popover wrapper **Tailwind Variants** component
  *

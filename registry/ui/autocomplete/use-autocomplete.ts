@@ -1,6 +1,6 @@
 import type { ReactRef } from "@/lib/react";
 import type { DOMAttributes, HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { ButtonProps } from "@/registry/ui/button";
 import type { InputProps } from "@/registry/ui/input";
 import type { ListboxProps } from "@/registry/ui/listbox";
@@ -409,7 +409,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
 
     inputProps.onKeyDown = (e) => {
       if ("continuePropagation" in e) {
-        e.stopPropagation = () => {};
+        e.stopPropagation = () => { };
       }
 
       return originalOnKeyDown(e);
@@ -501,9 +501,9 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
       isVirtualized: shouldVirtualize,
       virtualization: shouldVirtualize
         ? {
-            maxListboxHeight,
-            itemHeight,
-          }
+          maxListboxHeight,
+          itemHeight,
+        }
         : undefined,
       scrollShadowProps: slotsProps.scrollShadowProps,
       ...mergeProps(slotsProps.listboxProps, listBoxProps, {

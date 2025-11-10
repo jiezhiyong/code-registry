@@ -1,6 +1,6 @@
 import type { UseModalReturn } from "./use-modal";
 
-import { createContext } from "@/lib/react";
+import { createContext } from "@/lib/react/context";
 
 export const [ModalProvider, useModalContext] = createContext<UseModalReturn>({
   name: "ModalContext",

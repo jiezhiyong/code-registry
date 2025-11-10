@@ -1,7 +1,7 @@
 import type { AriaButtonProps } from "@/lib/hooks/use-aria-button";
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { RippleProps } from "@/registry/ui/ripple";
 import type { PressEvent } from "@react-aria/interactions";
 import type { FocusableProps, PressEvents } from "@react-types/shared";

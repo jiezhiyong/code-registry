@@ -1,6 +1,6 @@
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { CheckboxProps } from "@/registry/ui/checkbox";
 import type { AriaTableProps } from "@react-aria/table";
 import type { TableState, TableStateProps } from "@react-stately/table";
@@ -16,9 +16,9 @@ import { useCallback, useMemo } from "react";
 
 import { table } from "./theme";
 
-import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { clsx, mergeProps, objectToDeps } from "@/lib/base";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
 
 type TableContentPlacement = "inside" | "outside";
 

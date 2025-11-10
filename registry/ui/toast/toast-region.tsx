@@ -1,4 +1,4 @@
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { AriaToastRegionProps } from "@react-aria/toast";
 import type { QueuedToast, ToastState } from "@react-stately/toast";
 import type { ToastRegionSlots, ToastRegionVariantProps } from "./theme";

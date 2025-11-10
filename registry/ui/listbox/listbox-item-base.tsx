@@ -1,5 +1,5 @@
 import type { ItemProps } from "@/lib/aria";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { AriaOptionProps } from "@react-aria/listbox";
 import type { FocusableProps, PressEvents } from "@react-types/shared";
 import type { JSX, ReactNode } from "react";

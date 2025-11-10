@@ -1,6 +1,6 @@
 import type { VariantProps } from "tailwind-variants";
 
-import { tv } from "@/lib/theme";
+import { tv } from "@/lib/theme/utils/tv";
 
 const verticalShadow = [
   "data-[top-scroll=true]:[mask-image:linear-gradient(0deg,#000_calc(100%_-_var(--scroll-shadow-size)),transparent)]",

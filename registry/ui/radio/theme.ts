@@ -1,6 +1,7 @@
+import { groupDataFocusVisibleClasses, hiddenInputClasses } from "@/lib/theme/utils/classes";
+import { tv } from "@/lib/theme/utils/tv";
 import type { VariantProps } from "tailwind-variants";
 
-import { groupDataFocusVisibleClasses, hiddenInputClasses, tv } from "@/lib/theme";
 
 /**
  * Radio wrapper **Tailwind Variants** component

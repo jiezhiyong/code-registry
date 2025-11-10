@@ -1,6 +1,6 @@
 import type { ItemProps } from "@/lib/aria";
 import type { As } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { FocusableProps, PressEvents } from "@react-types/shared";
 import type { HTMLMotionProps } from "framer-motion";
 import type { JSX, ReactNode } from "react";

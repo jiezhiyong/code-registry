@@ -1,5 +1,5 @@
 import type { DOMAttributes } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { ButtonProps } from "@/registry/ui/button";
 import type { CalendarProps } from "@/registry/ui/calendar";
 import type { DateInputProps } from "@/registry/ui/date-input";
@@ -17,11 +17,11 @@ import { useMemo, useRef } from "react";
 import { datePicker } from "./theme";
 import { useDatePickerBase } from "./use-date-picker-base";
 
-import { FormContext, useSlottedContext } from "@/registry/ui/form";
 import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 import { useProviderContext } from "@/lib/system";
+import { FormContext, useSlottedContext } from "@/registry/ui/form";
 
-interface Props<T extends DateValue> extends UseDatePickerBaseProps<T> {}
+interface Props<T extends DateValue> extends UseDatePickerBaseProps<T> { }
 
 interface Props<T extends DateValue> extends Omit<UseDatePickerBaseProps<T>, keyof AriaDatePickerProps<T>> {
   /**

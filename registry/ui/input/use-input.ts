@@ -1,5 +1,5 @@
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { AriaTextFieldOptions } from "@react-aria/textfield";
 import type { AriaTextFieldProps } from "@react-types/textfield";
 import type { Ref } from "react";
@@ -13,11 +13,11 @@ import { useCallback, useMemo, useState } from "react";
 
 import { input } from "./theme";
 
-import { FormContext, useSlottedContext } from "@/registry/ui/form";
-import { mapPropsVariants, useInputLabelPlacement, useProviderContext } from "@/lib/system";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
-import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
 import { chain, clsx, dataAttr, isEmpty, mergeProps, objectToDeps, safeAriaLabel } from "@/lib/base";
+import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { mapPropsVariants, useInputLabelPlacement, useProviderContext } from "@/lib/system";
+import { FormContext, useSlottedContext } from "@/registry/ui/form";
 
 export interface Props<T extends HTMLInputElement | HTMLTextAreaElement = HTMLInputElement>
   extends Omit<HTMLHeroUIProps<"input">, keyof InputVariantProps> {
@@ -115,7 +115,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
     validationState,
     validationBehavior = formValidationBehavior ?? globalContext?.validationBehavior ?? "native",
     innerWrapperRef: innerWrapperRefProp,
-    onValueChange = () => {},
+    onValueChange = () => { },
     ...otherProps
   } = props;
 

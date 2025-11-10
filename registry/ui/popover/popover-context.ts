@@ -1,6 +1,6 @@
 import type { UsePopoverReturn } from "./use-popover";
 
-import { createContext } from "@/lib/react";
+import { createContext } from "@/lib/react/context";
 
 export const [PopoverProvider, usePopoverContext] = createContext<UsePopoverReturn>({
   name: "PopoverContext",

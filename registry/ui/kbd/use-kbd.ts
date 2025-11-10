@@ -1,6 +1,6 @@
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system-rsc";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { KbdSlots, KbdVariantProps } from "./theme";
 import type { KbdKey } from "./utils";
 

@@ -1,7 +1,7 @@
 import type * as React from "react";
 import type { MutableRefObject } from "react";
 
-import { isFunction } from "../base";
+import { isFunction } from "../base/common/assertion";
 
 export type ReactRef<T> = React.RefObject<T> | React.MutableRefObject<T> | React.Ref<T>;
 

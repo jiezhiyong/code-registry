@@ -1,5 +1,5 @@
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { AriaCheckboxProps } from "@react-types/checkbox";
 import type { ReactNode, Ref } from "react";
 import type { CheckboxSlots, CheckboxVariantProps } from "./theme";
@@ -13,15 +13,15 @@ import { useHover } from "@react-aria/interactions";
 import { useToggleState } from "@react-stately/toggle";
 import { useCallback, useId, useMemo, useRef } from "react";
 
-import { checkbox } from "./theme";
 import { useCheckboxGroupContext } from "./checkbox-group-context";
+import { checkbox } from "./theme";
 
-import { FormContext, useSlottedContext } from "@/registry/ui/form";
-import { useProviderContext } from "@/lib/system";
-import { mergeRefs } from "@/lib/react";
-import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
 import { __DEV__, chain, clsx, dataAttr, mergeProps, safeAriaLabel, warn } from "@/lib/base";
 import { useCallbackRef } from "@/lib/hooks/use-callback-ref";
+import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
+import { mergeRefs } from "@/lib/react";
+import { useProviderContext } from "@/lib/system";
+import { FormContext, useSlottedContext } from "@/registry/ui/form";
 
 export type CheckboxIconProps = {
   "data-checked": string;
@@ -200,13 +200,13 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
     isPressed,
     isInvalid: isAriaInvalid,
   } = isInGroup
-    ? // eslint-disable-next-line
+      ? // eslint-disable-next-line
       useReactAriaCheckboxGroupItem(
         { ...ariaCheckboxProps, ...validationProps },
         groupContext.groupState,
         inputRef,
       )
-    : // eslint-disable-next-line
+      : // eslint-disable-next-line
       useReactAriaCheckbox({ ...ariaCheckboxProps, ...validationProps }, toggleState, inputRef);
 
   const isInteractionDisabled = isDisabled || isReadOnly;

@@ -1,6 +1,6 @@
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { PressEvent } from "@react-types/shared";
 import type { ReactNode } from "react";
 import type { ChipSlots, ChipVariantProps } from "./theme";
@@ -11,9 +11,9 @@ import { cloneElement, isValidElement, useMemo } from "react";
 
 import { chip } from "./theme";
 
-import { mapPropsVariants } from "@/lib/system";
-import { useDOMRef } from "@/lib/react";
 import { clsx, mergeProps, objectToDeps } from "@/lib/base";
+import { useDOMRef } from "@/lib/react";
+import { mapPropsVariants } from "@/lib/system";
 
 export interface UseChipProps extends HTMLHeroUIProps, ChipVariantProps {
   /**
@@ -129,9 +129,9 @@ export function useChip(originalProps: UseChipProps) {
   const getContentClone = (content: ReactNode) =>
     isValidElement(content)
       ? cloneElement(content, {
-          // @ts-ignore
-          className: clsx("max-h-[80%]", content.props.className),
-        })
+        // @ts-ignore
+        className: clsx("max-h-[80%]", content.props.className),
+      })
       : null;
 
   return {

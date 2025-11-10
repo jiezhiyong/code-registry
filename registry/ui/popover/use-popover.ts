@@ -1,6 +1,6 @@
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { AriaDialogProps } from "@react-aria/dialog";
 import type { OverlayTriggerState } from "@react-stately/overlays";
 import type { OverlayTriggerProps } from "@react-types/overlays";
@@ -18,10 +18,10 @@ import { useCallback, useMemo, useRef } from "react";
 import { popover } from "./theme";
 import { useReactAriaPopover } from "./use-aria-popover";
 
-import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { useDOMRef } from "@/lib/react";
 import { getArrowPlacement, getShouldUseAxisPlacement } from "@/lib/aria";
 import { clsx, dataAttr, mergeProps, mergeRefs, objectToDeps } from "@/lib/base";
+import { useDOMRef } from "@/lib/react";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
 
 export interface Props extends HTMLHeroUIProps<"div"> {
   /**

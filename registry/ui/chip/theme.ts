@@ -1,6 +1,8 @@
+import { ringClasses } from "@/lib/theme/utils/classes";
+import { tv } from "@/lib/theme/utils/tv";
+import { colorVariants } from "@/lib/theme/utils/variants";
 import type { VariantProps } from "tailwind-variants";
 
-import { colorVariants, ringClasses, tv } from "@/lib/theme";
 
 /**
  * Chip wrapper **Tailwind Variants** component

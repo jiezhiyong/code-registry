@@ -1,5 +1,5 @@
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { Ref } from "react";
 import type { SkeletonSlots, SkeletonVariantProps } from "./theme";
 

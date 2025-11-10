@@ -7,13 +7,15 @@
       "name": "core",
       "type": "registry:lib",
       "title": "核心依赖",
-      "description": "components.json, hooks, styles, utils, provide, etc.",
+      "description": "dependencies、hooks, styles, utils, provide, etc.",
       "dependencies": [
         "@react-aria/i18n",
         "@react-aria/overlays",
         "@react-aria/utils",
+        "@react-types/shared",
         "react",
         "react-dom",
+        "react-router-dom",
         "tailwindcss",
         "tailwind-variants",
         "clsx",
@@ -44,6 +46,70 @@
           "target": "~/src/styles/hero.ts"
         },
         {
+          "path": "components/Provider.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "lib/base/assertion.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/base/clsx.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/base/console.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/base/dates.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/base/dimensions.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/base/functions.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/base/getInertValue.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/base/index.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/base/numbers.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/base/object.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/base/ra.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/base/regex.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/base/text.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/base/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/react/context.ts",
+          "type": "registry:lib"
+        },
+        {
           "path": "lib/system/index.ts",
           "type": "registry:lib"
         },
@@ -64,63 +130,19 @@
           "type": "registry:lib"
         },
         {
-          "path": "lib/theme/types.ts",
+          "path": "lib/system-rsc/index.ts",
           "type": "registry:lib"
         },
         {
-          "path": "lib/theme/plugin.ts",
+          "path": "lib/system-rsc/types.ts",
           "type": "registry:lib"
         },
         {
-          "path": "lib/theme/colors/types.ts",
+          "path": "lib/system-rsc/utils.ts",
           "type": "registry:lib"
         },
         {
           "path": "lib/theme/animations/index.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "lib/theme/default-layout.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "lib/theme/utilities/animation.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "lib/theme/utilities/custom.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "lib/theme/utilities/index.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "lib/theme/utilities/scrollbar-hide.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "lib/theme/utilities/text.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "lib/theme/utilities/transition.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "lib/theme/utils/classes.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "lib/theme/utils/object.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "lib/theme/utils/theme.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "lib/base/common/functions.ts",
           "type": "registry:lib"
         },
         {
@@ -172,28 +194,146 @@
           "type": "registry:lib"
         },
         {
-          "path": "lib/system-rsc/extend-variants.d.ts",
+          "path": "lib/theme/utilities/animation.ts",
           "type": "registry:lib"
         },
         {
-          "path": "lib/system-rsc/extend-variants.js",
+          "path": "lib/theme/utilities/custom.ts",
           "type": "registry:lib"
         },
         {
-          "path": "lib/system-rsc/index.ts",
+          "path": "lib/theme/utilities/index.ts",
           "type": "registry:lib"
         },
         {
-          "path": "lib/system-rsc/types.ts",
+          "path": "lib/theme/utilities/scrollbar-hide.ts",
           "type": "registry:lib"
         },
         {
-          "path": "lib/system-rsc/utils.ts",
+          "path": "lib/theme/utilities/text.ts",
           "type": "registry:lib"
         },
         {
-          "path": "lib/react/context.ts",
+          "path": "lib/theme/utilities/transition.ts",
           "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/utils/classes.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/utils/object.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/utils/theme.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/utils/tv.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/utils/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/default-layout.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/plugin.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/types.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "加载指示器",
+      "description": "动画加载指示器组件",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ui/spinner/index.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/ui/spinner/spinner.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/ui/spinner/theme.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/ui/spinner/use-spinner.ts",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "ripple",
+      "type": "registry:ui",
+      "title": "涟漪效果",
+      "description": "涟漪效果组件，用于按钮等元素的点击效果",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ui/ripple/index.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/ui/ripple/ripple.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/ui/ripple/use-ripple.ts",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "按钮",
+      "description": "",
+      "dependencies": [
+        "@react-aria/overlays",
+        "@react-aria/utils"
+      ],
+      "files": [
+        {
+          "path": "registry/ui/button/button-group-context.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/ui/button/button-group.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/ui/button/button.tsx",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/ui/button/index.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/ui/button/theme.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/ui/button/use-button-group.ts",
+          "type": "registry:component"
+        },
+        {
+          "path": "registry/ui/button/use-button.ts",
+          "type": "registry:component"
         }
       ]
     }

@@ -1,6 +1,6 @@
 import type { ReactRef } from "@/lib/react";
 import type { DOMAttributes, HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { TooltipProps } from "@/registry/ui/tooltip";
 import type { AriaSliderProps } from "@react-aria/slider";
 import type { ValueBase } from "@react-types/shared";
@@ -16,9 +16,9 @@ import { useCallback, useMemo, useRef } from "react";
 
 import { slider } from "./theme";
 
-import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { clsx, mergeProps, objectToDeps, warn } from "@/lib/base";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
 
 export type SliderValue = number | number[];
 export type SliderStepMark = {
@@ -26,7 +26,7 @@ export type SliderStepMark = {
   label: string;
 };
 
-export type SliderRenderThumbProps = DOMAttributes<HTMLDivElement> & { index?: number };
+export type SliderRenderThumbProps = DOMAttributes<HTMLDivElement> & { index?: number; };
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**
@@ -330,13 +330,13 @@ export function useSlider(originalProps: UseSliderProps) {
       "data-vertical": isVertical,
       ...(hasSingleThumb
         ? {
-            "data-fill-start": fillWidth > 0,
-            "data-fill-end": fillWidth == 100,
-          }
+          "data-fill-start": fillWidth > 0,
+          "data-fill-end": fillWidth == 100,
+        }
         : {
-            "data-fill-start": startOffset == 0,
-            "data-fill-end": startOffset * 100 + fillWidth == 100,
-          }),
+          "data-fill-start": startOffset == 0,
+          "data-fill-end": startOffset * 100 + fillWidth == 100,
+        }),
       className: slots.track({ class: classNames?.track }),
       ...trackProps,
       ...props,
@@ -361,11 +361,11 @@ export function useSlider(originalProps: UseSliderProps) {
         [isVertical ? "bottom" : direction === "rtl" ? "right" : "left"]: `${startOffset * 100}%`,
         ...(isVertical
           ? {
-              height: `${(endOffset - startOffset) * 100}%`,
-            }
+            height: `${(endOffset - startOffset) * 100}%`,
+          }
           : {
-              width: `${(endOffset - startOffset) * 100}%`,
-            }),
+            width: `${(endOffset - startOffset) * 100}%`,
+          }),
       },
     };
   };

@@ -1,12 +1,7 @@
 export type {
   As,
-  CapitalizedDOMElements,
   DOMAttributes,
   DOMElement,
-  DOMElements,
-  ExtendVariantProps,
-  ExtendVariants,
-  ExtendVariantWithSlotsProps,
   HTMLHeroUIProps,
   InternalForwardRefRenderFunction,
   Merge,
@@ -18,14 +13,7 @@ export type {
   SharedSelection,
 } from "../system-rsc";
 
-export {
-  extendVariants,
-  forwardRef,
-  isHeroUIEl,
-  mapPropsVariants,
-  mapPropsVariantsWithCommon,
-  toIterator,
-} from "../system-rsc";
+export { forwardRef, mapPropsVariants } from "../system-rsc";
 
 export type { HeroUIProviderProps } from "./provider";
 export type { ProviderContextProps } from "./provider-context";

@@ -1,6 +1,7 @@
 import type { VariantProps } from "tailwind-variants";
 
-import { dataFocusVisibleClasses, tv } from "@/lib/theme";
+import { dataFocusVisibleClasses } from "@/lib/theme/utils/classes";
+import { tv } from "@/lib/theme/utils/tv";
 
 /**
  * Dropdown wrapper **Tailwind Variants** component

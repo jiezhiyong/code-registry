@@ -14,6 +14,7 @@
         "@react-aria/utils",
         "react",
         "react-dom",
+        "react-router-dom",
         "tailwindcss",
         "tailwind-variants",
         "clsx",
@@ -23,6 +24,10 @@
         "framer-motion"
       ],
       "files": [
+        {
+          "path": "components/Provider.tsx",
+          "type": "registry:component"
+        },
         {
           "path": "registry/.vscode/settings.json",
           "type": "registry:file",

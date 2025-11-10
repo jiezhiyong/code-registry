@@ -1,6 +1,6 @@
 import type { UseDropdownReturn } from "./use-dropdown";
 
-import { createContext } from "@/lib/react";
+import { createContext } from "@/lib/react/context";
 
 export const [DropdownProvider, useDropdownContext] = createContext<UseDropdownReturn>({
   name: "DropdownContext",

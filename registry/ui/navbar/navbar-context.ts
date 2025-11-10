@@ -1,6 +1,6 @@
 import type { UseNavbarReturn } from "./use-navbar";
 
-import { createContext } from "@/lib/react";
+import { createContext } from "@/lib/react/context";
 
 export const [NavbarProvider, useNavbarContext] = createContext<UseNavbarReturn>({
   name: "NavbarContext",

@@ -1,6 +1,6 @@
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { AriaToastProps } from "@react-aria/toast";
 import type { QueuedToast, ToastState } from "@react-stately/toast";
 import type { MotionProps } from "framer-motion";
@@ -426,13 +426,13 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
         onTransitionEnd: disableAnimation
           ? undefined
           : () => {
-              if (!isToastExiting) return;
-              state.close(toast.key);
-              if (!hasCalledOnCloseRef.current) {
-                hasCalledOnCloseRef.current = true;
-                onClose?.();
-              }
-            },
+            if (!isToastExiting) return;
+            state.close(toast.key);
+            if (!hasCalledOnCloseRef.current) {
+              hasCalledOnCloseRef.current = true;
+              onClose?.();
+            }
+          },
         style: {
           opacity: opacityValue,
           ...pseudoElementStyles,

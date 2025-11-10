@@ -1,6 +1,6 @@
 import type { ContextType } from "./use-card";
 
-import { createContext } from "@/lib/react";
+import { createContext } from "@/lib/react/context";
 
 export const [CardProvider, useCardContext] = createContext<ContextType>({
   name: "CardContext",

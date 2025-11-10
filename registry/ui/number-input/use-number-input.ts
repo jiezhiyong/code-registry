@@ -1,5 +1,5 @@
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { NumberFieldStateOptions } from "@react-stately/numberfield";
 import type { AriaNumberFieldProps } from "@react-types/numberfield";
 import type { Ref } from "react";
@@ -14,11 +14,11 @@ import { useCallback, useMemo, useState } from "react";
 
 import { numberInput } from "./theme";
 
-import { FormContext, useSlottedContext } from "@/registry/ui/form";
-import { mapPropsVariants, useLabelPlacement, useProviderContext } from "@/lib/system";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { chain, clsx, dataAttr, isEmpty, mergeProps, objectToDeps } from "@/lib/base";
 import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { mapPropsVariants, useLabelPlacement, useProviderContext } from "@/lib/system";
+import { FormContext, useSlottedContext } from "@/registry/ui/form";
 
 export interface Props extends Omit<HTMLHeroUIProps<"input">, keyof NumberInputVariantProps> {
   /**

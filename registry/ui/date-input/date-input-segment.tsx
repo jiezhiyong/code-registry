@@ -1,5 +1,5 @@
 import type { HTMLHeroUIProps } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { DateFieldState, DateSegment } from "@react-stately/datepicker";
 import type { DateInputReturnType, DateInputSlots } from "./theme";
 

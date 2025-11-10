@@ -1,7 +1,7 @@
 import type { MultiSelectProps, MultiSelectState } from "@/lib/hooks/use-aria-multiselect";
 import type { ReactRef } from "@/lib/react";
 import type { DOMAttributes, HTMLHeroUIProps, PropGetter, SharedSelection } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { ListboxProps } from "@/registry/ui/listbox";
 import type { PopoverProps } from "@/registry/ui/popover";
 import type { ScrollShadowProps } from "@/registry/ui/scroll-shadow";
@@ -543,9 +543,9 @@ export function useSelect<T extends object>(originalProps: UseSelectProps<T>) {
       isVirtualized: shouldVirtualize,
       virtualization: shouldVirtualize
         ? {
-            maxListboxHeight,
-            itemHeight,
-          }
+          maxListboxHeight,
+          itemHeight,
+        }
         : undefined,
       "data-slot": "listbox",
       className: slots.listbox({
@@ -576,7 +576,7 @@ export function useSelect<T extends object>(originalProps: UseSelectProps<T>) {
         offset:
           state.selectedItems && state.selectedItems.length > 0
             ? // forces the popover to update its position when the selected items change
-              state.selectedItems.length * 0.00000001 + (slotsProps.popoverProps?.offset || 0)
+            state.selectedItems.length * 0.00000001 + (slotsProps.popoverProps?.offset || 0)
             : slotsProps.popoverProps?.offset,
       } as PopoverProps;
     },

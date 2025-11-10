@@ -3,11 +3,8 @@
  */
 
 import type { Selection as AriaSharedSelection } from "@react-types/shared";
-import type { JSX } from "react";
 
 export type As<Props = any> = React.ElementType<Props>;
-export type DOMElements = keyof JSX.IntrinsicElements;
-export type CapitalizedDOMElements = Capitalize<DOMElements>;
 
 export interface DOMElement extends Element, HTMLOrSVGElement {}
 

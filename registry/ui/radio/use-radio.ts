@@ -1,5 +1,5 @@
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { AriaRadioProps } from "@react-types/radio";
 import type { ReactNode, Ref } from "react";
 import type { RadioSlots, RadioVariantProps } from "./theme";
@@ -9,12 +9,12 @@ import { useHover } from "@react-aria/interactions";
 import { useRadio as useReactAriaRadio } from "@react-aria/radio";
 import { useCallback, useId, useMemo, useRef } from "react";
 
-import { radio } from "./theme";
 import { useRadioGroupContext } from "./radio-group-context";
+import { radio } from "./theme";
 
-import { useProviderContext } from "@/lib/system";
 import { __DEV__, chain, clsx, dataAttr, mergeProps, warn } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
+import { useProviderContext } from "@/lib/system";
 
 interface Props extends Omit<HTMLHeroUIProps<"input">, keyof RadioVariantProps> {
   /**

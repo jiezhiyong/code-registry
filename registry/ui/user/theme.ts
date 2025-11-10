@@ -1,4 +1,5 @@
-import { dataFocusVisibleClasses, tv } from "@/lib/theme";
+import { dataFocusVisibleClasses } from "@/lib/theme/utils/classes";
+import { tv } from "@/lib/theme/utils/tv";
 
 /**
  * User wrapper **Tailwind Variants** component

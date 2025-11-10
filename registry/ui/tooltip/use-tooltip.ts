@@ -1,7 +1,7 @@
 import type { OverlayOptions } from "@/lib/aria";
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { PopoverVariantProps } from "@/registry/ui/popover/theme";
 import type { AriaOverlayProps } from "@react-aria/overlays";
 import type { OverlayTriggerProps } from "@react-types/overlays";

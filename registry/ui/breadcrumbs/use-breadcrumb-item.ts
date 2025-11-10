@@ -1,6 +1,6 @@
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { BreadcrumbItemProps as AriaBreadcrumbItemProps } from "@react-types/breadcrumbs";
 import type { ReactNode } from "react";
 import type { BreadcrumbItemSlots, BreadcrumbItemVariantProps } from "./theme";
@@ -11,9 +11,9 @@ import { useMemo } from "react";
 
 import { breadcrumbItem } from "./theme";
 
-import { mapPropsVariants } from "@/lib/system";
 import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { mapPropsVariants } from "@/lib/system";
 
 interface Props extends Omit<HTMLHeroUIProps<"li">, keyof AriaBreadcrumbItemProps>, AriaBreadcrumbItemProps {
   /**

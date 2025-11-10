@@ -1,6 +1,6 @@
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { ButtonProps } from "@/registry/ui/button";
 import type { Calendar, CalendarIdentifier, DateValue } from "@internationalized/date";
 import type { AriaCalendarGridProps } from "@react-aria/calendar";
@@ -17,9 +17,9 @@ import { useCallback, useMemo } from "react";
 
 import { calendar } from "./theme";
 
-import { mapPropsVariants, useProviderContext } from "@/lib/system";
 import { clamp, dataAttr, getGregorianYearOffset, mergeProps, objectToDeps } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
 
 type HeroUIBaseProps = Omit<HTMLHeroUIProps<"div">, keyof AriaCalendarPropsBase | "onChange">;
 
@@ -220,7 +220,7 @@ export function useCalendarBase(originalProps: UseCalendarBasePropsComplete) {
     navButtonProps = {},
     isHeaderExpanded: isHeaderExpandedProp,
     isHeaderDefaultExpanded,
-    onHeaderExpandedChange = () => {},
+    onHeaderExpandedChange = () => { },
     createCalendar: createCalendarProp = globalContext?.createCalendar ?? null,
     minValue = (globalContext?.defaultDates?.minDate ??
       new CalendarDate(calendarProp, 1900 + gregorianYearOffset, 1, 1)) as DateValue,

@@ -1,6 +1,6 @@
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { ReactNode } from "react";
 import type { AvatarProps } from "./index";
 import type { AvatarGroupSlots, AvatarGroupVariantProps } from "./theme";

@@ -1,19 +1,19 @@
 import type { ReactRef } from "@/lib/react";
 import type { DOMAttributes, DOMElement, HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { AvatarSlots, AvatarVariantProps } from "./theme";
 
 import { useFocusRing } from "@react-aria/focus";
 import { useHover } from "@react-aria/interactions";
 import { useCallback, useMemo } from "react";
 
-import { avatar } from "./theme";
 import { useAvatarGroupContext } from "./avatar-group-context";
+import { avatar } from "./theme";
 
-import { useProviderContext } from "@/lib/system";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { clsx, dataAttr, mergeProps, safeInitials } from "@/lib/base";
 import { useImage } from "@/lib/hooks/use-image";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { useProviderContext } from "@/lib/system";
 
 interface Props extends HTMLHeroUIProps<"span"> {
   /**

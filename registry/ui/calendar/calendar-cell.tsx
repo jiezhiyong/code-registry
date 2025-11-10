@@ -1,5 +1,5 @@
 import type { HTMLHeroUIProps } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { CalendarDate } from "@internationalized/date";
 import type { AriaCalendarCellProps } from "@react-aria/calendar";
 import type { CalendarState, RangeCalendarState } from "@react-stately/calendar";

@@ -1,6 +1,6 @@
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { AriaBreadcrumbsProps } from "@react-types/breadcrumbs";
 import type { Key, ReactElement, ReactNode } from "react";
 import type { BreadcrumbItemProps } from "./breadcrumb-item";
@@ -9,12 +9,12 @@ import type { BreadcrumbsSlots, BreadcrumbsVariantProps } from "./theme";
 import { useBreadcrumbs as useAriaBreadcrumbs } from "@react-aria/breadcrumbs";
 import { Children, useMemo } from "react";
 
-import { breadcrumbs } from "./theme";
 import BreadcrumbItem from "./breadcrumb-item";
+import { breadcrumbs } from "./theme";
 
-import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { filterDOMProps, pickChildren, useDOMRef } from "@/lib/react";
 import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
+import { filterDOMProps, pickChildren, useDOMRef } from "@/lib/react";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
 
 type RenderEllipsisItemProps = {
   /**

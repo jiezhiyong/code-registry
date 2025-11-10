@@ -1,7 +1,7 @@
 import type { CalendarState, RangeCalendarState } from "@react-stately/calendar";
 import type { ContextType } from "./use-calendar-base";
 
-import { createContext } from "@/lib/react";
+import { createContext } from "@/lib/react/context";
 
 export const [CalendarProvider, useCalendarContext] = createContext<ContextType<CalendarState | RangeCalendarState>>({
   name: "CalendarContext",

@@ -1,7 +1,7 @@
 import type { Timer } from "@/lib/base";
 import type { PaginationItemValue, UsePaginationProps as UseBasePaginationProps } from "@/lib/hooks/use-pagination";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { PressEvent } from "@react-types/shared";
 import type { Key, ReactNode, Ref } from "react";
 import type { PaginationSlots, PaginationVariantProps } from "./theme";

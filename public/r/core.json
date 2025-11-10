@@ -10,6 +10,7 @@
     "@react-aria/utils",
     "react",
     "react-dom",
+    "react-router-dom",
     "tailwindcss",
     "tailwind-variants",
     "clsx",
@@ -19,6 +20,11 @@
     "framer-motion"
   ],
   "files": [
+    {
+      "path": "components/Provider.tsx",
+      "content": "\"use client\";\n\nimport { HeroUIProvider } from \"@/lib/system\";\nimport * as React from \"react\";\nimport type { NavigateOptions } from \"react-router-dom\";\nimport { useHref, useNavigate } from \"react-router-dom\";\n\nexport interface ProviderProps {\n  children: React.ReactNode;\n}\n\ndeclare module \"@react-types/shared\" {\n  interface RouterConfig {\n    routerOptions: NavigateOptions;\n  }\n}\n\nexport function Provider({ children }: ProviderProps) {\n  const navigate = useNavigate();\n\n  return (\n    <HeroUIProvider navigate={navigate} useHref={useHref}>\n      {children}\n    </HeroUIProvider>\n  );\n}\n",
+      "type": "registry:component"
+    },
     {
       "path": "registry/.vscode/settings.json",
       "content": "{\n  \"files.associations\": {\n    \"*.css\": \"tailwindcss\"\n  }\n}\n",

@@ -1,6 +1,8 @@
+import { dataFocusVisibleClasses } from "@/lib/theme/utils/classes";
+import { tv } from "@/lib/theme/utils/tv";
+import { colorVariants } from "@/lib/theme/utils/variants";
 import type { VariantProps } from "tailwind-variants";
 
-import { colorVariants, dataFocusVisibleClasses, tv } from "@/lib/theme";
 
 /**
  * Pagination wrapper **Tailwind Variants** component

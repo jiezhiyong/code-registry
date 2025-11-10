@@ -1,6 +1,6 @@
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { SlotsToClasses } from "@/lib/theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { AriaListBoxProps } from "@react-aria/listbox";
 import type { ListState } from "@react-stately/list";
 import type { KeyboardDelegate } from "@react-types/shared";
@@ -14,9 +14,9 @@ import { useMemo } from "react";
 
 import { listbox } from "./theme";
 
-import { useProviderContext } from "@/lib/system";
 import { clsx } from "@/lib/base";
 import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { useProviderContext } from "@/lib/system";
 
 interface AriaListBoxOptions<T> extends AriaListBoxProps<T> {
   /** Whether the listbox uses virtual scrolling. */
