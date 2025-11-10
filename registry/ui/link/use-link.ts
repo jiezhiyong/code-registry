@@ -1,3 +1,5 @@
+"use client";
+
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type { AriaLinkProps } from "@react-types/link";

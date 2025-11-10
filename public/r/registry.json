@@ -4,154 +4,196 @@
   "homepage": "https://main--68fb36a8575355ea03c9dd6a.chromatic.com",
   "items": [
     {
-      "name": "button",
-      "type": "registry:ui",
-      "title": "Button",
-      "description": "按钮组件，支持多种变体和尺寸",
+      "name": "core",
+      "type": "registry:lib",
+      "title": "核心依赖",
+      "description": "components.json, hooks, styles, utils, provide, etc.",
       "dependencies": [
-        "@radix-ui/react-slot",
-        "class-variance-authority"
+        "@react-aria/i18n",
+        "@react-aria/overlays",
+        "@react-aria/utils",
+        "react",
+        "react-dom",
+        "tailwindcss",
+        "tailwind-variants",
+        "clsx",
+        "flat@5.0.2",
+        "color",
+        "deepmerge",
+        "framer-motion"
       ],
       "files": [
         {
-          "path": "registry/ui/button.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "input",
-      "type": "registry:ui",
-      "title": "Input",
-      "description": "输入框组件",
-      "files": [
-        {
-          "path": "registry/ui/input.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "card",
-      "type": "registry:ui",
-      "title": "Card",
-      "description": "卡片组件",
-      "files": [
-        {
-          "path": "registry/ui/card.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "label",
-      "type": "registry:ui",
-      "title": "Label",
-      "description": "标签组件",
-      "files": [
-        {
-          "path": "registry/ui/label.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "textarea",
-      "type": "registry:ui",
-      "title": "Textarea",
-      "description": "文本域组件",
-      "files": [
-        {
-          "path": "registry/ui/textarea.tsx",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "example-complex",
-      "type": "registry:block",
-      "title": "Example Complex",
-      "description": "复杂的 Pokemon 展示组件，包含数据获取和多个子组件",
-      "registryDependencies": [
-        "card"
-      ],
-      "files": [
-        {
-          "path": "registry/blocks/example-complex/page.tsx",
-          "type": "registry:page",
-          "target": "app/demo-pokemon/index.tsx"
+          "path": "registry/.vscode/settings.json",
+          "type": "registry:file",
+          "target": "~/.vscode/settings.json"
         },
         {
-          "path": "registry/blocks/example-complex/page.css",
-          "type": "registry:page",
-          "target": "app/demo-pokemon/index.css"
+          "path": "postcss.config.mjs",
+          "type": "registry:file",
+          "target": "~/postcss.config.mjs"
         },
         {
-          "path": "registry/blocks/example-complex/components/pokemon-card.tsx",
-          "type": "registry:component"
+          "path": "styles/globals.css",
+          "type": "registry:file",
+          "target": "~/src/styles/globals.css"
         },
         {
-          "path": "registry/blocks/example-complex/components/pokemon-image.tsx",
-          "type": "registry:component"
+          "path": "styles/hero.ts",
+          "type": "registry:file",
+          "target": "~/src/styles/hero.ts"
         },
         {
-          "path": "registry/blocks/example-complex/hooks/use-pokemon.ts",
-          "type": "registry:hook"
-        },
-        {
-          "path": "registry/blocks/example-complex/lib/pokemon.ts",
+          "path": "lib/system/index.ts",
           "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "example-header",
-      "type": "registry:component",
-      "title": "Example Header",
-      "description": "头部导航组件，支持用户登录状态切换",
-      "registryDependencies": [
-        "button"
-      ],
-      "files": [
-        {
-          "path": "registry/blocks/example-header/page.tsx",
-          "type": "registry:page",
-          "target": "app/demo-header/index.tsx"
         },
         {
-          "path": "registry/blocks/example-header/page.css",
-          "type": "registry:page",
-          "target": "app/demo-header/index.css"
+          "path": "lib/system/provider-context.ts",
+          "type": "registry:lib"
         },
         {
-          "path": "registry/blocks/example-header/components/Header/index.tsx",
-          "type": "registry:component"
+          "path": "lib/system/provider.tsx",
+          "type": "registry:lib"
         },
         {
-          "path": "registry/blocks/example-header/components/Header/index.css",
-          "type": "registry:style"
-        }
-      ]
-    },
-    {
-      "name": "example-form",
-      "type": "registry:component",
-      "title": "Example Form",
-      "description": "A contact form with Zod validation.",
-      "dependencies": [
-        "zod"
-      ],
-      "registryDependencies": [
-        "button",
-        "input",
-        "label",
-        "textarea",
-        "card"
-      ],
-      "files": [
+          "path": "lib/system/types.ts",
+          "type": "registry:lib"
+        },
         {
-          "path": "registry/blocks/example-form/example-form.tsx",
-          "type": "registry:component"
+          "path": "lib/system/use-label-placement.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/plugin.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/colors/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/animations/index.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/default-layout.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/utilities/animation.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/utilities/custom.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/utilities/index.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/utilities/scrollbar-hide.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/utilities/text.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/utilities/transition.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/utils/classes.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/utils/object.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/utils/theme.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/base/common/functions.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/colors/blue.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/colors/common.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/colors/cyan.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/colors/green.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/colors/index.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/colors/pink.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/colors/purple.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/colors/red.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/colors/semantic.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/colors/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/colors/yellow.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/theme/colors/zinc.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/system-rsc/extend-variants.d.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/system-rsc/extend-variants.js",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/system-rsc/index.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/system-rsc/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/system-rsc/utils.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/react/context.ts",
+          "type": "registry:lib"
         }
       ]
     }

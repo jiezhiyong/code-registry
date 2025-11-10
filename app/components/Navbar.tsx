@@ -3,11 +3,13 @@
 import clsx from "clsx";
 import NextLink from "next/link";
 
-import { siteConfig } from "../app/siteConfig";
+import { siteConfig } from "../siteConfig";
 
 import { Logo } from "./Icons";
 import { ThemeSwitch } from "./ThemeSwitch";
 
+import { Link } from "@/registry/ui/link";
+import { link as linkStyles } from "@/registry/ui/link/theme";
 import {
   Navbar as HeroUINavbar,
   NavbarBrand,
@@ -16,9 +18,7 @@ import {
   NavbarMenu,
   NavbarMenuItem,
   NavbarMenuToggle,
-} from "@/registry/ui backup/navbar";
-import { link as linkStyles } from "@/registry/ui backup/link/theme";
-import { Link } from "@/registry/ui backup/link";
+} from "@/registry/ui/navbar";
 
 export const Navbar = () => {
   return (

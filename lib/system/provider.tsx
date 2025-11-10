@@ -1,3 +1,5 @@
+"use client";
+
 import type { I18nProviderProps } from "@react-aria/i18n";
 import type { ModalProviderProps } from "@react-aria/overlays";
 import type { Href, RouterOptions } from "@react-types/shared";

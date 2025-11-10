@@ -1,3 +1,5 @@
+"use client";
+
 import type { UseButtonProps } from "./use-button";
 
 import { useButton } from "./use-button";

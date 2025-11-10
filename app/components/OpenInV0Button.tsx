@@ -1,5 +1,5 @@
 import { cn } from "@/lib/cn";
-import { Button } from "@/registry/ui backup/button";
+import { Button } from "@/registry/ui/button";
 
 export function OpenInV0Button({ name, className }: { name: string } & React.ComponentProps<typeof Button>) {
   return (

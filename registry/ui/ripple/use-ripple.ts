@@ -1,3 +1,5 @@
+"use client";
+
 import type { PressEvent } from "@react-types/shared";
 import type React from "react";
 
@@ -12,7 +14,7 @@ export type RippleType = {
   size: number;
 };
 
-export interface UseRippleProps {}
+export interface UseRippleProps { }
 
 export function useRipple(props: UseRippleProps = {}) {
   const [ripples, setRipples] = useState<RippleType[]>([]);

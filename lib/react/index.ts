@@ -18,12 +18,12 @@ export {
   isBrowser,
   useDOMRef,
   useFocusableRef,
-  useSyncRef,
+  useSyncRef
 } from "./dom";
 export { assignRef, mergeRefs } from "./refs";
 
 export { getCSSStyleVal, getRealShape } from "./dimensions";
 
-export { DOMEventNames, DOMPropNames, filterDOMProps, getValidChildren, pickChildren, renderFn } from "@/lib/react-rsc";
+export { DOMEventNames, DOMPropNames, filterDOMProps, getValidChildren, pickChildren, renderFn } from "../react-rsc";
 
 export { useIsHydrated } from "./use-is-hydrated";

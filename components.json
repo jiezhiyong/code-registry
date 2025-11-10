@@ -1,10 +1,11 @@
 {
   "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "default",
   "rsc": true,
   "tsx": true,
   "tailwind": {
     "config": "",
-    "css": "app/globals.css",
+    "css": "src/styles/globals.css",
     "baseColor": "neutral",
     "cssVariables": true,
     "prefix": ""
@@ -18,7 +19,7 @@
   },
   "iconLibrary": "lucide",
   "registries": {
-    "@tcsk-local": "http://localhost:6006/r/{name}.json",
+    "@tcsk-local": "http://localhost:3000/r/{name}.json",
     "@tcsk": "https://main--68fb36a8575355ea03c9dd6a.chromatic.com/r/{name}.json"
   }
 }

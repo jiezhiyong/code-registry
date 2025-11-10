@@ -1,5 +1,5 @@
-import type { HTMLHeroUIProps } from "@/lib/system";
 import type { Ref } from "react";
+import type { HTMLHeroUIProps } from "../system";
 
 import { domAnimation, LazyMotion, m } from "framer-motion";
 import { forwardRef } from "react";

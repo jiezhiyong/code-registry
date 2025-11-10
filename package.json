@@ -155,7 +155,7 @@
     "react-lorem-component": "^0.13.0",
     "shadcn": "^3.5.0",
     "storybook": "^10.0.0",
-    "tailwindcss": "^4.1.11",
+    "tailwindcss": "^4.1.17",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.46.3",
     "vitest": "^4.0.2"

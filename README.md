@@ -38,8 +38,8 @@ Visit the [shadcn documentation](https://ui.shadcn.com/docs/registry) to view th
 
 ## Heroui + Shadcn registry
 
-1. 升级 React 19, 废弃 forwardRef ?
-2. 手动创建 components.json, or use cli ?
-3. 运行 pnpm dlx shadcn@latest add @tcsk/core 复制核心文件（provider、utils、types、hooks、css、安装@react-aria、@react-types 等若干依赖包）
-4. 运行 pnpm dlx shadcn@latest add @tcsk/\* 复制组件文件（utils、types、hooks、关联组件等，至少 5 个文件）
+2. 手动创建 components.json、配置 tsconfig.json compilerOptions.paths
+3. 运行 npx shadcn@latest add @tcsk/core 复制核心文件（provider、utils、types、hooks、css、安装@react-aria、@react-types 等若干依赖包）
+4. 运行 npx shadcn@latest add @tcsk/\* 复制组件文件（utils、types、hooks、关联组件等，至少 5 个文件）
 5. 兼容 rem ?
+6. 升级 React 19, 废弃 forwardRef ?

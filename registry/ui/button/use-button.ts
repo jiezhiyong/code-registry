@@ -1,3 +1,5 @@
+"use client";
+
 import type { AriaButtonProps } from "@/lib/hooks/use-aria-button";
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
@@ -11,8 +13,8 @@ import { useFocusRing } from "@react-aria/focus";
 import { useHover } from "@react-aria/interactions";
 import { cloneElement, isValidElement, useCallback, useMemo } from "react";
 
-import { button } from "./theme";
 import { useButtonGroupContext } from "./button-group-context";
+import { button } from "./theme";
 
 import { chain, dataAttr, mergeProps } from "@/lib/base";
 import { useAriaButton } from "@/lib/hooks/use-aria-button";
@@ -186,10 +188,10 @@ export function useButton(props: UseButtonProps) {
   const getIconClone = (icon: ReactNode) =>
     isValidElement(icon)
       ? cloneElement(icon, {
-          // @ts-ignore
-          "aria-hidden": true,
-          focusable: false,
-        })
+        // @ts-ignore
+        "aria-hidden": true,
+        focusable: false,
+      })
       : null;
 
   const startContent = getIconClone(startContentProp);

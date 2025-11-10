@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { useProviderContext } from "../provider-context";
+import { useProviderContext } from "./provider-context";
 
 export function useLabelPlacement(props: {
   labelPlacement?: "inside" | "outside" | "outside-left";

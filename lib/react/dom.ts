@@ -1,3 +1,5 @@
+"use client";
+
 import type { DOMRefValue, FocusableRef, FocusableRefValue } from "@react-types/shared";
 import type { MutableRefObject, Ref, RefObject } from "react";
 

@@ -8,9 +8,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 import { CloseFilledIcon, EyeFilledIcon, EyeSlashFilledIcon, MailFilledIcon, SearchIcon } from "@/lib/icons";
-import { button, input } from "@/registry/ui";
+import { button, input, Input, useInput } from "@/registry/ui";
 import { Form } from "@/registry/ui/form";
-import { Input, useInput } from "@/registry/ui";
 
 export default {
   title: "Components/Input",

@@ -1,6 +1,8 @@
+"use client";
+
 import type { Calendar, CalendarIdentifier, DateValue, SpinnerVariants } from "./types";
 
-import { createContext } from "@/lib/react";
+import { createContext } from "../react/context";
 
 export type ProviderContextProps = {
   /**
