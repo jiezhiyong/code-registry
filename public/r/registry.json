@@ -24,7 +24,8 @@
         "flat@5.0.2",
         "color",
         "deepmerge",
-        "framer-motion@11.18.2"
+        "framer-motion@11.18.2",
+        "color2k"
       ],
       "files": [
         {
@@ -373,7 +374,7 @@
       "type": "registry:ui",
       "title": "导航栏",
       "description": "导航栏组件，用于导航等元素的导航栏",
-      "dependencies": ["@react-stately/toggle", "@react-aria/overlays", "@react-stately/utils"],
+      "dependencies": ["@react-stately/toggle", "@react-aria/overlays", "@react-stately/utils", "@react-aria/button"],
       "registryDependencies": ["@tcsk/button"],
       "files": [
         {
@@ -433,11 +434,23 @@
           "type": "registry:lib"
         },
         {
+          "path": "lib/framer/resizable-panel.tsx",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/framer/transition-utils.ts",
+          "type": "registry:lib"
+        },
+        {
           "path": "hooks/use-resize/index.ts",
           "type": "registry:hook"
         },
         {
           "path": "hooks/use-scroll-position/index.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "hooks/use-measure/index.ts",
           "type": "registry:hook"
         }
       ]

@@ -135,6 +135,8 @@ export function mergeRefs<T>(...refs: Array<Ref<T> | MutableRefObject<T> | null 
         });
       };
     }
+
+    return () => {};
   };
 }
 

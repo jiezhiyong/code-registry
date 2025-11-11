@@ -7,19 +7,19 @@ import type { ConfigTheme, ConfigThemes, DefaultThemeType, HeroUIPluginConfig } 
 
 import Color from "color";
 import deepMerge from "deepmerge";
-import plugin from "tailwindcss/plugin.js";
+import plugin from "tailwindcss/plugin";
 
 import { kebabCase, mapKeys, omit } from "../base/functions";
 
 import { animations } from "./animations";
+import { commonColors } from "./colors/common";
+import { semanticColors } from "./colors/semantic";
 import { darkLayout, defaultLayout, lightLayout } from "./default-layout";
 import { utilities } from "./utilities";
 import { DEFAULT_TRANSITION_DURATION } from "./utilities/transition";
 import { baseStyles } from "./utils/classes";
 import { flattenThemeObject } from "./utils/object";
 import { isBaseTheme } from "./utils/theme";
-import { commonColors } from "./colors/common";
-import { semanticColors } from "./colors/semantic";
 
 const DEFAULT_PREFIX = "heroui";
 

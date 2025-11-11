@@ -56,7 +56,7 @@ export type InternalForwardRefRenderFunction<
   ): React.ReactElement | null;
   readonly $$typeof: symbol;
   defaultProps?: Partial<Props> | undefined;
-  propTypes?: React.WeakValidationMap<Props> | undefined;
+  propTypes?: Record<string, any> | undefined;
   displayName?: string | undefined;
 };
 
