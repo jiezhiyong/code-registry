@@ -9,10 +9,12 @@
       "title": "核心依赖",
       "description": "dependencies、hooks, styles, utils, provide, etc.",
       "dependencies": [
+        "@react-types/shared",
         "@react-aria/i18n",
         "@react-aria/overlays",
         "@react-aria/utils",
-        "@react-types/shared",
+        "@react-aria/interactions",
+        "@react-aria/focus",
         "react",
         "react-dom",
         "react-router-dom",
@@ -29,6 +31,11 @@
           "path": "registry/.vscode/settings.json",
           "type": "registry:file",
           "target": "~/.vscode/settings.json"
+        },
+        {
+          "path": "registry/.vscode/extensions.json",
+          "type": "registry:file",
+          "target": "~/.vscode/extensions.json"
         },
         {
           "path": "postcss.config.mjs",
@@ -234,6 +241,10 @@
           "type": "registry:lib"
         },
         {
+          "path": "lib/theme/utils/tw-merge-config.ts",
+          "type": "registry:lib"
+        },
+        {
           "path": "lib/theme/utils/types.ts",
           "type": "registry:lib"
         },
@@ -302,9 +313,10 @@
       "type": "registry:ui",
       "title": "按钮",
       "description": "",
-      "dependencies": [
-        "@react-aria/overlays",
-        "@react-aria/utils"
+      "dependencies": [],
+      "registryDependencies": [
+        "@tcsk/spinner",
+        "@tcsk/ripple"
       ],
       "files": [
         {

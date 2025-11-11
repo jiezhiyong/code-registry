@@ -13,8 +13,8 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 
 import { toast as toastTheme } from "./theme";
 
+import { useIsMobile } from "@/hooks/use-is-mobile";
 import { clsx, dataAttr, isEmpty, mergeProps, objectToDeps } from "@/lib/base";
-import { useIsMobile } from "@/lib/hooks/use-is-mobile";
 import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
 

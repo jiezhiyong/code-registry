@@ -13,9 +13,9 @@ import { useCallback, useId, useMemo, useRef, useState } from "react";
 
 import { modal } from "./theme";
 
+import { useAriaButton } from "@/hooks/use-aria-button";
+import { useAriaModalOverlay } from "@/hooks/use-aria-modal-overlay";
 import { clsx, dataAttr, mergeProps, mergeRefs, objectToDeps } from "@/lib/base";
-import { useAriaButton } from "@/lib/hooks/use-aria-button";
-import { useAriaModalOverlay } from "@/lib/hooks/use-aria-modal-overlay";
 import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
 

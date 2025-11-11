@@ -9,10 +9,12 @@
       "title": "核心依赖",
       "description": "dependencies、hooks, styles, utils, provide, etc.",
       "dependencies": [
+        "@react-types/shared",
         "@react-aria/i18n",
         "@react-aria/overlays",
         "@react-aria/utils",
-        "@react-types/shared",
+        "@react-aria/interactions",
+        "@react-aria/focus",
         "react",
         "react-dom",
         "react-router-dom",
@@ -29,6 +31,11 @@
           "path": "registry/.vscode/settings.json",
           "type": "registry:file",
           "target": "~/.vscode/settings.json"
+        },
+        {
+          "path": "registry/.vscode/extensions.json",
+          "type": "registry:file",
+          "target": "~/.vscode/extensions.json"
         },
         {
           "path": "postcss.config.mjs",
@@ -234,6 +241,10 @@
           "type": "registry:lib"
         },
         {
+          "path": "lib/theme/utils/tw-merge-config.ts",
+          "type": "registry:lib"
+        },
+        {
           "path": "lib/theme/utils/types.ts",
           "type": "registry:lib"
         },
@@ -260,19 +271,19 @@
       "files": [
         {
           "path": "registry/ui/spinner/index.ts",
-          "type": "registry:component"
+          "type": "registry:ui"
         },
         {
           "path": "registry/ui/spinner/spinner.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         },
         {
           "path": "registry/ui/spinner/theme.ts",
-          "type": "registry:component"
+          "type": "registry:ui"
         },
         {
           "path": "registry/ui/spinner/use-spinner.ts",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ]
     },
@@ -285,15 +296,15 @@
       "files": [
         {
           "path": "registry/ui/ripple/index.ts",
-          "type": "registry:component"
+          "type": "registry:ui"
         },
         {
           "path": "registry/ui/ripple/ripple.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         },
         {
           "path": "registry/ui/ripple/use-ripple.ts",
-          "type": "registry:component"
+          "type": "registry:ui"
         }
       ]
     },
@@ -303,37 +314,44 @@
       "title": "按钮",
       "description": "",
       "dependencies": [
-        "@react-aria/overlays",
-        "@react-aria/utils"
+        "@react-types/button"
+      ],
+      "registryDependencies": [
+        "@tcsk/spinner",
+        "@tcsk/ripple"
       ],
       "files": [
         {
           "path": "registry/ui/button/button-group-context.ts",
-          "type": "registry:component"
+          "type": "registry:ui"
         },
         {
           "path": "registry/ui/button/button-group.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         },
         {
           "path": "registry/ui/button/button.tsx",
-          "type": "registry:component"
+          "type": "registry:ui"
         },
         {
           "path": "registry/ui/button/index.ts",
-          "type": "registry:component"
+          "type": "registry:ui"
         },
         {
           "path": "registry/ui/button/theme.ts",
-          "type": "registry:component"
+          "type": "registry:ui"
         },
         {
           "path": "registry/ui/button/use-button-group.ts",
-          "type": "registry:component"
+          "type": "registry:ui"
         },
         {
           "path": "registry/ui/button/use-button.ts",
-          "type": "registry:component"
+          "type": "registry:ui"
+        },
+        {
+          "path": "hooks/use-aria-button/index.ts",
+          "type": "registry:hook"
         }
       ]
     }

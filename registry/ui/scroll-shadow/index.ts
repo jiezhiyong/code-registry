@@ -3,8 +3,8 @@ import ScrollShadow from "./scroll-shadow";
 // export types
 export type {
   ScrollOverflowOrientation as ScrollShadowOrientation,
-  ScrollOverflowVisibility as ScrollShadowVisibility,
-} from "@/lib/hooks/use-data-scroll-overflow";
+  ScrollOverflowVisibility as ScrollShadowVisibility
+} from "@/hooks/use-data-scroll-overflow";
 export type { ScrollShadowProps } from "./scroll-shadow";
 
 // export hooks

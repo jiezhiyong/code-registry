@@ -14,8 +14,8 @@ import { useCallback, useMemo, useState } from "react";
 
 import { numberInput } from "./theme";
 
+import { useSafeLayoutEffect } from "@/hooks/use-safe-layout-effect";
 import { chain, clsx, dataAttr, isEmpty, mergeProps, objectToDeps } from "@/lib/base";
-import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
 import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useLabelPlacement, useProviderContext } from "@/lib/system";
 import { FormContext, useSlottedContext } from "@/registry/ui/form";

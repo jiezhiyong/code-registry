@@ -8,8 +8,8 @@ import { useCallback, useMemo } from "react";
 
 import { image } from "./theme";
 
+import { useImage as useImageBase } from "@/hooks/use-image";
 import { clsx, dataAttr, objectToDeps } from "@/lib/base";
-import { useImage as useImageBase } from "@/lib/hooks/use-image";
 import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
 type NativeImageProps = ImgHTMLAttributes<HTMLImageElement>;

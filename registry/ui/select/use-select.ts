@@ -1,4 +1,4 @@
-import type { MultiSelectProps, MultiSelectState } from "@/lib/hooks/use-aria-multiselect";
+import type { MultiSelectProps, MultiSelectState } from "@/hooks/use-aria-multiselect";
 import type { ReactRef } from "@/lib/react";
 import type { DOMAttributes, HTMLHeroUIProps, PropGetter, SharedSelection } from "@/lib/system";
 import type { SlotsToClasses } from "@/lib/theme/utils/types";
@@ -18,10 +18,10 @@ import { useCallback, useEffect, useMemo, useRef } from "react";
 
 import { select } from "./theme";
 
+import { useAriaButton } from "@/hooks/use-aria-button";
+import { useMultiSelect, useMultiSelectState } from "@/hooks/use-aria-multiselect";
+import { useSafeLayoutEffect } from "@/hooks/use-safe-layout-effect";
 import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
-import { useAriaButton } from "@/lib/hooks/use-aria-button";
-import { useMultiSelect, useMultiSelectState } from "@/lib/hooks/use-aria-multiselect";
-import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
 import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useLabelPlacement, useProviderContext } from "@/lib/system";
 import { FormContext, useSlottedContext } from "@/registry/ui/form";

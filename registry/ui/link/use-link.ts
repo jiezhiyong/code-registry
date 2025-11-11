@@ -11,8 +11,8 @@ import { useCallback, useMemo } from "react";
 
 import { link } from "./theme";
 
+import { useAriaLink } from "@/hooks/use-aria-link";
 import { dataAttr, mergeProps, objectToDeps } from "@/lib/base";
-import { useAriaLink } from "@/lib/hooks/use-aria-link";
 import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
 

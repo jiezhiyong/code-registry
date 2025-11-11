@@ -11,8 +11,8 @@ import { useCallback, useMemo } from "react";
 
 import { accordionItem } from "./theme";
 
+import { useReactAriaAccordionItem } from "@/hooks/use-aria-accordion";
 import { callAllHandlers, chain, clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
-import { useReactAriaAccordionItem } from "@/lib/hooks/use-aria-accordion";
 import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { useProviderContext } from "@/lib/system";
 

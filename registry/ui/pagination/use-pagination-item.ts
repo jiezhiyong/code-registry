@@ -1,4 +1,4 @@
-import type { PaginationItemValue } from "@/lib/hooks/use-pagination";
+import type { PaginationItemValue } from "@/hooks/use-pagination";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type { LinkDOMProps, PressEvent } from "@react-types/shared";
 import type { Ref } from "react";
@@ -8,8 +8,8 @@ import { useHover, usePress } from "@react-aria/interactions";
 import { handleLinkClick, useRouter } from "@react-aria/utils";
 import { useMemo } from "react";
 
-import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { chain, clsx, dataAttr, mergeProps } from "@/lib/base";
+import { filterDOMProps, useDOMRef } from "@/lib/react";
 
 interface Props extends Omit<HTMLHeroUIProps<"li">, "onClick"> {
   /**

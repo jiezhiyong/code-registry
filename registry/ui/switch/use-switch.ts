@@ -11,10 +11,10 @@ import { useCallback, useId, useMemo, useRef } from "react";
 
 import { toggle } from "./theme";
 
-import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { mergeRefs } from "@/lib/react";
-import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
+import { useSafeLayoutEffect } from "@/hooks/use-safe-layout-effect";
 import { chain, clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
+import { mergeRefs } from "@/lib/react";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
 
 export type SwitchThumbIconProps = {
   width: string;
@@ -245,8 +245,8 @@ export function useSwitch(originalProps: UseSwitchProps = {}) {
         },
         props.includeStateProps
           ? {
-              isSelected: isSelected,
-            }
+            isSelected: isSelected,
+          }
           : {},
       ) as unknown as SwitchThumbIconProps,
     [slots, classNames?.thumbIcon, isSelected],

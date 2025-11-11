@@ -13,8 +13,8 @@ import { useCallback, useMemo } from "react";
 
 import { inputOtp } from "./theme";
 
+import { useFormReset } from "@/hooks/use-form-reset";
 import { chain, clsx, dataAttr, isPatternNumeric, mergeProps, objectToDeps } from "@/lib/base";
-import { useFormReset } from "@/lib/hooks/use-form-reset";
 import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
 import { FormContext, useSlottedContext } from "@/registry/ui/form";

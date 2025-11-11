@@ -9,8 +9,8 @@ export type { PaginationItemProps } from "./pagination-item";
 export type { PaginationItemRenderProps } from "./use-pagination";
 
 // misc
-export { PaginationItemType } from "@/lib/hooks/use-pagination";
-export type { PaginationItemValue } from "@/lib/hooks/use-pagination";
+export { PaginationItemType } from "@/hooks/use-pagination";
+export type { PaginationItemValue } from "@/hooks/use-pagination";
 
 // export hooks
 export { usePagination } from "./use-pagination";

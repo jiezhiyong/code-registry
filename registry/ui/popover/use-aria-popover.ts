@@ -6,10 +6,10 @@ import type { RefObject } from "react";
 import { useOverlayPosition } from "@react-aria/overlays";
 import { useEffect } from "react";
 
+import { useAriaOverlay } from "@/hooks/use-aria-overlay";
+import { useSafeLayoutEffect } from "@/hooks/use-safe-layout-effect";
 import { ariaHideOutside, keepVisible, toReactAriaPlacement } from "@/lib/aria";
 import { mergeProps } from "@/lib/base";
-import { useAriaOverlay } from "@/lib/hooks/use-aria-overlay";
-import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
 
 export interface Props {
   /**
@@ -45,7 +45,7 @@ export interface Props {
   /**
    * The origin of the target in the overlay's coordinate system. Useful for animations.
    */
-  triggerAnchorPoint?: { x: number; y: number } | null;
+  triggerAnchorPoint?: { x: number; y: number; } | null;
 }
 
 export type ReactAriaPopoverProps = Props &
@@ -114,7 +114,7 @@ export function useReactAriaPopover(props: ReactAriaPopoverProps, state: Overlay
     containerPadding,
     placement: toReactAriaPlacement(placementProp),
     offset: showArrow ? offset + 3 : offset,
-    onClose: isNonModal && !isSubmenu && shouldCloseOnScroll ? state.close : () => {},
+    onClose: isNonModal && !isSubmenu && shouldCloseOnScroll ? state.close : () => { },
   });
 
   useSafeLayoutEffect(() => {

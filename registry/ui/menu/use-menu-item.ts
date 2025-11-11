@@ -11,10 +11,10 @@ import { useCallback, useMemo, useRef } from "react";
 
 import { menuItem } from "./theme";
 
-import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { filterDOMProps } from "@/lib/react";
-import { useIsMobile } from "@/lib/hooks/use-is-mobile";
+import { useIsMobile } from "@/hooks/use-is-mobile";
 import { clsx, dataAttr, mergeProps, objectToDeps, removeEvents } from "@/lib/base";
+import { filterDOMProps } from "@/lib/react";
+import { mapPropsVariants, useProviderContext } from "@/lib/system";
 
 interface Props<T extends object> extends MenuItemBaseProps<T> {
   item: Node<T>;

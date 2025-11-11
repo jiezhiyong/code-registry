@@ -1,4 +1,4 @@
-import type { UseDataScrollOverflowProps } from "@/lib/hooks/use-data-scroll-overflow";
+import type { UseDataScrollOverflowProps } from "@/hooks/use-data-scroll-overflow";
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type { ScrollShadowVariantProps } from "./theme";
@@ -7,8 +7,8 @@ import { useMemo } from "react";
 
 import { scrollShadow } from "./theme";
 
+import { useDataScrollOverflow } from "@/hooks/use-data-scroll-overflow";
 import { objectToDeps } from "@/lib/base";
-import { useDataScrollOverflow } from "@/lib/hooks/use-data-scroll-overflow";
 import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants } from "@/lib/system";
 

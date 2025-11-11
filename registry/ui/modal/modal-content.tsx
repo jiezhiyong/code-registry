@@ -11,10 +11,10 @@ import { cloneElement, isValidElement, useCallback, useMemo } from "react";
 import { useModalContext } from "./modal-context";
 import { scaleInOut } from "./modal-transition";
 
-import { CloseIcon } from "@/lib/icons/close";
-import { useViewportSize } from "@/lib/hooks/use-viewport-size";
-import { TRANSITION_VARIANTS } from "@/lib/framer";
+import { useViewportSize } from "@/hooks/use-viewport-size";
 import { chain, mergeProps } from "@/lib/base";
+import { TRANSITION_VARIANTS } from "@/lib/framer";
+import { CloseIcon } from "@/lib/icons/close";
 
 type KeysToOmit = "children" | "role";
 

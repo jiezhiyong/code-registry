@@ -11,8 +11,8 @@ import { useCallback, useMemo, useRef } from "react";
 
 import { snippet } from "./theme";
 
+import { useClipboard } from "@/hooks/use-clipboard";
 import { clsx, dataAttr, objectToDeps } from "@/lib/base";
-import { useClipboard } from "@/lib/hooks/use-clipboard";
 import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
 

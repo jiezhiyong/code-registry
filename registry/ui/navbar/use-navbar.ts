@@ -10,9 +10,9 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { navbar } from "./theme";
 
+import { useResizeObserver } from "@/hooks/use-resize";
+import { useScrollPosition } from "@/hooks/use-scroll-position";
 import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
-import { useResizeObserver } from "@/lib/hooks/use-resize";
-import { useScrollPosition } from "@/lib/hooks/use-scroll-position";
 import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
 

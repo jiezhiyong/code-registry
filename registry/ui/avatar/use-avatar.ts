@@ -10,8 +10,8 @@ import { useCallback, useMemo } from "react";
 import { useAvatarGroupContext } from "./avatar-group-context";
 import { avatar } from "./theme";
 
+import { useImage } from "@/hooks/use-image";
 import { clsx, dataAttr, mergeProps, safeInitials } from "@/lib/base";
-import { useImage } from "@/lib/hooks/use-image";
 import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { useProviderContext } from "@/lib/system";
 

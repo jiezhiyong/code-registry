@@ -17,7 +17,7 @@ import { baseStyles } from "./utils/classes";
 import { flattenThemeObject } from "./utils/object";
 import { isBaseTheme } from "./utils/theme";
 
-import { kebabCase, mapKeys, omit } from "../base/common/functions";
+import { kebabCase, mapKeys, omit } from "../base/functions";
 import { commonColors } from "./colors/common";
 import { semanticColors } from "./colors/semantic";
 

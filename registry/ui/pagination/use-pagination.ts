@@ -1,5 +1,5 @@
+import type { PaginationItemValue, UsePaginationProps as UseBasePaginationProps } from "@/hooks/use-pagination";
 import type { Timer } from "@/lib/base";
-import type { PaginationItemValue, UsePaginationProps as UseBasePaginationProps } from "@/lib/hooks/use-pagination";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { PressEvent } from "@react-types/shared";
@@ -11,9 +11,9 @@ import scrollIntoView from "scroll-into-view-if-needed";
 
 import { pagination } from "./theme";
 
+import { useIntersectionObserver } from "@/hooks/use-intersection-observer";
+import { PaginationItemType, usePagination as useBasePagination } from "@/hooks/use-pagination";
 import { clsx, dataAttr, objectToDeps } from "@/lib/base";
-import { useIntersectionObserver } from "@/lib/hooks/use-intersection-observer";
-import { PaginationItemType, usePagination as useBasePagination } from "@/lib/hooks/use-pagination";
 import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
 

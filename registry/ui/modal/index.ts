@@ -5,7 +5,7 @@ import ModalFooter from "./modal-footer";
 import ModalHeader from "./modal-header";
 
 // export types
-export type { UseDisclosureProps } from "@/lib/hooks/use-disclosure";
+export type { UseDisclosureProps } from "@/hooks/use-disclosure";
 export type { ModalProps } from "./modal";
 export type { ModalBodyProps } from "./modal-body";
 export type { ModalContentProps } from "./modal-content";
@@ -13,8 +13,8 @@ export type { ModalFooterProps } from "./modal-footer";
 export type { ModalHeaderProps } from "./modal-header";
 
 // export hooks
-export { useDisclosure } from "@/lib/hooks/use-disclosure";
-export { useDraggable } from "@/lib/hooks/use-draggable";
+export { useDisclosure } from "@/hooks/use-disclosure";
+export { useDraggable } from "@/hooks/use-draggable";
 export { useModal } from "./use-modal";
 
 // export context

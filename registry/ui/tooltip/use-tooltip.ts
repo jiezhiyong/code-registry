@@ -14,10 +14,10 @@ import { useTooltip as useReactAriaTooltip, useTooltipTrigger } from "@react-ari
 import { useTooltipTriggerState } from "@react-stately/tooltip";
 import { useCallback, useId, useImperativeHandle, useMemo, useRef } from "react";
 
+import { useAriaOverlay } from "@/hooks/use-aria-overlay";
+import { useSafeLayoutEffect } from "@/hooks/use-safe-layout-effect";
 import { getArrowPlacement, toReactAriaPlacement } from "@/lib/aria";
 import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
-import { useAriaOverlay } from "@/lib/hooks/use-aria-overlay";
-import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
 import { createDOMRef, mergeRefs } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
 import { popover } from "@/registry/ui/popover/theme";

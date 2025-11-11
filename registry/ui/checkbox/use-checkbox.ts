@@ -16,9 +16,9 @@ import { useCallback, useId, useMemo, useRef } from "react";
 import { useCheckboxGroupContext } from "./checkbox-group-context";
 import { checkbox } from "./theme";
 
+import { useCallbackRef } from "@/hooks/use-callback-ref";
+import { useSafeLayoutEffect } from "@/hooks/use-safe-layout-effect";
 import { __DEV__, chain, clsx, dataAttr, mergeProps, safeAriaLabel, warn } from "@/lib/base";
-import { useCallbackRef } from "@/lib/hooks/use-callback-ref";
-import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
 import { mergeRefs } from "@/lib/react";
 import { useProviderContext } from "@/lib/system";
 import { FormContext, useSlottedContext } from "@/registry/ui/form";

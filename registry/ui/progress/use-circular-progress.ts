@@ -9,8 +9,8 @@ import { useCallback, useMemo } from "react";
 
 import { circularProgress } from "./theme";
 
+import { useIsMounted } from "@/hooks/use-is-mounted";
 import { clampPercentage, clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
-import { useIsMounted } from "@/lib/hooks/use-is-mounted";
 import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
 

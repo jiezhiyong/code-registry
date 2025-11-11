@@ -1,4 +1,4 @@
-import type { AriaButtonProps } from "@/lib/hooks/use-aria-button";
+import type { AriaButtonProps } from "@/hooks/use-aria-button";
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type { SlotsToClasses } from "@/lib/theme/utils/types";
@@ -14,8 +14,8 @@ import { useCallback, useMemo } from "react";
 
 import { card } from "./theme";
 
+import { useAriaButton } from "@/hooks/use-aria-button";
 import { chain, clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
-import { useAriaButton } from "@/lib/hooks/use-aria-button";
 import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
 import { useRipple } from "@/registry/ui/ripple";

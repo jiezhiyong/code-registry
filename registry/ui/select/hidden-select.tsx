@@ -2,7 +2,7 @@
  * Based on @react-aria/select with some modifications to support required attribute and
  * custom input/select props.
  */
-import type { MultiSelectProps, MultiSelectState } from "@/lib/hooks/use-aria-multiselect";
+import type { MultiSelectProps, MultiSelectState } from "@/hooks/use-aria-multiselect";
 import type { FocusableElement } from "@react-types/shared";
 import type { ReactNode, RefObject } from "react";
 
@@ -12,7 +12,7 @@ import React from "react";
 
 import { selectData } from "./use-select";
 
-import { useFormReset } from "@/lib/hooks/use-form-reset";
+import { useFormReset } from "@/hooks/use-form-reset";
 export interface AriaHiddenSelectProps {
   /**
    * Describes the type of autocomplete functionality the input should provide if any. See [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input#htmlattrdefautocomplete).
@@ -95,9 +95,7 @@ export function useHiddenSelect<T>(
       name,
       tabIndex: -1,
       value:
-        selectionMode === "multiple"
-          ? [...state.selectedKeys].map((k) => String(k))
-          : ([...state.selectedKeys][0] ?? ""),
+        selectionMode === "multiple" ? [...state.selectedKeys].map((k) => String(k)) : [...state.selectedKeys][0] ?? "",
       multiple: selectionMode === "multiple",
       onChange: (e: React.ChangeEvent<HTMLSelectElement>) => {
         state.setSelectedKeys(e.target.value);

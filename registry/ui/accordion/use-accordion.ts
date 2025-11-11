@@ -13,8 +13,8 @@ import React, { useCallback, useMemo, useState } from "react";
 
 import { accordion } from "./theme";
 
+import { useReactAriaAccordion } from "@/hooks/use-aria-accordion";
 import { mergeProps } from "@/lib/base";
-import { useReactAriaAccordion } from "@/lib/hooks/use-aria-accordion";
 import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { useProviderContext } from "@/lib/system";
 

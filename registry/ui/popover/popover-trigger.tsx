@@ -2,8 +2,8 @@ import React, { Children, cloneElement, useMemo } from "react";
 
 import { usePopoverContext } from "./popover-context";
 
+import { useAriaButton } from "@/hooks/use-aria-button";
 import { mergeProps } from "@/lib/base";
-import { useAriaButton } from "@/lib/hooks/use-aria-button";
 import { pickChildren } from "@/lib/react";
 import { Button } from "@/registry/ui/button";
 

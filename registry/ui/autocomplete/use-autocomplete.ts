@@ -19,8 +19,8 @@ import { useEffect, useMemo, useRef } from "react";
 
 import { autocomplete } from "./theme";
 
+import { useSafeLayoutEffect } from "@/hooks/use-safe-layout-effect";
 import { chain, clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
-import { useSafeLayoutEffect } from "@/lib/hooks/use-safe-layout-effect";
 import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
 import { FormContext, useSlottedContext } from "@/registry/ui/form";
