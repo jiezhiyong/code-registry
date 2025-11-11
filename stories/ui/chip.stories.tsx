@@ -1,10 +1,9 @@
 import type { ChipProps } from "@/registry/ui";
 import type { Meta } from "@storybook/nextjs-vite";
 
-import { CheckIcon } from "@/lib/icons";
-import { chip } from "@/registry/ui";
+import { CheckIcon } from "@/icons";
+import { chip, Chip } from "@/registry/ui";
 import { Avatar } from "@/registry/ui/avatar";
-import { Chip } from "@/registry/ui";
 
 export default {
   title: "Components/Chip",

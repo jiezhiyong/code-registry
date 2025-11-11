@@ -7,8 +7,8 @@ import { Fragment, useCallback, useMemo } from "react";
 import AccordionItem from "./accordion-item";
 import { useAccordion } from "./use-accordion";
 
-import { Divider } from "@/registry/ui/divider";
 import { forwardRef } from "@/lib/system";
+import { Divider } from "../divider";
 
 export interface AccordionProps extends UseAccordionProps {}
 

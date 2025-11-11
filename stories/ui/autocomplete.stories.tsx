@@ -9,15 +9,14 @@ import { useAsyncList } from "@react-stately/data";
 import React from "react";
 import { useForm } from "react-hook-form";
 
-import { useInfiniteScroll } from "@/lib/hooks/use-infinite-scroll";
-import { SelectorIcon } from "@/lib/icons";
-import { autocomplete, button, input } from "@/registry/ui";
+import { useInfiniteScroll } from "@/hooks/use-infinite-scroll";
+import { SelectorIcon } from "@/icons";
+import { autocomplete, Autocomplete, AutocompleteItem, AutocompleteSection, button, input } from "@/registry/ui";
 import { Avatar } from "@/registry/ui/avatar";
 import { Button } from "@/registry/ui/button";
 import { Form } from "@/registry/ui/form";
 import { PetBoldIcon, SearchLinearIcon } from "@/utils/icons";
 import { animalsData, usePokemonList, usersData } from "@/utils/storybook";
-import { Autocomplete, AutocompleteItem, AutocompleteSection } from "@/registry/ui";
 
 export default {
   title: "Components/Autocomplete",

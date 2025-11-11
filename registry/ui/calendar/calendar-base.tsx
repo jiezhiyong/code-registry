@@ -1,7 +1,7 @@
 import type { As, HTMLHeroUIProps } from "@/lib/system";
-import type { ButtonProps } from "@/registry/ui/button";
 import type { AriaButtonProps } from "@react-types/button";
 import type { HTMLAttributes, ReactNode, RefObject } from "react";
+import type { ButtonProps } from "../button";
 
 import { useLocale } from "@react-aria/i18n";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
@@ -16,9 +16,9 @@ import { transition } from "./calendar-transitions";
 import { ChevronLeftIcon } from "./chevron-left";
 import { ChevronRightIcon } from "./chevron-right";
 
-import { Button } from "@/registry/ui/button";
-import { ResizablePanel } from "@/lib/framer";
 import { chain, mergeProps } from "@/lib/base";
+import { ResizablePanel } from "@/lib/framer";
+import { Button } from "../button";
 
 const domAnimation = () => import("@/lib/dom-animation").then((res) => res.default);
 

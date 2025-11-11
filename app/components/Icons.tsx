@@ -1,4 +1,4 @@
-import type { IconSvgProps } from "@/types/IconSvgProps";
+import type { IconSvgProps } from "../types";
 
 import * as React from "react";
 

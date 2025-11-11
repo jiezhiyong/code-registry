@@ -3,10 +3,10 @@
 import type { AriaButtonProps } from "@/hooks/use-aria-button";
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { RippleProps } from "@/registry/ui/ripple";
-import type { SpinnerProps } from "@/registry/ui/spinner";
 import type { PressEvent } from "@react-aria/interactions";
 import type { MouseEventHandler, ReactNode } from "react";
+import type { RippleProps } from "../ripple";
+import type { SpinnerProps } from "../spinner";
 import type { ButtonVariantProps } from "./theme";
 
 import { useFocusRing } from "@react-aria/focus";
@@ -21,7 +21,7 @@ import { chain, dataAttr, mergeProps } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { useProviderContext } from "@/lib/system";
-import { useRipple } from "@/registry/ui/ripple";
+import { useRipple } from "../ripple";
 
 interface Props extends HTMLHeroUIProps<"button"> {
   /**

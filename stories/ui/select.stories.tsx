@@ -7,16 +7,15 @@ import type { ChangeEvent } from "react";
 import React from "react";
 import { useForm } from "react-hook-form";
 
-import { useInfiniteScroll } from "@/lib/hooks/use-infinite-scroll";
-import { SelectorIcon } from "@/lib/icons";
-import { button, select } from "@/registry/ui";
+import { useInfiniteScroll } from "@/hooks/use-infinite-scroll";
+import { SelectorIcon } from "@/icons";
+import { button, select, Select, SelectItem, SelectSection } from "@/registry/ui";
 import { Avatar } from "@/registry/ui/avatar";
 import { Button } from "@/registry/ui/button";
 import { Chip } from "@/registry/ui/chip";
 import { Form } from "@/registry/ui/form";
 import { PetBoldIcon } from "@/utils/icons";
 import { animalsData, usePokemonList, usersData } from "@/utils/storybook";
-import { Select, SelectItem, SelectSection } from "@/registry/ui";
 
 export default {
   title: "Components/Select",

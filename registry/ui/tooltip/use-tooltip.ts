@@ -2,12 +2,12 @@ import type { OverlayOptions } from "@/lib/aria";
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type { SlotsToClasses } from "@/lib/theme/utils/types";
-import type { PopoverVariantProps } from "@/registry/ui/popover/theme";
 import type { AriaOverlayProps } from "@react-aria/overlays";
 import type { OverlayTriggerProps } from "@react-types/overlays";
 import type { AriaTooltipProps } from "@react-types/tooltip";
 import type { HTMLMotionProps } from "framer-motion";
 import type { ReactNode, Ref } from "react";
+import type { PopoverVariantProps } from "../popover/theme";
 
 import { useOverlayPosition } from "@react-aria/overlays";
 import { useTooltip as useReactAriaTooltip, useTooltipTrigger } from "@react-aria/tooltip";
@@ -21,7 +21,7 @@ import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 import { createDOMRef } from "@/lib/react/createDOMRef";
 import { mergeRefs } from "@/lib/react/refs";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { popover } from "@/registry/ui/popover/theme";
+import { popover } from "../popover/theme";
 
 interface Props extends Omit<HTMLHeroUIProps, "content"> {
   /**

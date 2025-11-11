@@ -1,7 +1,7 @@
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { MenuItemVariantProps } from "@/registry/ui/menu/theme";
 import type { ListState } from "@react-stately/list";
 import type { Node } from "@react-types/shared";
+import type { MenuItemVariantProps } from "../menu/theme";
 import type { ListboxItemBaseProps } from "./listbox-item-base";
 
 import { useFocusRing } from "@react-aria/focus";

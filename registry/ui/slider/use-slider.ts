@@ -1,10 +1,10 @@
 import type { ReactRef } from "@/lib/react";
 import type { DOMAttributes, HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type { SlotsToClasses } from "@/lib/theme/utils/types";
-import type { TooltipProps } from "@/registry/ui/tooltip";
 import type { AriaSliderProps } from "@react-aria/slider";
 import type { ValueBase } from "@react-types/shared";
 import type { ReactNode } from "react";
+import type { TooltipProps } from "../tooltip";
 import type { SliderThumbProps } from "./slider-thumb";
 import type { SliderSlots, SliderVariantProps } from "./theme";
 
@@ -263,8 +263,8 @@ export function useSlider(originalProps: UseSliderProps) {
     state.values.length > 1
       ? state.getThumbPercent(0)
       : fillOffset !== undefined
-        ? state.getValuePercent(fillOffset)
-        : 0,
+      ? state.getValuePercent(fillOffset)
+      : 0,
     state.getThumbPercent(state.values.length - 1),
   ].sort();
 

@@ -1,10 +1,10 @@
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { DividerProps } from "@/registry/ui/divider";
 import type { TreeState } from "@react-stately/tree";
 import type { AriaAccordionProps } from "@react-types/accordion";
 import type { MultipleSelection, SelectionBehavior } from "@react-types/shared";
 import type { Key } from "react";
+import type { DividerProps } from "../divider";
 import type { AccordionItemProps } from "./accordion-item";
 import type { AccordionGroupVariantProps } from "./theme";
 

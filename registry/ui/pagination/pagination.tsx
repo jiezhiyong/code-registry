@@ -9,10 +9,10 @@ import PaginationItem from "./pagination-item";
 import { usePagination } from "./use-pagination";
 
 import { PaginationItemType } from "@/hooks/use-pagination";
+import { ChevronIcon } from "@/icons/chevron";
+import { EllipsisIcon } from "@/icons/ellipsis";
+import { ForwardIcon } from "@/icons/forward";
 import { clsx, dataAttr } from "@/lib/base";
-import { ChevronIcon } from "@/lib/icons/chevron";
-import { EllipsisIcon } from "@/lib/icons/ellipsis";
-import { ForwardIcon } from "@/lib/icons/forward";
 import { forwardRef } from "@/lib/system";
 
 export interface PaginationProps extends UsePaginationProps {}
@@ -125,8 +125,8 @@ const Pagination = forwardRef<"nav", PaginationProps>((props, ref) => {
               ? activePage - dotsJump
               : 1
             : activePage + dotsJump <= total
-              ? activePage + dotsJump
-              : total;
+            ? activePage + dotsJump
+            : total;
         }
 
         const itemChildren: Record<PaginationItemType, React.ReactNode> = {

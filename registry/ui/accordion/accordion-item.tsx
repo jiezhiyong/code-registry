@@ -7,8 +7,8 @@ import { useMemo } from "react";
 
 import { useAccordionItem } from "./use-accordion-item";
 
+import { ChevronIcon } from "@/icons/chevron";
 import { TRANSITION_VARIANTS } from "@/lib/framer";
-import { ChevronIcon } from "@/lib/icons/chevron";
 import { forwardRef } from "@/lib/system";
 
 export interface AccordionItemProps extends UseAccordionItemProps {}

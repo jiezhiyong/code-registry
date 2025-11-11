@@ -4,14 +4,9 @@ import type { Meta } from "@storybook/nextjs-vite";
 import React from "react";
 import Lorem from "react-lorem-component";
 
-import { Activity, ChevronDown, Flash, Lock, Scale, SearchIcon, Server, TagUser } from "@/lib/icons";
-import { navbar } from "@/registry/ui";
-import { Avatar } from "@/registry/ui/avatar";
-import { Button } from "@/registry/ui/button";
-import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@/registry/ui/dropdown";
-import { Input } from "@/registry/ui/input";
-import { Link } from "@/registry/ui/link";
+import { Activity, ChevronDown, Flash, Lock, Scale, SearchIcon, Server, TagUser } from "@/icons";
 import {
+  navbar,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -20,6 +15,11 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
 } from "@/registry/ui";
+import { Avatar } from "@/registry/ui/avatar";
+import { Button } from "@/registry/ui/button";
+import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@/registry/ui/dropdown";
+import { Input } from "@/registry/ui/input";
+import { Link } from "@/registry/ui/link";
 
 export default {
   title: "Components/Navbar",

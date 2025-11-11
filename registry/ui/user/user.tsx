@@ -3,7 +3,7 @@ import type { UseUserProps } from "./use-user";
 import { useUser } from "./use-user";
 
 import { forwardRef } from "@/lib/system";
-import { Avatar } from "@/registry/ui/avatar";
+import { Avatar } from "../avatar";
 
 export interface UserProps extends UseUserProps {}
 

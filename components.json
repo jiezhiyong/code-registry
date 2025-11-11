@@ -19,7 +19,6 @@
   },
   "iconLibrary": "lucide",
   "registries": {
-    "@tcsk-local": "http://localhost:3000/r/{name}.json",
-    "@tcsk": "https://main--68fb36a8575355ea03c9dd6a.chromatic.com/r/{name}.json"
+    "@tcsk": "http://localhost:3000/r/{name}.json"
   }
 }

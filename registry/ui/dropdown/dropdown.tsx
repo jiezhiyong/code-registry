@@ -6,7 +6,7 @@ import React from "react";
 import { DropdownProvider } from "./dropdown-context";
 import { useDropdown } from "./use-dropdown";
 
-import { Popover } from "@/registry/ui/popover";
+import { Popover } from "../popover";
 
 export interface DropdownProps extends UseDropdownProps {
   /**

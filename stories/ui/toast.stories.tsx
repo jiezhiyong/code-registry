@@ -3,14 +3,13 @@ import type { Meta } from "@storybook/nextjs-vite";
 
 import { useEffect, useState } from "react";
 
-import { AvatarIcon, CloseIcon } from "@/lib/icons";
+import { AvatarIcon, CloseIcon } from "@/icons";
 import { cn } from "@/lib/theme";
-import { toast } from "@/registry/ui";
+import { Toast, ToastProvider, addToast, closeAll, closeToast, toast } from "@/registry/ui";
 import { Button } from "@/registry/ui/button";
 import { Drawer, DrawerContent } from "@/registry/ui/drawer";
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from "@/registry/ui/modal";
 import { Spinner } from "@/registry/ui/spinner";
-import { Toast, ToastProvider, addToast, closeAll, closeToast } from "@/registry/ui";
 
 export default {
   title: "Components/Toast",

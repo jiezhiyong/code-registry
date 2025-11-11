@@ -1,5 +1,5 @@
-import type { ButtonProps } from "@/registry/ui/button";
 import type { ReactElement } from "react";
+import type { ButtonProps } from "../button";
 import type { UseToastProps } from "./use-toast";
 
 import { m } from "framer-motion";
@@ -7,14 +7,14 @@ import { cloneElement, isValidElement } from "react";
 
 import { useToast } from "./use-toast";
 
+import { CloseIcon } from "@/icons/close";
+import { DangerIcon } from "@/icons/danger";
+import { InfoFilledIcon } from "@/icons/info-filled";
+import { SuccessIcon } from "@/icons/success";
+import { WarningIcon } from "@/icons/warning";
 import { forwardRef } from "@/lib/system";
-import { Button } from "@/registry/ui/button";
-import { Spinner } from "@/registry/ui/spinner";
-import { CloseIcon } from "@/lib/icons/close";
-import { DangerIcon } from "@/lib/icons/danger";
-import { InfoFilledIcon } from "@/lib/icons/info-filled";
-import { SuccessIcon } from "@/lib/icons/success";
-import { WarningIcon } from "@/lib/icons/warning";
+import { Button } from "../button";
+import { Spinner } from "../spinner";
 
 export interface ToastProps extends UseToastProps {}
 

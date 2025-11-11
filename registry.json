@@ -24,24 +24,9 @@
         "flat@5.0.2",
         "color",
         "deepmerge",
-        "framer-motion"
+        "framer-motion@11.18.2"
       ],
       "files": [
-        {
-          "path": "registry/.vscode/settings.json",
-          "type": "registry:file",
-          "target": "~/.vscode/settings.json"
-        },
-        {
-          "path": "registry/.vscode/extensions.json",
-          "type": "registry:file",
-          "target": "~/.vscode/extensions.json"
-        },
-        {
-          "path": "postcss.config.mjs",
-          "type": "registry:file",
-          "target": "~/postcss.config.mjs"
-        },
         {
           "path": "styles/globals.css",
           "type": "registry:file",
@@ -299,52 +284,11 @@
         {
           "path": "lib/theme/types.ts",
           "type": "registry:lib"
-        }
-      ]
-    },
-    {
-      "name": "spinner",
-      "type": "registry:ui",
-      "title": "加载指示器",
-      "description": "动画加载指示器组件",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/ui/spinner/index.ts",
-          "type": "registry:ui"
         },
         {
-          "path": "registry/ui/spinner/spinner.tsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/ui/spinner/theme.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/ui/spinner/use-spinner.ts",
-          "type": "registry:ui"
-        }
-      ]
-    },
-    {
-      "name": "ripple",
-      "type": "registry:ui",
-      "title": "涟漪效果",
-      "description": "涟漪效果组件，用于按钮等元素的点击效果",
-      "dependencies": [],
-      "files": [
-        {
-          "path": "registry/ui/ripple/index.ts",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/ui/ripple/ripple.tsx",
-          "type": "registry:ui"
-        },
-        {
-          "path": "registry/ui/ripple/use-ripple.ts",
-          "type": "registry:ui"
+          "path": "icons/types.ts",
+          "type": "registry:file",
+          "target": "~/src/icons/types.ts"
         }
       ]
     },
@@ -386,6 +330,194 @@
         },
         {
           "path": "hooks/use-aria-button/index.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "link",
+      "type": "registry:ui",
+      "title": "链接",
+      "description": "链接组件，用于导航等元素的链接",
+      "dependencies": ["@react-types/link"],
+      "files": [
+        {
+          "path": "registry/ui/link/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/link/link.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/link/theme.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/link/use-link.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "icons/link.tsx",
+          "type": "registry:file",
+          "target": "~/src/icons/link.tsx"
+        },
+        {
+          "path": "hooks/use-aria-link/index.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "navbar",
+      "type": "registry:ui",
+      "title": "导航栏",
+      "description": "导航栏组件，用于导航等元素的导航栏",
+      "dependencies": ["@react-stately/toggle", "@react-aria/overlays", "@react-stately/utils"],
+      "registryDependencies": ["@tcsk/button"],
+      "files": [
+        {
+          "path": "registry/ui/navbar/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/navbar/navbar-brand.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/navbar/navbar-content.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/navbar/navbar-context.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/navbar/navbar-item.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/navbar/navbar-menu-item.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/navbar/navbar-menu-toggle.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/navbar/navbar-menu-transitions.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/navbar/navbar-menu.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/navbar/navbar-transitions.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/navbar/navbar.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/navbar/theme.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/navbar/use-navbar.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "lib/framer/index.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "hooks/use-resize/index.ts",
+          "type": "registry:hook"
+        },
+        {
+          "path": "hooks/use-scroll-position/index.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "ripple",
+      "type": "registry:ui",
+      "title": "涟漪效果",
+      "description": "涟漪效果组件，用于按钮等元素的点击效果",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ui/ripple/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/ripple/ripple.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/ripple/use-ripple.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "加载指示器",
+      "description": "动画加载指示器组件",
+      "dependencies": [],
+      "files": [
+        {
+          "path": "registry/ui/spinner/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/spinner/spinner.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/spinner/theme.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/spinner/use-spinner.ts",
+          "type": "registry:ui"
+        }
+      ]
+    },
+
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "开关",
+      "description": "开关组件，用于切换等元素的开关状态",
+      "dependencies": ["@react-aria/switch"],
+      "files": [
+        {
+          "path": "registry/ui/switch/index.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/switch/switch.tsx",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/switch/theme.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "registry/ui/switch/use-switch.ts",
+          "type": "registry:ui"
+        },
+        {
+          "path": "lib/react/refs.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "hooks/use-safe-layout-effect/index.ts",
           "type": "registry:hook"
         }
       ]

@@ -4,10 +4,9 @@ import type { Meta } from "@storybook/nextjs-vite";
 import { useLocale } from "@react-aria/i18n";
 import React from "react";
 
-import { ChevronIcon } from "@/lib/icons";
+import { ChevronIcon } from "@/icons";
 import { cn } from "@/lib/theme";
-import { button, pagination } from "@/registry/ui";
-import { Pagination, PaginationItemType, usePagination } from "@/registry/ui";
+import { button, pagination, Pagination, PaginationItemType, usePagination } from "@/registry/ui";
 
 export default {
   title: "Components/Pagination",

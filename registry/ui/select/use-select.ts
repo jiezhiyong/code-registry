@@ -2,12 +2,12 @@ import type { MultiSelectProps, MultiSelectState } from "@/hooks/use-aria-multis
 import type { ReactRef } from "@/lib/react";
 import type { DOMAttributes, HTMLHeroUIProps, PropGetter, SharedSelection } from "@/lib/system";
 import type { SlotsToClasses } from "@/lib/theme/utils/types";
-import type { ListboxProps } from "@/registry/ui/listbox";
-import type { PopoverProps } from "@/registry/ui/popover";
-import type { ScrollShadowProps } from "@/registry/ui/scroll-shadow";
-import type { SpinnerProps } from "@/registry/ui/spinner";
 import type { CollectionChildren, ValidationError } from "@react-types/shared";
 import type { Key, ReactNode } from "react";
+import type { ListboxProps } from "../listbox";
+import type { PopoverProps } from "../popover";
+import type { ScrollShadowProps } from "../scroll-shadow";
+import type { SpinnerProps } from "../spinner";
 import type { HiddenSelectProps } from "./hidden-select";
 import type { SelectSlots, SelectVariantProps } from "./theme";
 
@@ -25,7 +25,7 @@ import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { mapPropsVariants, useLabelPlacement, useProviderContext } from "@/lib/system";
-import { FormContext, useSlottedContext } from "@/registry/ui/form";
+import { FormContext, useSlottedContext } from "../form";
 
 export type SelectedItemProps<T = object> = {
   /** A unique key for the item. */
@@ -484,7 +484,7 @@ export function useSelect<T extends object>(originalProps: UseSelectProps<T>) {
         form: originalProps?.form,
         onChange,
         ...props,
-      }) as HiddenSelectProps<T>,
+      } as HiddenSelectProps<T>),
     [
       state,
       selectionMode,

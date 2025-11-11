@@ -1,12 +1,12 @@
 import type { HTMLHeroUIProps } from "@/lib/system";
-import type { ButtonProps } from "@/registry/ui/button";
-import type { CalendarProps } from "@/registry/ui/calendar";
-import type { DateInputProps, TimeInputProps } from "@/registry/ui/date-input";
-import type { PopoverProps } from "@/registry/ui/popover";
 import type { DateValue } from "@internationalized/date";
 import type { AriaDatePickerBaseProps } from "@react-types/datepicker";
 import type { ValueBase } from "@react-types/shared";
 import type { ReactNode } from "react";
+import type { ButtonProps } from "../button";
+import type { CalendarProps } from "../calendar";
+import type { DateInputProps, TimeInputProps } from "../date-input";
+import type { PopoverProps } from "../popover";
 import type { DatePickerVariantProps } from "./theme";
 
 import { useLocalizedStringFormatter } from "@react-aria/i18n";
@@ -18,7 +18,7 @@ import intlMessages from "./intl-messages";
 import { dataAttr, mergeProps } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { dateInput } from "@/registry/ui/date-input/theme";
+import { dateInput } from "../date-input/theme";
 
 type HeroUIBaseProps<T extends DateValue> = Omit<HTMLHeroUIProps<"div">, keyof AriaDatePickerBaseProps<T> | "onChange">;
 

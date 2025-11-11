@@ -1,13 +1,13 @@
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type { SlotsToClasses } from "@/lib/theme/utils/types";
-import type { CheckboxProps } from "@/registry/ui/checkbox";
 import type { AriaTableProps } from "@react-aria/table";
 import type { TableState, TableStateProps } from "@react-stately/table";
 import type { Layout } from "@react-stately/virtualizer";
 import type { DisabledBehavior, Node, SelectionBehavior } from "@react-types/shared";
 import type { TableCollection } from "@react-types/table";
 import type { Key, ReactNode } from "react";
+import type { CheckboxProps } from "../checkbox";
 import type { TableReturnType, TableSlots, TableVariantProps } from "./theme";
 
 import { useTable as useReactAriaTable } from "@react-aria/table";

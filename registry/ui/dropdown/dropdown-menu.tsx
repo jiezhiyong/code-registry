@@ -1,13 +1,13 @@
-import type { MenuProps } from "@/registry/ui/menu";
 import type { ForwardedRef, ReactElement } from "react";
+import type { MenuProps } from "../menu";
 
 import { FocusScope } from "@react-aria/focus";
 
 import { useDropdownContext } from "./dropdown-context";
 
 import { forwardRef } from "@/lib/system";
-import { Menu } from "@/registry/ui/menu";
-import { PopoverContent } from "@/registry/ui/popover";
+import { Menu } from "../menu";
+import { PopoverContent } from "../popover";
 
 interface Props<T extends object = object> extends Omit<MenuProps<T>, "menuProps"> {}
 

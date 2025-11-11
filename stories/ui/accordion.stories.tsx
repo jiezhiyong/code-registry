@@ -12,12 +12,11 @@ import {
   MoonIcon,
   ShieldSecurityIcon,
   SunIcon,
-} from "@/lib/icons";
-import { accordionItem, button } from "@/registry/ui";
+} from "@/icons";
+import { Accordion, accordionItem, AccordionItem, button } from "@/registry/ui";
 import { Avatar } from "@/registry/ui/avatar";
 import { Button } from "@/registry/ui/button";
 import { Input, Textarea } from "@/registry/ui/input";
-import { Accordion, AccordionItem } from "@/registry/ui";
 
 export default {
   title: "Components/Accordion",

@@ -3,13 +3,20 @@ import type { Meta } from "@storybook/nextjs-vite";
 
 import React from "react";
 
+import { AddNoteBulkIcon, CopyDocumentBulkIcon, DeleteDocumentBulkIcon, EditDocumentBulkIcon } from "@/icons";
 import { clsx } from "@/lib/base";
-import { AddNoteBulkIcon, CopyDocumentBulkIcon, DeleteDocumentBulkIcon, EditDocumentBulkIcon } from "@/lib/icons";
-import { dropdown, popover } from "@/registry/ui";
+import {
+  dropdown,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownSection,
+  DropdownTrigger,
+  popover,
+} from "@/registry/ui";
 import { Avatar } from "@/registry/ui/avatar";
 import { Button } from "@/registry/ui/button";
 import { User } from "@/registry/ui/user";
-import { Dropdown, DropdownItem, DropdownMenu, DropdownSection, DropdownTrigger } from "@/registry/ui";
 
 export default {
   title: "Components/Dropdown",

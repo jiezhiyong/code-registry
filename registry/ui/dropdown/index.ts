@@ -1,10 +1,10 @@
-import type { MenuItemProps, MenuSectionProps } from "@/registry/ui/menu";
+import type { MenuItemProps, MenuSectionProps } from "../menu";
 
 import Dropdown from "./dropdown";
 import DropdownMenu from "./dropdown-menu";
 import DropdownTrigger from "./dropdown-trigger";
 
-import { MenuItem, MenuSection } from "@/registry/ui/menu";
+import { MenuItem, MenuSection } from "../menu";
 
 // export types
 export type { DropdownProps } from "./dropdown";

@@ -4,9 +4,9 @@ import { cloneElement, isValidElement, useMemo } from "react";
 
 import { useBreadcrumbs } from "./use-breadcrumbs";
 
+import { ChevronRightIcon } from "@/icons/chevron-right";
+import { EllipsisIcon } from "@/icons/ellipsis";
 import { chain, warn } from "@/lib/base";
-import { ChevronRightIcon } from "@/lib/icons/chevron-right";
-import { EllipsisIcon } from "@/lib/icons/ellipsis";
 import { forwardRef } from "@/lib/system";
 
 export interface BreadcrumbsProps extends UseBreadcrumbsProps {}

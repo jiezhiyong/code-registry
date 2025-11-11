@@ -6,9 +6,8 @@ import { parseAbsoluteToLocal, parseZonedDateTime, Time, ZonedDateTime } from "@
 import { useDateFormatter } from "@react-aria/i18n";
 import React from "react";
 
-import { button, dateInput } from "@/registry/ui";
-import { ClockCircleLinearIcon } from "@/lib/icons";
-import { TimeInput } from "@/registry/ui";
+import { ClockCircleLinearIcon } from "@/icons";
+import { button, dateInput, TimeInput } from "@/registry/ui";
 
 export default {
   title: "Components/TimeInput",

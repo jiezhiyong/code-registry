@@ -5,10 +5,9 @@ import { VisuallyHidden } from "@react-aria/visually-hidden";
 import React from "react";
 import { useForm } from "react-hook-form";
 
+import { MoonFilledIcon, SunFilledIcon } from "@/icons";
 import { clsx } from "@/lib/base";
-import { MoonFilledIcon, SunFilledIcon } from "@/lib/icons";
-import { button, toggle } from "@/registry/ui";
-import { Switch, useSwitch } from "@/registry/ui";
+import { button, Switch, toggle, useSwitch } from "@/registry/ui";
 
 export default {
   title: "Components/Switch",

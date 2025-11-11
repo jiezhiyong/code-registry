@@ -1,7 +1,7 @@
 import type { HTMLHeroUIProps } from "@/lib/system";
-import type { ButtonProps } from "@/registry/ui/button";
 import type { RangeCalendarState } from "@react-stately/calendar";
 import type { AriaRangeCalendarProps, DateValue } from "@react-types/calendar";
+import type { ButtonProps } from "../button";
 import type { CalendarBaseProps } from "./calendar-base";
 import type { ContextType, UseCalendarBaseProps } from "./use-calendar-base";
 

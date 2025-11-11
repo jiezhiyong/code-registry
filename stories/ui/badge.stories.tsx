@@ -3,11 +3,10 @@ import type { Meta } from "@storybook/nextjs-vite";
 
 import React from "react";
 
-import { CartIcon, CheckIcon, Notification } from "@/lib/icons";
-import { badge } from "@/registry/ui";
+import { CartIcon, CheckIcon, Notification } from "@/icons";
+import { badge, Badge } from "@/registry/ui";
 import { Avatar } from "@/registry/ui/avatar";
 import { Switch } from "@/registry/ui/switch";
-import { Badge } from "@/registry/ui";
 
 export default {
   title: "Components/Badge",

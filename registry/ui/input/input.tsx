@@ -4,8 +4,8 @@ import { useMemo } from "react";
 
 import { useInput } from "./use-input";
 
+import { CloseFilledIcon } from "@/icons/close-filled";
 import { forwardRef } from "@/lib/system";
-import { CloseFilledIcon } from "@/lib/icons/close-filled";
 
 export interface InputProps extends Omit<UseInputProps, "isMultiline"> {}
 

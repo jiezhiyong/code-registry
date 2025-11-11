@@ -6,7 +6,7 @@ import { useSliderThumb } from "./use-slider-thumb";
 
 import { renderFn } from "@/lib/react-rsc/functions";
 import { forwardRef } from "@/lib/system";
-import { Tooltip } from "@/registry/ui/tooltip";
+import { Tooltip } from "../tooltip";
 
 export interface SliderThumbProps extends UseSliderThumbProps {}
 

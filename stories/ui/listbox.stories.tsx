@@ -5,20 +5,19 @@ import type { Key } from "react";
 
 import React from "react";
 
-import { clsx } from "@/lib/base";
 import {
   AddNoteBulkIcon,
   ChevronRightIcon,
   CopyDocumentBulkIcon,
   DeleteDocumentBulkIcon,
   EditDocumentBulkIcon,
-} from "@/lib/icons";
-import { menuItem } from "@/registry/ui";
+} from "@/icons";
+import { clsx } from "@/lib/base";
+import { Listbox, ListboxItem, ListboxSection, menuItem } from "@/registry/ui";
 import { Avatar } from "@/registry/ui/avatar";
 import { Chip } from "@/registry/ui/chip";
 import { ScrollShadow } from "@/registry/ui/scroll-shadow";
 import { usersData } from "@/utils/storybook";
-import { Listbox, ListboxItem, ListboxSection } from "@/registry/ui";
 
 const BugIcon = (props) => (
   <svg height="1em" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg" {...props}>

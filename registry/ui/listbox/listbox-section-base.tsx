@@ -1,6 +1,6 @@
 import type { SectionProps } from "@/lib/aria";
 import type { SlotsToClasses } from "@/lib/theme/utils/types";
-import type { DividerProps } from "@/registry/ui/divider";
+import type { DividerProps } from "../divider";
 import type { ListboxItemProps } from "./listbox-item";
 import type { ListboxSectionSlots } from "./theme";
 

@@ -4,10 +4,9 @@ import type { Meta } from "@storybook/nextjs-vite";
 
 import React from "react";
 
-import { PlusFilledIcon, SendFilledIcon } from "@/lib/icons";
-import { button, input } from "@/registry/ui";
+import { PlusFilledIcon, SendFilledIcon } from "@/icons";
+import { button, input, Textarea } from "@/registry/ui";
 import { Form } from "@/registry/ui/form";
-import { Textarea } from "@/registry/ui";
 
 export default {
   title: "Components/Textarea",

@@ -21,7 +21,7 @@ import { useSafeLayoutEffect } from "@/hooks/use-safe-layout-effect";
 import { __DEV__, chain, clsx, dataAttr, mergeProps, safeAriaLabel, warn } from "@/lib/base";
 import { mergeRefs } from "@/lib/react/refs";
 import { useProviderContext } from "@/lib/system";
-import { FormContext, useSlottedContext } from "@/registry/ui/form";
+import { FormContext, useSlottedContext } from "../form";
 
 export type CheckboxIconProps = {
   "data-checked": string;
@@ -98,11 +98,11 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
     isDisabled: isDisabledProp = groupContext?.isDisabled ?? false,
     disableAnimation = groupContext?.disableAnimation ?? globalContext?.disableAnimation ?? false,
     validationState,
-    isInvalid: isInvalidProp = validationState ? validationState === "invalid" : (groupContext?.isInvalid ?? false),
+    isInvalid: isInvalidProp = validationState ? validationState === "invalid" : groupContext?.isInvalid ?? false,
     isIndeterminate = false,
     validationBehavior = isInGroup
       ? groupContext.validationBehavior
-      : (formValidationBehavior ?? globalContext?.validationBehavior ?? "native"),
+      : formValidationBehavior ?? globalContext?.validationBehavior ?? "native",
     defaultSelected,
     classNames,
     className,
@@ -201,11 +201,7 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
     isInvalid: isAriaInvalid,
   } = isInGroup
     ? // eslint-disable-next-line
-      useReactAriaCheckboxGroupItem(
-        { ...ariaCheckboxProps, ...validationProps },
-        groupContext.groupState,
-        inputRef,
-      )
+      useReactAriaCheckboxGroupItem({ ...ariaCheckboxProps, ...validationProps }, groupContext.groupState, inputRef)
     : // eslint-disable-next-line
       useReactAriaCheckbox({ ...ariaCheckboxProps, ...validationProps }, toggleState, inputRef);
 
@@ -329,7 +325,7 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
         isIndeterminate,
         disableAnimation,
         className: slots.icon({ class: classNames?.icon }),
-      }) as CheckboxIconProps,
+      } as CheckboxIconProps),
     [slots, classNames?.icon, isSelected, isIndeterminate, disableAnimation],
   );
 

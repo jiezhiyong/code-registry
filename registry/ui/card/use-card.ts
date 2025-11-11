@@ -2,10 +2,10 @@ import type { AriaButtonProps } from "@/hooks/use-aria-button";
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type { SlotsToClasses } from "@/lib/theme/utils/types";
-import type { RippleProps } from "@/registry/ui/ripple";
 import type { PressEvent } from "@react-aria/interactions";
 import type { FocusableProps, PressEvents } from "@react-types/shared";
 import type { MouseEventHandler, ReactNode } from "react";
+import type { RippleProps } from "../ripple";
 import type { CardReturnType, CardSlots, CardVariantProps } from "./theme";
 
 import { useFocusRing } from "@react-aria/focus";
@@ -19,7 +19,7 @@ import { chain, clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { useRipple } from "@/registry/ui/ripple";
+import { useRipple } from "../ripple";
 
 export interface Props extends Omit<HTMLHeroUIProps<"div">, "onClick"> {
   /**

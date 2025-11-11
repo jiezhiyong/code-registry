@@ -5,10 +5,9 @@ import type { Meta } from "@storybook/nextjs-vite";
 import React from "react";
 import { useForm } from "react-hook-form";
 
-import { CloseIcon } from "@/lib/icons";
-import { button, checkbox } from "@/registry/ui";
+import { CloseIcon } from "@/icons";
+import { button, checkbox, Checkbox } from "@/registry/ui";
 import { Form } from "@/registry/ui/form";
-import { Checkbox } from "@/registry/ui";
 
 export default {
   title: "Components/Checkbox",

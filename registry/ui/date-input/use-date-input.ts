@@ -18,7 +18,7 @@ import { cn, dateInput } from "./theme";
 import { clsx, dataAttr, getGregorianYearOffset, mergeProps, objectToDeps } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useLabelPlacement, useProviderContext } from "@/lib/system";
-import { FormContext, useSlottedContext } from "@/registry/ui/form";
+import { FormContext, useSlottedContext } from "../form";
 
 type HeroUIBaseProps<T extends DateValue> = Omit<HTMLHeroUIProps<"div">, keyof AriaDateFieldProps<T> | "onChange">;
 

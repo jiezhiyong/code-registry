@@ -5,7 +5,7 @@ import { usePopoverContext } from "./popover-context";
 import { useAriaButton } from "@/hooks/use-aria-button";
 import { mergeProps } from "@/lib/base";
 import { pickChildren } from "@/lib/react-rsc/children";
-import { Button } from "@/registry/ui/button";
+import { Button } from "../button";
 
 export interface PopoverTriggerProps {
   children?: React.ReactNode;

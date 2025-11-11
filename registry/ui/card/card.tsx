@@ -4,7 +4,7 @@ import { CardProvider } from "./card-context";
 import { useCard } from "./use-card";
 
 import { forwardRef } from "@/lib/system";
-import { Ripple } from "@/registry/ui/ripple";
+import { Ripple } from "../ripple";
 
 export interface CardProps extends UseCardProps {}
 

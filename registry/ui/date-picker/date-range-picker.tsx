@@ -8,12 +8,12 @@ import { cloneElement, isValidElement, useMemo } from "react";
 import DateRangePickerField from "./date-range-picker-field";
 import { useDateRangePicker } from "./use-date-range-picker";
 
+import { CalendarBoldIcon } from "@/icons/calendar-bold";
 import { forwardRef } from "@/lib/system";
-import { Button } from "@/registry/ui/button";
-import { RangeCalendar } from "@/registry/ui/calendar";
-import { DateInputGroup, TimeInput } from "@/registry/ui/date-input";
-import { FreeSoloPopover } from "@/registry/ui/popover";
-import { CalendarBoldIcon } from "@/lib/icons/calendar-bold";
+import { Button } from "../button";
+import { RangeCalendar } from "../calendar";
+import { DateInputGroup, TimeInput } from "../date-input";
+import { FreeSoloPopover } from "../popover";
 
 export interface Props<T extends DateValue> extends UseDateRangePickerProps<T> {
   /**

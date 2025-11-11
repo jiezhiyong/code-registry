@@ -7,12 +7,12 @@ import type { MenuSectionBaseProps } from "./menu-section-base";
 import { useMenuSection } from "@react-aria/menu";
 import { useMemo } from "react";
 
-import { menuSection } from "./theme";
 import MenuItem from "./menu-item";
+import { menuSection } from "./theme";
 
-import { Divider } from "@/registry/ui/divider";
-import { forwardRef } from "@/lib/system";
 import { clsx, mergeProps } from "@/lib/base";
+import { forwardRef } from "@/lib/system";
+import { Divider } from "../divider";
 
 export interface MenuSectionProps<T extends object = object> extends MenuSectionBaseProps {
   item: Node<T>;

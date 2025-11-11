@@ -10,8 +10,8 @@ import TableSelectAllCheckbox from "./table-select-all-checkbox";
 import { useTable } from "./use-table";
 import VirtualizedTable from "./virtualized-table";
 
-import { Spacer } from "@/registry/ui/spacer";
 import { forwardRef } from "@/lib/system";
+import { Spacer } from "../spacer";
 
 export interface TableProps<T = object> extends Omit<UseTableProps<T>, "isSelectable" | "isMultiSelectable"> {
   isVirtualized?: boolean;

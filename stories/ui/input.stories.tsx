@@ -7,7 +7,7 @@ import type { Meta } from "@storybook/nextjs-vite";
 import React from "react";
 import { useForm } from "react-hook-form";
 
-import { CloseFilledIcon, EyeFilledIcon, EyeSlashFilledIcon, MailFilledIcon, SearchIcon } from "@/lib/icons";
+import { CloseFilledIcon, EyeFilledIcon, EyeSlashFilledIcon, MailFilledIcon, SearchIcon } from "@/icons";
 import { button, input, Input, useInput } from "@/registry/ui";
 import { Form } from "@/registry/ui/form";
 

@@ -1,12 +1,12 @@
 import type { DOMAttributes } from "@/lib/system";
 import type { SlotsToClasses } from "@/lib/theme/utils/types";
-import type { ButtonProps } from "@/registry/ui/button";
-import type { CalendarProps } from "@/registry/ui/calendar";
-import type { DateInputProps } from "@/registry/ui/date-input";
-import type { PopoverProps } from "@/registry/ui/popover";
 import type { DateValue } from "@internationalized/date";
 import type { AriaDatePickerProps } from "@react-aria/datepicker";
 import type { DatePickerState } from "@react-stately/datepicker";
+import type { ButtonProps } from "../button";
+import type { CalendarProps } from "../calendar";
+import type { DateInputProps } from "../date-input";
+import type { PopoverProps } from "../popover";
 import type { DatePickerSlots } from "./theme";
 import type { UseDatePickerBaseProps } from "./use-date-picker-base";
 
@@ -19,7 +19,7 @@ import { useDatePickerBase } from "./use-date-picker-base";
 
 import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 import { useProviderContext } from "@/lib/system";
-import { FormContext, useSlottedContext } from "@/registry/ui/form";
+import { FormContext, useSlottedContext } from "../form";
 
 interface Props<T extends DateValue> extends UseDatePickerBaseProps<T> {}
 

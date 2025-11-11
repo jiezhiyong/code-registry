@@ -3,10 +3,9 @@ import type { Meta } from "@storybook/nextjs-vite";
 
 import React from "react";
 
+import { AddNoteBulkIcon, CopyDocumentBulkIcon, DeleteDocumentBulkIcon, EditDocumentBulkIcon } from "@/icons";
 import { clsx } from "@/lib/base";
-import { AddNoteBulkIcon, CopyDocumentBulkIcon, DeleteDocumentBulkIcon, EditDocumentBulkIcon } from "@/lib/icons";
-import { menuItem } from "@/registry/ui";
-import { Menu, MenuItem, MenuSection } from "@/registry/ui";
+import { Menu, menuItem, MenuItem, MenuSection } from "@/registry/ui";
 
 export default {
   title: "Components/Menu",

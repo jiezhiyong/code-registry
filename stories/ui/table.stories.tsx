@@ -8,16 +8,15 @@ import useSWR from "swr";
 
 import { Switch } from "../../switch/src";
 
-import { useInfiniteScroll } from "@/lib/hooks/use-infinite-scroll";
-import { DeleteIcon, EditIcon, EyeIcon, SortIcon } from "@/lib/icons";
-import { table } from "@/registry/ui";
+import { useInfiniteScroll } from "@/hooks/use-infinite-scroll";
+import { DeleteIcon, EditIcon, EyeIcon, SortIcon } from "@/icons";
+import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, getKeyValue, table } from "@/registry/ui";
 import { Button } from "@/registry/ui/button";
 import { Chip } from "@/registry/ui/chip";
 import { Pagination } from "@/registry/ui/pagination";
 import { Spinner } from "@/registry/ui/spinner";
 import { Tooltip } from "@/registry/ui/tooltip";
 import { User } from "@/registry/ui/user";
-import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, getKeyValue } from "@/registry/ui";
 
 export default {
   title: "Components/Table",

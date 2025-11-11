@@ -5,9 +5,9 @@ import TextareaAutosize from "react-textarea-autosize";
 
 import { useInput } from "./use-input";
 
+import { CloseFilledIcon } from "@/icons/close-filled";
 import { dataAttr, mergeProps } from "@/lib/base";
 import { forwardRef } from "@/lib/system";
-import { CloseFilledIcon } from "@/lib/icons/close-filled";
 
 type NativeTextareaProps = React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 type TextareaAutoSizeStyle = Omit<NonNullable<NativeTextareaProps["style"]>, "maxHeight" | "minHeight"> & {

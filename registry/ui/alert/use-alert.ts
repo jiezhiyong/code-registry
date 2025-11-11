@@ -1,8 +1,8 @@
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type { SlotsToClasses } from "@/lib/theme/utils/types";
-import type { ButtonProps } from "@/registry/ui/button";
 import type { ReactNode } from "react";
+import type { ButtonProps } from "../button";
 import type { AlertSlots, AlertVariantProps } from "./theme";
 
 import { useControlledState } from "@react-stately/utils";

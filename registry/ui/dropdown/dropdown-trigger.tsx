@@ -1,6 +1,6 @@
 import { useDropdownContext } from "./dropdown-context";
 
-import { PopoverTrigger } from "@/registry/ui/popover";
+import { PopoverTrigger } from "../popover";
 
 export interface DropdownTriggerProps {
   children?: React.ReactNode;

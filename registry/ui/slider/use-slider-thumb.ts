@@ -1,9 +1,9 @@
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { TooltipProps } from "@/registry/ui/tooltip";
 import type { AriaSliderThumbProps } from "@react-aria/slider";
 import type { SliderState } from "@react-stately/slider";
 import type { RefObject } from "react";
+import type { TooltipProps } from "../tooltip";
 import type { SliderVariantProps } from "./theme";
 import type { SliderValue, UseSliderProps } from "./use-slider";
 
@@ -13,8 +13,8 @@ import { useHover, usePress } from "@react-aria/interactions";
 import { useSliderThumb as useAriaSliderThumb } from "@react-aria/slider";
 import { useRef } from "react";
 
-import { useDOMRef } from "@/lib/react";
 import { dataAttr, mergeProps } from "@/lib/base";
+import { useDOMRef } from "@/lib/react";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**
@@ -125,10 +125,10 @@ export function useSliderThumb(props: UseSliderThumbProps) {
     const stateValue = tooltipProps?.content
       ? tooltipProps.content
       : getTooltipValue
-        ? state.values.length === 1
-          ? getTooltipValue(state.values[index ?? 0])
-          : getTooltipValue(state.values, index ?? 0)
-        : state.values[index ?? 0];
+      ? state.values.length === 1
+        ? getTooltipValue(state.values[index ?? 0])
+        : getTooltipValue(state.values, index ?? 0)
+      : state.values[index ?? 0];
 
     const value = numberFormatter && typeof stateValue === "number" ? numberFormatter.format(stateValue) : stateValue;
 

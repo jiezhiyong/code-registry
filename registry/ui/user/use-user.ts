@@ -1,7 +1,7 @@
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { AvatarProps } from "@/registry/ui/avatar";
 import type { ReactNode } from "react";
+import type { AvatarProps } from "../avatar";
 import type { SlotsToClasses, UserSlots } from "./theme";
 
 import { useFocusRing } from "@react-aria/focus";

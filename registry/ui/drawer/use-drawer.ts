@@ -1,6 +1,6 @@
 import type { ReactRef } from "@/lib/react";
 import type { PropGetter } from "@/lib/system";
-import type { ModalProps } from "@/registry/ui/modal";
+import type { ModalProps } from "../modal";
 
 import { useCallback, useMemo } from "react";
 

@@ -3,9 +3,8 @@ import type { Meta } from "@storybook/nextjs-vite";
 
 import React from "react";
 
-import { Camera, HeadphonesIcon, Notification } from "@/lib/icons";
-import { button } from "@/registry/ui";
-import { Button } from "@/registry/ui";
+import { Camera, HeadphonesIcon, Notification } from "@/icons";
+import { button, Button } from "@/registry/ui";
 
 export default {
   title: "Components/Button",

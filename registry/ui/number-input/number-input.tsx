@@ -5,7 +5,7 @@ import { useMemo } from "react";
 import NumberInputStepper from "./number-input-stepper";
 import { useNumberInput } from "./use-number-input";
 
-import { CloseFilledIcon } from "@/lib/icons/close-filled";
+import { CloseFilledIcon } from "@/icons/close-filled";
 import { forwardRef } from "@/lib/system";
 
 export interface NumberInputProps extends Omit<UseNumberInputProps, "type"> {

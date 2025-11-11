@@ -7,12 +7,12 @@ import { cloneElement, isValidElement, useMemo } from "react";
 
 import { useDatePicker } from "./use-date-picker";
 
-import { CalendarBoldIcon } from "@/lib/icons/calendar-bold";
+import { CalendarBoldIcon } from "@/icons/calendar-bold";
 import { forwardRef } from "@/lib/system";
-import { Button } from "@/registry/ui/button";
-import { Calendar } from "@/registry/ui/calendar";
-import { DateInput, TimeInput } from "@/registry/ui/date-input";
-import { FreeSoloPopover } from "@/registry/ui/popover";
+import { Button } from "../button";
+import { Calendar } from "../calendar";
+import { DateInput, TimeInput } from "../date-input";
+import { FreeSoloPopover } from "../popover";
 
 export interface Props<T extends DateValue> extends UseDatePickerProps<T> {
   /**

@@ -3,8 +3,8 @@ import type { Meta } from "@storybook/nextjs-vite";
 
 import React from "react";
 
+import { CheckIcon, ChevronDownIcon, HeadphonesIcon, InfoIcon, MailFilledIcon } from "@/icons";
 import { clsx } from "@/lib/base";
-import { CheckIcon, ChevronDownIcon, HeadphonesIcon, InfoIcon, MailFilledIcon } from "@/lib/icons";
 import { breadcrumbItem, BreadcrumbItem, Breadcrumbs } from "@/registry/ui";
 import { Button } from "@/registry/ui/button";
 import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@/registry/ui/dropdown";

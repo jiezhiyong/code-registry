@@ -18,7 +18,7 @@ import { chain, clsx, dataAttr, isPatternNumeric, mergeProps, objectToDeps } fro
 import { useDOMRef } from "@/lib/react";
 import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { FormContext, useSlottedContext } from "@/registry/ui/form";
+import { FormContext, useSlottedContext } from "../form";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**

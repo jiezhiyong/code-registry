@@ -1,6 +1,6 @@
-import type { ButtonProps } from "@/registry/ui/button";
 import type { CalendarState } from "@react-stately/calendar";
 import type { AriaCalendarProps, DateValue } from "@react-types/calendar";
+import type { ButtonProps } from "../button";
 import type { CalendarBaseProps } from "./calendar-base";
 import type { ContextType, UseCalendarBaseProps } from "./use-calendar-base";
 

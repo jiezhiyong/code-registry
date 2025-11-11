@@ -1,13 +1,13 @@
 import type { PropGetter } from "@/lib/system";
 import type { SlotsToClasses } from "@/lib/theme/utils/types";
-import type { ButtonProps } from "@/registry/ui/button";
-import type { RangeCalendarProps } from "@/registry/ui/calendar";
-import type { DateInputGroupProps, DateInputProps, TimeInputProps } from "@/registry/ui/date-input";
-import type { PopoverProps } from "@/registry/ui/popover";
 import type { DateValue } from "@internationalized/date";
 import type { DateRangePickerState } from "@react-stately/datepicker";
 import type { AriaDateRangePickerProps } from "@react-types/datepicker";
 import type { DOMAttributes, GroupDOMAttributes } from "@react-types/shared";
+import type { ButtonProps } from "../button";
+import type { RangeCalendarProps } from "../calendar";
+import type { DateInputGroupProps, DateInputProps, TimeInputProps } from "../date-input";
+import type { PopoverProps } from "../popover";
 import type { DateRangePickerFieldProps } from "./date-range-picker-field";
 import type { DateRangePickerSlots } from "./theme";
 import type { UseDatePickerBaseProps } from "./use-date-picker-base";
@@ -21,7 +21,7 @@ import { useDatePickerBase } from "./use-date-picker-base";
 
 import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 import { useLabelPlacement, useProviderContext } from "@/lib/system";
-import { FormContext, useSlottedContext } from "@/registry/ui/form";
+import { FormContext, useSlottedContext } from "../form";
 interface Props<T extends DateValue> extends Omit<UseDatePickerBaseProps<T>, keyof AriaDateRangePickerProps<T>> {
   /**
    * Classname or List of classes to change the classNames of the element.

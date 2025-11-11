@@ -7,7 +7,7 @@
  *
  * const classNames = listbox({...})
  */
-export { menu as listbox } from "@/registry/ui/menu/theme";
+export { menu as listbox } from "../menu/theme";
 
 /**
  * ListboxItem wrapper **Tailwind Variants** component
@@ -31,7 +31,7 @@ export { menu as listbox } from "@/registry/ui/menu/theme";
  *  <div className={content())}>Content</div>
  * </div>
  */
-export { menuItem as listboxItem } from "@/registry/ui/menu/theme";
+export { menuItem as listboxItem } from "../menu/theme";
 
 /**
  * Listbox section wrapper **Tailwind Variants** component
@@ -47,7 +47,7 @@ export { menuItem as listboxItem } from "@/registry/ui/menu/theme";
  *  </div>
  * </div>
  */
-export { menuSection as listboxSection } from "@/registry/ui/menu/theme";
+export { menuSection as listboxSection } from "../menu/theme";
 
 // export types
 export type {
@@ -57,4 +57,4 @@ export type {
   MenuSectionVariantProps as ListboxSectionVariantProps,
   MenuSlots as ListboxSlots,
   MenuVariantProps as ListboxVariantProps,
-} from "@/registry/ui/menu/theme";
+} from "../menu/theme";

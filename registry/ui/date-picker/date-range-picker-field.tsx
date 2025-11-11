@@ -1,9 +1,9 @@
 import type { HTMLHeroUIProps } from "@/lib/system";
 import type { SlotsToClasses } from "@/lib/theme/utils/types";
-import type { DateInputProps } from "@/registry/ui/date-input";
-import type { DateInputReturnType, DateInputSlots } from "@/registry/ui/date-input/theme";
 import type { AriaDatePickerProps, DateValue } from "@react-types/datepicker";
 import type { ForwardedRef, ReactElement } from "react";
+import type { DateInputProps } from "../date-input";
+import type { DateInputReturnType, DateInputSlots } from "../date-input/theme";
 
 import { createCalendar } from "@internationalized/date";
 import { useDateField as useAriaDateField } from "@react-aria/datepicker";
@@ -14,7 +14,7 @@ import { forwardRef, useRef } from "react";
 import { mergeProps } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
-import { DateInputSegment } from "@/registry/ui/date-input";
+import { DateInputSegment } from "../date-input";
 
 type HeroUIBaseProps<T extends DateValue> = Omit<HTMLHeroUIProps<"div">, keyof AriaDatePickerProps<T> | "onChange">;
 

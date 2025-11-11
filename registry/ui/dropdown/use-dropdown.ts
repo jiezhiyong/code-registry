@@ -1,10 +1,10 @@
 import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
-import type { MenuProps } from "@/registry/ui/menu";
-import type { PopoverProps } from "@/registry/ui/popover";
 import type { MenuTriggerType } from "@react-types/menu";
 import type { CollectionElement } from "@react-types/shared";
 import type { Ref } from "react";
+import type { MenuProps } from "../menu";
+import type { PopoverProps } from "../popover";
 
 import { useMenuTrigger } from "@react-aria/menu";
 import { useMenuTriggerState } from "@react-stately/menu";

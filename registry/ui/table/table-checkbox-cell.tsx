@@ -11,7 +11,7 @@ import { clsx, dataAttr, mergeProps } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { forwardRef } from "@/lib/system";
-import { Checkbox } from "@/registry/ui/checkbox";
+import { Checkbox } from "../checkbox";
 
 // @internal
 export interface TableCheckboxCellProps<T = object> extends HTMLHeroUIProps<"td"> {

@@ -4,9 +4,9 @@ import type { Meta } from "@storybook/nextjs-vite";
 
 import React from "react";
 
-import { useDisclosure } from "@/lib/hooks/use-disclosure";
-import { LockFilledIcon, MailFilledIcon } from "@/lib/icons";
-import { drawer } from "@/registry/ui";
+import { useDisclosure } from "@/hooks/use-disclosure";
+import { LockFilledIcon, MailFilledIcon } from "@/icons";
+import { drawer, Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader } from "@/registry/ui";
 import { Avatar, AvatarGroup } from "@/registry/ui/avatar";
 import { Button } from "@/registry/ui/button";
 import { Checkbox } from "@/registry/ui/checkbox";
@@ -14,7 +14,6 @@ import { Image } from "@/registry/ui/image";
 import { Input } from "@/registry/ui/input";
 import { Link } from "@/registry/ui/link";
 import { Tooltip } from "@/registry/ui/tooltip";
-import { Drawer, DrawerBody, DrawerContent, DrawerFooter, DrawerHeader } from "@/registry/ui";
 
 export default {
   title: "Components/Drawer",
@@ -418,28 +417,28 @@ const CustomStylesTemplate = (args: DrawerProps) => {
                         >
                           <Tooltip content="Alex">
                             <Avatar
-                              className="data-[hover=true]:!translate-x-0"
+                              className="data-[hover=true]:translate-x-0!"
                               name="Alex"
                               src="https://i.pravatar.cc/150?u=a04258114e29026708c"
                             />
                           </Tooltip>
                           <Tooltip content="Joe">
                             <Avatar
-                              className="data-[hover=true]:!translate-x-0"
+                              className="data-[hover=true]:translate-x-0!"
                               name="Joe"
                               src="https://i.pravatar.cc/150?u=a04258114e290267084"
                             />
                           </Tooltip>
                           <Tooltip content="John">
                             <Avatar
-                              className="data-[hover=true]:!translate-x-0"
+                              className="data-[hover=true]:translate-x-0!"
                               name="John"
                               src="https://i.pravatar.cc/150?u=a04258a2462d826712d"
                             />
                           </Tooltip>
                           <Tooltip content="Jane">
                             <Avatar
-                              className="data-[hover=true]:!translate-x-0"
+                              className="data-[hover=true]:translate-x-0!"
                               name="Jane"
                               src="https://i.pravatar.cc/150?u=a04258114e29026702d"
                             />

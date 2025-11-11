@@ -3,12 +3,11 @@ import type { Meta } from "@storybook/nextjs-vite";
 
 import React from "react";
 
-import { InfoIcon } from "@/lib/icons";
+import { InfoIcon } from "@/icons";
 import { cn } from "@/lib/theme";
-import { slider } from "@/registry/ui";
+import { slider, Slider } from "@/registry/ui";
 import { Tooltip } from "@/registry/ui/tooltip";
 import { VolumeHighBoldIcon, VolumeLowBoldIcon } from "@/utils/icons";
-import { Slider } from "@/registry/ui";
 
 export default {
   title: "Components/Slider",

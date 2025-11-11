@@ -1,15 +1,15 @@
 import type { ReactRef } from "@/lib/react";
 import type { DOMAttributes, HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type { SlotsToClasses } from "@/lib/theme/utils/types";
-import type { ButtonProps } from "@/registry/ui/button";
-import type { InputProps } from "@/registry/ui/input";
-import type { ListboxProps } from "@/registry/ui/listbox";
-import type { PopoverProps } from "@/registry/ui/popover";
-import type { ScrollShadowProps } from "@/registry/ui/scroll-shadow";
 import type { FilterFn } from "@react-stately/combobox";
 import type { ComboBoxProps } from "@react-types/combobox";
 import type { AsyncLoadable, PressEvent } from "@react-types/shared";
 import type { ReactNode } from "react";
+import type { ButtonProps } from "../button";
+import type { InputProps } from "../input";
+import type { ListboxProps } from "../listbox";
+import type { PopoverProps } from "../popover";
+import type { ScrollShadowProps } from "../scroll-shadow";
 import type { AutocompleteSlots, AutocompleteVariantProps } from "./theme";
 
 import { useComboBox } from "@react-aria/combobox";
@@ -23,7 +23,7 @@ import { useSafeLayoutEffect } from "@/hooks/use-safe-layout-effect";
 import { chain, clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { FormContext, useSlottedContext } from "@/registry/ui/form";
+import { FormContext, useSlottedContext } from "../form";
 
 interface Props<T> extends Omit<HTMLHeroUIProps<"input">, keyof ComboBoxProps<T>> {
   /**
@@ -157,10 +157,10 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
     originalProps.disableClearable !== undefined
       ? !originalProps.disableClearable
       : originalProps.isDisabled
-        ? false
-        : originalProps.isReadOnly
-          ? false
-          : originalProps.isClearable;
+      ? false
+      : originalProps.isReadOnly
+      ? false
+      : originalProps.isClearable;
 
   const {
     ref,
@@ -442,7 +442,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
       className: slots.selectorButton({
         class: clsx(classNames?.selectorButton, slotsProps.selectorButtonProps?.className),
       }),
-    }) as ButtonProps;
+    } as ButtonProps);
 
   const getClearButtonProps = () =>
     ({
@@ -468,7 +468,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
       className: slots.clearButton({
         class: clsx(classNames?.clearButton, slotsProps.clearButtonProps?.className),
       }),
-    }) as ButtonProps;
+    } as ButtonProps);
 
   // prevent use-input's useFormValidation hook from overwriting use-autocomplete's useFormValidation hook when there are uncommitted validation errors
   // see https://github.com/heroui-inc/heroui/pull/4452
@@ -489,7 +489,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
           ? errorMessage({ isInvalid, validationErrors, validationDetails })
           : errorMessage || validationErrors?.join(" "),
       onClick: chain(slotsProps.inputProps.onClick, otherProps.onClick),
-    }) as unknown as InputProps;
+    } as unknown as InputProps);
 
   const getListBoxProps = () => {
     // Use isVirtualized prop if defined, otherwise fallback to default behavior

@@ -6,13 +6,13 @@ import { ChevronDownIcon } from "lucide-react";
 
 import { useAutocomplete } from "./use-autocomplete";
 
+import { CloseIcon } from "@/icons/close";
 import { forwardRef } from "@/lib/system";
-import { Button } from "@/registry/ui/button";
-import { Input } from "@/registry/ui/input";
-import { Listbox } from "@/registry/ui/listbox";
-import { FreeSoloPopover } from "@/registry/ui/popover";
-import { ScrollShadow } from "@/registry/ui/scroll-shadow";
-import { CloseIcon } from "@/lib/icons/close";
+import { Button } from "../button";
+import { Input } from "../input";
+import { Listbox } from "../listbox";
+import { FreeSoloPopover } from "../popover";
+import { ScrollShadow } from "../scroll-shadow";
 
 interface Props<T> extends UseAutocompleteProps<T> {}
 

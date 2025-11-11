@@ -19,13 +19,12 @@ import {
 import { I18nProvider, useDateFormatter, useLocale } from "@react-aria/i18n";
 import React from "react";
 
-import { MoonIcon, SunIcon } from "@/lib/icons";
+import { MoonIcon, SunIcon } from "@/icons";
 import { cn } from "@/lib/theme";
-import { button, dateInput } from "@/registry/ui";
+import { button, dateInput, DateRangePicker } from "@/registry/ui";
 import { Button, ButtonGroup } from "@/registry/ui/button";
 import { Form } from "@/registry/ui/form";
 import { Radio, RadioGroup } from "@/registry/ui/radio";
-import { DateRangePicker } from "@/registry/ui";
 
 export default {
   title: "Components/DateRangePicker",

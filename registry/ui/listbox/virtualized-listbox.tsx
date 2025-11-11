@@ -1,6 +1,6 @@
-import type { ScrollShadowProps } from "@/registry/ui/scroll-shadow";
 import type { Node } from "@react-types/shared";
 import type { VirtualItem } from "@tanstack/react-virtual";
+import type { ScrollShadowProps } from "../scroll-shadow";
 import type { VirtualizationProps } from "./listbox";
 import type { UseListboxReturn } from "./use-listbox";
 
@@ -12,7 +12,7 @@ import ListboxSection from "./listbox-section";
 
 import { isEmpty, mergeProps } from "@/lib/base";
 import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
-import { useScrollShadow } from "@/registry/ui/scroll-shadow";
+import { useScrollShadow } from "../scroll-shadow";
 
 interface Props extends UseListboxReturn {
   isVirtualized?: boolean;

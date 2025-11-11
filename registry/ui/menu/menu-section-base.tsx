@@ -1,6 +1,6 @@
 import type { SectionProps } from "@/lib/aria";
 import type { SlotsToClasses } from "@/lib/theme/utils/types";
-import type { DividerProps } from "@/registry/ui/divider";
+import type { DividerProps } from "../divider";
 import type { MenuItemProps } from "./menu-item";
 import type { MenuSectionSlots } from "./theme";
 
