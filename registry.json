@@ -73,7 +73,7 @@
       "title": "Example Complex",
       "description": "复杂的 Pokemon 展示组件，包含数据获取和多个子组件",
       "registryDependencies": [
-        "card"
+        "@tcsk/card"
       ],
       "files": [
         {
@@ -110,7 +110,7 @@
       "title": "Example Header",
       "description": "头部导航组件，支持用户登录状态切换",
       "registryDependencies": [
-        "button"
+        "@tcsk/button"
       ],
       "files": [
         {
