@@ -4,7 +4,7 @@ import { VisuallyHidden } from "@react-aria/visually-hidden";
 
 import { useSliderThumb } from "./use-slider-thumb";
 
-import { renderFn } from "@/lib/react";
+import { renderFn } from "@/lib/react-rsc/functions";
 import { forwardRef } from "@/lib/system";
 import { Tooltip } from "@/registry/ui/tooltip";
 

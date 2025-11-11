@@ -220,7 +220,7 @@ export function useCalendarBase(originalProps: UseCalendarBasePropsComplete) {
     navButtonProps = {},
     isHeaderExpanded: isHeaderExpandedProp,
     isHeaderDefaultExpanded,
-    onHeaderExpandedChange = () => { },
+    onHeaderExpandedChange = () => {},
     createCalendar: createCalendarProp = globalContext?.createCalendar ?? null,
     minValue = (globalContext?.defaultDates?.minDate ??
       new CalendarDate(calendarProp, 1900 + gregorianYearOffset, 1, 1)) as DateValue,

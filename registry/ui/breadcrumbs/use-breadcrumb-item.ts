@@ -12,7 +12,8 @@ import { useMemo } from "react";
 import { breadcrumbItem } from "./theme";
 
 import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { useDOMRef } from "@/lib/react";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { mapPropsVariants } from "@/lib/system";
 
 interface Props extends Omit<HTMLHeroUIProps<"li">, keyof AriaBreadcrumbItemProps>, AriaBreadcrumbItemProps {

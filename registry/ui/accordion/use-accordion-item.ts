@@ -13,7 +13,8 @@ import { accordionItem } from "./theme";
 
 import { useReactAriaAccordionItem } from "@/hooks/use-aria-accordion";
 import { callAllHandlers, chain, clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { useDOMRef } from "@/lib/react";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { useProviderContext } from "@/lib/system";
 
 export interface Props<T extends object> extends HTMLHeroUIProps<"div"> {

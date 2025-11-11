@@ -9,8 +9,9 @@ import { useCallback, useMemo } from "react";
 
 import { user } from "./theme";
 
-import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { clsx, dataAttr, mergeProps } from "@/lib/base";
+import { useDOMRef } from "@/lib/react";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 interface Props {
   /**
    * Ref to the DOM node.

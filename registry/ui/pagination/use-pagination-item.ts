@@ -9,7 +9,8 @@ import { handleLinkClick, useRouter } from "@react-aria/utils";
 import { useMemo } from "react";
 
 import { chain, clsx, dataAttr, mergeProps } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { useDOMRef } from "@/lib/react";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 
 interface Props extends Omit<HTMLHeroUIProps<"li">, "onClick"> {
   /**

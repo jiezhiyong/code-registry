@@ -11,8 +11,8 @@ import { useMemo, useRef } from "react";
 
 import { useCalendarBase } from "./use-calendar-base";
 
-import { filterDOMProps } from "@/lib/react";
 import { chain, clsx, mergeProps } from "@/lib/base";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 
 export type UseCalendarProps<T extends DateValue> = UseCalendarBaseProps & AriaCalendarProps<T>;
 

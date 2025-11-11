@@ -10,9 +10,9 @@ import { useMemo, useRef, useState } from "react";
 import ListboxItem from "./listbox-item";
 import ListboxSection from "./listbox-section";
 
-import { useScrollShadow } from "@/registry/ui/scroll-shadow";
-import { filterDOMProps } from "@/lib/react";
 import { isEmpty, mergeProps } from "@/lib/base";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
+import { useScrollShadow } from "@/registry/ui/scroll-shadow";
 
 interface Props extends UseListboxReturn {
   isVirtualized?: boolean;

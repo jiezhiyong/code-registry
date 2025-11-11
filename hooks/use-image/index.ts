@@ -6,8 +6,9 @@ import type { ImgHTMLAttributes, SyntheticEvent } from "react";
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { useIsHydrated } from "../../react";
 import { useSafeLayoutEffect } from "../use-safe-layout-effect";
+
+import { useIsHydrated } from "@/lib/react/use-is-hydrated";
 
 type NativeImageProps = ImgHTMLAttributes<HTMLImageElement>;
 

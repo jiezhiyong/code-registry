@@ -113,7 +113,43 @@
           "type": "registry:lib"
         },
         {
+          "path": "lib/dom-animation/index.ts",
+          "type": "registry:lib"
+        },
+        {
           "path": "lib/react/context.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/react/index.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/react/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/react/useDOMRef.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/react-rsc/children.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/react-rsc/dom-props.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/react-rsc/filter-dom-props.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/react-rsc/functions.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/react-rsc/index.ts",
           "type": "registry:lib"
         },
         {
@@ -249,6 +285,10 @@
           "type": "registry:lib"
         },
         {
+          "path": "lib/theme/utils/variants.ts",
+          "type": "registry:lib"
+        },
+        {
           "path": "lib/theme/default-layout.ts",
           "type": "registry:lib"
         },
@@ -313,13 +353,8 @@
       "type": "registry:ui",
       "title": "按钮",
       "description": "",
-      "dependencies": [
-        "@react-types/button"
-      ],
-      "registryDependencies": [
-        "@tcsk/spinner",
-        "@tcsk/ripple"
-      ],
+      "dependencies": ["@react-types/button"],
+      "registryDependencies": ["@tcsk/spinner", "@tcsk/ripple"],
       "files": [
         {
           "path": "registry/ui/button/button-group-context.ts",

@@ -13,7 +13,8 @@ import { snippet } from "./theme";
 
 import { useClipboard } from "@/hooks/use-clipboard";
 import { clsx, dataAttr, objectToDeps } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { useDOMRef } from "@/lib/react";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
 
 export interface UseSnippetProps extends Omit<HTMLHeroUIProps, "onCopy">, SnippetVariantProps {

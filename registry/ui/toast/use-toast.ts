@@ -426,13 +426,13 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
         onTransitionEnd: disableAnimation
           ? undefined
           : () => {
-            if (!isToastExiting) return;
-            state.close(toast.key);
-            if (!hasCalledOnCloseRef.current) {
-              hasCalledOnCloseRef.current = true;
-              onClose?.();
-            }
-          },
+              if (!isToastExiting) return;
+              state.close(toast.key);
+              if (!hasCalledOnCloseRef.current) {
+                hasCalledOnCloseRef.current = true;
+                onClose?.();
+              }
+            },
         style: {
           opacity: opacityValue,
           ...pseudoElementStyles,

@@ -12,7 +12,8 @@ import { avatar } from "./theme";
 
 import { useImage } from "@/hooks/use-image";
 import { clsx, dataAttr, mergeProps, safeInitials } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { useDOMRef } from "@/lib/react";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { useProviderContext } from "@/lib/system";
 
 interface Props extends HTMLHeroUIProps<"span"> {

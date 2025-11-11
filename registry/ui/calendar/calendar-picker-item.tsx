@@ -7,7 +7,8 @@ import { forwardRef } from "react";
 
 import { useAriaButton } from "@/hooks/use-aria-button";
 import { dataAttr, mergeProps } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { useDOMRef } from "@/lib/react";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 
 const CalendarPickerItem = forwardRef<HTMLButtonElement, HTMLHeroUIProps<"button"> & AriaButtonProps>(
   ({ children, autoFocus, isDisabled, onKeyDown, ...otherProps }, ref) => {

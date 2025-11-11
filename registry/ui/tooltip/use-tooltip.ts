@@ -18,7 +18,8 @@ import { useAriaOverlay } from "@/hooks/use-aria-overlay";
 import { useSafeLayoutEffect } from "@/hooks/use-safe-layout-effect";
 import { getArrowPlacement, toReactAriaPlacement } from "@/lib/aria";
 import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
-import { createDOMRef, mergeRefs } from "@/lib/react";
+import { createDOMRef } from "@/lib/react/createDOMRef";
+import { mergeRefs } from "@/lib/react/refs";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
 import { popover } from "@/registry/ui/popover/theme";
 

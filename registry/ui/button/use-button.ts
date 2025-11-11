@@ -18,7 +18,8 @@ import { button } from "./theme";
 
 import { useAriaButton } from "@/hooks/use-aria-button";
 import { chain, dataAttr, mergeProps } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { useDOMRef } from "@/lib/react";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { useProviderContext } from "@/lib/system";
 import { useRipple } from "@/registry/ui/ripple";
 
@@ -188,10 +189,10 @@ export function useButton(props: UseButtonProps) {
   const getIconClone = (icon: ReactNode) =>
     isValidElement(icon)
       ? cloneElement(icon, {
-        // @ts-ignore
-        "aria-hidden": true,
-        focusable: false,
-      })
+          // @ts-ignore
+          "aria-hidden": true,
+          focusable: false,
+        })
       : null;
 
   const startContent = getIconClone(startContentProp);

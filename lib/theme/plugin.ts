@@ -9,6 +9,8 @@ import Color from "color";
 import deepMerge from "deepmerge";
 import plugin from "tailwindcss/plugin.js";
 
+import { kebabCase, mapKeys, omit } from "../base/functions";
+
 import { animations } from "./animations";
 import { darkLayout, defaultLayout, lightLayout } from "./default-layout";
 import { utilities } from "./utilities";
@@ -16,8 +18,6 @@ import { DEFAULT_TRANSITION_DURATION } from "./utilities/transition";
 import { baseStyles } from "./utils/classes";
 import { flattenThemeObject } from "./utils/object";
 import { isBaseTheme } from "./utils/theme";
-
-import { kebabCase, mapKeys, omit } from "../base/functions";
 import { commonColors } from "./colors/common";
 import { semanticColors } from "./colors/semantic";
 
@@ -28,7 +28,7 @@ const parsedColorsCache: Record<string, number[]> = {};
 // @internal
 const resolveConfig = (themes: ConfigThemes = {}, defaultTheme: DefaultThemeType, prefix: string) => {
   const resolved: {
-    variants: { name: string; definition: string[]; }[];
+    variants: { name: string; definition: string[] }[];
     utilities: Record<string, Record<string, any>>;
     colors: Record<string, string>;
     baseStyles: Record<string, Record<string, any>>;
@@ -52,14 +52,14 @@ const resolveConfig = (themes: ConfigThemes = {}, defaultTheme: DefaultThemeType
     baseSelector &&
       (resolved.baseStyles[baseSelector] = scheme
         ? {
-          "color-scheme": scheme,
-        }
+            "color-scheme": scheme,
+          }
         : {});
 
     resolved.utilities[cssSelector] = scheme
       ? {
-        "color-scheme": scheme,
-      }
+          "color-scheme": scheme,
+        }
       : {};
 
     // flatten color definitions

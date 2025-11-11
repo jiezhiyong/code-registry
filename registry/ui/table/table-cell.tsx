@@ -9,7 +9,8 @@ import { useTableCell } from "@react-aria/table";
 import { useMemo } from "react";
 
 import { clsx, dataAttr, mergeProps } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { useDOMRef } from "@/lib/react";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { forwardRef } from "@/lib/system";
 
 // @internal

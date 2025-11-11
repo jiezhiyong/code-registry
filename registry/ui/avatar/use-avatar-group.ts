@@ -10,7 +10,8 @@ import { cloneElement, useMemo } from "react";
 import { avatarGroup } from "./theme";
 
 import { clsx, compact } from "@/lib/base";
-import { getValidChildren, useDOMRef } from "@/lib/react";
+import { useDOMRef } from "@/lib/react";
+import { getValidChildren } from "@/lib/react-rsc/children";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**

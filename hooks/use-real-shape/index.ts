@@ -1,9 +1,9 @@
 import type { RefObject } from "react";
-import type { ShapeType } from "../../react";
+import type { ShapeType } from "@/lib/react/dimensions";
 
 import { useCallback, useEffect, useState } from "react";
 
-import { getRealShape } from "../../react";
+import { getRealShape } from "@/lib/react/dimensions";
 
 export type ShapeResult = [ShapeType, () => void];
 

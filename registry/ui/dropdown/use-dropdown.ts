@@ -12,9 +12,9 @@ import { useMemo, useRef } from "react";
 
 import { dropdown } from "./theme";
 
-import { useProviderContext } from "@/lib/system";
-import { mergeRefs } from "@/lib/react";
 import { clsx, mergeProps } from "@/lib/base";
+import { mergeRefs } from "@/lib/react/refs";
+import { useProviderContext } from "@/lib/system";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**

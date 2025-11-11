@@ -409,7 +409,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
 
     inputProps.onKeyDown = (e) => {
       if ("continuePropagation" in e) {
-        e.stopPropagation = () => { };
+        e.stopPropagation = () => {};
       }
 
       return originalOnKeyDown(e);
@@ -501,9 +501,9 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
       isVirtualized: shouldVirtualize,
       virtualization: shouldVirtualize
         ? {
-          maxListboxHeight,
-          itemHeight,
-        }
+            maxListboxHeight,
+            itemHeight,
+          }
         : undefined,
       scrollShadowProps: slotsProps.scrollShadowProps,
       ...mergeProps(slotsProps.listboxProps, listBoxProps, {

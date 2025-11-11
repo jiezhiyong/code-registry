@@ -15,7 +15,8 @@ import { input } from "./theme";
 
 import { useSafeLayoutEffect } from "@/hooks/use-safe-layout-effect";
 import { chain, clsx, dataAttr, isEmpty, mergeProps, objectToDeps, safeAriaLabel } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { useDOMRef } from "@/lib/react";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { mapPropsVariants, useInputLabelPlacement, useProviderContext } from "@/lib/system";
 import { FormContext, useSlottedContext } from "@/registry/ui/form";
 
@@ -115,7 +116,7 @@ export function useInput<T extends HTMLInputElement | HTMLTextAreaElement = HTML
     validationState,
     validationBehavior = formValidationBehavior ?? globalContext?.validationBehavior ?? "native",
     innerWrapperRef: innerWrapperRefProp,
-    onValueChange = () => { },
+    onValueChange = () => {},
     ...otherProps
   } = props;
 

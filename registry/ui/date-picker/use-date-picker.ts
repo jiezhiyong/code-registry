@@ -21,7 +21,7 @@ import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 import { useProviderContext } from "@/lib/system";
 import { FormContext, useSlottedContext } from "@/registry/ui/form";
 
-interface Props<T extends DateValue> extends UseDatePickerBaseProps<T> { }
+interface Props<T extends DateValue> extends UseDatePickerBaseProps<T> {}
 
 interface Props<T extends DateValue> extends Omit<UseDatePickerBaseProps<T>, keyof AriaDatePickerProps<T>> {
   /**

@@ -1,7 +1,7 @@
-import { dataFocusVisibleClasses, groupDataFocusVisibleClasses } from "@/lib/theme/utils/classes";
-import { tv } from "@/lib/theme/utils/tv";
 import type { VariantProps } from "tailwind-variants";
 
+import { dataFocusVisibleClasses, groupDataFocusVisibleClasses } from "@/lib/theme/utils/classes";
+import { tv } from "@/lib/theme/utils/tv";
 
 /**
  * NumberInput wrapper **Tailwind Variants** component

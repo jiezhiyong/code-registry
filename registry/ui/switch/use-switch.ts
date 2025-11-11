@@ -1,7 +1,8 @@
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type { AriaSwitchProps } from "@react-aria/switch";
 import type { ReactNode, Ref } from "react";
-import type { SlotsToClasses, ToggleSlots, ToggleVariantProps } from "./theme";
+import type { ToggleSlots, ToggleVariantProps } from "./theme";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
 
 import { useFocusRing } from "@react-aria/focus";
 import { useHover } from "@react-aria/interactions";
@@ -13,7 +14,7 @@ import { toggle } from "./theme";
 
 import { useSafeLayoutEffect } from "@/hooks/use-safe-layout-effect";
 import { chain, clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
-import { mergeRefs } from "@/lib/react";
+import { mergeRefs } from "@/lib/react/refs";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
 
 export type SwitchThumbIconProps = {
@@ -245,8 +246,8 @@ export function useSwitch(originalProps: UseSwitchProps = {}) {
         },
         props.includeStateProps
           ? {
-            isSelected: isSelected,
-          }
+              isSelected: isSelected,
+            }
           : {},
       ) as unknown as SwitchThumbIconProps,
     [slots, classNames?.thumbIcon, isSelected],

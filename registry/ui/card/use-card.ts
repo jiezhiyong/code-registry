@@ -16,7 +16,8 @@ import { card } from "./theme";
 
 import { useAriaButton } from "@/hooks/use-aria-button";
 import { chain, clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { useDOMRef } from "@/lib/react";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
 import { useRipple } from "@/registry/ui/ripple";
 

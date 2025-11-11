@@ -15,7 +15,8 @@ import { useMemo } from "react";
 import { listbox } from "./theme";
 
 import { clsx } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { useDOMRef } from "@/lib/react";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { useProviderContext } from "@/lib/system";
 
 interface AriaListBoxOptions<T> extends AriaListBoxProps<T> {

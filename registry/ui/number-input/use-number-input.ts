@@ -16,7 +16,8 @@ import { numberInput } from "./theme";
 
 import { useSafeLayoutEffect } from "@/hooks/use-safe-layout-effect";
 import { chain, clsx, dataAttr, isEmpty, mergeProps, objectToDeps } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { useDOMRef } from "@/lib/react";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { mapPropsVariants, useLabelPlacement, useProviderContext } from "@/lib/system";
 import { FormContext, useSlottedContext } from "@/registry/ui/form";
 

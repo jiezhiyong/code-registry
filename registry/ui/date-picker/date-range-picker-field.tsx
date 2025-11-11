@@ -12,7 +12,8 @@ import { useDateFieldState } from "@react-stately/datepicker";
 import { forwardRef, useRef } from "react";
 
 import { mergeProps } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { useDOMRef } from "@/lib/react";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { DateInputSegment } from "@/registry/ui/date-input";
 
 type HeroUIBaseProps<T extends DateValue> = Omit<HTMLHeroUIProps<"div">, keyof AriaDatePickerProps<T> | "onChange">;

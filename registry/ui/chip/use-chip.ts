@@ -129,9 +129,9 @@ export function useChip(originalProps: UseChipProps) {
   const getContentClone = (content: ReactNode) =>
     isValidElement(content)
       ? cloneElement(content, {
-        // @ts-ignore
-        className: clsx("max-h-[80%]", content.props.className),
-      })
+          // @ts-ignore
+          className: clsx("max-h-[80%]", content.props.className),
+        })
       : null;
 
   return {

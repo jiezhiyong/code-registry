@@ -8,9 +8,10 @@ import TableCell from "./table-cell";
 import TableCheckboxCell from "./table-checkbox-cell";
 import TableRow from "./table-row";
 
-import { forwardRef } from "@/lib/system";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { clsx, dataAttr, mergeProps } from "@/lib/base";
+import { useDOMRef } from "@/lib/react";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
+import { forwardRef } from "@/lib/system";
 
 // @internal
 export interface VirtualizedTableBodyProps extends HTMLHeroUIProps<"tbody"> {

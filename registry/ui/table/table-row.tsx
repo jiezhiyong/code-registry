@@ -7,9 +7,10 @@ import { useHover } from "@react-aria/interactions";
 import { useTableRow } from "@react-aria/table";
 import { useMemo } from "react";
 
-import { forwardRef } from "@/lib/system";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
 import { clsx, dataAttr, mergeProps } from "@/lib/base";
+import { useDOMRef } from "@/lib/react";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
+import { forwardRef } from "@/lib/system";
 
 // @internal
 export interface TableRowProps<T = object> extends Omit<BaseTableRowProps, "children"> {

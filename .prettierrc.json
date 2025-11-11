@@ -8,5 +8,6 @@
   "bracketSpacing": true,
   "endOfLine": "auto",
   "arrowParens": "always",
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "insertFinalNewline": true
 }

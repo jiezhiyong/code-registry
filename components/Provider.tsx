@@ -1,9 +1,11 @@
 "use client";
 
-import { HeroUIProvider } from "@/lib/system";
-import * as React from "react";
 import type { NavigateOptions } from "react-router-dom";
+
+import * as React from "react";
 import { useHref, useNavigate } from "react-router-dom";
+
+import { HeroUIProvider } from "@/lib/system";
 
 export interface ProviderProps {
   children: React.ReactNode;

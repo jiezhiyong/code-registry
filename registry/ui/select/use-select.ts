@@ -22,7 +22,8 @@ import { useAriaButton } from "@/hooks/use-aria-button";
 import { useMultiSelect, useMultiSelectState } from "@/hooks/use-aria-multiselect";
 import { useSafeLayoutEffect } from "@/hooks/use-safe-layout-effect";
 import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { useDOMRef } from "@/lib/react";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { mapPropsVariants, useLabelPlacement, useProviderContext } from "@/lib/system";
 import { FormContext, useSlottedContext } from "@/registry/ui/form";
 
@@ -543,9 +544,9 @@ export function useSelect<T extends object>(originalProps: UseSelectProps<T>) {
       isVirtualized: shouldVirtualize,
       virtualization: shouldVirtualize
         ? {
-          maxListboxHeight,
-          itemHeight,
-        }
+            maxListboxHeight,
+            itemHeight,
+          }
         : undefined,
       "data-slot": "listbox",
       className: slots.listbox({
@@ -576,7 +577,7 @@ export function useSelect<T extends object>(originalProps: UseSelectProps<T>) {
         offset:
           state.selectedItems && state.selectedItems.length > 0
             ? // forces the popover to update its position when the selected items change
-            state.selectedItems.length * 0.00000001 + (slotsProps.popoverProps?.offset || 0)
+              state.selectedItems.length * 0.00000001 + (slotsProps.popoverProps?.offset || 0)
             : slotsProps.popoverProps?.offset,
       } as PopoverProps;
     },

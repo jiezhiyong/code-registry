@@ -168,8 +168,8 @@ export function useImage(originalProps: UseImageProps) {
   const getWrapperProps = useCallback<PropGetter>(() => {
     const fallbackStyle = showFallback
       ? {
-        backgroundImage: `url(${fallbackSrc})`,
-      }
+          backgroundImage: `url(${fallbackSrc})`,
+        }
       : {};
 
     return {

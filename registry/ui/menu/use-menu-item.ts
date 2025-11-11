@@ -13,7 +13,7 @@ import { menuItem } from "./theme";
 
 import { useIsMobile } from "@/hooks/use-is-mobile";
 import { clsx, dataAttr, mergeProps, objectToDeps, removeEvents } from "@/lib/base";
-import { filterDOMProps } from "@/lib/react";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
 
 interface Props<T extends object> extends MenuItemBaseProps<T> {

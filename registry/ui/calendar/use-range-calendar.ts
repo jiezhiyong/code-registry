@@ -12,8 +12,8 @@ import { useMemo, useRef } from "react";
 
 import { useCalendarBase } from "./use-calendar-base";
 
-import { filterDOMProps } from "@/lib/react";
 import { chain, clsx } from "@/lib/base";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 
 type HeroUIBaseProps<T extends DateValue> = Omit<HTMLHeroUIProps<"div">, keyof AriaRangeCalendarProps<T>>;
 

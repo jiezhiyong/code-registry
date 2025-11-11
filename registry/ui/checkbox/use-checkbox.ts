@@ -19,7 +19,7 @@ import { checkbox } from "./theme";
 import { useCallbackRef } from "@/hooks/use-callback-ref";
 import { useSafeLayoutEffect } from "@/hooks/use-safe-layout-effect";
 import { __DEV__, chain, clsx, dataAttr, mergeProps, safeAriaLabel, warn } from "@/lib/base";
-import { mergeRefs } from "@/lib/react";
+import { mergeRefs } from "@/lib/react/refs";
 import { useProviderContext } from "@/lib/system";
 import { FormContext, useSlottedContext } from "@/registry/ui/form";
 
@@ -200,13 +200,13 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
     isPressed,
     isInvalid: isAriaInvalid,
   } = isInGroup
-      ? // eslint-disable-next-line
+    ? // eslint-disable-next-line
       useReactAriaCheckboxGroupItem(
         { ...ariaCheckboxProps, ...validationProps },
         groupContext.groupState,
         inputRef,
       )
-      : // eslint-disable-next-line
+    : // eslint-disable-next-line
       useReactAriaCheckbox({ ...ariaCheckboxProps, ...validationProps }, toggleState, inputRef);
 
   const isInteractionDisabled = isDisabled || isReadOnly;

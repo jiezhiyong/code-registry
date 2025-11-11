@@ -7,9 +7,9 @@ import NavbarMenu from "./navbar-menu";
 import { hideOnScrollVariants } from "./navbar-transitions";
 import { useNavbar } from "./use-navbar";
 
-import { forwardRef } from "@/lib/system";
-import { pickChildren } from "@/lib/react";
 import { mergeProps } from "@/lib/base";
+import { pickChildren } from "@/lib/react-rsc/children";
+import { forwardRef } from "@/lib/system";
 
 export interface NavbarProps extends Omit<UseNavbarProps, "hideOnScroll"> {
   children?: React.ReactNode | React.ReactNode[];

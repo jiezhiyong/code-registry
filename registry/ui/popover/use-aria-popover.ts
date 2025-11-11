@@ -45,7 +45,7 @@ export interface Props {
   /**
    * The origin of the target in the overlay's coordinate system. Useful for animations.
    */
-  triggerAnchorPoint?: { x: number; y: number; } | null;
+  triggerAnchorPoint?: { x: number; y: number } | null;
 }
 
 export type ReactAriaPopoverProps = Props &
@@ -114,7 +114,7 @@ export function useReactAriaPopover(props: ReactAriaPopoverProps, state: Overlay
     containerPadding,
     placement: toReactAriaPlacement(placementProp),
     offset: showArrow ? offset + 3 : offset,
-    onClose: isNonModal && !isSubmenu && shouldCloseOnScroll ? state.close : () => { },
+    onClose: isNonModal && !isSubmenu && shouldCloseOnScroll ? state.close : () => {},
   });
 
   useSafeLayoutEffect(() => {

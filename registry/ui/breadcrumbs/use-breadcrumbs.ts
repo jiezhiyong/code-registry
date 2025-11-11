@@ -13,7 +13,8 @@ import BreadcrumbItem from "./breadcrumb-item";
 import { breadcrumbs } from "./theme";
 
 import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
-import { filterDOMProps, pickChildren, useDOMRef } from "@/lib/react";
+import { useDOMRef } from "@/lib/react";
+import { pickChildren } from "@/lib/react-rsc/children";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
 
 type RenderEllipsisItemProps = {

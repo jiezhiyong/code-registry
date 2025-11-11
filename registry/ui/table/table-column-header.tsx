@@ -9,10 +9,11 @@ import { useTableColumnHeader } from "@react-aria/table";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { cloneElement, isValidElement } from "react";
 
-import { forwardRef } from "@/lib/system";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
-import { ChevronDownIcon } from "@/lib/icons/chevron-down";
 import { clsx, dataAttr, mergeProps } from "@/lib/base";
+import { ChevronDownIcon } from "@/lib/icons/chevron-down";
+import { useDOMRef } from "@/lib/react";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
+import { forwardRef } from "@/lib/system";
 
 // @internal
 export type SortIconProps = {

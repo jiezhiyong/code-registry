@@ -15,7 +15,8 @@ import { inputOtp } from "./theme";
 
 import { useFormReset } from "@/hooks/use-form-reset";
 import { chain, clsx, dataAttr, isPatternNumeric, mergeProps, objectToDeps } from "@/lib/base";
-import { filterDOMProps, useDOMRef } from "@/lib/react";
+import { useDOMRef } from "@/lib/react";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
 import { FormContext, useSlottedContext } from "@/registry/ui/form";
 
@@ -98,7 +99,7 @@ export function useInputOtp(originalProps: UseInputOtpProps) {
     length = 4,
     autoFocus,
     "aria-label": ariaLabel = "One-time password input",
-    onValueChange = () => { },
+    onValueChange = () => {},
     allowedKeys = "^[0-9]*$",
     validationBehavior = formValidationBehavior ?? globalContext?.validationBehavior ?? "native",
     type,
@@ -106,7 +107,7 @@ export function useInputOtp(originalProps: UseInputOtpProps) {
     maxLength,
     minLength,
     textAlign = "center",
-    onComplete = () => { },
+    onComplete = () => {},
     pushPasswordManagerStrategy,
     pasteTransformer,
     containerClassName,

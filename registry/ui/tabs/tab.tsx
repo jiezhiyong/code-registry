@@ -7,9 +7,11 @@ import { useHover } from "@react-aria/interactions";
 import { useTab } from "@react-aria/tabs";
 import scrollIntoView from "scroll-into-view-if-needed";
 
-import { forwardRef } from "@/lib/system";
-import { filterDOMProps, mergeRefs, useDOMRef } from "@/lib/react";
 import { chain, clsx, dataAttr, mergeProps } from "@/lib/base";
+import { useDOMRef } from "@/lib/react";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
+import { mergeRefs } from "@/lib/react/refs";
+import { forwardRef } from "@/lib/system";
 
 export interface TabItemProps<T extends object = object> extends BaseTabItemProps<T> {
   item: Node<T>;
