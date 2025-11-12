@@ -8,13 +8,12 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 import { useInfiniteScroll } from "@/hooks/use-infinite-scroll";
-import { SelectorIcon } from "@/icons";
+import { PetBoldIcon, SelectorIcon } from "@/icons";
 import { button, select, Select, SelectItem, SelectSection } from "@/registry/ui";
 import { Avatar } from "@/registry/ui/avatar";
 import { Button } from "@/registry/ui/button";
 import { Chip } from "@/registry/ui/chip";
 import { Form } from "@/registry/ui/form";
-import { PetBoldIcon } from "@/utils/icons";
 import { animalsData, usePokemonList, usersData } from "@/utils/storybook";
 
 const meta = {
@@ -64,7 +63,7 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <div className="flex items-start justify-center w-screen h-screen">
+      <div className="flex items-start justify-center">
         <Story />
       </div>
     ),
@@ -1427,7 +1426,7 @@ export const PopoverTopOrBottom: Story = {
     ...defaultProps,
   },
   render: (args) => (
-    <div className="relative h-screen w-screen">
+    <div className="relative">
       <div className="absolute top-0 p-8">
         <div className="w-48">
           <Template {...args} />

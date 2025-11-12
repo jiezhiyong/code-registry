@@ -57,13 +57,6 @@ const meta = {
       options: ["aria", "native"],
     },
   },
-  decorators: [
-    (Story) => (
-      <div className="flex items-center justify-center w-screen h-screen">
-        <Story />
-      </div>
-    ),
-  ],
 } satisfies Meta<typeof Input>;
 
 export default meta;

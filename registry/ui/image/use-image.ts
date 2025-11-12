@@ -99,7 +99,7 @@ export function useImage(originalProps: UseImageProps) {
   } = props;
 
   const imageStatus = useImageBase({
-    src,
+    src: src as string | undefined,
     loading,
     onError,
     onLoad,

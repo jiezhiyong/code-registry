@@ -71,7 +71,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>
+      </Select>,
     );
 
     if (shouldIgnoreReactWarning(spy)) {
@@ -90,7 +90,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>
+      </Select>,
     );
     expect(ref.current).not.toBeNull();
   });
@@ -99,7 +99,7 @@ describe("Select", () => {
     const wrapper = render(
       <Select disableAnimation aria-label="Favorite Animal" items={itemsData} label="Favorite Animal">
         {(item) => <SelectItem key={item.id}>{item.label}</SelectItem>}
-      </Select>
+      </Select>,
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -115,7 +115,7 @@ describe("Select", () => {
           <SelectItem key="zebra">Zebra</SelectItem>
           <SelectItem key="shark">Shark</SelectItem>
         </SelectSection>
-      </Select>
+      </Select>,
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -134,7 +134,7 @@ describe("Select", () => {
             {(item: Item) => <SelectItem key={item.value}>{item.label}</SelectItem>}
           </SelectSection>
         )}
-      </Select>
+      </Select>,
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -156,7 +156,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>
+      </Select>,
     );
 
     let listbox = wrapper.getByRole("listbox");
@@ -188,7 +188,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>
+      </Select>,
     );
 
     let listbox = wrapper.getByRole("listbox");
@@ -254,7 +254,7 @@ describe("Select", () => {
     expect(wrapper.queryByText("Select an favorite animal")).toBe(null);
 
     wrapper.rerender(
-      <SelectWrapper placeholder="Select an favorite animal" renderValue={(item) => `next ${item[0].textValue}`} />
+      <SelectWrapper placeholder="Select an favorite animal" renderValue={(item) => `next ${item[0].textValue}`} />,
     );
 
     expect(wrapper.getByText("next Penguin")).toBeInTheDocument();
@@ -272,7 +272,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>
+      </Select>,
     );
 
     const select = wrapper.getByTestId("close-when-clicking-outside-test");
@@ -309,7 +309,7 @@ describe("Select", () => {
           </ModalBody>
           <ModalFooter>Modal footer</ModalFooter>
         </ModalContent>
-      </Modal>
+      </Modal>,
     );
 
     const select = wrapper.getByTestId("close-when-clicking-outside-test");
@@ -343,7 +343,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>
+      </Select>,
     );
     const select = wrapper.getByTestId("test-select");
 
@@ -371,7 +371,7 @@ describe("Select", () => {
         selectionMode="multiple"
       >
         {(item) => <SelectItem>{item.value}</SelectItem>}
-      </Select>
+      </Select>,
     );
 
     const selectedOptions = wrapper.getAllByRole("option", { selected: true });
@@ -397,7 +397,7 @@ describe("Select", () => {
         selectionMode="multiple"
       >
         {(item) => <SelectItem>{item.value}</SelectItem>}
-      </Select>
+      </Select>,
     );
 
     const selectedOptions = wrapper.getAllByRole("option", { selected: true });
@@ -417,7 +417,7 @@ describe("Select", () => {
     const wrapperWithId = render(
       <Select disableAnimation isOpen items={itemsWithId} label="Test with ID" onSelectionChange={onSelectionChangeId}>
         {(item) => <SelectItem>{item.value}</SelectItem>}
-      </Select>
+      </Select>,
     );
 
     const listbox = wrapperWithId.getByRole("listbox");
@@ -456,7 +456,7 @@ describe("Select", () => {
         onSelectionChange={onSelectionChangeKey}
       >
         {(item) => <SelectItem>{item.value}</SelectItem>}
-      </Select>
+      </Select>,
     );
 
     const listbox = wrapperWithKey.getByRole("listbox");
@@ -491,7 +491,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>
+      </Select>,
     );
     const select = wrapper.getByTestId("test-select");
     const displayedText = select?.textContent?.trim();
@@ -512,7 +512,7 @@ describe("Select", () => {
           <SelectItem key="zebra">Zebra</SelectItem>
           <SelectItem key="shark">Shark</SelectItem>
         </Select>
-      </>
+      </>,
     );
 
     const select = wrapper.getByTestId("select");
@@ -554,7 +554,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>
+      </Select>,
     );
 
     const select = wrapper.getByTestId("test-select");
@@ -577,7 +577,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>
+      </Select>,
     );
 
     const select = wrapper.getByTestId("test-select");
@@ -607,7 +607,7 @@ describe("Select", () => {
         <button data-testid="submit-button" type="submit">
           Submit
         </button>
-      </form>
+      </form>,
     );
 
     const submitButton = wrapper.getByTestId("submit-button");
@@ -640,7 +640,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>
+      </Select>,
     );
 
     const select = await wrapper.findByTestId("select");
@@ -681,7 +681,7 @@ describe("Select", () => {
         {options.map((o) => (
           <SelectItem key={o}>{o}</SelectItem>
         ))}
-      </Select>
+      </Select>,
     );
 
     let listbox = wrapper.getByRole("listbox");
@@ -718,7 +718,7 @@ describe("Select", () => {
         {options.map((o) => (
           <SelectItem key={o}>{o}</SelectItem>
         ))}
-      </Select>
+      </Select>,
     );
 
     let listbox = wrapper.getByRole("listbox");
@@ -750,7 +750,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>
+      </Select>,
     );
 
     const base = document.querySelector("[data-slot=base]");
@@ -774,7 +774,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>
+      </Select>,
     );
 
     const trigger = document.querySelector("[data-slot=trigger]");
@@ -828,7 +828,7 @@ describe("Select", () => {
         label="Favorite Animal"
       >
         {[]}
-      </Select>
+      </Select>,
     );
 
     const select = wrapper.getByTestId("hide-empty-content-true-test");
@@ -852,7 +852,7 @@ describe("Select", () => {
         label="Favorite Animal"
       >
         {[]}
-      </Select>
+      </Select>,
     );
 
     const select = wrapper.getByTestId("hide-empty-content-false-test");
@@ -888,7 +888,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>
+      </Select>,
     );
 
     let listboxItems = wrapper.getAllByRole("option");
@@ -917,7 +917,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>
+      </Select>,
     );
 
     const select = wrapper.getByTestId("select");
@@ -943,7 +943,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>
+      </Select>,
     );
 
     const select = wrapper.getByTestId("select");
@@ -973,7 +973,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>
+      </Select>,
     );
 
     const select = wrapper.getByTestId("select");
@@ -1000,7 +1000,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>
+      </Select>,
     );
 
     let listboxItems = wrapper.getAllByRole("option");
@@ -1031,7 +1031,7 @@ describe("Select", () => {
         <SelectItem key="penguin">Penguin</SelectItem>
         <SelectItem key="zebra">Zebra</SelectItem>
         <SelectItem key="shark">Shark</SelectItem>
-      </Select>
+      </Select>,
     );
 
     const select = wrapper.getByTestId("select");
@@ -1074,7 +1074,7 @@ describe("Select virtualization tests", () => {
             <SelectItem key={o}>{o}</SelectItem>
           ))}
         </Select>
-      </div>
+      </div>,
     );
 
     const listbox = wrapper.getByRole("listbox");
@@ -1101,7 +1101,7 @@ describe("Select virtualization tests", () => {
             <SelectItem key={o}>{o}</SelectItem>
           ))}
         </Select>
-      </div>
+      </div>,
     );
 
     const listbox = wrapper.getByRole("listbox");
@@ -1152,7 +1152,7 @@ describe("Select virtualization tests", () => {
             <SelectItem key={o}>{o}</SelectItem>
           ))}
         </Select>
-      </div>
+      </div>,
     );
 
     const listbox = wrapper.getByRole("listbox");
@@ -1205,7 +1205,7 @@ describe("Select virtualization tests", () => {
             <SelectItem key={o}>{o}</SelectItem>
           ))}
         </Select>
-      </div>
+      </div>,
     );
 
     const listbox = wrapper.getByRole("listbox");
@@ -1250,7 +1250,7 @@ describe("Select with React Hook Form", () => {
           withoutDefaultValue: "",
           requiredField: "",
         },
-      })
+      }),
     );
 
     const {
@@ -1297,7 +1297,7 @@ describe("Select with React Hook Form", () => {
         <button data-testid="submit-button" type="submit">
           Submit
         </button>
-      </form>
+      </form>,
     );
 
     select1 = wrapper.getByTestId("select-1");
@@ -1340,7 +1340,7 @@ describe("Select with React Hook Form", () => {
 });
 
 describe("validation", () => {
-  let user;
+  let user: ReturnType<typeof userEvent.setup>;
 
   beforeAll(() => {
     user = userEvent.setup();
@@ -1366,7 +1366,7 @@ describe("validation", () => {
           <button data-testid="submit-button" type="submit">
             Submit
           </button>
-        </Form>
+        </Form>,
       );
 
       const trigger = getByTestId("trigger") as HTMLButtonElement;
@@ -1397,7 +1397,7 @@ describe("validation", () => {
       function FormRender() {
         const [serverErrors, setServerErrors] = React.useState({ animal: "initial error" });
 
-        const onSubmit = (e) => {
+        const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
           e.preventDefault();
 
           setServerErrors({
@@ -1528,7 +1528,7 @@ describe("validation", () => {
           <button data-testid="submit-button" type="submit">
             Submit
           </button>
-        </Form>
+        </Form>,
       );
 
       const trigger = getByTestId("trigger") as HTMLButtonElement;
@@ -1566,7 +1566,7 @@ describe("validation", () => {
       function FormRender() {
         const [serverErrors, setServerErrors] = React.useState({ animal: "initial error" });
 
-        const onSubmit = (e) => {
+        const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
           e.preventDefault();
 
           setServerErrors({

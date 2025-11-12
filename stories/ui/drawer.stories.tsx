@@ -59,13 +59,6 @@ const meta = {
       },
     },
   },
-  decorators: [
-    (Story) => (
-      <div className="flex justify-center items-center w-screen h-screen">
-        <Story />
-      </div>
-    ),
-  ],
 } satisfies Meta<typeof Drawer>;
 
 export default meta;

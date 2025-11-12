@@ -3,14 +3,16 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
-import { alert } from "@/registry/ui";
-import { Button } from "@/registry/ui/button";
 import { cn } from "@/lib/theme";
-import { Alert } from "@/registry/ui";
+import { alert, Alert } from "@/registry/ui";
+import { Button } from "@/registry/ui/button";
 
 const meta = {
   title: "Components/Alert",
   component: Alert,
+  parameters: {
+    layout: "fullscreen",
+  },
   argTypes: {
     color: {
       control: {
@@ -36,15 +38,6 @@ const meta = {
       },
     },
   },
-  decorators: [
-    (Story) => (
-      <div className="flex items-center justify-center w-screen h-screen">
-        <div className="w-full max-w-[542px]">
-          <Story />
-        </div>
-      </div>
-    ),
-  ],
 } satisfies Meta<typeof Alert>;
 
 export default meta;
@@ -61,7 +54,7 @@ const ColorTemplate = (args) => {
   return (
     <div className="flex flex-col w-full">
       {["default", "primary", "secondary", "success", "warning", "danger"].map((color) => (
-        <div key={color} className="w-full flex items-center my-3">
+        <div key={color} className="w-full flex items-center my-2">
           <Alert {...args} color={color} title={`This is a ${color} alert`} />
         </div>
       ))}
@@ -73,7 +66,7 @@ const RadiusTemplate = (args) => {
   return (
     <div className="flex flex-col w-full">
       {["none", "sm", "md", "lg", "full"].map((radius) => (
-        <div key={radius} className="w-full flex items-center my-3">
+        <div key={radius} className="w-full flex items-center my-2">
           <Alert {...args} radius={radius} title={`This is a ${radius} radius alert`} />
         </div>
       ))}
@@ -85,7 +78,7 @@ const VariantTemplate = (args) => {
   return (
     <div className="flex flex-col w-full">
       {["solid", "flat", "bordered", "faded"].map((variant) => (
-        <div key={variant} className="w-full flex items-center my-3">
+        <div key={variant} className="w-full flex items-center my-2">
           <Alert {...args} isClosable title={`This is a ${variant} alert`} variant={variant} />
         </div>
       ))}

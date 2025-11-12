@@ -20,7 +20,7 @@ const DateInput = React.forwardRef((props: DateInputProps, ref: React.Ref<HTMLDi
 DateInput.displayName = "DateInput";
 
 describe("DateInput", () => {
-  let user;
+  let user: ReturnType<typeof userEvent.setup>;
 
   beforeAll(() => {
     user = userEvent.setup({ delay: null, pointerMap });
@@ -65,7 +65,7 @@ describe("DateInput", () => {
           }}
           name="date"
           validationBehavior="aria"
-        />
+        />,
       );
 
       await user.tab();
@@ -146,7 +146,7 @@ describe("DateInput", () => {
 
     it("should support error message", function () {
       let { getByRole, getAllByRole } = render(
-        <DateInput errorMessage="Error message" label="Date" validationState="invalid" />
+        <DateInput errorMessage="Error message" label="Date" validationState="invalid" />,
       );
 
       let group = getByRole("group");
@@ -185,7 +185,7 @@ describe("DateInput", () => {
 
     it("should focus field and switching segments via tab does not change focus", async function () {
       let { getAllByRole } = render(
-        <DateInput label="Date" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />
+        <DateInput label="Date" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />,
       );
       let segments = getAllByRole("spinbutton");
 
@@ -207,7 +207,7 @@ describe("DateInput", () => {
 
     it("should call blur when focus leaves", async function () {
       let { getAllByRole } = render(
-        <DateInput label="Date" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />
+        <DateInput label="Date" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />,
       );
       let segments = getAllByRole("spinbutton");
 
@@ -265,7 +265,7 @@ describe("DateInput", () => {
           label="Date"
           name="date"
           value={new ZonedDateTime(2020, 2, 3, "America/Los_Angeles", -28800000, 12, 24, 45)}
-        />
+        />,
       );
       expect(input).toHaveValue("2020-02-03T12:24:45-08:00[America/Los_Angeles]");
     });

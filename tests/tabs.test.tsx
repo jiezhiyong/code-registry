@@ -72,7 +72,7 @@ describe("Tabs", () => {
         <Tab key="item3" title="Item 3">
           <div>Content 3</div>
         </Tab>
-      </Tabs>
+      </Tabs>,
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -90,7 +90,7 @@ describe("Tabs", () => {
             <div>{item.content}</div>
           </Tab>
         )}
-      </Tabs>
+      </Tabs>,
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -104,7 +104,7 @@ describe("Tabs", () => {
             <div>{item.content}</div>
           </Tab>
         ))}
-      </Tabs>
+      </Tabs>,
     );
     const tablist = wrapper.getByRole("tablist");
 
@@ -144,7 +144,7 @@ describe("Tabs", () => {
         <Tab key="item3" title="Item 3">
           <div>Content 3</div>
         </Tab>
-      </Tabs>
+      </Tabs>,
     );
     expect(ref.current).not.toBeNull();
   });
@@ -161,7 +161,7 @@ describe("Tabs", () => {
         <Tab key="item3" title="Item 3">
           <div>Content 3</div>
         </Tab>
-      </Tabs>
+      </Tabs>,
     );
 
     const tab1 = wrapper.getByRole("tab", { name: "Item 1" });
@@ -204,7 +204,7 @@ describe("Tabs", () => {
         <Tab key="item3" data-testid="item3" title="Item 3">
           <div>Content 3</div>
         </Tab>
-      </Tabs>
+      </Tabs>,
     );
 
     const tab1 = wrapper.getByTestId("item1");
@@ -245,7 +245,7 @@ describe("Tabs", () => {
         <Tab key="item3" title="Item 3">
           <div>Content 3</div>
         </Tab>
-      </Tabs>
+      </Tabs>,
     );
 
     const tab2 = wrapper.getByTestId("item2");
@@ -265,7 +265,7 @@ describe("Tabs", () => {
         <Tab key="item3" title="Item 3">
           <div>Content 3</div>
         </Tab>
-      </Tabs>
+      </Tabs>,
     );
 
     const tab2 = wrapper.getByTestId("item2");
@@ -313,7 +313,7 @@ describe("Tabs", () => {
         <Tab key="item3" title="Item 3">
           <div>Content 3</div>
         </Tab>
-      </Tabs>
+      </Tabs>,
     );
 
     const tabWrapper = wrapper.getByTestId("tabWrapper").parentNode;
@@ -333,7 +333,7 @@ describe("Tabs", () => {
         <Tab key="item3" title="Item 3">
           <div>Content 3</div>
         </Tab>
-      </Tabs>
+      </Tabs>,
     );
 
     expect(tabWrapper).toHaveAttribute("data-placement", "top");
@@ -349,7 +349,7 @@ describe("Tabs", () => {
         <Tab key="tab2" data-testid="item2" title="Tab 2">
           <p id="secondTab">second tab content</p>
         </Tab>
-      </Tabs>
+      </Tabs>,
     );
 
     expect(container.querySelectorAll("[data-slot='panel']")).toHaveLength(1);
@@ -364,7 +364,7 @@ describe("Tabs", () => {
         <Tab key="tab2" data-testid="item2" title="Tab 2">
           <p id="secondTab">second tab content</p>
         </Tab>
-      </Tabs>
+      </Tabs>,
     );
 
     const { container } = wrapper;
@@ -397,10 +397,10 @@ describe("Tabs", () => {
 
     render(
       <Tabs aria-label="Tabs static test">
-        <Tab key="item1" tabRef={ref} title="Item 1">
+        <Tab key="item1" tabRef={ref as React.RefObject<HTMLButtonElement>} title="Item 1">
           <div>Content 1</div>
         </Tab>
-      </Tabs>
+      </Tabs>,
     );
     expect(ref.current).not.toBeNull();
   });
@@ -416,7 +416,7 @@ describe("Tabs", () => {
         <Tab key="item2" data-testid="item2" title="Item 2" onClick={item2Click}>
           <div>Content 2</div>
         </Tab>
-      </Tabs>
+      </Tabs>,
     );
     const tab1 = wrapper.getByTestId("item1");
     const tab2 = wrapper.getByTestId("item2");
@@ -513,7 +513,7 @@ describe("Tabs", () => {
       () => {
         expect(queryByRole("dialog")).not.toBeInTheDocument();
       },
-      { timeout: 1000 }
+      { timeout: 1000 },
     );
 
     await act(async () => {

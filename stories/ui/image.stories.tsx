@@ -3,8 +3,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
-import { image } from "@/registry/ui";
-import { Image } from "@/registry/ui";
+import { image, Image } from "@/registry/ui";
 
 const meta = {
   title: "Components/Image",
@@ -43,13 +42,6 @@ const meta = {
       },
     },
   },
-  decorators: [
-    (Story) => (
-      <div className="flex items-center justify-center w-screen h-screen">
-        <Story />
-      </div>
-    ),
-  ],
 } satisfies Meta<typeof Image>;
 
 export default meta;

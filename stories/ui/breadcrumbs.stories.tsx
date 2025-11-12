@@ -3,13 +3,20 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
-import { CheckIcon, ChevronDownIcon, HeadphonesIcon, InfoIcon, MailFilledIcon } from "@/icons";
+import {
+  CheckIcon,
+  ChevronDownIcon,
+  HeadphonesIcon,
+  InfoIcon,
+  MailFilledIcon,
+  PetBoldIcon,
+  ShoppingCartBoldIcon,
+} from "@/icons";
 import { clsx } from "@/lib/base";
 import { breadcrumbItem, BreadcrumbItem, Breadcrumbs } from "@/registry/ui";
 import { Button } from "@/registry/ui/button";
 import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@/registry/ui/dropdown";
 import { Tooltip } from "@/registry/ui/tooltip";
-import { PetBoldIcon, ShoppingCartBoldIcon } from "@/utils/icons";
 
 const meta = {
   title: "Components/Breadcrumbs",

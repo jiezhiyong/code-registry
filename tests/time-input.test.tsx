@@ -20,7 +20,7 @@ const TimeInput = React.forwardRef((props: TimeInputProps, ref: React.Ref<HTMLDi
 TimeInput.displayName = "TimeInput";
 
 describe("TimeInput", () => {
-  let user;
+  let user: ReturnType<typeof userEvent.setup>;
 
   beforeAll(() => {
     user = userEvent.setup({ delay: null, pointerMap });
@@ -153,7 +153,7 @@ describe("TimeInput", () => {
 
     it("should support error message", function () {
       let { getByRole, getAllByRole } = render(
-        <TimeInput errorMessage="Error message" label="Time" validationState="invalid" />
+        <TimeInput errorMessage="Error message" label="Time" validationState="invalid" />,
       );
 
       let group = getByRole("group");
@@ -213,7 +213,7 @@ describe("TimeInput", () => {
 
     it("should focus field and switching segments via tab does not change focus", async function () {
       let { getAllByRole } = render(
-        <TimeInput label="Time" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />
+        <TimeInput label="Time" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />,
       );
       let segments = getAllByRole("spinbutton");
 
@@ -235,7 +235,7 @@ describe("TimeInput", () => {
 
     it("should call blur when focus leaves", async function () {
       let { getAllByRole } = render(
-        <TimeInput label="Time" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />
+        <TimeInput label="Time" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />,
       );
       let segments = getAllByRole("spinbutton");
 
@@ -292,7 +292,7 @@ describe("TimeInput", () => {
           label="Time"
           name="time"
           value={new ZonedDateTime(2020, 2, 3, "America/Los_Angeles", -28800000, 12, 24, 45)}
-        />
+        />,
       );
 
       expect(input).toHaveValue("12:24:45");
@@ -304,7 +304,7 @@ describe("TimeInput", () => {
 
         return (
           <form>
-            <TimeInput label="Value" name="time" value={value} onChange={setValue} />
+            <TimeInput label="Value" name="time" value={value} onChange={(value) => setValue(value as TimeValue)} />
             <input data-testid="reset" type="reset" />
           </form>
         );
@@ -357,7 +357,7 @@ describe("TimeInput", () => {
           minValue={new Time(9)}
           name="time"
           validationBehavior="aria"
-        />
+        />,
       );
 
       const input = document.querySelector("input[name=time]");
@@ -387,7 +387,7 @@ describe("TimeInput", () => {
           maxValue={new Time(17)}
           name="time"
           validationBehavior="aria"
-        />
+        />,
       );
 
       const input = document.querySelector("input[name=time]");

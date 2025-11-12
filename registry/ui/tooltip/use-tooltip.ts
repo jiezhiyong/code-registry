@@ -14,6 +14,8 @@ import { useTooltip as useReactAriaTooltip, useTooltipTrigger } from "@react-ari
 import { useTooltipTriggerState } from "@react-stately/tooltip";
 import { useCallback, useId, useImperativeHandle, useMemo, useRef } from "react";
 
+import { popover } from "../popover/theme";
+
 import { useAriaOverlay } from "@/hooks/use-aria-overlay";
 import { useSafeLayoutEffect } from "@/hooks/use-safe-layout-effect";
 import { getArrowPlacement, toReactAriaPlacement } from "@/lib/aria";
@@ -21,7 +23,6 @@ import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 import { createDOMRef } from "@/lib/react/createDOMRef";
 import { mergeRefs } from "@/lib/react/refs";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { popover } from "../popover/theme";
 
 interface Props extends Omit<HTMLHeroUIProps, "content"> {
   /**
@@ -204,6 +205,7 @@ export function useTooltip(originalProps: UseTooltipProps) {
       isKeyboardDismissDisabled,
       shouldCloseOnInteractOutside,
     },
+    // @ts-ignore
     overlayRef,
   );
 

@@ -12,6 +12,8 @@ import { useFocusRing } from "@react-aria/focus";
 import { useHover } from "@react-aria/interactions";
 import { useCallback, useMemo } from "react";
 
+import { useRipple } from "../ripple";
+
 import { card } from "./theme";
 
 import { useAriaButton } from "@/hooks/use-aria-button";
@@ -19,7 +21,6 @@ import { chain, clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { useRipple } from "../ripple";
 
 export interface Props extends Omit<HTMLHeroUIProps<"div">, "onClick"> {
   /**

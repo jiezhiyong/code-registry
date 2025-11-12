@@ -6,12 +6,13 @@ import type { ListboxSectionBaseProps } from "./listbox-section-base";
 import { useListBoxSection } from "@react-aria/listbox";
 import { useMemo } from "react";
 
+import { Divider } from "../divider";
+
 import ListboxItem from "./listbox-item";
 import { listboxSection } from "./theme";
 
 import { clsx, mergeProps } from "@/lib/base";
 import { forwardRef } from "@/lib/system";
-import { Divider } from "../divider";
 
 export interface ListboxSectionProps<T extends object = object> extends ListboxSectionBaseProps {
   item: Node<T>;

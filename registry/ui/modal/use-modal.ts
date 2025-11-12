@@ -4,7 +4,7 @@ import type { SlotsToClasses } from "@/lib/theme/utils/types";
 import type { AriaModalOverlayProps } from "@react-aria/overlays";
 import type { OverlayTriggerProps } from "@react-stately/overlays";
 import type { HTMLMotionProps } from "framer-motion";
-import type { ReactNode } from "react";
+import type { ReactNode, RefObject } from "react";
 import type { ModalSlots, ModalVariantProps } from "./theme";
 
 import { useFocusRing } from "@react-aria/focus";
@@ -145,7 +145,10 @@ export function useModal(originalProps: UseModalProps) {
     domRef,
   );
 
-  const { buttonProps: closeButtonProps } = useAriaButton({ onPress: state.close }, closeButtonRef);
+  const { buttonProps: closeButtonProps } = useAriaButton(
+    { onPress: state.close },
+    closeButtonRef as RefObject<Element>,
+  );
   const { isFocusVisible: isCloseButtonFocusVisible, focusProps: closeButtonFocusProps } = useFocusRing();
 
   const baseStyles = clsx(classNames?.base, className);

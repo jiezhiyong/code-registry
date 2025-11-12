@@ -62,7 +62,8 @@ export function useMultiSelect<T>(
 
           const key =
             state.selectedKeys.size > 0
-              ? delegate.getKeyAbove(state.selectedKeys.values().next().value as Key)
+              ? // @ts-ignore
+                delegate.getKeyAbove(state.selectedKeys.values().next().value as Key)
               : delegate.getFirstKey();
 
           if (key) {
@@ -76,7 +77,8 @@ export function useMultiSelect<T>(
 
           const key =
             state.selectedKeys.size > 0
-              ? delegate.getKeyBelow(state.selectedKeys.values().next().value as Key)
+              ? // @ts-ignore
+                delegate.getKeyBelow(state.selectedKeys.values().next().value as Key)
               : delegate.getFirstKey();
 
           if (key) {

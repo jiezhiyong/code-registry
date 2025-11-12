@@ -37,11 +37,12 @@ const DatePickerWithLocale = React.forwardRef(
         />
       </HeroUIProvider>
     );
-  }
+  },
 );
 
 DatePickerWithLocale.displayName = "DatePickerWithLocale";
 
+// @ts-ignore
 function getTextValue(el: any) {
   if (
     el.className?.includes?.("DatePicker-placeholder") &&
@@ -50,11 +51,12 @@ function getTextValue(el: any) {
     return "";
   }
 
+  // @ts-ignore
   return [...el.childNodes].map((el) => (el.nodeType === 3 ? el.textContent : getTextValue(el))).join("");
 }
 
 describe("DatePicker", () => {
-  let user;
+  let user: ReturnType<typeof userEvent.setup>;
 
   beforeAll(() => {
     user = userEvent.setup({ delay: null, pointerMap });
@@ -118,7 +120,7 @@ describe("DatePicker", () => {
 
     it('should render a datepicker with granularity="second"', function () {
       let { getAllByRole } = render(
-        <DatePicker granularity="second" label="Date" value={new CalendarDateTime(2019, 2, 3)} />
+        <DatePicker granularity="second" label="Date" value={new CalendarDateTime(2019, 2, 3)} />,
       );
 
       let combobox = getAllByRole("group")[0];
@@ -204,7 +206,7 @@ describe("DatePicker", () => {
 
     it("should work with startContent and endContent", () => {
       const { getByText } = render(
-        <DatePicker endContent={<div>end</div>} label="Date" startContent={<div>start</div>} />
+        <DatePicker endContent={<div>end</div>} label="Date" startContent={<div>start</div>} />,
       );
 
       expect(getByText("start")).toBeInTheDocument();
@@ -213,7 +215,7 @@ describe("DatePicker", () => {
 
     it("should work with selectorButtonPlacement", () => {
       const { getByRole } = render(
-        <DatePicker label="Date" selectorButtonPlacement="start" startContent={<div>start</div>} />
+        <DatePicker label="Date" selectorButtonPlacement="start" startContent={<div>start</div>} />,
       );
 
       const button = getByRole("button");
@@ -235,7 +237,7 @@ describe("DatePicker", () => {
             label: "text-green-500",
           }}
           label="Date"
-        />
+        />,
       );
 
       const label = getByText("Date");
@@ -265,7 +267,7 @@ describe("DatePicker", () => {
 
     it("should focus field, move a segment, and open popover and does not blur", async function () {
       let { getByRole, getAllByRole } = render(
-        <DatePicker label="Date" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />
+        <DatePicker label="Date" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />,
       );
       let segments = getAllByRole("spinbutton");
       let button = getByRole("button");
@@ -297,7 +299,7 @@ describe("DatePicker", () => {
 
     it("should focus field and leave to blur", async function () {
       let { getAllByRole } = render(
-        <DatePicker label="Date" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />
+        <DatePicker label="Date" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />,
       );
       let segments = getAllByRole("spinbutton");
 
@@ -320,7 +322,7 @@ describe("DatePicker", () => {
 
     it("should open popover and call picker onFocus", function () {
       let { getByRole } = render(
-        <DatePicker label="Date" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />
+        <DatePicker label="Date" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />,
       );
 
       let button = getByRole("button");
@@ -341,7 +343,7 @@ describe("DatePicker", () => {
 
     it("should open and close popover and only call blur when focus leaves picker", async function () {
       let { getByRole } = render(
-        <DatePicker label="Date" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />
+        <DatePicker label="Date" onBlur={onBlurSpy} onFocus={onFocusSpy} onFocusChange={onFocusChangeSpy} />,
       );
       let button = getByRole("button");
 
@@ -417,7 +419,7 @@ describe("DatePicker", () => {
       let onChange = jest.fn();
 
       let { getByRole, getAllByRole, queryByLabelText } = render(
-        <DatePicker hideTimeZone isRequired label="Date" value={new CalendarDate(2019, 2, 3)} onChange={onChange} />
+        <DatePicker hideTimeZone isRequired label="Date" value={new CalendarDate(2019, 2, 3)} onChange={onChange} />,
       );
 
       let combobox = getAllByRole("group")[0];
@@ -463,7 +465,7 @@ describe("DatePicker", () => {
     it("should emit onChange when selecting a date in the calendar in uncontrolled mode", function () {
       let onChange = jest.fn();
       let { getByRole, getAllByRole } = render(
-        <DatePicker defaultValue={new CalendarDate(2019, 2, 3)} label="Date" onChange={onChange} />
+        <DatePicker defaultValue={new CalendarDate(2019, 2, 3)} label="Date" onChange={onChange} />,
       );
 
       let combobox = getAllByRole("group")[0];
@@ -495,7 +497,7 @@ describe("DatePicker", () => {
 
     it("should keep the selected date when the picker is opened, in showMonthAndYearPickers mode", function () {
       const { getByRole, getAllByRole } = render(
-        <DatePicker showMonthAndYearPickers label="Date" value={new CalendarDate(2024, 5, 1)} />
+        <DatePicker showMonthAndYearPickers label="Date" value={new CalendarDate(2024, 5, 1)} />,
       );
 
       let combobox = getAllByRole("group")[0];
@@ -532,7 +534,7 @@ describe("DatePicker", () => {
           }}
           defaultValue={new CalendarDate(2024, 4, 26)}
           label="Date"
-        />
+        />,
       );
 
       const button = getByRole("button");
@@ -572,7 +574,7 @@ describe("DatePicker", () => {
           }}
           defaultValue={new CalendarDate(2024, 4, 26)}
           label="Date"
-        />
+        />,
       );
 
       const button = getByRole("button");
@@ -600,7 +602,7 @@ describe("DatePicker", () => {
           showMonthAndYearPickers
           CalendarBottomContent={<div data-testid="calendar-bottom-content" />}
           label="Date"
-        />
+        />,
       );
 
       const button = getByRole("button");
@@ -638,7 +640,7 @@ describe("DatePicker", () => {
         <>
           <DatePicker data-testid="datepicker" label="Date" />
           <DatePicker data-testid="datepicker2" label="Date" />
-        </>
+        </>,
       );
 
       const dateButtons = getAllByRole("button");
@@ -671,7 +673,7 @@ describe("DatePicker", () => {
           defaultValue={new CalendarDate(2024, 6, 26)}
           label="Date"
           locale="th-TH-u-ca-buddhist"
-        />
+        />,
       );
 
       const button = getByRole("button");
@@ -721,7 +723,7 @@ describe("DatePicker", () => {
         const { getByRole, getByTestId } = render(
           <form data-testid="form">
             <DatePicker isRequired label="Date" name="date" validationBehavior="native" />
-          </form>
+          </form>,
         );
 
         const group = getByRole("group");
@@ -762,7 +764,7 @@ describe("DatePicker", () => {
             name="date"
             validate={(v) => (v.year < 2022 ? "Invalid value" : null)}
           />
-        </Form>
+        </Form>,
       );
 
       const group = getByRole("group");
@@ -850,7 +852,7 @@ describe("DatePicker", () => {
               minValue={new CalendarDate(2020, 2, 3)}
               name="date"
             />
-          </Form>
+          </Form>,
         );
 
         const group = getByRole("group");
@@ -881,7 +883,7 @@ describe("DatePicker", () => {
               label="Value"
               validate={(v) => (v.year < 2022 ? "Invalid value" : null)}
             />
-          </Form>
+          </Form>,
         );
 
         const group = getByRole("group");
@@ -904,7 +906,7 @@ describe("DatePicker", () => {
         const { getByRole } = render(
           <Form validationBehavior="aria" validationErrors={{ value: "Invalid value" }}>
             <DatePicker defaultValue={new CalendarDate(2020, 2, 3)} label="Value" name="value" />
-          </Form>
+          </Form>,
         );
 
         const group = getByRole("group");

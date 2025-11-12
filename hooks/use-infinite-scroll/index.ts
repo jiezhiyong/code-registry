@@ -1,6 +1,6 @@
 import { useCallback, useLayoutEffect, useRef } from "react";
 
-import { debounce } from "../../base";
+import { debounce } from "../../lib/base/functions";
 
 export interface UseInfiniteScrollProps {
   /**

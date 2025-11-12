@@ -129,7 +129,10 @@ export function useAccordion<T extends object>(props: UseAccordionProps<T>) {
      * @see https://github.com/adobe/react-spectrum/issues/3882
      */
     React.Children.map(childrenProp, (child) => {
-      if (React.isValidElement(child) && typeof child.props?.children !== "string") {
+      if (
+        React.isValidElement(child) &&
+        typeof (child as React.ReactElement<{ children: string }>)?.props?.children !== "string"
+      ) {
         const clonedChild = React.cloneElement(child, {
           // @ts-ignore
           hasChildItems: false,

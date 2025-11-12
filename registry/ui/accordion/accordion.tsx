@@ -4,11 +4,12 @@ import type { UseAccordionProps } from "./use-accordion";
 import { LayoutGroup } from "framer-motion";
 import { Fragment, useCallback, useMemo } from "react";
 
+import { Divider } from "../divider";
+
 import AccordionItem from "./accordion-item";
 import { useAccordion } from "./use-accordion";
 
 import { forwardRef } from "@/lib/system";
-import { Divider } from "../divider";
 
 export interface AccordionProps extends UseAccordionProps {}
 

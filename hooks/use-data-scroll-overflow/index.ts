@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-import { capitalize } from "../../base";
+import { capitalize } from "../../lib/base/functions";
 
 export type ScrollOverflowVisibility = "auto" | "top" | "bottom" | "left" | "right" | "both" | "none";
 

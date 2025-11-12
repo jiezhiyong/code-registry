@@ -189,9 +189,9 @@ export function usePagination(originalProps: UsePaginationProps) {
 
   const domRef = useDOMRef(ref);
   const cursorRef = useRef<HTMLElement>(null);
-  const itemsRef = useRef<Map<number, HTMLElement>>();
+  const itemsRef = useRef<Map<number, HTMLElement>>(new Map());
 
-  const cursorTimer = useRef<Timer>();
+  const cursorTimer = useRef<Timer>(null);
 
   const disableAnimation = originalProps?.disableAnimation ?? globalContext?.disableAnimation ?? false;
   const disableCursorAnimation = originalProps?.disableCursorAnimation ?? disableAnimation ?? false;

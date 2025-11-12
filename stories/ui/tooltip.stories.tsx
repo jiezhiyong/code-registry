@@ -3,9 +3,8 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
-import { popover } from "@/registry/ui";
+import { popover, Tooltip } from "@/registry/ui";
 import { Button } from "@/registry/ui/button";
-import { Tooltip } from "@/registry/ui";
 
 const meta = {
   title: "Components/Tooltip",
@@ -90,13 +89,6 @@ const meta = {
       },
     },
   },
-  decorators: [
-    (Story) => (
-      <div className="flex items-center justify-center w-screen h-screen">
-        <Story />
-      </div>
-    ),
-  ],
 } satisfies Meta<typeof Tooltip>;
 
 export default meta;

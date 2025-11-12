@@ -1,7 +1,6 @@
 import type { HTMLHeroUIProps } from "@/lib/system";
 import type { GridNode } from "@react-types/grid";
 import type { Key } from "react";
-import type { TableColumnProps } from "./base";
 import type { ValuesType } from "./use-table";
 
 import { useFocusRing } from "@react-aria/focus";
@@ -12,6 +11,7 @@ import { clsx, dataAttr, mergeProps } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { forwardRef } from "@/lib/system";
+import type { TableColumnProps } from "./table-column-base";
 
 // @internal
 export interface TableCellProps<T = object> extends HTMLHeroUIProps<"td"> {
@@ -40,6 +40,7 @@ const TableCell = forwardRef<"td", TableCellProps>((props, ref) => {
 
   const tdStyles = clsx(classNames?.td, className, node.props?.className);
   const { isFocusVisible, focusProps } = useFocusRing();
+  // @ts-ignore
   const isRowSelected = state.selectionManager.isSelected(rowKey);
 
   const cell = useMemo(() => {

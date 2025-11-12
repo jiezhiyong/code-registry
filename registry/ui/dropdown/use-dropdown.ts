@@ -178,7 +178,7 @@ export function useDropdown(props: UseDropdownProps): UseDropdownReturn {
 
   return {
     Component,
-    menuRef,
+    menuRef: menuRef as React.RefObject<HTMLUListElement>,
     menuProps,
     closeOnSelect,
     onClose: state.close,

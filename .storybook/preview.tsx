@@ -3,6 +3,7 @@ import { withThemeByClassName } from "@storybook/addon-themes";
 import type { Preview } from "@storybook/nextjs-vite";
 import React from "react";
 import { themes } from "storybook/theming";
+import { HeroUIProvider } from "../lib/system";
 import "../styles/global.css";
 import { BlockCopyCli } from "./BlockCopyCli";
 import "./fix.css";
@@ -58,18 +59,64 @@ const preview: Preview = {
         dark: "dark",
       },
     }),
-    (Story, { parameters }) => {
-      const { layout } = parameters;
-      // if layout is not fullscreen, add some padding
-      if (layout !== "fullscreen")
-        return (
-          <div className="p-2">
+    (Story, { globals: { locale, disableAnimation, labelPlacement } }) => {
+      // @ts-ignore
+      const direction = locale && new Intl.Locale(locale)?.textInfo?.direction === "rtl" ? "rtl" : undefined;
+
+      return (
+        <HeroUIProvider
+          locale={locale}
+          disableAnimation={disableAnimation}
+          labelPlacement={labelPlacement}
+          navigate={(path) => {
+            debugger;
+            window.open(path, "_blank");
+          }}
+        >
+          <div className="p-4" lang={locale} dir={direction}>
             <Story />
           </div>
-        );
-      return <Story />;
+        </HeroUIProvider>
+      );
     },
   ],
 };
+
+const locales = [
+  "ar-AE",
+  "bg-BG",
+  "cs-CZ",
+  "da-DK",
+  "de-DE",
+  "el-GR",
+  "en-US",
+  "es-ES",
+  "et-EE",
+  "fi-FI",
+  "fr-FR",
+  "he-IL",
+  "hr-HR",
+  "hu-HU",
+  "it-IT",
+  "ja-JP",
+  "ko-KR",
+  "lt-LT",
+  "lv-LV",
+  "nb-NO",
+  "nl-NL",
+  "pl-PL",
+  "pt-BR",
+  "pt-PT",
+  "ro-RO",
+  "ru-RU",
+  "sk-SK",
+  "sl-SI",
+  "sr-SP",
+  "sv-SE",
+  "tr-TR",
+  "uk-UA",
+  "zh-CN",
+  "zh-TW",
+];
 
 export default preview;

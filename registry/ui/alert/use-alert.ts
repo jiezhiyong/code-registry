@@ -206,7 +206,7 @@ export function useAlert(originalProps: UseAlertProps) {
     getMainWrapperProps,
     getDescriptionProps,
     getTitleProps,
-    color: variantProps["color"],
+    color: (variantProps as UseAlertProps)["color"],
     getCloseButtonProps,
     handleClose,
     isVisible,

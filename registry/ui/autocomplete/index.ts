@@ -1,9 +1,9 @@
 import type { MenuTriggerAction as BaseMenuTriggerAction } from "@react-types/combobox";
 import type { ListboxItemProps, ListboxSectionProps } from "../listbox";
 
-import Autocomplete from "./autocomplete";
-
 import { ListboxItem, ListboxSection } from "../listbox";
+
+import Autocomplete from "./autocomplete";
 
 // export types
 export type { AutocompleteProps } from "./autocomplete";

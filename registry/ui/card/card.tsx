@@ -1,10 +1,11 @@
 import type { UseCardProps } from "./use-card";
 
+import { Ripple } from "../ripple";
+
 import { CardProvider } from "./card-context";
 import { useCard } from "./use-card";
 
 import { forwardRef } from "@/lib/system";
-import { Ripple } from "../ripple";
 
 export interface CardProps extends UseCardProps {}
 

@@ -7,11 +7,12 @@ import { useFocusRing } from "@react-aria/focus";
 import { useTableCell, useTableSelectionCheckbox } from "@react-aria/table";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 
+import { Checkbox } from "../checkbox";
+
 import { clsx, dataAttr, mergeProps } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { forwardRef } from "@/lib/system";
-import { Checkbox } from "../checkbox";
 
 // @internal
 export interface TableCheckboxCellProps<T = object> extends HTMLHeroUIProps<"td"> {
@@ -63,6 +64,7 @@ const TableCheckboxCell = forwardRef<"td", TableCheckboxCellProps>((props, ref) 
   const isSingleSelectionMode = selectionMode === "single";
 
   const { onChange, ...otherCheckboxProps } = checkboxProps;
+  // @ts-ignore
   const isRowSelected = state.selectionManager.isSelected(rowKey);
 
   return (

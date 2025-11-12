@@ -8,6 +8,8 @@ import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { AnimatePresence, LazyMotion, MotionConfig } from "framer-motion";
 import { forwardRef, Fragment, useState } from "react";
 
+import { Button } from "../button";
+
 import { useCalendarContext } from "./calendar-context";
 import { CalendarHeader } from "./calendar-header";
 import { CalendarMonth } from "./calendar-month";
@@ -18,7 +20,6 @@ import { ChevronRightIcon } from "./chevron-right";
 
 import { chain, mergeProps } from "@/lib/base";
 import { ResizablePanel } from "@/lib/framer";
-import { Button } from "../button";
 
 const domAnimation = () => import("@/lib/dom-animation").then((res) => res.default);
 

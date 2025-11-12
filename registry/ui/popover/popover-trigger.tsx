@@ -1,11 +1,12 @@
-import React, { Children, cloneElement, useMemo } from "react";
+import React, { Children, cloneElement, RefObject, useMemo } from "react";
+
+import { Button } from "../button";
 
 import { usePopoverContext } from "./popover-context";
 
 import { useAriaButton } from "@/hooks/use-aria-button";
 import { mergeProps } from "@/lib/base";
 import { pickChildren } from "@/lib/react-rsc/children";
-import { Button } from "../button";
 
 export interface PopoverTriggerProps {
   children?: React.ReactNode;
@@ -42,7 +43,7 @@ const PopoverTrigger = (props: PopoverTriggerProps) => {
   // validates if contains a HeroUI Button as a child
   const [, triggerChildren] = pickChildren(children, Button);
 
-  const { buttonProps } = useAriaButton({ onPress, isDisabled }, triggerRef);
+  const { buttonProps } = useAriaButton({ onPress, isDisabled }, triggerRef as RefObject<Element>);
 
   const hasHeroUIButton = useMemo<boolean>(() => {
     return triggerChildren?.[0] !== undefined;

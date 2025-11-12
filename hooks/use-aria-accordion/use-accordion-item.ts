@@ -55,8 +55,10 @@ export function useReactAriaAccordionItem<T>(
   const extendFocusSelection = useCallback(
     (toKey: Key) => {
       if (manager.selectionBehavior === "replace") {
+        // @ts-ignore
         manager.extendSelection(toKey);
       }
+      // @ts-ignore
       manager.setFocusedKey(toKey);
     },
     [manager],

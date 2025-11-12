@@ -17,13 +17,14 @@ import { useFilter } from "@react-aria/i18n";
 import { useComboBoxState } from "@react-stately/combobox";
 import { useEffect, useMemo, useRef } from "react";
 
+import { FormContext, useSlottedContext } from "../form";
+
 import { autocomplete } from "./theme";
 
 import { useSafeLayoutEffect } from "@/hooks/use-safe-layout-effect";
 import { chain, clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
-import { FormContext, useSlottedContext } from "../form";
 
 interface Props<T> extends Omit<HTMLHeroUIProps<"input">, keyof ComboBoxProps<T>> {
   /**
@@ -157,10 +158,10 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
     originalProps.disableClearable !== undefined
       ? !originalProps.disableClearable
       : originalProps.isDisabled
-      ? false
-      : originalProps.isReadOnly
-      ? false
-      : originalProps.isClearable;
+        ? false
+        : originalProps.isReadOnly
+          ? false
+          : originalProps.isClearable;
 
   const {
     ref,
@@ -442,7 +443,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
       className: slots.selectorButton({
         class: clsx(classNames?.selectorButton, slotsProps.selectorButtonProps?.className),
       }),
-    } as ButtonProps);
+    }) as ButtonProps;
 
   const getClearButtonProps = () =>
     ({
@@ -468,7 +469,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
       className: slots.clearButton({
         class: clsx(classNames?.clearButton, slotsProps.clearButtonProps?.className),
       }),
-    } as ButtonProps);
+    }) as ButtonProps;
 
   // prevent use-input's useFormValidation hook from overwriting use-autocomplete's useFormValidation hook when there are uncommitted validation errors
   // see https://github.com/heroui-inc/heroui/pull/4452
@@ -489,7 +490,7 @@ export function useAutocomplete<T extends object>(originalProps: UseAutocomplete
           ? errorMessage({ isInvalid, validationErrors, validationDetails })
           : errorMessage || validationErrors?.join(" "),
       onClick: chain(slotsProps.inputProps.onClick, otherProps.onClick),
-    } as unknown as InputProps);
+    }) as unknown as InputProps;
 
   const getListBoxProps = () => {
     // Use isVirtualized prop if defined, otherwise fallback to default behavior

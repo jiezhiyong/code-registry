@@ -13,6 +13,8 @@ import { useHover } from "@react-aria/interactions";
 import { useToggleState } from "@react-stately/toggle";
 import { useCallback, useId, useMemo, useRef } from "react";
 
+import { FormContext, useSlottedContext } from "../form";
+
 import { useCheckboxGroupContext } from "./checkbox-group-context";
 import { checkbox } from "./theme";
 
@@ -21,7 +23,6 @@ import { useSafeLayoutEffect } from "@/hooks/use-safe-layout-effect";
 import { __DEV__, chain, clsx, dataAttr, mergeProps, safeAriaLabel, warn } from "@/lib/base";
 import { mergeRefs } from "@/lib/react/refs";
 import { useProviderContext } from "@/lib/system";
-import { FormContext, useSlottedContext } from "../form";
 
 export type CheckboxIconProps = {
   "data-checked": string;
@@ -98,11 +99,11 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
     isDisabled: isDisabledProp = groupContext?.isDisabled ?? false,
     disableAnimation = groupContext?.disableAnimation ?? globalContext?.disableAnimation ?? false,
     validationState,
-    isInvalid: isInvalidProp = validationState ? validationState === "invalid" : groupContext?.isInvalid ?? false,
+    isInvalid: isInvalidProp = validationState ? validationState === "invalid" : (groupContext?.isInvalid ?? false),
     isIndeterminate = false,
     validationBehavior = isInGroup
       ? groupContext.validationBehavior
-      : formValidationBehavior ?? globalContext?.validationBehavior ?? "native",
+      : (formValidationBehavior ?? globalContext?.validationBehavior ?? "native"),
     defaultSelected,
     classNames,
     className,
@@ -325,7 +326,7 @@ export function useCheckbox(props: UseCheckboxProps = {}) {
         isIndeterminate,
         disableAnimation,
         className: slots.icon({ class: classNames?.icon }),
-      } as CheckboxIconProps),
+      }) as CheckboxIconProps,
     [slots, classNames?.icon, isSelected, isIndeterminate, disableAnimation],
   );
 

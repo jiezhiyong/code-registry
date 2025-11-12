@@ -1,7 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import { snippet } from "@/registry/ui";
-import { Snippet } from "@/registry/ui";
+import { snippet, Snippet } from "@/registry/ui";
 
 const meta = {
   title: "Components/Snippet",
@@ -62,13 +61,6 @@ const meta = {
       },
     },
   },
-  decorators: [
-    (Story) => (
-      <div className="flex items-center justify-center w-screen h-screen">
-        <Story />
-      </div>
-    ),
-  ],
 } satisfies Meta<typeof Snippet>;
 
 export default meta;

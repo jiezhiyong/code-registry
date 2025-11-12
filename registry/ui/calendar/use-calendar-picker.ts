@@ -34,8 +34,8 @@ export function useCalendarPicker(props: CalendarPickerProps) {
   const yearsListRef = useRef<HTMLDivElement>(null);
   const monthsListRef = useRef<HTMLDivElement>(null);
 
-  const monthsItemsRef = useRef<ItemsRefMap>();
-  const yearsItemsRef = useRef<ItemsRefMap>();
+  const monthsItemsRef = useRef<ItemsRefMap>(null);
+  const yearsItemsRef = useRef<ItemsRefMap>(null);
   const focusedDateRef = useRef<CalendarDate>(state.focusedDate);
 
   const monthDateFormatter = useDateFormatter({
@@ -71,7 +71,11 @@ export function useCalendarPicker(props: CalendarPickerProps) {
   }
 
   function getItemRef(node: HTMLElement | null, value: number, list: CalendarPickerListType) {
-    const map = getItemsRefMap(list === "months" ? monthsItemsRef : yearsItemsRef);
+    const map = getItemsRefMap(
+      list === "months"
+        ? (monthsItemsRef as React.MutableRefObject<ItemsRefMap | undefined>)
+        : (yearsItemsRef as React.MutableRefObject<ItemsRefMap | undefined>),
+    );
 
     if (node) {
       map.set(value, node);
@@ -84,7 +88,11 @@ export function useCalendarPicker(props: CalendarPickerProps) {
     (e: Event, highlightEl: HTMLElement | null, list: CalendarPickerListType) => {
       if (!(e.target instanceof HTMLElement) || !highlightEl) return;
 
-      const map = getItemsRefMap(list === "months" ? monthsItemsRef : yearsItemsRef);
+      const map = getItemsRefMap(
+        list === "months"
+          ? (monthsItemsRef as React.MutableRefObject<ItemsRefMap | undefined>)
+          : (yearsItemsRef as React.MutableRefObject<ItemsRefMap | undefined>),
+      );
 
       const items = Array.from(map.entries());
 
@@ -174,7 +182,7 @@ export function useCalendarPicker(props: CalendarPickerProps) {
     const mapListRef = list === "months" ? monthsItemsRef : yearsItemsRef;
     const listRef = list === "months" ? monthsListRef : yearsListRef;
 
-    const map = getItemsRefMap(mapListRef);
+    const map = getItemsRefMap(mapListRef as React.MutableRefObject<ItemsRefMap | undefined>);
 
     const node = map.get(value);
 
@@ -202,7 +210,11 @@ export function useCalendarPicker(props: CalendarPickerProps) {
 
   const onPickerItemKeyDown = useCallback(
     (e: React.KeyboardEvent<HTMLElement>, value: number, list: CalendarPickerListType) => {
-      const map = getItemsRefMap(list === "months" ? monthsItemsRef : yearsItemsRef);
+      const map = getItemsRefMap(
+        list === "months"
+          ? (monthsItemsRef as React.MutableRefObject<ItemsRefMap | undefined>)
+          : (yearsItemsRef as React.MutableRefObject<ItemsRefMap | undefined>),
+      );
 
       const node = map.get(value);
 

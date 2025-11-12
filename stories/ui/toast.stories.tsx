@@ -59,7 +59,7 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <div className="flex justify-start items-start w-screen h-screen">
+      <div className="flex justify-start items-start">
         <Story />
       </div>
     ),

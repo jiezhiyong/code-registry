@@ -26,7 +26,7 @@ const RangeCalendar = React.forwardRef((props: RangeCalendarProps, ref: React.Re
 RangeCalendar.displayName = "RangeCalendar";
 
 describe("RangeCalendar", () => {
-  let user;
+  let user: ReturnType<typeof userEvent.setup>;
 
   beforeAll(() => {
     user = userEvent.setup({ delay: null, pointerMap });
@@ -55,7 +55,7 @@ describe("RangeCalendar", () => {
 
     it("should render with defaultValue", () => {
       let { getAllByLabelText, getByRole, getAllByRole } = render(
-        <RangeCalendar defaultValue={{ start: new CalendarDate(2019, 6, 5), end: new CalendarDate(2019, 6, 10) }} />
+        <RangeCalendar defaultValue={{ start: new CalendarDate(2019, 6, 5), end: new CalendarDate(2019, 6, 10) }} />,
       );
 
       let heading = getByRole("heading");
@@ -89,7 +89,7 @@ describe("RangeCalendar", () => {
 
     it("should render with value", () => {
       let { getAllByLabelText, getByRole, getAllByRole } = render(
-        <RangeCalendar value={{ start: new CalendarDate(2019, 6, 5), end: new CalendarDate(2019, 6, 10) }} />
+        <RangeCalendar value={{ start: new CalendarDate(2019, 6, 5), end: new CalendarDate(2019, 6, 10) }} />,
       );
 
       let heading = getByRole("heading");
@@ -123,7 +123,7 @@ describe("RangeCalendar", () => {
 
     it("should focus the first selected date if autoFocus is set", () => {
       let { getByRole, getAllByLabelText } = render(
-        <RangeCalendar autoFocus value={{ start: new CalendarDate(2019, 2, 3), end: new CalendarDate(2019, 2, 18) }} />
+        <RangeCalendar autoFocus value={{ start: new CalendarDate(2019, 2, 3), end: new CalendarDate(2019, 2, 18) }} />,
       );
 
       let cells = getAllByLabelText("selected", { exact: false });
@@ -147,7 +147,7 @@ describe("RangeCalendar", () => {
             "data-testid": "prev-button",
           }}
           value={{ start: new CalendarDate(2019, 6, 20), end: new CalendarDate(2019, 7, 10) }}
-        />
+        />,
       );
 
       let heading = getByRole("heading");
@@ -159,7 +159,7 @@ describe("RangeCalendar", () => {
       expect(gridCells.length).toBe(30);
 
       let selected = getAllByLabelText("selected", { exact: false }).filter(
-        (cell) => cell.getAttribute("aria-disabled") !== "true"
+        (cell) => cell.getAttribute("aria-disabled") !== "true",
       );
 
       expect(selected.length).toBe(11);
@@ -190,7 +190,7 @@ describe("RangeCalendar", () => {
       await user.click(nextButton);
 
       selected = getAllByLabelText("selected", { exact: false }).filter(
-        (cell) => cell.getAttribute("aria-disabled") !== "true"
+        (cell) => cell.getAttribute("aria-disabled") !== "true",
       );
 
       expect(selected.length).toBe(10);
@@ -229,7 +229,7 @@ describe("RangeCalendar", () => {
       expect(gridCells.length).toBe(30);
 
       selected = getAllByLabelText("selected", { exact: false }).filter(
-        (cell) => cell.getAttribute("aria-disabled") !== "true"
+        (cell) => cell.getAttribute("aria-disabled") !== "true",
       );
       expect(selected.length).toBe(11);
       i = 0;
@@ -246,7 +246,7 @@ describe("RangeCalendar", () => {
         <RangeCalendar
           value={{ start: new CalendarDate(2019, 2, 3), end: new CalendarDate(2019, 2, 10) }}
           visibleMonths={3}
-        />
+        />,
       );
 
       let grids = getAllByRole("grid");
@@ -264,7 +264,7 @@ describe("RangeCalendar", () => {
           minValue={new CalendarDate(2019, 2, 1)}
           value={{ start: new CalendarDate(2019, 2, 3), end: new CalendarDate(2019, 2, 10) }}
           visibleMonths={3}
-        />
+        />,
       );
 
       let grids = getAllByRole("grid");
@@ -281,7 +281,7 @@ describe("RangeCalendar", () => {
         <RangeCalendar
           value={{ start: new CalendarDate(2019, 1, 3), end: new CalendarDate(2019, 3, 10) }}
           visibleMonths={3}
-        />
+        />,
       );
 
       let grids = getAllByRole("grid");
@@ -333,7 +333,7 @@ describe("RangeCalendar", () => {
           autoFocus
           defaultValue={{ start: new CalendarDate(2019, 6, 5), end: new CalendarDate(2019, 6, 10) }}
           onChange={onChange}
-        />
+        />,
       );
 
       let selectedDates = getAllByLabelText("Selected", { exact: false });
@@ -384,7 +384,7 @@ describe("RangeCalendar", () => {
           autoFocus
           value={{ start: new CalendarDate(2019, 6, 5), end: new CalendarDate(2019, 6, 10) }}
           onChange={onChange}
-        />
+        />,
       );
 
       let selectedDates = getAllByLabelText("selected", { exact: false });
@@ -452,7 +452,7 @@ describe("RangeCalendar", () => {
         <RangeCalendar
           defaultValue={{ start: new CalendarDate(2019, 6, 5), end: new CalendarDate(2019, 6, 10) }}
           onChange={onChange}
-        />
+        />,
       );
 
       triggerPress(getByText("17"));
@@ -492,7 +492,7 @@ describe("RangeCalendar", () => {
         <RangeCalendar
           value={{ start: new CalendarDate(2019, 6, 5), end: new CalendarDate(2019, 6, 10) }}
           onChange={onChange}
-        />
+        />,
       );
 
       triggerPress(getByText("17"));
@@ -530,7 +530,7 @@ describe("RangeCalendar", () => {
         <RangeCalendar
           defaultValue={{ start: new CalendarDate(2019, 6, 5), end: new CalendarDate(2019, 6, 10) }}
           onChange={onChange}
-        />
+        />,
       );
 
       fireEvent.mouseDown(getByText("17"), { detail: 1 });
@@ -573,7 +573,7 @@ describe("RangeCalendar", () => {
         <RangeCalendar
           defaultValue={{ start: new CalendarDate(2019, 6, 10), end: new CalendarDate(2019, 6, 20) }}
           onChange={onChange}
-        />
+        />,
       );
 
       fireEvent.mouseDown(getByText("10"), { detail: 1 });
@@ -617,7 +617,7 @@ describe("RangeCalendar", () => {
         <RangeCalendar
           defaultValue={{ start: new CalendarDate(2019, 6, 10), end: new CalendarDate(2019, 6, 20) }}
           onChange={onChange}
-        />
+        />,
       );
 
       fireEvent.mouseDown(getByText("20"), { detail: 1 });
@@ -661,7 +661,7 @@ describe("RangeCalendar", () => {
         <RangeCalendar
           defaultValue={{ start: new CalendarDate(2019, 6, 10), end: new CalendarDate(2019, 6, 20) }}
           onChange={onChange}
-        />
+        />,
       );
 
       fireEvent.mouseDown(getByText("22"), { detail: 1 });
@@ -698,7 +698,7 @@ describe("RangeCalendar", () => {
         <RangeCalendar
           defaultValue={{ start: new CalendarDate(2019, 6, 10), end: new CalendarDate(2019, 6, 20) }}
           onChange={onChange}
-        />
+        />,
       );
 
       fireEvent.mouseDown(getByText("22"), { detail: 1 });

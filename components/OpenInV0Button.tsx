@@ -1,14 +1,15 @@
-import { Button } from "@/registry/ui/button";
 import { cn } from "../lib/theme/utils/cn";
+
+import { Button } from "@/registry/ui/button";
 
 export function OpenInV0Button({ name, className }: { name: string } & React.ComponentProps<typeof Button>) {
   return (
-    <Button aria-label="Open in v0" className={cn("size-7", className)} size="sm" variant="solid">
-      <a
-        href={`https://v0.dev/chat/api/open?url=${process.env.NEXT_PUBLIC_BASE_URL}/r/${name}.json`}
-        rel="noreferrer"
-        target="_blank"
-      >
+    <a
+      href={`https://v0.dev/chat/api/open?url=${process.env.NEXT_PUBLIC_BASE_URL}/r/${name}.json`}
+      rel="noreferrer"
+      target="_blank"
+    >
+      <Button aria-label="Open in v0" className={cn("size-7", className)} size="sm" variant="solid" color="success">
         Open in{" "}
         <svg className="h-5 w-5 text-current" fill="none" viewBox="0 0 40 20" xmlns="http://www.w3.org/2000/svg">
           <path
@@ -20,7 +21,7 @@ export function OpenInV0Button({ name, className }: { name: string } & React.Com
             fill="currentColor"
           />
         </svg>
-      </a>
-    </Button>
+      </Button>
+    </a>
   );
 }

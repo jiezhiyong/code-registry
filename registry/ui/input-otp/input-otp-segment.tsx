@@ -2,7 +2,7 @@ import type { SlotProps } from "input-otp";
 
 import { useMemo } from "react";
 
-import { cn } from "./theme";
+import { cn } from "@/lib/theme/utils/cn";
 import { useInputOtpContext } from "./input-otp-context";
 
 import { clsx, dataAttr } from "@/lib/base";

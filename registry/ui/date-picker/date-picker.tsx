@@ -5,14 +5,15 @@ import type { UseDatePickerProps } from "./use-date-picker";
 import { AnimatePresence } from "framer-motion";
 import { cloneElement, isValidElement, useMemo } from "react";
 
-import { useDatePicker } from "./use-date-picker";
-
-import { CalendarBoldIcon } from "@/icons/calendar-bold";
-import { forwardRef } from "@/lib/system";
 import { Button } from "../button";
 import { Calendar } from "../calendar";
 import { DateInput, TimeInput } from "../date-input";
 import { FreeSoloPopover } from "../popover";
+
+import { useDatePicker } from "./use-date-picker";
+
+import { CalendarBoldIcon } from "@/icons/calendar-bold";
+import { forwardRef } from "@/lib/system";
 
 export interface Props<T extends DateValue> extends UseDatePickerProps<T> {
   /**

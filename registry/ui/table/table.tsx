@@ -2,6 +2,8 @@ import type { UseTableProps } from "./use-table";
 
 import { useCallback } from "react";
 
+import { Spacer } from "../spacer";
+
 import TableBody from "./table-body";
 import TableColumnHeader from "./table-column-header";
 import TableHeaderRow from "./table-header-row";
@@ -11,7 +13,6 @@ import { useTable } from "./use-table";
 import VirtualizedTable from "./virtualized-table";
 
 import { forwardRef } from "@/lib/system";
-import { Spacer } from "../spacer";
 
 export interface TableProps<T = object> extends Omit<UseTableProps<T>, "isSelectable" | "isMultiSelectable"> {
   isVirtualized?: boolean;
@@ -48,7 +49,7 @@ const Table = forwardRef<"table", TableProps>((props, ref) => {
   const shouldVirtualize = isVirtualized;
 
   const Wrapper = useCallback(
-    ({ children }: { children: JSX.Element }) => {
+    ({ children }: { children: React.JSX.Element }) => {
       if (removeWrapper) {
         return children;
       }

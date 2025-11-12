@@ -11,6 +11,8 @@ import { useTextField } from "@react-aria/textfield";
 import { useControlledState } from "@react-stately/utils";
 import { useCallback, useMemo, useState } from "react";
 
+import { FormContext, useSlottedContext } from "../form";
+
 import { input } from "./theme";
 
 import { useSafeLayoutEffect } from "@/hooks/use-safe-layout-effect";
@@ -18,7 +20,6 @@ import { chain, clsx, dataAttr, isEmpty, mergeProps, objectToDeps, safeAriaLabel
 import { useDOMRef } from "@/lib/react";
 import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { mapPropsVariants, useInputLabelPlacement, useProviderContext } from "@/lib/system";
-import { FormContext, useSlottedContext } from "../form";
 
 export interface Props<T extends HTMLInputElement | HTMLTextAreaElement = HTMLInputElement>
   extends Omit<HTMLHeroUIProps<"input">, keyof InputVariantProps> {

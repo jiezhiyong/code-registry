@@ -666,6 +666,7 @@ export function useToast<T extends ToastProps>(originalProps: UseToastProps<T>) 
     severity,
     closeIcon,
     classNames,
+    // @ts-ignore
     color: variantProps["color"],
     hideIcon,
     placement,

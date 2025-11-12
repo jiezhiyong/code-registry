@@ -124,7 +124,7 @@ export function HiddenSelect<T>(props: HiddenSelectProps<T>) {
       <div {...containerProps} data-testid="hidden-select-container">
         <label>
           {label}
-          <select {...selectProps} ref={selectRef}>
+          <select {...(selectProps as React.SelectHTMLAttributes<HTMLSelectElement>)} ref={selectRef}>
             <option />
             {[...state.collection.getKeys()].map((key) => {
               let item = state.collection.getItem(key);

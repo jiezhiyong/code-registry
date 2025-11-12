@@ -6,7 +6,7 @@ import { useAsyncList } from "@react-stately/data";
 import React, { useMemo } from "react";
 import useSWR from "swr";
 
-import { Switch } from "../../switch/src";
+import { Switch } from "@/registry/ui/switch";
 
 import { useInfiniteScroll } from "@/hooks/use-infinite-scroll";
 import { DeleteIcon, EditIcon, EyeIcon, SortIcon } from "@/icons";

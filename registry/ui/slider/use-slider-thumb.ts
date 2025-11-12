@@ -125,10 +125,10 @@ export function useSliderThumb(props: UseSliderThumbProps) {
     const stateValue = tooltipProps?.content
       ? tooltipProps.content
       : getTooltipValue
-      ? state.values.length === 1
-        ? getTooltipValue(state.values[index ?? 0])
-        : getTooltipValue(state.values, index ?? 0)
-      : state.values[index ?? 0];
+        ? state.values.length === 1
+          ? getTooltipValue(state.values[index ?? 0])
+          : getTooltipValue(state.values, index ?? 0)
+        : state.values[index ?? 0];
 
     const value = numberFormatter && typeof stateValue === "number" ? numberFormatter.format(stateValue) : stateValue;
 

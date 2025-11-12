@@ -7,12 +7,13 @@ import type { UseListboxReturn } from "./use-listbox";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { useMemo, useRef, useState } from "react";
 
+import { useScrollShadow } from "../scroll-shadow";
+
 import ListboxItem from "./listbox-item";
 import ListboxSection from "./listbox-section";
 
 import { isEmpty, mergeProps } from "@/lib/base";
 import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
-import { useScrollShadow } from "../scroll-shadow";
 
 interface Props extends UseListboxReturn {
   isVirtualized?: boolean;

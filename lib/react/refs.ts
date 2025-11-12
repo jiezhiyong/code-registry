@@ -1,7 +1,7 @@
 import type { MutableRefObject } from "react";
+import type { ReactRef } from "./types";
 
 import { isFunction } from "../base/assertion";
-import type { ReactRef } from "./types";
 
 /**
  * Assigns a value to a ref function or object

@@ -3,10 +3,10 @@ import type { UseDropdownProps } from "./use-dropdown";
 
 import React from "react";
 
+import { Popover } from "../popover";
+
 import { DropdownProvider } from "./dropdown-context";
 import { useDropdown } from "./use-dropdown";
-
-import { Popover } from "../popover";
 
 export interface DropdownProps extends UseDropdownProps {
   /**

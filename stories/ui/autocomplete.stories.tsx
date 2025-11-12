@@ -10,12 +10,12 @@ import React from "react";
 import { useForm } from "react-hook-form";
 
 import { useInfiniteScroll } from "@/hooks/use-infinite-scroll";
-import { SelectorIcon } from "@/icons";
+import { PetBoldIcon, SearchLinearIcon, SelectorIcon } from "@/icons";
 import { autocomplete, Autocomplete, AutocompleteItem, AutocompleteSection, button, input } from "@/registry/ui";
 import { Avatar } from "@/registry/ui/avatar";
 import { Button } from "@/registry/ui/button";
 import { Form } from "@/registry/ui/form";
-import { PetBoldIcon, SearchLinearIcon } from "@/utils/icons";
+
 import { animalsData, usePokemonList, usersData } from "@/utils/storybook";
 
 const meta = {
@@ -57,7 +57,7 @@ const meta = {
         type: "boolean",
       },
     },
-    isReadonly: {
+    isReadOnly: {
       control: {
         type: "boolean",
       },
@@ -69,13 +69,6 @@ const meta = {
       options: ["aria", "native"],
     },
   },
-  decorators: [
-    (Story) => (
-      <div className="flex items-start justify-center w-screen h-screen">
-        <Story />
-      </div>
-    ),
-  ],
 } satisfies Meta<typeof Autocomplete>;
 
 export default meta;
@@ -1119,24 +1112,4 @@ export const CustomItemHeight: Story = {
     maxListboxHeight: 400,
     itemHeight: 40,
   },
-};
-
-export const PopoverTopOrBottom: Story = {
-  args: {
-    ...defaultProps,
-  },
-  render: (args) => (
-    <div className="relative h-screen w-screen">
-      <div className="absolute top-0 p-8">
-        <div className="w-48">
-          <Template {...args} />
-        </div>
-      </div>
-      <div className="absolute top-1/2 p-8">
-        <div className="w-48">
-          <Template {...args} />
-        </div>
-      </div>
-    </div>
-  ),
 };

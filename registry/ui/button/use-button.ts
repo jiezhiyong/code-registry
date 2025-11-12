@@ -13,6 +13,8 @@ import { useFocusRing } from "@react-aria/focus";
 import { useHover } from "@react-aria/interactions";
 import { cloneElement, isValidElement, useCallback, useMemo } from "react";
 
+import { useRipple } from "../ripple";
+
 import { useButtonGroupContext } from "./button-group-context";
 import { button } from "./theme";
 
@@ -21,7 +23,6 @@ import { chain, dataAttr, mergeProps } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { useProviderContext } from "@/lib/system";
-import { useRipple } from "../ripple";
 
 interface Props extends HTMLHeroUIProps<"button"> {
   /**

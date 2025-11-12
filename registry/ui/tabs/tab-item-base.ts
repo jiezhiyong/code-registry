@@ -26,6 +26,6 @@ interface Props<T extends object = {}> extends Omit<ItemProps<"button", T>, "chi
 
 export type TabItemProps<T extends object = {}> = Props<T>;
 
-const TabItemBase = BaseItem as <T extends object>(props: TabItemProps<T>) => JSX.Element;
+const TabItemBase = BaseItem as <T extends object>(props: TabItemProps<T>) => React.JSX.Element;
 
 export default TabItemBase;

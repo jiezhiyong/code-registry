@@ -3,14 +3,15 @@ import type { UseSnippetProps } from "./use-snippet";
 
 import { cloneElement, useCallback, useMemo } from "react";
 
+import { Button } from "../button";
+import { Tooltip } from "../tooltip";
+
 import { useSnippet } from "./use-snippet";
 
 import { CheckLinearIcon } from "@/icons/check-linear";
 import { CopyLinearIcon } from "@/icons/copy-linear";
 import { objectToDeps } from "@/lib/base";
 import { forwardRef } from "@/lib/system";
-import { Button } from "../button";
-import { Tooltip } from "../tooltip";
 
 export interface SnippetProps extends UseSnippetProps {}
 

@@ -1,9 +1,10 @@
 import type { UseUserProps } from "./use-user";
 
+import { Avatar } from "../avatar";
+
 import { useUser } from "./use-user";
 
 import { forwardRef } from "@/lib/system";
-import { Avatar } from "../avatar";
 
 export interface UserProps extends UseUserProps {}
 

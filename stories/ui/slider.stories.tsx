@@ -3,15 +3,17 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
-import { InfoIcon } from "@/icons";
+import { InfoIcon, VolumeHighBoldIcon, VolumeLowBoldIcon } from "@/icons";
 import { cn } from "@/lib/theme";
 import { slider, Slider } from "@/registry/ui";
 import { Tooltip } from "@/registry/ui/tooltip";
-import { VolumeHighBoldIcon, VolumeLowBoldIcon } from "@/utils/icons";
 
 const meta = {
   title: "Components/Slider",
   component: Slider,
+  parameters: {
+    layout: "fullscreen",
+  },
   argTypes: {
     label: {
       control: { type: "text" },
@@ -98,7 +100,7 @@ const Template = (args: SliderProps) => {
 };
 
 const CustomStylesTemplate = (args: SliderProps) => (
-  <div className="flex items-center justify-center w-screen h-screen ">
+  <div className="flex items-center justify-center ">
     <div className="flex items-center justify-center w-full h-full max-w-md">
       <Slider
         {...args}

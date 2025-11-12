@@ -3,11 +3,12 @@ import type { MenuProps } from "../menu";
 
 import { FocusScope } from "@react-aria/focus";
 
+import { Menu } from "../menu";
+import { PopoverContent } from "../popover";
+
 import { useDropdownContext } from "./dropdown-context";
 
 import { forwardRef } from "@/lib/system";
-import { Menu } from "../menu";
-import { PopoverContent } from "../popover";
 
 interface Props<T extends object = object> extends Omit<MenuProps<T>, "menuProps"> {}
 

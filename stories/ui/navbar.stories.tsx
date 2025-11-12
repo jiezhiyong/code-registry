@@ -50,7 +50,7 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <div className="flex justify-center w-screen h-screen">
+      <div className="flex justify-center">
         <Story />
       </div>
     ),

@@ -16,6 +16,8 @@ import { useHover, usePress } from "@react-aria/interactions";
 import { usePreventScroll } from "@react-aria/overlays";
 import { useCallback, useEffect, useMemo, useRef } from "react";
 
+import { FormContext, useSlottedContext } from "../form";
+
 import { select } from "./theme";
 
 import { useAriaButton } from "@/hooks/use-aria-button";
@@ -25,7 +27,6 @@ import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { mapPropsVariants, useLabelPlacement, useProviderContext } from "@/lib/system";
-import { FormContext, useSlottedContext } from "../form";
 
 export type SelectedItemProps<T = object> = {
   /** A unique key for the item. */
@@ -330,6 +331,7 @@ export function useSelect<T extends object>(originalProps: UseSelectProps<T>) {
     isInvalid: isAriaInvalid,
     validationErrors,
     validationDetails,
+    // @ts-ignore
   } = useMultiSelect({ ...props, disallowEmptySelection, isDisabled: originalProps.isDisabled }, state, triggerRef);
 
   const handleClear = useCallback(() => {
@@ -345,6 +347,7 @@ export function useSelect<T extends object>(originalProps: UseSelectProps<T>) {
 
   const isInvalid = originalProps.isInvalid || validationState === "invalid" || isAriaInvalid;
 
+  // @ts-ignore
   const { isPressed, buttonProps } = useAriaButton(triggerProps, triggerRef);
 
   const { focusProps, isFocused, isFocusVisible } = useFocusRing();
@@ -484,7 +487,7 @@ export function useSelect<T extends object>(originalProps: UseSelectProps<T>) {
         form: originalProps?.form,
         onChange,
         ...props,
-      } as HiddenSelectProps<T>),
+      }) as HiddenSelectProps<T>,
     [
       state,
       selectionMode,

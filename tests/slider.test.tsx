@@ -88,7 +88,7 @@ describe("Slider", () => {
         <button>A</button>
         <Slider isDisabled />
         <button>B</button>
-      </div>
+      </div>,
     );
 
     const slider = getByRole("slider");
@@ -108,7 +108,7 @@ describe("Slider", () => {
         <button>A</button>
         <Slider defaultValue={20} label="The Label" />
         <button>B</button>
-      </div>
+      </div>,
     );
 
     const slider = getByRole("slider");
@@ -136,16 +136,16 @@ describe("Slider", () => {
     function Test() {
       const [value, _setValue] = React.useState<SliderValue>(50);
       const setValue = React.useCallback(
-        (val) => {
+        (val: number) => {
           setValues.push(val);
           _setValue(val);
         },
-        [_setValue]
+        [_setValue],
       );
 
       return (
         <div>
-          <Slider label="The Label" value={value} onChange={setValue} />
+          <Slider label="The Label" value={value} onChange={(val) => setValue(val as number)} />
           <button onClick={() => setValue(55)}>55</button>
         </div>
       );
@@ -189,16 +189,21 @@ describe("Slider", () => {
     function Test() {
       const [value, _setValue] = React.useState<SliderValue>([10, 20]);
       const setValue = React.useCallback(
-        (val) => {
-          setValues.push(val);
+        (val: number[]) => {
+          setValues.push(...val);
           _setValue(val);
         },
-        [_setValue]
+        [_setValue],
       );
 
       return (
         <div>
-          <Slider aria-label="Range Slider Aria Label" label="The Label" value={value} onChange={setValue} />
+          <Slider
+            aria-label="Range Slider Aria Label"
+            label="The Label"
+            value={value}
+            onChange={(val) => setValue(val as number[])}
+          />
           <button onClick={() => setValue([15, 25])}>15, 25</button>
         </div>
       );
@@ -258,7 +263,7 @@ describe("Slider", () => {
         maxValue={1}
         minValue={0}
         step={0.1}
-      />
+      />,
     );
 
     const marks = container.querySelectorAll("[data-slot='mark']");
@@ -289,7 +294,7 @@ describe("Slider", () => {
         maxValue={1}
         minValue={0}
         step={0.1}
-      />
+      />,
     );
 
     const track = container.querySelector("[data-slot='track']");
@@ -324,7 +329,7 @@ describe("Slider", () => {
         maxValue={1}
         minValue={0}
         step={0.1}
-      />
+      />,
     );
 
     const marks = container.querySelectorAll("[data-slot='mark']");
@@ -361,7 +366,7 @@ describe("Slider", () => {
         maxValue={1}
         minValue={0}
         step={0.1}
-      />
+      />,
     );
 
     const marks = container.querySelectorAll("[data-slot='mark']");
@@ -390,7 +395,7 @@ describe("Slider with getTooltipValue", () => {
           defaultValue={30}
           getTooltipValue={getTooltipValue}
           tooltipProps={{ content: "Static Tooltip" }}
-        />
+        />,
       );
 
       const slider = getByRole("slider");
@@ -411,7 +416,7 @@ describe("Slider with getTooltipValue", () => {
     it("should display string from getTooltipValue for single thumb", async () => {
       const getTooltipValue = jest.fn((value) => `Value: ${value}`);
       const { getByRole, findByRole } = render(
-        <Slider showTooltip aria-label="Single value slider" defaultValue={50} getTooltipValue={getTooltipValue} />
+        <Slider showTooltip aria-label="Single value slider" defaultValue={50} getTooltipValue={getTooltipValue} />,
       );
 
       const slider = getByRole("slider");
@@ -429,7 +434,7 @@ describe("Slider with getTooltipValue", () => {
     it("should display string from getTooltipValue for multi-thumb", async () => {
       const getTooltipValue = jest.fn((value, index) => `Thumb ${index}: ${value[index]}`);
       const { getAllByRole, findByText } = render(
-        <Slider showTooltip aria-label="Range slider" defaultValue={[25, 75]} getTooltipValue={getTooltipValue} />
+        <Slider showTooltip aria-label="Range slider" defaultValue={[25, 75]} getTooltipValue={getTooltipValue} />,
       );
 
       const sliders = getAllByRole("slider");
@@ -464,7 +469,7 @@ describe("Slider with getTooltipValue", () => {
           defaultValue={50}
           getTooltipValue={getTooltipValue}
           tooltipValueFormatOptions={{ style: "percent", minimumFractionDigits: 0 }}
-        />
+        />,
       );
 
       const slider = getByRole("slider");
@@ -487,7 +492,7 @@ describe("Slider with getTooltipValue", () => {
           defaultValue={50}
           formatOptions={{ style: "currency", currency: "USD" }}
           getTooltipValue={getTooltipValue}
-        />
+        />,
       );
 
       const slider = getByRole("slider");
@@ -505,7 +510,7 @@ describe("Slider with getTooltipValue", () => {
     it("should display plain number if no format options are provided", async () => {
       const getTooltipValue = jest.fn((value) => value);
       const { getByRole, findByRole } = render(
-        <Slider showTooltip defaultValue={50} getTooltipValue={getTooltipValue} />
+        <Slider showTooltip defaultValue={50} getTooltipValue={getTooltipValue} />,
       );
 
       const slider = getByRole("slider");

@@ -21,6 +21,9 @@ import { Input, Textarea } from "@/registry/ui/input";
 const meta = {
   title: "Components/Accordion",
   component: Accordion,
+  parameters: {
+    layout: "fullscreen",
+  },
   argTypes: {
     variant: {
       control: {

@@ -15,6 +15,7 @@ import { breadcrumbs } from "./theme";
 import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { pickChildren } from "@/lib/react-rsc/children";
+import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { mapPropsVariants, useProviderContext } from "@/lib/system";
 
 type RenderEllipsisItemProps = {

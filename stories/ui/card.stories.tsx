@@ -1,12 +1,11 @@
 import type { CardProps } from "@/registry/ui";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import { card } from "@/registry/ui";
+import { card, Card, CardBody, CardFooter, CardHeader } from "@/registry/ui";
 import { Button } from "@/registry/ui/button";
 import { Code } from "@/registry/ui/code";
 import { Image } from "@/registry/ui/image";
 import { Link } from "@/registry/ui/link";
-import { Card, CardBody, CardFooter, CardHeader } from "@/registry/ui";
 
 const meta = {
   title: "Components/Card",
@@ -60,13 +59,6 @@ const meta = {
       },
     },
   },
-  decorators: [
-    (Story) => (
-      <div className="flex items-center justify-center w-screen h-screen">
-        <Story />
-      </div>
-    ),
-  ],
 } satisfies Meta<typeof Card>;
 
 export default meta;
@@ -140,7 +132,7 @@ const WithAbsImageHeaderTemplate = (args: CardProps) => (
       alt="Card background"
       className="w-full h-[440px] object-cover"
       height={440}
-      src={"/images/assets/apple-event.jpeg"}
+      src={"/images/apple-event.jpeg"}
       width={330}
     />
   </Card>
@@ -161,7 +153,7 @@ const WithAbsImgHeaderFooterTemplate = (args: CardProps) => (
       alt="Card background"
       className="w-full h-[440px] pt-10 object-contain"
       height={440}
-      src={"/images/assets/homepod.jpeg"}
+      src={"/images/homepod.jpeg"}
       width={300}
     />
     <CardFooter className="justify-between absolute bottom-0 z-10">
@@ -246,7 +238,7 @@ const CoverImgTemplate = (args: CardProps) => (
           <img
             alt="Breathing app icon"
             className="rounded-full w-10 h-11 bg-black"
-            src={"/images/assets/breathing-app-icon.jpeg"}
+            src={"/images/breathing-app-icon.jpeg"}
           />
           <div className="flex flex-col">
             <p className="text-xs text-white/60">Breathing App</p>
@@ -267,7 +259,7 @@ const CenterImgTemplate = (args: CardProps) => (
       <h4 className="font-bold text-lg">Frontend Radio</h4>
     </CardHeader>
     <CardBody className="overflow-visible py-2">
-      <Image isBlurred alt="Card background" src={"/images/assets/local-image-1.jpeg"} width={300} />
+      <Image isBlurred alt="Card background" src={"/images/local-image-1.jpeg"} width={300} />
     </CardBody>
   </Card>
 );
@@ -364,39 +356,39 @@ const CenterImgWithHeaderTemplate = (args: CardProps) => {
   const list = [
     {
       title: "Mac",
-      img: "/images/assets/mac.png",
+      img: "/images/mac.png",
     },
     {
       title: "iPhone",
-      img: "/images/assets/iphone.png",
+      img: "/images/iphone.png",
     },
     {
       title: "iPad",
-      img: "/images/assets/ipad.png",
+      img: "/images/ipad.png",
     },
     {
       title: "Apple Watch",
-      img: "/images/assets/apple-watch.png",
+      img: "/images/apple-watch.png",
     },
     {
       title: "AirPods",
-      img: "/images/assets/airpods.png",
+      img: "/images/airpods.png",
     },
     {
       title: "AirTag",
-      img: "/images/assets/airtag.png",
+      img: "/images/airtag.png",
     },
     {
       title: "Apple TV",
-      img: "/images/assets/appletv.png",
+      img: "/images/appletv.png",
     },
     {
       title: "HomePod mini",
-      img: "/images/assets/homepod-mini.png",
+      img: "/images/homepod-mini.png",
     },
     {
       title: "Accessories",
-      img: "/images/assets/accessories.png",
+      img: "/images/accessories.png",
     },
   ];
 

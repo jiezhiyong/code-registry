@@ -1,9 +1,9 @@
 import type { ListboxItemProps, ListboxSectionProps } from "../listbox";
 
+import { ListboxItem, ListboxSection } from "../listbox";
+
 import { HiddenSelect } from "./hidden-select";
 import Select from "./select";
-
-import { ListboxItem, ListboxSection } from "../listbox";
 
 // export types
 export type { SelectProps } from "./select";

@@ -6,11 +6,11 @@ import { useDateFormatter } from "@react-aria/i18n";
 import { m } from "framer-motion";
 import { useCallback } from "react";
 
+import { Button } from "../button";
+
 import { useCalendarContext } from "./calendar-context";
 import { slideVariants } from "./calendar-transitions";
 import { ChevronDownIcon } from "./chevron-down";
-
-import { Button } from "../button";
 
 export interface CalendarHeaderProps extends HTMLHeroUIProps<"header"> {
   direction: number;

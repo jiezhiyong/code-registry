@@ -4,8 +4,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import React from "react";
 import Lorem from "react-lorem-component";
 
-import { button, scrollShadow } from "@/registry/ui";
-import { ScrollShadow } from "@/registry/ui";
+import { button, scrollShadow, ScrollShadow } from "@/registry/ui";
 
 const meta = {
   title: "Components/ScrollShadow",
@@ -28,13 +27,6 @@ const meta = {
       },
     },
   },
-  decorators: [
-    (Story) => (
-      <div className="flex items-center justify-center w-screen h-screen">
-        <Story />
-      </div>
-    ),
-  ],
 } satisfies Meta<typeof ScrollShadow>;
 
 export default meta;

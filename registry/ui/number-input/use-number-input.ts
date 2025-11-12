@@ -12,6 +12,8 @@ import { useNumberField as useAriaNumberInput } from "@react-aria/numberfield";
 import { useNumberFieldState } from "@react-stately/numberfield";
 import { useCallback, useMemo, useState } from "react";
 
+import { FormContext, useSlottedContext } from "../form";
+
 import { numberInput } from "./theme";
 
 import { useSafeLayoutEffect } from "@/hooks/use-safe-layout-effect";
@@ -19,7 +21,6 @@ import { chain, clsx, dataAttr, isEmpty, mergeProps, objectToDeps } from "@/lib/
 import { useDOMRef } from "@/lib/react";
 import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { mapPropsVariants, useLabelPlacement, useProviderContext } from "@/lib/system";
-import { FormContext, useSlottedContext } from "../form";
 
 export interface Props extends Omit<HTMLHeroUIProps<"input">, keyof NumberInputVariantProps> {
   /**

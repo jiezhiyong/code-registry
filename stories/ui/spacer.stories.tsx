@@ -1,8 +1,7 @@
 import type { SpacerProps } from "@/registry/ui";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import { spacer } from "@/registry/ui";
-import { Spacer } from "@/registry/ui";
+import { spacer, Spacer } from "@/registry/ui";
 
 const meta = {
   title: "Components/Spacer",
@@ -24,13 +23,6 @@ const meta = {
       },
     },
   },
-  decorators: [
-    (Story) => (
-      <div className="flex items-center justify-center w-screen h-screen">
-        <Story />
-      </div>
-    ),
-  ],
 } satisfies Meta<typeof Spacer>;
 
 export default meta;

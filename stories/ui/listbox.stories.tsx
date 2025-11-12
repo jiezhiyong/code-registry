@@ -128,13 +128,6 @@ const meta = {
       options: ["default", "primary", "secondary", "success", "warning", "danger"],
     },
   },
-  decorators: [
-    (Story) => (
-      <div className="flex items-center justify-center w-screen h-screen">
-        <Story />
-      </div>
-    ),
-  ],
 } satisfies Meta<typeof Listbox>;
 
 export default meta;

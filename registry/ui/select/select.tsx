@@ -5,16 +5,17 @@ import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { AnimatePresence } from "framer-motion";
 import { cloneElement, useMemo } from "react";
 
+import { Listbox } from "../listbox";
+import { FreeSoloPopover } from "../popover";
+import { ScrollShadow } from "../scroll-shadow";
+import { Spinner } from "../spinner";
+
 import { HiddenSelect } from "./hidden-select";
 import { useSelect } from "./use-select";
 
 import { ChevronDownIcon } from "@/icons/chevron-down";
 import { CloseFilledIcon } from "@/icons/close-filled";
 import { forwardRef } from "@/lib/system";
-import { Listbox } from "../listbox";
-import { FreeSoloPopover } from "../popover";
-import { ScrollShadow } from "../scroll-shadow";
-import { Spinner } from "../spinner";
 
 interface Props<T> extends UseSelectProps<T> {}
 

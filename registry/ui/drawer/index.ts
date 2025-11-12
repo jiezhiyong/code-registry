@@ -1,8 +1,8 @@
 import type { ModalBodyProps, ModalContentProps, ModalFooterProps, ModalHeaderProps } from "../modal";
 
-import Drawer from "./drawer";
-
 import { ModalBody, ModalContent, ModalFooter, ModalHeader } from "../modal";
+
+import Drawer from "./drawer";
 
 // export types
 export type { DrawerProps } from "./drawer";

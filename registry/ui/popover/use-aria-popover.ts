@@ -81,7 +81,7 @@ export function useReactAriaPopover(props: ReactAriaPopoverProps, state: Overlay
 
   const isNonModal = isNonModalProp ?? true;
 
-  const isSubmenu = otherProps["trigger"] === "SubmenuTrigger";
+  const isSubmenu = (otherProps as any)["trigger"] === "SubmenuTrigger";
 
   const { overlayProps, underlayProps } = useAriaOverlay(
     {
@@ -93,7 +93,7 @@ export function useReactAriaPopover(props: ReactAriaPopoverProps, state: Overlay
       shouldCloseOnInteractOutside: shouldCloseOnInteractOutside || ((el) => !triggerRef.current?.contains(el)),
       disableOutsideEvents: !isNonModal,
     },
-    popoverRef,
+    popoverRef as RefObject<Element>,
   );
 
   const {

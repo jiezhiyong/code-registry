@@ -3,6 +3,8 @@ import type { UseTableProps } from "./use-table";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { useCallback, useLayoutEffect, useRef, useState } from "react";
 
+import { Spacer } from "../spacer";
+
 import TableColumnHeader from "./table-column-header";
 import TableHeaderRow from "./table-header-row";
 import TableRowGroup from "./table-row-group";
@@ -11,7 +13,6 @@ import { useTable } from "./use-table";
 import VirtualizedTableBody from "./virtualized-table-body";
 
 import { forwardRef } from "@/lib/system";
-import { Spacer } from "../spacer";
 
 export interface TableProps<T = object> extends Omit<UseTableProps<T>, "isSelectable" | "isMultiSelectable"> {
   isVirtualized?: boolean;
@@ -40,7 +41,7 @@ const VirtualizedTable = forwardRef<"table", TableProps>((props, ref) => {
   const { rowHeight = 40, maxTableHeight = 600 } = props;
 
   const Wrapper = useCallback(
-    ({ children }: { children: JSX.Element }) => {
+    ({ children }: { children: React.JSX.Element }) => {
       return (
         <BaseComponent
           {...getWrapperProps()}

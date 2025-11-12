@@ -2,7 +2,7 @@ import type { ReactRef } from "@/lib/react";
 import type { HTMLHeroUIProps, PropGetter } from "@/lib/system";
 import type { ReactNode } from "react";
 import type { AvatarProps } from "../avatar";
-import type { SlotsToClasses, UserSlots } from "./theme";
+import type { UserSlots } from "./theme";
 
 import { useFocusRing } from "@react-aria/focus";
 import { useCallback, useMemo } from "react";
@@ -12,6 +12,8 @@ import { user } from "./theme";
 import { clsx, dataAttr, mergeProps } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
+import type { SlotsToClasses } from "@/lib/theme/utils/types";
+
 interface Props {
   /**
    * Ref to the DOM node.

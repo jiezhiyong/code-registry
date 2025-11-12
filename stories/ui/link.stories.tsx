@@ -1,10 +1,10 @@
-import type { LinkProps, VariantProps } from "@/registry/ui";
+import type { LinkProps } from "@/registry/ui";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { useState } from "react";
 
-import { link, tv } from "@/registry/ui";
-import { Link } from "@/registry/ui";
+import { tv, VariantProps } from "@/lib/theme";
+import { link, Link } from "@/registry/ui";
 
 const meta = {
   title: "Components/Link",

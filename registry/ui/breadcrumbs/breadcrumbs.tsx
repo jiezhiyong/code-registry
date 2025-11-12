@@ -8,6 +8,7 @@ import { ChevronRightIcon } from "@/icons/chevron-right";
 import { EllipsisIcon } from "@/icons/ellipsis";
 import { chain, warn } from "@/lib/base";
 import { forwardRef } from "@/lib/system";
+import { BreadcrumbItemProps } from "./breadcrumb-item";
 
 export interface BreadcrumbsProps extends UseBreadcrumbsProps {}
 
@@ -43,9 +44,10 @@ const Breadcrumbs = forwardRef<"div", BreadcrumbsProps>((props, ref) => {
         isLast,
         separator,
         isDisabled: isDisabled && !isLast,
-        isCurrent: isLast || child.props.isCurrent,
-        ...child.props,
+        isCurrent: isLast || (child.props as BreadcrumbItemProps).isCurrent,
+        ...(child.props as BreadcrumbItemProps),
         key: itemKey,
+        // @ts-ignore
         onPress: chain(child.props?.onPress, () => onAction?.(itemKey)),
       });
     });
@@ -82,7 +84,7 @@ const Breadcrumbs = forwardRef<"div", BreadcrumbsProps>((props, ref) => {
       typeof renderEllipsis === "function"
         ? renderEllipsis({
             collapsedItem,
-            items: itemsInEllipsis.map((item) => item.props),
+            items: itemsInEllipsis.map((item) => item.props as BreadcrumbItemProps),
             maxItems,
             ellipsisIcon,
             itemsBeforeCollapse,

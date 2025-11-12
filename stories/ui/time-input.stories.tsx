@@ -6,7 +6,7 @@ import { parseAbsoluteToLocal, parseZonedDateTime, Time, ZonedDateTime } from "@
 import { useDateFormatter } from "@react-aria/i18n";
 import React from "react";
 
-import { ClockCircleLinearIcon } from "@/icons";
+import { ClockCircleLinearIcon } from "@/icons/clock-circle-linear";
 import { button, dateInput, TimeInput } from "@/registry/ui";
 
 const meta = {

@@ -4,15 +4,16 @@ import type { UseAutocompleteProps } from "./use-autocomplete";
 import { AnimatePresence } from "framer-motion";
 import { ChevronDownIcon } from "lucide-react";
 
-import { useAutocomplete } from "./use-autocomplete";
-
-import { CloseIcon } from "@/icons/close";
-import { forwardRef } from "@/lib/system";
 import { Button } from "../button";
 import { Input } from "../input";
 import { Listbox } from "../listbox";
 import { FreeSoloPopover } from "../popover";
 import { ScrollShadow } from "../scroll-shadow";
+
+import { useAutocomplete } from "./use-autocomplete";
+
+import { CloseIcon } from "@/icons/close";
+import { forwardRef } from "@/lib/system";
 
 interface Props<T> extends UseAutocompleteProps<T> {}
 

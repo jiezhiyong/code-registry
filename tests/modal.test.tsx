@@ -5,11 +5,12 @@ import userEvent from "@testing-library/user-event";
 import * as React from "react";
 
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDraggable } from "@/registry/ui";
+import { RefObject } from "react";
 
 const ModalDraggable = ({ canOverflow = false, isDisabled = false }) => {
-  const targetRef = React.useRef(null);
+  const targetRef = React.useRef<HTMLElement>(null);
 
-  const { moveProps } = useDraggable({ targetRef, canOverflow, isDisabled });
+  const { moveProps } = useDraggable({ targetRef: targetRef as RefObject<HTMLElement>, canOverflow, isDisabled });
 
   return (
     <Modal ref={targetRef} isOpen>
@@ -35,7 +36,7 @@ describe("Modal", () => {
           <ModalBody>Modal body</ModalBody>
           <ModalFooter>Modal footer</ModalFooter>
         </ModalContent>
-      </Modal>
+      </Modal>,
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -56,7 +57,7 @@ describe("Modal", () => {
           <ModalBody>Modal body</ModalBody>
           <ModalFooter>Modal footer</ModalFooter>
         </ModalContent>
-      </Modal>
+      </Modal>,
     );
     expect(ref.current).not.toBeNull();
   });
@@ -69,7 +70,7 @@ describe("Modal", () => {
           <ModalBody>Modal body</ModalBody>
           <ModalFooter>Modal footer</ModalFooter>
         </ModalContent>
-      </Modal>
+      </Modal>,
     );
 
     const modal = getByRole("dialog");
@@ -96,7 +97,7 @@ describe("Modal", () => {
           <ModalBody>Modal body</ModalBody>
           <ModalFooter>Modal footer</ModalFooter>
         </ModalContent>
-      </Modal>
+      </Modal>,
     );
 
     const closeButton = getByLabelText("Close");
@@ -118,7 +119,7 @@ describe("Modal", () => {
           <ModalBody>Modal body</ModalBody>
           <ModalFooter>Modal footer</ModalFooter>
         </ModalContent>
-      </Modal>
+      </Modal>,
     );
 
     const modal = wrapper.getByRole("dialog");

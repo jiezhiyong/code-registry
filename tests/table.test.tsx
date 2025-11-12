@@ -5,7 +5,7 @@ import userEvent from "@testing-library/user-event";
 import * as React from "react";
 
 import { Table, TableBody, TableCell, TableColumn, TableHeader, TableRow } from "@/registry/ui";
-import { keyCodes } from "@/registry/ui/../utilities/test-utils";
+import { keyCodes } from "@/utils/test/constants";
 
 const columns = [
   { name: "Foo", key: "foo" },
@@ -40,7 +40,7 @@ describe("Table", () => {
             <TableCell>6/7/2020</TableCell>
           </TableRow>
         </TableBody>
-      </Table>
+      </Table>,
     );
 
     expect(() => wrapper.unmount()).not.toThrow();
@@ -63,7 +63,7 @@ describe("Table", () => {
             <TableCell>6/7/2020</TableCell>
           </TableRow>
         </TableBody>
-      </Table>
+      </Table>,
     );
     expect(ref.current).not.toBeNull();
   });
@@ -83,7 +83,7 @@ describe("Table", () => {
             <TableCell>Baz 1</TableCell>
           </TableRow>
         </TableBody>
-      </Table>
+      </Table>,
     );
 
     const table = wrapper.getByRole("grid");
@@ -124,7 +124,7 @@ describe("Table", () => {
             <TableCell>Baz 2</TableCell>
           </TableRow>
         </TableBody>
-      </Table>
+      </Table>,
     );
 
     const row1 = wrapper.getAllByRole("row")[1];
@@ -153,7 +153,7 @@ describe("Table", () => {
             </TableRow>
           )}
         </TableBody>
-      </Table>
+      </Table>,
     );
 
     const table = wrapper.getByRole("grid");
@@ -196,7 +196,7 @@ describe("Table", () => {
             <TableCell>Baz 2</TableCell>
           </TableRow>
         </TableBody>
-      </Table>
+      </Table>,
     );
 
     const table = wrapper.getByRole("grid");
@@ -232,7 +232,7 @@ describe("Table", () => {
             <TableCell>Baz 2</TableCell>
           </TableRow>
         </TableBody>
-      </Table>
+      </Table>,
     );
 
     const table = wrapper.getByRole("grid");
@@ -266,7 +266,7 @@ describe("Table", () => {
             <TableCell>Baz 1</TableCell>
           </TableRow>
         </TableBody>
-      </Table>
+      </Table>,
     );
 
     const column = wrapper.getByTestId("test-sort-column");

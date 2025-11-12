@@ -63,6 +63,9 @@ importers:
       '@react-aria/menu':
         specifier: ^3.19.3
         version: 3.19.3(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@react-aria/numberfield':
+        specifier: ^3.12.2
+        version: 3.12.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@react-aria/overlays':
         specifier: ^3.30.0
         version: 3.30.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -90,6 +93,9 @@ importers:
       '@react-aria/tabs':
         specifier: ^3.10.8
         version: 3.10.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@react-aria/textfield':
+        specifier: ^3.18.2
+        version: 3.18.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       '@react-aria/toast':
         specifier: ^3.0.8
         version: 3.0.8(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -415,6 +421,9 @@ importers:
       storybook:
         specifier: ^10.0.7
         version: 10.0.7(@testing-library/dom@10.4.1)(msw@2.11.6(@types/node@20.19.23)(typescript@5.9.3))(prettier@3.6.2)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(vite@7.1.12(@types/node@20.19.23)(jiti@2.6.1)(lightningcss@1.30.2))
+      swr:
+        specifier: ^2.3.6
+        version: 2.3.6(react@19.1.0)
       tailwindcss:
         specifier: ^4.1.17
         version: 4.1.17
@@ -1559,6 +1568,12 @@ packages:
 
   '@react-aria/menu@3.19.3':
     resolution: {integrity: sha512-52fh8y8b2776R2VrfZPpUBJYC9oTP7XDy+zZuZTxPEd7Ywk0JNUl5F92y6ru22yPkS13sdhrNM/Op+V/KulmAg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
+      react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
+
+  '@react-aria/numberfield@3.12.2':
+    resolution: {integrity: sha512-M2b+z0HIXiXpGAWOQkO2kpIjaLNUXJ5Q3/GMa3Fkr+B1piFX0VuOynYrtddKVrmXCe+r5t+XcGb0KS29uqv7nQ==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
       react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
@@ -5323,6 +5338,11 @@ packages:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
 
+  swr@2.3.6:
+    resolution: {integrity: sha512-wfHRmHWk/isGNMwlLGlZX5Gzz/uTgo0o2IRuTMcf4CPuPFJZlq0rDaKUx+ozB5nBOReNV1kiOyzMfj+MBMikLw==}
+    peerDependencies:
+      react: ^16.11.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
   symbol-tree@3.2.4:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
 
@@ -7091,6 +7111,22 @@ snapshots:
       '@react-stately/tree': 3.9.3(react@19.1.0)
       '@react-types/button': 3.14.1(react@19.1.0)
       '@react-types/menu': 3.10.5(react@19.1.0)
+      '@react-types/shared': 3.32.1(react@19.1.0)
+      '@swc/helpers': 0.5.15
+      react: 19.1.0
+      react-dom: 19.1.0(react@19.1.0)
+
+  '@react-aria/numberfield@3.12.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)':
+    dependencies:
+      '@react-aria/i18n': 3.12.13(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@react-aria/interactions': 3.25.6(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@react-aria/spinbutton': 3.6.19(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@react-aria/textfield': 3.18.2(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@react-aria/utils': 3.31.0(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
+      '@react-stately/form': 3.2.2(react@19.1.0)
+      '@react-stately/numberfield': 3.10.2(react@19.1.0)
+      '@react-types/button': 3.14.1(react@19.1.0)
+      '@react-types/numberfield': 3.8.15(react@19.1.0)
       '@react-types/shared': 3.32.1(react@19.1.0)
       '@swc/helpers': 0.5.15
       react: 19.1.0
@@ -11479,6 +11515,12 @@ snapshots:
       has-flag: 4.0.0
 
   supports-preserve-symlinks-flag@1.0.0: {}
+
+  swr@2.3.6(react@19.1.0):
+    dependencies:
+      dequal: 2.0.3
+      react: 19.1.0
+      use-sync-external-store: 1.6.0(react@19.1.0)
 
   symbol-tree@3.2.4: {}
 

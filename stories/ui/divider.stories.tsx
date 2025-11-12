@@ -1,8 +1,7 @@
 import type { DividerProps } from "@/registry/ui";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
-import { divider } from "@/registry/ui";
-import { Divider } from "@/registry/ui";
+import { divider, Divider } from "@/registry/ui";
 
 const meta = {
   title: "Components/Divider",
@@ -15,13 +14,6 @@ const meta = {
       options: ["horizontal", "vertical"],
     },
   },
-  decorators: [
-    (Story) => (
-      <div className="flex items-center justify-center w-screen h-screen">
-        <Story />
-      </div>
-    ),
-  ],
 } satisfies Meta<typeof Divider>;
 
 export default meta;

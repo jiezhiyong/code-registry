@@ -16,12 +16,15 @@ import { useDateRangePicker as useAriaDateRangePicker } from "@react-aria/datepi
 import { useDateRangePickerState } from "@react-stately/datepicker";
 import { useEffect, useMemo, useRef } from "react";
 
-import { cn, dateInput, dateRangePicker } from "./theme";
+import { FormContext, useSlottedContext } from "../form";
+
+import { cn } from "@/lib/theme/utils/cn";
+import { dateRangePicker } from "./theme";
 import { useDatePickerBase } from "./use-date-picker-base";
 
 import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 import { useLabelPlacement, useProviderContext } from "@/lib/system";
-import { FormContext, useSlottedContext } from "../form";
+import { dateInput } from "../date-input/theme";
 interface Props<T extends DateValue> extends Omit<UseDatePickerBaseProps<T>, keyof AriaDateRangePickerProps<T>> {
   /**
    * Classname or List of classes to change the classNames of the element.

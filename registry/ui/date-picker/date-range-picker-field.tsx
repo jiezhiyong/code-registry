@@ -11,10 +11,11 @@ import { useLocale } from "@react-aria/i18n";
 import { useDateFieldState } from "@react-stately/datepicker";
 import { forwardRef, useRef } from "react";
 
+import { DateInputSegment } from "../date-input";
+
 import { mergeProps } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
-import { DateInputSegment } from "../date-input";
 
 type HeroUIBaseProps<T extends DateValue> = Omit<HTMLHeroUIProps<"div">, keyof AriaDatePickerProps<T> | "onChange">;
 

@@ -11,13 +11,14 @@ import { useCheckboxGroup as useReactAriaCheckboxGroup } from "@react-aria/check
 import { useCheckboxGroupState } from "@react-stately/checkbox";
 import { useCallback, useMemo } from "react";
 
+import { FormContext, useSlottedContext } from "../form";
+
 import { checkboxGroup } from "./theme";
 
 import { chain, clsx, mergeProps, safeAriaLabel } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { useProviderContext } from "@/lib/system";
-import { FormContext, useSlottedContext } from "../form";
 
 interface Props extends HTMLHeroUIProps<"div"> {
   /**

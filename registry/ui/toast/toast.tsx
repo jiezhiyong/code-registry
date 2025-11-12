@@ -5,6 +5,9 @@ import type { UseToastProps } from "./use-toast";
 import { m } from "framer-motion";
 import { cloneElement, isValidElement } from "react";
 
+import { Button } from "../button";
+import { Spinner } from "../spinner";
+
 import { useToast } from "./use-toast";
 
 import { CloseIcon } from "@/icons/close";
@@ -13,8 +16,6 @@ import { InfoFilledIcon } from "@/icons/info-filled";
 import { SuccessIcon } from "@/icons/success";
 import { WarningIcon } from "@/icons/warning";
 import { forwardRef } from "@/lib/system";
-import { Button } from "../button";
-import { Spinner } from "../spinner";
 
 export interface ToastProps extends UseToastProps {}
 
@@ -65,7 +66,9 @@ const Toast = forwardRef<"div", ToastProps>((props, ref) => {
       ? icon(getIconProps())
       : isValidElement(icon) && cloneElement(icon as ReactElement, getIconProps());
 
-  const IconComponent = severity ? iconMap[severity] : iconMap[color] || iconMap.default;
+  const IconComponent = severity
+    ? iconMap[severity as keyof typeof iconMap]
+    : iconMap[color as keyof typeof iconMap] || iconMap.default;
 
   const customLoadingComponent =
     loadingComponent && isValidElement(loadingComponent)

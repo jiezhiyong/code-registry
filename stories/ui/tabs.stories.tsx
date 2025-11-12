@@ -2,12 +2,9 @@ import type { TabsProps } from "@/registry/ui";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
+// @ts-ignore
 import Lorem from "react-lorem-component";
 
-import { button, link, tabs } from "@/registry/ui";
-import { Button } from "@/registry/ui/button";
-import { Card, CardBody } from "@/registry/ui/card";
-import { Input } from "@/registry/ui/input";
 import {
   AlignBottomBoldIcon,
   AlignHorizontallyBoldIcon,
@@ -15,8 +12,11 @@ import {
   AlignRightBoldIcon,
   AlignTopBoldIcon,
   AlignVerticallyBoldIcon,
-} from "@/utils/icons";
-import { Tab, Tabs } from "@/registry/ui";
+} from "@/icons";
+import { button, link, Tab, tabs, Tabs } from "@/registry/ui";
+import { Button } from "@/registry/ui/button";
+import { Card, CardBody } from "@/registry/ui/card";
+import { Input } from "@/registry/ui/input";
 
 const meta = {
   title: "Components/Tabs",
@@ -108,6 +108,7 @@ const ControlledTemplate = (args: TabsProps) => {
 
   return (
     <div className="flex flex-col gap-2">
+      {/* @ts-ignore */}
       <Tabs aria-label="Tabs example" {...args} selectedKey={selected} onSelectionChange={setSelected}>
         <Tab key="world" title="World">
           <Lorem count={1} sentenceUpperBound={20} />
@@ -194,9 +195,10 @@ const WithFormTemplate = (args: TabsProps) => {
   const [selected, setSelected] = React.useState<React.Key>("login");
 
   return (
-    <div className="flex flex-col justify-center items-center w-full h-screen">
+    <div className="flex flex-col justify-center items-center w-full">
       <Card className="w-[340px] h-[400px]">
         <CardBody>
+          {/* @ts-ignore */}
           <Tabs aria-label="Tabs form" {...args} selectedKey={selected} onSelectionChange={setSelected}>
             <Tab key="login" title="Login">
               <form className="flex flex-col gap-4">

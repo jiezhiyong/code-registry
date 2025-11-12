@@ -14,10 +14,10 @@ import {
 import { I18nProvider, useLocale } from "@react-aria/i18n";
 import React from "react";
 
-import { calendar, cn } from "@/registry/ui";
+import { cn } from "@/lib/theme/utils/cn";
+import { calendar, RangeCalendar } from "@/registry/ui";
 import { Button, ButtonGroup } from "@/registry/ui/button";
 import { Radio, RadioGroup } from "@/registry/ui/radio";
-import { RangeCalendar } from "@/registry/ui";
 
 const meta = {
   title: "Components/RangeCalendar",

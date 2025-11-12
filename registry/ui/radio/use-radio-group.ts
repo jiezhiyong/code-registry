@@ -11,13 +11,14 @@ import { useRadioGroup as useReactAriaRadioGroup } from "@react-aria/radio";
 import { useRadioGroupState } from "@react-stately/radio";
 import { useCallback, useMemo } from "react";
 
+import { FormContext, useSlottedContext } from "../form";
+
 import { radioGroup } from "./theme";
 
 import { clsx, mergeProps, safeAriaLabel } from "@/lib/base";
 import { useDOMRef } from "@/lib/react";
 import { filterDOMProps } from "@/lib/react-rsc/filter-dom-props";
 import { useProviderContext } from "@/lib/system";
-import { FormContext, useSlottedContext } from "../form";
 
 interface Props extends Omit<HTMLHeroUIProps<"div">, "onChange"> {
   /**

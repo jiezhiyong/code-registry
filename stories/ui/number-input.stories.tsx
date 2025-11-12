@@ -4,9 +4,8 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
-import { button, numberInput } from "@/registry/ui";
+import { button, numberInput, NumberInput } from "@/registry/ui";
 import { Form } from "@/registry/ui/form";
-import { NumberInput } from "@/registry/ui";
 
 const meta = {
   title: "Components/NumberInput",
@@ -54,13 +53,6 @@ const meta = {
       options: ["aria", "native"],
     },
   },
-  decorators: [
-    (Story) => (
-      <div className="flex items-center justify-center w-screen h-screen">
-        <Story />
-      </div>
-    ),
-  ],
 } satisfies Meta<typeof NumberInput>;
 
 export default meta;

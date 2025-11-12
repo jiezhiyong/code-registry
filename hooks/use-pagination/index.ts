@@ -1,7 +1,7 @@
 import { useLocale } from "@react-aria/i18n";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-import { range } from "../../base";
+import { range } from "../../lib/base/numbers";
 
 export enum PaginationItemType {
   DOTS = "dots",

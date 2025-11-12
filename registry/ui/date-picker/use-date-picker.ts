@@ -14,12 +14,13 @@ import { useDatePicker as useAriaDatePicker } from "@react-aria/datepicker";
 import { useDatePickerState } from "@react-stately/datepicker";
 import { useMemo, useRef } from "react";
 
+import { FormContext, useSlottedContext } from "../form";
+
 import { datePicker } from "./theme";
 import { useDatePickerBase } from "./use-date-picker-base";
 
 import { clsx, dataAttr, mergeProps, objectToDeps } from "@/lib/base";
 import { useProviderContext } from "@/lib/system";
-import { FormContext, useSlottedContext } from "../form";
 
 interface Props<T extends DateValue> extends UseDatePickerBaseProps<T> {}
 
@@ -176,7 +177,7 @@ export function useDatePicker<T extends DateValue>({ className, classNames, ...o
       state,
       dialogProps,
       ...popoverProps,
-      triggerRef: popoverTriggerRef,
+      triggerRef: popoverTriggerRef as React.RefObject<HTMLDivElement>,
       classNames: {
         content: slots.popoverContent({
           class: clsx(classNames?.popoverContent, slotsProps.popoverProps?.classNames?.["content"], props.className),

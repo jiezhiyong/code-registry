@@ -15,9 +15,8 @@ import {
 import { I18nProvider, useDateFormatter } from "@react-aria/i18n";
 import React from "react";
 
-import { CalendarBoldIcon } from "@/utils/icons";
-import { button, dateInput } from "@/registry/ui";
-import { DateInput } from "@/registry/ui";
+import { CalendarBoldIcon } from "@/icons";
+import { button, dateInput, DateInput } from "@/registry/ui";
 
 const meta = {
   title: "Components/DateInput",

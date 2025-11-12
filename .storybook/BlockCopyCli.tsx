@@ -14,7 +14,7 @@ export const BlockCopyCli = ({ of }: { of?: any }) => {
     if (resolvedOf.type === "meta") {
       const str = resolvedOf.preparedMeta?.id?.split("-")[1];
       setName(str);
-      setCommandStr(`pnpm dlx shadcn@latest add @tcsk/${str}`);
+      setCommandStr(`npx shadcn@latest add @tcsk/${str}`);
     }
   }, [resolvedOf]);
 

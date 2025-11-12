@@ -3,6 +3,8 @@ import type { UseAlertProps } from "./use-alert";
 
 import { cloneElement, isValidElement } from "react";
 
+import { Button } from "../button";
+
 import { useAlert } from "./use-alert";
 
 import { CloseIcon } from "@/icons/close";
@@ -12,7 +14,6 @@ import { SuccessIcon } from "@/icons/success";
 import { WarningIcon } from "@/icons/warning";
 import { isEmpty } from "@/lib/base";
 import { forwardRef } from "@/lib/system";
-import { Button } from "../button";
 
 const iconMap = {
   primary: InfoCircleIcon,
@@ -53,7 +54,7 @@ const Alert = forwardRef<"div", AlertProps>((props, ref) => {
 
   const customIcon = icon && isValidElement(icon) ? cloneElement(icon, getAlertIconProps()) : null;
 
-  const IconComponent = iconMap[color] || iconMap.primary;
+  const IconComponent = iconMap[color as AlertColor] || iconMap.primary;
 
   return (
     <div ref={domRef} role="alert" {...getBaseProps()}>

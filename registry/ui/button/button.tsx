@@ -2,11 +2,12 @@
 
 import type { UseButtonProps } from "./use-button";
 
+import { Ripple } from "../ripple";
+import { Spinner } from "../spinner";
+
 import { useButton } from "./use-button";
 
 import { forwardRef } from "@/lib/system";
-import { Ripple } from "../ripple";
-import { Spinner } from "../spinner";
 
 export interface ButtonProps extends UseButtonProps {}
 

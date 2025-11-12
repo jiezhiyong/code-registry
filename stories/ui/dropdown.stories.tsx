@@ -101,13 +101,6 @@ const meta = {
       },
     },
   },
-  decorators: [
-    (Story) => (
-      <div className="flex items-center justify-center w-screen h-screen">
-        <Story />
-      </div>
-    ),
-  ],
 } satisfies Meta<typeof Dropdown>;
 
 export default meta;
@@ -762,7 +755,7 @@ export const WithFallbackPlacements: Story = {
     ...defaultProps,
   },
   render: (args) => (
-    <div className="relative h-screen w-screen">
+    <div className="relative">
       <div className="absolute top-0 left-0 p-8 flex gap-4">
         <Template {...args} label="placement: top" placement="top" />
         <Template {...args} label="placement: bottom" placement="bottom" />
