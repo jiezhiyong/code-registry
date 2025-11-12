@@ -28,6 +28,11 @@
       ],
       "files": [
         {
+          "path": ".cursor/mcp.json",
+          "type": "registry:file",
+          "target": "~/.cursor/mcp.json"
+        },
+        {
           "path": "styles/global.css",
           "type": "registry:file",
           "target": "~/src/styles/global.css"
@@ -195,14 +200,6 @@
         },
         {
           "path": "lib/theme/colors/index.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "lib/theme/colors/pink.ts",
-          "type": "registry:lib"
-        },
-        {
-          "path": "lib/theme/colors/purple.ts",
           "type": "registry:lib"
         },
         {

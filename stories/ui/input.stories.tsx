@@ -441,7 +441,7 @@ const CustomWithHooksTemplate = (args: InputProps) => {
   }, [startContent, end, getInputProps, getInnerWrapperProps]);
 
   return (
-    <div className="w-[340px] h-[300px] px-8 rounded-2xl flex justify-center items-center bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg">
+    <div className="w-[340px] h-[300px] px-8 rounded-2xl flex justify-center items-center bg-linear-to-tr from-pink-500 to-yellow-500 text-white shadow-lg">
       <Component {...getBaseProps()}>
         {shouldLabelBeOutside ? labelContent : null}
         <div
@@ -747,9 +747,7 @@ export const CustomWithHooks = {
     label: "Search",
     type: "search",
     placeholder: "Type to search...",
-    startContent: (
-      <SearchIcon className="text-black/50 mb-0.5 dark:text-white/90 text-slate-400 pointer-events-none shrink-0" />
-    ),
+    startContent: <SearchIcon className="text-black/50 mb-0.5 dark:text-white/90 pointer-events-none shrink-0" />,
   },
 };
 

@@ -1,6 +1,7 @@
 import { Controls, Description, Primary, Stories, Subtitle, Title } from "@storybook/addon-docs/blocks";
 import { withThemeByClassName } from "@storybook/addon-themes";
 import type { Preview } from "@storybook/nextjs-vite";
+import React from "react";
 import { themes } from "storybook/theming";
 import "../styles/global.css";
 import { BlockCopyCli } from "./BlockCopyCli";

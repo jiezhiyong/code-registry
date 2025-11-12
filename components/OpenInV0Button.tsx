@@ -1,9 +1,9 @@
-import { cn } from "@/lib/cn";
 import { Button } from "@/registry/ui/button";
+import { cn } from "../lib/theme/utils/cn";
 
 export function OpenInV0Button({ name, className }: { name: string } & React.ComponentProps<typeof Button>) {
   return (
-    <Button asChild aria-label="Open in v0" className={cn("size-7", className)} size="sm" variant="outline">
+    <Button aria-label="Open in v0" className={cn("size-7", className)} size="sm" variant="solid">
       <a
         href={`https://v0.dev/chat/api/open?url=${process.env.NEXT_PUBLIC_BASE_URL}/r/${name}.json`}
         rel="noreferrer"

@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useOf, Source } from "@storybook/addon-docs/blocks";
-import { OpenInV0Button } from "../components/open-in-v0-button";
+import { Source, useOf } from "@storybook/addon-docs/blocks";
+import React, { useEffect, useState } from "react";
+import { OpenInV0Button } from "../components/OpenInV0Button";
 
 export const BlockCopyCli = ({ of }: { of?: any }) => {
   const resolvedOf = useOf(of || "meta", ["meta"]);
