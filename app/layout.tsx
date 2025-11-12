@@ -1,9 +1,9 @@
 import type { Metadata, Viewport } from "next";
 
 import { Navbar } from "@/app/components/Navbar";
-import { Providers } from "@/app/components/Provider";
+import { Providers } from "@/components/Providers";
 import { Link } from "@/registry/ui/link";
-import "../styles/globals.css";
+import "../styles/global.css";
 
 export const metadata: Metadata = {
   title: "Shadcn code registry",

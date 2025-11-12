@@ -1,4 +1,4 @@
-import flatten from "flat";
+import { flatten } from "../../base/flatten";
 
 export function swapColorValues<T extends Object>(colors: T) {
   const swappedColors = {};
@@ -49,7 +49,7 @@ export function removeDefaultKeys<T extends Object>(obj: T) {
  */
 export const flattenThemeObject = <TTarget>(obj: TTarget) =>
   removeDefaultKeys(
-    flatten(obj, {
+    flatten(obj as Record<string, any>, {
       safe: true,
       delimiter: "-",
     }) as Object,

@@ -21,7 +21,6 @@
         "tailwindcss",
         "tailwind-variants",
         "clsx",
-        "flat@5.0.2",
         "color",
         "deepmerge",
         "framer-motion@11.18.2",
@@ -29,9 +28,9 @@
       ],
       "files": [
         {
-          "path": "styles/globals.css",
+          "path": "styles/global.css",
           "type": "registry:file",
-          "target": "~/src/styles/globals.css"
+          "target": "~/src/styles/global.css"
         },
         {
           "path": "styles/hero.ts",
@@ -39,7 +38,7 @@
           "target": "~/src/styles/hero.ts"
         },
         {
-          "path": "components/Provider.tsx",
+          "path": "components/Providers.tsx",
           "type": "registry:component"
         },
         {
@@ -96,6 +95,10 @@
         },
         {
           "path": "lib/base/types.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "lib/base/flatten.ts",
           "type": "registry:lib"
         },
         {

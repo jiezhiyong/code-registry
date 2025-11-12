@@ -1,4 +1,8 @@
 {
+  // 文件关联
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
   // 保存时自动格式化
   "editor.formatOnSave": true,
   // 使用 Prettier 作为默认格式化工具
@@ -9,7 +13,8 @@
   "files.insertFinalNewline": true,
   // 保存时自动修复 ESLint 错误
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
   },
   // 针对特定文件类型的格式化配置
   "[javascript]": {

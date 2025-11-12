@@ -1,15 +1,8 @@
-import {
-  Controls,
-  Description,
-  Primary,
-  Stories,
-  Subtitle,
-  Title,
-} from "@storybook/addon-docs/blocks";
+import { Controls, Description, Primary, Stories, Subtitle, Title } from "@storybook/addon-docs/blocks";
 import { withThemeByClassName } from "@storybook/addon-themes";
 import type { Preview } from "@storybook/nextjs-vite";
 import { themes } from "storybook/theming";
-import "../styles/globals.css";
+import "../styles/global.css";
 import { BlockCopyCli } from "./BlockCopyCli";
 import "./fix.css";
 import { defaultThemeIsDark } from "./manager";

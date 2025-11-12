@@ -1,19 +1,20 @@
-
-export const RightArrow = () => <svg
-  viewBox="0 0 14 14"
-  width="8px"
-  height="14px"
-  style={{
-    marginLeft: '4px',
-    display: 'inline-block',
-    shapeRendering: 'inherit',
-    verticalAlign: 'middle',
-    fill: 'currentColor',
-    'path fill': 'currentColor'
-  }}
->
-  <path d="m11.1 7.35-5.5 5.5a.5.5 0 0 1-.7-.7L10.04 7 4.9 1.85a.5.5 0 1 1 .7-.7l5.5 5.5c.2.2.2.5 0 .7Z" />
-</svg>
+export const RightArrow = () => (
+  <svg
+    viewBox="0 0 14 14"
+    width="8px"
+    height="14px"
+    style={{
+      marginLeft: "4px",
+      display: "inline-block",
+      shapeRendering: "inherit",
+      verticalAlign: "middle",
+      fill: "currentColor",
+      "path fill": "currentColor",
+    }}
+  >
+    <path d="m11.1 7.35-5.5 5.5a.5.5 0 0 1-.7-.7L10.04 7 4.9 1.85a.5.5 0 1 1 .7-.7l5.5 5.5c.2.2.2.5 0 .7Z" />
+  </svg>
+);
 
 <Meta title="Introduction" />
 
@@ -22,6 +23,7 @@ export const RightArrow = () => <svg
     # 配置项目
 
     首先，您需要配置您的项目，以便可以通过 `shadcn CLI` 添加组件。你可以使用 `pnpm dlx shadcn@latest init` 命令来快速初始化一个 `NextJS + Shadcn UI + Tailwind CSS` 项目。
+
   </div>
   <Source language="json" dark={true} code={
     `{
@@ -30,7 +32,7 @@ export const RightArrow = () => <svg
       "tsx": true,
       "tailwind": {
         "config": "",
-        "css": "app/globals.css",
+        "css": "src/styles/global.css",
         "baseColor": "neutral",
         "cssVariables": true,
         "prefix": ""
@@ -63,6 +65,7 @@ export const RightArrow = () => <svg
     # MCP 服务器
 
     为注册表启用 MCP 支持，这样你就可以在 `LLM` 中使用提示词来使用组件了。以下使用 `vscode` 举例配置 `.vscode/mcp.json`
+
   </div>
   <Source language="json" dark={true} code={
     `{
@@ -92,6 +95,7 @@ export const RightArrow = () => <svg
     # Storybook 使用指南
 
     由于 Storybook 与您的应用程序分开工作，因此您需要针对您的特定技术栈和设置对其进行配置。下面，探索使用流行框架和工具配置 Storybook 的指南。如果您遇到困难，请了解如何向我们的社区寻求帮助。
+
   </div>
   <div className="sb-section">
     <div className="sb-section-item">
@@ -142,6 +146,7 @@ export const RightArrow = () => <svg
     # 使用 Storybook 做更多事情
 
     现在您已经了解了基础知识，让我们探索 Storybook 的其他部分，这些部分将改善您的体验。此列表只是为了帮助您入门。您可以通过多种方式自定义 Storybook 以满足您的需求。
+
   </div>
 
   <div className="sb-section">
@@ -306,6 +311,7 @@ export const RightArrow = () => <svg
           target="_blank"
         >探索教程<RightArrow /></a>
     </div>
+
 </div>
 
 <style>

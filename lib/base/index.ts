@@ -3,6 +3,7 @@ export * from "./clsx";
 export * from "./console";
 export * from "./dates";
 export * from "./dimensions";
+export * from "./flatten";
 export * from "./functions";
 export * from "./getInertValue";
 export * from "./numbers";

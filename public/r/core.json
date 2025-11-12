@@ -17,7 +17,6 @@
     "tailwindcss",
     "tailwind-variants",
     "clsx",
-    "flat@5.0.2",
     "color",
     "deepmerge",
     "framer-motion@11.18.2",
@@ -25,10 +24,10 @@
   ],
   "files": [
     {
-      "path": "styles/globals.css",
+      "path": "styles/global.css",
       "content": "@import \"tailwindcss\";\n@plugin './hero.ts';\n\n@custom-variant dark (&:is(.dark *));\n\n@theme inline {\n  --color-background: var(--background);\n  --color-foreground: var(--foreground);\n  --font-sans: var(--font-geist-sans);\n  --font-mono: var(--font-geist-mono);\n  --color-sidebar-ring: var(--sidebar-ring);\n  --color-sidebar-border: var(--sidebar-border);\n  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);\n  --color-sidebar-accent: var(--sidebar-accent);\n  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);\n  --color-sidebar-primary: var(--sidebar-primary);\n  --color-sidebar-foreground: var(--sidebar-foreground);\n  --color-sidebar: var(--sidebar);\n  --color-chart-5: var(--chart-5);\n  --color-chart-4: var(--chart-4);\n  --color-chart-3: var(--chart-3);\n  --color-chart-2: var(--chart-2);\n  --color-chart-1: var(--chart-1);\n  --color-ring: var(--ring);\n  --color-input: var(--input);\n  --color-border: var(--border);\n  --color-destructive: var(--destructive);\n  --color-accent-foreground: var(--accent-foreground);\n  --color-accent: var(--accent);\n  --color-muted-foreground: var(--muted-foreground);\n  --color-muted: var(--muted);\n  --color-secondary-foreground: var(--secondary-foreground);\n  --color-secondary: var(--secondary);\n  --color-primary-foreground: var(--primary-foreground);\n  --color-primary: var(--primary);\n  --color-popover-foreground: var(--popover-foreground);\n  --color-popover: var(--popover);\n  --color-card-foreground: var(--card-foreground);\n  --color-card: var(--card);\n  --radius-sm: calc(var(--radius) - 4px);\n  --radius-md: calc(var(--radius) - 2px);\n  --radius-lg: var(--radius);\n  --radius-xl: calc(var(--radius) + 4px);\n}\n\n:root {\n  --radius: 0.625rem;\n  --background: oklch(1 0 0);\n  --foreground: oklch(0.145 0 0);\n  --card: oklch(1 0 0);\n  --card-foreground: oklch(0.145 0 0);\n  --popover: oklch(1 0 0);\n  --popover-foreground: oklch(0.145 0 0);\n  --primary: oklch(0.205 0 0);\n  --primary-foreground: oklch(0.985 0 0);\n  --secondary: oklch(0.97 0 0);\n  --secondary-foreground: oklch(0.205 0 0);\n  --muted: oklch(0.97 0 0);\n  --muted-foreground: oklch(0.556 0 0);\n  --accent: oklch(0.97 0 0);\n  --accent-foreground: oklch(0.205 0 0);\n  --destructive: oklch(0.577 0.245 27.325);\n  --border: oklch(0.922 0 0);\n  --input: oklch(0.922 0 0);\n  --ring: oklch(0.708 0 0);\n  --chart-1: oklch(0.646 0.222 41.116);\n  --chart-2: oklch(0.6 0.118 184.704);\n  --chart-3: oklch(0.398 0.07 227.392);\n  --chart-4: oklch(0.828 0.189 84.429);\n  --chart-5: oklch(0.769 0.188 70.08);\n  --sidebar: oklch(0.985 0 0);\n  --sidebar-foreground: oklch(0.145 0 0);\n  --sidebar-primary: oklch(0.205 0 0);\n  --sidebar-primary-foreground: oklch(0.985 0 0);\n  --sidebar-accent: oklch(0.97 0 0);\n  --sidebar-accent-foreground: oklch(0.205 0 0);\n  --sidebar-border: oklch(0.922 0 0);\n  --sidebar-ring: oklch(0.708 0 0);\n}\n\n.dark {\n  --background: oklch(0.145 0 0);\n  --foreground: oklch(0.985 0 0);\n  --card: oklch(0.205 0 0);\n  --card-foreground: oklch(0.985 0 0);\n  --popover: oklch(0.205 0 0);\n  --popover-foreground: oklch(0.985 0 0);\n  --primary: oklch(0.922 0 0);\n  --primary-foreground: oklch(0.205 0 0);\n  --secondary: oklch(0.269 0 0);\n  --secondary-foreground: oklch(0.985 0 0);\n  --muted: oklch(0.269 0 0);\n  --muted-foreground: oklch(0.708 0 0);\n  --accent: oklch(0.269 0 0);\n  --accent-foreground: oklch(0.985 0 0);\n  --destructive: oklch(0.704 0.191 22.216);\n  --border: oklch(1 0 0 / 10%);\n  --input: oklch(1 0 0 / 15%);\n  --ring: oklch(0.556 0 0);\n  --chart-1: oklch(0.488 0.243 264.376);\n  --chart-2: oklch(0.696 0.17 162.48);\n  --chart-3: oklch(0.769 0.188 70.08);\n  --chart-4: oklch(0.627 0.265 303.9);\n  --chart-5: oklch(0.645 0.246 16.439);\n  --sidebar: oklch(0.205 0 0);\n  --sidebar-foreground: oklch(0.985 0 0);\n  --sidebar-primary: oklch(0.488 0.243 264.376);\n  --sidebar-primary-foreground: oklch(0.985 0 0);\n  --sidebar-accent: oklch(0.269 0 0);\n  --sidebar-accent-foreground: oklch(0.985 0 0);\n  --sidebar-border: oklch(1 0 0 / 10%);\n  --sidebar-ring: oklch(0.556 0 0);\n}\n\n@layer base {\n  * {\n    @apply border-border outline-ring/50;\n  }\n  body {\n    @apply bg-background text-foreground;\n  }\n}\n",
       "type": "registry:file",
-      "target": "~/src/styles/globals.css"
+      "target": "~/src/styles/global.css"
     },
     {
       "path": "styles/hero.ts",
@@ -37,8 +36,8 @@
       "target": "~/src/styles/hero.ts"
     },
     {
-      "path": "components/Provider.tsx",
-      "content": "\"use client\";\n\nimport type { NavigateOptions } from \"react-router-dom\";\n\nimport * as React from \"react\";\nimport { useHref, useNavigate } from \"react-router-dom\";\n\nimport { HeroUIProvider } from \"@/lib/system\";\n\nexport interface ProviderProps {\n  children: React.ReactNode;\n}\n\ndeclare module \"@react-types/shared\" {\n  interface RouterConfig {\n    routerOptions: NavigateOptions;\n  }\n}\n\nexport function Provider({ children }: ProviderProps) {\n  const navigate = useNavigate();\n\n  return (\n    <HeroUIProvider navigate={navigate} useHref={useHref}>\n      {children}\n    </HeroUIProvider>\n  );\n}\n",
+      "path": "components/Providers.tsx",
+      "content": "\"use client\";\n\nimport type { ThemeProviderProps } from \"next-themes\";\nimport { ThemeProvider as NextThemesProvider } from \"next-themes\";\nimport { useRouter } from \"next/navigation\";\nimport * as React from \"react\";\n\nimport { HeroUIProvider } from \"@/lib/system\";\n\nexport interface ProvidersProps {\n  children: React.ReactNode;\n  themeProps?: ThemeProviderProps;\n}\n\n/**\n * 🚀 if you want to use react-router-dom:\n *\n * import type { NavigateOptions } from \"react-router-dom\";\n * declare module \"@react-types/shared\" {\n *   interface RouterConfig {\n *     routerOptions: NavigateOptions;\n *   }\n * }\n */\ndeclare module \"@react-types/shared\" {\n  interface RouterConfig {\n    routerOptions: NonNullable<Parameters<ReturnType<typeof useRouter>[\"push\"]>[1]>;\n  }\n}\n\n/**\n * 🚀 if you want to use react-router-dom:\n *\n * import { useHref, useNavigate } from \"react-router-dom\";\n * const navigate = useNavigate();\n * <HeroUIProvider navigate={navigate} useHref={useHref}>...</HeroUIProvider>\n */\nexport function Providers({ children, themeProps }: ProvidersProps) {\n  const router = useRouter();\n\n  return (\n    <HeroUIProvider navigate={router.push}>\n      <NextThemesProvider {...themeProps}>{children}</NextThemesProvider>\n    </HeroUIProvider>\n  );\n}\n",
       "type": "registry:component"
     },
     {
@@ -78,7 +77,7 @@
     },
     {
       "path": "lib/base/index.ts",
-      "content": "export * from \"./assertion\";\nexport * from \"./clsx\";\nexport * from \"./console\";\nexport * from \"./dates\";\nexport * from \"./dimensions\";\nexport * from \"./functions\";\nexport * from \"./getInertValue\";\nexport * from \"./numbers\";\nexport * from \"./object\";\nexport * from \"./ra\";\nexport * from \"./regex\";\nexport * from \"./text\";\nexport * from \"./types\";\n",
+      "content": "export * from \"./assertion\";\nexport * from \"./clsx\";\nexport * from \"./console\";\nexport * from \"./dates\";\nexport * from \"./dimensions\";\nexport * from \"./flatten\";\nexport * from \"./functions\";\nexport * from \"./getInertValue\";\nexport * from \"./numbers\";\nexport * from \"./object\";\nexport * from \"./ra\";\nexport * from \"./regex\";\nexport * from \"./text\";\nexport * from \"./types\";\n",
       "type": "registry:lib"
     },
     {
@@ -109,6 +108,11 @@
     {
       "path": "lib/base/types.ts",
       "content": "export type Timer = ReturnType<typeof setTimeout>;\n",
+      "type": "registry:lib"
+    },
+    {
+      "path": "lib/base/flatten.ts",
+      "content": "function isBuffer(obj: any) {\n  return obj && obj.constructor && typeof obj.constructor.isBuffer === \"function\" && obj.constructor.isBuffer(obj);\n}\n\nfunction keyIdentity(key: string) {\n  return key;\n}\n\nexport function flatten(\n  target: Record<string, any>,\n  opts: { delimiter?: string; maxDepth?: number; transformKey?: (key: string) => string; safe?: boolean },\n): Record<string, any> {\n  const { delimiter = \".\", maxDepth = Infinity, transformKey = keyIdentity, safe = false } = opts || {};\n  const output: Record<string, any> = {};\n\n  function step(object: Record<string, any>, prev: string = \"\", currentDepth: number = 1) {\n    Object.keys(object).forEach(function (key) {\n      const value = object[key];\n      const isarray = safe && Array.isArray(value);\n      const type = Object.prototype.toString.call(value);\n      const isbuffer = isBuffer(value);\n      const isobject = type === \"[object Object]\" || type === \"[object Array]\";\n\n      const newKey = prev ? prev + delimiter + transformKey(key) : transformKey(key);\n\n      if (!isarray && !isbuffer && isobject && Object.keys(value).length && (!maxDepth || currentDepth < maxDepth)) {\n        return step(value, newKey, currentDepth + 1);\n      }\n\n      output[newKey] = value;\n    });\n  }\n\n  step(target);\n\n  return output;\n}\n",
       "type": "registry:lib"
     },
     {
@@ -303,7 +307,7 @@
     },
     {
       "path": "lib/theme/utils/object.ts",
-      "content": "import flatten from \"flat\";\n\nexport function swapColorValues<T extends Object>(colors: T) {\n  const swappedColors = {};\n  const keys = Object.keys(colors);\n  const length = keys.length;\n\n  for (let i = 0; i < length / 2; i++) {\n    const key1 = keys[i];\n    const key2 = keys[length - 1 - i];\n\n    // @ts-ignore\n    swappedColors[key1] = colors[key2];\n    // @ts-ignore\n    swappedColors[key2] = colors[key1];\n  }\n  if (length % 2 !== 0) {\n    const middleKey = keys[Math.floor(length / 2)];\n\n    // @ts-ignore\n    swappedColors[middleKey] = colors[middleKey];\n  }\n\n  return swappedColors;\n}\n\nexport function removeDefaultKeys<T extends Object>(obj: T) {\n  const newObj = {};\n\n  for (const key in obj) {\n    if (key.endsWith(\"-DEFAULT\")) {\n      // @ts-ignore\n      newObj[key.replace(\"-DEFAULT\", \"\")] = obj[key];\n      continue;\n    }\n    // @ts-ignore\n    newObj[key] = obj[key];\n  }\n\n  return newObj;\n}\n\n/**\n *\n * Flatten theme object and remove default keys\n *\n * @param obj theme object\n * @returns object with flattened keys\n */\nexport const flattenThemeObject = <TTarget>(obj: TTarget) =>\n  removeDefaultKeys(\n    flatten(obj, {\n      safe: true,\n      delimiter: \"-\",\n    }) as Object,\n  );\n",
+      "content": "import { flatten } from \"../../base/flatten\";\n\nexport function swapColorValues<T extends Object>(colors: T) {\n  const swappedColors = {};\n  const keys = Object.keys(colors);\n  const length = keys.length;\n\n  for (let i = 0; i < length / 2; i++) {\n    const key1 = keys[i];\n    const key2 = keys[length - 1 - i];\n\n    // @ts-ignore\n    swappedColors[key1] = colors[key2];\n    // @ts-ignore\n    swappedColors[key2] = colors[key1];\n  }\n  if (length % 2 !== 0) {\n    const middleKey = keys[Math.floor(length / 2)];\n\n    // @ts-ignore\n    swappedColors[middleKey] = colors[middleKey];\n  }\n\n  return swappedColors;\n}\n\nexport function removeDefaultKeys<T extends Object>(obj: T) {\n  const newObj = {};\n\n  for (const key in obj) {\n    if (key.endsWith(\"-DEFAULT\")) {\n      // @ts-ignore\n      newObj[key.replace(\"-DEFAULT\", \"\")] = obj[key];\n      continue;\n    }\n    // @ts-ignore\n    newObj[key] = obj[key];\n  }\n\n  return newObj;\n}\n\n/**\n *\n * Flatten theme object and remove default keys\n *\n * @param obj theme object\n * @returns object with flattened keys\n */\nexport const flattenThemeObject = <TTarget>(obj: TTarget) =>\n  removeDefaultKeys(\n    flatten(obj, {\n      safe: true,\n      delimiter: \"-\",\n    }) as Object,\n  );\n",
       "type": "registry:lib"
     },
     {
