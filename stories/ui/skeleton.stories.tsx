@@ -1,5 +1,5 @@
 import type { SkeletonProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
@@ -8,7 +8,7 @@ import { Button } from "@/registry/ui/button";
 import { Card } from "@/registry/ui/card";
 import { Skeleton } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/Skeleton",
   component: Skeleton,
   argTypes: {
@@ -26,7 +26,10 @@ export default {
       },
     },
   },
-} as Meta<typeof Skeleton>;
+} satisfies Meta<typeof Skeleton>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...skeleton.defaultVariants,
@@ -97,7 +100,7 @@ const LoadedStateTemplate = (args: SkeletonProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: DefaultTemplate,
 
   args: {
@@ -105,7 +108,7 @@ export const Default = {
   },
 };
 
-export const Standalone = {
+export const Standalone: Story = {
   render: StandaloneTemplate,
 
   args: {
@@ -113,7 +116,7 @@ export const Standalone = {
   },
 };
 
-export const LoadedState = {
+export const LoadedState: Story = {
   render: LoadedStateTemplate,
 
   args: {

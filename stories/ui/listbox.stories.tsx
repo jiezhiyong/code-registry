@@ -1,6 +1,6 @@
 import type { ListboxProps } from "@/registry/ui";
 import type { Selection } from "@react-types/shared";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import type { Key } from "react";
 
 import React from "react";
@@ -111,7 +111,7 @@ const BookIcon = (props) => (
   </svg>
 );
 
-export default {
+const meta = {
   title: "Components/Listbox",
   component: Listbox,
   argTypes: {
@@ -135,7 +135,10 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof Listbox>;
+} satisfies Meta<typeof Listbox>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...menuItem.defaultVariants,
@@ -712,21 +715,21 @@ const LargeDatasetTemplate = (args: ListboxProps & { numItems: number }) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: Template,
   args: {
     ...defaultProps,
   },
 };
 
-export const Dynamic = {
+export const Dynamic: Story = {
   render: DynamicTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const DisabledKeys = {
+export const DisabledKeys: Story = {
   render: DisabledKeysTemplate,
 
   args: {
@@ -734,7 +737,7 @@ export const DisabledKeys = {
   },
 };
 
-export const SingleSelection = {
+export const SingleSelection: Story = {
   render: SingleSelectionTemplate,
 
   args: {
@@ -742,7 +745,7 @@ export const SingleSelection = {
   },
 };
 
-export const MultipleSelection = {
+export const MultipleSelection: Story = {
   render: MultipleSelectionTemplate,
 
   args: {
@@ -750,7 +753,7 @@ export const MultipleSelection = {
   },
 };
 
-export const WithStartContent = {
+export const WithStartContent: Story = {
   render: WithStartContentTemplate,
 
   args: {
@@ -760,7 +763,7 @@ export const WithStartContent = {
   },
 };
 
-export const WithEndContent = {
+export const WithEndContent: Story = {
   render: WithEndContentTemplate,
 
   args: {
@@ -770,7 +773,7 @@ export const WithEndContent = {
   },
 };
 
-export const WithTopContent = {
+export const WithTopContent: Story = {
   render: WithTopContentTemplate,
 
   args: {
@@ -778,7 +781,7 @@ export const WithTopContent = {
   },
 };
 
-export const WithBottomContent = {
+export const WithBottomContent: Story = {
   render: WithBottomContentTemplate,
 
   args: {
@@ -786,7 +789,7 @@ export const WithBottomContent = {
   },
 };
 
-export const WithDescription = {
+export const WithDescription: Story = {
   render: WithDescriptionTemplate,
 
   args: {
@@ -797,7 +800,7 @@ export const WithDescription = {
   },
 };
 
-export const WithSections = {
+export const WithSections: Story = {
   render: WithSectionsTemplate,
 
   args: {
@@ -808,7 +811,7 @@ export const WithSections = {
   },
 };
 
-export const CustomWithClassNames = {
+export const CustomWithClassNames: Story = {
   render: CustomWithClassNamesTemplate,
 
   args: {
@@ -816,7 +819,7 @@ export const CustomWithClassNames = {
   },
 };
 
-export const OneThousandList = {
+export const OneThousandList: Story = {
   render: LargeDatasetTemplate,
   args: {
     ...defaultProps,
@@ -829,7 +832,7 @@ export const OneThousandList = {
   },
 };
 
-export const TenThousandList = {
+export const TenThousandList: Story = {
   render: LargeDatasetTemplate,
   args: {
     ...defaultProps,
@@ -842,7 +845,7 @@ export const TenThousandList = {
   },
 };
 
-export const CustomMaxListboxHeight = {
+export const CustomMaxListboxHeight: Story = {
   render: LargeDatasetTemplate,
   args: {
     ...defaultProps,
@@ -855,7 +858,7 @@ export const CustomMaxListboxHeight = {
   },
 };
 
-export const CustomItemHeight = {
+export const CustomItemHeight: Story = {
   render: LargeDatasetTemplate,
   args: {
     ...defaultProps,

@@ -1,7 +1,7 @@
 import type { DateInputProps } from "@/registry/ui";
 import type { DateValue } from "@internationalized/date";
 import type { ValidationResult } from "@react-types/shared";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import {
   CalendarDate,
@@ -19,7 +19,7 @@ import { CalendarBoldIcon } from "@/utils/icons";
 import { button, dateInput } from "@/registry/ui";
 import { DateInput } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/DateInput",
   component: DateInput,
   argTypes: {
@@ -65,7 +65,10 @@ export default {
       options: ["aria", "native"],
     },
   },
-} as Meta<typeof DateInput>;
+} satisfies Meta<typeof DateInput>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   label: "Birth date",
@@ -151,14 +154,14 @@ const InternationalCalendarsTemplate = (args: DateInputProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: Template,
   args: {
     ...defaultProps,
   },
 };
 
-export const Required = {
+export const Required: Story = {
   render: FormTemplate,
   args: {
     ...defaultProps,
@@ -166,7 +169,7 @@ export const Required = {
   },
 };
 
-export const Disabled = {
+export const Disabled: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -175,7 +178,7 @@ export const Disabled = {
   },
 };
 
-export const ReadOnly = {
+export const ReadOnly: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -184,7 +187,7 @@ export const ReadOnly = {
   },
 };
 
-export const WithoutLabel = {
+export const WithoutLabel: Story = {
   render: Template,
 
   args: {
@@ -194,7 +197,7 @@ export const WithoutLabel = {
   },
 };
 
-export const WithDescription = {
+export const WithDescription: Story = {
   render: Template,
 
   args: {
@@ -203,7 +206,7 @@ export const WithDescription = {
   },
 };
 
-export const LabelPlacement = {
+export const LabelPlacement: Story = {
   render: LabelPlacementTemplate,
 
   args: {
@@ -211,7 +214,7 @@ export const LabelPlacement = {
   },
 };
 
-export const StartContent = {
+export const StartContent: Story = {
   render: Template,
 
   args: {
@@ -221,7 +224,7 @@ export const StartContent = {
   },
 };
 
-export const EndContent = {
+export const EndContent: Story = {
   render: Template,
 
   args: {
@@ -231,7 +234,7 @@ export const EndContent = {
   },
 };
 
-export const WithErrorMessage = {
+export const WithErrorMessage: Story = {
   render: Template,
 
   args: {
@@ -241,7 +244,7 @@ export const WithErrorMessage = {
   },
 };
 
-export const WithErrorMessageFunction = {
+export const WithErrorMessageFunction: Story = {
   render: Template,
 
   args: {
@@ -255,7 +258,7 @@ export const WithErrorMessageFunction = {
   },
 };
 
-export const IsInvalid = {
+export const IsInvalid: Story = {
   render: Template,
 
   args: {
@@ -267,7 +270,7 @@ export const IsInvalid = {
   },
 };
 
-export const Controlled = {
+export const Controlled: Story = {
   render: ControlledTemplate,
 
   args: {
@@ -276,7 +279,7 @@ export const Controlled = {
   },
 };
 
-export const TimeZones = {
+export const TimeZones: Story = {
   render: TimeZonesTemplate,
 
   args: {
@@ -286,7 +289,7 @@ export const TimeZones = {
   },
 };
 
-export const Granularity = {
+export const Granularity: Story = {
   render: GranularityTemplate,
 
   args: {
@@ -294,7 +297,7 @@ export const Granularity = {
   },
 };
 
-export const InternationalCalendars = {
+export const InternationalCalendars: Story = {
   render: InternationalCalendarsTemplate,
 
   args: {
@@ -302,7 +305,7 @@ export const InternationalCalendars = {
   },
 };
 
-export const MinDateValue = {
+export const MinDateValue: Story = {
   render: Template,
 
   args: {
@@ -312,7 +315,7 @@ export const MinDateValue = {
   },
 };
 
-export const MaxDateValue = {
+export const MaxDateValue: Story = {
   render: Template,
 
   args: {
@@ -322,7 +325,7 @@ export const MaxDateValue = {
   },
 };
 
-export const PlaceholderValue = {
+export const PlaceholderValue: Story = {
   render: Template,
 
   args: {
@@ -333,7 +336,7 @@ export const PlaceholderValue = {
   },
 };
 
-export const HideTimeZone = {
+export const HideTimeZone: Story = {
   render: Template,
 
   args: {
@@ -344,7 +347,7 @@ export const HideTimeZone = {
   },
 };
 
-export const HourCycle = {
+export const HourCycle: Story = {
   render: Template,
 
   args: {
@@ -356,7 +359,7 @@ export const HourCycle = {
   },
 };
 
-export const UnavailableDates = {
+export const UnavailableDates: Story = {
   render: FormTemplate,
 
   args: {
@@ -368,7 +371,7 @@ export const UnavailableDates = {
   },
 };
 
-export const WithValidation = {
+export const WithValidation: Story = {
   render: FormTemplate,
 
   args: {

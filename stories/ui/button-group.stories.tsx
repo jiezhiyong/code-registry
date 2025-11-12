@@ -1,10 +1,10 @@
 import type { ButtonGroupProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { button, buttonGroup } from "@/registry/ui";
 import { Button, ButtonGroup } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/ButtonGroup",
   component: ButtonGroup,
   argTypes: {
@@ -48,7 +48,10 @@ export default {
       },
     },
   },
-} as Meta<typeof ButtonGroup>;
+} satisfies Meta<typeof ButtonGroup>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...button.defaultVariants,
@@ -87,7 +90,7 @@ const VariantButtonsTemplate = (args: ButtonGroupProps) => (
   </ButtonGroup>
 );
 
-export const Default = {
+export const Default: Story = {
   render: Template,
 
   args: {
@@ -95,7 +98,7 @@ export const Default = {
   },
 };
 
-export const VariantButton = {
+export const VariantButton: Story = {
   render: VariantButtonTemplate,
 
   args: {
@@ -104,7 +107,7 @@ export const VariantButton = {
   },
 };
 
-export const VariantButtons = {
+export const VariantButtons: Story = {
   render: VariantButtonsTemplate,
 
   args: {

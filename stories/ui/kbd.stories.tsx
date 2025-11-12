@@ -1,9 +1,9 @@
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { kbd } from "@/registry/ui";
 import { Kbd } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/Kbd",
   component: Kbd,
   argTypes: {
@@ -37,14 +37,17 @@ export default {
       ],
     },
   },
-} as Meta<typeof Kbd>;
+} satisfies Meta<typeof Kbd>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...kbd.defaultVariants,
   keys: ["command"],
 };
 
-export const Default = {
+export const Default: Story = {
   args: {
     ...defaultProps,
     children: "K",

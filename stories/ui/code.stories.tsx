@@ -1,9 +1,9 @@
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { code } from "@/registry/ui";
 import { Code } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/Code",
   component: Code,
   argTypes: {
@@ -26,14 +26,17 @@ export default {
       options: ["sm", "md", "lg"],
     },
   },
-} as Meta<typeof Code>;
+} satisfies Meta<typeof Code>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   children: "npm install @/registry/ui/react",
   ...code.defaultVariants,
 };
 
-export const Default = {
+export const Default: Story = {
   args: {
     ...defaultProps,
   },

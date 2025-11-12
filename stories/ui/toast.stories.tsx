@@ -1,5 +1,5 @@
 import type { ToastProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { useEffect, useState } from "react";
 
@@ -11,7 +11,7 @@ import { Drawer, DrawerContent } from "@/registry/ui/drawer";
 import { Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from "@/registry/ui/modal";
 import { Spinner } from "@/registry/ui/spinner";
 
-export default {
+const meta = {
   title: "Components/Toast",
   component: Toast,
   argTypes: {
@@ -73,7 +73,10 @@ export default {
       return <Story />;
     },
   ],
-} as Meta<typeof Toast>;
+} satisfies Meta<typeof Toast>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...toast.defaultVariants,
@@ -407,14 +410,14 @@ const CloseToastTemplate = (args: ToastProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: Template,
   args: {
     ...defaultProps,
   },
 };
 
-export const WithDescription = {
+export const WithDescription: Story = {
   render: Template,
   args: {
     description: "Toast displayed successfully.",
@@ -422,14 +425,14 @@ export const WithDescription = {
   },
 };
 
-export const WithEndContent = {
+export const WithEndContent: Story = {
   render: WithEndContentTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const IconHidden = {
+export const IconHidden: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -437,49 +440,49 @@ export const IconHidden = {
   },
 };
 
-export const DisableAnimation = {
+export const DisableAnimation: Story = {
   render: DisableAnimationTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const PromiseToast = {
+export const PromiseToast: Story = {
   render: PromiseToastTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const ShowTimeoutProgress = {
+export const ShowTimeoutProgress: Story = {
   render: ShowTimeoutProgressTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const Placement = {
+export const Placement: Story = {
   render: PlacementTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const ToastFromOverlay = {
+export const ToastFromOverlay: Story = {
   render: WithToastFromOverlayTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const CustomStyles = {
+export const CustomStyles: Story = {
   render: CustomToastTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const CustomIcon = {
+export const CustomIcon: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -488,7 +491,7 @@ export const CustomIcon = {
   },
 };
 
-export const CustomLoadingComponent = {
+export const CustomLoadingComponent: Story = {
   render: PromiseToastTemplate,
   args: {
     ...defaultProps,
@@ -497,14 +500,14 @@ export const CustomLoadingComponent = {
   },
 };
 
-export const CustomCloseIcon = {
+export const CustomCloseIcon: Story = {
   render: CustomCloseIconTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const CloseToast = {
+export const CloseToast: Story = {
   render: CloseToastTemplate,
   args: {
     ...defaultProps,

@@ -1,6 +1,6 @@
 import type { RadioGroupProps, RadioProps } from "@/registry/ui";
 import type { ValidationResult } from "@react-types/shared";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import React from "react";
@@ -10,7 +10,7 @@ import { button, radio } from "@/registry/ui";
 import { Form } from "@/registry/ui/form";
 import { Radio, RadioGroup, useRadio, useRadioGroupContext } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/RadioGroup",
   component: RadioGroup,
   onChange: { action: "changed" },
@@ -39,7 +39,10 @@ export default {
       options: ["aria", "native"],
     },
   },
-} as Meta<typeof RadioGroup>;
+} satisfies Meta<typeof RadioGroup>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...radio.defaultVariants,
@@ -220,7 +223,7 @@ const ServerValidationTemplate = (args: RadioGroupProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: Template,
 
   args: {
@@ -228,7 +231,7 @@ export const Default = {
   },
 };
 
-export const IsDisabled = {
+export const IsDisabled: Story = {
   render: Template,
 
   args: {
@@ -237,7 +240,7 @@ export const IsDisabled = {
   },
 };
 
-export const DefaultChecked = {
+export const DefaultChecked: Story = {
   render: Template,
 
   args: {
@@ -246,7 +249,7 @@ export const DefaultChecked = {
   },
 };
 
-export const IsRequired = {
+export const IsRequired: Story = {
   render: Template,
 
   args: {
@@ -255,7 +258,7 @@ export const IsRequired = {
   },
 };
 
-export const WithDescription = {
+export const WithDescription: Story = {
   render: Template,
 
   args: {
@@ -264,7 +267,7 @@ export const WithDescription = {
   },
 };
 
-export const IsInvalid = {
+export const IsInvalid: Story = {
   render: InvalidTemplate,
 
   args: {
@@ -274,7 +277,7 @@ export const IsInvalid = {
   },
 };
 
-export const WithErrorMessage = {
+export const WithErrorMessage: Story = {
   render: Template,
 
   args: {
@@ -285,7 +288,7 @@ export const WithErrorMessage = {
   },
 };
 
-export const WithErrorMessageFunction = {
+export const WithErrorMessageFunction: Story = {
   render: Template,
 
   args: {
@@ -299,7 +302,7 @@ export const WithErrorMessageFunction = {
   },
 };
 
-export const WithValidation = {
+export const WithValidation: Story = {
   render: Template,
 
   args: {
@@ -314,7 +317,7 @@ export const WithValidation = {
   },
 };
 
-export const WithServerValidation = {
+export const WithServerValidation: Story = {
   render: ServerValidationTemplate,
 
   args: {
@@ -322,7 +325,7 @@ export const WithServerValidation = {
   },
 };
 
-export const Row = {
+export const Row: Story = {
   render: Template,
 
   args: {
@@ -331,7 +334,7 @@ export const Row = {
   },
 };
 
-export const DisableAnimation = {
+export const DisableAnimation: Story = {
   render: Template,
 
   args: {
@@ -340,7 +343,7 @@ export const DisableAnimation = {
   },
 };
 
-export const Controlled = {
+export const Controlled: Story = {
   render: ControlledTemplate,
 
   args: {

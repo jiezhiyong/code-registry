@@ -1,5 +1,5 @@
 import type { FormProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { useState } from "react";
 
@@ -7,7 +7,7 @@ import { useState } from "react";
 import { Button } from "@/registry/ui/button";
 import { Form } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/Form",
   component: Form,
   argTypes: {
@@ -23,7 +23,10 @@ export default {
       options: ["aria", "native"],
     },
   },
-} as Meta<typeof Form>;
+} satisfies Meta<typeof Form>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {};
 
@@ -39,14 +42,14 @@ const Template = (args: FormProps) => (
   </Form>
 );
 
-export const Default = {
+export const Default: Story = {
   render: Template,
   args: {
     ...defaultProps,
   },
 };
 
-export const NativeValidation = {
+export const NativeValidation: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -54,7 +57,7 @@ export const NativeValidation = {
   },
 };
 
-export const AriaValidation = {
+export const AriaValidation: Story = {
   render: Template,
   args: {
     ...defaultProps,

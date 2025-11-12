@@ -1,5 +1,5 @@
 import type { CircularProgressProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
@@ -8,7 +8,7 @@ import { Card, CardBody, CardFooter } from "@/registry/ui/card";
 import { Chip } from "@/registry/ui/chip";
 import { CircularProgress } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/CircularProgress",
   component: CircularProgress,
   argTypes: {
@@ -30,7 +30,10 @@ export default {
       },
     },
   },
-} as Meta<typeof CircularProgress>;
+} satisfies Meta<typeof CircularProgress>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...circularProgress.defaultVariants,
@@ -78,21 +81,21 @@ const CustomClassnamesTemplate = (args: CircularProgressProps) => (
   </Card>
 );
 
-export const Default = {
+export const Default: Story = {
   args: {
     ...defaultProps,
     "aria-label": "Loading...",
   },
 };
 
-export const WithLabel = {
+export const WithLabel: Story = {
   args: {
     ...defaultProps,
     label: "Loading...",
   },
 };
 
-export const WithValueLabel = {
+export const WithValueLabel: Story = {
   render: IntervalTemplate,
 
   args: {
@@ -104,7 +107,7 @@ export const WithValueLabel = {
   },
 };
 
-export const WithValueFormatting = {
+export const WithValueFormatting: Story = {
   args: {
     ...defaultProps,
     label: "Loading...",
@@ -115,7 +118,7 @@ export const WithValueFormatting = {
   },
 };
 
-export const CustomClassnames = {
+export const CustomClassnames: Story = {
   render: CustomClassnamesTemplate,
 
   args: {

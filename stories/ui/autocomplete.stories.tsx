@@ -1,7 +1,7 @@
 import type { AutocompleteProps } from "@/registry/ui";
 import type { Animal, Pokemon, User } from "@/utils/storybook";
 import type { ValidationResult } from "@react-types/shared";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import type { Key } from "react";
 
 import { useFilter } from "@react-aria/i18n";
@@ -18,7 +18,7 @@ import { Form } from "@/registry/ui/form";
 import { PetBoldIcon, SearchLinearIcon } from "@/utils/icons";
 import { animalsData, usePokemonList, usersData } from "@/utils/storybook";
 
-export default {
+const meta = {
   title: "Components/Autocomplete",
   component: Autocomplete,
   argTypes: {
@@ -76,7 +76,10 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof Autocomplete>;
+} satisfies Meta<typeof Autocomplete>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 type SWCharacter = {
   name: string;
@@ -813,7 +816,7 @@ const ServerValidationTemplate = (args: AutocompleteProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -821,7 +824,7 @@ export const Default = {
   },
 };
 
-export const Required = {
+export const Required: Story = {
   render: FormTemplate,
 
   args: {
@@ -830,7 +833,7 @@ export const Required = {
   },
 };
 
-export const ReadOnly = {
+export const ReadOnly: Story = {
   render: Template,
 
   args: {
@@ -840,7 +843,7 @@ export const ReadOnly = {
   },
 };
 
-export const Disabled = {
+export const Disabled: Story = {
   render: Template,
 
   args: {
@@ -851,7 +854,7 @@ export const Disabled = {
   },
 };
 
-export const DisabledOptions = {
+export const DisabledOptions: Story = {
   render: Template,
 
   args: {
@@ -860,7 +863,7 @@ export const DisabledOptions = {
   },
 };
 
-export const LabelPlacement = {
+export const LabelPlacement: Story = {
   render: LabelPlacementTemplate,
 
   args: {
@@ -868,7 +871,7 @@ export const LabelPlacement = {
   },
 };
 
-export const AsyncFiltering = {
+export const AsyncFiltering: Story = {
   render: AsyncFilteringTemplate,
 
   args: {
@@ -876,7 +879,7 @@ export const AsyncFiltering = {
   },
 };
 
-export const AsyncLoading = {
+export const AsyncLoading: Story = {
   render: AsyncLoadingTemplate,
 
   args: {
@@ -884,7 +887,7 @@ export const AsyncLoading = {
   },
 };
 
-export const StartContent = {
+export const StartContent: Story = {
   render: StartContentTemplate,
 
   args: {
@@ -892,7 +895,7 @@ export const StartContent = {
   },
 };
 
-export const EndContent = {
+export const EndContent: Story = {
   render: EndContentTemplate,
 
   args: {
@@ -900,7 +903,7 @@ export const EndContent = {
   },
 };
 
-export const IsInvalid = {
+export const IsInvalid: Story = {
   render: Template,
 
   args: {
@@ -912,7 +915,7 @@ export const IsInvalid = {
   },
 };
 
-export const WithDescription = {
+export const WithDescription: Story = {
   render: MirrorTemplate,
 
   args: {
@@ -921,7 +924,7 @@ export const WithDescription = {
   },
 };
 
-export const WithoutScrollShadow = {
+export const WithoutScrollShadow: Story = {
   render: Template,
 
   args: {
@@ -932,7 +935,7 @@ export const WithoutScrollShadow = {
   },
 };
 
-export const WithItemDescriptions = {
+export const WithItemDescriptions: Story = {
   render: DynamicTemplateWithDescriptions,
 
   args: {
@@ -940,7 +943,7 @@ export const WithItemDescriptions = {
   },
 };
 
-export const WithItemStartContent = {
+export const WithItemStartContent: Story = {
   render: ItemStartContentTemplate,
 
   args: {
@@ -948,7 +951,7 @@ export const WithItemStartContent = {
   },
 };
 
-export const WithErrorMessage = {
+export const WithErrorMessage: Story = {
   render: DynamicTemplate,
 
   args: {
@@ -958,7 +961,7 @@ export const WithErrorMessage = {
   },
 };
 
-export const WithErrorMessageFunction = {
+export const WithErrorMessageFunction: Story = {
   render: FormTemplate,
 
   args: {
@@ -972,7 +975,7 @@ export const WithErrorMessageFunction = {
   },
 };
 
-export const WithValidation = {
+export const WithValidation: Story = {
   render: FormTemplate,
 
   args: {
@@ -988,14 +991,14 @@ export const WithValidation = {
   },
 };
 
-export const WithServerValidation = {
+export const WithServerValidation: Story = {
   render: ServerValidationTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const WithSections = {
+export const WithSections: Story = {
   render: WithSectionsTemplate,
 
   args: {
@@ -1003,7 +1006,7 @@ export const WithSections = {
   },
 };
 
-export const WithCustomSectionsStyles = {
+export const WithCustomSectionsStyles: Story = {
   render: WithCustomSectionsStylesTemplate,
 
   args: {
@@ -1011,7 +1014,7 @@ export const WithCustomSectionsStyles = {
   },
 };
 
-export const WithAriaLabel = {
+export const WithAriaLabel: Story = {
   render: WithAriaLabelTemplate,
 
   args: {
@@ -1021,7 +1024,7 @@ export const WithAriaLabel = {
   },
 };
 
-export const WithReactHookForm = {
+export const WithReactHookForm: Story = {
   render: WithReactHookFormTemplate,
 
   args: {
@@ -1029,7 +1032,7 @@ export const WithReactHookForm = {
   },
 };
 
-export const Controlled = {
+export const Controlled: Story = {
   render: ControlledTemplate,
 
   args: {
@@ -1037,7 +1040,7 @@ export const Controlled = {
   },
 };
 
-export const CustomSelectorIcon = {
+export const CustomSelectorIcon: Story = {
   render: Template,
 
   args: {
@@ -1047,7 +1050,7 @@ export const CustomSelectorIcon = {
   },
 };
 
-export const CustomItems = {
+export const CustomItems: Story = {
   render: CustomItemsTemplate,
 
   args: {
@@ -1055,7 +1058,7 @@ export const CustomItems = {
   },
 };
 
-export const CustomStyles = {
+export const CustomStyles: Story = {
   render: CustomStylesTemplate,
 
   args: {
@@ -1064,7 +1067,7 @@ export const CustomStyles = {
   },
 };
 
-export const CustomStylesWithCustomItems = {
+export const CustomStylesWithCustomItems: Story = {
   render: CustomStylesWithCustomItemsTemplate,
 
   args: {
@@ -1072,14 +1075,14 @@ export const CustomStylesWithCustomItems = {
   },
 };
 
-export const FullyControlled = {
+export const FullyControlled: Story = {
   render: FullyControlledTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const OneThousandList = {
+export const OneThousandList: Story = {
   render: LargeDatasetTemplate,
   args: {
     ...defaultProps,
@@ -1088,7 +1091,7 @@ export const OneThousandList = {
   },
 };
 
-export const TenThousandList = {
+export const TenThousandList: Story = {
   render: LargeDatasetTemplate,
   args: {
     ...defaultProps,
@@ -1097,7 +1100,7 @@ export const TenThousandList = {
   },
 };
 
-export const CustomMaxListboxHeight = {
+export const CustomMaxListboxHeight: Story = {
   render: LargeDatasetTemplate,
   args: {
     ...defaultProps,
@@ -1107,7 +1110,7 @@ export const CustomMaxListboxHeight = {
   },
 };
 
-export const CustomItemHeight = {
+export const CustomItemHeight: Story = {
   render: LargeDatasetTemplate,
   args: {
     ...defaultProps,
@@ -1118,7 +1121,7 @@ export const CustomItemHeight = {
   },
 };
 
-export const PopoverTopOrBottom = {
+export const PopoverTopOrBottom: Story = {
   args: {
     ...defaultProps,
   },

@@ -1,5 +1,5 @@
 import type { PaginationItemRenderProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { useLocale } from "@react-aria/i18n";
 import React from "react";
@@ -8,7 +8,7 @@ import { ChevronIcon } from "@/icons";
 import { cn } from "@/lib/theme";
 import { button, pagination, Pagination, PaginationItemType, usePagination } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/Pagination",
   component: Pagination,
   argTypes: {
@@ -62,7 +62,10 @@ export default {
       },
     },
   },
-} as Meta<typeof Pagination>;
+} satisfies Meta<typeof Pagination>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...pagination.defaultVariants,
@@ -72,20 +75,20 @@ const defaultProps = {
   initialPage: 1,
 };
 
-export const Default = {
+export const Default: Story = {
   args: {
     ...defaultProps,
   },
 };
 
-export const WithControls = {
+export const WithControls: Story = {
   args: {
     ...defaultProps,
     showControls: true,
   },
 };
 
-export const PaginationLoop = {
+export const PaginationLoop: Story = {
   args: {
     ...defaultProps,
     showControls: true,
@@ -93,14 +96,14 @@ export const PaginationLoop = {
   },
 };
 
-export const InitialPage = {
+export const InitialPage: Story = {
   args: {
     ...defaultProps,
     initialPage: 3,
   },
 };
 
-export const IsCompact = {
+export const IsCompact: Story = {
   args: {
     ...defaultProps,
     showControls: true,
@@ -187,7 +190,7 @@ export const CustomItems = () => {
   );
 };
 
-export const CustomWithClassNames = {
+export const CustomWithClassNames: Story = {
   args: {
     ...defaultProps,
     showShadow: true,

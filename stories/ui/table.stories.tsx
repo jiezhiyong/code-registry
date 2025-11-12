@@ -1,6 +1,6 @@
 import type { TableProps } from "@/registry/ui";
 import type { ChipProps } from "@/registry/ui/chip";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { useAsyncList } from "@react-stately/data";
 import React, { useMemo } from "react";
@@ -18,7 +18,7 @@ import { Spinner } from "@/registry/ui/spinner";
 import { Tooltip } from "@/registry/ui/tooltip";
 import { User } from "@/registry/ui/user";
 
-export default {
+const meta = {
   title: "Components/Table",
   component: Table,
   argTypes: {
@@ -58,7 +58,10 @@ export default {
       },
     },
   },
-} as Meta<typeof Table>;
+} satisfies Meta<typeof Table>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...table.defaultVariants,
@@ -913,7 +916,7 @@ const VirtualizedTemplate = (args: TableProps & { rowCount: number }) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: StaticTemplate,
 
   args: {
@@ -921,7 +924,7 @@ export const Default = {
   },
 };
 
-export const Dynamic = {
+export const Dynamic: Story = {
   render: DynamicTemplate,
 
   args: {
@@ -929,7 +932,7 @@ export const Dynamic = {
   },
 };
 
-export const EmptyState = {
+export const EmptyState: Story = {
   render: EmptyTemplate,
 
   args: {
@@ -937,7 +940,7 @@ export const EmptyState = {
   },
 };
 
-export const NoHeader = {
+export const NoHeader: Story = {
   render: StaticTemplate,
 
   args: {
@@ -946,7 +949,7 @@ export const NoHeader = {
   },
 };
 
-export const CustomCells = {
+export const CustomCells: Story = {
   render: CustomCellTemplate,
 
   args: {
@@ -955,7 +958,7 @@ export const CustomCells = {
   },
 };
 
-export const Striped = {
+export const Striped: Story = {
   render: StaticTemplate,
 
   args: {
@@ -964,7 +967,7 @@ export const Striped = {
   },
 };
 
-export const RemoveWrapper = {
+export const RemoveWrapper: Story = {
   render: StaticTemplate,
 
   args: {
@@ -976,7 +979,7 @@ export const RemoveWrapper = {
   },
 };
 
-export const SingleSelection = {
+export const SingleSelection: Story = {
   render: StaticTemplate,
 
   args: {
@@ -985,7 +988,7 @@ export const SingleSelection = {
   },
 };
 
-export const MultipleSelection = {
+export const MultipleSelection: Story = {
   render: StaticTemplate,
 
   args: {
@@ -995,7 +998,7 @@ export const MultipleSelection = {
   },
 };
 
-export const DisabledKeys = {
+export const DisabledKeys: Story = {
   render: StaticTemplate,
 
   args: {
@@ -1006,7 +1009,7 @@ export const DisabledKeys = {
   },
 };
 
-export const DisallowEmptySelection = {
+export const DisallowEmptySelection: Story = {
   render: StaticTemplate,
 
   args: {
@@ -1018,7 +1021,7 @@ export const DisallowEmptySelection = {
   },
 };
 
-export const Sortable = {
+export const Sortable: Story = {
   render: SortableTemplate,
 
   args: {
@@ -1026,7 +1029,7 @@ export const Sortable = {
   },
 };
 
-export const CustomSortIcon = {
+export const CustomSortIcon: Story = {
   render: SortableTemplate,
 
   args: {
@@ -1035,7 +1038,7 @@ export const CustomSortIcon = {
   },
 };
 
-export const LoadMore = {
+export const LoadMore: Story = {
   render: LoadMoreTemplate,
 
   args: {
@@ -1044,7 +1047,7 @@ export const LoadMore = {
   },
 };
 
-export const Paginated = {
+export const Paginated: Story = {
   render: PaginatedTemplate,
 
   args: {
@@ -1053,7 +1056,7 @@ export const Paginated = {
   },
 };
 
-export const AsyncPaginated = {
+export const AsyncPaginated: Story = {
   render: AsyncPaginatedTemplate,
 
   args: {
@@ -1062,7 +1065,7 @@ export const AsyncPaginated = {
   },
 };
 
-export const InfinityPagination = {
+export const InfinityPagination: Story = {
   render: InfinitePaginationTemplate,
 
   args: {
@@ -1071,7 +1074,7 @@ export const InfinityPagination = {
   },
 };
 
-export const HeaderSticky = {
+export const HeaderSticky: Story = {
   render: InfinitePaginationTemplate,
 
   args: {
@@ -1082,7 +1085,7 @@ export const HeaderSticky = {
   },
 };
 
-export const CustomWithClassNames = {
+export const CustomWithClassNames: Story = {
   render: CustomCellWithClassnamesTemplate,
 
   args: {
@@ -1095,7 +1098,7 @@ export const CustomWithClassNames = {
   },
 };
 
-export const DisableAnimation = {
+export const DisableAnimation: Story = {
   render: StaticTemplate,
 
   args: {
@@ -1106,7 +1109,7 @@ export const DisableAnimation = {
   },
 };
 
-export const TableWithSwitch = {
+export const TableWithSwitch: Story = {
   render: TableWithSwitchTemplate,
   args: {
     ...defaultProps,
@@ -1114,7 +1117,7 @@ export const TableWithSwitch = {
   },
 };
 
-export const Virtualized = {
+export const Virtualized: Story = {
   render: VirtualizedTemplate,
   args: {
     ...defaultProps,
@@ -1123,7 +1126,7 @@ export const Virtualized = {
   },
 };
 
-export const VirtualizedWithHeaderSticky = {
+export const VirtualizedWithHeaderSticky: Story = {
   ...Virtualized,
   args: {
     ...Virtualized.args,
@@ -1131,7 +1134,7 @@ export const VirtualizedWithHeaderSticky = {
   },
 };
 
-export const TenThousandRows = {
+export const TenThousandRows: Story = {
   render: VirtualizedTemplate,
   args: {
     ...defaultProps,

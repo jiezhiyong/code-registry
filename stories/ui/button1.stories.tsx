@@ -1,12 +1,12 @@
 import type { ButtonProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
 import { Camera, HeadphonesIcon, Notification } from "@/icons";
 import { button, Button } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/Button",
   component: Button,
   argTypes: {
@@ -61,11 +61,14 @@ export default {
       },
     },
   },
-} as Meta<typeof Button>;
+} satisfies Meta<typeof Button>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   children: "Button",
-  spinnerPlacement: "start",
+  spinnerPlacement: "start" as const,
   ...button.defaultVariants,
 };
 
@@ -85,13 +88,13 @@ const StateTemplate = (args: ButtonProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   args: {
     ...defaultProps,
   },
 };
 
-export const WithState = {
+export const WithState: Story = {
   render: StateTemplate,
 
   args: {
@@ -99,21 +102,21 @@ export const WithState = {
   },
 };
 
-export const IsDisabled = {
+export const IsDisabled: Story = {
   args: {
     ...defaultProps,
     isDisabled: true,
   },
 };
 
-export const DisableRipple = {
+export const DisableRipple: Story = {
   args: {
     ...defaultProps,
     disableRipple: true,
   },
 };
 
-export const WithIcons = {
+export const WithIcons: Story = {
   args: {
     ...defaultProps,
     startContent: <Notification className="fill-current" />,
@@ -121,7 +124,7 @@ export const WithIcons = {
   },
 };
 
-export const IconButton = {
+export const IconButton: Story = {
   args: {
     ...defaultProps,
     isIconOnly: true,
@@ -129,7 +132,7 @@ export const IconButton = {
   },
 };
 
-export const IsLoading = {
+export const IsLoading: Story = {
   args: {
     ...defaultProps,
     color: "primary",
@@ -137,7 +140,7 @@ export const IsLoading = {
   },
 };
 
-export const CustomWithClassNames = {
+export const CustomWithClassNames: Story = {
   args: {
     ...defaultProps,
     radius: "full",

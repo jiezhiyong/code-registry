@@ -1,5 +1,5 @@
 import type { TooltipProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
@@ -7,7 +7,7 @@ import { popover } from "@/registry/ui";
 import { Button } from "@/registry/ui/button";
 import { Tooltip } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/Tooltip",
   component: Tooltip,
   argTypes: {
@@ -97,7 +97,10 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof Tooltip>;
+} satisfies Meta<typeof Tooltip>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...popover.defaultVariants,
@@ -274,27 +277,27 @@ const ControlledTemplate = (args: TooltipProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   args: {
     ...defaultProps,
   },
 };
 
-export const DisableAnimation = {
+export const DisableAnimation: Story = {
   args: {
     ...defaultProps,
     disableAnimation: true,
   },
 };
 
-export const WithArrow = {
+export const WithArrow: Story = {
   args: {
     ...defaultProps,
     showArrow: true,
   },
 };
 
-export const OpenChange = {
+export const OpenChange: Story = {
   render: OpenChangeTemplate,
 
   args: {
@@ -302,7 +305,7 @@ export const OpenChange = {
   },
 };
 
-export const Placements = {
+export const Placements: Story = {
   render: PlacementsTemplate,
 
   args: {
@@ -311,7 +314,7 @@ export const Placements = {
   },
 };
 
-export const WithOffset = {
+export const WithOffset: Story = {
   render: OffsetTemplate,
 
   args: {
@@ -320,7 +323,7 @@ export const WithOffset = {
   },
 };
 
-export const withDelay = {
+export const withDelay: Story = {
   render: DelayTemplate,
 
   args: {
@@ -328,7 +331,7 @@ export const withDelay = {
   },
 };
 
-export const CustomContent = {
+export const CustomContent: Story = {
   args: {
     ...defaultProps,
     shouldCloseOnInteractOutside: false,
@@ -341,7 +344,7 @@ export const CustomContent = {
   },
 };
 
-export const CustomMotion = {
+export const CustomMotion: Story = {
   args: {
     ...defaultProps,
     motionProps: {
@@ -363,7 +366,7 @@ export const CustomMotion = {
   },
 };
 
-export const Multiple = {
+export const Multiple: Story = {
   render: MultipleTemplate,
 
   args: {
@@ -371,7 +374,7 @@ export const Multiple = {
   },
 };
 
-export const Controlled = {
+export const Controlled: Story = {
   render: ControlledTemplate,
 
   args: {
@@ -379,14 +382,14 @@ export const Controlled = {
   },
 };
 
-export const DefaultOpen = {
+export const DefaultOpen: Story = {
   args: {
     ...defaultProps,
     defaultOpen: true,
   },
 };
 
-export const AlwaysOpen = {
+export const AlwaysOpen: Story = {
   args: {
     ...defaultProps,
     isOpen: true,
@@ -400,7 +403,7 @@ export const AlwaysOpen = {
   },
 };
 
-export const Disabled = {
+export const Disabled: Story = {
   args: {
     ...defaultProps,
     isDisabled: true,

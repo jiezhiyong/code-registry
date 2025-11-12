@@ -1,5 +1,5 @@
 import type { DropdownMenuProps, DropdownProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
@@ -18,7 +18,7 @@ import { Avatar } from "@/registry/ui/avatar";
 import { Button } from "@/registry/ui/button";
 import { User } from "@/registry/ui/user";
 
-export default {
+const meta = {
   title: "Components/Dropdown",
   component: Dropdown,
   argTypes: {
@@ -108,7 +108,10 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof Dropdown>;
+} satisfies Meta<typeof Dropdown>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...popover.defaultVariants,
@@ -598,7 +601,7 @@ const CustomHTMLTrigger = ({ variant, ...args }) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: Template,
 
   args: {
@@ -606,7 +609,7 @@ export const Default = {
   },
 };
 
-export const Dynamic = {
+export const Dynamic: Story = {
   render: DynamicTemplate,
 
   args: {
@@ -614,7 +617,7 @@ export const Dynamic = {
   },
 };
 
-export const WithArrow = {
+export const WithArrow: Story = {
   render: Template,
 
   args: {
@@ -623,7 +626,7 @@ export const WithArrow = {
   },
 };
 
-export const WithDivider = {
+export const WithDivider: Story = {
   render: DividerTemplate,
 
   args: {
@@ -631,7 +634,7 @@ export const WithDivider = {
   },
 };
 
-export const DisabledKeys = {
+export const DisabledKeys: Story = {
   render: DisabledKeysTemplate,
 
   args: {
@@ -639,7 +642,7 @@ export const DisabledKeys = {
   },
 };
 
-export const DisabledTrigger = {
+export const DisabledTrigger: Story = {
   render: Template,
 
   args: {
@@ -648,7 +651,7 @@ export const DisabledTrigger = {
   },
 };
 
-export const SingleSelection = {
+export const SingleSelection: Story = {
   render: SingleSelectionTemplate,
 
   args: {
@@ -656,7 +659,7 @@ export const SingleSelection = {
   },
 };
 
-export const MultipleSelection = {
+export const MultipleSelection: Story = {
   render: MultipleSelectionTemplate,
 
   args: {
@@ -664,7 +667,7 @@ export const MultipleSelection = {
   },
 };
 
-export const WithShortcut = {
+export const WithShortcut: Story = {
   render: WithShortcutTemplate,
 
   args: {
@@ -672,7 +675,7 @@ export const WithShortcut = {
   },
 };
 
-export const WithStartContent = {
+export const WithStartContent: Story = {
   render: WithStartContentTemplate,
 
   args: {
@@ -682,7 +685,7 @@ export const WithStartContent = {
   },
 };
 
-export const WithEndContent = {
+export const WithEndContent: Story = {
   render: WithEndContentTemplate,
 
   args: {
@@ -692,7 +695,7 @@ export const WithEndContent = {
   },
 };
 
-export const WithDescription = {
+export const WithDescription: Story = {
   render: WithDescriptionTemplate,
 
   args: {
@@ -703,7 +706,7 @@ export const WithDescription = {
   },
 };
 
-export const WithSections = {
+export const WithSections: Story = {
   render: WithSectionsTemplate,
 
   args: {
@@ -714,7 +717,7 @@ export const WithSections = {
   },
 };
 
-export const WithCustomTrigger = {
+export const WithCustomTrigger: Story = {
   render: CustomTriggerTemplate,
 
   args: {
@@ -724,7 +727,7 @@ export const WithCustomTrigger = {
   },
 };
 
-export const WithCustomHTMLTrigger = {
+export const WithCustomHTMLTrigger: Story = {
   render: CustomHTMLTrigger,
 
   args: {
@@ -734,7 +737,7 @@ export const WithCustomHTMLTrigger = {
   },
 };
 
-export const DisableAnimation = {
+export const DisableAnimation: Story = {
   render: WithStartContentTemplate,
 
   args: {
@@ -746,7 +749,7 @@ export const DisableAnimation = {
   },
 };
 
-export const ItemCloseOnSelect = {
+export const ItemCloseOnSelect: Story = {
   render: ItemCloseOnSelectTemplate,
 
   args: {
@@ -754,7 +757,7 @@ export const ItemCloseOnSelect = {
   },
 };
 
-export const WithFallbackPlacements = {
+export const WithFallbackPlacements: Story = {
   args: {
     ...defaultProps,
   },
@@ -780,7 +783,7 @@ export const WithFallbackPlacements = {
   ),
 };
 
-export const WithShouldBlockScroll = {
+export const WithShouldBlockScroll: Story = {
   render: (args) => {
     return (
       <div className="flex gap-8">
@@ -795,7 +798,7 @@ export const WithShouldBlockScroll = {
   },
 };
 
-export const Placements = {
+export const Placements: Story = {
   args: {
     ...defaultProps,
   },

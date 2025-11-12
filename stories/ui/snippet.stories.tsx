@@ -1,9 +1,9 @@
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { snippet } from "@/registry/ui";
 import { Snippet } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/Snippet",
   component: Snippet,
   argTypes: {
@@ -69,7 +69,10 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof Snippet>;
+} satisfies Meta<typeof Snippet>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   children: "npm install @/registry/ui/react",
@@ -81,13 +84,13 @@ const defaultProps = {
   ...snippet.defaultVariants,
 };
 
-export const Default = {
+export const Default: Story = {
   args: {
     ...defaultProps,
   },
 };
 
-export const MultiLine = {
+export const MultiLine: Story = {
   args: {
     ...defaultProps,
     children: ["npm install @/registry/ui/react", "yarn add @/registry/ui/react", "pnpm add @/registry/ui/react"],

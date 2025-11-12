@@ -1,5 +1,5 @@
 import type { CardProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { card } from "@/registry/ui";
 import { Button } from "@/registry/ui/button";
@@ -8,7 +8,7 @@ import { Image } from "@/registry/ui/image";
 import { Link } from "@/registry/ui/link";
 import { Card, CardBody, CardFooter, CardHeader } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/Card",
   component: Card,
   argTypes: {
@@ -67,7 +67,10 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof Card>;
+} satisfies Meta<typeof Card>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...card.defaultVariants,
@@ -415,7 +418,7 @@ const CenterImgWithHeaderTemplate = (args: CardProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: Template,
 
   args: {
@@ -423,7 +426,7 @@ export const Default = {
   },
 };
 
-export const Pressable = {
+export const Pressable: Story = {
   render: PressableTemplate,
 
   args: {
@@ -431,7 +434,7 @@ export const Pressable = {
   },
 };
 
-export const WithDivider = {
+export const WithDivider: Story = {
   render: WithDividerTemplate,
 
   args: {
@@ -439,7 +442,7 @@ export const WithDivider = {
   },
 };
 
-export const WithFooter = {
+export const WithFooter: Story = {
   render: WithFooterTemplate,
 
   args: {
@@ -447,7 +450,7 @@ export const WithFooter = {
   },
 };
 
-export const WithAbsImageHeader = {
+export const WithAbsImageHeader: Story = {
   render: WithAbsImageHeaderTemplate,
 
   args: {
@@ -455,7 +458,7 @@ export const WithAbsImageHeader = {
   },
 };
 
-export const WithAbsImgHeaderFooter = {
+export const WithAbsImgHeaderFooter: Story = {
   render: WithAbsImgHeaderFooterTemplate,
 
   args: {
@@ -463,7 +466,7 @@ export const WithAbsImgHeaderFooter = {
   },
 };
 
-export const CoverImg = {
+export const CoverImg: Story = {
   render: CoverImgTemplate,
 
   args: {
@@ -471,7 +474,7 @@ export const CoverImg = {
   },
 };
 
-export const CenterImg = {
+export const CenterImg: Story = {
   render: CenterImgTemplate,
 
   args: {
@@ -479,7 +482,7 @@ export const CenterImg = {
   },
 };
 
-export const PrimaryAction = {
+export const PrimaryAction: Story = {
   render: PrimaryActionTemplate,
 
   args: {
@@ -487,7 +490,7 @@ export const PrimaryAction = {
   },
 };
 
-export const CenterImgWithHeader = {
+export const CenterImgWithHeader: Story = {
   render: CenterImgWithHeaderTemplate,
 
   args: {

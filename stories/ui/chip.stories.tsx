@@ -1,11 +1,11 @@
 import type { ChipProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { CheckIcon } from "@/icons";
 import { chip, Chip } from "@/registry/ui";
 import { Avatar } from "@/registry/ui/avatar";
 
-export default {
+const meta = {
   title: "Components/Chip",
   component: Chip,
   argTypes: {
@@ -39,20 +39,23 @@ export default {
       },
     },
   },
-} as Meta<typeof Chip>;
+} satisfies Meta<typeof Chip>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...chip.defaultVariants,
   children: "Chip",
 };
 
-export const Default = {
+export const Default: Story = {
   args: {
     ...defaultProps,
   },
 };
 
-export const StartContent = {
+export const StartContent: Story = {
   args: {
     ...defaultProps,
     startContent: (
@@ -63,7 +66,7 @@ export const StartContent = {
   },
 };
 
-export const EndContent = {
+export const EndContent: Story = {
   args: {
     ...defaultProps,
     endContent: (
@@ -74,7 +77,7 @@ export const EndContent = {
   },
 };
 
-export const Closeable = {
+export const Closeable: Story = {
   args: {
     ...defaultProps,
     // eslint-disable-next-line
@@ -82,7 +85,7 @@ export const Closeable = {
   },
 };
 
-export const CustomCloseIcon = {
+export const CustomCloseIcon: Story = {
   args: {
     ...defaultProps,
     endContent: <CheckIcon />,
@@ -91,7 +94,7 @@ export const CustomCloseIcon = {
   },
 };
 
-export const WithAvatar = {
+export const WithAvatar: Story = {
   args: {
     ...defaultProps,
     variant: "flat",
@@ -106,7 +109,7 @@ const HiddenOverflowTemplate = (args: ChipProps) => (
   </div>
 );
 
-export const HiddenOverflow = {
+export const HiddenOverflow: Story = {
   render: HiddenOverflowTemplate,
   args: {
     ...defaultProps,

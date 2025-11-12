@@ -1,7 +1,7 @@
 import type { SelectedItems, SelectProps } from "@/registry/ui";
 import type { Animal, Pokemon, User } from "@/utils/storybook";
 import type { Selection, ValidationResult } from "@react-types/shared";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 import type { ChangeEvent } from "react";
 
 import React from "react";
@@ -17,7 +17,7 @@ import { Form } from "@/registry/ui/form";
 import { PetBoldIcon } from "@/utils/icons";
 import { animalsData, usePokemonList, usersData } from "@/utils/storybook";
 
-export default {
+const meta = {
   title: "Components/Select",
   component: Select,
   argTypes: {
@@ -69,7 +69,10 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof Select>;
+} satisfies Meta<typeof Select>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...select.defaultVariants,
@@ -933,7 +936,7 @@ const ValidationBehaviorAriaTemplate = (args: SelectProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: MirrorTemplate,
 
   args: {
@@ -941,7 +944,7 @@ export const Default = {
   },
 };
 
-export const Multiple = {
+export const Multiple: Story = {
   render: Template,
 
   args: {
@@ -950,7 +953,7 @@ export const Multiple = {
   },
 };
 
-export const Required = {
+export const Required: Story = {
   render: FormTemplate,
 
   args: {
@@ -959,7 +962,7 @@ export const Required = {
   },
 };
 
-export const Disabled = {
+export const Disabled: Story = {
   render: Template,
 
   args: {
@@ -970,7 +973,7 @@ export const Disabled = {
   },
 };
 
-export const DisabledOptions = {
+export const DisabledOptions: Story = {
   render: Template,
 
   args: {
@@ -979,7 +982,7 @@ export const DisabledOptions = {
   },
 };
 
-export const IsInvalid = {
+export const IsInvalid: Story = {
   render: Template,
 
   args: {
@@ -991,7 +994,7 @@ export const IsInvalid = {
   },
 };
 
-export const LabelPlacement = {
+export const LabelPlacement: Story = {
   render: LabelPlacementTemplate,
 
   args: {
@@ -999,7 +1002,7 @@ export const LabelPlacement = {
   },
 };
 
-export const AsyncLoading = {
+export const AsyncLoading: Story = {
   render: AsyncLoadingTemplate,
 
   args: {
@@ -1007,7 +1010,7 @@ export const AsyncLoading = {
   },
 };
 
-export const StartContent = {
+export const StartContent: Story = {
   render: StartContentTemplate,
 
   args: {
@@ -1015,7 +1018,7 @@ export const StartContent = {
   },
 };
 
-export const EndContent = {
+export const EndContent: Story = {
   render: EndContentTemplate,
 
   args: {
@@ -1023,7 +1026,7 @@ export const EndContent = {
   },
 };
 
-export const EmptyContent = {
+export const EmptyContent: Story = {
   render: EmptyTemplate,
 
   args: {
@@ -1031,7 +1034,7 @@ export const EmptyContent = {
   },
 };
 
-export const WithDescription = {
+export const WithDescription: Story = {
   render: MirrorTemplate,
 
   args: {
@@ -1040,7 +1043,7 @@ export const WithDescription = {
   },
 };
 
-export const WithoutLabel = {
+export const WithoutLabel: Story = {
   render: Template,
 
   args: {
@@ -1051,7 +1054,7 @@ export const WithoutLabel = {
   },
 };
 
-export const WithoutScrollShadow = {
+export const WithoutScrollShadow: Story = {
   render: Template,
 
   args: {
@@ -1062,7 +1065,7 @@ export const WithoutScrollShadow = {
   },
 };
 
-export const WithItemDescriptions = {
+export const WithItemDescriptions: Story = {
   render: DynamicTemplateWithDescriptions,
 
   args: {
@@ -1070,7 +1073,7 @@ export const WithItemDescriptions = {
   },
 };
 
-export const WithItemStartContent = {
+export const WithItemStartContent: Story = {
   render: ItemStartContentTemplate,
 
   args: {
@@ -1078,7 +1081,7 @@ export const WithItemStartContent = {
   },
 };
 
-export const WithErrorMessage = {
+export const WithErrorMessage: Story = {
   render: DynamicTemplate,
 
   args: {
@@ -1088,7 +1091,7 @@ export const WithErrorMessage = {
   },
 };
 
-export const WithErrorMessageFunction = {
+export const WithErrorMessageFunction: Story = {
   render: DynamicTemplate,
 
   args: {
@@ -1102,7 +1105,7 @@ export const WithErrorMessageFunction = {
   },
 };
 
-export const WithChips = {
+export const WithChips: Story = {
   render: CustomItemsTemplate,
 
   args: {
@@ -1127,7 +1130,7 @@ export const WithChips = {
   },
 };
 
-export const WithSections = {
+export const WithSections: Story = {
   render: WithSectionsTemplate,
 
   args: {
@@ -1135,7 +1138,7 @@ export const WithSections = {
   },
 };
 
-export const WithCustomSectionsStyles = {
+export const WithCustomSectionsStyles: Story = {
   render: WithCustomSectionsStylesTemplate,
 
   args: {
@@ -1143,7 +1146,7 @@ export const WithCustomSectionsStyles = {
   },
 };
 
-export const WithAriaLabel = {
+export const WithAriaLabel: Story = {
   render: WithAriaLabelTemplate,
 
   args: {
@@ -1153,7 +1156,7 @@ export const WithAriaLabel = {
   },
 };
 
-export const WithReactHookForm = {
+export const WithReactHookForm: Story = {
   render: WithReactHookFormTemplate,
 
   args: {
@@ -1161,7 +1164,7 @@ export const WithReactHookForm = {
   },
 };
 
-export const WithServerValidation = {
+export const WithServerValidation: Story = {
   render: ServerValidationTemplate,
 
   args: {
@@ -1169,7 +1172,7 @@ export const WithServerValidation = {
   },
 };
 
-export const WithServerValidationMultiple = {
+export const WithServerValidationMultiple: Story = {
   render: ServerValidationTemplateWithMultiple,
 
   args: {
@@ -1177,7 +1180,7 @@ export const WithServerValidationMultiple = {
   },
 };
 
-export const WithScrollableContainer = {
+export const WithScrollableContainer: Story = {
   render: ScrollableContainerTemplate,
 
   args: {
@@ -1185,7 +1188,7 @@ export const WithScrollableContainer = {
   },
 };
 
-export const Controlled = {
+export const Controlled: Story = {
   render: ControlledTemplate,
 
   args: {
@@ -1193,7 +1196,7 @@ export const Controlled = {
   },
 };
 
-export const ControlledMultiple = {
+export const ControlledMultiple: Story = {
   render: ControlledMultipleTemplate,
 
   args: {
@@ -1201,7 +1204,7 @@ export const ControlledMultiple = {
   },
 };
 
-export const ControlledOpen = {
+export const ControlledOpen: Story = {
   render: ControlledOpenTemplate,
 
   args: {
@@ -1209,7 +1212,7 @@ export const ControlledOpen = {
   },
 };
 
-export const CustomSelectorIcon = {
+export const CustomSelectorIcon: Story = {
   render: Template,
 
   args: {
@@ -1219,7 +1222,7 @@ export const CustomSelectorIcon = {
   },
 };
 
-export const CustomItems = {
+export const CustomItems: Story = {
   render: CustomItemsTemplate,
 
   args: {
@@ -1227,7 +1230,7 @@ export const CustomItems = {
   },
 };
 
-export const CustomRenderValue = {
+export const CustomRenderValue: Story = {
   render: CustomItemsTemplate,
 
   args: {
@@ -1250,7 +1253,7 @@ export const CustomRenderValue = {
   },
 };
 
-export const CustomStyles = {
+export const CustomStyles: Story = {
   render: CustomStylesTemplate,
 
   args: {
@@ -1270,7 +1273,7 @@ export const CustomStyles = {
   },
 };
 
-export const OneThousandList = {
+export const OneThousandList: Story = {
   render: LargeDatasetTemplate,
   args: {
     ...defaultProps,
@@ -1280,7 +1283,7 @@ export const OneThousandList = {
   },
 };
 
-export const TenThousandList = {
+export const TenThousandList: Story = {
   render: LargeDatasetTemplate,
   args: {
     ...defaultProps,
@@ -1290,7 +1293,7 @@ export const TenThousandList = {
   },
 };
 
-export const CustomMaxListboxHeight = {
+export const CustomMaxListboxHeight: Story = {
   render: LargeDatasetTemplate,
   args: {
     ...defaultProps,
@@ -1301,7 +1304,7 @@ export const CustomMaxListboxHeight = {
   },
 };
 
-export const CustomItemHeight = {
+export const CustomItemHeight: Story = {
   render: LargeDatasetTemplate,
   args: {
     ...defaultProps,
@@ -1313,7 +1316,7 @@ export const CustomItemHeight = {
   },
 };
 
-export const Clearable = {
+export const Clearable: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -1371,7 +1374,7 @@ const AVATAR_DECORATIONS: { [key: string]: string[] } = {
   "street-fighter": ["akuma", "cammy", "chun-li", "guile", "juri", "ken", "m.bison", "ryu"],
 };
 
-export const NonVirtualizedVsVirtualizedWithSections = {
+export const NonVirtualizedVsVirtualizedWithSections: Story = {
   render: () => {
     const SelectComponent = ({ isVirtualized }: { isVirtualized: boolean }) => (
       <Select
@@ -1412,14 +1415,14 @@ export const NonVirtualizedVsVirtualizedWithSections = {
   },
 };
 
-export const ValidationBehaviorAria = {
+export const ValidationBehaviorAria: Story = {
   render: ValidationBehaviorAriaTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const PopoverTopOrBottom = {
+export const PopoverTopOrBottom: Story = {
   args: {
     ...defaultProps,
   },

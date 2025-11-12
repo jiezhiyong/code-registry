@@ -1,5 +1,5 @@
 import type { NavbarProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 import Lorem from "react-lorem-component";
@@ -21,7 +21,7 @@ import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@/registr
 import { Input } from "@/registry/ui/input";
 import { Link } from "@/registry/ui/link";
 
-export default {
+const meta = {
   title: "Components/Navbar",
   component: Navbar,
   argTypes: {
@@ -55,7 +55,10 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof Navbar>;
+} satisfies Meta<typeof Navbar>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...navbar.defaultVariants,
@@ -532,7 +535,7 @@ const WithSearchInputTemplate = (args: NavbarProps) => {
   );
 };
 
-export const Static = {
+export const Static: Story = {
   render: Template,
 
   args: {
@@ -541,7 +544,7 @@ export const Static = {
   },
 };
 
-export const Sticky = {
+export const Sticky: Story = {
   render: Template,
 
   args: {
@@ -550,7 +553,7 @@ export const Sticky = {
   },
 };
 
-export const HideOnScroll = {
+export const HideOnScroll: Story = {
   render: Template,
 
   args: {
@@ -560,7 +563,7 @@ export const HideOnScroll = {
   },
 };
 
-export const WithMenu = {
+export const WithMenu: Story = {
   render: WithMenuTemplate,
 
   args: {
@@ -568,7 +571,7 @@ export const WithMenu = {
   },
 };
 
-export const WithDropdown = {
+export const WithDropdown: Story = {
   render: WithDropdownTemplate,
 
   args: {
@@ -576,7 +579,7 @@ export const WithDropdown = {
   },
 };
 
-export const WithAvatarUser = {
+export const WithAvatarUser: Story = {
   render: WithAvatarUserTemplate,
 
   args: {
@@ -584,7 +587,7 @@ export const WithAvatarUser = {
   },
 };
 
-export const WithSearchInput = {
+export const WithSearchInput: Story = {
   render: WithSearchInputTemplate,
 
   args: {
@@ -592,7 +595,7 @@ export const WithSearchInput = {
   },
 };
 
-export const WithShouldBlockScroll = {
+export const WithShouldBlockScroll: Story = {
   render: (args) => {
     return (
       <div className="flex gap-8 w-[1024px]">

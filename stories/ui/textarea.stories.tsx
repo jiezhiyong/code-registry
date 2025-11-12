@@ -1,6 +1,6 @@
 import type { TextAreaProps } from "@/registry/ui";
 import type { ValidationResult } from "@react-types/shared";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
@@ -8,7 +8,7 @@ import { PlusFilledIcon, SendFilledIcon } from "@/icons";
 import { button, input, Textarea } from "@/registry/ui";
 import { Form } from "@/registry/ui/form";
 
-export default {
+const meta = {
   title: "Components/Textarea",
   component: Textarea,
   argTypes: {
@@ -66,7 +66,10 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof Textarea>;
+} satisfies Meta<typeof Textarea>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...input.defaultVariants,
@@ -126,7 +129,7 @@ const FormTemplate = (args: TextAreaProps) => (
   </form>
 );
 
-export const Default = {
+export const Default: Story = {
   render: Template,
 
   args: {
@@ -134,7 +137,7 @@ export const Default = {
   },
 };
 
-export const FullRounded = {
+export const FullRounded: Story = {
   render: Template,
 
   args: {
@@ -151,7 +154,7 @@ export const FullRounded = {
   },
 };
 
-export const Required = {
+export const Required: Story = {
   render: FormTemplate,
 
   args: {
@@ -160,7 +163,7 @@ export const Required = {
   },
 };
 
-export const Disabled = {
+export const Disabled: Story = {
   render: Template,
 
   args: {
@@ -171,7 +174,7 @@ export const Disabled = {
   },
 };
 
-export const ReadOnly = {
+export const ReadOnly: Story = {
   render: Template,
 
   args: {
@@ -182,7 +185,7 @@ export const ReadOnly = {
   },
 };
 
-export const WithStartContent = {
+export const WithStartContent: Story = {
   render: Template,
 
   args: {
@@ -191,7 +194,7 @@ export const WithStartContent = {
   },
 };
 
-export const WithEndContent = {
+export const WithEndContent: Story = {
   render: Template,
 
   args: {
@@ -232,7 +235,7 @@ const ServerValidationTemplate = (args: TextAreaProps) => {
   );
 };
 
-export const Controlled = {
+export const Controlled: Story = {
   render: ControlledTemplate,
 
   args: {
@@ -240,7 +243,7 @@ export const Controlled = {
   },
 };
 
-export const MinRows = {
+export const MinRows: Story = {
   render: MinRowsTemplate,
 
   args: {
@@ -248,7 +251,7 @@ export const MinRows = {
   },
 };
 
-export const MaxRows = {
+export const MaxRows: Story = {
   render: MaxRowsTemplate,
 
   args: {
@@ -258,7 +261,7 @@ export const MaxRows = {
   },
 };
 
-export const WithErrorMessage = {
+export const WithErrorMessage: Story = {
   render: Template,
 
   args: {
@@ -268,7 +271,7 @@ export const WithErrorMessage = {
   },
 };
 
-export const WithErrorMessageFunction = {
+export const WithErrorMessageFunction: Story = {
   render: FormTemplate,
 
   args: {
@@ -292,7 +295,7 @@ export const WithErrorMessageFunction = {
   },
 };
 
-export const WithValidation = {
+export const WithValidation: Story = {
   render: FormTemplate,
 
   args: {
@@ -311,7 +314,7 @@ export const WithValidation = {
   },
 };
 
-export const WithServerValidation = {
+export const WithServerValidation: Story = {
   render: ServerValidationTemplate,
 
   args: {
@@ -319,7 +322,7 @@ export const WithServerValidation = {
   },
 };
 
-export const IsInvalid = {
+export const IsInvalid: Story = {
   render: Template,
 
   args: {
@@ -330,7 +333,7 @@ export const IsInvalid = {
   },
 };
 
-export const Clearable = {
+export const Clearable: Story = {
   render: Template,
 
   args: {

@@ -1,10 +1,10 @@
 import type { SpacerProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { spacer } from "@/registry/ui";
 import { Spacer } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/Spacer",
   component: Spacer,
   argTypes: {
@@ -31,7 +31,10 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof Spacer>;
+} satisfies Meta<typeof Spacer>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...spacer.defaultVariants,
@@ -59,7 +62,7 @@ const HorizontalTemplate = (args: SpacerProps) => (
   </div>
 );
 
-export const Vertical = {
+export const Vertical: Story = {
   render: VerticalTemplate,
 
   args: {
@@ -68,7 +71,7 @@ export const Vertical = {
   },
 };
 
-export const Horizontal = {
+export const Horizontal: Story = {
   render: HorizontalTemplate,
 
   args: {

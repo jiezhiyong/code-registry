@@ -1,12 +1,12 @@
 import type { ImageProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
 import { image } from "@/registry/ui";
 import { Image } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/Image",
   component: Image,
   argTypes: {
@@ -50,7 +50,10 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof Image>;
+} satisfies Meta<typeof Image>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...image.defaultVariants,
@@ -77,14 +80,14 @@ const LoadingTemplate = (args: ImageProps) => {
   return <Image {...args} isLoading={isLoading} />;
 };
 
-export const Default = {
+export const Default: Story = {
   args: {
     width: 300,
     ...defaultProps,
   },
 };
 
-export const Blurred = {
+export const Blurred: Story = {
   args: {
     ...defaultProps,
     width: 300,
@@ -95,7 +98,7 @@ export const Blurred = {
   },
 };
 
-export const Zoomed = {
+export const Zoomed: Story = {
   args: {
     ...defaultProps,
     width: 300,
@@ -105,7 +108,7 @@ export const Zoomed = {
   },
 };
 
-export const Shadow = {
+export const Shadow: Story = {
   args: {
     ...defaultProps,
     width: 300,
@@ -116,7 +119,7 @@ export const Shadow = {
   },
 };
 
-export const AnimatedLoad = {
+export const AnimatedLoad: Story = {
   args: {
     ...defaultProps,
     width: 300,
@@ -125,7 +128,7 @@ export const AnimatedLoad = {
   },
 };
 
-export const Fallback = {
+export const Fallback: Story = {
   render: LoadingTemplate,
 
   args: {
@@ -137,7 +140,7 @@ export const Fallback = {
   },
 };
 
-export const Skeleton = {
+export const Skeleton: Story = {
   render: LoadingTemplate,
 
   args: {

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 import type { ButtonVariantProps, PopoverProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
@@ -10,7 +10,7 @@ import { Card, CardFooter, CardHeader } from "@/registry/ui/card";
 import { Input } from "@/registry/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/Popover",
   component: Popover,
   argTypes: {
@@ -111,7 +111,10 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof Popover>;
+} satisfies Meta<typeof Popover>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...popover.defaultVariants,
@@ -441,7 +444,7 @@ const WithBackdropTemplate = (args: PopoverProps) => (
   </Card>
 );
 
-export const Default = {
+export const Default: Story = {
   render: Template,
 
   args: {
@@ -449,7 +452,7 @@ export const Default = {
   },
 };
 
-export const DisableAnimation = {
+export const DisableAnimation: Story = {
   render: Template,
 
   args: {
@@ -458,7 +461,7 @@ export const DisableAnimation = {
   },
 };
 
-export const NonDismissable = {
+export const NonDismissable: Story = {
   render: Template,
 
   args: {
@@ -468,7 +471,7 @@ export const NonDismissable = {
   },
 };
 
-export const WithoutScaleTrigger = {
+export const WithoutScaleTrigger: Story = {
   render: Template,
 
   args: {
@@ -477,7 +480,7 @@ export const WithoutScaleTrigger = {
   },
 };
 
-export const WithArrow = {
+export const WithArrow: Story = {
   render: Template,
 
   args: {
@@ -486,7 +489,7 @@ export const WithArrow = {
   },
 };
 
-export const OpenChange = {
+export const OpenChange: Story = {
   render: OpenChangeTemplate,
 
   args: {
@@ -494,7 +497,7 @@ export const OpenChange = {
   },
 };
 
-export const Placements = {
+export const Placements: Story = {
   render: PlacementsTemplate,
 
   args: {
@@ -503,7 +506,7 @@ export const Placements = {
   },
 };
 
-export const WithOffset = {
+export const WithOffset: Story = {
   render: OffsetTemplate,
 
   args: {
@@ -512,7 +515,7 @@ export const WithOffset = {
   },
 };
 
-export const WithTitleProps = {
+export const WithTitleProps: Story = {
   render: WithTitlePropsTemplate,
 
   args: {
@@ -520,7 +523,7 @@ export const WithTitleProps = {
   },
 };
 
-export const WithForm = {
+export const WithForm: Story = {
   render: WithFormTemplate,
 
   args: {
@@ -532,7 +535,7 @@ export const WithForm = {
   },
 };
 
-export const Backdrops = {
+export const Backdrops: Story = {
   render: BackdropsTemplate,
 
   args: {
@@ -543,7 +546,7 @@ export const Backdrops = {
   },
 };
 
-export const WithBackdrop = {
+export const WithBackdrop: Story = {
   render: WithBackdropTemplate,
 
   args: {
@@ -555,7 +558,7 @@ export const WithBackdrop = {
   },
 };
 
-export const CustomMotion = {
+export const CustomMotion: Story = {
   render: Template,
 
   args: {
@@ -576,7 +579,7 @@ export const CustomMotion = {
   },
 };
 
-export const WithFallbackPlacements = {
+export const WithFallbackPlacements: Story = {
   args: {
     ...defaultProps,
   },
@@ -602,7 +605,7 @@ export const WithFallbackPlacements = {
   ),
 };
 
-export const WithShouldBlockScroll = {
+export const WithShouldBlockScroll: Story = {
   render: (args) => {
     return (
       <div className="flex gap-8">

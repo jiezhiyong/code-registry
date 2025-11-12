@@ -1,5 +1,5 @@
 import type { SwitchProps, SwitchThumbIconProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import React from "react";
@@ -9,7 +9,7 @@ import { MoonFilledIcon, SunFilledIcon } from "@/icons";
 import { clsx } from "@/lib/base";
 import { button, Switch, toggle, useSwitch } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/Switch",
   component: Switch,
   argTypes: {
@@ -36,7 +36,10 @@ export default {
       },
     },
   },
-} as Meta<typeof Switch>;
+} satisfies Meta<typeof Switch>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...toggle.defaultVariants,
@@ -163,13 +166,13 @@ const WithReactHookFormTemplate = (args: SwitchProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   args: {
     ...defaultProps,
   },
 };
 
-export const IsReadOnly = {
+export const IsReadOnly: Story = {
   args: {
     ...defaultProps,
     isReadOnly: true,
@@ -177,21 +180,21 @@ export const IsReadOnly = {
   },
 };
 
-export const WithLabel = {
+export const WithLabel: Story = {
   args: {
     ...defaultProps,
     children: "Bluetooth",
   },
 };
 
-export const DisableAnimation = {
+export const DisableAnimation: Story = {
   args: {
     ...defaultProps,
     disableAnimation: true,
   },
 };
 
-export const WithThumbIcon = {
+export const WithThumbIcon: Story = {
   args: {
     ...defaultProps,
     thumbIcon: (props: SwitchThumbIconProps) =>
@@ -199,7 +202,7 @@ export const WithThumbIcon = {
   },
 };
 
-export const WithIcons = {
+export const WithIcons: Story = {
   render: WithIconsTemplate,
 
   args: {
@@ -207,7 +210,7 @@ export const WithIcons = {
   },
 };
 
-export const WithReactHookForm = {
+export const WithReactHookForm: Story = {
   render: WithReactHookFormTemplate,
 
   args: {
@@ -215,7 +218,7 @@ export const WithReactHookForm = {
   },
 };
 
-export const Controlled = {
+export const Controlled: Story = {
   render: ControlledTemplate,
 
   args: {
@@ -223,7 +226,7 @@ export const Controlled = {
   },
 };
 
-export const CustomWithClassNames = {
+export const CustomWithClassNames: Story = {
   render: CustomWithClassNamesTemplate,
 
   args: {
@@ -231,7 +234,7 @@ export const CustomWithClassNames = {
   },
 };
 
-export const CustomWithHooks = {
+export const CustomWithHooks: Story = {
   render: CustomWithHooksTemplate,
 
   args: {

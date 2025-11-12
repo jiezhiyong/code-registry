@@ -1,9 +1,9 @@
 import type { AvatarGroupProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { Avatar, AvatarGroup } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/AvatarGroup",
   component: AvatarGroup,
   argTypes: {
@@ -25,7 +25,10 @@ export default {
       },
     },
   },
-} as Meta<typeof AvatarGroup>;
+} satisfies Meta<typeof AvatarGroup>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const Template = (args: AvatarGroupProps) => (
   <AvatarGroup {...args}>
@@ -82,7 +85,7 @@ const CustomSlotsTemplate = (args: AvatarGroupProps) => (
   </AvatarGroup>
 );
 
-export const Default = {
+export const Default: Story = {
   render: Template,
 
   args: {
@@ -91,7 +94,7 @@ export const Default = {
   },
 };
 
-export const Grid = {
+export const Grid: Story = {
   render: Template,
 
   args: {
@@ -102,7 +105,7 @@ export const Grid = {
   },
 };
 
-export const isDisabled = {
+export const isDisabled: Story = {
   render: Template,
 
   args: {
@@ -112,7 +115,7 @@ export const isDisabled = {
   },
 };
 
-export const WithMaxCount = {
+export const WithMaxCount: Story = {
   render: Template,
 
   args: {
@@ -122,7 +125,7 @@ export const WithMaxCount = {
   },
 };
 
-export const WithTotal = {
+export const WithTotal: Story = {
   render: Template,
 
   args: {
@@ -133,7 +136,7 @@ export const WithTotal = {
   },
 };
 
-export const CustomCount = {
+export const CustomCount: Story = {
   render: Template,
 
   args: {
@@ -145,7 +148,7 @@ export const CustomCount = {
   },
 };
 
-export const CustomSlots = {
+export const CustomSlots: Story = {
   render: CustomSlotsTemplate,
 
   args: {

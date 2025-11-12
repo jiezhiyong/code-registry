@@ -1,6 +1,6 @@
 import type { NumberInputProps } from "@/registry/ui";
 import type { ValidationResult } from "@react-types/shared";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
@@ -8,7 +8,7 @@ import { button, numberInput } from "@/registry/ui";
 import { Form } from "@/registry/ui/form";
 import { NumberInput } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/NumberInput",
   component: NumberInput,
   argTypes: {
@@ -61,7 +61,10 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof NumberInput>;
+} satisfies Meta<typeof NumberInput>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...numberInput.defaultVariants,
@@ -177,7 +180,7 @@ const ServerValidationTemplate = (args: NumberInputProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: Template,
 
   args: {
@@ -186,7 +189,7 @@ export const Default = {
   },
 };
 
-export const WithLabel = {
+export const WithLabel: Story = {
   render: Template,
 
   args: {
@@ -195,7 +198,7 @@ export const WithLabel = {
   },
 };
 
-export const WithDescription = {
+export const WithDescription: Story = {
   render: Template,
 
   args: {
@@ -205,7 +208,7 @@ export const WithDescription = {
   },
 };
 
-export const WithStepValue = {
+export const WithStepValue: Story = {
   render: Template,
 
   args: {
@@ -216,7 +219,7 @@ export const WithStepValue = {
   },
 };
 
-export const WithWheelDisabled = {
+export const WithWheelDisabled: Story = {
   render: Template,
 
   args: {
@@ -228,7 +231,7 @@ export const WithWheelDisabled = {
   },
 };
 
-export const WithFormatOptions = {
+export const WithFormatOptions: Story = {
   render: Template,
 
   args: {
@@ -243,7 +246,7 @@ export const WithFormatOptions = {
   },
 };
 
-export const HideStepper = {
+export const HideStepper: Story = {
   render: Template,
 
   args: {
@@ -254,7 +257,7 @@ export const HideStepper = {
   },
 };
 
-export const Required = {
+export const Required: Story = {
   render: FormTemplate,
 
   args: {
@@ -266,7 +269,7 @@ export const Required = {
   },
 };
 
-export const Disabled = {
+export const Disabled: Story = {
   render: Template,
 
   args: {
@@ -277,7 +280,7 @@ export const Disabled = {
   },
 };
 
-export const ReadOnly = {
+export const ReadOnly: Story = {
   render: Template,
 
   args: {
@@ -288,7 +291,7 @@ export const ReadOnly = {
   },
 };
 
-export const LabelPlacement = {
+export const LabelPlacement: Story = {
   render: LabelPlacementTemplate,
 
   args: {
@@ -298,7 +301,7 @@ export const LabelPlacement = {
   },
 };
 
-export const Clearable = {
+export const Clearable: Story = {
   render: Template,
 
   args: {
@@ -311,7 +314,7 @@ export const Clearable = {
   },
 };
 
-export const StartContent = {
+export const StartContent: Story = {
   render: Template,
 
   args: {
@@ -327,7 +330,7 @@ export const StartContent = {
   },
 };
 
-export const EndContent = {
+export const EndContent: Story = {
   render: Template,
 
   args: {
@@ -343,7 +346,7 @@ export const EndContent = {
   },
 };
 
-export const StartAndEndContent = {
+export const StartAndEndContent: Story = {
   render: Template,
 
   args: {
@@ -375,7 +378,7 @@ export const StartAndEndContent = {
   },
 };
 
-export const WithErrorMessage = {
+export const WithErrorMessage: Story = {
   render: Template,
 
   args: {
@@ -386,7 +389,7 @@ export const WithErrorMessage = {
   },
 };
 
-export const WithErrorMessageFunction = {
+export const WithErrorMessageFunction: Story = {
   render: FormTemplate,
 
   args: {
@@ -411,7 +414,7 @@ export const WithErrorMessageFunction = {
   },
 };
 
-export const WithValidation = {
+export const WithValidation: Story = {
   render: FormTemplate,
 
   args: {
@@ -427,7 +430,7 @@ export const WithValidation = {
   },
 };
 
-export const WithServerValidation = {
+export const WithServerValidation: Story = {
   render: ServerValidationTemplate,
 
   args: {
@@ -437,7 +440,7 @@ export const WithServerValidation = {
   },
 };
 
-export const IsInvalid = {
+export const IsInvalid: Story = {
   render: Template,
 
   args: {
@@ -450,7 +453,7 @@ export const IsInvalid = {
   },
 };
 
-export const Controlled = {
+export const Controlled: Story = {
   render: ControlledTemplate,
 
   args: {
@@ -461,7 +464,7 @@ export const Controlled = {
   },
 };
 
-export const MinValue = {
+export const MinValue: Story = {
   render: Template,
 
   args: {
@@ -472,7 +475,7 @@ export const MinValue = {
   },
 };
 
-export const MaxValue = {
+export const MaxValue: Story = {
   render: Template,
 
   args: {
@@ -483,7 +486,7 @@ export const MaxValue = {
   },
 };
 
-export const CustomWithClassNames = {
+export const CustomWithClassNames: Story = {
   render: Template,
 
   args: {

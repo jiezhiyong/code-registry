@@ -1,6 +1,6 @@
 import type { AccordionItemProps, AccordionProps } from "@/registry/ui";
 import type { Selection } from "@react-types/shared";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
@@ -18,7 +18,7 @@ import { Avatar } from "@/registry/ui/avatar";
 import { Button } from "@/registry/ui/button";
 import { Input, Textarea } from "@/registry/ui/input";
 
-export default {
+const meta = {
   title: "Components/Accordion",
   component: Accordion,
   argTypes: {
@@ -45,7 +45,10 @@ export default {
       },
     },
   },
-} as Meta<typeof Accordion>;
+} satisfies Meta<typeof Accordion>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...accordionItem.defaultVariants,
@@ -356,7 +359,7 @@ const WithFormTemplate = (args: AccordionProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: Template,
 
   args: {
@@ -364,7 +367,7 @@ export const Default = {
   },
 };
 
-export const IsCompact = {
+export const IsCompact: Story = {
   render: Template,
 
   args: {
@@ -373,7 +376,7 @@ export const IsCompact = {
   },
 };
 
-export const Multiple = {
+export const Multiple: Story = {
   render: Template,
 
   args: {
@@ -382,7 +385,7 @@ export const Multiple = {
   },
 };
 
-export const DefaultExpanded = {
+export const DefaultExpanded: Story = {
   render: Template,
 
   args: {
@@ -391,7 +394,7 @@ export const DefaultExpanded = {
   },
 };
 
-export const KeepContentMounted = {
+export const KeepContentMounted: Story = {
   render: Template,
 
   args: {
@@ -400,7 +403,7 @@ export const KeepContentMounted = {
   },
 };
 
-export const DisabledKeys = {
+export const DisabledKeys: Story = {
   render: Template,
 
   args: {
@@ -409,7 +412,7 @@ export const DisabledKeys = {
   },
 };
 
-export const WithSubtitle = {
+export const WithSubtitle: Story = {
   render: TemplateWithSubtitle,
 
   args: {
@@ -417,7 +420,7 @@ export const WithSubtitle = {
   },
 };
 
-export const WithStartContent = {
+export const WithStartContent: Story = {
   render: TemplateWithStartContent,
 
   args: {
@@ -425,7 +428,7 @@ export const WithStartContent = {
   },
 };
 
-export const Variants = {
+export const Variants: Story = {
   render: VariantsTemplate,
 
   args: {
@@ -433,7 +436,7 @@ export const Variants = {
   },
 };
 
-export const WithForm = {
+export const WithForm: Story = {
   render: WithFormTemplate,
 
   args: {
@@ -441,7 +444,7 @@ export const WithForm = {
   },
 };
 
-export const CustomMotion = {
+export const CustomMotion: Story = {
   render: Template,
 
   args: {
@@ -485,7 +488,7 @@ export const CustomMotion = {
   },
 };
 
-export const CustomIndicator = {
+export const CustomIndicator: Story = {
   render: CustomInidicatorTemplate,
 
   args: {
@@ -493,7 +496,7 @@ export const CustomIndicator = {
   },
 };
 
-export const Controlled = {
+export const Controlled: Story = {
   render: ControlledTemplate,
 
   args: {
@@ -501,7 +504,7 @@ export const Controlled = {
   },
 };
 
-export const CustomWithClassNames = {
+export const CustomWithClassNames: Story = {
   render: CustomWithClassNamesTemplate,
 
   args: {

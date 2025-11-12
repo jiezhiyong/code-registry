@@ -3,7 +3,7 @@ import type { RadioProps } from "@/registry/ui/radio";
 import type { DateValue } from "@internationalized/date";
 import type { MappedDateValue } from "@react-types/datepicker";
 import type { ValidationResult } from "@react-types/shared";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import {
   getLocalTimeZone,
@@ -26,7 +26,7 @@ import { Button, ButtonGroup } from "@/registry/ui/button";
 import { Form } from "@/registry/ui/form";
 import { Radio, RadioGroup } from "@/registry/ui/radio";
 
-export default {
+const meta = {
   title: "Components/DatePicker",
   component: DatePicker,
   argTypes: {
@@ -83,7 +83,10 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof DatePicker>;
+} satisfies Meta<typeof DatePicker>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   label: "Birth Date",
@@ -361,14 +364,14 @@ const selectorButtonPlacementTemplate = (args: DatePickerProps) => (
   </div>
 );
 
-export const Default = {
+export const Default: Story = {
   render: Template,
   args: {
     ...defaultProps,
   },
 };
 
-export const WithMonthAndYearPickers = {
+export const WithMonthAndYearPickers: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -377,7 +380,7 @@ export const WithMonthAndYearPickers = {
   },
 };
 
-export const WithTimeField = {
+export const WithTimeField: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -388,7 +391,7 @@ export const WithTimeField = {
   },
 };
 
-export const LabelPlacement = {
+export const LabelPlacement: Story = {
   render: LabelPlacementTemplate,
 
   args: {
@@ -396,14 +399,14 @@ export const LabelPlacement = {
   },
 };
 
-export const Controlled = {
+export const Controlled: Story = {
   render: ControlledTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const Required = {
+export const Required: Story = {
   render: FormTemplate,
   args: {
     ...defaultProps,
@@ -411,7 +414,7 @@ export const Required = {
   },
 };
 
-export const Disabled = {
+export const Disabled: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -420,7 +423,7 @@ export const Disabled = {
   },
 };
 
-export const ReadOnly = {
+export const ReadOnly: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -429,7 +432,7 @@ export const ReadOnly = {
   },
 };
 
-export const WithoutLabel = {
+export const WithoutLabel: Story = {
   render: Template,
 
   args: {
@@ -439,7 +442,7 @@ export const WithoutLabel = {
   },
 };
 
-export const WithDescription = {
+export const WithDescription: Story = {
   render: Template,
 
   args: {
@@ -448,7 +451,7 @@ export const WithDescription = {
   },
 };
 
-export const SelectorIcon = {
+export const SelectorIcon: Story = {
   render: Template,
 
   args: {
@@ -465,7 +468,7 @@ export const SelectorIcon = {
   },
 };
 
-export const WithErrorMessage = {
+export const WithErrorMessage: Story = {
   render: Template,
 
   args: {
@@ -475,7 +478,7 @@ export const WithErrorMessage = {
   },
 };
 
-export const WithErrorMessageFunction = {
+export const WithErrorMessageFunction: Story = {
   render: Template,
 
   args: {
@@ -489,7 +492,7 @@ export const WithErrorMessageFunction = {
   },
 };
 
-export const IsInvalid = {
+export const IsInvalid: Story = {
   render: Template,
 
   args: {
@@ -501,7 +504,7 @@ export const IsInvalid = {
   },
 };
 
-export const TimeZones = {
+export const TimeZones: Story = {
   render: TimeZonesTemplate,
 
   args: {
@@ -511,7 +514,7 @@ export const TimeZones = {
   },
 };
 
-export const Granularity = {
+export const Granularity: Story = {
   render: GranularityTemplate,
 
   args: {
@@ -519,7 +522,7 @@ export const Granularity = {
   },
 };
 
-export const InternationalCalendars = {
+export const InternationalCalendars: Story = {
   render: InternationalCalendarsTemplate,
 
   args: {
@@ -528,7 +531,7 @@ export const InternationalCalendars = {
   },
 };
 
-export const MinDateValue = {
+export const MinDateValue: Story = {
   render: Template,
 
   args: {
@@ -538,7 +541,7 @@ export const MinDateValue = {
   },
 };
 
-export const MaxDateValue = {
+export const MaxDateValue: Story = {
   render: Template,
 
   args: {
@@ -548,7 +551,7 @@ export const MaxDateValue = {
   },
 };
 
-export const UnavailableDates = {
+export const UnavailableDates: Story = {
   render: UnavailableDatesTemplate,
   args: {
     ...defaultProps,
@@ -557,7 +560,7 @@ export const UnavailableDates = {
   },
 };
 
-export const VisibleMonths = {
+export const VisibleMonths: Story = {
   render: Template,
 
   args: {
@@ -566,7 +569,7 @@ export const VisibleMonths = {
   },
 };
 
-export const PageBehavior = {
+export const PageBehavior: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -575,14 +578,14 @@ export const PageBehavior = {
   },
 };
 
-export const Presets = {
+export const Presets: Story = {
   render: PresetsTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const WithValidation = {
+export const WithValidation: Story = {
   render: FormTemplate,
 
   args: {
@@ -599,28 +602,28 @@ export const WithValidation = {
   },
 };
 
-export const WithServerValidation = {
+export const WithServerValidation: Story = {
   render: ServerValidationTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const WithStartAndEndContent = {
+export const WithStartAndEndContent: Story = {
   render: StartAndEndContentTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const selectorButtonPlacement = {
+export const selectorButtonPlacement: Story = {
   render: selectorButtonPlacementTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const WithDateInputClassNames = {
+export const WithDateInputClassNames: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -635,7 +638,7 @@ export const WithDateInputClassNames = {
   },
 };
 
-export const FirstDayOfWeek = {
+export const FirstDayOfWeek: Story = {
   render: Template,
   args: {
     ...defaultProps,

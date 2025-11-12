@@ -1,10 +1,10 @@
 import type { DividerProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { divider } from "@/registry/ui";
 import { Divider } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/Divider",
   component: Divider,
   argTypes: {
@@ -22,7 +22,10 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof Divider>;
+} satisfies Meta<typeof Divider>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...divider.defaultVariants,
@@ -45,7 +48,7 @@ const Template = (args: DividerProps) => (
   </div>
 );
 
-export const Default = {
+export const Default: Story = {
   render: Template,
 
   args: {

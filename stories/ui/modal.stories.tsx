@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 import type { ModalProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 import Lorem from "react-lorem-component";
@@ -23,7 +23,7 @@ import { Input } from "@/registry/ui/input";
 import { Link } from "@/registry/ui/link";
 import { Switch } from "@/registry/ui/switch";
 
-export default {
+const meta = {
   title: "Components/Modal",
   component: Modal,
   argTypes: {
@@ -78,7 +78,10 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof Modal>;
+} satisfies Meta<typeof Modal>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...modal.defaultVariants,
@@ -313,7 +316,7 @@ const ModalWithAutocompleteTemplate = (args: ModalProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: Template,
 
   args: {
@@ -321,7 +324,7 @@ export const Default = {
   },
 };
 
-export const DefaultOpen = {
+export const DefaultOpen: Story = {
   render: Template,
 
   args: {
@@ -330,7 +333,7 @@ export const DefaultOpen = {
   },
 };
 
-export const OpenChange = {
+export const OpenChange: Story = {
   render: OpenChangeTemplate,
 
   args: {
@@ -339,7 +342,7 @@ export const OpenChange = {
   },
 };
 
-export const InsideScroll = {
+export const InsideScroll: Story = {
   render: InsideScrollTemplate,
 
   args: {
@@ -348,7 +351,7 @@ export const InsideScroll = {
   },
 };
 
-export const OutsideScroll = {
+export const OutsideScroll: Story = {
   render: OutsideScrollTemplate,
 
   args: {
@@ -356,7 +359,7 @@ export const OutsideScroll = {
   },
 };
 
-export const DisableAnimation = {
+export const DisableAnimation: Story = {
   render: Template,
 
   args: {
@@ -365,7 +368,7 @@ export const DisableAnimation = {
   },
 };
 
-export const CustomMotion = {
+export const CustomMotion: Story = {
   render: Template,
 
   args: {
@@ -387,7 +390,7 @@ export const CustomMotion = {
   },
 };
 
-export const Draggable = {
+export const Draggable: Story = {
   render: DraggableTemplate,
 
   args: {
@@ -395,7 +398,7 @@ export const Draggable = {
   },
 };
 
-export const DraggableOverflow = {
+export const DraggableOverflow: Story = {
   render: DraggableOverflowTemplate,
 
   args: {
@@ -403,7 +406,7 @@ export const DraggableOverflow = {
   },
 };
 
-export const WithShouldBlockScroll = {
+export const WithShouldBlockScroll: Story = {
   render: (args) => {
     return (
       <div className="flex gap-8">
@@ -418,7 +421,7 @@ export const WithShouldBlockScroll = {
   },
 };
 
-export const WithAutocomplete = {
+export const WithAutocomplete: Story = {
   render: ModalWithAutocompleteTemplate,
   args: {
     ...defaultProps,

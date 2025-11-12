@@ -1,5 +1,5 @@
 import type { ScrollShadowOrientation, ScrollShadowProps, ScrollShadowVisibility } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 import Lorem from "react-lorem-component";
@@ -7,7 +7,7 @@ import Lorem from "react-lorem-component";
 import { button, scrollShadow } from "@/registry/ui";
 import { ScrollShadow } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/ScrollShadow",
   component: ScrollShadow,
   argTypes: {
@@ -35,7 +35,10 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof ScrollShadow>;
+} satisfies Meta<typeof ScrollShadow>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...scrollShadow.defaultVariants,
@@ -106,21 +109,21 @@ const ControlledTemplate = ({ children, ...args }: ScrollShadowProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: Template,
   args: {
     ...defaultProps,
   },
 };
 
-export const Controlled = {
+export const Controlled: Story = {
   render: ControlledTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const HideScrollBar = {
+export const HideScrollBar: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -128,7 +131,7 @@ export const HideScrollBar = {
   },
 };
 
-export const CustomShadowSize = {
+export const CustomShadowSize: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -136,7 +139,7 @@ export const CustomShadowSize = {
   },
 };
 
-export const HorizontalOrientation = {
+export const HorizontalOrientation: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -150,7 +153,7 @@ export const HorizontalOrientation = {
   },
 };
 
-export const ShadowOffset = {
+export const ShadowOffset: Story = {
   render: Template,
   args: {
     ...defaultProps,

@@ -1,10 +1,10 @@
 import type { SpinnerProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { spinner } from "@/registry/ui";
 import { Spinner } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/Spinner",
   component: Spinner,
   argTypes: {
@@ -40,7 +40,10 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof Spinner>;
+} satisfies Meta<typeof Spinner>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...spinner.defaultVariants,
@@ -59,20 +62,20 @@ const VariantsTemplate = (args: SpinnerProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   args: {
     ...defaultProps,
   },
 };
 
-export const WithLabel = {
+export const WithLabel: Story = {
   args: {
     ...defaultProps,
     label: "Loading...",
   },
 };
 
-export const Variants = {
+export const Variants: Story = {
   args: {
     ...defaultProps,
     classNames: {

@@ -1,6 +1,6 @@
 import type { TimeInputProps, TimeInputValue as TimeValue } from "@/registry/ui";
 import type { ValidationResult } from "@react-types/shared";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { parseAbsoluteToLocal, parseZonedDateTime, Time, ZonedDateTime } from "@internationalized/date";
 import { useDateFormatter } from "@react-aria/i18n";
@@ -9,7 +9,7 @@ import React from "react";
 import { ClockCircleLinearIcon } from "@/icons";
 import { button, dateInput, TimeInput } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/TimeInput",
   component: TimeInput,
   argTypes: {
@@ -55,7 +55,10 @@ export default {
       options: ["aria", "native"],
     },
   },
-} as Meta<typeof TimeInput>;
+} satisfies Meta<typeof TimeInput>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   label: "Event Time",
@@ -131,14 +134,14 @@ const GranularityTemplate = (args: TimeInputProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: Template,
   args: {
     ...defaultProps,
   },
 };
 
-export const Required = {
+export const Required: Story = {
   render: FormTemplate,
   args: {
     ...defaultProps,
@@ -146,7 +149,7 @@ export const Required = {
   },
 };
 
-export const Disabled = {
+export const Disabled: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -155,7 +158,7 @@ export const Disabled = {
   },
 };
 
-export const ReadOnly = {
+export const ReadOnly: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -164,7 +167,7 @@ export const ReadOnly = {
   },
 };
 
-export const WithoutLabel = {
+export const WithoutLabel: Story = {
   render: Template,
 
   args: {
@@ -174,7 +177,7 @@ export const WithoutLabel = {
   },
 };
 
-export const WithDescription = {
+export const WithDescription: Story = {
   render: Template,
 
   args: {
@@ -183,7 +186,7 @@ export const WithDescription = {
   },
 };
 
-export const WithErrorMessage = {
+export const WithErrorMessage: Story = {
   render: Template,
 
   args: {
@@ -193,7 +196,7 @@ export const WithErrorMessage = {
   },
 };
 
-export const WithErrorMessageFunction = {
+export const WithErrorMessageFunction: Story = {
   render: Template,
 
   args: {
@@ -207,7 +210,7 @@ export const WithErrorMessageFunction = {
   },
 };
 
-export const LabelPlacement = {
+export const LabelPlacement: Story = {
   render: LabelPlacementTemplate,
 
   args: {
@@ -215,7 +218,7 @@ export const LabelPlacement = {
   },
 };
 
-export const StartContent = {
+export const StartContent: Story = {
   render: Template,
 
   args: {
@@ -225,7 +228,7 @@ export const StartContent = {
   },
 };
 
-export const EndContent = {
+export const EndContent: Story = {
   render: Template,
 
   args: {
@@ -235,7 +238,7 @@ export const EndContent = {
   },
 };
 
-export const Controlled = {
+export const Controlled: Story = {
   render: ControlledTemplate,
 
   args: {
@@ -244,7 +247,7 @@ export const Controlled = {
   },
 };
 
-export const TimeZones = {
+export const TimeZones: Story = {
   render: TimeZonesTemplate,
 
   args: {
@@ -254,7 +257,7 @@ export const TimeZones = {
   },
 };
 
-export const Granularity = {
+export const Granularity: Story = {
   render: GranularityTemplate,
 
   args: {
@@ -262,7 +265,7 @@ export const Granularity = {
   },
 };
 
-export const MinTimeValue = {
+export const MinTimeValue: Story = {
   render: Template,
 
   args: {
@@ -272,7 +275,7 @@ export const MinTimeValue = {
   },
 };
 
-export const MaxTimeValue = {
+export const MaxTimeValue: Story = {
   render: Template,
 
   args: {
@@ -282,7 +285,7 @@ export const MaxTimeValue = {
   },
 };
 
-export const PlaceholderValue = {
+export const PlaceholderValue: Story = {
   render: Template,
 
   args: {
@@ -292,7 +295,7 @@ export const PlaceholderValue = {
   },
 };
 
-export const HideTimeZone = {
+export const HideTimeZone: Story = {
   render: Template,
 
   args: {
@@ -303,7 +306,7 @@ export const HideTimeZone = {
   },
 };
 
-export const HourCycle = {
+export const HourCycle: Story = {
   render: Template,
 
   args: {
@@ -314,7 +317,7 @@ export const HourCycle = {
     granularity: "minute",
   },
 };
-export const WithValidation = {
+export const WithValidation: Story = {
   render: FormTemplate,
 
   args: {

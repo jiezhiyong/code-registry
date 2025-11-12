@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-autofocus */
 import type { DrawerProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
@@ -15,7 +15,7 @@ import { Input } from "@/registry/ui/input";
 import { Link } from "@/registry/ui/link";
 import { Tooltip } from "@/registry/ui/tooltip";
 
-export default {
+const meta = {
   title: "Components/Drawer",
   component: Drawer,
   argTypes: {
@@ -66,7 +66,10 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof Drawer>;
+} satisfies Meta<typeof Drawer>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...drawer.defaultVariants,
@@ -465,14 +468,14 @@ const CustomStylesTemplate = (args: DrawerProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: Template,
   args: {
     ...defaultProps,
   },
 };
 
-export const DefaultOpen = {
+export const DefaultOpen: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -480,7 +483,7 @@ export const DefaultOpen = {
   },
 };
 
-export const Placement = {
+export const Placement: Story = {
   render: PlacementTemplate,
   args: {
     ...defaultProps,
@@ -488,7 +491,7 @@ export const Placement = {
   },
 };
 
-export const DisableAnimation = {
+export const DisableAnimation: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -496,7 +499,7 @@ export const DisableAnimation = {
   },
 };
 
-export const CustomMotion = {
+export const CustomMotion: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -517,7 +520,7 @@ export const CustomMotion = {
   },
 };
 
-export const CustomStyles = {
+export const CustomStyles: Story = {
   render: CustomStylesTemplate,
   args: {
     ...defaultProps,

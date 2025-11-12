@@ -1,5 +1,5 @@
 import type { SliderProps, SliderValue } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
@@ -9,7 +9,7 @@ import { slider, Slider } from "@/registry/ui";
 import { Tooltip } from "@/registry/ui/tooltip";
 import { VolumeHighBoldIcon, VolumeLowBoldIcon } from "@/utils/icons";
 
-export default {
+const meta = {
   title: "Components/Slider",
   component: Slider,
   argTypes: {
@@ -68,7 +68,10 @@ export default {
       },
     },
   },
-} as Meta<typeof Slider>;
+} satisfies Meta<typeof Slider>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...slider.defaultVariants,
@@ -209,7 +212,7 @@ const ControlledRangeTemplate = (args: SliderProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -217,7 +220,7 @@ export const Default = {
   },
 };
 
-export const ShowSteps = {
+export const ShowSteps: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -227,7 +230,7 @@ export const ShowSteps = {
   },
 };
 
-export const Range = {
+export const Range: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -237,7 +240,7 @@ export const Range = {
   },
 };
 
-export const FillOffset = {
+export const FillOffset: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -249,7 +252,7 @@ export const FillOffset = {
   },
 };
 
-export const WithMarks = {
+export const WithMarks: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -276,7 +279,7 @@ export const WithMarks = {
   },
 };
 
-export const WithTooltip = {
+export const WithTooltip: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -304,7 +307,7 @@ export const WithTooltip = {
   },
 };
 
-export const WithCustomTooltipTimeFormat = {
+export const WithCustomTooltipTimeFormat: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -338,7 +341,7 @@ export const WithCustomTooltipTimeFormat = {
   },
 };
 
-export const WithCustomTooltipMultiThumb = {
+export const WithCustomTooltipMultiThumb: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -365,7 +368,7 @@ export const WithCustomTooltipMultiThumb = {
   },
 };
 
-export const ThumbHidden = {
+export const ThumbHidden: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -393,7 +396,7 @@ export const ThumbHidden = {
   },
 };
 
-export const CustomGetValue = {
+export const CustomGetValue: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -404,7 +407,7 @@ export const CustomGetValue = {
   },
 };
 
-export const CustomRenderValue = {
+export const CustomRenderValue: Story = {
   render: CustomValueTemplate,
   args: {
     ...defaultProps,
@@ -416,7 +419,7 @@ export const CustomRenderValue = {
   },
 };
 
-export const CustomRenderThumb = {
+export const CustomRenderThumb: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -437,7 +440,7 @@ export const CustomRenderThumb = {
   },
 };
 
-export const CustomRenderRangeThumb = {
+export const CustomRenderRangeThumb: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -467,7 +470,7 @@ export const CustomRenderRangeThumb = {
   },
 };
 
-export const CustomRenderLabel = {
+export const CustomRenderLabel: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -511,7 +514,7 @@ export const CustomRenderLabel = {
   },
 };
 
-export const VerticalOrientation = {
+export const VerticalOrientation: Story = {
   render: VerticalTemplate,
   args: {
     ...defaultProps,
@@ -521,7 +524,7 @@ export const VerticalOrientation = {
   },
 };
 
-export const WithMarksVerticalOrientation = {
+export const WithMarksVerticalOrientation: Story = {
   render: VerticalTemplate,
   args: {
     ...defaultProps,
@@ -549,7 +552,7 @@ export const WithMarksVerticalOrientation = {
   },
 };
 
-export const VerticalWithSteps = {
+export const VerticalWithSteps: Story = {
   render: VerticalTemplate,
   args: {
     ...defaultProps,
@@ -561,7 +564,7 @@ export const VerticalWithSteps = {
   },
 };
 
-export const WithStartAndEndContent = {
+export const WithStartAndEndContent: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -572,7 +575,7 @@ export const WithStartAndEndContent = {
   },
 };
 
-export const Controlled = {
+export const Controlled: Story = {
   render: ControlledTemplate,
   args: {
     ...defaultProps,
@@ -582,7 +585,7 @@ export const Controlled = {
   },
 };
 
-export const ControlledRange = {
+export const ControlledRange: Story = {
   render: ControlledRangeTemplate,
   args: {
     ...defaultProps,
@@ -591,7 +594,7 @@ export const ControlledRange = {
   },
 };
 
-export const CustomStyles = {
+export const CustomStyles: Story = {
   render: CustomStylesTemplate,
   args: {
     ...defaultProps,

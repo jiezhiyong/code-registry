@@ -1,12 +1,12 @@
 import type { LinkProps, VariantProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { useState } from "react";
 
 import { link, tv } from "@/registry/ui";
 import { Link } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/Link",
   component: Link,
   argTypes: {
@@ -34,7 +34,10 @@ export default {
       },
     },
   },
-} as Meta<typeof Link>;
+} satisfies Meta<typeof Link>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const children = `"First solve the problem. Then, write the code." - Jon Johnson.`;
 
@@ -63,7 +66,7 @@ const PressableTemplate = (args: LinkProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: Template,
 
   args: {
@@ -74,7 +77,7 @@ export const Default = {
   },
 };
 
-export const Pressable = {
+export const Pressable: Story = {
   render: PressableTemplate,
 
   args: {

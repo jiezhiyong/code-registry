@@ -1,6 +1,6 @@
 import type { CheckboxIconProps, CheckboxProps } from "@/registry/ui";
 import type { ValidationErrors } from "@react-types/shared";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -9,7 +9,7 @@ import { CloseIcon } from "@/icons";
 import { button, checkbox, Checkbox } from "@/registry/ui";
 import { Form } from "@/registry/ui/form";
 
-export default {
+const meta = {
   title: "Components/Checkbox",
   component: Checkbox,
   argTypes: {
@@ -48,7 +48,10 @@ export default {
       options: ["aria", "native"],
     },
   },
-} as Meta<typeof Checkbox>;
+} satisfies Meta<typeof Checkbox>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps: CheckboxProps = {
   ...checkbox.defaultVariants,
@@ -206,34 +209,34 @@ const WithFormTemplate = (args: CheckboxProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   args: {
     ...defaultProps,
   },
 };
 
-export const IsDisabled = {
+export const IsDisabled: Story = {
   args: {
     ...defaultProps,
     isDisabled: true,
   },
 };
 
-export const DefaultSelected = {
+export const DefaultSelected: Story = {
   args: {
     ...defaultProps,
     defaultSelected: true,
   },
 };
 
-export const CustomIconNode = {
+export const CustomIconNode: Story = {
   args: {
     ...defaultProps,
     icon: <CloseIcon />,
   },
 };
 
-export const Group = {
+export const Group: Story = {
   render: GroupTemplate,
 
   args: {
@@ -241,7 +244,7 @@ export const Group = {
   },
 };
 
-export const WithReactHookForm = {
+export const WithReactHookForm: Story = {
   render: WithReactHookFormTemplate,
 
   args: {
@@ -249,7 +252,7 @@ export const WithReactHookForm = {
   },
 };
 
-export const CustomIconFunction = {
+export const CustomIconFunction: Story = {
   args: {
     ...defaultProps,
 
@@ -257,35 +260,35 @@ export const CustomIconFunction = {
   },
 };
 
-export const AlwaysSelected = {
+export const AlwaysSelected: Story = {
   args: {
     ...defaultProps,
     isSelected: true,
   },
 };
 
-export const IsIndeterminate = {
+export const IsIndeterminate: Story = {
   args: {
     ...defaultProps,
     isIndeterminate: true,
   },
 };
 
-export const LineThrough = {
+export const LineThrough: Story = {
   args: {
     ...defaultProps,
     lineThrough: true,
   },
 };
 
-export const DisableAnimation = {
+export const DisableAnimation: Story = {
   args: {
     ...defaultProps,
     disableAnimation: true,
   },
 };
 
-export const Controlled = {
+export const Controlled: Story = {
   render: ControlledTemplate,
 
   args: {
@@ -293,7 +296,7 @@ export const Controlled = {
   },
 };
 
-export const Required = {
+export const Required: Story = {
   render: FormTemplate,
 
   args: {
@@ -302,7 +305,7 @@ export const Required = {
   },
 };
 
-export const WithForm = {
+export const WithForm: Story = {
   render: WithFormTemplate,
 
   args: {

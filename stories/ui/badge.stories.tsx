@@ -1,5 +1,5 @@
 import type { BadgeProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
@@ -8,7 +8,7 @@ import { badge, Badge } from "@/registry/ui";
 import { Avatar } from "@/registry/ui/avatar";
 import { Switch } from "@/registry/ui/switch";
 
-export default {
+const meta = {
   title: "Components/Badge",
   component: Badge,
   argTypes: {
@@ -58,7 +58,10 @@ export default {
       },
     },
   },
-} as Meta<typeof Badge>;
+} satisfies Meta<typeof Badge>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...badge.defaultVariants,
@@ -113,7 +116,7 @@ const InvisibleTemplate = (args: BadgeProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: Template,
 
   args: {
@@ -121,7 +124,7 @@ export const Default = {
   },
 };
 
-export const Dot = {
+export const Dot: Story = {
   render: Template,
 
   args: {
@@ -132,7 +135,7 @@ export const Dot = {
   },
 };
 
-export const HorizontalOffset = {
+export const HorizontalOffset: Story = {
   render: Template,
 
   args: {
@@ -148,7 +151,7 @@ export const HorizontalOffset = {
   },
 };
 
-export const VerticalOffset = {
+export const VerticalOffset: Story = {
   render: Template,
 
   args: {
@@ -164,7 +167,7 @@ export const VerticalOffset = {
   },
 };
 
-export const Shapes = {
+export const Shapes: Story = {
   render: ShapesTemplate,
 
   args: {
@@ -173,7 +176,7 @@ export const Shapes = {
   },
 };
 
-export const Invisible = {
+export const Invisible: Story = {
   render: InvisibleTemplate,
 
   args: {

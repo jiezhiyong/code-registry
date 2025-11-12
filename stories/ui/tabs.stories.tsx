@@ -1,5 +1,5 @@
 import type { TabsProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 import Lorem from "react-lorem-component";
@@ -18,7 +18,7 @@ import {
 } from "@/utils/icons";
 import { Tab, Tabs } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/Tabs",
   component: Tabs,
   argTypes: {
@@ -57,7 +57,10 @@ export default {
       },
     },
   },
-} as Meta<typeof Tabs>;
+} satisfies Meta<typeof Tabs>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...tabs.defaultVariants,
@@ -237,7 +240,7 @@ const WithFormTemplate = (args: TabsProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: StaticTemplate,
 
   args: {
@@ -245,7 +248,7 @@ export const Default = {
   },
 };
 
-export const Dynamic = {
+export const Dynamic: Story = {
   render: DynamicTemplate,
 
   args: {
@@ -253,7 +256,7 @@ export const Dynamic = {
   },
 };
 
-export const Controlled = {
+export const Controlled: Story = {
   render: ControlledTemplate,
 
   args: {
@@ -261,7 +264,7 @@ export const Controlled = {
   },
 };
 
-export const WithIcons = {
+export const WithIcons: Story = {
   render: WithIconsTemplate,
 
   args: {
@@ -269,7 +272,7 @@ export const WithIcons = {
   },
 };
 
-export const WithForm = {
+export const WithForm: Story = {
   render: WithFormTemplate,
 
   args: {
@@ -279,7 +282,7 @@ export const WithForm = {
   },
 };
 
-export const ManualKeyboardActivation = {
+export const ManualKeyboardActivation: Story = {
   render: StaticTemplate,
 
   args: {
@@ -288,7 +291,7 @@ export const ManualKeyboardActivation = {
   },
 };
 
-export const Placement = {
+export const Placement: Story = {
   render: StaticTemplate,
 
   args: {
@@ -307,7 +310,7 @@ export const Placement = {
   },
 };
 
-export const Vertical = {
+export const Vertical: Story = {
   render: StaticTemplate,
 
   args: {
@@ -320,7 +323,7 @@ export const Vertical = {
   },
 };
 
-export const DisabledItems = {
+export const DisabledItems: Story = {
   render: StaticTemplate,
 
   args: {
@@ -329,7 +332,7 @@ export const DisabledItems = {
   },
 };
 
-export const Disabled = {
+export const Disabled: Story = {
   render: StaticTemplate,
 
   args: {
@@ -338,7 +341,7 @@ export const Disabled = {
   },
 };
 
-export const DisableAnimation = {
+export const DisableAnimation: Story = {
   render: StaticTemplate,
 
   args: {

@@ -1,5 +1,5 @@
 import type { DateValue, RangeCalendarProps, RangeValue } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import {
   CalendarDate,
@@ -19,7 +19,7 @@ import { Button, ButtonGroup } from "@/registry/ui/button";
 import { Radio, RadioGroup } from "@/registry/ui/radio";
 import { RangeCalendar } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/RangeCalendar",
   component: RangeCalendar,
   parameters: {
@@ -46,7 +46,10 @@ export default {
       options: [undefined, "sun", "mon", "tue", "wed", "thu", "fri", "sat"],
     },
   },
-} as Meta<typeof RangeCalendar>;
+} satisfies Meta<typeof RangeCalendar>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...calendar.defaultVariants,
@@ -271,14 +274,14 @@ const PresetsTemplate = (args: RangeCalendarProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: Template,
   args: {
     ...defaultProps,
   },
 };
 
-export const Disabled = {
+export const Disabled: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -286,7 +289,7 @@ export const Disabled = {
   },
 };
 
-export const ReadOnly = {
+export const ReadOnly: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -298,14 +301,14 @@ export const ReadOnly = {
   },
 };
 
-export const Controlled = {
+export const Controlled: Story = {
   render: ControlledTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const MinDateValue = {
+export const MinDateValue: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -317,7 +320,7 @@ export const MinDateValue = {
   },
 };
 
-export const MaxDateValue = {
+export const MaxDateValue: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -329,7 +332,7 @@ export const MaxDateValue = {
   },
 };
 
-export const UnavailableDates = {
+export const UnavailableDates: Story = {
   render: UnavailableDatesTemplate,
   args: {
     ...defaultProps,
@@ -340,28 +343,28 @@ export const UnavailableDates = {
   },
 };
 
-export const NonContiguousRanges = {
+export const NonContiguousRanges: Story = {
   render: NonContiguousRangesTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const ControlledFocusedValue = {
+export const ControlledFocusedValue: Story = {
   render: ControlledFocusedValueTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const InvalidDates = {
+export const InvalidDates: Story = {
   render: InvalidDatesTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const WithMonthAndYearPickers = {
+export const WithMonthAndYearPickers: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -369,14 +372,14 @@ export const WithMonthAndYearPickers = {
   },
 };
 
-export const InternationalCalendars = {
+export const InternationalCalendars: Story = {
   render: InternationalCalendarsTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const VisibleMonths = {
+export const VisibleMonths: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -384,7 +387,7 @@ export const VisibleMonths = {
   },
 };
 
-export const PageBehavior = {
+export const PageBehavior: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -393,14 +396,14 @@ export const PageBehavior = {
   },
 };
 
-export const Presets = {
+export const Presets: Story = {
   render: PresetsTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const FirstDayOfWeek = {
+export const FirstDayOfWeek: Story = {
   render: Template,
   args: {
     ...defaultProps,

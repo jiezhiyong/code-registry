@@ -1,5 +1,5 @@
 import type { ValidationResult } from "@react-types/shared";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 import { Controller, useForm } from "react-hook-form";
@@ -9,7 +9,7 @@ import { Button } from "@/registry/ui/button";
 import { Form } from "@/registry/ui/form";
 import { InputOtp } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/InputOtp",
   component: InputOtp,
   argTypes: {
@@ -41,7 +41,10 @@ export default {
       options: ["aria", "native"],
     },
   },
-} as Meta<typeof InputOtp>;
+} satisfies Meta<typeof InputOtp>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...inputOtp.defaultVariants,
@@ -251,7 +254,7 @@ const WithValidationTemplate = (args) => (
   </form>
 );
 
-export const Default = {
+export const Default: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -259,7 +262,7 @@ export const Default = {
   },
 };
 
-export const Required = {
+export const Required: Story = {
   render: RequiredTemplate,
   args: {
     ...defaultProps,
@@ -267,7 +270,7 @@ export const Required = {
   },
 };
 
-export const Disabled = {
+export const Disabled: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -277,7 +280,7 @@ export const Disabled = {
   },
 };
 
-export const ReadOnly = {
+export const ReadOnly: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -287,7 +290,7 @@ export const ReadOnly = {
   },
 };
 
-export const WithDescription = {
+export const WithDescription: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -296,7 +299,7 @@ export const WithDescription = {
   },
 };
 
-export const WithErrorMessage = {
+export const WithErrorMessage: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -306,7 +309,7 @@ export const WithErrorMessage = {
   },
 };
 
-export const WithErrorMessageFunction = {
+export const WithErrorMessageFunction: Story = {
   render: ErrorMessageFunctionTemplate,
   args: {
     ...defaultProps,
@@ -321,7 +324,7 @@ export const WithErrorMessageFunction = {
   },
 };
 
-export const Password = {
+export const Password: Story = {
   render: RequiredTemplate,
   args: {
     ...defaultProps,
@@ -329,7 +332,7 @@ export const Password = {
   },
 };
 
-export const isInvalid = {
+export const isInvalid: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -339,21 +342,21 @@ export const isInvalid = {
   },
 };
 
-export const Controlled = {
+export const Controlled: Story = {
   render: ControlledTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const AllowedKeys = {
+export const AllowedKeys: Story = {
   render: AllowedKeysTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const WithReactHookForm = {
+export const WithReactHookForm: Story = {
   render: WithReactHookFormTemplate,
   args: {
     ...defaultProps,
@@ -361,7 +364,7 @@ export const WithReactHookForm = {
   },
 };
 
-export const WithReactHookFormController = {
+export const WithReactHookFormController: Story = {
   render: WithReactHookFormControllerTemplate,
   args: {
     ...defaultProps,
@@ -369,7 +372,7 @@ export const WithReactHookFormController = {
   },
 };
 
-export const CustomWithClassNames = {
+export const CustomWithClassNames: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -399,7 +402,7 @@ export const CustomWithClassNames = {
   },
 };
 
-export const WithServerValidation = {
+export const WithServerValidation: Story = {
   render: ServerValidationTemplate,
   args: {
     ...defaultProps,
@@ -407,7 +410,7 @@ export const WithServerValidation = {
   },
 };
 
-export const WithValidation = {
+export const WithValidation: Story = {
   render: WithValidationTemplate,
   args: {
     ...defaultProps,

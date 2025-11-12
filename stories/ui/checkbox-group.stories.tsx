@@ -1,6 +1,6 @@
 import type { CheckboxGroupProps } from "@/registry/ui";
 import type { ValidationResult } from "@react-types/shared";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
@@ -8,7 +8,7 @@ import { button, checkbox } from "@/registry/ui";
 import { Form } from "@/registry/ui/form";
 import { Checkbox, CheckboxGroup } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/CheckboxGroup",
   component: CheckboxGroup,
   argTypes: {
@@ -47,7 +47,10 @@ export default {
       options: ["aria", "native"],
     },
   },
-} as Meta<typeof Checkbox>;
+} satisfies Meta<typeof Checkbox>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...checkbox.defaultVariants,
@@ -161,7 +164,7 @@ const ServerValidationTemplate = (args: CheckboxGroupProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: Template,
 
   args: {
@@ -169,7 +172,7 @@ export const Default = {
   },
 };
 
-export const WithLabel = {
+export const WithLabel: Story = {
   render: Template,
 
   args: {
@@ -177,7 +180,7 @@ export const WithLabel = {
   },
 };
 
-export const DefaultValue = {
+export const DefaultValue: Story = {
   render: Template,
 
   args: {
@@ -187,7 +190,7 @@ export const DefaultValue = {
   },
 };
 
-export const Controlled = {
+export const Controlled: Story = {
   render: ControlledTemplate,
 
   args: {
@@ -195,7 +198,7 @@ export const Controlled = {
   },
 };
 
-export const Horizontal = {
+export const Horizontal: Story = {
   render: Template,
 
   args: {
@@ -204,7 +207,7 @@ export const Horizontal = {
   },
 };
 
-export const IsDisabled = {
+export const IsDisabled: Story = {
   render: Template,
 
   args: {
@@ -213,7 +216,7 @@ export const IsDisabled = {
   },
 };
 
-export const LineThrough = {
+export const LineThrough: Story = {
   render: Template,
 
   args: {
@@ -222,7 +225,7 @@ export const LineThrough = {
   },
 };
 
-export const WithDescription = {
+export const WithDescription: Story = {
   render: Template,
 
   args: {
@@ -231,7 +234,7 @@ export const WithDescription = {
   },
 };
 
-export const IsInvalid = {
+export const IsInvalid: Story = {
   render: InvalidTemplate,
 
   args: {
@@ -239,7 +242,7 @@ export const IsInvalid = {
   },
 };
 
-export const WithErrorMessage = {
+export const WithErrorMessage: Story = {
   render: Template,
 
   args: {
@@ -249,7 +252,7 @@ export const WithErrorMessage = {
   },
 };
 
-export const WithErrorMessageFunction = {
+export const WithErrorMessageFunction: Story = {
   render: FormTemplate,
 
   args: {
@@ -263,7 +266,7 @@ export const WithErrorMessageFunction = {
   },
 };
 
-export const WithValidation = {
+export const WithValidation: Story = {
   render: FormTemplate,
 
   args: {
@@ -279,7 +282,7 @@ export const WithValidation = {
   },
 };
 
-export const WithServerValidation = {
+export const WithServerValidation: Story = {
   render: ServerValidationTemplate,
 
   args: {
@@ -287,7 +290,7 @@ export const WithServerValidation = {
   },
 };
 
-export const DisableAnimation = {
+export const DisableAnimation: Story = {
   render: Template,
 
   args: {
@@ -296,7 +299,7 @@ export const DisableAnimation = {
   },
 };
 
-export const IsRequired = {
+export const IsRequired: Story = {
   render: FormTemplate,
 
   args: {

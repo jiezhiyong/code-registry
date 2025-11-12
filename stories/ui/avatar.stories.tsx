@@ -1,9 +1,9 @@
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import { Activity, Camera } from "@/icons";
 import { avatar, Avatar } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/Avatar",
   component: Avatar,
   argTypes: {
@@ -26,19 +26,22 @@ export default {
       options: ["sm", "md", "lg"],
     },
   },
-} as Meta<typeof Avatar>;
+} satisfies Meta<typeof Avatar>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...avatar.defaultVariants,
 };
 
-export const Default = {
+export const Default: Story = {
   args: {
     ...defaultProps,
   },
 };
 
-export const WithText = {
+export const WithText: Story = {
   args: {
     ...defaultProps,
     name: "JW",
@@ -46,7 +49,7 @@ export const WithText = {
   },
 };
 
-export const IsDisabled = {
+export const IsDisabled: Story = {
   args: {
     ...defaultProps,
     src: "https://i.pravatar.cc/300?u=a042581f4e29026709d",
@@ -56,14 +59,14 @@ export const IsDisabled = {
   },
 };
 
-export const WithImage = {
+export const WithImage: Story = {
   args: {
     ...defaultProps,
     src: "https://i.pravatar.cc/300?u=a042581f4e29026705d",
   },
 };
 
-export const isBordered = {
+export const isBordered: Story = {
   args: {
     ...defaultProps,
     src: "https://i.pravatar.cc/300?u=a042581f4e29026709d",
@@ -72,7 +75,7 @@ export const isBordered = {
   },
 };
 
-export const isFocusable = {
+export const isFocusable: Story = {
   args: {
     ...defaultProps,
     src: "https://i.pravatar.cc/300?u=a042581f4e29026707d",
@@ -80,14 +83,14 @@ export const isFocusable = {
   },
 };
 
-export const WithIcon = {
+export const WithIcon: Story = {
   args: {
     ...defaultProps,
     size: "lg",
   },
 };
 
-export const Custom = {
+export const Custom: Story = {
   args: {
     ...defaultProps,
     icon: <Activity fill="currentColor" size={20} />,
@@ -98,7 +101,7 @@ export const Custom = {
   },
 };
 
-export const CustomSize = {
+export const CustomSize: Story = {
   args: {
     ...defaultProps,
     classNames: {
@@ -107,7 +110,7 @@ export const CustomSize = {
   },
 };
 
-export const CustomSizeImg = {
+export const CustomSizeImg: Story = {
   args: {
     ...defaultProps,
     src: "https://i.pravatar.cc/300?u=a042581f4e29026705d",
@@ -118,7 +121,7 @@ export const CustomSizeImg = {
   },
 };
 
-export const DefaultIcon = {
+export const DefaultIcon: Story = {
   args: {
     ...defaultProps,
     classNames: {
@@ -127,7 +130,7 @@ export const DefaultIcon = {
   },
 };
 
-export const IconFallback = {
+export const IconFallback: Story = {
   args: {
     ...defaultProps,
     src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330",
@@ -135,7 +138,7 @@ export const IconFallback = {
   },
 };
 
-export const InitialsFallback = {
+export const InitialsFallback: Story = {
   args: {
     ...defaultProps,
     src: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6",
@@ -144,7 +147,7 @@ export const InitialsFallback = {
   },
 };
 
-export const CustomFallback = {
+export const CustomFallback: Story = {
   args: {
     ...defaultProps,
     src: "https://images.unsplash.com/broken",
@@ -153,7 +156,7 @@ export const CustomFallback = {
   },
 };
 
-export const BrokenImage = {
+export const BrokenImage: Story = {
   args: {
     ...defaultProps,
     src: "https://images.unsplash.com/broken-image",

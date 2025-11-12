@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import type { InputProps } from "@/registry/ui";
 import type { ValidationResult } from "@react-types/shared";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 import { useForm } from "react-hook-form";
@@ -11,7 +11,7 @@ import { CloseFilledIcon, EyeFilledIcon, EyeSlashFilledIcon, MailFilledIcon, Sea
 import { button, input, Input, useInput } from "@/registry/ui";
 import { Form } from "@/registry/ui/form";
 
-export default {
+const meta = {
   title: "Components/Input",
   component: Input,
   argTypes: {
@@ -64,7 +64,10 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof Input>;
+} satisfies Meta<typeof Input>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...input.defaultVariants,
@@ -512,7 +515,7 @@ const ServerValidationTemplate = (args: InputProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: MirrorTemplate,
 
   args: {
@@ -520,7 +523,7 @@ export const Default = {
   },
 };
 
-export const Required = {
+export const Required: Story = {
   render: FormTemplate,
 
   args: {
@@ -529,7 +532,7 @@ export const Required = {
   },
 };
 
-export const Disabled = {
+export const Disabled: Story = {
   render: Template,
 
   args: {
@@ -540,7 +543,7 @@ export const Disabled = {
   },
 };
 
-export const ReadOnly = {
+export const ReadOnly: Story = {
   render: Template,
 
   args: {
@@ -551,7 +554,7 @@ export const ReadOnly = {
   },
 };
 
-export const WithoutLabel = {
+export const WithoutLabel: Story = {
   render: Template,
 
   args: {
@@ -562,7 +565,7 @@ export const WithoutLabel = {
   },
 };
 
-export const WithDescription = {
+export const WithDescription: Story = {
   render: MirrorTemplate,
 
   args: {
@@ -571,7 +574,7 @@ export const WithDescription = {
   },
 };
 
-export const Password = {
+export const Password: Story = {
   render: PasswordTemplate,
 
   args: {
@@ -582,7 +585,7 @@ export const Password = {
   },
 };
 
-export const LabelPlacement = {
+export const LabelPlacement: Story = {
   render: LabelPlacementTemplate,
 
   args: {
@@ -590,7 +593,7 @@ export const LabelPlacement = {
   },
 };
 
-export const Clearable = {
+export const Clearable: Story = {
   render: Template,
 
   args: {
@@ -603,7 +606,7 @@ export const Clearable = {
   },
 };
 
-export const StartContent = {
+export const StartContent: Story = {
   render: StartContentTemplate,
 
   args: {
@@ -612,7 +615,7 @@ export const StartContent = {
   },
 };
 
-export const EndContent = {
+export const EndContent: Story = {
   render: EndContentTemplate,
 
   args: {
@@ -622,7 +625,7 @@ export const EndContent = {
   },
 };
 
-export const StartAndEndContent = {
+export const StartAndEndContent: Story = {
   render: StartAndEndContentTemplate,
 
   args: {
@@ -632,7 +635,7 @@ export const StartAndEndContent = {
   },
 };
 
-export const WithErrorMessage = {
+export const WithErrorMessage: Story = {
   render: Template,
 
   args: {
@@ -642,7 +645,7 @@ export const WithErrorMessage = {
   },
 };
 
-export const WithErrorMessageFunction = {
+export const WithErrorMessageFunction: Story = {
   render: FormTemplate,
 
   args: {
@@ -667,7 +670,7 @@ export const WithErrorMessageFunction = {
   },
 };
 
-export const WithValidation = {
+export const WithValidation: Story = {
   render: FormTemplate,
 
   args: {
@@ -684,7 +687,7 @@ export const WithValidation = {
   },
 };
 
-export const WithServerValidation = {
+export const WithServerValidation: Story = {
   render: ServerValidationTemplate,
 
   args: {
@@ -692,7 +695,7 @@ export const WithServerValidation = {
   },
 };
 
-export const IsInvalid = {
+export const IsInvalid: Story = {
   render: Template,
 
   args: {
@@ -705,7 +708,7 @@ export const IsInvalid = {
   },
 };
 
-export const RegexValidation = {
+export const RegexValidation: Story = {
   render: RegexValidationTemplate,
 
   args: {
@@ -714,7 +717,7 @@ export const RegexValidation = {
   },
 };
 
-export const InputTypes = {
+export const InputTypes: Story = {
   render: InputTypesTemplate,
 
   args: {
@@ -722,7 +725,7 @@ export const InputTypes = {
   },
 };
 
-export const Controlled = {
+export const Controlled: Story = {
   render: ControlledTemplate,
 
   args: {
@@ -731,7 +734,7 @@ export const Controlled = {
   },
 };
 
-export const CustomWithClassNames = {
+export const CustomWithClassNames: Story = {
   render: CustomWithClassNamesTemplate,
 
   args: {
@@ -739,7 +742,7 @@ export const CustomWithClassNames = {
   },
 };
 
-export const CustomWithHooks = {
+export const CustomWithHooks: Story = {
   render: CustomWithHooksTemplate,
 
   args: {
@@ -751,7 +754,7 @@ export const CustomWithHooks = {
   },
 };
 
-export const WithReactHookForm = {
+export const WithReactHookForm: Story = {
   render: WithReactHookFormTemplate,
 
   args: {

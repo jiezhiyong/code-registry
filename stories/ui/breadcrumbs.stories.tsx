@@ -1,5 +1,5 @@
 import type { BreadcrumbsProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
@@ -11,7 +11,7 @@ import { Dropdown, DropdownItem, DropdownMenu, DropdownTrigger } from "@/registr
 import { Tooltip } from "@/registry/ui/tooltip";
 import { PetBoldIcon, ShoppingCartBoldIcon } from "@/utils/icons";
 
-export default {
+const meta = {
   title: "Components/Breadcrumbs",
   component: Breadcrumbs,
   argTypes: {
@@ -65,7 +65,10 @@ export default {
       },
     },
   },
-} as Meta<typeof Breadcrumbs>;
+} satisfies Meta<typeof Breadcrumbs>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...breadcrumbItem.defaultVariants,
@@ -359,14 +362,14 @@ const CustomStylesTemplate = (args: BreadcrumbsProps & { page: number }) => (
   </Breadcrumbs>
 );
 
-export const Default = {
+export const Default: Story = {
   render: Template,
   args: {
     ...defaultProps,
   },
 };
 
-export const CustomSeparator = {
+export const CustomSeparator: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -377,35 +380,35 @@ export const CustomSeparator = {
   },
 };
 
-export const ControlledCurrentItem = {
+export const ControlledCurrentItem: Story = {
   render: ControlledTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const MenuType = {
+export const MenuType: Story = {
   render: MenuTypeTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const WithStartContent = {
+export const WithStartContent: Story = {
   render: WithStartContentTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const WithEndContent = {
+export const WithEndContent: Story = {
   render: WithEndContentTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const WithMaxItems = {
+export const WithMaxItems: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -413,7 +416,7 @@ export const WithMaxItems = {
   },
 };
 
-export const WithDropdownEllipsis = {
+export const WithDropdownEllipsis: Story = {
   render: WithDropdownEllipsisTemplate,
   args: {
     ...defaultProps,
@@ -421,7 +424,7 @@ export const WithDropdownEllipsis = {
   },
 };
 
-export const WithItemsBeforeCollapse = {
+export const WithItemsBeforeCollapse: Story = {
   render: WithDropdownEllipsisTemplate,
   args: {
     ...defaultProps,
@@ -431,14 +434,14 @@ export const WithItemsBeforeCollapse = {
   },
 };
 
-export const WithDropdownItem = {
+export const WithDropdownItem: Story = {
   render: WithDropdownItemTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const CustomStyles = {
+export const CustomStyles: Story = {
   render: CustomStylesTemplate,
   args: {
     ...defaultProps,

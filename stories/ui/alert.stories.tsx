@@ -1,5 +1,5 @@
 import type { AlertProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
@@ -8,7 +8,7 @@ import { Button } from "@/registry/ui/button";
 import { cn } from "@/lib/theme";
 import { Alert } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/Alert",
   component: Alert,
   argTypes: {
@@ -45,7 +45,10 @@ export default {
       </div>
     ),
   ],
-} as Meta<typeof Alert>;
+} satisfies Meta<typeof Alert>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...alert.defaultVariants,
@@ -202,14 +205,14 @@ const CustomStylesTemplate = (args) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: Template,
   args: {
     ...defaultProps,
   },
 };
 
-export const WithDescription = {
+export const WithDescription: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -217,7 +220,7 @@ export const WithDescription = {
   },
 };
 
-export const WithoutIconWrapper = {
+export const WithoutIconWrapper: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -225,7 +228,7 @@ export const WithoutIconWrapper = {
   },
 };
 
-export const Color = {
+export const Color: Story = {
   render: ColorTemplate,
   args: {
     ...defaultProps,
@@ -233,14 +236,14 @@ export const Color = {
   },
 };
 
-export const Variant = {
+export const Variant: Story = {
   render: VariantTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const WithIcon = {
+export const WithIcon: Story = {
   render: Template,
   args: {
     ...defaultProps,
@@ -266,28 +269,28 @@ export const WithIcon = {
   },
 };
 
-export const Radius = {
+export const Radius: Story = {
   render: RadiusTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const Closable = {
+export const Closable: Story = {
   render: CloseableTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const WithEndContent = {
+export const WithEndContent: Story = {
   render: WithEndContentTemplate,
   args: {
     ...defaultProps,
   },
 };
 
-export const CustomStyles = {
+export const CustomStyles: Story = {
   render: CustomStylesTemplate,
   args: {
     ...defaultProps,

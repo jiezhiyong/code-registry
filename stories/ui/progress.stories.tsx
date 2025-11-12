@@ -1,12 +1,12 @@
 import type { ProgressProps } from "@/registry/ui";
-import type { Meta } from "@storybook/nextjs-vite";
+import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
 import { progress } from "@/registry/ui";
 import { Progress } from "@/registry/ui";
 
-export default {
+const meta = {
   title: "Components/Progress",
   component: Progress,
   argTypes: {
@@ -34,7 +34,10 @@ export default {
       },
     },
   },
-} as Meta<typeof Progress>;
+} satisfies Meta<typeof Progress>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...progress.defaultVariants,
@@ -65,7 +68,7 @@ const IntervalTemplate = (args: ProgressProps) => {
   );
 };
 
-export const Default = {
+export const Default: Story = {
   render: Template,
 
   args: {
@@ -74,7 +77,7 @@ export const Default = {
   },
 };
 
-export const WithLabel = {
+export const WithLabel: Story = {
   render: Template,
 
   args: {
@@ -83,7 +86,7 @@ export const WithLabel = {
   },
 };
 
-export const WithValueLabel = {
+export const WithValueLabel: Story = {
   render: IntervalTemplate,
 
   args: {
@@ -94,7 +97,7 @@ export const WithValueLabel = {
   },
 };
 
-export const WithValueFormatting = {
+export const WithValueFormatting: Story = {
   render: Template,
 
   args: {
@@ -105,7 +108,7 @@ export const WithValueFormatting = {
   },
 };
 
-export const Indeterminate = {
+export const Indeterminate: Story = {
   render: Template,
 
   args: {
@@ -116,7 +119,7 @@ export const Indeterminate = {
   },
 };
 
-export const Striped = {
+export const Striped: Story = {
   render: Template,
 
   args: {
@@ -125,7 +128,7 @@ export const Striped = {
   },
 };
 
-export const CustomSlots = {
+export const CustomSlots: Story = {
   render: Template,
 
   args: {
