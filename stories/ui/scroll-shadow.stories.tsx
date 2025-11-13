@@ -2,7 +2,7 @@ import type { ScrollShadowOrientation, ScrollShadowProps, ScrollShadowVisibility
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
-import Lorem from "react-lorem-component";
+import { LoremIpsum as Lorem } from "react-lorem-ipsum";
 
 import { button, scrollShadow, ScrollShadow } from "@/registry/ui";
 
@@ -36,7 +36,7 @@ const defaultProps = {
   ...scrollShadow.defaultVariants,
   visible: "auto",
   className: "w-[300px] h-[400px]",
-  children: <Lorem count={10} />,
+  children: <Lorem p={10} />,
 };
 
 const Template = (args: ScrollShadowProps) => <ScrollShadow {...args} />;
@@ -139,7 +139,7 @@ export const HorizontalOrientation: Story = {
     className: "max-w-[400px] max-h-[500px]",
     children: (
       <div className="w-[800px]">
-        <Lorem count={10} />,
+        <Lorem p={10} />,
       </div>
     ),
   },
@@ -154,7 +154,7 @@ export const ShadowOffset: Story = {
     className: "max-w-[400px] max-h-[500px]",
     children: (
       <div className="w-[800px]">
-        <Lorem count={10} />,
+        <Lorem p={10} />,
       </div>
     ),
   },

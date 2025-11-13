@@ -4,6 +4,8 @@ import type { Preview } from "@storybook/nextjs-vite";
 import React from "react";
 import { themes } from "storybook/theming";
 import { HeroUIProvider } from "../lib/system";
+import { cn } from "../lib/theme/utils/cn";
+import { ToastProvider } from "../registry/ui/toast/toast-provider";
 import "../styles/global.css";
 import { BlockCopyCli } from "./BlockCopyCli";
 import "./fix.css";
@@ -33,6 +35,7 @@ const preview: Preview = {
             <BlockCopyCli />
             <Controls />
             <Stories includePrimary={false} />
+            <ToastProvider />
           </>
         );
       },
@@ -59,9 +62,10 @@ const preview: Preview = {
         dark: "dark",
       },
     }),
-    (Story, { globals: { locale, disableAnimation, labelPlacement } }) => {
+    (Story, { parameters, globals: { locale, disableAnimation, labelPlacement } }) => {
       // @ts-ignore
       const direction = locale && new Intl.Locale(locale)?.textInfo?.direction === "rtl" ? "rtl" : undefined;
+      const layout = parameters.layout || "centered";
 
       return (
         <HeroUIProvider
@@ -73,7 +77,7 @@ const preview: Preview = {
             window.open(path, "_blank");
           }}
         >
-          <div className="p-4" lang={locale} dir={direction}>
+          <div className={cn("p-2", { "p-4 pb-10": layout === "fullscreen" })} lang={locale} dir={direction}>
             <Story />
           </div>
         </HeroUIProvider>

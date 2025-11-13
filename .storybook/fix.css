@@ -23,3 +23,16 @@
 .language-bash .token {
   color: #37d5d3 !important;
 }
+
+/* 内层手动添加了 8px 的 padding，这里在容器外层相应减去 8px */
+.css-1erac46 {
+  padding: 16px 14px !important;
+}
+
+/* 修复 Docs 中 Toast 的 margin 被默认样式覆盖的问题 */
+.sbdocs-content [data-toast="true"] {
+  margin: calc(var(--spacing) * 1) 0 !important;
+}
+.sbdocs-content [data-placement="bottom-right"] {
+  margin: 0 calc(var(--spacing) * 2) calc(var(--spacing) * 1) 0 !important;
+}

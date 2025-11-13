@@ -28,11 +28,6 @@
       ],
       "files": [
         {
-          "path": ".cursor/mcp.json",
-          "type": "registry:file",
-          "target": "~/.cursor/mcp.json"
-        },
-        {
           "path": "styles/global.css",
           "type": "registry:file",
           "target": "~/src/styles/global.css"

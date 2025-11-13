@@ -3,7 +3,7 @@ import type { ModalProps } from "@/registry/ui";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
-import Lorem from "react-lorem-component";
+import { LoremIpsum as Lorem } from "react-lorem-ipsum";
 
 import { LockFilledIcon, MailFilledIcon } from "@/icons";
 import {
@@ -158,7 +158,7 @@ const InsideScrollTemplate = (args: ModalProps) => {
         <ModalContent>
           <ModalHeader>Modal Title</ModalHeader>
           <ModalBody>
-            <Lorem count={10} />
+            <Lorem p={10} />
           </ModalBody>
           <ModalFooter>
             <Button onPress={onClose}>Close</Button>
@@ -179,7 +179,7 @@ const OutsideScrollTemplate = (args: ModalProps) => {
         <ModalContent>
           <ModalHeader>Modal Title</ModalHeader>
           <ModalBody>
-            <Lorem count={10} />
+            <Lorem p={10} />
           </ModalBody>
           <ModalFooter>
             <Button onPress={onClose}>Close</Button>
@@ -199,7 +199,7 @@ const OpenChangeTemplate = (args: ModalProps) => {
         <ModalContent>
           <ModalHeader>Modal Title</ModalHeader>
           <ModalBody>
-            <Lorem count={5} />
+            <Lorem p={5} />
           </ModalBody>
           <ModalFooter>
             <Button onPress={onClose}>Close</Button>
@@ -212,9 +212,9 @@ const OpenChangeTemplate = (args: ModalProps) => {
 };
 const DraggableTemplate = (args: ModalProps) => {
   const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
-  const targetRef = React.useRef(null);
+  const targetRef = React.useRef<HTMLElement>(null);
 
-  const { moveProps } = useDraggable({ targetRef });
+  const { moveProps } = useDraggable({ targetRef: targetRef as React.RefObject<HTMLElement> });
 
   return (
     <div className="flex flex-col gap-2">
@@ -223,7 +223,7 @@ const DraggableTemplate = (args: ModalProps) => {
         <ModalContent>
           <ModalHeader {...moveProps}>Modal Title</ModalHeader>
           <ModalBody>
-            <Lorem count={1} />
+            <Lorem p={1} />
           </ModalBody>
           <ModalFooter>
             <Button onPress={onClose}>Close</Button>
@@ -235,11 +235,15 @@ const DraggableTemplate = (args: ModalProps) => {
 };
 const DraggableOverflowTemplate = (args: ModalProps) => {
   const { isOpen, onOpen, onClose, onOpenChange } = useDisclosure();
-  const targetRef = React.useRef(null);
+  const targetRef = React.useRef<HTMLElement>(null);
   const [disableDraggable, setDisableDraggable] = React.useState(false);
   const [canOverflow, setCanOverflow] = React.useState(true);
 
-  const { moveProps } = useDraggable({ targetRef, isDisabled: disableDraggable, canOverflow });
+  const { moveProps } = useDraggable({
+    targetRef: targetRef as React.RefObject<HTMLElement>,
+    isDisabled: disableDraggable,
+    canOverflow,
+  });
 
   return (
     <div className="flex flex-col gap-2">
@@ -254,7 +258,7 @@ const DraggableOverflowTemplate = (args: ModalProps) => {
         <ModalContent>
           <ModalHeader {...moveProps}>Modal Title</ModalHeader>
           <ModalBody>
-            <Lorem count={1} />
+            <Lorem p={1} />
           </ModalBody>
           <ModalFooter>
             <Button onPress={onClose}>Close</Button>

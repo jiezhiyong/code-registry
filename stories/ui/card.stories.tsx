@@ -251,87 +251,6 @@ const CoverImgTemplate = (args: CardProps) => (
   </div>
 );
 
-const CenterImgTemplate = (args: CardProps) => (
-  <Card {...args} className="max-w-fit py-4 px-0">
-    <CardHeader className="pb-0 pt-2 px-4 flex-col !items-start">
-      <p className="text-xs uppercase font-bold">Daily Mix</p>
-      <small className="text-default-500">12 Tracks</small>
-      <h4 className="font-bold text-lg">Frontend Radio</h4>
-    </CardHeader>
-    <CardBody className="overflow-visible py-2">
-      <Image isBlurred alt="Card background" src={"/images/local-image-1.jpeg"} width={300} />
-    </CardBody>
-  </Card>
-);
-
-const PrimaryActionTemplate = (args: CardProps) => {
-  const list = [
-    {
-      title: "Orange",
-      img: "/images/fruit-1.jpeg",
-      price: "$5.50",
-    },
-    {
-      title: "Tangerine",
-      img: "/images/fruit-2.jpeg",
-      price: "$3.00",
-    },
-    {
-      title: "Raspberry",
-      img: "/images/fruit-3.jpeg",
-      price: "$10.00",
-    },
-    {
-      title: "Lemon",
-      img: "/images/fruit-4.jpeg",
-      price: "$5.30",
-    },
-    {
-      title: "Avocado",
-      img: "/images/fruit-5.jpeg",
-      price: "$15.70",
-    },
-    {
-      title: "Lemon 2",
-      img: "/images/fruit-6.jpeg",
-      price: "$8.00",
-    },
-    {
-      title: "Banana",
-      img: "/images/fruit-7.jpeg",
-      price: "$7.50",
-    },
-    {
-      title: "Watermelon",
-      img: "/images/fruit-8.jpeg",
-      price: "$12.20",
-    },
-  ];
-
-  type ListItem = (typeof list)[number];
-
-  const handlePress = (item: ListItem) => {
-    // eslint-disable-next-line no-console
-    console.log("item pressed", item);
-  };
-
-  return (
-    <div className="gap-2 grid grid-cols-2 sm:grid-cols-4">
-      {list.map((item, index) => (
-        <Card {...args} key={index} isPressable onPress={() => handlePress(item)}>
-          <CardBody className="p-0">
-            <img alt={item.title} className="w-full h-[140px] object-cover" src={"https://heroui.com" + item.img} />
-          </CardBody>
-          <CardFooter className="justify-between">
-            <b>{item.title}</b>
-            <p className="text-default-500">{item.price}</p>
-          </CardFooter>
-        </Card>
-      ))}
-    </div>
-  );
-};
-
 const PressableTemplate = (args: CardProps) => {
   // Both events should be fired when clicking on the card
 
@@ -349,64 +268,6 @@ const PressableTemplate = (args: CardProps) => {
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </CardBody>
     </Card>
-  );
-};
-
-const CenterImgWithHeaderTemplate = (args: CardProps) => {
-  const list = [
-    {
-      title: "Mac",
-      img: "/images/mac.png",
-    },
-    {
-      title: "iPhone",
-      img: "/images/iphone.png",
-    },
-    {
-      title: "iPad",
-      img: "/images/ipad.png",
-    },
-    {
-      title: "Apple Watch",
-      img: "/images/apple-watch.png",
-    },
-    {
-      title: "AirPods",
-      img: "/images/airpods.png",
-    },
-    {
-      title: "AirTag",
-      img: "/images/airtag.png",
-    },
-    {
-      title: "Apple TV",
-      img: "/images/appletv.png",
-    },
-    {
-      title: "HomePod mini",
-      img: "/images/homepod-mini.png",
-    },
-    {
-      title: "Accessories",
-      img: "/images/accessories.png",
-    },
-  ];
-
-  return (
-    <div className="flex gap-2 justify-center flex-wrap">
-      {list.map((item, index) => (
-        <div key={index}>
-          <Card {...args} isPressable className="w-[200px] h-[200px]">
-            <CardHeader className="p-0">
-              <h5 className="pl-6 pt-3">{item.title}</h5>
-            </CardHeader>
-            <CardBody className="h-full justify-center">
-              <img alt={item.title} className="w-[180px]" src={item.img} />
-            </CardBody>
-          </Card>
-        </div>
-      ))}
-    </div>
   );
 };
 
@@ -460,30 +321,6 @@ export const WithAbsImgHeaderFooter: Story = {
 
 export const CoverImg: Story = {
   render: CoverImgTemplate,
-
-  args: {
-    ...defaultProps,
-  },
-};
-
-export const CenterImg: Story = {
-  render: CenterImgTemplate,
-
-  args: {
-    ...defaultProps,
-  },
-};
-
-export const PrimaryAction: Story = {
-  render: PrimaryActionTemplate,
-
-  args: {
-    ...defaultProps,
-  },
-};
-
-export const CenterImgWithHeader: Story = {
-  render: CenterImgWithHeaderTemplate,
 
   args: {
     ...defaultProps,

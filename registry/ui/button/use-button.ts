@@ -88,7 +88,7 @@ export function useButton(props: UseButtonProps) {
     fullWidth = groupContext?.fullWidth ?? false,
     radius = groupContext?.radius,
     size = groupContext?.size ?? "md",
-    color = groupContext?.color ?? "default",
+    color = groupContext?.color ?? "primary",
     variant = groupContext?.variant ?? "solid",
     disableAnimation = groupContext?.disableAnimation ?? globalContext?.disableAnimation ?? false,
     isDisabled: isDisabledProp = groupContext?.isDisabled ?? false,

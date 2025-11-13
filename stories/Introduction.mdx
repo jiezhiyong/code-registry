@@ -1,3 +1,6 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { Source } from "@storybook/addon-docs/blocks";
+
 export const RightArrow = () => (
   <svg
     viewBox="0 0 14 14"
@@ -21,41 +24,87 @@ export const RightArrow = () => (
 <div className="sb-container">
   <div className='sb-section-title'>
     # 配置项目
-
-    首先，您需要配置您的项目，以便可以通过 `shadcn CLI` 添加组件。你可以使用 `pnpm dlx shadcn@latest init` 命令来快速初始化一个 `NextJS + Shadcn UI + Tailwind CSS` 项目。
-
+    <p style={{ marginBottom: '-15px' }}>
+      首先，您需要配置您的项目，以便可以通过 `shadcn CLI` 添加组件，请确保你的项目至少包含以下内容：
+    </p>
   </div>
+
+  <p style={{ marginBottom: '-20px' }}>`components.json`</p>
+  <Source
+    language="json"
+    dark={true}
+    code={
+      `{
+        "$schema": "https://ui.shadcn.com/schema.json",
+        "rsc": true,
+        "tsx": true,
+        "tailwind": {
+          "css": "src/styles/global.css",
+          "baseColor": "neutral",
+          "cssVariables": true,
+        },
+        "aliases": {
+          "components": "@/components",
+          "utils": "@/lib/utils",
+          "ui": "@/components/ui",
+          "lib": "@/lib",
+          "hooks": "@/hooks"
+        },
+        "iconLibrary": "lucide",
+        "registries": {
+          "@tcsk": "https://main--68fb36a8575355ea03c9dd6a.chromatic.com/r/{name}.json"
+        }
+      }`
+    }
+  />
+
+  <p style={{ marginBottom: '-20px' }}>`package.json`</p>
   <Source language="json" dark={true} code={
     `{
-      "$schema": "https://ui.shadcn.com/schema.json",
-      "rsc": true,
-      "tsx": true,
-      "tailwind": {
-        "config": "",
-        "css": "src/styles/global.css",
-        "baseColor": "neutral",
-        "cssVariables": true,
-        "prefix": ""
+      "devDependencies": {
+        "@types/node": "^20.19.9",
+        "@types/react": "19.1.2",
+        "@types/react-dom": "19.1.2"
       },
-      "aliases": {
-        "components": "@/components",
-        "utils": "@/lib/utils",
-        "ui": "@/components/ui",
-        "lib": "@/lib",
-        "hooks": "@/hooks"
-      },
-      "iconLibrary": "lucide",
-      "registries": {
-        "@tcsk": "https://main--68fb36a8575355ea03c9dd6a.chromatic.com/r/{name}.json"
+      "dependencies": {
+        "react": "19.1.0",
+        "react-dom": "19.1.0",
+        "react-router-dom": "^7.9.5"
       }
     }`
   } />
 
-  <p>然后，你可以使用 `shadcn CLI` 的 `search` 命令来搜索组件，`add` 命令来添加组件。</p>
+  <p style={{ marginBottom: '-20px' }}>`tsconfig.json`</p>
+  <Source language="json" dark={true} code={
+    `{
+      "compilerOptions": {
+        "target": "ES2017",
+        "lib": ["dom", "dom.iterable", "esnext"],
+        "strict": true,
+        "module": "esnext",
+        "moduleResolution": "bundler",
+        "jsx": "preserve",
+        "paths": {
+          "@/*": ["./src/*"]
+        }
+      }
+    }`
+  } />
+</div>
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    # 初始化 & 安装组件
+    <p style={{ marginBottom: '-15px' }}>
+      使用 `shadcn CLI` 的 `search` 命令来搜索组件，`add` 命令来添加组件。
+    </p>
+  </div>
   <Source language="bash" dark={true} code={
     `
-    pnpm dlx shadcn@latest search @tcsk
-    pnpm dlx shadcn@latest add @tcsk/button
+    npx shadcn@latest add @tcsk/core
+
+    npx shadcn@latest add @tcsk/button
+    npx shadcn@latest search @tcsk
     `
   } />
 </div>
@@ -63,25 +112,24 @@ export const RightArrow = () => (
 <div className="sb-container">
   <div className='sb-section-title'>
     # MCP 服务器
-
-    为注册表启用 MCP 支持，这样你就可以在 `LLM` 中使用提示词来使用组件了。以下使用 `vscode` 举例配置 `.vscode/mcp.json`
-
+    <p style={{ marginBottom: '-15px' }}>
+      为注册表启用 MCP 支持，这样你就可以在 `LLM` 中使用提示词来使用组件了。
+    </p>
   </div>
+
+  <p style={{ marginBottom: '-20px' }}>`.vscode/mcp.json` or `.cursor/mcp.json`</p>
   <Source language="json" dark={true} code={
     `{
-      "servers": {
+      "mcpServers": {
         "shadcn": {
           "command": "npx",
-          "args": [
-            "shadcn@latest",
-            "mcp"
-          ]
+          "args": ["shadcn@latest", "mcp"]
         }
       }
     }`
   } />
 
-  <p>然后，你可以在 `LLM` 中使用提示词来使用组件</p>
+  <p style={{ marginBottom: '-20px' }}>然后，你可以在 `LLM` 中使用提示词来使用组件</p>
   <Source language="bash" dark={true} code={
     `
     Show me the components in the tcsk registry
@@ -92,10 +140,27 @@ export const RightArrow = () => (
 
 <div className="sb-container">
   <div className='sb-section-title'>
+    # 其他你可能缺失的配置
+  </div>
+
+  <p style={{ marginBottom: '-20px' }}>`.vscode/settings.json`</p>
+  <Source language="json" dark={true} code={
+    `
+      {
+        "files.associations": {
+          "*.css": "tailwindcss"
+        }
+      }
+    `
+  } />
+</div>
+
+<div className="sb-container">
+  <div className='sb-section-title'>
     # Storybook 使用指南
-
-    由于 Storybook 与您的应用程序分开工作，因此您需要针对您的特定技术栈和设置对其进行配置。下面，探索使用流行框架和工具配置 Storybook 的指南。如果您遇到困难，请了解如何向我们的社区寻求帮助。
-
+    <p style={{ marginBottom: '-15px' }}>
+      由于 Storybook 与您的应用程序分开工作，因此您需要针对您的特定技术栈和设置对其进行配置。下面，探索使用流行框架和工具配置 Storybook 的指南。如果您遇到困难，请了解如何向我们的社区寻求帮助。
+    </p>
   </div>
   <div className="sb-section">
     <div className="sb-section-item">
@@ -141,14 +206,14 @@ export const RightArrow = () => (
     </div>
   </div>
 </div>
+
 <div className="sb-container">
   <div className='sb-section-title'>
     # 使用 Storybook 做更多事情
-
-    现在您已经了解了基础知识，让我们探索 Storybook 的其他部分，这些部分将改善您的体验。此列表只是为了帮助您入门。您可以通过多种方式自定义 Storybook 以满足您的需求。
-
+    <p style={{ marginBottom: '-15px' }}>
+      现在您已经了解了基础知识，让我们探索 Storybook 的其他部分，这些部分将改善您的体验。此列表只是为了帮助您入门。您可以通过多种方式自定义 Storybook 以满足您的需求。
+    </p>
   </div>
-
   <div className="sb-section">
     <div className="sb-features-grid">
       <div className="sb-grid-item">
@@ -237,9 +302,11 @@ export const RightArrow = () => (
     <h4 className="text-black!">插件</h4>
     <p className="sb-section-item-paragraph text-black!">将您的工具与 Storybook 集成以连接工作流程。</p>
     <a
-        href="https://storybook.js.org/addons/?ref=configure"
-        target="_blank"
-      >发现所有插件<RightArrow /></a>
+      href="https://storybook.js.org/addons/?ref=configure"
+      target="_blank"
+    >
+      发现所有插件<RightArrow />
+    </a>
   </div>
   <div className='sb-addon-img'>
     <img
@@ -259,7 +326,6 @@ export const RightArrow = () => (
         className="sb-explore-image"
       />
       成为贡献者，构建 UI 开发的未来。
-
       <a
         href="https://github.com/storybookjs/storybook"
         target="_blank"
@@ -274,7 +340,6 @@ export const RightArrow = () => (
       />
       <div>
         获得支持并与前端开发人员聊天。
-
         <a
           href="https://discord.gg/storybook"
           target="_blank"
@@ -290,7 +355,6 @@ export const RightArrow = () => (
       />
       <div>
         观看教程、功能预览和采访。
-
         <a
           href="https://www.youtube.com/@chromaticui"
           target="_blank"
@@ -305,13 +369,13 @@ export const RightArrow = () => (
         className="sb-explore-image"
       />
       <p>跟随引导式教程进行关键工作流程。</p>
-
       <a
-          href="https://storybook.js.org/tutorials/?ref=configure"
-          target="_blank"
-        >探索教程<RightArrow /></a>
+        href="https://storybook.js.org/tutorials/?ref=configure"
+        target="_blank"
+      >
+        探索教程<RightArrow />
+      </a>
     </div>
-
 </div>
 
 <style>

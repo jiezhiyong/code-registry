@@ -2,8 +2,7 @@ import type { TabsProps } from "@/registry/ui";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
-// @ts-ignore
-import Lorem from "react-lorem-component";
+import { LoremIpsum as Lorem } from "react-lorem-ipsum";
 
 import {
   AlignBottomBoldIcon,
@@ -21,6 +20,9 @@ import { Input } from "@/registry/ui/input";
 const meta = {
   title: "Components/Tabs",
   component: Tabs,
+  parameters: {
+    layout: "fullscreen",
+  },
   argTypes: {
     variant: {
       control: {
@@ -69,19 +71,19 @@ const defaultProps = {
 const StaticTemplate = (args: TabsProps) => (
   <Tabs aria-label="Tabs example" {...args}>
     <Tab key="world" title="World">
-      <Lorem count={1} sentenceUpperBound={20} />
+      <Lorem p={1} />
     </Tab>
     <Tab key="ny" title="N.Y">
-      <Lorem count={1} sentenceUpperBound={30} />
+      <Lorem p={1} />
     </Tab>
     <Tab key="business" title="Business">
-      <Lorem count={1} sentenceUpperBound={10} />
+      <Lorem p={1} />
     </Tab>
     <Tab key="arts" title="Arts">
-      <Lorem count={1} sentenceUpperBound={50} />
+      <Lorem p={1} />
     </Tab>
     <Tab key="science" title="Science">
-      <Lorem count={1} sentenceUpperBound={24} />
+      <Lorem p={1} />
     </Tab>
   </Tabs>
 );
@@ -111,19 +113,19 @@ const ControlledTemplate = (args: TabsProps) => {
       {/* @ts-ignore */}
       <Tabs aria-label="Tabs example" {...args} selectedKey={selected} onSelectionChange={setSelected}>
         <Tab key="world" title="World">
-          <Lorem count={1} sentenceUpperBound={20} />
+          <Lorem p={1} />
         </Tab>
         <Tab key="ny" title="N.Y">
-          <Lorem count={1} sentenceUpperBound={30} />
+          <Lorem p={1} />
         </Tab>
         <Tab key="business" title="Business">
-          <Lorem count={1} sentenceUpperBound={10} />
+          <Lorem p={1} />
         </Tab>
         <Tab key="arts" title="Arts">
-          <Lorem count={1} sentenceUpperBound={50} />
+          <Lorem p={1} />
         </Tab>
         <Tab key="science" title="Science">
-          <Lorem count={1} sentenceUpperBound={24} />
+          <Lorem p={1} />
         </Tab>
       </Tabs>
 
@@ -142,8 +144,8 @@ const ControlledTemplate = (args: TabsProps) => {
 };
 
 type Item = {
-  id: string;
-  label: string;
+  id?: string;
+  label?: string;
   content?: React.ReactNode;
 };
 

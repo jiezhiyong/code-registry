@@ -3,8 +3,7 @@ import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
 
-import { progress } from "@/registry/ui";
-import { Progress } from "@/registry/ui";
+import { progress, Progress } from "@/registry/ui";
 
 const meta = {
   title: "Components/Progress",
@@ -45,7 +44,7 @@ const defaultProps = {
 };
 
 const Template = (args: ProgressProps) => (
-  <div className="max-w-[400px]">
+  <div className="min-w-[400px]">
     <Progress {...args} />
   </div>
 );
@@ -62,7 +61,7 @@ const IntervalTemplate = (args: ProgressProps) => {
   }, []);
 
   return (
-    <div className="max-w-[400px]">
+    <div className="min-w-[400px]">
       <Progress {...args} value={value} />
     </div>
   );

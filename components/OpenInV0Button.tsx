@@ -9,7 +9,7 @@ export function OpenInV0Button({ name, className }: { name: string } & React.Com
       rel="noreferrer"
       target="_blank"
     >
-      <Button aria-label="Open in v0" className={cn("size-7", className)} size="sm" variant="solid" color="success">
+      <Button aria-label="Open in v0" className={cn("size-7", className)} size="sm" variant="bordered" color="success">
         Open in{" "}
         <svg className="h-5 w-5 text-current" fill="none" viewBox="0 0 40 20" xmlns="http://www.w3.org/2000/svg">
           <path

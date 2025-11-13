@@ -64,7 +64,7 @@ const defaultProps = {
 };
 
 const Template = (args) => (
-  <div className="w-full max-w-[240px]">
+  <div className="w-full min-w-[240px]">
     <NumberInput {...args} />
   </div>
 );
@@ -88,7 +88,7 @@ const ControlledTemplate = (args) => {
   const [value, setValue] = React.useState(0);
 
   return (
-    <div className="w-full flex flex-col gap-2 max-w-[240px]">
+    <div className="w-full flex flex-col gap-2 min-w-[240px]">
       <NumberInput {...args} value={value} onValueChange={setValue} />
       <p className="text-default-500 text-sm">NumberInput value: {value}</p>
     </div>

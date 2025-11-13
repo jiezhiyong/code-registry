@@ -11,9 +11,6 @@ import { Tooltip } from "@/registry/ui/tooltip";
 const meta = {
   title: "Components/Slider",
   component: Slider,
-  parameters: {
-    layout: "fullscreen",
-  },
   argTypes: {
     label: {
       control: { type: "text" },
@@ -86,7 +83,7 @@ const VerticalTemplate = (args: SliderProps) => (
 );
 
 const HorizontalTemplate = (args: SliderProps) => (
-  <div className="flex w-full h-full max-w-md items-center justify-start">
+  <div className="flex min-w-[50vw] h-full max-w-md items-center justify-start">
     <Slider {...args} />
   </div>
 );
@@ -101,7 +98,7 @@ const Template = (args: SliderProps) => {
 
 const CustomStylesTemplate = (args: SliderProps) => (
   <div className="flex items-center justify-center ">
-    <div className="flex items-center justify-center w-full h-full max-w-md">
+    <div className="flex items-center justify-center min-w-[50vw] h-full max-w-md">
       <Slider
         {...args}
         classNames={{
@@ -152,7 +149,7 @@ const CustomValueTemplate = (args: SliderProps) => {
   };
 
   return (
-    <div className="flex w-full h-full max-w-md items-center justify-start">
+    <div className="flex w-full h-full min-w-[50vw] items-center justify-start">
       <Slider
         classNames={{
           label: "text-medium",
@@ -196,7 +193,7 @@ const ControlledTemplate = (args: SliderProps) => {
   const [value, setValue] = React.useState<SliderValue>(25);
 
   return (
-    <div className="flex flex-col gap-2 w-full h-full max-w-md items-start justify-center">
+    <div className="flex flex-col gap-2 min-w-[50vw] max-w-md items-start justify-center">
       <Slider value={value} onChange={setValue} {...args} />
       <p className="text-default-500 text-small">Current volume: {value}</p>
     </div>
@@ -207,7 +204,7 @@ const ControlledRangeTemplate = (args: SliderProps) => {
   const [value, setValue] = React.useState<SliderValue>([25, 75]);
 
   return (
-    <div className="flex flex-col gap-2  max-w-md items-start justify-center">
+    <div className="flex flex-col gap-2 min-w-[50vw] max-w-md items-start justify-center">
       <Slider value={value} onChange={setValue} {...args} />
       <p className="text-default-500 text-small">Current volume: {Array.isArray(value) && value.join(" – ")}</p>
     </div>

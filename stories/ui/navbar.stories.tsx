@@ -2,9 +2,10 @@ import type { NavbarProps } from "@/registry/ui";
 import type { Meta, StoryObj } from "@storybook/nextjs-vite";
 
 import React from "react";
-import Lorem from "react-lorem-component";
+import { LoremIpsum as Lorem } from "react-lorem-ipsum";
 
 import { Activity, ChevronDown, Flash, Lock, Scale, SearchIcon, Server, TagUser } from "@/icons";
+import { cn } from "@/lib/theme";
 import {
   navbar,
   Navbar,
@@ -24,6 +25,9 @@ import { Link } from "@/registry/ui/link";
 const meta = {
   title: "Components/Navbar",
   component: Navbar,
+  parameters: {
+    layout: "fullscreen",
+  },
   argTypes: {
     position: {
       control: {
@@ -75,17 +79,20 @@ const AcmeLogo = () => (
   </svg>
 );
 
-const App = React.forwardRef(({ children }: any, ref: any) => {
+const App = React.forwardRef(({ children, className }: any, ref: any) => {
   return (
     <div
       ref={ref}
-      className="max-w-[90%] sm:max-w-[80%] max-h-[90vh] overflow-x-hidden overflow-y-scroll shadow-md relative border border-default"
+      className={cn(
+        "max-h-[50vh] overflow-x-hidden overflow-y-scroll shadow-md relative border border-default",
+        className,
+      )}
     >
       {children}
-      <div className="max-w-5xl flex flex-col gap-4 px-10 mt-8">
+      <div className="max-w-5xl flex flex-col gap-4 px-8 mt-8">
         <h1>Lorem ipsum dolor sit ame</h1>
         {[1, 2, 3, 4, 5, 6, 7].map((i) => (
-          <Lorem key={i} className="mb-5 text-lg" count={1} sentenceUpperBound={40} />
+          <Lorem key={i} p={1} />
         ))}
       </div>
     </div>
@@ -95,12 +102,11 @@ const App = React.forwardRef(({ children }: any, ref: any) => {
 App.displayName = "App";
 
 const Template = (args: NavbarProps) => {
-  // for hide on scroll cases
-  const parentRef = React.useRef(null);
+  const parentRef = React.useRef<HTMLElement | null>(null);
 
   return (
     <App ref={parentRef}>
-      <Navbar {...args} parentRef={parentRef}>
+      <Navbar {...args} parentRef={parentRef as React.RefObject<HTMLElement>}>
         <NavbarBrand>
           <AcmeLogo />
           <p className="font-bold hidden sm:block text-inherit">ACME</p>
@@ -145,8 +151,8 @@ const Template = (args: NavbarProps) => {
   );
 };
 
-const WithMenuTemplate = (args: NavbarProps) => {
-  const parentRef = React.useRef(null);
+const WithMenuTemplate = (args: NavbarProps & { label?: string }) => {
+  const parentRef = React.useRef<HTMLElement | null>(null);
 
   const [isMenuOpen, setIsMenuOpen] = React.useState<boolean | undefined>(false);
 
@@ -165,7 +171,13 @@ const WithMenuTemplate = (args: NavbarProps) => {
 
   return (
     <App ref={parentRef}>
-      <Navbar parentRef={parentRef} position="sticky" onMenuOpenChange={setIsMenuOpen} {...args}>
+      {args.label && <p>{args.label}</p>}
+      <Navbar
+        parentRef={parentRef as React.RefObject<HTMLElement>}
+        position="sticky"
+        onMenuOpenChange={setIsMenuOpen}
+        {...args}
+      >
         <NavbarContent>
           <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="sm:hidden" />
           <NavbarBrand>
@@ -558,7 +570,6 @@ export const HideOnScroll: Story = {
 
   args: {
     ...defaultProps,
-    position: "sticky",
     shouldHideOnScroll: true,
   },
 };

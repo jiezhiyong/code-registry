@@ -94,7 +94,7 @@ const button = tv({
   defaultVariants: {
     size: "md",
     variant: "solid",
-    color: "default",
+    color: "primary",
     fullWidth: false,
     isDisabled: false,
     isInGroup: false,

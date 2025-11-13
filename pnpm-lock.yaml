@@ -267,6 +267,9 @@ importers:
       react-hook-form:
         specifier: ^7.66.0
         version: 7.66.0(react@19.1.0)
+      react-lorem-ipsum:
+        specifier: ^1.4.10
+        version: 1.4.10
       react-router-dom:
         specifier: ^7.9.5
         version: 7.9.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -4954,6 +4957,9 @@ packages:
     resolution: {integrity: sha512-4mWjxmcG/DJJwdxdKwXWyP2N9zohbJg/yYaC+7JffQNrKj3LYDpA/A4u/Dju1v1ZF6Jew2gbFKGb5Z6CL+UNTw==}
     peerDependencies:
       react: 16.x
+
+  react-lorem-ipsum@1.4.10:
+    resolution: {integrity: sha512-PCEuauLZTGJkm++oxJeUycEgQOBg3qmmD7pn5sUyq9e0OvvNbW32RKQsSgalAYGUIbS91UkDgxvt6iHVAsqYJw==}
 
   react-router-dom@7.9.5:
     resolution: {integrity: sha512-mkEmq/K8tKN63Ae2M7Xgz3c9l9YNbY+NHH6NNeUmLA3kDkhKXRsNb/ZpxaEunvGo2/3YXdk5EJU3Hxp3ocaBPw==}
@@ -10988,6 +10994,8 @@ snapshots:
       object-assign: 4.1.1
       react: 19.1.0
       seedable-random: 0.0.1
+
+  react-lorem-ipsum@1.4.10: {}
 
   react-router-dom@7.9.5(react-dom@19.1.0(react@19.1.0))(react@19.1.0):
     dependencies:

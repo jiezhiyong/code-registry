@@ -49,7 +49,7 @@ type Story = StoryObj<typeof meta>;
 
 const defaultProps = {
   ...image.defaultVariants,
-  src: "./images/local-image-1.jpeg",
+  src: "https://heroui.com/images/hero-card-complete.jpeg",
   alt: "HeroUI hero image",
   disableSkeleton: true,
 };

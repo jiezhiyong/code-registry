@@ -34,5 +34,13 @@
   },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // 为 MDX 文件禁用自动整理导入，避免删除 Storybook 组件导入
+  "[mdx]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "never",
+      "source.fixAll.eslint": "explicit"
+    },
+    "editor.defaultFormatter": "unifiedjs.vscode-mdx"
   }
 }

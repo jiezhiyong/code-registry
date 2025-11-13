@@ -61,13 +61,6 @@ const meta = {
       },
     },
   },
-  decorators: [
-    (Story) => (
-      <div className="flex items-start justify-center">
-        <Story />
-      </div>
-    ),
-  ],
 } satisfies Meta<typeof Select>;
 
 export default meta;
@@ -80,19 +73,19 @@ const defaultProps = {
 const items = animalsData.map((item) => <SelectItem key={item.value}>{item.label}</SelectItem>);
 
 const Template = ({ color, variant, ...args }: SelectProps) => (
-  <Select className="max-w-xs" color={color} label="Favorite Animal" variant={variant} {...args}>
+  <Select className="min-w-xs" color={color} label="Favorite Animal" variant={variant} {...args}>
     {items}
   </Select>
 );
 
 const DynamicTemplate = ({ color, variant, ...args }: SelectProps<Animal>) => (
-  <Select className="max-w-xs" color={color} items={animalsData} label="Favorite Animal" variant={variant} {...args}>
+  <Select className="min-w-xs" color={color} items={animalsData} label="Favorite Animal" variant={variant} {...args}>
     {(item) => <SelectItem key={item.value}>{item.label}</SelectItem>}
   </Select>
 );
 
 const DynamicTemplateWithDescriptions = ({ color, variant, ...args }: SelectProps<Animal>) => (
-  <Select className="max-w-xs" color={color} items={animalsData} label="Favorite Animal" variant={variant} {...args}>
+  <Select className="min-w-xs" color={color} items={animalsData} label="Favorite Animal" variant={variant} {...args}>
     {(item) => (
       <SelectItem key={item.value} description={item.description}>
         {item.label}
@@ -102,7 +95,7 @@ const DynamicTemplateWithDescriptions = ({ color, variant, ...args }: SelectProp
 );
 
 const ItemStartContentTemplate = ({ color, variant, ...args }: SelectProps<Animal>) => (
-  <Select className="max-w-xs" color={color} label="Select country" variant={variant} {...args}>
+  <Select className="min-w-xs" color={color} label="Select country" variant={variant} {...args}>
     <SelectItem
       key="argentina"
       startContent={<Avatar alt="Argentina" className="w-6 h-6" src="https://flagcdn.com/ar.svg" />}
@@ -162,7 +155,7 @@ const ControlledTemplate = ({ color, variant, ...args }: SelectProps<Animal>) =>
   };
 
   return (
-    <div className="flex w-full max-w-xs flex-col gap-2">
+    <div className="flex w-full min-w-xs flex-col gap-2">
       <Select
         fullWidth
         color={color}
@@ -184,9 +177,9 @@ const ControlledOpenTemplate = ({ color, variant, ...args }: SelectProps<Animal>
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-    <div className="flex w-full max-w-xs items-center gap-2">
+    <div className="flex w-full min-w-xs items-center gap-2">
       <Select
-        className="max-w-xs"
+        className="min-w-xs"
         color={color}
         isOpen={isOpen}
         label="Favorite Animal"
@@ -209,7 +202,7 @@ const ControlledMultipleTemplate = ({ color, variant, ...args }: SelectProps<Ani
   };
 
   return (
-    <div className="flex w-full max-w-xs flex-col gap-2">
+    <div className="flex w-full min-w-xs flex-col gap-2">
       <Select
         fullWidth
         color={color}
@@ -231,7 +224,7 @@ const ControlledMultipleTemplate = ({ color, variant, ...args }: SelectProps<Ani
 const FormTemplate = ({ color, variant, ...args }: SelectProps) => {
   return (
     <form
-      className="w-full max-w-xs items-end flex flex-col gap-4"
+      className="w-full min-w-xs items-end flex flex-col gap-4"
       onSubmit={(e) => {
         alert(`Submitted value: ${e.target["favorite-animal"].value}`);
         e.preventDefault();
@@ -276,7 +269,7 @@ const ServerValidationTemplate = (args: SelectProps) => {
 
   return (
     <Form className="w-full flex flex-col items-start gap-2" validationErrors={serverErrors} onSubmit={onSubmit}>
-      <Select isRequired {...args} className="max-w-xs" label="Favorite Animal" name="animal">
+      <Select isRequired {...args} className="min-w-xs" label="Favorite Animal" name="animal">
         {items}
       </Select>
       <button className={button({ color: "primary" })} type="submit">
@@ -312,7 +305,7 @@ const ServerValidationTemplateWithMultiple = (args: SelectProps) => {
 
   return (
     <Form className="w-full flex flex-col items-start gap-2" validationErrors={serverErrors} onSubmit={onSubmit}>
-      <Select {...args} className="max-w-xs" label="Favorite Animals" name="animals" selectionMode="multiple">
+      <Select {...args} className="min-w-xs" label="Favorite Animals" name="animals" selectionMode="multiple">
         {items}
       </Select>
       <button className={button({ color: "primary" })} type="submit">
@@ -328,12 +321,12 @@ const ServerValidationTemplateWithMultiple = (args: SelectProps) => {
 };
 
 const MirrorTemplate = ({ color, variant, ...args }: SelectProps) => (
-  <div className="w-full max-w-xl flex flex-row gap-4">
-    <Select className="max-w-xs" color={color} label="Select an animal" variant={variant} {...args}>
+  <div className="flex flex-row gap-4">
+    <Select className="min-w-xs" color={color} label="Select an animal" variant={variant} {...args}>
       {items}
     </Select>
     <Select
-      className="max-w-xs"
+      className="min-w-xs"
       color={color}
       label="Favorite Animal"
       placeholder="Select an animal"
@@ -431,7 +424,7 @@ const LabelPlacementTemplate = ({ color, variant, ...args }: SelectProps) => (
 
 const StartContentTemplate = ({ color, variant, ...args }: SelectProps) => (
   <Select
-    className="max-w-xs"
+    className="min-w-xs"
     color={color}
     defaultSelectedKeys={["cat"]}
     label="Favorite Animal"
@@ -445,7 +438,7 @@ const StartContentTemplate = ({ color, variant, ...args }: SelectProps) => (
 
 const EndContentTemplate = ({ color, variant, ...args }: SelectProps) => (
   <Select
-    className="max-w-xs"
+    className="min-w-xs"
     color={color}
     defaultSelectedKeys={["cat"]}
     endContent={<PetBoldIcon />}
@@ -459,11 +452,11 @@ const EndContentTemplate = ({ color, variant, ...args }: SelectProps) => (
 
 const EmptyTemplate = ({ color, variant, ...args }: SelectProps) => (
   <div className="w-full justify-center flex gap-2">
-    <Select hideEmptyContent className="max-w-xs" color={color} label="Hide empty content" variant={variant} {...args}>
+    <Select hideEmptyContent className="min-w-xs" color={color} label="Hide empty content" variant={variant} {...args}>
       {[]}
     </Select>
     <Select
-      className="max-w-xs"
+      className="min-w-xs"
       color={color}
       hideEmptyContent={false}
       label="Show empty content"
@@ -477,7 +470,7 @@ const EmptyTemplate = ({ color, variant, ...args }: SelectProps) => (
 
 const CustomItemsTemplate = ({ color, variant, ...args }: SelectProps<User>) => (
   <div className="w-full justify-center flex gap-2">
-    <Select className="max-w-xs mt-8" color={color} items={usersData} label="Assigned to" variant={variant} {...args}>
+    <Select className="min-w-xs mt-8" color={color} items={usersData} label="Assigned to" variant={variant} {...args}>
       {(item) => (
         <SelectItem key={item.id} textValue={item.name}>
           <div className="flex gap-2 items-center">
@@ -491,7 +484,7 @@ const CustomItemsTemplate = ({ color, variant, ...args }: SelectProps<User>) => 
       )}
     </Select>
     <Select
-      className="max-w-xs mt-8"
+      className="min-w-xs mt-8"
       color={color}
       items={usersData}
       label="Assigned to"
@@ -515,7 +508,7 @@ const CustomItemsTemplate = ({ color, variant, ...args }: SelectProps<User>) => 
 );
 
 const WithSectionsTemplate = ({ color, variant, ...args }: SelectProps<User>) => (
-  <Select className="max-w-xs" color={color} label="Favorite Animal" variant={variant} {...args}>
+  <Select className="min-w-xs" color={color} label="Favorite Animal" variant={variant} {...args}>
     <SelectSection showDivider title="Mammals">
       <SelectItem key="Lion">Lion</SelectItem>
       <SelectItem key="Tiger">Tiger</SelectItem>
@@ -544,7 +537,7 @@ const WithCustomSectionsStylesTemplate = ({ color, variant, ...args }: SelectPro
 
   return (
     <Select
-      className="max-w-xs"
+      className="min-w-xs"
       color={color}
       label="Favorite Animal"
       scrollShadowProps={{
@@ -588,7 +581,7 @@ const WithCustomSectionsStylesTemplate = ({ color, variant, ...args }: SelectPro
 };
 
 const WithAriaLabelTemplate = ({ color, variant, ...args }: SelectProps) => (
-  <Select className="max-w-xs" color={color} label="Favorite Animal" variant={variant} {...args}>
+  <Select className="min-w-xs" color={color} label="Favorite Animal" variant={variant} {...args}>
     {items}
   </Select>
 );
@@ -596,7 +589,7 @@ const WithAriaLabelTemplate = ({ color, variant, ...args }: SelectProps) => (
 const CustomStylesTemplate = ({ color, variant, ...args }: SelectProps<User>) => {
   return (
     <Select
-      className="max-w-xs"
+      className="min-w-xs"
       classNames={{
         label: "group-data-[filled=true]:-translate-y-5",
         trigger: "min-h-16",
@@ -658,7 +651,7 @@ const AsyncLoadingTemplate = ({ color, variant, ...args }: SelectProps<Pokemon>)
 
   return (
     <Select
-      className="max-w-xs"
+      className="min-w-xs"
       color={color}
       isLoading={isLoading}
       items={items}
@@ -699,7 +692,7 @@ const WithReactHookFormTemplate = (args: SelectProps) => {
   };
 
   return (
-    <form className="flex w-full max-w-xs flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
+    <form className="flex w-full min-w-xs flex-col gap-2" onSubmit={handleSubmit(onSubmit)}>
       <Select data-testid="select-1" {...args} {...register("withDefaultValue")}>
         {items}
       </Select>
@@ -717,67 +710,6 @@ const WithReactHookFormTemplate = (args: SelectProps) => {
         Submit
       </button>
     </form>
-  );
-};
-
-const ScrollableContainerTemplate = (args: SelectProps) => {
-  const categories = [
-    {
-      target: "Animals",
-      items: [
-        { name: "Lion", emoji: "🦁" },
-        { name: "Tiger", emoji: "🐅" },
-        { name: "Elephant", emoji: "🐘" },
-        { name: "Kangaroo", emoji: "🦘" },
-        { name: "Panda", emoji: "🐼" },
-        { name: "Giraffe", emoji: "🦒" },
-        { name: "Zebra", emoji: "🦓" },
-        { name: "Cheetah", emoji: "🐆" },
-      ],
-    },
-    {
-      target: "Birds",
-      items: [
-        { name: "Eagle", emoji: "🦅" },
-        { name: "Parrot", emoji: "🦜" },
-        { name: "Penguin", emoji: "🐧" },
-        { name: "Ostrich", emoji: "🦢" },
-        { name: "Peacock", emoji: "🦚" },
-        { name: "Swan", emoji: "🦢" },
-        { name: "Falcon", emoji: "🦅" },
-        { name: "Flamingo", emoji: "🦩" },
-      ],
-    },
-  ];
-  const DEFAULT_CATEGORY = "Animals";
-
-  return (
-    <>
-      <form className="h-full overflow-auto">
-        <div className="flex justify-between h-[1500px]">
-          <div className="flex items-center gap-2">
-            <div className="flex w-full flex-wrap gap-4 md:flex-nowrap">
-              <Select
-                aria-label="Favourite Animals"
-                className="w-52"
-                defaultSelectedKeys={[DEFAULT_CATEGORY]}
-                label="Category"
-                name="Category"
-                {...args}
-              >
-                {categories.map((category, idx, arr) => (
-                  <SelectSection key={category.target} showDivider={idx !== arr.length - 1} title={category.target}>
-                    {category.items.map((item) => (
-                      <SelectItem key={item.name}>{`${item.emoji} ${item.name}`}</SelectItem>
-                    ))}
-                  </SelectSection>
-                ))}
-              </Select>
-            </div>
-          </div>
-        </div>
-      </form>
-    </>
   );
 };
 
@@ -822,8 +754,8 @@ const LargeDatasetTemplate = (args: SelectProps & { numItems: number }) => {
   const largeDataset = generateLargeDataset(args.numItems);
 
   return (
-    <div className="flex w-full max-w-full py-20 xl:px-32 lg:px-20 px-20">
-      <Select label={`Select from ${args.numItems} items`} {...args}>
+    <div className="flex w-full py-20 xl:px-32 lg:px-20 px-20">
+      <Select className="min-w-xs" label={`Select from ${args.numItems} items`} {...args}>
         {largeDataset.map((item) => (
           <SelectItem key={item.value}>{item.label}</SelectItem>
         ))}
@@ -838,7 +770,7 @@ const ValidationBehaviorAriaTemplate = (args: SelectProps) => {
     return (
       <Select
         {...args}
-        className="max-w-xs"
+        className="min-w-xs"
         label="Favorite Animal"
         placeholder="Select an animal"
         validate={(value) => {
@@ -862,7 +794,7 @@ const ValidationBehaviorAriaTemplate = (args: SelectProps) => {
     return (
       <Select
         {...args}
-        className="max-w-xs"
+        className="min-w-xs"
         label="Favorite Animal"
         placeholder="Select an animal"
         selectionMode="multiple"
@@ -902,7 +834,7 @@ const ValidationBehaviorAriaTemplate = (args: SelectProps) => {
 
     return (
       <Form className="w-full flex flex-col items-start gap-2" validationErrors={serverErrors} onSubmit={onSubmit}>
-        <Select className="max-w-xs" label="Select Animal" name="animal" validationBehavior="aria">
+        <Select className="min-w-xs" label="Select Animal" name="animal" validationBehavior="aria">
           <SelectItem key="penguin">Penguin</SelectItem>
           <SelectItem key="zebra">Zebra</SelectItem>
           <SelectItem key="shark">Shark</SelectItem>
@@ -1114,7 +1046,7 @@ export const WithChips: Story = {
     isMultiline: true,
     labelPlacement: "outside",
     classNames: {
-      base: "max-w-xs",
+      base: "min-w-xs",
       trigger: "min-h-12 py-2",
     },
     renderValue: (items: SelectedItems<User>) => {
@@ -1173,14 +1105,6 @@ export const WithServerValidation: Story = {
 
 export const WithServerValidationMultiple: Story = {
   render: ServerValidationTemplateWithMultiple,
-
-  args: {
-    ...defaultProps,
-  },
-};
-
-export const WithScrollableContainer: Story = {
-  render: ScrollableContainerTemplate,
 
   args: {
     ...defaultProps,
@@ -1378,7 +1302,7 @@ export const NonVirtualizedVsVirtualizedWithSections: Story = {
     const SelectComponent = ({ isVirtualized }: { isVirtualized: boolean }) => (
       <Select
         disallowEmptySelection
-        className="max-w-xs"
+        className="min-w-xs"
         color="secondary"
         defaultSelectedKeys={["jinx"]}
         isVirtualized={isVirtualized}
@@ -1419,24 +1343,4 @@ export const ValidationBehaviorAria: Story = {
   args: {
     ...defaultProps,
   },
-};
-
-export const PopoverTopOrBottom: Story = {
-  args: {
-    ...defaultProps,
-  },
-  render: (args) => (
-    <div className="relative">
-      <div className="absolute top-0 p-8">
-        <div className="w-48">
-          <Template {...args} />
-        </div>
-      </div>
-      <div className="absolute top-1/2 p-8">
-        <div className="w-48">
-          <Template {...args} />
-        </div>
-      </div>
-    </div>
-  ),
 };
