@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: "Shadcn code registry",
   description: "use the`shadcn` CLI to run your own code registry",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon-vercel.ico",
   },
 };
 
