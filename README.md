@@ -4,7 +4,7 @@ You can use the `shadcn` CLI to run your own component registry. Running your ow
 component registry allows you to distribute your custom components, hooks, pages, and
 other files to any React project.
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > This template uses Tailwind v4.
 
 ## Getting Started
@@ -35,6 +35,3 @@ pnpm dlx shadcn@latest add @tcsk-local/button
 ## Documentation
 
 Visit the [shadcn documentation](https://ui.shadcn.com/docs/registry) to view the full documentation.
-
-v0
-test mcp
