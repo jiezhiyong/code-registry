@@ -73,7 +73,6 @@ const preview: Preview = {
           disableAnimation={disableAnimation}
           labelPlacement={labelPlacement}
           navigate={(path) => {
-            debugger;
             window.open(path, "_blank");
           }}
         >
