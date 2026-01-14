@@ -1,6 +1,6 @@
 ---
 name: storybook-get-documentation
-description: 从本项目 Storybook manifests 中获取指定组件/文档条目的详情（等价于 get-documentation），用于写文档、写测试与排查用法。
+description: 从 Storybook manifests 中获取指定组件/文档条目的详情（等价于 get-documentation），用于写文档、写测试与排查用法。
 ---
 
 # Storybook：获取指定文档（基于 manifests）

@@ -1,6 +1,6 @@
 ---
 name: storybook-list-documentation
-description: 列出本项目 Storybook manifests 中的全部组件/文档条目（等价于 list-all-documentation），用于组件发现、盘点与测试覆盖率梳理。
+description: 列出 Storybook manifests 中的全部组件/文档条目（等价于 list-all-documentation），用于组件发现、盘点与测试覆盖率梳理。
 ---
 
 # Storybook：列出全部文档（基于 manifests）
